@@ -463,7 +463,7 @@ namespace UAVXGUI
  
         int RawAltitudeT, RawFAltitudeT;
 
-        short AccZT, HRAccZT, HRAccZBiasT, Fusion1T, Fusion2T, Fusion3T;
+        short AccZT, HRAccZT, HRAccZBiasT, Fusion1T, FWGlideOffsetAngleT, NewTuningParameterT;
 
         short MagHeadingT;
 
@@ -693,7 +693,7 @@ namespace UAVXGUI
         static byte TxCheckSum = 0;
 
         bool CheckSumError;
-        short RxLengthErrors = 0, RxCheckSumErrors = 0, RxIllegalErrors = 0, RxFrSkyErrors = 0;
+        short RxLengthErrors = 0, RxCheckSumErrors = 0, RxIllegalErrors = 0;
 
         double[,] Params = new double[2,MAXPARAMS];
         int[] Sticks = new int[16];
@@ -1195,15 +1195,7 @@ namespace UAVXGUI
                 SendRequestPacket(UAVXMiscPacketTag, (byte)MiscComms.miscBBDump, 0);
         }
 
-        private void ProgEscButton_Click(object sender, EventArgs e)
-        {
-            if (((StateT == FlightStates.Preflight) || (StateT == FlightStates.Ready)) && !F[(byte)FlagValues.DumpingBB])
-            {
-                SendRequestPacket(UAVXMiscPacketTag, (byte)MiscComms.miscProgEsc, 0);
-                ProgEscButton.BackColor = Color.Orange;
-                speech.SpeakAsync("Connect BLHeli Suite");
-             }
-        }
+
 
         //_______________________________________________________________________________________
 
@@ -2473,16 +2465,6 @@ namespace UAVXGUI
                     I2CESCFailS.Text = string.Format("{0:n0}", Stats[ESCI2CFailX]);
                     RCFailSafeS.Text = string.Format("{0:n0}", Stats[RCFailSafesX]);
 
-                    GPSAltitudeS.Text = string.Format("{0:n1}", (float)Stats[GPSAltitudeX] * 0.01);
-                    GPSMaxVelS.Text = string.Format("{0:n1}", (float)Stats[GPSMaxVelX] * 0.1);
-                    GPSMinSatS.Text = string.Format("{0:n0}", Stats[GPSMinSatsX]);
-                    GPSMaxSatS.Text = string.Format("{0:n0}", Stats[GPSMaxSatsX]);
-                    GPSMinhAccS.Text = string.Format("{0:n2}", (float)Stats[MinhAccX] * 0.01);
-                    GPSMaxhAccS.Text = string.Format("{0:n2}", (float)Stats[MaxhAccX] * 0.01);
-
-                    BaroRelAltitudeS.Text = string.Format("{0:n1}", (float)Stats[BaroRelAltitudeX] * 0.01);
-                    BaroMinROCS.Text = string.Format("{0:n1}", (float)Stats[MinROCX] * 0.01);
-                    BaroMaxROCS.Text = string.Format("{0:n1}", (float)Stats[MaxROCX] * 0.01);
 
                     BadS.Text = string.Format("{0:n0}", Stats[BadX]);
                     ErrNoS.Text = string.Format("{0:n0}", Stats[BadNumX]);
@@ -2494,35 +2476,7 @@ namespace UAVXGUI
 
                     DoOrientation();
 
-                    ErrNoS.BackColor = Stats[BadNumX] != 0 ? 
-                        System.Drawing.Color.Red : GPSStatsGroupBox.BackColor;
 
-                    AccFailS.BackColor = Stats[AccFailsX] > 0 ?
-                        System.Drawing.Color.Red : GPSStatsGroupBox.BackColor;
-
-                    GyroFailS.BackColor = Stats[GyroFailsX] > 0 ?
-                        System.Drawing.Color.Orange : GPSStatsGroupBox.BackColor;
-
-                    if (Stats[CompassFailsX] > 50)
-                        CompassFailS.BackColor = System.Drawing.Color.Red;
-                    else
-                        CompassFailS.BackColor = Stats[CompassFailsX] > 5 ?
-                            System.Drawing.Color.Orange : GPSStatsGroupBox.BackColor;
-
-                    if (Stats[BaroFailsX] > 50)
-                        BaroFailS.BackColor = System.Drawing.Color.Red;
-                    else
-                        BaroFailS.BackColor = Stats[BaroFailsX] > 5 ?
-                            System.Drawing.Color.Orange : GPSStatsGroupBox.BackColor;
-
-                    if (Stats[GPSInvalidX] > 20)
-                        GPSFailS.BackColor = System.Drawing.Color.Red;
-                    else
-                        GPSFailS.BackColor = Stats[GPSInvalidX] > 5 ?
-                            System.Drawing.Color.Orange : GPSStatsGroupBox.BackColor;
-
-                    GPSMaxhAccS.BackColor = Stats[MaxhAccX] > 150 ?
-                        System.Drawing.Color.Red : GPSStatsGroupBox.BackColor;
 
                     break;
                 case UAVXFlightPacketTag:
@@ -2821,8 +2775,12 @@ namespace UAVXGUI
                     FROCT = ExtractShort(ref UAVXPacket, 7);
                     HRAccZBiasT = ExtractShort(ref UAVXPacket, 9);
                     Fusion1T = ExtractShort(ref UAVXPacket, 11);
-                    Fusion2T = ExtractShort(ref UAVXPacket, 13);
-                    Fusion3T = ExtractShort(ref UAVXPacket, 15);
+                    FWGlideOffsetAngleT = ExtractShort(ref UAVXPacket, 13);
+                    NewTuningParameterT = ExtractShort(ref UAVXPacket, 15);
+
+                    FWGlideOffsetAngle.Text = string.Format("{0:n1}", (float)FWGlideOffsetAngleT*0.1f);
+                    NewTuningParameter.Text = string.Format("{0:n0}", NewTuningParameterT);
+
                         // plus 4 more 16bit values
 
                     break;
@@ -2872,7 +2830,7 @@ namespace UAVXGUI
                 RxTypeErr.Text = string.Format("{0:n0}", RxIllegalErrors);
                 RxCSumErr.Text = string.Format("{0:n0}", RxCheckSumErrors);
                 RxLenErr.Text = string.Format("{0:n0}", RxLengthErrors);
-                RxFrSkyErr.Text = string.Format("{0:n0}", RxFrSkyErrors);
+ 
             }
     
             ReadingTelemetry = false;
@@ -3086,8 +3044,8 @@ namespace UAVXGUI
             HRAccZT * 0.001 + "," +
             HRAccZBiasT * 0.001 + "," +
             Fusion1T * 0.001 + "," +
-            Fusion2T * 0.001 + "," +
-            Fusion3T * 0.001 + "," +
+            FWGlideOffsetAngleT * 0.1 + "," +
+            NewTuningParameterT + "," +
 
             AltCompT * 0.001 + "," +
   

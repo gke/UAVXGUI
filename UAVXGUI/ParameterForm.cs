@@ -304,8 +304,6 @@ namespace UAVXGUI
             if (parameterForm.AirspeedComboBox.Focused)
                 helpstring = help.GetString("AirspeedSensor");
 
-           if (parameterForm.FWGlideAngleOffsetLabel.Focused)
-                helpstring = help.GetString("FWGlideAngleOffset");
             if (parameterForm.FWFlapDecayTimeNumericUpDown.Focused)
                 helpstring = help.GetString("FWFlapDecayTime");
             if (parameterForm.FWAltHoldDecayTimeNumericUpDown.Focused)
@@ -339,7 +337,7 @@ namespace UAVXGUI
             if (parameterForm.bit42CheckBox.Focused)
                 helpstring = help.GetString("RebootConfig");
             if (parameterForm.bit52CheckBox.Focused)
-                helpstring = help.GetString("unassigned");
+                helpstring = help.GetString("BoardInverted");
             if (parameterForm.bit62CheckBox.Focused)
                 helpstring = help.GetString("unassigned");
 
@@ -1296,8 +1294,8 @@ namespace UAVXGUI
                         ParamUpdate(MaxAttitudeAngleNumericUpDown);
                         break;
                     case 69:
-                        GlideOffsetErrorLabel.Text = string.Format("{0:n0}", UAVXP[p - 1].Value);
-                        P[CurrPS, p-1].Value = UAVXP[p - 1].Value;
+                   //     GlideOffsetErrorLabel.Text = string.Format("{0:n0}", UAVXP[p - 1].Value);
+                   //     P[CurrPS, p-1].Value = UAVXP[p - 1].Value;
                         break;
                     case 70:
                         FWFlapDecayTimeNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
@@ -1360,8 +1358,8 @@ namespace UAVXGUI
                         ParamUpdate(TuneParamComboBox);
                         break;
                     case 79:
-                        TuneParameterLabel.Text = string.Format("{0:n0}", UAVXP[p - 1].Value);
-                        P[CurrPS, p-1].Value = UAVXP[p - 1].Value;
+                 //       TuneParameterLabel.Text = string.Format("{0:n0}", UAVXP[p - 1].Value);
+                //        P[CurrPS, p-1].Value = UAVXP[p - 1].Value;
                         break;
                     case 94: // Aux5
                         Ch10NumericUpDown.Value = UAVXP[p - 1].Value;

@@ -181,7 +181,6 @@
             this.SetDefaultParamButton = new System.Windows.Forms.Button();
             this.CheckDownLinkTimer = new System.Windows.Forms.Timer(this.components);
             this.RCGroupBox = new System.Windows.Forms.GroupBox();
-            this.TuneParameterLabel = new System.Windows.Forms.Label();
             this.TuneParamLabel = new System.Windows.Forms.Label();
             this.TuneParamComboBox = new System.Windows.Forms.ComboBox();
             this.RC11TextBox = new System.Windows.Forms.TextBox();
@@ -231,7 +230,6 @@
             this.AirspeedLabel = new System.Windows.Forms.Label();
             this.AirspeedComboBox = new System.Windows.Forms.ComboBox();
             this.AttitudeGroupBox = new System.Windows.Forms.GroupBox();
-            this.GlideOffsetErrorLabel = new System.Windows.Forms.Label();
             this.FWMaxClimbAngleNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.FWMaxClimbAngleLabel = new System.Windows.Forms.Label();
             this.BestROCNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -240,7 +238,6 @@
             this.FWAileronDifferentialNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.FWFlapDecayTimeLabel = new System.Windows.Forms.Label();
             this.FWFlapDecayTimeNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.FWGlideAngleOffsetLabel = new System.Windows.Forms.Label();
             this.MaxAttitudeAngleLabel = new System.Windows.Forms.Label();
             this.MaxAltCompNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.PitchThrottleFFxLabel = new System.Windows.Forms.Label();
@@ -2145,7 +2142,6 @@
             // 
             // RCGroupBox
             // 
-            this.RCGroupBox.Controls.Add(this.TuneParameterLabel);
             this.RCGroupBox.Controls.Add(this.TuneParamLabel);
             this.RCGroupBox.Controls.Add(this.TuneParamComboBox);
             this.RCGroupBox.Controls.Add(this.RC11TextBox);
@@ -2208,15 +2204,6 @@
             resources.ApplyResources(this.RCGroupBox, "RCGroupBox");
             this.RCGroupBox.Name = "RCGroupBox";
             this.RCGroupBox.TabStop = false;
-            // 
-            // TuneParameterLabel
-            // 
-            this.TuneParameterLabel.BackColor = System.Drawing.SystemColors.Window;
-            this.TuneParameterLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            resources.ApplyResources(this.TuneParameterLabel, "TuneParameterLabel");
-            this.TuneParameterLabel.ForeColor = System.Drawing.Color.OrangeRed;
-            this.TuneParameterLabel.Name = "TuneParameterLabel";
-            this.TuneParameterLabel.Tag = "79";
             // 
             // TuneParamLabel
             // 
@@ -2683,7 +2670,6 @@
             // AttitudeGroupBox
             // 
             resources.ApplyResources(this.AttitudeGroupBox, "AttitudeGroupBox");
-            this.AttitudeGroupBox.Controls.Add(this.GlideOffsetErrorLabel);
             this.AttitudeGroupBox.Controls.Add(this.FWMaxClimbAngleNumericUpDown);
             this.AttitudeGroupBox.Controls.Add(this.FWMaxClimbAngleLabel);
             this.AttitudeGroupBox.Controls.Add(this.BestROCNumericUpDown);
@@ -2694,7 +2680,6 @@
             this.AttitudeGroupBox.Controls.Add(this.FWAileronDifferentialNumericUpDown);
             this.AttitudeGroupBox.Controls.Add(this.FWFlapDecayTimeLabel);
             this.AttitudeGroupBox.Controls.Add(this.FWFlapDecayTimeNumericUpDown);
-            this.AttitudeGroupBox.Controls.Add(this.FWGlideAngleOffsetLabel);
             this.AttitudeGroupBox.Controls.Add(this.MaxAttitudeAngleLabel);
             this.AttitudeGroupBox.Controls.Add(this.MaxAltCompNumericUpDown);
             this.AttitudeGroupBox.Controls.Add(this.PitchThrottleFFxLabel);
@@ -2713,15 +2698,6 @@
             this.AttitudeGroupBox.Name = "AttitudeGroupBox";
             this.AttitudeGroupBox.TabStop = false;
             // 
-            // GlideOffsetErrorLabel
-            // 
-            this.GlideOffsetErrorLabel.BackColor = System.Drawing.SystemColors.Window;
-            this.GlideOffsetErrorLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            resources.ApplyResources(this.GlideOffsetErrorLabel, "GlideOffsetErrorLabel");
-            this.GlideOffsetErrorLabel.ForeColor = System.Drawing.Color.OrangeRed;
-            this.GlideOffsetErrorLabel.Name = "GlideOffsetErrorLabel";
-            this.GlideOffsetErrorLabel.Tag = "69";
-            // 
             // FWMaxClimbAngleNumericUpDown
             // 
             this.FWMaxClimbAngleNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
@@ -2734,7 +2710,7 @@
             this.FWMaxClimbAngleNumericUpDown.Name = "FWMaxClimbAngleNumericUpDown";
             this.FWMaxClimbAngleNumericUpDown.Tag = "77";
             this.FWMaxClimbAngleNumericUpDown.Value = new decimal(new int[] {
-            60,
+            15,
             0,
             0,
             0});
@@ -2818,11 +2794,6 @@
             this.FWFlapDecayTimeNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
             this.FWFlapDecayTimeNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
-            // FWGlideAngleOffsetLabel
-            // 
-            resources.ApplyResources(this.FWGlideAngleOffsetLabel, "FWGlideAngleOffsetLabel");
-            this.FWGlideAngleOffsetLabel.Name = "FWGlideAngleOffsetLabel";
-            // 
             // MaxAttitudeAngleLabel
             // 
             resources.ApplyResources(this.MaxAttitudeAngleLabel, "MaxAttitudeAngleLabel");
@@ -2884,7 +2855,7 @@
             this.MaxAttitudeAngleNumericUpDown.Name = "MaxAttitudeAngleNumericUpDown";
             this.MaxAttitudeAngleNumericUpDown.Tag = "68";
             this.MaxAttitudeAngleNumericUpDown.Value = new decimal(new int[] {
-            10,
+            60,
             0,
             0,
             0});
@@ -3190,7 +3161,6 @@
         public System.Windows.Forms.NumericUpDown FWAltHoldDecayTimeNumericUpDown;
         private System.Windows.Forms.Label FWFlapDecayTimeLabel;
         public System.Windows.Forms.NumericUpDown FWFlapDecayTimeNumericUpDown;
-        private System.Windows.Forms.Label FWGlideAngleOffsetLabel;
         private System.Windows.Forms.Label FWAileronDifferentialLabel;
         public System.Windows.Forms.NumericUpDown FWAileronDifferentialNumericUpDown;
         private System.Windows.Forms.Label AirspeedLabel;
@@ -3226,8 +3196,6 @@
         public System.Windows.Forms.ComboBox TuneParamComboBox;
         public System.Windows.Forms.NumericUpDown FWMaxClimbAngleNumericUpDown;
         private System.Windows.Forms.Label FWMaxClimbAngleLabel;
-        private System.Windows.Forms.Label TuneParameterLabel;
-        private System.Windows.Forms.Label GlideOffsetErrorLabel;
 
 
     }

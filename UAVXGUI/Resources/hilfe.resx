@@ -155,6 +155,9 @@ The result is identical to a power cycle and can be used to avoid the flashing c
       <data name="unassigned" xml:space="preserve">
     <value>UNASSIGNED CONFIG2 CHECKBOX - GKE.</value>
   </data>
+  <data name="BoardInverted" xml:space="preserve">
+    <value>Board mounted inverted.</value>
+  </data>
   <data name="MadgwickKp" xml:space="preserve">
     <value>Controls how much correction to gyro drift is applied by the accelerometer for the Madgwick attitude estimators. 
     Too large causes jitter and over reliance on the accelerometers. Too small may cause drift from level flight.</value>
