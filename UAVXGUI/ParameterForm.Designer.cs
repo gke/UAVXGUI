@@ -2708,7 +2708,7 @@
             0,
             0});
             this.FWMaxClimbAngleNumericUpDown.Name = "FWMaxClimbAngleNumericUpDown";
-            this.FWMaxClimbAngleNumericUpDown.Tag = "77";
+            this.FWMaxClimbAngleNumericUpDown.Tag = "68";
             this.FWMaxClimbAngleNumericUpDown.Value = new decimal(new int[] {
             15,
             0,
@@ -2853,7 +2853,7 @@
             0,
             0});
             this.MaxAttitudeAngleNumericUpDown.Name = "MaxAttitudeAngleNumericUpDown";
-            this.MaxAttitudeAngleNumericUpDown.Tag = "68";
+            this.MaxAttitudeAngleNumericUpDown.Tag = "77";
             this.MaxAttitudeAngleNumericUpDown.Value = new decimal(new int[] {
             60,
             0,
