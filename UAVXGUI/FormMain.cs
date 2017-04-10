@@ -1729,14 +1729,9 @@ namespace UAVXGUI
                 if (MagLockE < -180) 
                     MagLockE += 180;
 
-            if (F[(byte)FlagValues.MagLocked] && F[(byte)FlagValues.MagCalibrated]) {
-                MagLockedBox.Text = "Mag Lock " + MagLockE;
-                MagLockedBox.BackColor = Color.Green; 
-            
-            } else {
-                MagLockedBox.Text = "Mag Lock " + MagLockE;
-                MagLockedBox.BackColor =Color.Red;     
-             }
+            MagLockedBox.Text = "Mag Lock " + MagLockE;
+            MagLockedBox.BackColor = (F[(byte)FlagValues.MagLocked] && F[(byte)FlagValues.MagCalibrated]) ?
+                Color.Green: System.Drawing.Color.Orange;     
 
             DumpBBButton.BackColor = F[(byte)FlagValues.DumpingBB] ?
                  Color.Orange : System.Drawing.SystemColors.Control;
@@ -1969,9 +1964,9 @@ namespace UAVXGUI
         void UpdateControls()
         {
                 DesiredThrottle.Text = string.Format("{0:n0}", ((float)DesiredThrottleT * 100.0) / RCMaximum);
-                DesiredRoll.Text = string.Format("{0:n0}", ((float)DesiredRollT * 200.0) / RCMaximum);
-                DesiredPitch.Text = string.Format("{0:n0}", ((float)DesiredPitchT * 200.0) / RCMaximum);
-                DesiredYaw.Text = string.Format("{0:n0}", ((float)DesiredYawT * 200.0) / RCMaximum);
+                DesiredRoll.Text = string.Format("{0:n0}", ((float)DesiredRollT * 100.0) / RCMaximum);
+                DesiredPitch.Text = string.Format("{0:n0}", ((float)DesiredPitchT * 100.0) / RCMaximum);
+                DesiredYaw.Text = string.Format("{0:n0}", ((float)DesiredYawT * 100.0) / RCMaximum);
         }
 
       

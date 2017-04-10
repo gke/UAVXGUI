@@ -247,6 +247,12 @@ Mode 2: Rudder/Throttle left hand Ailerons/Elevator right hand. Rudder available
   <data name="NavPosition" xml:space="preserve">
     <value>Determines the desired velocity for a given Nav position error.</value>
   </data>
+    <data name="NavPosIntLimit" xml:space="preserve">
+    <value>The maximimum  windspeed in M/S that the WP navigation can overcome.</value>
+  </data>
+      <data name="NavMaxAngle" xml:space="preserve">
+    <value>The maximimum  pitch or roll angle that WP navigation will command - excluding manual control input.</value>
+  </data>
   <data name="NavVelocity" xml:space="preserve">
     <value>Determines the desired attitude angle for a given Nav velocity error.</value>
   </data>
@@ -395,8 +401,8 @@ Recommended values for 3s Lipos from 43 to 48.</value>
   <data name="NavIntLimit" xml:space="preserve">
     <value>Assists in achieving and maintaining the desired GPS position in wind. TBD experiment!</value>
   </data>
-  <data name="NavMaxGroundSpeed" xml:space="preserve">
-    <value>Maximum transit GPS ground speed between waypoints and in RTH. If you increase this then you should also increase the Nav Slew otherwise the rate at which the aircraft can change pitch/roll angle will be too slow and you will get oscillations around the desired position. Experiment!.</value>
+  <data name="NavPosInitLimit" xml:space="preserve">
+    <value>Maximum commanded GPS ground speed between waypoints and in RTH.  Experiment!.</value>
   </data>
   <data name="NavAltProportional" xml:space="preserve">
     <value>Determines how much throttle to use to climb or descend to desired altitude. Experiment!</value>

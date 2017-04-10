@@ -292,7 +292,7 @@ namespace UAVXGUI
             if (parameterForm.FWPitchThrottleFFNumericUpDown.Focused)
                 helpstring = help.GetString("FWPitchThrottleFF");
             if (parameterForm.MaxAttitudeAngleNumericUpDown.Focused)
-                helpstring = help.GetString("MaxPitchAngle");
+                helpstring = help.GetString("MaxAttitudeAngle");
             if (parameterForm.FWMaxClimbAngleNumericUpDown.Focused)
                 helpstring = help.GetString("MaxRollAngle");
             if (parameterForm.BestROCNumericUpDown.Focused)
@@ -417,15 +417,18 @@ namespace UAVXGUI
 
             //GPS
 
-            if (parameterForm.NavMaxGroundSpeedNumericUpDown.Focused)
-                helpstring = help.GetString("NavMaxGroundSpeed");
+            if (parameterForm.NavPosIntLimitNumericUpDown.Focused)
+                helpstring = help.GetString("NavPosIntLimit");
+
+            if (parameterForm.NavMaxAngleNumericUpDown.Focused)
+                helpstring = help.GetString("NavMaxAngle");
 
             if (parameterForm.NavRTHAltNumericUpDown.Focused)
                 helpstring = help.GetString("NavRTHAltitude");
             if (parameterForm.NavMagVarNumericUpDown.Focused)
                 helpstring = help.GetString("NavMagVar");
 
-            if (parameterForm.NavVelKiNumericUpDown.Focused)
+            if (parameterForm.NavPosKiNumericUpDown.Focused)
                 helpstring = help.GetString("NavWind");
 
             if (parameterForm.AltPosKiNumericUpDown.Focused)
@@ -458,7 +461,7 @@ namespace UAVXGUI
 
                 nps = Convert.ToInt32(sw.ReadLine());
                 for (s = 0; s < nps; s++)
-                    for (p = 0; p < nps; p++)
+                    for (p = 0; p < FormMain.MAX_PARAMS; p++)
                     {
                         P[s, p].Value = Convert.ToInt32(sw.ReadLine());
                         P[s, p].Changed = true;
@@ -1153,8 +1156,8 @@ namespace UAVXGUI
                         ParamUpdate(CameraRollTrimNumericUpDown);
                         break;
                     case 41:
-                        NavMaxGroundSpeedNumericUpDown.Value = UAVXP[p-1].Value;
-                        ParamUpdate(NavMaxGroundSpeedNumericUpDown);
+                       NavPosIntLimitNumericUpDown.Value = UAVXP[p-1].Value;
+                       ParamUpdate(NavPosIntLimitNumericUpDown);
                         break;
                     case 42:
                         Ch3NumericUpDown.Value = UAVXP[p-1].Value;
@@ -1259,8 +1262,8 @@ namespace UAVXGUI
                         ParamUpdate(Ch9NumericUpDown);
                         break;
                     case 61:
-                        NavVelKiNumericUpDown.Value = UAVXP[p-1].Value;
-                        ParamUpdate(NavVelKiNumericUpDown);
+                        NavPosKiNumericUpDown.Value = UAVXP[p-1].Value;
+                        ParamUpdate(NavPosKiNumericUpDown);
                         break;
                     case 62:
                         GPSTypeComboBox.SelectedIndex = UAVXP[p-1].Value;
@@ -1290,12 +1293,12 @@ namespace UAVXGUI
                         ParamUpdate(MaxAltCompNumericUpDown);
                         break;
                     case 68:
-                        MaxAttitudeAngleNumericUpDown.Value = UAVXP[p - 1].Value;
-                        ParamUpdate(MaxAttitudeAngleNumericUpDown);
+                        FWMaxClimbAngleNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(FWMaxClimbAngleNumericUpDown);
                         break;
                     case 69:
-                   //     GlideOffsetErrorLabel.Text = string.Format("{0:n0}", UAVXP[p - 1].Value);
-                   //     P[CurrPS, p-1].Value = UAVXP[p - 1].Value;
+                        NavMaxAngleNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(NavMaxAngleNumericUpDown);
                         break;
                     case 70:
                         FWFlapDecayTimeNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
@@ -1347,12 +1350,10 @@ namespace UAVXGUI
                         ComboPort2ComboBox.SelectedIndex = UAVXP[p - 1].Value;
                         ParamUpdate(ComboPort2ComboBox);
                         break;
-
                     case 77:
-                        FWMaxClimbAngleNumericUpDown.Value = UAVXP[p - 1].Value;
-                        ParamUpdate(FWMaxClimbAngleNumericUpDown);
+                        MaxAttitudeAngleNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(MaxAttitudeAngleNumericUpDown);
                         break;
-
                     case 78:
                         TuneParamComboBox.SelectedIndex = UAVXP[p - 1].Value;
                         ParamUpdate(TuneParamComboBox);

@@ -145,7 +145,7 @@
     <value>groupBoxGPS1</value>
   </data>
   <data name="&gt;&gt;DescDelayNumericUpDown.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>5</value>
   </data>
   <data name="AttThrFFLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -202,7 +202,7 @@
     <value>groupBoxGPS1</value>
   </data>
   <data name="&gt;&gt;NavRTHAltNumericUpDown.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>6</value>
   </data>
   <data name="AttThrFFNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -259,7 +259,7 @@
     <value>groupBoxGPS1</value>
   </data>
   <data name="&gt;&gt;labelNavRTHAlt1.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="DescDelayLabel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -289,7 +289,7 @@
     <value>groupBoxGPS1</value>
   </data>
   <data name="&gt;&gt;DescDelayLabel1.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>12</value>
   </data>
   <data name="AltVelKpNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -343,7 +343,7 @@
     <value>groupBoxGPS1</value>
   </data>
   <data name="&gt;&gt;DescentRateNumericUpDown.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>11</value>
   </data>
   <data name="DescentRateLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -373,7 +373,7 @@
     <value>groupBoxGPS1</value>
   </data>
   <data name="&gt;&gt;DescentRateLabel.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>13</value>
   </data>
   <data name="CruiseThrNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -1732,7 +1732,7 @@
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="GPSTypeComboBox.Items" xml:space="preserve">
-    <value>Generic (NMEA)</value>
+    <value>Generic NMEA</value>
   </data>
   <data name="GPSTypeComboBox.Items1" xml:space="preserve">
     <value>u-blox (Bin)</value>
@@ -1741,7 +1741,7 @@
     <value>u-blox (Bin) Init</value>
   </data>
   <data name="GPSTypeComboBox.Items3" xml:space="preserve">
-    <value>MTK (Bin 1.6/1.9)</value>
+    <value>MTK (Bin 1.6-9)</value>
   </data>
   <data name="GPSTypeComboBox.Items4" xml:space="preserve">
     <value>MTK (NMEA)</value>
@@ -1750,10 +1750,10 @@
     <value>No GPS</value>
   </data>
   <data name="GPSTypeComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>146, 136</value>
+    <value>192, 136</value>
   </data>
   <data name="GPSTypeComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 21</value>
+    <value>107, 21</value>
   </data>
   <data name="GPSTypeComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>140</value>
@@ -1768,7 +1768,7 @@
     <value>groupBoxGPS1</value>
   </data>
   <data name="&gt;&gt;GPSTypeComboBox.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>7</value>
   </data>
   <data name="GPSTypeLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1777,7 +1777,7 @@
     <value>NoControl</value>
   </data>
   <data name="GPSTypeLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>109, 140</value>
+    <value>157, 140</value>
   </data>
   <data name="GPSTypeLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 13</value>
@@ -1798,7 +1798,7 @@
     <value>groupBoxGPS1</value>
   </data>
   <data name="&gt;&gt;GPSTypeLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>4</value>
   </data>
   <data name="MadgwickKpMagLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2119,7 +2119,7 @@
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="NavVelKpNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>79, 36</value>
+    <value>79, 88</value>
   </data>
   <data name="NavVelKpNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 20</value>
@@ -2140,37 +2140,37 @@
     <value>groupBoxGPS1</value>
   </data>
   <data name="&gt;&gt;NavVelKpNumericUpDown.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>10</value>
   </data>
-  <data name="NavVelKpLabel1.AutoSize" type="System.Boolean, mscorlib">
+  <data name="NavVelKpLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="NavVelKpLabel1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="NavVelKpLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="NavVelKpLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 40</value>
+  <data name="NavVelKpLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 92</value>
   </data>
-  <data name="NavVelKpLabel1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="NavVelKpLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>28, 13</value>
   </data>
-  <data name="NavVelKpLabel1.TabIndex" type="System.Int32, mscorlib">
+  <data name="NavVelKpLabel.TabIndex" type="System.Int32, mscorlib">
     <value>100</value>
   </data>
-  <data name="NavVelKpLabel1.Text" xml:space="preserve">
+  <data name="NavVelKpLabel.Text" xml:space="preserve">
     <value>Pvel</value>
   </data>
-  <data name="&gt;&gt;NavVelKpLabel1.Name" xml:space="preserve">
-    <value>NavVelKpLabel1</value>
+  <data name="&gt;&gt;NavVelKpLabel.Name" xml:space="preserve">
+    <value>NavVelKpLabel</value>
   </data>
-  <data name="&gt;&gt;NavVelKpLabel1.Type" xml:space="preserve">
+  <data name="&gt;&gt;NavVelKpLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;NavVelKpLabel1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;NavVelKpLabel.Parent" xml:space="preserve">
     <value>groupBoxGPS1</value>
   </data>
-  <data name="&gt;&gt;NavVelKpLabel1.ZOrder" xml:space="preserve">
-    <value>11</value>
+  <data name="&gt;&gt;NavVelKpLabel.ZOrder" xml:space="preserve">
+    <value>15</value>
   </data>
   <data name="ArmingModeComboBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -3216,6 +3216,120 @@
   <data name="&gt;&gt;bit01CheckBox.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="NavMaxAngleNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="NavMaxAngleNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>79, 113</value>
+  </data>
+  <data name="NavMaxAngleNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="NavMaxAngleNumericUpDown.TabIndex" type="System.Int32, mscorlib">
+    <value>144</value>
+  </data>
+  <data name="NavMaxAngleNumericUpDown.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;NavMaxAngleNumericUpDown.Name" xml:space="preserve">
+    <value>NavMaxAngleNumericUpDown</value>
+  </data>
+  <data name="&gt;&gt;NavMaxAngleNumericUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;NavMaxAngleNumericUpDown.Parent" xml:space="preserve">
+    <value>groupBoxGPS1</value>
+  </data>
+  <data name="&gt;&gt;NavMaxAngleNumericUpDown.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="NavMaxAngleLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="NavMaxAngleLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="NavMaxAngleLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 117</value>
+  </data>
+  <data name="NavMaxAngleLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 13</value>
+  </data>
+  <data name="NavMaxAngleLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>143</value>
+  </data>
+  <data name="NavMaxAngleLabel.Text" xml:space="preserve">
+    <value>Nav (deg.)</value>
+  </data>
+  <data name="&gt;&gt;NavMaxAngleLabel.Name" xml:space="preserve">
+    <value>NavMaxAngleLabel</value>
+  </data>
+  <data name="&gt;&gt;NavMaxAngleLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;NavMaxAngleLabel.Parent" xml:space="preserve">
+    <value>groupBoxGPS1</value>
+  </data>
+  <data name="&gt;&gt;NavMaxAngleLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="NavIntLimitLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="NavIntLimitLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="NavIntLimitLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 66</value>
+  </data>
+  <data name="NavIntLimitLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 13</value>
+  </data>
+  <data name="NavIntLimitLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>142</value>
+  </data>
+  <data name="NavIntLimitLabel.Text" xml:space="preserve">
+    <value>Ipos-Limit</value>
+  </data>
+  <data name="&gt;&gt;NavIntLimitLabel.Name" xml:space="preserve">
+    <value>NavIntLimitLabel</value>
+  </data>
+  <data name="&gt;&gt;NavIntLimitLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;NavIntLimitLabel.Parent" xml:space="preserve">
+    <value>groupBoxGPS1</value>
+  </data>
+  <data name="&gt;&gt;NavIntLimitLabel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="NavPosIntLimitNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="NavPosIntLimitNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>79, 62</value>
+  </data>
+  <data name="NavPosIntLimitNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="NavPosIntLimitNumericUpDown.TabIndex" type="System.Int32, mscorlib">
+    <value>141</value>
+  </data>
+  <data name="NavPosIntLimitNumericUpDown.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;NavPosIntLimitNumericUpDown.Name" xml:space="preserve">
+    <value>NavPosIntLimitNumericUpDown</value>
+  </data>
+  <data name="&gt;&gt;NavPosIntLimitNumericUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;NavPosIntLimitNumericUpDown.Parent" xml:space="preserve">
+    <value>groupBoxGPS1</value>
+  </data>
+  <data name="&gt;&gt;NavPosIntLimitNumericUpDown.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="NavPosKpLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3244,7 +3358,7 @@
     <value>groupBoxGPS1</value>
   </data>
   <data name="&gt;&gt;NavPosKpLabel.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="NavPosKpNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -3271,13 +3385,13 @@
     <value>groupBoxGPS1</value>
   </data>
   <data name="&gt;&gt;NavPosKpNumericUpDown.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>14</value>
   </data>
   <data name="CrossTrackNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="CrossTrackNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>79, 86</value>
+    <value>79, 136</value>
   </data>
   <data name="CrossTrackNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 20</value>
@@ -3298,7 +3412,7 @@
     <value>groupBoxGPS1</value>
   </data>
   <data name="&gt;&gt;CrossTrackNumericUpDown.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>16</value>
   </data>
   <data name="CrossTrackLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3307,7 +3421,7 @@
     <value>NoControl</value>
   </data>
   <data name="CrossTrackLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 88</value>
+    <value>7, 140</value>
   </data>
   <data name="CrossTrackLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 13</value>
@@ -3328,7 +3442,7 @@
     <value>groupBoxGPS1</value>
   </data>
   <data name="&gt;&gt;CrossTrackLabel.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>17</value>
   </data>
   <data name="labelNavMagVar1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3358,37 +3472,7 @@
     <value>groupBoxGPS1</value>
   </data>
   <data name="&gt;&gt;labelNavMagVar1.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="NavMaxGroundSpeedLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="NavMaxGroundSpeedLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="NavMaxGroundSpeedLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>158, 90</value>
-  </data>
-  <data name="NavMaxGroundSpeedLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 13</value>
-  </data>
-  <data name="NavMaxGroundSpeedLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>56</value>
-  </data>
-  <data name="NavMaxGroundSpeedLabel.Text" xml:space="preserve">
-    <value>Max GS (M/S)</value>
-  </data>
-  <data name="&gt;&gt;NavMaxGroundSpeedLabel.Name" xml:space="preserve">
-    <value>NavMaxGroundSpeedLabel</value>
-  </data>
-  <data name="&gt;&gt;NavMaxGroundSpeedLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;NavMaxGroundSpeedLabel.Parent" xml:space="preserve">
-    <value>groupBoxGPS1</value>
-  </data>
-  <data name="&gt;&gt;NavMaxGroundSpeedLabel.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>18</value>
   </data>
   <data name="NavMagVarNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -3415,91 +3499,64 @@
     <value>groupBoxGPS1</value>
   </data>
   <data name="&gt;&gt;NavMagVarNumericUpDown.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>19</value>
   </data>
-  <data name="NavMaxGroundSpeedNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="NavPosKiNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
-  <data name="NavMaxGroundSpeedNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 86</value>
+  <data name="NavPosKiNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>79, 36</value>
   </data>
-  <data name="NavMaxGroundSpeedNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 20</value>
-  </data>
-  <data name="NavMaxGroundSpeedNumericUpDown.TabIndex" type="System.Int32, mscorlib">
-    <value>57</value>
-  </data>
-  <data name="NavMaxGroundSpeedNumericUpDown.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;NavMaxGroundSpeedNumericUpDown.Name" xml:space="preserve">
-    <value>NavMaxGroundSpeedNumericUpDown</value>
-  </data>
-  <data name="&gt;&gt;NavMaxGroundSpeedNumericUpDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;NavMaxGroundSpeedNumericUpDown.Parent" xml:space="preserve">
-    <value>groupBoxGPS1</value>
-  </data>
-  <data name="&gt;&gt;NavMaxGroundSpeedNumericUpDown.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="NavVelKiNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
-  </data>
-  <data name="NavVelKiNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>79, 62</value>
-  </data>
-  <data name="NavVelKiNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="NavPosKiNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 20</value>
   </data>
-  <data name="NavVelKiNumericUpDown.TabIndex" type="System.Int32, mscorlib">
+  <data name="NavPosKiNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>92</value>
   </data>
-  <data name="NavVelKiNumericUpDown.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+  <data name="NavPosKiNumericUpDown.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
   </data>
-  <data name="&gt;&gt;NavVelKiNumericUpDown.Name" xml:space="preserve">
-    <value>NavVelKiNumericUpDown</value>
+  <data name="&gt;&gt;NavPosKiNumericUpDown.Name" xml:space="preserve">
+    <value>NavPosKiNumericUpDown</value>
   </data>
-  <data name="&gt;&gt;NavVelKiNumericUpDown.Type" xml:space="preserve">
+  <data name="&gt;&gt;NavPosKiNumericUpDown.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;NavVelKiNumericUpDown.Parent" xml:space="preserve">
+  <data name="&gt;&gt;NavPosKiNumericUpDown.Parent" xml:space="preserve">
     <value>groupBoxGPS1</value>
   </data>
-  <data name="&gt;&gt;NavVelKiNumericUpDown.ZOrder" xml:space="preserve">
-    <value>18</value>
+  <data name="&gt;&gt;NavPosKiNumericUpDown.ZOrder" xml:space="preserve">
+    <value>20</value>
   </data>
-  <data name="NavMaxAngleLabel1.AutoSize" type="System.Boolean, mscorlib">
+  <data name="NavPosKiLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="NavMaxAngleLabel1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="NavPosKiLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="NavMaxAngleLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 66</value>
+  <data name="NavPosKiLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 40</value>
   </data>
-  <data name="NavMaxAngleLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 13</value>
+  <data name="NavPosKiLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 13</value>
   </data>
-  <data name="NavMaxAngleLabel1.TabIndex" type="System.Int32, mscorlib">
+  <data name="NavPosKiLabel.TabIndex" type="System.Int32, mscorlib">
     <value>91</value>
   </data>
-  <data name="NavMaxAngleLabel1.Text" xml:space="preserve">
-    <value>Ivel (Wind)</value>
+  <data name="NavPosKiLabel.Text" xml:space="preserve">
+    <value>Ipos</value>
   </data>
-  <data name="&gt;&gt;NavMaxAngleLabel1.Name" xml:space="preserve">
-    <value>NavMaxAngleLabel1</value>
+  <data name="&gt;&gt;NavPosKiLabel.Name" xml:space="preserve">
+    <value>NavPosKiLabel</value>
   </data>
-  <data name="&gt;&gt;NavMaxAngleLabel1.Type" xml:space="preserve">
+  <data name="&gt;&gt;NavPosKiLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;NavMaxAngleLabel1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;NavPosKiLabel.Parent" xml:space="preserve">
     <value>groupBoxGPS1</value>
   </data>
-  <data name="&gt;&gt;NavMaxAngleLabel1.ZOrder" xml:space="preserve">
-    <value>19</value>
+  <data name="&gt;&gt;NavPosKiLabel.ZOrder" xml:space="preserve">
+    <value>21</value>
   </data>
   <data name="groupBoxGPS1.Location" type="System.Drawing.Point, System.Drawing">
     <value>346, 40</value>
@@ -4645,13 +4702,13 @@
     <value>Altitude ROC D</value>
   </data>
   <data name="TuneParamComboBox.Items15" xml:space="preserve">
-    <value>Nav Position P</value>
+    <value>Nav Pos P</value>
   </data>
   <data name="TuneParamComboBox.Items16" xml:space="preserve">
-    <value>Nav Vel P</value>
+    <value>Nav Pos I</value>
   </data>
   <data name="TuneParamComboBox.Items17" xml:space="preserve">
-    <value>Nav Vel I</value>
+    <value>Nav Vel P</value>
   </data>
   <data name="TuneParamComboBox.Items18" xml:space="preserve">
     <value>Nav Cross Track</value>
