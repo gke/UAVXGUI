@@ -228,7 +228,7 @@ namespace UAVXGUI
         };
 
         public enum MiscComms 
-        { miscCalIMU, miscCalMag, miscLB, miscUnused, miscBBDump, miscProgEsc}
+        { miscCalIMU, miscCalMag, miscLB, miscUnused, miscBBDump, miscGPSBypass}
 
         public enum NavStates
         {
@@ -463,7 +463,7 @@ namespace UAVXGUI
  
         int RawAltitudeT, RawFAltitudeT;
 
-        short AccZT, HRAccZT, HRAccZBiasT, Fusion1T, FWGlideOffsetAngleT, NewTuningParameterT;
+        short AccZT, HRAccZT, HRAccZBiasT, Fusion1T, FWGlideOffsetAngleT, NewTuningParameterT, FWRateEnergyT;
 
         short MagHeadingT;
 
@@ -483,6 +483,10 @@ namespace UAVXGUI
         public static byte CurrWPT;                   // 6
 
         public static short GPShAccT;              // 16
+        public static short GPSvAccT;              // 16
+        public static short GPSsAccT;              // 16
+        public static short GPScAccT;              // 16
+
         public static short WPBearingT;        // 18
         public static short CrossTrackET;             // 20
 
@@ -1051,7 +1055,10 @@ namespace UAVXGUI
             "FailState," +
             "GPSSats," +
             "GPSFix," +
-            "GPSHD," +
+            "GPShAcc," +
+            "GPSvAcc," +
+            "GPSsAcc," +
+            "GPScAcc," +
             "GPSVel," +
             "GPSHeading," +
             "GPSRelAlt," +
@@ -1075,7 +1082,7 @@ namespace UAVXGUI
             "FROC," +
             "AccZ," +
             "AccZBias," +
-            "F1," + "F2," + "F3," +
+            "FWEnergy," + "GlideE," + "NewParam," +
             "AltComp," +         
             "TiltFFComp," +
             "BattFFComp," +
@@ -1119,8 +1126,8 @@ namespace UAVXGUI
             "UtilisationX," +
             "BadReferGKEX," +
             "BadNumX," + // 23
-            "," +
-            "," +
+            "MinsAcc," +
+            "MaxsAcc," +
             "," +
             "," +
             "," +
@@ -1185,6 +1192,15 @@ namespace UAVXGUI
                 SendRequestPacket(UAVXMiscPacketTag, (byte)MiscComms.miscCalMag, 0);
                 CalibrateMagButton.BackColor = Color.Orange;
                 CalibrateMagEnabled = true;
+            }
+        }
+
+        private void GPSBypassButton_Click(object sender, EventArgs e)
+        {
+            if ((StateT == FlightStates.Preflight) || (StateT == FlightStates.Ready)) 
+            {
+                SendRequestPacket(UAVXMiscPacketTag, (byte)MiscComms.miscGPSBypass, 0);
+                GPSBypassButton.BackColor = Color.Red;
             }
         }
 
@@ -1993,6 +2009,92 @@ namespace UAVXGUI
         }
 
 
+        void UpdateGPS() {
+
+                    GPSNoOfSats.Text = string.Format("{0:n0}", GPSNoOfSatsT);
+                    GPSNoOfSats.BackColor = GPSNoOfSatsT < 6 ?
+                        System.Drawing.Color.Orange : GPSStatBox.BackColor;
+
+                    GPSFix.Text = string.Format("{0:n0}", GPSFixT);
+                    GPSFix.BackColor = GPSFixT < 2 ?
+                        System.Drawing.Color.Orange : GPSStatBox.BackColor;
+
+                    GPShAcc.Text = string.Format("{0:n2}", (float)GPShAccT * 0.01);
+                    if (GPShAccT > 600)
+                        GPShAcc.BackColor = System.Drawing.Color.Red;
+                    else
+                        GPShAcc.BackColor = GPShAccT > 300 ?
+                            System.Drawing.Color.Orange : GPSStatBox.BackColor;
+
+                    GPSvAcc.Text = string.Format("{0:n2}", (float)GPSvAccT * 0.01);
+                    if (GPSvAccT > 600)
+                        GPSvAcc.BackColor = System.Drawing.Color.Red;
+                    else
+                        GPSvAcc.BackColor = GPSvAccT > 300 ?
+                            System.Drawing.Color.Orange : GPSStatBox.BackColor;
+
+                    GPSsAcc.Text = string.Format("{0:n2}", (float)GPSsAccT * 0.01);
+                    if (GPSsAccT > 100)
+                        GPSsAcc.BackColor = System.Drawing.Color.Red;
+                    else
+                        GPSsAcc.BackColor = GPSsAccT > 50 ?
+                            System.Drawing.Color.Orange : GPSStatBox.BackColor;           
+
+                    GPScAcc.Text = string.Format("{0:n2}", (float)GPScAccT * 0.01);
+                    if (GPScAccT > 100)
+                        GPScAcc.BackColor = System.Drawing.Color.Red;
+                    else
+                        GPScAcc.BackColor = GPScAccT > 50 ?
+                            System.Drawing.Color.Orange : GPSStatBox.BackColor;
+
+
+
+
+                    CurrWP.Text = string.Format("{0:n0}", CurrWPT);
+
+                    GPSVel.Text = string.Format("{0:n1}", (double)GPSVelT * 0.1); // M/Sec
+                    //GPSROC.Text = string.Format("{0:n1}", (float)GPSROCT * 0.01);
+                    GPSHeading.Text = string.Format("{0:n0}", (float)GPSHeadingT * MILLIRADDEG);
+                    GPSAltitude.Text = string.Format("{0:n1}", (double)GPAltitudeT * 0.01);
+                    GPSLongitude.Text = string.Format("{0:n6}", (double)GPSLongitudeT * 1e-7);
+                    GPSLatitude.Text = string.Format("{0:n6}", (double)GPSLatitudeT * 1e-7);
+
+                    if ((Flags[0] & 0x40) != 0) // GPSValid
+                    {
+                        GPSVel.BackColor = NavGroupBox.BackColor;
+                       // GPSROC.BackColor = NavGroupBox.BackColor;
+                        GPSHeading.BackColor = NavGroupBox.BackColor;
+                        GPSAltitude.BackColor = NavGroupBox.BackColor;
+                        GPSLongitude.BackColor = NavGroupBox.BackColor;
+                        GPSLatitude.BackColor = NavGroupBox.BackColor;
+                        WayHeading.BackColor = NavGroupBox.BackColor;
+                        DistanceToDesired.BackColor = NavGroupBox.BackColor;
+
+                        WayHeading.Text = string.Format("{0:n0}", (float)WPBearingT * MILLIRADDEG);
+                        CrossTrackError.Text = string.Format("{0:n1}", (float)CrossTrackET * 0.1);
+
+                        NorthDiff = (double)NorthPosET * 0.1; // scale up to decimetres after conversion
+                        EastDiff = (double)EastPosET * 0.1;
+
+                        Distance = Math.Sqrt(NorthDiff * NorthDiff + EastDiff * EastDiff);
+                        DistanceToDesired.Text = string.Format("{0:n1}", Distance);
+                    }
+                    else
+                    {
+                        GPSVel.BackColor = System.Drawing.Color.Orange;
+                       // GPSROC.BackColor = System.Drawing.Color.Orange;
+                        GPSHeading.BackColor = System.Drawing.Color.Orange;
+                        GPSAltitude.BackColor = System.Drawing.Color.Orange;
+                        GPSLongitude.BackColor = System.Drawing.Color.Orange;
+                        GPSLatitude.BackColor = System.Drawing.Color.Orange;
+                        WayHeading.BackColor = System.Drawing.Color.Orange;
+                        DistanceToDesired.BackColor = System.Drawing.Color.Orange;
+
+                        WayHeading.Text = "?";
+                        DistanceToDesired.Text = "?";
+                    }
+        }
+
         int Limit(int v, int Min, int Max)
         {
             if (v < Min) return (Min); else if (v > Max) return Max; else return v;
@@ -2340,61 +2442,7 @@ namespace UAVXGUI
                     
                     DesiredThrottle.Text = string.Format("{0:n0}", DesiredThrottleT);
 
-                    GPSNoOfSats.Text = string.Format("{0:n0}", GPSNoOfSatsT);
-                    GPSNoOfSats.BackColor = GPSNoOfSatsT < 6 ?
-                        System.Drawing.Color.Orange : GPSStatBox.BackColor;
-
-                    GPSFix.Text = string.Format("{0:n0}", GPSFixT);
-                    GPSFix.BackColor = GPSFixT < 2 ?
-                        System.Drawing.Color.Orange : GPSStatBox.BackColor;
-
-                    GPShAcc.Text = string.Format("{0:n2}", (float)GPShAccT * 0.01);
-                    if (GPShAccT > 600)
-                        GPShAcc.BackColor = System.Drawing.Color.Red;
-                    else
-                        GPShAcc.BackColor = GPShAccT > 300 ?
-                            System.Drawing.Color.Orange : GPSStatBox.BackColor;
-
-                    CurrWP.Text = string.Format("{0:n0}", CurrWPT);
-
-                    GPSVel.Text = string.Format("{0:n1}", (double)GPSVelT * 0.1); // M/Sec
-                    //GPSROC.Text = string.Format("{0:n1}", (float)GPSROCT * 0.01);
-                    GPSHeading.Text = string.Format("{0:n0}", (float)HeadingT * MILLIRADDEG);
-                    GPSAltitude.Text = string.Format("{0:n1}", GPAltitudeT);
-                    GPSLongitude.Text = string.Format("{0:n6}", (double)GPSLongitudeT * 1e-7);
-                    GPSLatitude.Text = string.Format("{0:n6}", (double)GPSLatitudeT * 1e-7);
-
-                    if (GPSFixT > 0) // GPSValid
-                    {
-                        GPSVel.BackColor = NavGroupBox.BackColor;
-                       // GPSROC.BackColor = NavGroupBox.BackColor;
-                        GPSHeading.BackColor = NavGroupBox.BackColor;
-                        GPSAltitude.BackColor = NavGroupBox.BackColor;
-                        GPSLongitude.BackColor = NavGroupBox.BackColor;
-                        GPSLatitude.BackColor = NavGroupBox.BackColor;
-                        WayHeading.BackColor = NavGroupBox.BackColor;
-                        DistanceToDesired.BackColor = NavGroupBox.BackColor;
-
-                        WayHeading.Text = string.Format("{0:n0}", (float)WPBearingT * MILLIRADDEG);
-                        CrossTrackError.Text = string.Format("{0:n1}", (float)CrossTrackET);
-
-                        Distance = WPDistanceT; 
-                        DistanceToDesired.Text = string.Format("{0:n1}", Distance);
-                    }
-                    else
-                    {
-                        GPSVel.BackColor = System.Drawing.Color.Orange;
-                       // GPSROC.BackColor = System.Drawing.Color.Orange;
-                        GPSHeading.BackColor = System.Drawing.Color.Orange;
-                        GPSAltitude.BackColor = System.Drawing.Color.Orange;
-                        GPSLongitude.BackColor = System.Drawing.Color.Orange;
-                        GPSLatitude.BackColor = System.Drawing.Color.Orange;
-                        WayHeading.BackColor = System.Drawing.Color.Orange;
-                        DistanceToDesired.BackColor = System.Drawing.Color.Orange;
-
-                        WayHeading.Text = "?";
-                        DistanceToDesired.Text = "?";
-                    }
+                    UpdateGPS();
 
                     break;
 
@@ -2637,30 +2685,31 @@ namespace UAVXGUI
                     CurrWPT = ExtractByte(ref UAVXPacket, 6);
 
                     GPShAccT = ExtractShort(ref UAVXPacket, 7);
+                    GPSvAccT = ExtractShort(ref UAVXPacket, 9);
+                    GPSsAccT = ExtractShort(ref UAVXPacket, 11);
+                    GPScAccT = ExtractShort(ref UAVXPacket, 13);
 
-                    WPBearingT = ExtractShort(ref UAVXPacket, 9);
-                    CrossTrackET = ExtractShort(ref UAVXPacket, 11);
-                    GPSVelT = ExtractShort(ref UAVXPacket, 13);
-                    GPSHeadingT = ExtractShort(ref UAVXPacket, 15);
-                    GPAltitudeT = ExtractInt24(ref UAVXPacket, 17);
-                    GPSLatitudeT = ExtractInt(ref UAVXPacket, 20);
-                    GPSLongitudeT = ExtractInt(ref UAVXPacket, 24);
+                    WPBearingT = ExtractShort(ref UAVXPacket, 15);
+                    CrossTrackET = ExtractShort(ref UAVXPacket, 17);
+                    GPSVelT = ExtractShort(ref UAVXPacket, 19);
+                    GPSHeadingT = ExtractShort(ref UAVXPacket, 21);
+                    GPAltitudeT = ExtractInt24(ref UAVXPacket, 23);
+                    GPSLatitudeT = ExtractInt(ref UAVXPacket, 26);
+                    GPSLongitudeT = ExtractInt(ref UAVXPacket, 30);
 
-                    DesiredAltitudeT = ExtractInt24(ref UAVXPacket, 28);
+                    NorthPosET = ExtractInt(ref UAVXPacket, 34);
+                    EastPosET = ExtractInt(ref UAVXPacket, 38);
+                    NavStateTimeoutT = ExtractInt24(ref UAVXPacket, 42);
 
-                    NorthPosET = ExtractInt(ref UAVXPacket, 28);
-                    EastPosET = ExtractInt(ref UAVXPacket, 32);
-                    NavStateTimeoutT = ExtractInt24(ref UAVXPacket, 36);
+                    MPU6XXXTempT = ExtractShort(ref UAVXPacket, 45);
+                    GPSMissionTimeT = ExtractInt(ref UAVXPacket, 47);
 
-                    MPU6XXXTempT = ExtractShort(ref UAVXPacket, 39);
-                    GPSMissionTimeT = ExtractInt(ref UAVXPacket, 41);
+                    NavSensitivityT = ExtractShort(ref UAVXPacket, 51);
 
-                    NavSensitivityT = ExtractShort(ref UAVXPacket, 45);
+                    NavPCorrT = ExtractShort(ref UAVXPacket, 53);
+                    NavRCorrT = ExtractShort(ref UAVXPacket, 55);
 
-                    NavPCorrT = ExtractShort(ref UAVXPacket, 47);
-                    NavRCorrT = ExtractShort(ref UAVXPacket, 49);
-
-                    NavYCorrT = ExtractShort(ref UAVXPacket, 51);
+                    NavYCorrT = ExtractShort(ref UAVXPacket, 57);
 
                     UpdateNavState();
                     UpdateFailState();
@@ -2671,64 +2720,7 @@ namespace UAVXGUI
                         DesiredThrottle.BackColor = Math.Abs(DesiredThrottleT - CruiseThrottleT) < 7 ?
                             System.Drawing.Color.LightGreen : ControlsGroupBox.BackColor;
 
-                    GPSNoOfSats.Text = string.Format("{0:n0}", GPSNoOfSatsT);
-                    GPSNoOfSats.BackColor = GPSNoOfSatsT < 6 ?
-                        System.Drawing.Color.Orange : GPSStatBox.BackColor;
-
-                    GPSFix.Text = string.Format("{0:n0}", GPSFixT);
-                    GPSFix.BackColor = GPSFixT < 2 ?
-                        System.Drawing.Color.Orange : GPSStatBox.BackColor;
-
-                    GPShAcc.Text = string.Format("{0:n2}", (float)GPShAccT * 0.01);
-                    if (GPShAccT > 600)
-                        GPShAcc.BackColor = System.Drawing.Color.Red;
-                    else
-                        GPShAcc.BackColor = GPShAccT > 300 ?
-                            System.Drawing.Color.Orange : GPSStatBox.BackColor;
-
-                    CurrWP.Text = string.Format("{0:n0}", CurrWPT);
-
-                    GPSVel.Text = string.Format("{0:n1}", (double)GPSVelT * 0.1); // M/Sec
-                    //GPSROC.Text = string.Format("{0:n1}", (float)GPSROCT * 0.01);
-                    GPSHeading.Text = string.Format("{0:n0}", (float)GPSHeadingT * MILLIRADDEG);
-                    GPSAltitude.Text = string.Format("{0:n1}", (double)GPAltitudeT * 0.01);
-                    GPSLongitude.Text = string.Format("{0:n6}", (double)GPSLongitudeT * 1e-7);
-                    GPSLatitude.Text = string.Format("{0:n6}", (double)GPSLatitudeT * 1e-7);
-
-                    if ((Flags[0] & 0x40) != 0) // GPSValid
-                    {
-                        GPSVel.BackColor = NavGroupBox.BackColor;
-                       // GPSROC.BackColor = NavGroupBox.BackColor;
-                        GPSHeading.BackColor = NavGroupBox.BackColor;
-                        GPSAltitude.BackColor = NavGroupBox.BackColor;
-                        GPSLongitude.BackColor = NavGroupBox.BackColor;
-                        GPSLatitude.BackColor = NavGroupBox.BackColor;
-                        WayHeading.BackColor = NavGroupBox.BackColor;
-                        DistanceToDesired.BackColor = NavGroupBox.BackColor;
-
-                        WayHeading.Text = string.Format("{0:n0}", (float)WPBearingT * MILLIRADDEG);
-                        CrossTrackError.Text = string.Format("{0:n1}", (float)CrossTrackET * 0.1);
-
-                        NorthDiff = (double)NorthPosET * 0.1; // scale up to decimetres after conversion
-                        EastDiff = (double)EastPosET * 0.1;
-
-                        Distance = Math.Sqrt(NorthDiff * NorthDiff + EastDiff * EastDiff);
-                        DistanceToDesired.Text = string.Format("{0:n1}", Distance);
-                    }
-                    else
-                    {
-                        GPSVel.BackColor = System.Drawing.Color.Orange;
-                       // GPSROC.BackColor = System.Drawing.Color.Orange;
-                        GPSHeading.BackColor = System.Drawing.Color.Orange;
-                        GPSAltitude.BackColor = System.Drawing.Color.Orange;
-                        GPSLongitude.BackColor = System.Drawing.Color.Orange;
-                        GPSLatitude.BackColor = System.Drawing.Color.Orange;
-                        WayHeading.BackColor = System.Drawing.Color.Orange;
-                        DistanceToDesired.BackColor = System.Drawing.Color.Orange;
-
-                        WayHeading.Text = "?";
-                        DistanceToDesired.Text = "?";
-                    }
+                    UpdateGPS();
 
                     SpeakNavStatus();
               
@@ -2769,10 +2761,11 @@ namespace UAVXGUI
                     RawFAltitudeT = ExtractInt24(ref UAVXPacket, 4);
                     FROCT = ExtractShort(ref UAVXPacket, 7);
                     HRAccZBiasT = ExtractShort(ref UAVXPacket, 9);
-                    Fusion1T = ExtractShort(ref UAVXPacket, 11);
+                    FWRateEnergyT = ExtractShort(ref UAVXPacket, 11);
                     FWGlideOffsetAngleT = ExtractShort(ref UAVXPacket, 13);
                     NewTuningParameterT = ExtractShort(ref UAVXPacket, 15);
 
+                    FWRateEnergy.Text = string.Format("{0:n0}", FWRateEnergyT);
                     FWGlideOffsetAngle.Text = string.Format("{0:n1}", (float)FWGlideOffsetAngleT*0.1f);
                     NewTuningParameter.Text = string.Format("{0:n0}", NewTuningParameterT);
 
@@ -3010,6 +3003,9 @@ namespace UAVXGUI
             GPSNoOfSatsT + "," +
             GPSFixT + "," +
             GPShAccT * 0.01 + "," +
+            GPSvAccT * 0.01 + "," +
+             GPSsAccT * 0.01 + "," +
+            GPScAccT * 0.01 + "," +
 
             GPSVelT * 0.1 + "," +
             GPSHeadingT * MILLIRADDEG + "," +
@@ -3038,7 +3034,7 @@ namespace UAVXGUI
             FROCT * 0.01 + "," +
             HRAccZT * 0.001 + "," +
             HRAccZBiasT * 0.001 + "," +
-            Fusion1T * 0.001 + "," +
+            FWRateEnergyT * 0.001 + "," +
             FWGlideOffsetAngleT * 0.1 + "," +
             NewTuningParameterT + "," +
 
@@ -3240,17 +3236,7 @@ namespace UAVXGUI
 
         }
 
-        private void LegacyButton_Click(object sender, EventArgs e)
-        {
-            BurnFirmwareButton.BackColor = System.Drawing.Color.Green;
-            // NavForm formNav = new NavForm();
-            // if (formNav.errorFlag == false)
-            formUAVP.Show();
-
-        }
-
-     
-
+  
      
     }
 }

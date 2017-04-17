@@ -131,6 +131,12 @@ namespace UAVXGUI
             this.UsingUplinkFlagBox = new System.Windows.Forms.TextBox();
             this.FlagsGroupBox = new System.Windows.Forms.GroupBox();
             this.GPSStatBox = new System.Windows.Forms.GroupBox();
+            this.GPScAcc = new System.Windows.Forms.TextBox();
+            this.GPScAccLabel = new System.Windows.Forms.Label();
+            this.GPSvAcc = new System.Windows.Forms.TextBox();
+            this.GPSvAccLabel = new System.Windows.Forms.Label();
+            this.GPSsAccLabel = new System.Windows.Forms.Label();
+            this.GPSsAcc = new System.Windows.Forms.TextBox();
             this.AltitudeGroupBox = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -266,7 +272,7 @@ namespace UAVXGUI
             this.backgroundWorker8 = new System.ComponentModel.BackgroundWorker();
             this.MissionTimeTextBox = new System.Windows.Forms.TextBox();
             this.WarningPictureBox = new System.Windows.Forms.PictureBox();
-            this.BurnFirmwareButton = new System.Windows.Forms.Button();
+            this.GPSBypassButton = new System.Windows.Forms.Button();
             this.SpectraGroupBox = new System.Windows.Forms.GroupBox();
             this.DFTBar1 = new System.Windows.Forms.ProgressBar();
             this.DFTBar7 = new System.Windows.Forms.ProgressBar();
@@ -325,8 +331,10 @@ namespace UAVXGUI
             this.NewTuningParameterLabel = new System.Windows.Forms.Label();
             this.FWGlideAngleOffsetLabel = new System.Windows.Forms.Label();
             this.TrimsGroupBox = new System.Windows.Forms.GroupBox();
-            this.headingIndicatorInstrumentControl1 = new Instruments.HeadingIndicatorInstrumentControl();
+            this.FWRateEnergy = new System.Windows.Forms.TextBox();
+            this.RateEnergyLabel = new System.Windows.Forms.Label();
             this.attitudeIndicatorInstrumentControl1 = new Instruments.AttitudeIndicatorInstrumentControl();
+            this.headingIndicatorInstrumentControl1 = new Instruments.HeadingIndicatorInstrumentControl();
             this.GyroGroupBox.SuspendLayout();
             this.ControlsGroupBox.SuspendLayout();
             this.AttitudeGroupBox.SuspendLayout();
@@ -386,7 +394,7 @@ namespace UAVXGUI
             // 
             // BatteryVolts
             // 
-            this.BatteryVolts.Location = new System.Drawing.Point(53, 19);
+            this.BatteryVolts.Location = new System.Drawing.Point(39, 18);
             this.BatteryVolts.Name = "BatteryVolts";
             this.BatteryVolts.ReadOnly = true;
             this.BatteryVolts.Size = new System.Drawing.Size(32, 20);
@@ -396,7 +404,7 @@ namespace UAVXGUI
             // BatteryCurrent
             // 
             this.BatteryCurrent.BackColor = System.Drawing.SystemColors.Control;
-            this.BatteryCurrent.Location = new System.Drawing.Point(53, 45);
+            this.BatteryCurrent.Location = new System.Drawing.Point(39, 44);
             this.BatteryCurrent.Name = "BatteryCurrent";
             this.BatteryCurrent.ReadOnly = true;
             this.BatteryCurrent.Size = new System.Drawing.Size(32, 20);
@@ -514,7 +522,7 @@ namespace UAVXGUI
             // VoltsLabel
             // 
             this.VoltsLabel.AutoSize = true;
-            this.VoltsLabel.Location = new System.Drawing.Point(6, 22);
+            this.VoltsLabel.Location = new System.Drawing.Point(6, 21);
             this.VoltsLabel.Name = "VoltsLabel";
             this.VoltsLabel.Size = new System.Drawing.Size(30, 13);
             this.VoltsLabel.TabIndex = 22;
@@ -595,7 +603,7 @@ namespace UAVXGUI
             // CurrentLabel
             // 
             this.CurrentLabel.AutoSize = true;
-            this.CurrentLabel.Location = new System.Drawing.Point(6, 48);
+            this.CurrentLabel.Location = new System.Drawing.Point(3, 47);
             this.CurrentLabel.Name = "CurrentLabel";
             this.CurrentLabel.Size = new System.Drawing.Size(33, 13);
             this.CurrentLabel.TabIndex = 29;
@@ -603,10 +611,10 @@ namespace UAVXGUI
             // 
             // GPShAcc
             // 
-            this.GPShAcc.Location = new System.Drawing.Point(52, 71);
+            this.GPShAcc.Location = new System.Drawing.Point(22, 44);
             this.GPShAcc.Name = "GPShAcc";
             this.GPShAcc.ReadOnly = true;
-            this.GPShAcc.Size = new System.Drawing.Size(32, 20);
+            this.GPShAcc.Size = new System.Drawing.Size(38, 20);
             this.GPShAcc.TabIndex = 44;
             this.GPShAcc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -630,10 +638,10 @@ namespace UAVXGUI
             // 
             // GPSFix
             // 
-            this.GPSFix.Location = new System.Drawing.Point(52, 45);
+            this.GPSFix.Location = new System.Drawing.Point(97, 19);
             this.GPSFix.Name = "GPSFix";
             this.GPSFix.ReadOnly = true;
-            this.GPSFix.Size = new System.Drawing.Size(32, 20);
+            this.GPSFix.Size = new System.Drawing.Size(22, 20);
             this.GPSFix.TabIndex = 51;
             this.GPSFix.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -651,10 +659,10 @@ namespace UAVXGUI
             // 
             // GPSNoOfSats
             // 
-            this.GPSNoOfSats.Location = new System.Drawing.Point(52, 19);
+            this.GPSNoOfSats.Location = new System.Drawing.Point(38, 19);
             this.GPSNoOfSats.Name = "GPSNoOfSats";
             this.GPSNoOfSats.ReadOnly = true;
-            this.GPSNoOfSats.Size = new System.Drawing.Size(32, 20);
+            this.GPSNoOfSats.Size = new System.Drawing.Size(22, 20);
             this.GPSNoOfSats.TabIndex = 54;
             this.GPSNoOfSats.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -689,11 +697,11 @@ namespace UAVXGUI
             // hAccLabel
             // 
             this.hAccLabel.AutoSize = true;
-            this.hAccLabel.Location = new System.Drawing.Point(6, 74);
+            this.hAccLabel.Location = new System.Drawing.Point(4, 48);
             this.hAccLabel.Name = "hAccLabel";
-            this.hAccLabel.Size = new System.Drawing.Size(32, 13);
+            this.hAccLabel.Size = new System.Drawing.Size(20, 13);
             this.hAccLabel.TabIndex = 66;
-            this.hAccLabel.Text = "hAcc";
+            this.hAccLabel.Text = "hA";
             // 
             // RangefinderAltLabel
             // 
@@ -707,7 +715,7 @@ namespace UAVXGUI
             // GPSFixLabel
             // 
             this.GPSFixLabel.AutoSize = true;
-            this.GPSFixLabel.Location = new System.Drawing.Point(6, 48);
+            this.GPSFixLabel.Location = new System.Drawing.Point(63, 23);
             this.GPSFixLabel.Name = "GPSFixLabel";
             this.GPSFixLabel.Size = new System.Drawing.Size(20, 13);
             this.GPSFixLabel.TabIndex = 69;
@@ -716,11 +724,11 @@ namespace UAVXGUI
             // GPSNoOfSatsLabel
             // 
             this.GPSNoOfSatsLabel.AutoSize = true;
-            this.GPSNoOfSatsLabel.Location = new System.Drawing.Point(6, 22);
+            this.GPSNoOfSatsLabel.Location = new System.Drawing.Point(6, 23);
             this.GPSNoOfSatsLabel.Name = "GPSNoOfSatsLabel";
-            this.GPSNoOfSatsLabel.Size = new System.Drawing.Size(31, 13);
+            this.GPSNoOfSatsLabel.Size = new System.Drawing.Size(28, 13);
             this.GPSNoOfSatsLabel.TabIndex = 70;
-            this.GPSNoOfSatsLabel.Text = "Sats.";
+            this.GPSNoOfSatsLabel.Text = "Sats";
             // 
             // FailStateLabel
             // 
@@ -779,28 +787,28 @@ namespace UAVXGUI
             // 
             // RxTypeErr
             // 
-            this.RxTypeErr.Location = new System.Drawing.Point(65, 18);
+            this.RxTypeErr.Location = new System.Drawing.Point(47, 19);
             this.RxTypeErr.Name = "RxTypeErr";
             this.RxTypeErr.ReadOnly = true;
-            this.RxTypeErr.Size = new System.Drawing.Size(38, 20);
+            this.RxTypeErr.Size = new System.Drawing.Size(30, 20);
             this.RxTypeErr.TabIndex = 82;
             this.RxTypeErr.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // RxCSumErr
             // 
-            this.RxCSumErr.Location = new System.Drawing.Point(65, 70);
+            this.RxCSumErr.Location = new System.Drawing.Point(47, 71);
             this.RxCSumErr.Name = "RxCSumErr";
             this.RxCSumErr.ReadOnly = true;
-            this.RxCSumErr.Size = new System.Drawing.Size(38, 20);
+            this.RxCSumErr.Size = new System.Drawing.Size(30, 20);
             this.RxCSumErr.TabIndex = 83;
             this.RxCSumErr.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // RxLenErr
             // 
-            this.RxLenErr.Location = new System.Drawing.Point(65, 44);
+            this.RxLenErr.Location = new System.Drawing.Point(47, 46);
             this.RxLenErr.Name = "RxLenErr";
             this.RxLenErr.ReadOnly = true;
-            this.RxLenErr.Size = new System.Drawing.Size(38, 20);
+            this.RxLenErr.Size = new System.Drawing.Size(30, 20);
             this.RxLenErr.TabIndex = 84;
             this.RxLenErr.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -818,9 +826,9 @@ namespace UAVXGUI
             this.RxCSumLabel.AutoSize = true;
             this.RxCSumLabel.Location = new System.Drawing.Point(6, 73);
             this.RxCSumLabel.Name = "RxCSumLabel";
-            this.RxCSumLabel.Size = new System.Drawing.Size(59, 13);
+            this.RxCSumLabel.Size = new System.Drawing.Size(35, 13);
             this.RxCSumLabel.TabIndex = 86;
-            this.RxCSumLabel.Text = "CheckSum";
+            this.RxCSumLabel.Text = "CSum";
             // 
             // RxLenLabel
             // 
@@ -959,10 +967,10 @@ namespace UAVXGUI
             this.CommsGroupBox.Controls.Add(this.RxLenLabel);
             this.CommsGroupBox.Location = new System.Drawing.Point(12, 444);
             this.CommsGroupBox.Name = "CommsGroupBox";
-            this.CommsGroupBox.Size = new System.Drawing.Size(109, 98);
+            this.CommsGroupBox.Size = new System.Drawing.Size(87, 98);
             this.CommsGroupBox.TabIndex = 96;
             this.CommsGroupBox.TabStop = false;
-            this.CommsGroupBox.Text = "Telemetry Errors";
+            this.CommsGroupBox.Text = "Telemetry";
             // 
             // EnvGroupBox
             // 
@@ -1002,9 +1010,9 @@ namespace UAVXGUI
             this.BatteryGroupBox.Controls.Add(this.BatteryCurrent);
             this.BatteryGroupBox.Controls.Add(this.VoltsLabel);
             this.BatteryGroupBox.Controls.Add(this.CurrentLabel);
-            this.BatteryGroupBox.Location = new System.Drawing.Point(227, 445);
+            this.BatteryGroupBox.Location = new System.Drawing.Point(236, 445);
             this.BatteryGroupBox.Name = "BatteryGroupBox";
-            this.BatteryGroupBox.Size = new System.Drawing.Size(90, 97);
+            this.BatteryGroupBox.Size = new System.Drawing.Size(81, 97);
             this.BatteryGroupBox.TabIndex = 98;
             this.BatteryGroupBox.TabStop = false;
             this.BatteryGroupBox.Text = "Battery";
@@ -1012,17 +1020,17 @@ namespace UAVXGUI
             // BatteryCharge
             // 
             this.BatteryCharge.BackColor = System.Drawing.SystemColors.Control;
-            this.BatteryCharge.Location = new System.Drawing.Point(35, 71);
+            this.BatteryCharge.Location = new System.Drawing.Point(33, 70);
             this.BatteryCharge.Name = "BatteryCharge";
             this.BatteryCharge.ReadOnly = true;
-            this.BatteryCharge.Size = new System.Drawing.Size(50, 20);
+            this.BatteryCharge.Size = new System.Drawing.Size(38, 20);
             this.BatteryCharge.TabIndex = 30;
             this.BatteryCharge.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // BatteryChargeLabel
             // 
             this.BatteryChargeLabel.AutoSize = true;
-            this.BatteryChargeLabel.Location = new System.Drawing.Point(6, 74);
+            this.BatteryChargeLabel.Location = new System.Drawing.Point(6, 73);
             this.BatteryChargeLabel.Name = "BatteryChargeLabel";
             this.BatteryChargeLabel.Size = new System.Drawing.Size(30, 13);
             this.BatteryChargeLabel.TabIndex = 31;
@@ -1361,18 +1369,78 @@ namespace UAVXGUI
             // 
             // GPSStatBox
             // 
+            this.GPSStatBox.Controls.Add(this.GPScAcc);
+            this.GPSStatBox.Controls.Add(this.GPScAccLabel);
+            this.GPSStatBox.Controls.Add(this.GPSvAcc);
+            this.GPSStatBox.Controls.Add(this.GPSvAccLabel);
             this.GPSStatBox.Controls.Add(this.GPSNoOfSats);
             this.GPSStatBox.Controls.Add(this.GPSFixLabel);
             this.GPSStatBox.Controls.Add(this.GPSNoOfSatsLabel);
             this.GPSStatBox.Controls.Add(this.GPSFix);
+            this.GPSStatBox.Controls.Add(this.GPSsAccLabel);
+            this.GPSStatBox.Controls.Add(this.GPSsAcc);
             this.GPSStatBox.Controls.Add(this.GPShAcc);
             this.GPSStatBox.Controls.Add(this.hAccLabel);
-            this.GPSStatBox.Location = new System.Drawing.Point(128, 444);
+            this.GPSStatBox.Location = new System.Drawing.Point(105, 444);
             this.GPSStatBox.Name = "GPSStatBox";
-            this.GPSStatBox.Size = new System.Drawing.Size(93, 98);
+            this.GPSStatBox.Size = new System.Drawing.Size(125, 98);
             this.GPSStatBox.TabIndex = 101;
             this.GPSStatBox.TabStop = false;
             this.GPSStatBox.Text = "GPS Status";
+            // 
+            // GPScAcc
+            // 
+            this.GPScAcc.Location = new System.Drawing.Point(82, 70);
+            this.GPScAcc.Name = "GPScAcc";
+            this.GPScAcc.ReadOnly = true;
+            this.GPScAcc.Size = new System.Drawing.Size(37, 20);
+            this.GPScAcc.TabIndex = 75;
+            this.GPScAcc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // GPScAccLabel
+            // 
+            this.GPScAccLabel.AutoSize = true;
+            this.GPScAccLabel.Location = new System.Drawing.Point(63, 74);
+            this.GPScAccLabel.Name = "GPScAccLabel";
+            this.GPScAccLabel.Size = new System.Drawing.Size(20, 13);
+            this.GPScAccLabel.TabIndex = 76;
+            this.GPScAccLabel.Text = "cA";
+            // 
+            // GPSvAcc
+            // 
+            this.GPSvAcc.Location = new System.Drawing.Point(82, 44);
+            this.GPSvAcc.Name = "GPSvAcc";
+            this.GPSvAcc.ReadOnly = true;
+            this.GPSvAcc.Size = new System.Drawing.Size(37, 20);
+            this.GPSvAcc.TabIndex = 73;
+            this.GPSvAcc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // GPSvAccLabel
+            // 
+            this.GPSvAccLabel.AutoSize = true;
+            this.GPSvAccLabel.Location = new System.Drawing.Point(63, 48);
+            this.GPSvAccLabel.Name = "GPSvAccLabel";
+            this.GPSvAccLabel.Size = new System.Drawing.Size(20, 13);
+            this.GPSvAccLabel.TabIndex = 74;
+            this.GPSvAccLabel.Text = "vA";
+            // 
+            // GPSsAccLabel
+            // 
+            this.GPSsAccLabel.AutoSize = true;
+            this.GPSsAccLabel.Location = new System.Drawing.Point(4, 74);
+            this.GPSsAccLabel.Name = "GPSsAccLabel";
+            this.GPSsAccLabel.Size = new System.Drawing.Size(19, 13);
+            this.GPSsAccLabel.TabIndex = 72;
+            this.GPSsAccLabel.Text = "sA";
+            // 
+            // GPSsAcc
+            // 
+            this.GPSsAcc.Location = new System.Drawing.Point(22, 70);
+            this.GPSsAcc.Name = "GPSsAcc";
+            this.GPSsAcc.ReadOnly = true;
+            this.GPSsAcc.Size = new System.Drawing.Size(39, 20);
+            this.GPSsAcc.TabIndex = 71;
+            this.GPSsAcc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // AltitudeGroupBox
             // 
@@ -2424,7 +2492,7 @@ namespace UAVXGUI
             // 
             // CalibrateIMUButton
             // 
-            this.CalibrateIMUButton.Location = new System.Drawing.Point(134, 16);
+            this.CalibrateIMUButton.Location = new System.Drawing.Point(134, 9);
             this.CalibrateIMUButton.Name = "CalibrateIMUButton";
             this.CalibrateIMUButton.Size = new System.Drawing.Size(50, 23);
             this.CalibrateIMUButton.TabIndex = 199;
@@ -2434,7 +2502,7 @@ namespace UAVXGUI
             // 
             // CalibrateMagButton
             // 
-            this.CalibrateMagButton.Location = new System.Drawing.Point(190, 16);
+            this.CalibrateMagButton.Location = new System.Drawing.Point(190, 9);
             this.CalibrateMagButton.Name = "CalibrateMagButton";
             this.CalibrateMagButton.Size = new System.Drawing.Size(50, 23);
             this.CalibrateMagButton.TabIndex = 201;
@@ -2702,16 +2770,15 @@ namespace UAVXGUI
             this.WarningPictureBox.TabIndex = 212;
             this.WarningPictureBox.TabStop = false;
             // 
-            // BurnFirmwareButton
+            // GPSBypassButton
             // 
-            this.BurnFirmwareButton.Location = new System.Drawing.Point(15, 59);
-            this.BurnFirmwareButton.Name = "BurnFirmwareButton";
-            this.BurnFirmwareButton.Size = new System.Drawing.Size(57, 23);
-            this.BurnFirmwareButton.TabIndex = 213;
-            this.BurnFirmwareButton.Text = "Burn";
-            this.BurnFirmwareButton.UseVisualStyleBackColor = true;
-            this.BurnFirmwareButton.Visible = false;
-            this.BurnFirmwareButton.Click += new System.EventHandler(this.LegacyButton_Click);
+            this.GPSBypassButton.Location = new System.Drawing.Point(150, 34);
+            this.GPSBypassButton.Name = "GPSBypassButton";
+            this.GPSBypassButton.Size = new System.Drawing.Size(77, 23);
+            this.GPSBypassButton.TabIndex = 213;
+            this.GPSBypassButton.Text = "GPS Bypass";
+            this.GPSBypassButton.UseVisualStyleBackColor = true;
+            this.GPSBypassButton.Click += new System.EventHandler(this.GPSBypassButton_Click);
             // 
             // SpectraGroupBox
             // 
@@ -2837,6 +2904,7 @@ namespace UAVXGUI
             this.CalibrationGroupBox.Controls.Add(this.label23);
             this.CalibrationGroupBox.Controls.Add(this.label21);
             this.CalibrationGroupBox.Controls.Add(this.label22);
+            this.CalibrationGroupBox.Controls.Add(this.GPSBypassButton);
             this.CalibrationGroupBox.Controls.Add(this.MZCalBiasLabel);
             this.CalibrationGroupBox.Controls.Add(this.MYCalBiasLabel);
             this.CalibrationGroupBox.Controls.Add(this.MXCalBiasLabel);
@@ -3225,7 +3293,7 @@ namespace UAVXGUI
             // PlotButton
             // 
             this.PlotButton.BackColor = System.Drawing.Color.Green;
-            this.PlotButton.Location = new System.Drawing.Point(77, 59);
+            this.PlotButton.Location = new System.Drawing.Point(337, 187);
             this.PlotButton.Name = "PlotButton";
             this.PlotButton.Size = new System.Drawing.Size(67, 23);
             this.PlotButton.TabIndex = 221;
@@ -3236,16 +3304,16 @@ namespace UAVXGUI
             // 
             // FWGlideOffsetAngle
             // 
-            this.FWGlideOffsetAngle.Location = new System.Drawing.Point(104, 12);
+            this.FWGlideOffsetAngle.Location = new System.Drawing.Point(111, 36);
             this.FWGlideOffsetAngle.Name = "FWGlideOffsetAngle";
             this.FWGlideOffsetAngle.ReadOnly = true;
-            this.FWGlideOffsetAngle.Size = new System.Drawing.Size(44, 20);
+            this.FWGlideOffsetAngle.Size = new System.Drawing.Size(45, 20);
             this.FWGlideOffsetAngle.TabIndex = 222;
             this.FWGlideOffsetAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // NewTuningParameter
             // 
-            this.NewTuningParameter.Location = new System.Drawing.Point(105, 38);
+            this.NewTuningParameter.Location = new System.Drawing.Point(111, 13);
             this.NewTuningParameter.Name = "NewTuningParameter";
             this.NewTuningParameter.ReadOnly = true;
             this.NewTuningParameter.Size = new System.Drawing.Size(45, 20);
@@ -3255,7 +3323,7 @@ namespace UAVXGUI
             // NewTuningParameterLabel
             // 
             this.NewTuningParameterLabel.AutoSize = true;
-            this.NewTuningParameterLabel.Location = new System.Drawing.Point(6, 41);
+            this.NewTuningParameterLabel.Location = new System.Drawing.Point(6, 17);
             this.NewTuningParameterLabel.Name = "NewTuningParameterLabel";
             this.NewTuningParameterLabel.Size = new System.Drawing.Size(89, 13);
             this.NewTuningParameterLabel.TabIndex = 224;
@@ -3264,17 +3332,17 @@ namespace UAVXGUI
             // FWGlideAngleOffsetLabel
             // 
             this.FWGlideAngleOffsetLabel.AutoSize = true;
-            this.FWGlideAngleOffsetLabel.Location = new System.Drawing.Point(6, 17);
+            this.FWGlideAngleOffsetLabel.Location = new System.Drawing.Point(6, 39);
             this.FWGlideAngleOffsetLabel.Name = "FWGlideAngleOffsetLabel";
-            this.FWGlideAngleOffsetLabel.Size = new System.Drawing.Size(91, 13);
+            this.FWGlideAngleOffsetLabel.Size = new System.Drawing.Size(84, 13);
             this.FWGlideAngleOffsetLabel.TabIndex = 225;
-            this.FWGlideAngleOffsetLabel.Text = "Glide Offset (Deg)";
+            this.FWGlideAngleOffsetLabel.Text = "FWPitchE (Deg)";
             // 
             // TrimsGroupBox
             // 
+            this.TrimsGroupBox.Controls.Add(this.FWRateEnergy);
+            this.TrimsGroupBox.Controls.Add(this.RateEnergyLabel);
             this.TrimsGroupBox.Controls.Add(this.FWGlideOffsetAngle);
-            this.TrimsGroupBox.Controls.Add(this.PlotButton);
-            this.TrimsGroupBox.Controls.Add(this.BurnFirmwareButton);
             this.TrimsGroupBox.Controls.Add(this.FWGlideAngleOffsetLabel);
             this.TrimsGroupBox.Controls.Add(this.NewTuningParameter);
             this.TrimsGroupBox.Controls.Add(this.NewTuningParameterLabel);
@@ -3285,13 +3353,23 @@ namespace UAVXGUI
             this.TrimsGroupBox.TabStop = false;
             this.TrimsGroupBox.Text = "Tuning/Trims";
             // 
-            // headingIndicatorInstrumentControl1
+            // FWRateEnergy
             // 
-            this.headingIndicatorInstrumentControl1.Location = new System.Drawing.Point(347, 403);
-            this.headingIndicatorInstrumentControl1.Name = "headingIndicatorInstrumentControl1";
-            this.headingIndicatorInstrumentControl1.Size = new System.Drawing.Size(210, 218);
-            this.headingIndicatorInstrumentControl1.TabIndex = 4;
-            this.headingIndicatorInstrumentControl1.Text = "headingIndicatorInstrumentControl1";
+            this.FWRateEnergy.Location = new System.Drawing.Point(111, 59);
+            this.FWRateEnergy.Name = "FWRateEnergy";
+            this.FWRateEnergy.ReadOnly = true;
+            this.FWRateEnergy.Size = new System.Drawing.Size(45, 20);
+            this.FWRateEnergy.TabIndex = 226;
+            this.FWRateEnergy.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // RateEnergyLabel
+            // 
+            this.RateEnergyLabel.AutoSize = true;
+            this.RateEnergyLabel.Location = new System.Drawing.Point(6, 63);
+            this.RateEnergyLabel.Name = "RateEnergyLabel";
+            this.RateEnergyLabel.Size = new System.Drawing.Size(80, 13);
+            this.RateEnergyLabel.TabIndex = 227;
+            this.RateEnergyLabel.Text = "FWRateEnergy";
             // 
             // attitudeIndicatorInstrumentControl1
             // 
@@ -3301,6 +3379,14 @@ namespace UAVXGUI
             this.attitudeIndicatorInstrumentControl1.TabIndex = 3;
             this.attitudeIndicatorInstrumentControl1.Text = "attitudeIndicatorInstrumentControl1";
             // 
+            // headingIndicatorInstrumentControl1
+            // 
+            this.headingIndicatorInstrumentControl1.Location = new System.Drawing.Point(347, 403);
+            this.headingIndicatorInstrumentControl1.Name = "headingIndicatorInstrumentControl1";
+            this.headingIndicatorInstrumentControl1.Size = new System.Drawing.Size(210, 218);
+            this.headingIndicatorInstrumentControl1.TabIndex = 4;
+            this.headingIndicatorInstrumentControl1.Text = "headingIndicatorInstrumentControl1";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3309,6 +3395,7 @@ namespace UAVXGUI
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1013, 637);
             this.Controls.Add(this.TrimsGroupBox);
+            this.Controls.Add(this.PlotButton);
             this.Controls.Add(this.CalibrationGroupBox);
             this.Controls.Add(this.UtilisationProgressBar);
             this.Controls.Add(this.UtilisationLabel);
@@ -3639,7 +3726,7 @@ namespace UAVXGUI
         public System.Windows.Forms.Button StartNavigationButton;
         private System.Windows.Forms.PictureBox WarningPictureBox;
         public static System.IO.Ports.SerialPort serialPort1;
-        private System.Windows.Forms.Button BurnFirmwareButton;
+        private System.Windows.Forms.Button GPSBypassButton;
         private System.Windows.Forms.CheckBox SpeakVarioCheckBox;
         private System.Windows.Forms.GroupBox SpectraGroupBox;
         private System.Windows.Forms.ProgressBar DFTBar1;
@@ -3708,6 +3795,14 @@ namespace UAVXGUI
         private System.Windows.Forms.Label NewTuningParameterLabel;
         private System.Windows.Forms.Label FWGlideAngleOffsetLabel;
         private System.Windows.Forms.GroupBox TrimsGroupBox;
+        private System.Windows.Forms.TextBox GPSsAcc;
+        private System.Windows.Forms.Label GPSsAccLabel;
+        private System.Windows.Forms.TextBox FWRateEnergy;
+        private System.Windows.Forms.Label RateEnergyLabel;
+        private System.Windows.Forms.TextBox GPScAcc;
+        private System.Windows.Forms.Label GPScAccLabel;
+        private System.Windows.Forms.TextBox GPSvAcc;
+        private System.Windows.Forms.Label GPSvAccLabel;
     }
 }
 
