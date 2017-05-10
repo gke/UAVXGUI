@@ -40,7 +40,6 @@
             this.DescentRateNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.DescentRateLabel = new System.Windows.Forms.Label();
             this.CruiseThrNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.CruiseThrLabel = new System.Windows.Forms.Label();
             this.HysteresisNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.ModifiersGroupBox1 = new System.Windows.Forms.GroupBox();
             this.PropSenseLabel = new System.Windows.Forms.Label();
@@ -77,6 +76,8 @@
             this.AFTypeComboBox = new System.Windows.Forms.ComboBox();
             this.LowMotorRunLabel = new System.Windows.Forms.Label();
             this.LowMotorRunNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.EstCruiseLabel = new System.Windows.Forms.Label();
+            this.EstCruiseNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.RangefinderLabel1 = new System.Windows.Forms.Label();
             this.RangefinderComboBox = new System.Windows.Forms.ComboBox();
             this.GPSTypeComboBox = new System.Windows.Forms.ComboBox();
@@ -232,6 +233,8 @@
             this.AirspeedLabel = new System.Windows.Forms.Label();
             this.AirspeedComboBox = new System.Windows.Forms.ComboBox();
             this.AttitudeGroupBox = new System.Windows.Forms.GroupBox();
+            this.TurnoutLabel = new System.Windows.Forms.Label();
+            this.TurnoutNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.FWMaxClimbAngleNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.FWMaxClimbAngleLabel = new System.Windows.Forms.Label();
             this.BestROCNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -267,6 +270,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.BatteryNumericUpDown)).BeginInit();
             this.GeneralGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LowMotorRunNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EstCruiseNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MadgwickKpMagNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MadgwickKpAccNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccConfNumericUpDown)).BeginInit();
@@ -316,6 +320,7 @@
             this.ConfigGroupBox.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.AttitudeGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TurnoutNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWMaxClimbAngleNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BestROCNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWAileronDifferentialNumericUpDown)).BeginInit();
@@ -452,11 +457,6 @@
             this.CruiseThrNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
             this.CruiseThrNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
-            // CruiseThrLabel
-            // 
-            resources.ApplyResources(this.CruiseThrLabel, "CruiseThrLabel");
-            this.CruiseThrLabel.Name = "CruiseThrLabel";
-            // 
             // HysteresisNumericUpDown
             // 
             this.HysteresisNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
@@ -469,7 +469,7 @@
             this.HysteresisNumericUpDown.Name = "HysteresisNumericUpDown";
             this.HysteresisNumericUpDown.Tag = "21";
             this.HysteresisNumericUpDown.Value = new decimal(new int[] {
-            5,
+            2,
             0,
             0,
             0});
@@ -763,7 +763,6 @@
             this.GeneralGroupBox.Controls.Add(this.LowMotorRunLabel);
             this.GeneralGroupBox.Controls.Add(this.LowMotorRunNumericUpDown);
             this.GeneralGroupBox.Controls.Add(this.CruiseThrNumericUpDown);
-            this.GeneralGroupBox.Controls.Add(this.CruiseThrLabel);
             resources.ApplyResources(this.GeneralGroupBox, "GeneralGroupBox");
             this.GeneralGroupBox.Name = "GeneralGroupBox";
             this.GeneralGroupBox.TabStop = false;
@@ -916,6 +915,30 @@
             this.LowMotorRunNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
             this.LowMotorRunNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
             this.LowMotorRunNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            // 
+            // EstCruiseLabel
+            // 
+            resources.ApplyResources(this.EstCruiseLabel, "EstCruiseLabel");
+            this.EstCruiseLabel.Name = "EstCruiseLabel";
+            // 
+            // EstCruiseNumericUpDown
+            // 
+            resources.ApplyResources(this.EstCruiseNumericUpDown, "EstCruiseNumericUpDown");
+            this.EstCruiseNumericUpDown.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.EstCruiseNumericUpDown.Name = "EstCruiseNumericUpDown";
+            this.EstCruiseNumericUpDown.Tag = "20";
+            this.EstCruiseNumericUpDown.Value = new decimal(new int[] {
+            45,
+            0,
+            0,
+            0});
+            this.EstCruiseNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.EstCruiseNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.EstCruiseNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
             // RangefinderLabel1
             // 
@@ -1509,7 +1532,9 @@
             // 
             // groupBoxGPS1
             // 
+            this.groupBoxGPS1.Controls.Add(this.EstCruiseLabel);
             this.groupBoxGPS1.Controls.Add(this.NavMaxAngleNumericUpDown);
+            this.groupBoxGPS1.Controls.Add(this.EstCruiseNumericUpDown);
             this.groupBoxGPS1.Controls.Add(this.NavMaxAngleLabel);
             this.groupBoxGPS1.Controls.Add(this.NavIntLimitLabel);
             this.groupBoxGPS1.Controls.Add(this.NavPosIntLimitNumericUpDown);
@@ -2600,9 +2625,10 @@
             // bit62CheckBox
             // 
             resources.ApplyResources(this.bit62CheckBox, "bit62CheckBox");
+            this.bit62CheckBox.BackColor = System.Drawing.Color.Salmon;
             this.bit62CheckBox.Name = "bit62CheckBox";
             this.bit62CheckBox.Tag = "74_7";
-            this.bit62CheckBox.UseVisualStyleBackColor = true;
+            this.bit62CheckBox.UseVisualStyleBackColor = false;
             this.bit62CheckBox.CheckedChanged += new System.EventHandler(this.bitCheckBox_CheckedChanged);
             this.bit62CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
             this.bit62CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
@@ -2704,6 +2730,8 @@
             // AttitudeGroupBox
             // 
             resources.ApplyResources(this.AttitudeGroupBox, "AttitudeGroupBox");
+            this.AttitudeGroupBox.Controls.Add(this.TurnoutLabel);
+            this.AttitudeGroupBox.Controls.Add(this.TurnoutNumericUpDown);
             this.AttitudeGroupBox.Controls.Add(this.FWMaxClimbAngleNumericUpDown);
             this.AttitudeGroupBox.Controls.Add(this.FWMaxClimbAngleLabel);
             this.AttitudeGroupBox.Controls.Add(this.BestROCNumericUpDown);
@@ -2731,6 +2759,25 @@
             this.AttitudeGroupBox.Controls.Add(this.Sense51Button);
             this.AttitudeGroupBox.Name = "AttitudeGroupBox";
             this.AttitudeGroupBox.TabStop = false;
+            // 
+            // TurnoutLabel
+            // 
+            resources.ApplyResources(this.TurnoutLabel, "TurnoutLabel");
+            this.TurnoutLabel.Name = "TurnoutLabel";
+            // 
+            // TurnoutNumericUpDown
+            // 
+            resources.ApplyResources(this.TurnoutNumericUpDown, "TurnoutNumericUpDown");
+            this.TurnoutNumericUpDown.Name = "TurnoutNumericUpDown";
+            this.TurnoutNumericUpDown.Tag = "79";
+            this.TurnoutNumericUpDown.Value = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.TurnoutNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.TurnoutNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.TurnoutNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
             // FWMaxClimbAngleNumericUpDown
             // 
@@ -2949,6 +2996,7 @@
             this.GeneralGroupBox.ResumeLayout(false);
             this.GeneralGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LowMotorRunNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EstCruiseNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MadgwickKpMagNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MadgwickKpAccNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccConfNumericUpDown)).EndInit();
@@ -3004,6 +3052,7 @@
             this.groupBox2.PerformLayout();
             this.AttitudeGroupBox.ResumeLayout(false);
             this.AttitudeGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TurnoutNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWMaxClimbAngleNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BestROCNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWAileronDifferentialNumericUpDown)).EndInit();
@@ -3146,7 +3195,6 @@
         private System.Windows.Forms.Label DescentRateLabel;
         public System.Windows.Forms.NumericUpDown HysteresisNumericUpDown;
         public System.Windows.Forms.NumericUpDown CruiseThrNumericUpDown;
-        private System.Windows.Forms.Label CruiseThrLabel;
         private System.Windows.Forms.Button WriteParamsButton;
         private System.Windows.Forms.Button ReadParamsButton;
         private System.Windows.Forms.Button LoadParamsButton;
@@ -3233,6 +3281,10 @@
         public System.Windows.Forms.NumericUpDown NavPosIntLimitNumericUpDown;
         public System.Windows.Forms.NumericUpDown NavMaxAngleNumericUpDown;
         private System.Windows.Forms.Label NavMaxAngleLabel;
+        private System.Windows.Forms.Label TurnoutLabel;
+        public System.Windows.Forms.NumericUpDown TurnoutNumericUpDown;
+        private System.Windows.Forms.Label EstCruiseLabel;
+        public System.Windows.Forms.NumericUpDown EstCruiseNumericUpDown;
 
 
     }

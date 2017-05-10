@@ -176,10 +176,10 @@ namespace UAVXGUI
             this.WhereBearingLabel = new System.Windows.Forms.Label();
             this.WhereDistanceLabel = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CruiseThrottle = new System.Windows.Forms.TextBox();
+            this.CruiseThrottleLabel = new System.Windows.Forms.Label();
             this.BattFFLabel = new System.Windows.Forms.Label();
             this.BattFFComp = new System.Windows.Forms.TextBox();
-            this.CruiseThrottleLabel = new System.Windows.Forms.Label();
-            this.CruiseThrottle = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.AltComp = new System.Windows.Forms.TextBox();
             this.TiltFFComp = new System.Windows.Forms.TextBox();
@@ -1527,11 +1527,11 @@ namespace UAVXGUI
             // NavStateLabel
             // 
             this.NavStateLabel.AutoSize = true;
-            this.NavStateLabel.Location = new System.Drawing.Point(211, 33);
+            this.NavStateLabel.Location = new System.Drawing.Point(206, 33);
             this.NavStateLabel.Name = "NavStateLabel";
-            this.NavStateLabel.Size = new System.Drawing.Size(27, 13);
+            this.NavStateLabel.Size = new System.Drawing.Size(34, 13);
             this.NavStateLabel.TabIndex = 72;
-            this.NavStateLabel.Text = "Nav";
+            this.NavStateLabel.Text = "Mode";
             // 
             // GPSVelLabel
             // 
@@ -1830,10 +1830,10 @@ namespace UAVXGUI
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.CruiseThrottle);
+            this.groupBox1.Controls.Add(this.CruiseThrottleLabel);
             this.groupBox1.Controls.Add(this.BattFFLabel);
             this.groupBox1.Controls.Add(this.BattFFComp);
-            this.groupBox1.Controls.Add(this.CruiseThrottleLabel);
-            this.groupBox1.Controls.Add(this.CruiseThrottle);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.AltComp);
             this.groupBox1.Controls.Add(this.TiltFFComp);
@@ -1845,6 +1845,24 @@ namespace UAVXGUI
             this.groupBox1.TabIndex = 103;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Compensation";
+            // 
+            // CruiseThrottle
+            // 
+            this.CruiseThrottle.Location = new System.Drawing.Point(117, 31);
+            this.CruiseThrottle.Name = "CruiseThrottle";
+            this.CruiseThrottle.ReadOnly = true;
+            this.CruiseThrottle.Size = new System.Drawing.Size(30, 20);
+            this.CruiseThrottle.TabIndex = 221;
+            this.CruiseThrottle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // CruiseThrottleLabel
+            // 
+            this.CruiseThrottleLabel.AutoSize = true;
+            this.CruiseThrottleLabel.Location = new System.Drawing.Point(114, 13);
+            this.CruiseThrottleLabel.Name = "CruiseThrottleLabel";
+            this.CruiseThrottleLabel.Size = new System.Drawing.Size(38, 13);
+            this.CruiseThrottleLabel.TabIndex = 222;
+            this.CruiseThrottleLabel.Text = "Hvr(%)";
             // 
             // BattFFLabel
             // 
@@ -1863,24 +1881,6 @@ namespace UAVXGUI
             this.BattFFComp.Size = new System.Drawing.Size(30, 20);
             this.BattFFComp.TabIndex = 78;
             this.BattFFComp.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // CruiseThrottleLabel
-            // 
-            this.CruiseThrottleLabel.AutoSize = true;
-            this.CruiseThrottleLabel.Location = new System.Drawing.Point(110, 13);
-            this.CruiseThrottleLabel.Name = "CruiseThrottleLabel";
-            this.CruiseThrottleLabel.Size = new System.Drawing.Size(43, 13);
-            this.CruiseThrottleLabel.TabIndex = 77;
-            this.CruiseThrottleLabel.Text = "Hold(%)";
-            // 
-            // CruiseThrottle
-            // 
-            this.CruiseThrottle.Location = new System.Drawing.Point(114, 31);
-            this.CruiseThrottle.Name = "CruiseThrottle";
-            this.CruiseThrottle.ReadOnly = true;
-            this.CruiseThrottle.Size = new System.Drawing.Size(30, 20);
-            this.CruiseThrottle.TabIndex = 76;
-            this.CruiseThrottle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label3
             // 
@@ -3744,8 +3744,6 @@ namespace UAVXGUI
         private System.Windows.Forms.TextBox BaroTemperature;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label CruiseThrottleLabel;
-        private System.Windows.Forms.TextBox CruiseThrottle;
         private System.Windows.Forms.ProgressBar UtilisationProgressBar;
         private System.Windows.Forms.Label BattFFLabel;
         private System.Windows.Forms.TextBox BattFFComp;
@@ -3803,6 +3801,8 @@ namespace UAVXGUI
         private System.Windows.Forms.Label GPScAccLabel;
         private System.Windows.Forms.TextBox GPSvAcc;
         private System.Windows.Forms.Label GPSvAccLabel;
+        private System.Windows.Forms.TextBox CruiseThrottle;
+        private System.Windows.Forms.Label CruiseThrottleLabel;
     }
 }
 

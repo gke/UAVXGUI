@@ -308,8 +308,8 @@ namespace UAVXGUI
                 helpstring = help.GetString("FWFlapDecayTime");
             if (parameterForm.FWAltHoldDecayTimeNumericUpDown.Focused)
                 helpstring = help.GetString("FWAltHoldDecayTime");
-
-
+            if (parameterForm.TurnoutNumericUpDown.Focused)
+                helpstring = help.GetString("Turnout");
 
             if (parameterForm.bit01CheckBox.Focused)
                 helpstring = help.GetString("AuxMode");
@@ -1069,8 +1069,8 @@ namespace UAVXGUI
                         ParamUpdate(CameraRollNumericUpDown);
                         break;
                     case 20:
-                        CruiseThrNumericUpDown.Value = UAVXP[p-1].Value;
-                        ParamUpdate(CruiseThrNumericUpDown);
+                        EstCruiseNumericUpDown.Value = UAVXP[p-1].Value;
+                        ParamUpdate(EstCruiseNumericUpDown);
                         break;
                     case 21:
                         HysteresisNumericUpDown.Value = UAVXP[p-1].Value;
@@ -1359,8 +1359,8 @@ namespace UAVXGUI
                         ParamUpdate(TuneParamComboBox);
                         break;
                     case 79:
-                 //       TuneParameterLabel.Text = string.Format("{0:n0}", UAVXP[p - 1].Value);
-                //        P[CurrPS, p-1].Value = UAVXP[p - 1].Value;
+                        TurnoutNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(TurnoutNumericUpDown);
                         break;
                     case 94: // Aux5
                         Ch10NumericUpDown.Value = UAVXP[p - 1].Value;

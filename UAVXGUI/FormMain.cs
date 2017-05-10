@@ -239,6 +239,8 @@ namespace UAVXGUI
             BoostClimb,
             AltitudeLimiting,
             JustGliding,
+            RateControl,
+            BypassControl,
             NavStateUndefined
         };
 
@@ -463,7 +465,7 @@ namespace UAVXGUI
  
         int RawAltitudeT, RawFAltitudeT;
 
-        short AccZT, HRAccZT, HRAccZBiasT, Fusion1T, FWGlideOffsetAngleT, NewTuningParameterT, FWRateEnergyT;
+        short AccZT, HRAccZT, HRAccZBiasT, FWGlideOffsetAngleT, NewTuningParameterT, FWRateEnergyT;
 
         short MagHeadingT;
 
@@ -661,6 +663,8 @@ namespace UAVXGUI
 
         bool CalibrateIMUEnabled = false;
         bool CalibrateMagEnabled = false;
+
+        bool LogFileHeaderWritten = false;
 
         public static bool RxLoopbackEnabled = false;
 
@@ -902,7 +906,7 @@ namespace UAVXGUI
 
                     SaveTextLogFileStream = new System.IO.FileStream(FileName + ".csv", System.IO.FileMode.Create);
                     SaveTextLogFileStreamWriter = new System.IO.StreamWriter(SaveTextLogFileStream, System.Text.Encoding.ASCII);
-                    WriteTextLogFileHeader();
+                    LogFileHeaderWritten = false;
                     DoingLogfileReplay = true;
 
                     ReplayProgressBar.Value = 0;
@@ -937,7 +941,7 @@ namespace UAVXGUI
 
             SaveTextLogFileStream = new System.IO.FileStream(FileName + ".csv", System.IO.FileMode.Create);
             SaveTextLogFileStreamWriter = new System.IO.StreamWriter(SaveTextLogFileStream, System.Text.Encoding.ASCII);
-            WriteTextLogFileHeader();
+            LogFileHeaderWritten = false;
 
             NavPacketsReceived = 0;
             FlightPacketsReceived = 0;
@@ -1027,6 +1031,7 @@ namespace UAVXGUI
             "BattCh," +
             "RCGlitches, Interval, #Ch, ");
 
+ 
             for (i = 0; i < 9; i++)
                 SaveTextLogFileStreamWriter.Write("RC["+ (i+1) + "],");
 
@@ -1045,8 +1050,21 @@ namespace UAVXGUI
             "DUAcc," +
             "AccConf," );
 
-
-            SaveTextLogFileStreamWriter.Write("K1,K2,K3,K4,K7,K8,K9,K10,K5/CamP,K6/CamR,");
+            if (Airframe.Text == "Flying_Wing")
+                SaveTextLogFileStreamWriter.Write("Thr,R-Elev,L-Elev,-,L-Flap,-,-,-,-,R-Flap,");
+            else
+                if (Airframe.Text == "Delta") 
+                    SaveTextLogFileStreamWriter.Write("Thr,R-Elev,L-Elev,-,L-Flap, -, -, -,Rud,R-Flap,");
+                else if ((Airframe.Text == "Aileron") || (Airframe.Text == "Spoilerons") || (Airframe.Text == "Rudder_Elevator"))
+                    SaveTextLogFileStreamWriter.Write("Thr, R-Ail,L-Ail,Elev,L-Flap, -, -, -,Rud,R-Flap,");
+                else
+                    if ((Airframe.Text == "Aileron") || (Airframe.Text == "Spoilerons") )
+                        SaveTextLogFileStreamWriter.Write("Thr,RAil,LAil,Elev,LFlap, -, -, -,Rud,RFlap,");
+                    else
+                        if (Airframe.Text == "Rudder_Elevator")
+                            SaveTextLogFileStreamWriter.Write("Thr,-,-,Elev,LFlap, -, -, -,Rud,RFlap,");
+                        else
+                SaveTextLogFileStreamWriter.Write("K1,K2,K3,K4, K7,K8,K9,K10, K5/CamP,K6/CamR,");
 
             SaveTextLogFileStreamWriter.Write("Nav," +
            "GPSTime," +
@@ -1391,6 +1409,10 @@ namespace UAVXGUI
                         case NavStates.JustGliding: speech.SpeakAsync("Gliding.");
                             break;
                         case NavStates.PIC: speech.SpeakAsync("Pilot in command.");
+                            break;
+                        case NavStates.RateControl: speech.SpeakAsync("Rate Control.");
+                            break;
+                        case NavStates.BypassControl: speech.SpeakAsync("Manual.");
                             break;
                      //   case NavStates.AcquiringAltitude: speech.SpeakAsync("Acquiring altitude.");
                      //       SpeakClimbDescend();
@@ -1865,6 +1887,14 @@ namespace UAVXGUI
                     break;
                 case NavStates.JustGliding: NavState.Text = "Gliding";
                     NavState.BackColor = System.Drawing.Color.Gold;
+                    break;
+                case NavStates.RateControl:
+                    NavState.Text = "RATE";
+                    NavState.BackColor = System.Drawing.Color.Orange;
+                    break;
+                case NavStates.BypassControl:
+                    NavState.Text = "BYPASS";
+                    NavState.BackColor = System.Drawing.Color.Red;
                     break;
                 default: NavState.Text = "Unknown"; break;
             } // switch
@@ -2378,7 +2408,7 @@ namespace UAVXGUI
 
                     UpdateWhere();
 
-                    MissionTimeTextBox.Text = string.Format("{0:n1}", MissionTimeMilliSecT * (1.0 / 60000.0));
+                    MissionTimeTextBox.Text = string.Format("{0:n0}", MissionTimeMilliSecT / 1000);
 
                     break;
 
@@ -2603,7 +2633,7 @@ namespace UAVXGUI
                     RCGlitches.BackColor = RCGlitchesT > 20 ?
                         System.Drawing.Color.Orange : EnvGroupBox.BackColor;
 
-                    MissionTimeTextBox.Text = string.Format("{0:n1}", MissionTimeMilliSecT * (1.0 / 60000.0));
+                    MissionTimeTextBox.Text = string.Format("{0:n0}", MissionTimeMilliSecT / 1000);
 
                     UpdateBattery();
        
@@ -2946,6 +2976,12 @@ namespace UAVXGUI
         void WriteTextLogFile()
         {
             short i, c;
+
+            if (!LogFileHeaderWritten)
+            {
+                WriteTextLogFileHeader();
+                LogFileHeaderWritten = true;
+            }
 
             SaveTextLogFileStreamWriter.Write(MissionTimeMilliSecT * 0.001 + ",");
 
