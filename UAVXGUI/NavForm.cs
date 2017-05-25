@@ -1662,7 +1662,7 @@ namespace UAVXGUI
 
             SaveFileDialog dlg = new SaveFileDialog();
 
-            dlg.Filter = "Mission Files (*.txt)|*.txt|All files (*.*)|*.*";
+            dlg.Filter = ""; // "Mission Files (*.txt)|*.txt|All files (*.*)|*.*";
             dlg.InitialDirectory = Properties.Settings.Default.MissionDirectory;
 
             dlg.FileName = "Mission_" +
@@ -1696,6 +1696,7 @@ namespace UAVXGUI
 
                 MissionFileStreamWriter.WriteLine("OPTIONS:" + ProximityRadius.Text
                     + "," + ProximityAlt.Text
+                    + "," + FenceRadiusSetting.Text
                     + "," + SetHomeManuallyCheckBox.Checked
                     + "," + AltitudeOverTerrainCheckBox.Checked
                     + "," + FormMain.Mission.RTHAltitudeHold

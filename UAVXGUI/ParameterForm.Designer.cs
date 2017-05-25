@@ -132,8 +132,8 @@
             this.groupBoxGPS1 = new System.Windows.Forms.GroupBox();
             this.NavMaxAngleNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.NavMaxAngleLabel = new System.Windows.Forms.Label();
-            this.NavIntLimitLabel = new System.Windows.Forms.Label();
-            this.NavPosIntLimitNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.NavMaxVelLabel = new System.Windows.Forms.Label();
+            this.NavMaxVelNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.NavPosKpLabel = new System.Windows.Forms.Label();
             this.NavPosKpNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CrossTrackNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -286,7 +286,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ChNumericUpDown)).BeginInit();
             this.groupBoxGPS1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NavMaxAngleNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NavPosIntLimitNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NavMaxVelNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavPosKpNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrossTrackNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavMagVarNumericUpDown)).BeginInit();
@@ -1536,8 +1536,8 @@
             this.groupBoxGPS1.Controls.Add(this.NavMaxAngleNumericUpDown);
             this.groupBoxGPS1.Controls.Add(this.EstCruiseNumericUpDown);
             this.groupBoxGPS1.Controls.Add(this.NavMaxAngleLabel);
-            this.groupBoxGPS1.Controls.Add(this.NavIntLimitLabel);
-            this.groupBoxGPS1.Controls.Add(this.NavPosIntLimitNumericUpDown);
+            this.groupBoxGPS1.Controls.Add(this.NavMaxVelLabel);
+            this.groupBoxGPS1.Controls.Add(this.NavMaxVelNumericUpDown);
             this.groupBoxGPS1.Controls.Add(this.GPSTypeLabel);
             this.groupBoxGPS1.Controls.Add(this.DescDelayNumericUpDown);
             this.groupBoxGPS1.Controls.Add(this.NavRTHAltNumericUpDown);
@@ -1584,29 +1584,29 @@
             resources.ApplyResources(this.NavMaxAngleLabel, "NavMaxAngleLabel");
             this.NavMaxAngleLabel.Name = "NavMaxAngleLabel";
             // 
-            // NavIntLimitLabel
+            // NavMaxVelLabel
             // 
-            resources.ApplyResources(this.NavIntLimitLabel, "NavIntLimitLabel");
-            this.NavIntLimitLabel.Name = "NavIntLimitLabel";
+            resources.ApplyResources(this.NavMaxVelLabel, "NavMaxVelLabel");
+            this.NavMaxVelLabel.Name = "NavMaxVelLabel";
             // 
-            // NavPosIntLimitNumericUpDown
+            // NavMaxVelNumericUpDown
             // 
-            resources.ApplyResources(this.NavPosIntLimitNumericUpDown, "NavPosIntLimitNumericUpDown");
-            this.NavPosIntLimitNumericUpDown.Maximum = new decimal(new int[] {
+            resources.ApplyResources(this.NavMaxVelNumericUpDown, "NavMaxVelNumericUpDown");
+            this.NavMaxVelNumericUpDown.Maximum = new decimal(new int[] {
             90,
             0,
             0,
             0});
-            this.NavPosIntLimitNumericUpDown.Name = "NavPosIntLimitNumericUpDown";
-            this.NavPosIntLimitNumericUpDown.Tag = "41";
-            this.NavPosIntLimitNumericUpDown.Value = new decimal(new int[] {
+            this.NavMaxVelNumericUpDown.Name = "NavMaxVelNumericUpDown";
+            this.NavMaxVelNumericUpDown.Tag = "41";
+            this.NavMaxVelNumericUpDown.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.NavPosIntLimitNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.NavPosIntLimitNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
-            this.NavPosIntLimitNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            this.NavMaxVelNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.NavMaxVelNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.NavMaxVelNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
             // NavPosKpLabel
             // 
@@ -3013,7 +3013,7 @@
             this.groupBoxGPS1.ResumeLayout(false);
             this.groupBoxGPS1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NavMaxAngleNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NavPosIntLimitNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NavMaxVelNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavPosKpNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrossTrackNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavMagVarNumericUpDown)).EndInit();
@@ -3277,8 +3277,8 @@
         public System.Windows.Forms.ComboBox TuneParamComboBox;
         public System.Windows.Forms.NumericUpDown FWMaxClimbAngleNumericUpDown;
         private System.Windows.Forms.Label FWMaxClimbAngleLabel;
-        private System.Windows.Forms.Label NavIntLimitLabel;
-        public System.Windows.Forms.NumericUpDown NavPosIntLimitNumericUpDown;
+        private System.Windows.Forms.Label NavMaxVelLabel;
+        public System.Windows.Forms.NumericUpDown NavMaxVelNumericUpDown;
         public System.Windows.Forms.NumericUpDown NavMaxAngleNumericUpDown;
         private System.Windows.Forms.Label NavMaxAngleLabel;
         private System.Windows.Forms.Label TurnoutLabel;

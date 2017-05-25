@@ -417,8 +417,8 @@ namespace UAVXGUI
 
             //GPS
 
-            if (parameterForm.NavPosIntLimitNumericUpDown.Focused)
-                helpstring = help.GetString("NavPosIntLimit");
+            if (parameterForm.NavMaxVelNumericUpDown.Focused)
+                helpstring = help.GetString("NavMaxVel");
 
             if (parameterForm.NavMaxAngleNumericUpDown.Focused)
                 helpstring = help.GetString("NavMaxAngle");
@@ -1156,8 +1156,8 @@ namespace UAVXGUI
                         ParamUpdate(CameraRollTrimNumericUpDown);
                         break;
                     case 41:
-                       NavPosIntLimitNumericUpDown.Value = UAVXP[p-1].Value;
-                       ParamUpdate(NavPosIntLimitNumericUpDown);
+                       NavMaxVelNumericUpDown.Value = UAVXP[p-1].Value;
+                       ParamUpdate(NavMaxVelNumericUpDown);
                         break;
                     case 42:
                         Ch3NumericUpDown.Value = UAVXP[p-1].Value;

@@ -3280,13 +3280,13 @@
     <value>6, 117</value>
   </data>
   <data name="NavMaxAngleLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 13</value>
+    <value>64, 13</value>
   </data>
   <data name="NavMaxAngleLabel.TabIndex" type="System.Int32, mscorlib">
     <value>143</value>
   </data>
   <data name="NavMaxAngleLabel.Text" xml:space="preserve">
-    <value>Nav (deg.)</value>
+    <value>Angle (deg.)</value>
   </data>
   <data name="&gt;&gt;NavMaxAngleLabel.Name" xml:space="preserve">
     <value>NavMaxAngleLabel</value>
@@ -3300,61 +3300,61 @@
   <data name="&gt;&gt;NavMaxAngleLabel.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="NavIntLimitLabel.AutoSize" type="System.Boolean, mscorlib">
+  <data name="NavMaxVelLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="NavIntLimitLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="NavMaxVelLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="NavIntLimitLabel.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="NavMaxVelLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 66</value>
   </data>
-  <data name="NavIntLimitLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 13</value>
+  <data name="NavMaxVelLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 13</value>
   </data>
-  <data name="NavIntLimitLabel.TabIndex" type="System.Int32, mscorlib">
+  <data name="NavMaxVelLabel.TabIndex" type="System.Int32, mscorlib">
     <value>142</value>
   </data>
-  <data name="NavIntLimitLabel.Text" xml:space="preserve">
-    <value>Wind (deg.)</value>
+  <data name="NavMaxVelLabel.Text" xml:space="preserve">
+    <value>Vel (M/S)</value>
   </data>
-  <data name="&gt;&gt;NavIntLimitLabel.Name" xml:space="preserve">
-    <value>NavIntLimitLabel</value>
+  <data name="&gt;&gt;NavMaxVelLabel.Name" xml:space="preserve">
+    <value>NavMaxVelLabel</value>
   </data>
-  <data name="&gt;&gt;NavIntLimitLabel.Type" xml:space="preserve">
+  <data name="&gt;&gt;NavMaxVelLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;NavIntLimitLabel.Parent" xml:space="preserve">
+  <data name="&gt;&gt;NavMaxVelLabel.Parent" xml:space="preserve">
     <value>groupBoxGPS1</value>
   </data>
-  <data name="&gt;&gt;NavIntLimitLabel.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;NavMaxVelLabel.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="NavPosIntLimitNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="NavMaxVelNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
-  <data name="NavPosIntLimitNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="NavMaxVelNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
     <value>79, 62</value>
   </data>
-  <data name="NavPosIntLimitNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="NavMaxVelNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 20</value>
   </data>
-  <data name="NavPosIntLimitNumericUpDown.TabIndex" type="System.Int32, mscorlib">
+  <data name="NavMaxVelNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>141</value>
   </data>
-  <data name="NavPosIntLimitNumericUpDown.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+  <data name="NavMaxVelNumericUpDown.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
   </data>
-  <data name="&gt;&gt;NavPosIntLimitNumericUpDown.Name" xml:space="preserve">
-    <value>NavPosIntLimitNumericUpDown</value>
+  <data name="&gt;&gt;NavMaxVelNumericUpDown.Name" xml:space="preserve">
+    <value>NavMaxVelNumericUpDown</value>
   </data>
-  <data name="&gt;&gt;NavPosIntLimitNumericUpDown.Type" xml:space="preserve">
+  <data name="&gt;&gt;NavMaxVelNumericUpDown.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;NavPosIntLimitNumericUpDown.Parent" xml:space="preserve">
+  <data name="&gt;&gt;NavMaxVelNumericUpDown.Parent" xml:space="preserve">
     <value>groupBoxGPS1</value>
   </data>
-  <data name="&gt;&gt;NavPosIntLimitNumericUpDown.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;NavMaxVelNumericUpDown.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
   <data name="NavPosKpLabel.AutoSize" type="System.Boolean, mscorlib">

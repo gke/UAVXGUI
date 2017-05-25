@@ -247,8 +247,8 @@ Mode 2: Rudder/Throttle left hand Ailerons/Elevator right hand. Rudder available
   <data name="NavPosition" xml:space="preserve">
     <value>Determines the desired velocity for a given Nav position error.</value>
   </data>
-    <data name="NavPosIntLimit" xml:space="preserve">
-    <value>The maximimum additional pitch/roll angle to overcome wind - overall limit still set by Nav Angle parameter.</value>
+    <data name="NavMaxVel" xml:space="preserve">
+    <value>The maximimum ground speed but limited by maximum Nav Angle.</value>
   </data>
       <data name="NavMaxAngle" xml:space="preserve">
     <value>The maximimum  pitch or roll angle that WP navigation will command - excluding manual control input.</value>

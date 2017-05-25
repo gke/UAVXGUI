@@ -218,6 +218,7 @@ namespace UAVXGUI
         public const byte UAVXFusionPacketTag = 60;
         public const byte UAVXSoaringPacketTag = 61;
         public const byte UAVXCalibrationPacketTag = 62;
+        public const byte UAVXRevPacketTag = 63;
 
         public const byte FrSkyPacketTag = 99;
 
@@ -2280,6 +2281,7 @@ namespace UAVXGUI
                        //   else
                        //       speech.SpeakAsync("OK ");
                         break;
+
                     case UAVXParamPacketTag:
                         int p;
 
@@ -2288,6 +2290,12 @@ namespace UAVXGUI
                             ParameterForm.UAVXP[p].Value = UAVXPacket[p + 3];
                             ParameterForm.UAVXP[p].Changed = true;
                         }
+
+                        VersionLenT = ExtractByte(ref UAVXPacket, (byte)(MAX_PARAMS + 3));
+                        VersionNameT = "UAVXArm32F4.";
+                        for (b = 0; b < VersionLenT; b++ )
+                            VersionNameT += (char)(ExtractByte(ref UAVXPacket, (byte)(MAX_PARAMS + 4 + b)));
+                        MainLabel.Text = VersionNameT;
 
                         speech.SpeakAsync("Received " + ParameterForm.CurrPS);
 
@@ -2512,6 +2520,7 @@ namespace UAVXGUI
 	                 MZBiasLabel.Text = string.Format("{0:n3}", Cal[17] * 0.001);
                     
                     break;
+
                 case UAVXStatsPacketTag:
                     StatsPacketsReceived++;
 
@@ -2519,13 +2528,7 @@ namespace UAVXGUI
                         Stats[b] = ExtractShort(ref UAVXPacket, (byte)(b * 2 + 2));
                    
                     AirframeT = ExtractByte(ref UAVXPacket, 2 + MaxStats * 2 );
-                    VersionLenT = ExtractByte(ref UAVXPacket, 2 + MaxStats * 2 + 1);
-                    VersionNameT = "UAVXArm32F4.";
-                    for (b = 0; b < VersionLenT; b++ )
-                        VersionNameT += (char)(ExtractByte(ref UAVXPacket, (byte)(2 + MaxStats * 2 + 1 + 1 + b)));
-
-                    MainLabel.Text = VersionNameT;
-
+                    
                     UAVXArm = (AirframeT & 0x80) != 0;
                     AirframeT &= 0x7f;
 
