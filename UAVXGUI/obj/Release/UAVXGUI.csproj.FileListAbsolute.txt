@@ -42,3 +42,7 @@ C:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI 2.0.application
 C:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI 2.0.exe
 C:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI 2.0.pdb
 C:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI.csprojResolveAssemblyReference.cache
+C:\Flight\gitHub\UAVXGUI.git\UAVXGUI\UAVXGUI\bin\Release\UAVXGUI 2.0.exe.config
+C:\Flight\gitHub\UAVXGUI.git\UAVXGUI\UAVXGUI\obj\Release\UAVXGUI.csproj.ResolveComReference.cache
+C:\Flight\gitHub\UAVXGUI.git\UAVXGUI\UAVXGUI\obj\Release\UAVXGUI 2.0.exe
+C:\Flight\gitHub\UAVXGUI.git\UAVXGUI\UAVXGUI\obj\Release\UAVXGUI 2.0.pdb
