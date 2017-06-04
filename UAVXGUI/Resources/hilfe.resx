@@ -123,26 +123,26 @@
   <data name="InertialScheme" xml:space="preserve">
     <value>"Reserved" is for gke so don't use or bad things could happen;).</value>
   </data>
-  <data name="Failsafes" xml:space="preserve">
-    <value>It is STRONGLY recommended you ENABLE failsafes. If you choose to do so then the behaviour of your aircraft on 
-    loss of the radio control link will be UNPREDICTABLE. See the Failsafes Wiki</value>
+  <data name="UnusedFailsafes" xml:space="preserve">
+    <value>ENABLES Failsafes. It is STRONGLY recommended you ENABLE failsafes otherwise the behaviour of your aircraft on 
+    loss of the radio control link will be UNPREDICTABLE - AT YOUR RISK. See the Failsafes Wiki</value>
   </data>
   <data name="ManualAltHold" xml:space="preserve">
-    <value>Overrides altitude hold except in failsafe. Useful if a fixed wing aircraft is visible but you may have lost orientation and need to do a RTH while managing throttle.</value>
+    <value>DISABLES altitude hold including for failsafe. While useful when you wish to completely manage altitude hold this is not recommended.</value>
     </data>
   <data name="RTHDescend" xml:space="preserve">
-    <value>Enables automatic descend after a short delay upon reaching the Origin when using RTH.</value>
+    <value>ENABLES automatic descend after a short delay upon reaching the Origin when using RTH.</value>
     </data>
       <data name="FastStart" xml:space="preserve">
-    <value>Uses the gyro bias from IMU calibration and in theory allows takeoffs without needing to be still immediately after arming.</value>
+    <value>ENABLES fast starts by using the gyro bias from IMU calibration and in theory allows takeoffs without needing to be still immediately after arming.</value>
   </data>
 
       <data name="BLHeli" xml:space="preserve">
-    <value>Enables ESC programming using BLHeliSuite.</value>
+    <value>ENABLES ESC programming using BLHeliSuite.</value>
   </data>
 
       <data name="Glider" xml:space="preserve">
-    <value>Allows aircraft to expore autonomous thermal hunting. WP nav must be disabled.</value>
+    <value>ENABLES  aircraft to expore autonomous thermal hunting. WP Missions are not allowed.</value>
   </data>
         <data name="RebootConfig" xml:space="preserve">
     <value>POTENTIALLY DANGEROUS USE AT YOUR OWN RISK- If checked forces a reboot if any parameter changes which may as a consequence change the Arm processor port pin functions. This includes changes to aircraft type specifically the control of motors and servos, rx type, gps port.
@@ -153,7 +153,7 @@ The result is identical to a power cycle and can be used to avoid the flashing c
     <value>UNASSIGNED CONFIG2 CHECKBOX - GKE.</value>
   </data>
   <data name="BoardInverted" xml:space="preserve">
-    <value>Board mounted inverted.</value>
+    <value>ENABLES Board AUVX board to be mounted inverted.</value>
   </data>
   <data name="MadgwickKp" xml:space="preserve">
     <value>Controls how much correction to gyro drift is applied by the accelerometer for the Madgwick attitude estimators. 
@@ -241,8 +241,8 @@ Mode 2: Rudder/Throttle left hand Ailerons/Elevator right hand. Rudder available
      <data name="Turnout" xml:space="preserve">
     <value>The heading error in degrees below which the aircraft reduces its turn rate/angle from the maximum set. Try 60.</value>
   </data>  
-  <data name="WPNavigation" xml:space="preserve">
-    <value>Enables WP navigation selection. RTH always remains available. WP navigation requires bi-directional telemetry with UAVXNav.</value>
+  <data name="GPSToArm" xml:space="preserve">
+    <value>ENABLES requirement for good GPS signal to ARM when you have a GPS installed - DISABLE AT YOUR RISK.</value>
   </data>
   <data name="NavPosition" xml:space="preserve">
     <value>Determines the desired velocity for a given Nav position error.</value>
@@ -276,7 +276,7 @@ Mode 2: Rudder/Throttle left hand Ailerons/Elevator right hand. Rudder available
     Units are in decimetres.</value>
   </data>
   <data name="LEDs" xml:space="preserve">
-    <value>Enables or disables external WS2812 LEDs.</value>
+    <value>ENABLES external WS2812 LEDs.</value>
   </data>
   <data name="Hysteresis" xml:space="preserve">
     <value>Desired heading is updated if the yaw stick movement is greater than this value. It is difficult not to input 
@@ -289,8 +289,8 @@ Mode 2: Rudder/Throttle left hand Ailerons/Elevator right hand. Rudder available
     <value>Sets the frequency above which the gyros will reduce their output signal. The dynamics of most multicopters are thought to 
     be below 100Hz so if you set the gyro LPF below that then the aircraft response may be sluggish. Suggest 98 or 188Hz.</value>
   </data>
-  <data name="ControlScheme" xml:space="preserve">
-    <value>Enables fast descents when navigating but multicopter will force a spiral orbit to avoid VRS. 
+  <data name="FastDescent" xml:space="preserve">
+    <value>ENABLES fast descents when navigating but multicopter will force a spiral orbit to avoid VRS. 
 </value>
   </data>
   <data name="PositionVelocity" xml:space="preserve">
@@ -298,11 +298,11 @@ Mode 2: Rudder/Throttle left hand Ailerons/Elevator right hand. Rudder available
     </value>
   </data>
   <data name="AuxMode" xml:space="preserve">
-    <value>Compensates for magnetometers mounted inverted in GPS masts.
+    <value>ENABLES magnetometers to be mounted inverted in GPS masts.
  </value>
   </data>
   <data name="Emulation" xml:space="preserve">
-    <value>Allows the aircraft to be "flown" as an emulation/simulation using UAVXGS or UAVXNav. Motors are disabled but props should be off or motors disconnected for safety.
+    <value>ENABLES aircraft to be "flown" as an emulation/simulation using UAVXGUI. Motors are disabled but props should be off or motors disconnected for safety.
 </value>
   </data>
   <data name="Impuls" xml:space="preserve">
@@ -454,7 +454,7 @@ While inside this radius no GPS based corrections are applied. Recommended value
   </data>
 
   <data name="RxLoopback" xml:space="preserve">
-    <value>To test Spektrum and SBUS decoding connect RC3 to RC4 and observe Rx channel display - GKE Test function.</value>
+    <value>ENABLES Rx loopback test. To test Spektrum and SBUS decoding connect RC3 to RC4 and observe Rx channel display - GKE Test function.</value>
   </data>
 
   <data name="bit02" xml:space="preserve">

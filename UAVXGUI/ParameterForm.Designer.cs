@@ -2610,7 +2610,6 @@
             this.ConfigGroupBox.Controls.Add(this.bit32CheckBox);
             this.ConfigGroupBox.Controls.Add(this.bit22CheckBox);
             this.ConfigGroupBox.Controls.Add(this.bit12CheckBox);
-            this.ConfigGroupBox.Controls.Add(this.bit02CheckBox);
             this.ConfigGroupBox.Controls.Add(this.bit01CheckBox);
             this.ConfigGroupBox.Controls.Add(this.bit61CheckBox);
             this.ConfigGroupBox.Controls.Add(this.bit31CheckBox);
@@ -2959,6 +2958,7 @@
             this.Controls.Add(this.RCGroupBox);
             this.Controls.Add(this.SetDefaultParamButton);
             this.Controls.Add(this.ParamSetLabel);
+            this.Controls.Add(this.bit02CheckBox);
             this.Controls.Add(this.LoadParamsButton);
             this.Controls.Add(this.SaveParamsButton);
             this.Controls.Add(this.ParamSetNumericUpDown);

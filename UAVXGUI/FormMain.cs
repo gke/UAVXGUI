@@ -398,7 +398,7 @@ namespace UAVXGUI
 				MagLocked,
 				DrivesArmed,
 				NavigationActive,
-				SticksUnchangedFailsafe,
+				SticksUnchangedAlarm,
 
 				// 4
 				Signal,
@@ -418,7 +418,7 @@ namespace UAVXGUI
 				NewAltitudeValue,
 				IMUCalibrated,
 				CrossTrackActive,
-				FailsafesEnabled,
+				Alarm,
 
         };
 
@@ -479,7 +479,7 @@ namespace UAVXGUI
         //byte UAVXNavPacketTag;
         //byte Length;
         public static NavStates NavStateT;            // 2
-        public static byte FailStateT;                // 3
+        public static byte AlarmStateT;                // 3
         public static byte GPSNoOfSatsT;              // 4
         public static byte GPSFixT;                   // 5
 
@@ -1071,7 +1071,7 @@ namespace UAVXGUI
            "GPSTime," +
             "NavTimeout," +
             "NavState," +
-            "FailState," +
+            "AlarmState," +
             "GPSSats," +
             "GPSFix," +
             "GPShAcc," +
@@ -1775,7 +1775,7 @@ namespace UAVXGUI
             DumpBBButton.BackColor = F[(byte)FlagValues.DumpingBB] ?
                  Color.Orange : System.Drawing.SystemColors.Control;
 
-            SticksFrozenBox.BackColor = F[(byte)FlagValues.SticksUnchangedFailsafe] ?
+            SticksFrozenBox.BackColor = F[(byte)FlagValues.SticksUnchangedAlarm] ?
                 System.Drawing.Color.Orange : FlagsGroupBox.BackColor;
 
            UsingUplinkFlagBox.BackColor = F[(byte)FlagValues.UsingUplink] ?
@@ -1901,29 +1901,29 @@ namespace UAVXGUI
             } // switch
         }
 
-        void UpdateFailState()
+        void UpdateAlarmState()
         {    
 
 	// NoFailsafes, Monitoring, BatteryLow, LostSignal, HitFencRTH
 
-            switch (FailStateT)
+            switch (AlarmStateT)
             {
-                case 0: FailState.Text = "No Failsafes";
-                    FailState.BackColor = System.Drawing.Color.Orange;
+                case 0: AlarmState.Text = "No Failsafes";
+                    AlarmState.BackColor = System.Drawing.Color.Orange;
                     break;
-                case 1: FailState.Text = "Monitoring";
-                    FailState.BackColor = System.Drawing.Color.Green;
+                case 1: AlarmState.Text = "Monitoring";
+                    AlarmState.BackColor = System.Drawing.Color.Green;
                     break;
-                case 2: FailState.Text = "Battery Low";
-                    FailState.BackColor = System.Drawing.Color.RosyBrown;
+                case 2: AlarmState.Text = "Battery Low";
+                    AlarmState.BackColor = System.Drawing.Color.RosyBrown;
                     break;
-                case 3: FailState.Text = "Lost Signal";
-                    FailState.BackColor = System.Drawing.Color.Red;
+                case 3: AlarmState.Text = "Lost Signal";
+                    AlarmState.BackColor = System.Drawing.Color.Red;
                     break;
-                case 4: FailState.Text = "Fence RTH";
-                    FailState.BackColor = System.Drawing.Color.Red;
+                case 4: AlarmState.Text = "Fence RTH";
+                    AlarmState.BackColor = System.Drawing.Color.Red;
                     break;
-                default: FailState.Text = "Unknown"; break;
+                default: AlarmState.Text = "Unknown"; break;
             } // switch
         }
 
@@ -1972,17 +1972,17 @@ namespace UAVXGUI
                 BatteryCharge.Text = string.Format("{0:n0}", (float)BatteryChargeT);
         }
 
-        void UpdateWhere()
+        void UpdateWhere(byte i)
         {
             double Distance, Direction, Elevation;
                 short Guidance;
 
-            if (F[(byte)FlagValues.OriginValid]) {
+          //  if (F[(byte)FlagValues.OriginValid]) {
 
-                Distance = ExtractShort(ref UAVXPacket, 2);
-                Direction = ExtractShort(ref UAVXPacket, 4);
-                Elevation = ExtractShort(ref UAVXPacket, 6);
-                Guidance = ExtractShort(ref UAVXPacket, 7);
+                Distance = ExtractShort(ref UAVXPacket, (byte)(i));
+                Direction = ExtractShort(ref UAVXPacket, (byte)(i+2));
+                Elevation = ExtractShort(ref UAVXPacket, (byte)(i+4));
+                Guidance = ExtractShort(ref UAVXPacket, (byte)(i+5));
 
                 LongitudeCorrection = Math.Abs(Math.Cos((Math.PI / 180.0) * (double)GPSLatitudeT * 1e-7));
 
@@ -1997,7 +1997,7 @@ namespace UAVXGUI
                 WhereDistance.Text = string.Format("{0:n0}", Distance);
                if (Distance > MaximumFenceRadius)
                     WhereDistance.BackColor = System.Drawing.Color.Orange;
-            }
+     /*       }
             else
             {
                 WhereBearing.BackColor = System.Drawing.Color.Orange;
@@ -2006,6 +2006,7 @@ namespace UAVXGUI
                 WhereBearing.Text = "?";
                 WhereDistance.Text = "?";
             }
+     */
         }
 
         void UpdateControls()
@@ -2078,9 +2079,6 @@ namespace UAVXGUI
                         GPScAcc.BackColor = GPScAccT > 50 ?
                             System.Drawing.Color.Orange : GPSStatBox.BackColor;
 
-
-
-
                     CurrWP.Text = string.Format("{0:n0}", CurrWPT);
 
                     GPSVel.Text = string.Format("{0:n1}", (double)GPSVelT * 0.1); // M/Sec
@@ -2090,7 +2088,7 @@ namespace UAVXGUI
                     GPSLongitude.Text = string.Format("{0:n6}", (double)GPSLongitudeT * 1e-7);
                     GPSLatitude.Text = string.Format("{0:n6}", (double)GPSLatitudeT * 1e-7);
 
-                    if ((Flags[0] & 0x40) != 0) // GPSValid
+                    if (GPSFixT >= 3) // GPSValid
                     {
                         GPSVel.BackColor = NavGroupBox.BackColor;
                        // GPSROC.BackColor = NavGroupBox.BackColor;
@@ -2109,7 +2107,8 @@ namespace UAVXGUI
 
                         Distance = Math.Sqrt(NorthDiff * NorthDiff + EastDiff * EastDiff);
                         DistanceToDesired.Text = string.Format("{0:n1}", Distance);
-                    }
+                
+                     }
                     else
                     {
                         GPSVel.BackColor = System.Drawing.Color.Orange;
@@ -2124,6 +2123,7 @@ namespace UAVXGUI
                         WayHeading.Text = "?";
                         DistanceToDesired.Text = "?";
                     }
+                   
         }
 
         int Limit(int v, int Min, int Max)
@@ -2362,7 +2362,7 @@ namespace UAVXGUI
 
                     StateT = (FlightStates)ExtractByte(ref UAVXPacket, 8);               
                     NavStateT = (NavStates)ExtractByte(ref UAVXPacket, 9);
-                    FailStateT = ExtractByte(ref UAVXPacket, 10);
+                    AlarmStateT = ExtractByte(ref UAVXPacket, 10);
                     BatteryVoltsT = ExtractShort(ref UAVXPacket, 11);
                     BatteryCurrentT = ExtractShort(ref UAVXPacket, 13);
                     BatteryChargeT = ExtractShort(ref UAVXPacket, 15);
@@ -2386,9 +2386,9 @@ namespace UAVXGUI
 
                     UpdateFlightState();
                     UpdateNavState();
-                    UpdateFailState();
+                    UpdateAlarmState();
                     UpdateBattery();
-                    UpdateWhere();
+                   // UpdateWhere();
                     UpdateFlags();
 
                     Airframe.Text = AFNames[AirframeT];
@@ -2414,13 +2414,19 @@ namespace UAVXGUI
                         GPSLatitude.BackColor = System.Drawing.Color.Orange;
                     }
 
-                    UpdateWhere();
+                    //UpdateWhere();
 
                     MissionTimeTextBox.Text = string.Format("{0:n0}", MissionTimeMilliSecT / 1000);
 
                     break;
 
                 case UAVXMinimOSDPacketTag:
+
+                  //  for (i = 0; i < 6; i++)
+                  //      Flags[i] = 0;
+                  //  UpdateFlags();
+//
+                  //  GPShAccT = GPSvAccT = GPSsAccT = GPScAccT = 3200;
 
                     BatteryVoltsT = ExtractShort(ref UAVXPacket, 2);
                     BatteryVoltsT /= 100;
@@ -2433,36 +2439,42 @@ namespace UAVXGUI
                     PitchAngleT *= DEGMILLIRAD;
 
                     AltitudeT = ExtractInt24(ref UAVXPacket, 12);
-                    ROCT = ExtractShort(ref UAVXPacket, 15);
+                    DesiredAltitudeT = ExtractInt24(ref UAVXPacket, 15);
+                    ROCT = ExtractShort(ref UAVXPacket, 18);
 
-                    GPSVelT = ExtractShort(ref UAVXPacket, 17);
+                    GPSVelT = ExtractShort(ref UAVXPacket, 20);
 
-                    HeadingT = ExtractShort(ref UAVXPacket, 19); // degrees
+                    HeadingT = ExtractShort(ref UAVXPacket, 22); // degrees
                     HeadingT *= DEGMILLIRAD;
+                        GPSHeadingT = ExtractShort(ref UAVXPacket, 24); // degrees
 
-                    GPSLatitudeT = ExtractInt(ref UAVXPacket, 21);
-                    GPSLongitudeT = ExtractInt(ref UAVXPacket, 25);
+                    GPSLatitudeT = ExtractInt(ref UAVXPacket, 26);
+                    GPSLongitudeT = ExtractInt(ref UAVXPacket, 30);
 
-                    GPSNoOfSatsT = ExtractByte(ref UAVXPacket, 29);
-                    GPSFixT = ExtractByte(ref UAVXPacket, 30);
+                    GPSNoOfSatsT = ExtractByte(ref UAVXPacket, 34);
+                    GPSFixT = ExtractByte(ref UAVXPacket, 35);
+                    GPShAccT = ExtractShort(ref UAVXPacket, 36);
 
-                    CurrWPT = ExtractByte(ref UAVXPacket, 31);
-                    WPBearingT = ExtractShort(ref UAVXPacket, 32);
-                    WPBearingT *= DEGMILLIRAD;
-                    WPDistanceT = ExtractShort(ref UAVXPacket, 34);
-                    CrossTrackET = ExtractShort(ref UAVXPacket, 36);
+                    CurrWPT = ExtractByte(ref UAVXPacket, 38);
+                    WPBearingT = ExtractShort(ref UAVXPacket, 39);
+                    WPDistanceT = ExtractShort(ref UAVXPacket, 41);
+                    CrossTrackET = ExtractShort(ref UAVXPacket, 43);
 
-                    byte MinimOSDArmedT = ExtractByte(ref UAVXPacket, 38);
-   
-                    DesiredThrottleT = ExtractShort(ref UAVXPacket, 39);
-                    NavStateT = (NavStates)ExtractByte(ref UAVXPacket, 41);
-                    AirframeT = ExtractByte(ref UAVXPacket, 42);
+                    DesiredThrottleT = ExtractShort(ref UAVXPacket, 45);
+
+                    byte MinimOSDArmedT = ExtractByte(ref UAVXPacket, 47);
+                    NavStateT = (NavStates)ExtractByte(ref UAVXPacket, 48);
+                    AirframeT = ExtractByte(ref UAVXPacket, 49);                
 
                     WarningPictureBox.Visible = MinimOSDArmedT != 0;
 
                     UpdateBattery();
                     //UpdateWhere();
                     //UpdateFlags();
+
+                    WayHeading.Text = string.Format("{0:n0}", (float)WPBearingT);
+                    CrossTrackError.Text = string.Format("{0:n1}", (float)CrossTrackET*0.1f);
+                  
 
                     UpdateAltitude();
                     UpdateAttitude();
@@ -2481,6 +2493,10 @@ namespace UAVXGUI
                     DesiredThrottle.Text = string.Format("{0:n0}", DesiredThrottleT);
 
                     UpdateGPS();
+
+                    DistanceToDesired.Text = string.Format("{0:n1}", (float)WPDistanceT * 0.1f);
+
+                    SpeakNavStatus();
 
                     break;
 
@@ -2711,7 +2727,7 @@ namespace UAVXGUI
                 case UAVXNavPacketTag:
                     NavPacketsReceived++;
                     NavStateT = (NavStates)ExtractByte(ref UAVXPacket, 2);
-                    FailStateT = ExtractByte(ref UAVXPacket, 3);
+                    AlarmStateT = ExtractByte(ref UAVXPacket, 3);
 
                     GPSNoOfSatsT = ExtractByte(ref UAVXPacket, 4);
                     GPSFixT = ExtractByte(ref UAVXPacket, 5);
@@ -2745,7 +2761,7 @@ namespace UAVXGUI
                     NavYCorrT = ExtractShort(ref UAVXPacket, 57);
 
                     UpdateNavState();
-                    UpdateFailState();
+                    UpdateAlarmState();
 
                     if ( Math.Abs(DesiredThrottleT - CruiseThrottleT) < 3 )
                         DesiredThrottle.BackColor = System.Drawing.Color.Green;
@@ -2778,7 +2794,7 @@ namespace UAVXGUI
 
                     break;
                     case UAVXGuidancePacketTag:
-                        UpdateWhere();
+                        UpdateWhere(2);
                     break;
 
 
@@ -3037,7 +3053,7 @@ namespace UAVXGUI
             GPSMissionTimeT + "," +
             NavStateTimeoutT + "," +
             NavStateT + "," +
-            FailStateT + "," +
+            AlarmStateT + "," +
 
             GPSNoOfSatsT + "," +
             GPSFixT + "," +

@@ -314,15 +314,15 @@ namespace UAVXGUI
             if (parameterForm.bit01CheckBox.Focused)
                 helpstring = help.GetString("AuxMode");
             if (parameterForm.bit61CheckBox.Focused)
-                helpstring = help.GetString("ControlScheme");
+                helpstring = help.GetString("FastDescent");
             if (parameterForm.bit21CheckBox.Focused)
                 helpstring = help.GetString("LEDs");
             if (parameterForm.bit31CheckBox.Focused)
                 helpstring = help.GetString("Emulation");
             if (parameterForm.bit41CheckBox.Focused)
-                helpstring = help.GetString("WPNavigation");
+                helpstring = help.GetString("GPSToArm");
             if (parameterForm.bit51CheckBox.Focused)
-                helpstring = help.GetString("Failsafes");
+                helpstring = help.GetString("UnusedFailsafes");
             if (parameterForm.bit11CheckBox.Focused)
                 helpstring = help.GetString("RTHDescend");
 

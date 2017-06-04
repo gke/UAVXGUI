@@ -625,7 +625,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ModifiersGroupBox1.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="RollPitchFFLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -970,7 +970,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="BatteryCapacityNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -1141,7 +1141,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;BatteryBox.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="ComboPort2Label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1624,7 +1624,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;GeneralGroupBox.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="EstCruiseLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2272,7 +2272,7 @@
     <value>NoControl</value>
   </data>
   <data name="bit31CheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 136</value>
+    <value>6, 140</value>
   </data>
   <data name="bit31CheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 17</value>
@@ -2293,7 +2293,7 @@
     <value>ConfigGroupBox</value>
   </data>
   <data name="&gt;&gt;bit31CheckBox.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="bit61CheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2305,7 +2305,7 @@
     <value>NoControl</value>
   </data>
   <data name="bit61CheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 51</value>
+    <value>6, 52</value>
   </data>
   <data name="bit61CheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 17</value>
@@ -2326,7 +2326,7 @@
     <value>ConfigGroupBox</value>
   </data>
   <data name="&gt;&gt;bit61CheckBox.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="bit21CheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2359,7 +2359,7 @@
     <value>ConfigGroupBox</value>
   </data>
   <data name="&gt;&gt;bit21CheckBox.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>12</value>
   </data>
   <data name="ComboPort1ComboBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -2902,13 +2902,13 @@
     <value>7, 197</value>
   </data>
   <data name="Ch7Label.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 13</value>
+    <value>31, 13</value>
   </data>
   <data name="Ch7Label.TabIndex" type="System.Int32, mscorlib">
     <value>113</value>
   </data>
   <data name="Ch7Label.Text" xml:space="preserve">
-    <value>NavSens.</value>
+    <value>Aux2</value>
   </data>
   <data name="&gt;&gt;Ch7Label.Name" xml:space="preserve">
     <value>Ch7Label</value>
@@ -3091,7 +3091,7 @@
     <value>NoControl</value>
   </data>
   <data name="bit11CheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 34</value>
+    <value>6, 35</value>
   </data>
   <data name="bit11CheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 17</value>
@@ -3112,7 +3112,7 @@
     <value>ConfigGroupBox</value>
   </data>
   <data name="&gt;&gt;bit11CheckBox.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>10</value>
   </data>
   <data name="bit51CheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3124,16 +3124,19 @@
     <value>NoControl</value>
   </data>
   <data name="bit51CheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 17</value>
+    <value>103, 91</value>
   </data>
   <data name="bit51CheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 17</value>
+    <value>55, 17</value>
   </data>
   <data name="bit51CheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
   </data>
   <data name="bit51CheckBox.Text" xml:space="preserve">
-    <value>Failsafes</value>
+    <value>Bit51</value>
+  </data>
+  <data name="bit51CheckBox.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;bit51CheckBox.Name" xml:space="preserve">
     <value>bit51CheckBox</value>
@@ -3145,7 +3148,7 @@
     <value>ConfigGroupBox</value>
   </data>
   <data name="&gt;&gt;bit51CheckBox.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>9</value>
   </data>
   <data name="bit41CheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3157,16 +3160,16 @@
     <value>NoControl</value>
   </data>
   <data name="bit41CheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 68</value>
+    <value>6, 17</value>
   </data>
   <data name="bit41CheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 17</value>
+    <value>82, 17</value>
   </data>
   <data name="bit41CheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
   </data>
   <data name="bit41CheckBox.Text" xml:space="preserve">
-    <value>WP Nav</value>
+    <value>Req. GPS</value>
   </data>
   <data name="&gt;&gt;bit41CheckBox.Name" xml:space="preserve">
     <value>bit41CheckBox</value>
@@ -3178,7 +3181,7 @@
     <value>ConfigGroupBox</value>
   </data>
   <data name="&gt;&gt;bit41CheckBox.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>11</value>
   </data>
   <data name="ComboPort1Label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3241,7 +3244,7 @@
     <value>ConfigGroupBox</value>
   </data>
   <data name="&gt;&gt;bit01CheckBox.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="NavMaxAngleNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -3607,7 +3610,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBoxGPS1.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="AltPosKiNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -4387,7 +4390,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;RollGroupBox.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="FWAltHoldDecayTimeNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -4474,7 +4477,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;infoTextBox.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="SaveParamsButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>93, 11</value>
@@ -4498,7 +4501,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SaveParamsButton.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="LoadParamsButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 11</value>
@@ -4522,7 +4525,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;LoadParamsButton.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="WriteParamsButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>580, 11</value>
@@ -4546,7 +4549,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;WriteParamsButton.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="ReadParamsButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>499, 11</value>
@@ -4570,7 +4573,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ReadParamsButton.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="ParamSetNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
     <value>460, 12</value>
@@ -4591,7 +4594,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ParamSetNumericUpDown.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="ParamSetLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5752,7 +5755,7 @@
     <value>NoControl</value>
   </data>
   <data name="bit02CheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 85</value>
+    <value>710, 11</value>
   </data>
   <data name="bit02CheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 17</value>
@@ -5763,6 +5766,9 @@
   <data name="bit02CheckBox.Text" xml:space="preserve">
     <value>Manual AH</value>
   </data>
+  <data name="bit02CheckBox.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;bit02CheckBox.Name" xml:space="preserve">
     <value>bit02CheckBox</value>
   </data>
@@ -5770,7 +5776,7 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bit02CheckBox.Parent" xml:space="preserve">
-    <value>ConfigGroupBox</value>
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;bit02CheckBox.ZOrder" xml:space="preserve">
     <value>6</value>
@@ -5785,7 +5791,7 @@
     <value>NoControl</value>
   </data>
   <data name="bit62CheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>95, 102</value>
+    <value>95, 119</value>
   </data>
   <data name="bit62CheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 17</value>
@@ -5851,7 +5857,7 @@
     <value>NoControl</value>
   </data>
   <data name="bit42CheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>95, 136</value>
+    <value>95, 140</value>
   </data>
   <data name="bit42CheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>67, 17</value>
@@ -5884,7 +5890,7 @@
     <value>NoControl</value>
   </data>
   <data name="bit32CheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 119</value>
+    <value>6, 68</value>
   </data>
   <data name="bit32CheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 17</value>
@@ -5950,7 +5956,7 @@
     <value>NoControl</value>
   </data>
   <data name="bit12CheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 102</value>
+    <value>6, 83</value>
   </data>
   <data name="bit12CheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 17</value>
