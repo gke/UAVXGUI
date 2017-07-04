@@ -3047,7 +3047,7 @@ namespace UAVXGUI
             SaveTextLogFileStreamWriter.Write(AccConfidenceT * 0.01 + "," ); 
 
             for (i = 0; i < 10; i++)
-               SaveTextLogFileStreamWriter.Write(PWMT[i] + ",");
+               SaveTextLogFileStreamWriter.Write(PWMT[i]*0.001 + ",");
 
             SaveTextLogFileStreamWriter.Write("Nav," +
             GPSMissionTimeT + "," +

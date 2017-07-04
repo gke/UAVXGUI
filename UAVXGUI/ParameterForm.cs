@@ -304,6 +304,9 @@ namespace UAVXGUI
             if (parameterForm.AirspeedComboBox.Focused)
                 helpstring = help.GetString("AirspeedSensor");
 
+            if (parameterForm.wsLEDsNumericUpDown.Focused)
+                helpstring = help.GetString("wsLEDs");
+
             if (parameterForm.FWFlapDecayTimeNumericUpDown.Focused)
                 helpstring = help.GetString("FWFlapDecayTime");
             if (parameterForm.FWAltHoldDecayTimeNumericUpDown.Focused)
@@ -1361,6 +1364,13 @@ namespace UAVXGUI
                     case 79:
                         TurnoutNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(TurnoutNumericUpDown);
+                        break;
+                    case 80:
+                        wsLEDsNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(wsLEDsNumericUpDown);
+                        break;
+                    case 81:
+                        // hAcc
                         break;
                     case 94: // Aux5
                         Ch10NumericUpDown.Value = UAVXP[p - 1].Value;

@@ -223,6 +223,8 @@
             this.RC3ProgressBar = new System.Windows.Forms.ProgressBar();
             this.bit02CheckBox = new System.Windows.Forms.CheckBox();
             this.ConfigGroupBox = new System.Windows.Forms.GroupBox();
+            this.wsLEDsNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.wsLEDsLabel = new System.Windows.Forms.Label();
             this.bit62CheckBox = new System.Windows.Forms.CheckBox();
             this.bit52CheckBox = new System.Windows.Forms.CheckBox();
             this.bit42CheckBox = new System.Windows.Forms.CheckBox();
@@ -318,6 +320,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Ch12NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RxChannelsNumericUpDown)).BeginInit();
             this.ConfigGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.wsLEDsNumericUpDown)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.AttitudeGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TurnoutNumericUpDown)).BeginInit();
@@ -2604,6 +2607,8 @@
             // 
             // ConfigGroupBox
             // 
+            this.ConfigGroupBox.Controls.Add(this.wsLEDsNumericUpDown);
+            this.ConfigGroupBox.Controls.Add(this.wsLEDsLabel);
             this.ConfigGroupBox.Controls.Add(this.bit62CheckBox);
             this.ConfigGroupBox.Controls.Add(this.bit52CheckBox);
             this.ConfigGroupBox.Controls.Add(this.bit42CheckBox);
@@ -2620,6 +2625,27 @@
             resources.ApplyResources(this.ConfigGroupBox, "ConfigGroupBox");
             this.ConfigGroupBox.Name = "ConfigGroupBox";
             this.ConfigGroupBox.TabStop = false;
+            // 
+            // wsLEDsNumericUpDown
+            // 
+            this.wsLEDsNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.wsLEDsNumericUpDown, "wsLEDsNumericUpDown");
+            this.wsLEDsNumericUpDown.Maximum = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
+            this.wsLEDsNumericUpDown.Name = "wsLEDsNumericUpDown";
+            this.wsLEDsNumericUpDown.Tag = "80";
+            this.wsLEDsNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.wsLEDsNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.wsLEDsNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            // 
+            // wsLEDsLabel
+            // 
+            resources.ApplyResources(this.wsLEDsLabel, "wsLEDsLabel");
+            this.wsLEDsLabel.ForeColor = System.Drawing.Color.Black;
+            this.wsLEDsLabel.Name = "wsLEDsLabel";
             // 
             // bit62CheckBox
             // 
@@ -3048,6 +3074,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.RxChannelsNumericUpDown)).EndInit();
             this.ConfigGroupBox.ResumeLayout(false);
             this.ConfigGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.wsLEDsNumericUpDown)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.AttitudeGroupBox.ResumeLayout(false);
@@ -3285,6 +3312,8 @@
         public System.Windows.Forms.NumericUpDown TurnoutNumericUpDown;
         private System.Windows.Forms.Label EstCruiseLabel;
         public System.Windows.Forms.NumericUpDown EstCruiseNumericUpDown;
+        private System.Windows.Forms.Label wsLEDsLabel;
+        public System.Windows.Forms.NumericUpDown wsLEDsNumericUpDown;
 
 
     }

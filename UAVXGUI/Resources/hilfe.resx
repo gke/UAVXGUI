@@ -233,6 +233,9 @@ Mode 2: Rudder/Throttle left hand Ailerons/Elevator right hand. Rudder available
     <data name="FWFlapDecayTime" xml:space="preserve">
     <value>FW the time it takes for flaps/spoilers/airbrakes to close.</value>
   </data>
+      <data name="wsLEDs" xml:space="preserve">
+    <value>The number of WS2812 external LEDs available.</value>
+  </data>
     <data name="FWAltHoldDecayTime" xml:space="preserve">
     <value>When the altitude sensor changes from RF to baro or baro to RF in flight while holding altitude the altitude hold 
     disengages and has to be re-acquired. THis is the time it takes for the altitude hold compensation applied to the throttle 
@@ -242,7 +245,7 @@ Mode 2: Rudder/Throttle left hand Ailerons/Elevator right hand. Rudder available
     <value>The heading error in degrees below which the aircraft reduces its turn rate/angle from the maximum set. Try 60.</value>
   </data>  
   <data name="GPSToArm" xml:space="preserve">
-    <value>ENABLES requirement for good GPS signal to ARM when you have a GPS installed - DISABLE AT YOUR RISK.</value>
+    <value>ENABLES requirement for good GPS signal to throttle up and takeoff when you have a GPS installed - DISABLE AT YOUR RISK.</value>
   </data>
   <data name="NavPosition" xml:space="preserve">
     <value>Determines the desired velocity for a given Nav position error.</value>
