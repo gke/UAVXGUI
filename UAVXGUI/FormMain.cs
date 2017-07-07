@@ -321,23 +321,23 @@ namespace UAVXGUI
 
       static public  string[] AFNames = { 
             "Tricopter",
-            "CoaxTri_Y6",
-            "VTail_Y4",
+            "CoaxTri Y6",
+            "VTail Y4",
             "Quadcopter",
-            "X_Quadcopter",
+            "X Quadcopter",
             "Coax Quad",
-            "X_Coax_Quad",
+            "X Coax Quad",
             "Hexacopter",
-            "X_Hexacopter",
+            "X Hexacopter",
             "Octocopter",
-            "X_Octocopter",
+            "X Octocopter",
             "Heli90",
             "Heli120",
-            "Flying_Wing",
+            "Flying Wing",
             "Delta",
             "Aileron",
             "Spoilerons",
-            "Rudder_Elevator",
+            "Rudder Elevator",
             "VTOL",
             "Gimbal",
             "Instrumentation",
@@ -362,7 +362,7 @@ namespace UAVXGUI
         enum FlagValues
         {
 				AltControlEnabled,
-                NavSaturation,
+                UsingGPSAltitude,
 				VRSHazard,
 				LostModel,
 				NearLevel,
@@ -588,7 +588,6 @@ namespace UAVXGUI
 
         public static short AirframeT;
 
-        short OrientT;
         short VersionLenT;
         string VersionNameT;
 
@@ -653,7 +652,6 @@ namespace UAVXGUI
         double LongitudeCorrection; 
         bool FirstGPSCoordinates = true;
         int FlightHeading;
-        double FlightHeadingOffset = 0.0;
         double FlightRoll, FlightPitch;
         double FlightRollp = 0.0;
         double FlightPitchp = 0.0;
@@ -973,7 +971,7 @@ namespace UAVXGUI
             SaveTextLogFileStreamWriter.Write("Time, Flight," +
 
                 "AltHEn," +
-                "NavSat," + // stick programmed
+                "GPSAltVal," + // stick programmed
                 "VRSHaz," +
                 "Lost," +
                 "Level," +
@@ -1156,7 +1154,7 @@ namespace UAVXGUI
 
             ", " +
 
-        "AFType, Orient, ");
+        "AFType, ");
 
         SaveTextLogFileStreamWriter.WriteLine();
         }
@@ -1640,6 +1638,9 @@ namespace UAVXGUI
             AltHoldBox.BackColor = F[(byte)FlagValues.AltControlEnabled] ?
                 System.Drawing.Color.Green : System.Drawing.Color.Red;
 
+            GPSAltitudeBox.BackColor = F[(byte)FlagValues.UsingGPSAltitude] ?
+                System.Drawing.Color.Green : FlagsGroupBox.BackColor;
+
             TurnToPOIBox.BackColor = F[(byte)FlagValues.UsingPOI] ?
                 System.Drawing.Color.Green : FlagsGroupBox.BackColor;
 
@@ -1775,9 +1776,6 @@ namespace UAVXGUI
             DumpBBButton.BackColor = F[(byte)FlagValues.DumpingBB] ?
                  Color.Orange : System.Drawing.SystemColors.Control;
 
-            SticksFrozenBox.BackColor = F[(byte)FlagValues.SticksUnchangedAlarm] ?
-                System.Drawing.Color.Orange : FlagsGroupBox.BackColor;
-
            UsingUplinkFlagBox.BackColor = F[(byte)FlagValues.UsingUplink] ?
                System.Drawing.Color.Green : System.Drawing.Color.Orange;
             
@@ -1787,11 +1785,11 @@ namespace UAVXGUI
         {
          //  do it all of the time in case some one changes orientation but does not shutdown GS if (!DoneOrientation)
             {
-                FlightHeadingOffset = F[(byte)FlagValues.Emulation] ?
-                    0.0 : (OrientT * Math.PI) / 24.0;
+              //  FlightHeadingOffset = F[(byte)FlagValues.Emulation] ?
+              //      0.0 : (OrientT * Math.PI) / 24.0;
 
-                OSO = Math.Sin(FlightHeadingOffset);
-                OCO = Math.Cos(FlightHeadingOffset);
+             //   OSO = Math.Sin(FlightHeadingOffset);
+              //  OCO = Math.Cos(FlightHeadingOffset);
             }
         }
 
@@ -2363,20 +2361,22 @@ namespace UAVXGUI
                     StateT = (FlightStates)ExtractByte(ref UAVXPacket, 8);               
                     NavStateT = (NavStates)ExtractByte(ref UAVXPacket, 9);
                     AlarmStateT = ExtractByte(ref UAVXPacket, 10);
+
                     BatteryVoltsT = ExtractShort(ref UAVXPacket, 11);
                     BatteryCurrentT = ExtractShort(ref UAVXPacket, 13);
                     BatteryChargeT = ExtractShort(ref UAVXPacket, 15);
+
                     RollAngleT = ExtractShort(ref UAVXPacket, 17);
                     PitchAngleT = ExtractShort(ref UAVXPacket, 19);
                     AltitudeT = ExtractInt24(ref UAVXPacket, 21);
                     ROCT = ExtractShort(ref UAVXPacket, 24);  
                     HeadingT = ExtractShort(ref UAVXPacket, 26);
+
                     GPSLatitudeT = ExtractInt(ref UAVXPacket, 28);
                     GPSLongitudeT = ExtractInt(ref UAVXPacket, 32);
 
                     AirframeT = ExtractByte(ref UAVXPacket, 36);
-                    OrientT = ExtractByte(ref UAVXPacket, 37);
-                    MissionTimeMilliSecT = ExtractInt24(ref UAVXPacket, 38);
+                    MissionTimeMilliSecT = ExtractInt24(ref UAVXPacket, 37);
 
                     DesiredAltitudeT = 0;
                     RangefinderAltitudeT = 0;
@@ -2479,10 +2479,6 @@ namespace UAVXGUI
                     UpdateAltitude();
                     UpdateAttitude();
                     UpdateNavState();
-
-                    FlightHeadingOffset = 0;
-                    OSO = 0.0;
-                    OCO = 1.0;
 
                     UAVXArm = (AirframeT & 0x80) != 0;
                     AirframeT &= 0x7f;
@@ -2782,9 +2778,6 @@ namespace UAVXGUI
                     NavRCorr.Text = string.Format("{0:n0}", NavRCorrT * 0.1);
                     NavPCorr.Text = string.Format("{0:n0}", NavPCorrT * 0.1);
                     NavYCorr.Text = string.Format("{0:n0}", NavYCorrT);
-
-                    NavRCorr.BackColor = NavPCorr.BackColor = F[(byte)FlagValues.NavSaturation] ? 
-                        System.Drawing.Color.Orange : NavCompBox.BackColor; 
 
                     if (MPU6XXXTempT < 0.0)
                         SensorTemp.BackColor = System.Drawing.Color.LightSteelBlue;
@@ -3118,7 +3111,7 @@ namespace UAVXGUI
                 else
                     SaveTextLogFileStreamWriter.Write( Stats[i] + ",");
 
-            SaveTextLogFileStreamWriter.Write( AirframeT + "," + OrientT + ",");
+            SaveTextLogFileStreamWriter.Write( AirframeT + "," );
 
             SaveTextLogFileStreamWriter.WriteLine();
             SaveTextLogFileStreamWriter.Flush();
