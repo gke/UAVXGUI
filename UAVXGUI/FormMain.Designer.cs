@@ -336,6 +336,7 @@ namespace UAVXGUI
             this.FlightStateLabel = new System.Windows.Forms.Label();
             this.attitudeIndicatorInstrumentControl1 = new Instruments.AttitudeIndicatorInstrumentControl();
             this.headingIndicatorInstrumentControl1 = new Instruments.HeadingIndicatorInstrumentControl();
+            this.CalibrateAcc6PointButton = new System.Windows.Forms.Button();
             this.GyroGroupBox.SuspendLayout();
             this.ControlsGroupBox.SuspendLayout();
             this.AttitudeGroupBox.SuspendLayout();
@@ -2776,11 +2777,11 @@ namespace UAVXGUI
             // 
             // GPSBypassButton
             // 
-            this.GPSBypassButton.Location = new System.Drawing.Point(150, 34);
+            this.GPSBypassButton.Location = new System.Drawing.Point(190, 34);
             this.GPSBypassButton.Name = "GPSBypassButton";
-            this.GPSBypassButton.Size = new System.Drawing.Size(77, 23);
+            this.GPSBypassButton.Size = new System.Drawing.Size(50, 23);
             this.GPSBypassButton.TabIndex = 213;
-            this.GPSBypassButton.Text = "GPS Bypass";
+            this.GPSBypassButton.Text = "GPS";
             this.GPSBypassButton.UseVisualStyleBackColor = true;
             this.GPSBypassButton.Click += new System.EventHandler(this.GPSBypassButton_Click);
             // 
@@ -2905,6 +2906,7 @@ namespace UAVXGUI
             // 
             // CalibrationGroupBox
             // 
+            this.CalibrationGroupBox.Controls.Add(this.CalibrateAcc6PointButton);
             this.CalibrationGroupBox.Controls.Add(this.label23);
             this.CalibrationGroupBox.Controls.Add(this.label21);
             this.CalibrationGroupBox.Controls.Add(this.label22);
@@ -3400,6 +3402,16 @@ namespace UAVXGUI
             this.headingIndicatorInstrumentControl1.TabIndex = 4;
             this.headingIndicatorInstrumentControl1.Text = "headingIndicatorInstrumentControl1";
             // 
+            // CalibrateAcc6PointButton
+            // 
+            this.CalibrateAcc6PointButton.Location = new System.Drawing.Point(134, 34);
+            this.CalibrateAcc6PointButton.Name = "CalibrateAcc6PointButton";
+            this.CalibrateAcc6PointButton.Size = new System.Drawing.Size(50, 23);
+            this.CalibrateAcc6PointButton.TabIndex = 217;
+            this.CalibrateAcc6PointButton.Text = "Acc6Pt";
+            this.CalibrateAcc6PointButton.UseVisualStyleBackColor = true;
+            this.CalibrateAcc6PointButton.Click += new System.EventHandler(this.CalibrateAcc6PointButton_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3818,6 +3830,7 @@ namespace UAVXGUI
         private System.Windows.Forms.TextBox CruiseThrottle;
         private System.Windows.Forms.Label CruiseThrottleLabel;
         private System.Windows.Forms.Label FlightStateLabel;
+        private System.Windows.Forms.Button CalibrateAcc6PointButton;
     }
 }
 

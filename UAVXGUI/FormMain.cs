@@ -229,7 +229,7 @@ namespace UAVXGUI
         };
 
         public enum MiscComms 
-        { miscCalIMU, miscCalMag, miscLB, miscUnused, miscBBDump, miscGPSBypass}
+        { miscCalIMU, miscCalMag, miscLB, miscUnused, miscBBDump, miscGPSBypass, miscCalAcc, miscCalGyro}
 
         public enum NavStates
         {
@@ -418,7 +418,7 @@ namespace UAVXGUI
 				NewAltitudeValue,
 				IMUCalibrated,
 				CrossTrackActive,
-				Alarm,
+				AccCalibrated,
 
         };
 
@@ -661,6 +661,7 @@ namespace UAVXGUI
         bool UAVXArm = true; // default
 
         bool CalibrateIMUEnabled = false;
+        bool CalibrateAcc6PointEnabled = false;
         bool CalibrateMagEnabled = false;
 
         bool LogFileHeaderWritten = false;
@@ -1199,6 +1200,16 @@ namespace UAVXGUI
                 SendRequestPacket(UAVXMiscPacketTag, (byte)MiscComms.miscCalIMU, 0);
                 CalibrateIMUButton.BackColor = Color.Orange;
                 CalibrateIMUEnabled = true;
+            }
+        }
+
+        private void CalibrateAcc6PointButton_Click(object sender, EventArgs e)
+        {
+            if (((StateT == FlightStates.Preflight) || (StateT == FlightStates.Ready)) && !CalibrateAcc6PointEnabled)
+            {
+                SendRequestPacket(UAVXMiscPacketTag, (byte)MiscComms.miscCalAcc, 0);
+                CalibrateAcc6PointButton.BackColor = Color.Orange;
+                CalibrateAcc6PointEnabled = true;
             }
         }
 
@@ -1744,6 +1755,17 @@ namespace UAVXGUI
             }
             else {
                 CalibrateIMUButton.BackColor = (CalibrateIMUEnabled) ?
+                    Color.Orange : Color.Red;
+                IMUFailBox.BackColor = System.Drawing.Color.Orange;
+            }
+
+            if (F[(byte)FlagValues.AccCalibrated]) {
+                IMUFailBox.BackColor = System.Drawing.SystemColors.Control;
+                CalibrateAcc6PointButton.BackColor = System.Drawing.Color.Green;
+                CalibrateAcc6PointEnabled = false;
+            }
+            else {
+                CalibrateAcc6PointButton.BackColor = (CalibrateAcc6PointEnabled) ?
                     Color.Orange : Color.Red;
                 IMUFailBox.BackColor = System.Drawing.Color.Orange;
             }

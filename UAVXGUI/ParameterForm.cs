@@ -293,8 +293,10 @@ namespace UAVXGUI
                 helpstring = help.GetString("FWPitchThrottleFF");
             if (parameterForm.MaxAttitudeAngleNumericUpDown.Focused)
                 helpstring = help.GetString("MaxAttitudeAngle");
-            if (parameterForm.FWMaxClimbAngleNumericUpDown.Focused)
-                helpstring = help.GetString("MaxRollAngle");
+            if (parameterForm.FWClimbAngleNumericUpDown.Focused)
+                helpstring = help.GetString("ClimbAngle");
+            if (parameterForm.FWTrimAngleNumericUpDown.Focused)
+                helpstring = help.GetString("TrimAngle");
             if (parameterForm.BestROCNumericUpDown.Focused)
                 helpstring = help.GetString("BestROC");
             if (parameterForm.MaxAltCompNumericUpDown.Focused)
@@ -319,13 +321,13 @@ namespace UAVXGUI
             if (parameterForm.bit61CheckBox.Focused)
                 helpstring = help.GetString("FastDescent");
             if (parameterForm.bit21CheckBox.Focused)
-                helpstring = help.GetString("LEDs");
+                helpstring = help.GetString("ManualAH");
             if (parameterForm.bit31CheckBox.Focused)
                 helpstring = help.GetString("Emulation");
             if (parameterForm.bit41CheckBox.Focused)
                 helpstring = help.GetString("GPSToArm");
             if (parameterForm.bit51CheckBox.Focused)
-                helpstring = help.GetString("UnusedFailsafes");
+                helpstring = help.GetString("GPSAltitude");
             if (parameterForm.bit11CheckBox.Focused)
                 helpstring = help.GetString("RTHDescend");
 
@@ -1296,8 +1298,8 @@ namespace UAVXGUI
                         ParamUpdate(MaxAltCompNumericUpDown);
                         break;
                     case 68:
-                        FWMaxClimbAngleNumericUpDown.Value = UAVXP[p - 1].Value;
-                        ParamUpdate(FWMaxClimbAngleNumericUpDown);
+                        FWClimbAngleNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(FWClimbAngleNumericUpDown);
                         break;
                     case 69:
                         NavMaxAngleNumericUpDown.Value = UAVXP[p - 1].Value;
@@ -1371,6 +1373,10 @@ namespace UAVXGUI
                         break;
                     case 81:
                         // hAcc
+                        break;
+                    case 82:
+                       FWTrimAngleNumericUpDown.Value = UAVXP[p - 1].Value;
+                       ParamUpdate(FWTrimAngleNumericUpDown);
                         break;
                     case 94: // Aux5
                         Ch10NumericUpDown.Value = UAVXP[p - 1].Value;

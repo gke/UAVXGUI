@@ -237,8 +237,8 @@
             this.AttitudeGroupBox = new System.Windows.Forms.GroupBox();
             this.TurnoutLabel = new System.Windows.Forms.Label();
             this.TurnoutNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.FWMaxClimbAngleNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.FWMaxClimbAngleLabel = new System.Windows.Forms.Label();
+            this.FWClimbAngleNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.FWClimbAngleLabel = new System.Windows.Forms.Label();
             this.BestROCNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.BestROCLabel = new System.Windows.Forms.Label();
             this.FWAileronDifferentialLabel = new System.Windows.Forms.Label();
@@ -252,6 +252,8 @@
             this.MaxAltComp = new System.Windows.Forms.Label();
             this.MaxAttitudeAngleNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.ServoSenseLabel = new System.Windows.Forms.Label();
+            this.FWTrimAngleNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.FWTrimAngleLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DescDelayNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavRTHAltNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AttThrFFNumericUpDown)).BeginInit();
@@ -324,13 +326,14 @@
             this.groupBox2.SuspendLayout();
             this.AttitudeGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TurnoutNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FWMaxClimbAngleNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FWClimbAngleNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BestROCNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWAileronDifferentialNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWFlapDecayTimeNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxAltCompNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWPitchThrottleFFNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxAttitudeAngleNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FWTrimAngleNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // DescDelayNumericUpDown
@@ -2755,10 +2758,12 @@
             // AttitudeGroupBox
             // 
             resources.ApplyResources(this.AttitudeGroupBox, "AttitudeGroupBox");
+            this.AttitudeGroupBox.Controls.Add(this.FWTrimAngleNumericUpDown);
+            this.AttitudeGroupBox.Controls.Add(this.FWTrimAngleLabel);
             this.AttitudeGroupBox.Controls.Add(this.TurnoutLabel);
             this.AttitudeGroupBox.Controls.Add(this.TurnoutNumericUpDown);
-            this.AttitudeGroupBox.Controls.Add(this.FWMaxClimbAngleNumericUpDown);
-            this.AttitudeGroupBox.Controls.Add(this.FWMaxClimbAngleLabel);
+            this.AttitudeGroupBox.Controls.Add(this.FWClimbAngleNumericUpDown);
+            this.AttitudeGroupBox.Controls.Add(this.FWClimbAngleLabel);
             this.AttitudeGroupBox.Controls.Add(this.BestROCNumericUpDown);
             this.AttitudeGroupBox.Controls.Add(this.BestROCLabel);
             this.AttitudeGroupBox.Controls.Add(this.FWAileronDifferentialLabel);
@@ -2804,30 +2809,30 @@
             this.TurnoutNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
             this.TurnoutNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
-            // FWMaxClimbAngleNumericUpDown
+            // FWClimbAngleNumericUpDown
             // 
-            this.FWMaxClimbAngleNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
-            resources.ApplyResources(this.FWMaxClimbAngleNumericUpDown, "FWMaxClimbAngleNumericUpDown");
-            this.FWMaxClimbAngleNumericUpDown.Maximum = new decimal(new int[] {
+            this.FWClimbAngleNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.FWClimbAngleNumericUpDown, "FWClimbAngleNumericUpDown");
+            this.FWClimbAngleNumericUpDown.Maximum = new decimal(new int[] {
             180,
             0,
             0,
             0});
-            this.FWMaxClimbAngleNumericUpDown.Name = "FWMaxClimbAngleNumericUpDown";
-            this.FWMaxClimbAngleNumericUpDown.Tag = "68";
-            this.FWMaxClimbAngleNumericUpDown.Value = new decimal(new int[] {
-            15,
+            this.FWClimbAngleNumericUpDown.Name = "FWClimbAngleNumericUpDown";
+            this.FWClimbAngleNumericUpDown.Tag = "68";
+            this.FWClimbAngleNumericUpDown.Value = new decimal(new int[] {
+            10,
             0,
             0,
             0});
-            this.FWMaxClimbAngleNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.FWMaxClimbAngleNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
-            this.FWMaxClimbAngleNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            this.FWClimbAngleNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.FWClimbAngleNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.FWClimbAngleNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
-            // FWMaxClimbAngleLabel
+            // FWClimbAngleLabel
             // 
-            resources.ApplyResources(this.FWMaxClimbAngleLabel, "FWMaxClimbAngleLabel");
-            this.FWMaxClimbAngleLabel.Name = "FWMaxClimbAngleLabel";
+            resources.ApplyResources(this.FWClimbAngleLabel, "FWClimbAngleLabel");
+            this.FWClimbAngleLabel.Name = "FWClimbAngleLabel";
             // 
             // BestROCNumericUpDown
             // 
@@ -2974,6 +2979,31 @@
             resources.ApplyResources(this.ServoSenseLabel, "ServoSenseLabel");
             this.ServoSenseLabel.Name = "ServoSenseLabel";
             // 
+            // FWTrimAngleNumericUpDown
+            // 
+            this.FWTrimAngleNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.FWTrimAngleNumericUpDown, "FWTrimAngleNumericUpDown");
+            this.FWTrimAngleNumericUpDown.Maximum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.FWTrimAngleNumericUpDown.Name = "FWTrimAngleNumericUpDown";
+            this.FWTrimAngleNumericUpDown.Tag = "82";
+            this.FWTrimAngleNumericUpDown.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.FWTrimAngleNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.FWTrimAngleNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.FWTrimAngleNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            // 
+            // FWTrimAngleLabel
+            // 
+            resources.ApplyResources(this.FWTrimAngleLabel, "FWTrimAngleLabel");
+            this.FWTrimAngleLabel.Name = "FWTrimAngleLabel";
+            // 
             // ParameterForm
             // 
             resources.ApplyResources(this, "$this");
@@ -3080,13 +3110,14 @@
             this.AttitudeGroupBox.ResumeLayout(false);
             this.AttitudeGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TurnoutNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FWMaxClimbAngleNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FWClimbAngleNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BestROCNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWAileronDifferentialNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWFlapDecayTimeNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxAltCompNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWPitchThrottleFFNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxAttitudeAngleNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FWTrimAngleNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3302,8 +3333,8 @@
         public System.Windows.Forms.ComboBox ComboPort2ComboBox;
         private System.Windows.Forms.Label TuneParamLabel;
         public System.Windows.Forms.ComboBox TuneParamComboBox;
-        public System.Windows.Forms.NumericUpDown FWMaxClimbAngleNumericUpDown;
-        private System.Windows.Forms.Label FWMaxClimbAngleLabel;
+        public System.Windows.Forms.NumericUpDown FWClimbAngleNumericUpDown;
+        private System.Windows.Forms.Label FWClimbAngleLabel;
         private System.Windows.Forms.Label NavMaxVelLabel;
         public System.Windows.Forms.NumericUpDown NavMaxVelNumericUpDown;
         public System.Windows.Forms.NumericUpDown NavMaxAngleNumericUpDown;
@@ -3314,6 +3345,8 @@
         public System.Windows.Forms.NumericUpDown EstCruiseNumericUpDown;
         private System.Windows.Forms.Label wsLEDsLabel;
         public System.Windows.Forms.NumericUpDown wsLEDsNumericUpDown;
+        public System.Windows.Forms.NumericUpDown FWTrimAngleNumericUpDown;
+        private System.Windows.Forms.Label FWTrimAngleLabel;
 
 
     }
