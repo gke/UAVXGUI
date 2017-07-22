@@ -6676,7 +6676,7 @@
     <value>NoControl</value>
   </data>
   <data name="ServoSenseLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 301</value>
+    <value>5, 299</value>
   </data>
   <data name="ServoSenseLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 13</value>
