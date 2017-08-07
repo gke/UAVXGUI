@@ -187,7 +187,7 @@ namespace UAVXGUI
         static SpeechSynthesizer speech;
 
         public const byte MAX_PARAMS = 96;
-        public const byte MAX_PARAM_SETS = 4;
+        public const byte MAX_PARAM_SETS = 1; // 4;
         public const short RC_MAX_CHANNELS = 20; // graphic restriction
         const short RCMaximum = 1000;
         const double OUTMaximumScale = 0.5; // 100/200 % for PWM at least
@@ -2305,7 +2305,7 @@ namespace UAVXGUI
                     case UAVXParamPacketTag:
                         int p;
 
-                        ParameterForm.CurrPS = UAVXPacket[2];
+                        ParameterForm.CurrPS = 0; // UAVXPacket[2];
                         for (p = 0; p < MAX_PARAMS; p++) {
                             ParameterForm.UAVXP[p].Value = UAVXPacket[p + 3];
                             ParameterForm.UAVXP[p].Changed = true;
@@ -2317,7 +2317,7 @@ namespace UAVXGUI
                             VersionNameT += (char)(ExtractByte(ref UAVXPacket, (byte)(MAX_PARAMS + 4 + b)));
                         MainLabel.Text = VersionNameT;
 
-                        speech.SpeakAsync("Received " + ParameterForm.CurrPS);
+                        //zzz speech.SpeakAsync("Received " + ParameterForm.CurrPS);
 
                         ParameterForm.UpdateParamForm = true;
 
@@ -2919,7 +2919,8 @@ namespace UAVXGUI
                 TxESCi8(Convert.ToByte(ParameterForm.P[ParameterForm.CurrPS, p].Value)); 
 
 	        SendPacketTrailer();
-            speech.SpeakAsync("Uploaded set " + ParameterForm.CurrPS);
+            //speech.SpeakAsync("Uploaded set " + ParameterForm.CurrPS);
+            speech.SpeakAsync("Updating parameters");
 
         } // SendParamsPacket
 
@@ -2936,12 +2937,10 @@ namespace UAVXGUI
 
             SendPacketTrailer();
             if (Tag == UAVXParamPacketTag) {
-                if (a1 == 255)
-                    speech.SpeakAsync("Use Defaults");
-                else if (a1 == 254)
-                    speech.SpeakAsync("Requested Last Used Set");
+                if (a1 < 4)
+                    speech.SpeakAsync("Using selected default, CAUTION Ensure parameters match the actual aircraft BEFORE setting the ESC type"); // + a1);
                 else
-                    speech.SpeakAsync("Requested Set " + a1);
+                    speech.SpeakAsync("Reading parameters");
             }
         } // SendRequestPacket
 

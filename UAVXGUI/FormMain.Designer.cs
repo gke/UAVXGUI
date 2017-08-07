@@ -287,6 +287,7 @@ namespace UAVXGUI
             this.UtilisationLabel = new System.Windows.Forms.Label();
             this.UtilisationProgressBar = new System.Windows.Forms.ProgressBar();
             this.CalibrationGroupBox = new System.Windows.Forms.GroupBox();
+            this.CalibrateAcc6PointButton = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -336,7 +337,6 @@ namespace UAVXGUI
             this.FlightStateLabel = new System.Windows.Forms.Label();
             this.attitudeIndicatorInstrumentControl1 = new Instruments.AttitudeIndicatorInstrumentControl();
             this.headingIndicatorInstrumentControl1 = new Instruments.HeadingIndicatorInstrumentControl();
-            this.CalibrateAcc6PointButton = new System.Windows.Forms.Button();
             this.GyroGroupBox.SuspendLayout();
             this.ControlsGroupBox.SuspendLayout();
             this.AttitudeGroupBox.SuspendLayout();
@@ -2955,6 +2955,16 @@ namespace UAVXGUI
             this.CalibrationGroupBox.TabStop = false;
             this.CalibrationGroupBox.Text = "Calibration (G, Deg)";
             // 
+            // CalibrateAcc6PointButton
+            // 
+            this.CalibrateAcc6PointButton.Location = new System.Drawing.Point(134, 34);
+            this.CalibrateAcc6PointButton.Name = "CalibrateAcc6PointButton";
+            this.CalibrateAcc6PointButton.Size = new System.Drawing.Size(50, 23);
+            this.CalibrateAcc6PointButton.TabIndex = 217;
+            this.CalibrateAcc6PointButton.Text = "Acc6Pt";
+            this.CalibrateAcc6PointButton.UseVisualStyleBackColor = true;
+            this.CalibrateAcc6PointButton.Click += new System.EventHandler(this.CalibrateAcc6PointButton_Click);
+            // 
             // label23
             // 
             this.label23.AutoSize = true;
@@ -3102,11 +3112,11 @@ namespace UAVXGUI
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(56, 22);
+            this.label12.Location = new System.Drawing.Point(21, 22);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(19, 13);
+            this.label12.Size = new System.Drawing.Size(54, 13);
             this.label12.TabIndex = 85;
-            this.label12.Text = "/C";
+            this.label12.Text = "/C | Scale";
             // 
             // CalTRefLabel
             // 
@@ -3401,16 +3411,6 @@ namespace UAVXGUI
             this.headingIndicatorInstrumentControl1.Size = new System.Drawing.Size(210, 218);
             this.headingIndicatorInstrumentControl1.TabIndex = 4;
             this.headingIndicatorInstrumentControl1.Text = "headingIndicatorInstrumentControl1";
-            // 
-            // CalibrateAcc6PointButton
-            // 
-            this.CalibrateAcc6PointButton.Location = new System.Drawing.Point(134, 34);
-            this.CalibrateAcc6PointButton.Name = "CalibrateAcc6PointButton";
-            this.CalibrateAcc6PointButton.Size = new System.Drawing.Size(50, 23);
-            this.CalibrateAcc6PointButton.TabIndex = 217;
-            this.CalibrateAcc6PointButton.Text = "Acc6Pt";
-            this.CalibrateAcc6PointButton.UseVisualStyleBackColor = true;
-            this.CalibrateAcc6PointButton.Click += new System.EventHandler(this.CalibrateAcc6PointButton_Click);
             // 
             // FormMain
             // 
