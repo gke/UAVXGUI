@@ -286,6 +286,12 @@ namespace UAVXGUI
 
             // General
 
+            if (parameterForm.VoltScaleNumericUpDown.Focused)
+                helpstring = help.GetString("VoltScale");
+
+            if (parameterForm.CurrentScaleNumericUpDown.Focused)
+                helpstring = help.GetString("CurrentScale");
+
             if (parameterForm.AttThrFFNumericUpDown.Focused)
                 helpstring = help.GetString("AttThrFF");
             if (parameterForm.FWRollPitchFFNumericUpDown.Focused)
@@ -321,7 +327,7 @@ namespace UAVXGUI
             if (parameterForm.wsLEDsNumericUpDown.Focused)
                 helpstring = help.GetString("wsLEDs");
 
-            if (parameterForm.FWFlapDecayTimeNumericUpDown.Focused)
+            if (parameterForm.FWSpoilerDecayTimeNumericUpDown.Focused)
                 helpstring = help.GetString("FWFlapDecayTime");
             if (parameterForm.FWAltHoldDecayTimeNumericUpDown.Focused)
                 helpstring = help.GetString("FWAltHoldDecayTime");
@@ -400,6 +406,12 @@ namespace UAVXGUI
 
             if (parameterForm.HorizonNumericUpDown.Focused)
                 helpstring = help.GetString("Horizon");
+
+
+            if (parameterForm.MaxCompassYawRateNumericUpDown.Focused)
+                helpstring = help.GetString("MaxCompassYawRate");
+            if (parameterForm.TurnoutNumericUpDown.Focused)
+                helpstring = help.GetString("Turnout");
 
             if (parameterForm.MadgwickKpMagNumericUpDown.Focused)
                 helpstring = help.GetString("Acro");
@@ -858,16 +870,17 @@ namespace UAVXGUI
 
                 int p = Convert.ToInt16(Field.Tag);
 
-                if ((p == 54))
-                    P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 0.01);
-                else
-                if ((p == 64) || (p == 83) || (p == 84))
+                if ((p == 64) || (p == 83) || (p == 84) || (p == 89))
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 0.1);
                 else
-                if ((p == 18) || (p == 22) || (p == 32) || (p == 39) || (p == 46) || (p == 53) ||  (p == 58) || (p == 70))
+                    if ((p == 54) || (p == 18) || (p == 22) || (p == 32) || (p == 39) || (p == 46) || (p == 53) || (p == 58) || (p == 70))
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 10.0);
                 else
+                    if ((p == 85) || (p == 86))
+                        P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 100.0);
+                else
                     P[CurrPS, p - 1].Value = Convert.ToByte(Field.Value);
+       
 
                 if (UAVXP[p - 1].Changed == true) {
                     if (P[CurrPS, p - 1].Value == UAVXP[p - 1].Value)
@@ -1010,6 +1023,7 @@ namespace UAVXGUI
                     case 5:
                         RollIntLimitNumericUpDown.Value = UAVXP[p-1].Value <= 0 ?
                             1: UAVXP[p-1].Value;
+                        RollIntLimitNumericUpDown.BackColor = UAVXP[p - 1].Value < (MaxRollAngleNumericUpDown.Value / 2) ? System.Drawing.Color.White : System.Drawing.Color.Orange;
                         ParamUpdate(RollIntLimitNumericUpDown);
                         break;
                     case 6:
@@ -1031,7 +1045,7 @@ namespace UAVXGUI
                     case 10:
                         PitchIntLimitNumericUpDown.Value = UAVXP[p-1].Value <= 0 ?
                             1 : UAVXP[p-1].Value;
-
+                        PitchIntLimitNumericUpDown.BackColor = UAVXP[p - 1].Value < (MaxPitchAngleNumericUpDown.Value / 2) ? System.Drawing.Color.White : System.Drawing.Color.Orange;
                         ParamUpdate(PitchIntLimitNumericUpDown);
                         break;
                     case 11:
@@ -1118,8 +1132,9 @@ namespace UAVXGUI
                         ParamUpdate(CameraPitchNumericUpDown);
                         break;
                     case 27:
-                        YawAnglePropNumericUpDown.Value = UAVXP[p-1].Value;
-                        ParamUpdate(YawAnglePropNumericUpDown);
+                        YawAnglePropTextBox.Text = string.Format("{0:n0}", Convert.ToDecimal(UAVXP[p - 1].Value));
+                        //YawAnglePropNumericUpDown.Value = UAVXP[p-1].Value;
+                        //ParamUpdate(YawAnglePropNumericUpDown);
                         break;
                     case 28:
                         PitchRateDiffNumericUpDown.Value = UAVXP[p-1].Value;
@@ -1255,7 +1270,7 @@ namespace UAVXGUI
                         ParamUpdate(AccConfNumericUpDown);
                         break;
                     case 54:
-                        BatteryCapacityNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 100.0);
+                        BatteryCapacityNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
                         ParamUpdate(BatteryCapacityNumericUpDown);
                         break;
                     case 55:
@@ -1296,7 +1311,7 @@ namespace UAVXGUI
                         break;
                     case 64:
                         MaxYawRateNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 10.0);
-                        MaxYawRateNumericUpDown.BackColor = (MaxYawRateNumericUpDown.Value > 180) ? Color.Orange : System.Drawing.Color.White;
+                        MaxYawRateNumericUpDown.BackColor = (MaxYawRateNumericUpDown.Value > 180) ? Color.Orange : Color.White;
                         ParamUpdate(MaxYawRateNumericUpDown);
                         break;
 
@@ -1323,8 +1338,8 @@ namespace UAVXGUI
                         ParamUpdate(NavMaxAngleNumericUpDown);
                         break;
                     case 70:
-                        FWFlapDecayTimeNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
-                        ParamUpdate(FWFlapDecayTimeNumericUpDown);
+                        FWSpoilerDecayTimeNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
+                        ParamUpdate(FWSpoilerDecayTimeNumericUpDown);
                         break;
                     case 71:
                         FWAileronDifferentialNumericUpDown.Value = UAVXP[p - 1].Value;
@@ -1396,15 +1411,39 @@ namespace UAVXGUI
                        ParamUpdate(FWTrimAngleNumericUpDown);
                         break;
                     case 83:
-                        MaxRollRateNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 10.0);
-                        MaxRollRateNumericUpDown.BackColor = (MaxRollRateNumericUpDown.Value > 720) ? Color.Orange : PIDGroupBox.BackColor;
-                        ParamUpdate(MaxRollRateNumericUpDown);
+                        MaxRollRateTextBox.Text = string.Format("{0:n0}", Convert.ToDecimal(UAVXP[p - 1].Value * 10.0));
+                       // MaxRollRateNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 10.0);
+                        MaxRollRateTextBox.BackColor = (MaxRollRateNumericUpDown.Value > 720) ? Color.Orange : PIDGroupBox.BackColor;
+                        //ParamUpdate(MaxRollRateNumericUpDown);
                         break;
                     case 84:
-                        MaxPitchRateNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 10.0);
-                        MaxPitchRateNumericUpDown.BackColor = (MaxPitchRateNumericUpDown.Value > 720) ? Color.Orange : PIDGroupBox.BackColor;
-                        ParamUpdate(MaxPitchRateNumericUpDown);
+                        MaxPitchRateTextBox.Text = string.Format("{0:n0}", Convert.ToDecimal(UAVXP[p - 1].Value * 10.0));
+                        //MaxPitchRateNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 10.0);
+                        MaxPitchRateTextBox.BackColor = (MaxPitchRateNumericUpDown.Value > 720) ? Color.Orange : PIDGroupBox.BackColor;
+                        //ParamUpdate(MaxPitchRateNumericUpDown);
                         break;
+
+                    case 85:
+                        CurrentScaleNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.01);
+                        ParamUpdate(CurrentScaleNumericUpDown);
+                        break;
+                    case 86:
+                        VoltScaleNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.01);
+                        ParamUpdate(VoltScaleNumericUpDown);
+                        break;
+                     case 87:
+                        FWAileronRudderFFNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(FWAileronRudderFFNumericUpDown);
+                        break;
+                    case 88:
+                        FWAltSpoilerFFNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(FWAltSpoilerFFNumericUpDown);
+                        break;
+                    case 89:
+                        MaxCompassYawRateNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 10.0);
+                        ParamUpdate(MaxCompassYawRateNumericUpDown);
+                        break;
+
                     case 94: // Aux5
                         Ch10NumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(Ch10NumericUpDown);
