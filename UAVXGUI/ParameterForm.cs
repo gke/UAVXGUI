@@ -305,12 +305,6 @@ namespace UAVXGUI
             if (parameterForm.MaxPitchAngleNumericUpDown.Focused)
                 helpstring = help.GetString("MaxAttitudeAngle");
 
-            if (parameterForm.MaxRollRateNumericUpDown.Focused)
-                helpstring = help.GetString("MaxAttitudeRate");
-            if (parameterForm.MaxPitchRateNumericUpDown.Focused)
-                helpstring = help.GetString("MaxAttitudeRate");
-
-
             if (parameterForm.FWClimbAngleNumericUpDown.Focused)
                 helpstring = help.GetString("ClimbAngle");
             if (parameterForm.FWTrimAngleNumericUpDown.Focused)
@@ -351,6 +345,9 @@ namespace UAVXGUI
 
             if (parameterForm.bit02CheckBox.Focused)
                 helpstring = help.GetString("ManualAltHold");
+
+            if (parameterForm.bit02CheckBox.Focused)
+                helpstring = help.GetString("Unused");
             if (parameterForm.bit12CheckBox.Focused)
                 helpstring = help.GetString("FastStart");
             if (parameterForm.bit22CheckBox.Focused)
@@ -387,8 +384,7 @@ namespace UAVXGUI
                 helpstring = help.GetString("CameraGain");
             if (parameterForm.CameraRollTrimNumericUpDown.Focused)
                 helpstring = help.GetString("CameraRollTrim");
-            if (parameterForm.YawAnglePropNumericUpDown.Focused)
-                helpstring = help.GetString("Compass");
+
             if (parameterForm.AccConfNumericUpDown.Focused)
                 helpstring = help.GetString("AccGyroComp");
             if (parameterForm.BatteryNumericUpDown.Focused)
@@ -425,6 +421,9 @@ namespace UAVXGUI
 
             if (parameterForm.GyroLPFComboBox.Focused)
                 helpstring = help.GetString("GyroLPF");
+
+            if (parameterForm.AccLPFComboBox.Focused)
+                helpstring = help.GetString("AccLPF");
 
             if (parameterForm.MadgwickKpAccNumericUpDown.Focused)
                 helpstring = help.GetString("MadgwickKp");
@@ -870,6 +869,9 @@ namespace UAVXGUI
 
                 int p = Convert.ToInt16(Field.Tag);
 
+                if (p == 91)
+                    P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 0.001);
+                else
                 if ((p == 64) || (p == 83) || (p == 84) || (p == 89))
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 0.1);
                 else
@@ -1015,15 +1017,10 @@ namespace UAVXGUI
                         break;
                     case 4:
                         ArmingModeComboBox.SelectedIndex = UAVXP[p-1].Value;
-                        //ArmingModeComboBox.BackColor = ArmingModeComboBox.SelectedIndex == 2 ?
-                        //    Color.Orange : Color.White;
-
-                        ParamUpdate(ArmingModeComboBox);
+                         ParamUpdate(ArmingModeComboBox);
                         break;
                     case 5:
-                        RollIntLimitNumericUpDown.Value = UAVXP[p-1].Value <= 0 ?
-                            1: UAVXP[p-1].Value;
-                        RollIntLimitNumericUpDown.BackColor = UAVXP[p - 1].Value < (MaxRollAngleNumericUpDown.Value / 2) ? System.Drawing.Color.White : System.Drawing.Color.Orange;
+                        RollIntLimitNumericUpDown.Value = UAVXP[p-1].Value;
                         ParamUpdate(RollIntLimitNumericUpDown);
                         break;
                     case 6:
@@ -1043,10 +1040,8 @@ namespace UAVXGUI
                         ParamUpdate(RangefinderComboBox);
                         break;
                     case 10:
-                        PitchIntLimitNumericUpDown.Value = UAVXP[p-1].Value <= 0 ?
-                            1 : UAVXP[p-1].Value;
-                        PitchIntLimitNumericUpDown.BackColor = UAVXP[p - 1].Value < (MaxPitchAngleNumericUpDown.Value / 2) ? System.Drawing.Color.White : System.Drawing.Color.Orange;
-                        ParamUpdate(PitchIntLimitNumericUpDown);
+                        PitchIntLimitNumericUpDown.Value = UAVXP[p-1].Value;
+                         ParamUpdate(PitchIntLimitNumericUpDown);
                         break;
                     case 11:
                         YawRatePropNumericUpDown.Value = UAVXP[p-1].Value;
@@ -1132,7 +1127,7 @@ namespace UAVXGUI
                         ParamUpdate(CameraPitchNumericUpDown);
                         break;
                     case 27:
-                        YawAnglePropTextBox.Text = string.Format("{0:n0}", Convert.ToDecimal(UAVXP[p - 1].Value));
+                        //YawAnglePropTextBox.Text = string.Format("{0:n0}", Convert.ToDecimal(UAVXP[p - 1].Value));
                         //YawAnglePropNumericUpDown.Value = UAVXP[p-1].Value;
                         //ParamUpdate(YawAnglePropNumericUpDown);
                         break;
@@ -1227,11 +1222,6 @@ namespace UAVXGUI
                         break;
                     case 48:
                         GyroLPFComboBox.SelectedIndex = UAVXP[p-1].Value;
-                        if (GyroLPFComboBox.SelectedIndex < 1)
-                            GyroLPFComboBox.BackColor = Color.Red;
-                        else
-                            GyroLPFComboBox.BackColor = GyroLPFComboBox.SelectedIndex > 4 ?
-                                Color.Orange : Color.White;
                         ParamUpdate(GyroLPFComboBox);
                         break;
                     case 49:
@@ -1412,15 +1402,11 @@ namespace UAVXGUI
                         break;
                     case 83:
                         MaxRollRateTextBox.Text = string.Format("{0:n0}", Convert.ToDecimal(UAVXP[p - 1].Value * 10.0));
-                       // MaxRollRateNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 10.0);
-                        MaxRollRateTextBox.BackColor = (MaxRollRateNumericUpDown.Value > 720) ? Color.Orange : PIDGroupBox.BackColor;
-                        //ParamUpdate(MaxRollRateNumericUpDown);
+                        MaxRollRateTextBox.BackColor = (Convert.ToDecimal(UAVXP[p - 1].Value * 10.0) > 720) ? Color.Orange : PIDGroupBox.BackColor;
                         break;
                     case 84:
                         MaxPitchRateTextBox.Text = string.Format("{0:n0}", Convert.ToDecimal(UAVXP[p - 1].Value * 10.0));
-                        //MaxPitchRateNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 10.0);
-                        MaxPitchRateTextBox.BackColor = (MaxPitchRateNumericUpDown.Value > 720) ? Color.Orange : PIDGroupBox.BackColor;
-                        //ParamUpdate(MaxPitchRateNumericUpDown);
+                        MaxPitchRateTextBox.BackColor = (Convert.ToDecimal(UAVXP[p - 1].Value * 10.0) > 720) ? Color.Orange : PIDGroupBox.BackColor;
                         break;
 
                     case 85:
@@ -1443,6 +1429,20 @@ namespace UAVXGUI
                         MaxCompassYawRateNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 10.0);
                         ParamUpdate(MaxCompassYawRateNumericUpDown);
                         break;
+
+                    case 90:
+                        AccLPFComboBox.SelectedIndex = UAVXP[p - 1].Value;
+                        ParamUpdate(AccLPFComboBox);
+                        break;
+                    case 91:
+                       // MaxPropHzNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 1000.0);
+                       // ParamUpdate(MaxPropHzNumericUpDown);
+                        break;
+                    case 92:
+                        CycleTimemSComboBox.SelectedIndex = UAVXP[p - 1].Value;
+                        ParamUpdate(CycleTimemSComboBox);
+                        break;
+
 
                     case 94: // Aux5
                         Ch10NumericUpDown.Value = UAVXP[p - 1].Value;
@@ -1469,6 +1469,7 @@ namespace UAVXGUI
             // turn off parameter button colour
         }
 
+      
 
  
    

@@ -540,7 +540,7 @@ namespace UAVXGUI
 
 
        //UAVXStatsPacket      
-        short[] Cal = new short[18];
+        short[] Cal = new short[32];
 
         //should be an enum!!!
         const byte GPSAltitudeX = 0;
@@ -1104,12 +1104,10 @@ namespace UAVXGUI
             "AltComp," +         
             "TiltFFComp," +
             "BattFFComp," +
-
             "NorthPosE," +
-            "NorthCorr," +
             "EastPosE," +
-            "EastCorr," +
-
+            "NavPCorr," +
+            "NavRCorr," +
             "GPSHeading," +
             "MagHeading," +
             "Heading," +
@@ -1766,7 +1764,7 @@ namespace UAVXGUI
             }
             else {
                 CalibrateAcc6PointButton.BackColor = (CalibrateAcc6PointEnabled) ?
-                    Color.Orange : Color.Red;
+                    Color.Orange : Color.Orange;
                 IMUFailBox.BackColor = System.Drawing.Color.Orange;
             }
 
@@ -2524,7 +2522,7 @@ namespace UAVXGUI
 
                     short CalTRefT = ExtractShort(ref UAVXPacket, (byte)(2));
 
-                    for (b = 0; b < 18; b++)
+                    for (b = 0; b < 32; b++)
                         Cal[b] = ExtractShort(ref UAVXPacket, (byte)(b * 2 + 4));
 
                     CalTRefLabel.Text = string.Format("{0:n1}", CalTRefT * 0.1);
@@ -2552,7 +2550,15 @@ namespace UAVXGUI
 
                      MZScaleLabel.Text = string.Format("{0:n3}", Cal[16] * 0.001);
 	                 MZBiasLabel.Text = string.Format("{0:n3}", Cal[17] * 0.001);
-                    
+
+                     int Nyquist = Cal[18] / 4;
+                     AccLPFLabel.BackColor =  Nyquist < Cal[19] ? System.Drawing.Color.Red : System.Drawing.Color.Green;
+                     GyroLPFLabel.BackColor = Nyquist < Cal[20] ? System.Drawing.Color.Red : System.Drawing.Color.Green;
+
+                     NyquistMarginLabel.Text = string.Format("{0:n0}", Cal[18] / 2);
+                     AccLPFLabel.Text = string.Format("{0:n0}", Cal[19]);
+                     GyroLPFLabel.Text = string.Format("{0:n0}", Cal[20]);
+  
                     break;
 
                 case UAVXStatsPacketTag:
@@ -3113,8 +3119,8 @@ namespace UAVXGUI
              BattFFCompT * 0.001 + "," +
 
             NorthPosET * 0.1 + "," +
-            NavPCorrT * 0.001 + "," +
             EastPosET * 0.1 + "," +
+            NavPCorrT * 0.001 + "," +
             NavRCorrT * 0.001 + "," +
 
             GPSHeadingT * MILLIRADDEG + "," +
