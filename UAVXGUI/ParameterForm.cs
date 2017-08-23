@@ -349,7 +349,7 @@ namespace UAVXGUI
                 helpstring = help.GetString("ManualAltHold");
 
             if (parameterForm.bit02CheckBox.Focused)
-                helpstring = help.GetString("Unused");
+                helpstring = help.GetString("SWFilters");
             if (parameterForm.bit12CheckBox.Focused)
                 helpstring = help.GetString("FastStart");
             if (parameterForm.bit22CheckBox.Focused)

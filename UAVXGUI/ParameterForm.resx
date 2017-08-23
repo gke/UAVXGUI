@@ -5953,19 +5953,16 @@
     <value>NoControl</value>
   </data>
   <data name="bit02CheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>43, 141</value>
+    <value>6, 138</value>
   </data>
   <data name="bit02CheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 17</value>
+    <value>84, 17</value>
   </data>
   <data name="bit02CheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>229</value>
   </data>
   <data name="bit02CheckBox.Text" xml:space="preserve">
-    <value>Unused_0_2</value>
-  </data>
-  <data name="bit02CheckBox.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+    <value>SW Filters</value>
   </data>
   <data name="&gt;&gt;bit02CheckBox.Name" xml:space="preserve">
     <value>bit02CheckBox</value>

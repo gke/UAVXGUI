@@ -158,6 +158,7 @@
             this.PitchAnglePropNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.PitchRatePropNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.PIDGroupBox = new System.Windows.Forms.GroupBox();
+            this.YawRateDiffNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.MaxCompassYawRateLabel = new System.Windows.Forms.Label();
             this.MaxPitchRateTextBox = new System.Windows.Forms.TextBox();
             this.MaxCompassYawRateNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -263,7 +264,6 @@
             this.FWPitchThrottleFFNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.ServoSenseLabel = new System.Windows.Forms.Label();
             this.ParamTemplateComboBox = new System.Windows.Forms.ComboBox();
-            this.YawRateDiffNumericUpDown = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.DescDelayNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavRTHAltNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AttThrFFNumericUpDown)).BeginInit();
@@ -320,6 +320,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PitchAnglePropNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PitchRatePropNumericUpDown)).BeginInit();
             this.PIDGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.YawRateDiffNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxCompassYawRateNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxPitchAngleNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWAltHoldDecayTimeNumericUpDown)).BeginInit();
@@ -347,7 +348,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.FWAileronDifferentialNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWSpoilerDecayTimeNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWPitchThrottleFFNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.YawRateDiffNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // DescDelayNumericUpDown
@@ -2047,6 +2047,20 @@
             this.PIDGroupBox.TabStop = false;
             this.PIDGroupBox.Tag = "89";
             // 
+            // YawRateDiffNumericUpDown
+            // 
+            resources.ApplyResources(this.YawRateDiffNumericUpDown, "YawRateDiffNumericUpDown");
+            this.YawRateDiffNumericUpDown.Maximum = new decimal(new int[] {
+            127,
+            0,
+            0,
+            0});
+            this.YawRateDiffNumericUpDown.Name = "YawRateDiffNumericUpDown";
+            this.YawRateDiffNumericUpDown.Tag = "91";
+            this.YawRateDiffNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.YawRateDiffNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.YawRateDiffNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            // 
             // MaxCompassYawRateLabel
             // 
             resources.ApplyResources(this.MaxCompassYawRateLabel, "MaxCompassYawRateLabel");
@@ -3183,20 +3197,6 @@
             this.ParamTemplateComboBox.Name = "ParamTemplateComboBox";
             this.ParamTemplateComboBox.Tag = "";
             // 
-            // YawRateDiffNumericUpDown
-            // 
-            resources.ApplyResources(this.YawRateDiffNumericUpDown, "YawRateDiffNumericUpDown");
-            this.YawRateDiffNumericUpDown.Maximum = new decimal(new int[] {
-            127,
-            0,
-            0,
-            0});
-            this.YawRateDiffNumericUpDown.Name = "YawRateDiffNumericUpDown";
-            this.YawRateDiffNumericUpDown.Tag = "91";
-            this.YawRateDiffNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.YawRateDiffNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
-            this.YawRateDiffNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
-            // 
             // ParameterForm
             // 
             resources.ApplyResources(this, "$this");
@@ -3281,6 +3281,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PitchRatePropNumericUpDown)).EndInit();
             this.PIDGroupBox.ResumeLayout(false);
             this.PIDGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.YawRateDiffNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxCompassYawRateNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxPitchAngleNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWAltHoldDecayTimeNumericUpDown)).EndInit();
@@ -3312,7 +3313,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.FWAileronDifferentialNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWSpoilerDecayTimeNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWPitchThrottleFFNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.YawRateDiffNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
