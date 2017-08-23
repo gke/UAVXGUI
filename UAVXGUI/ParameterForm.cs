@@ -271,6 +271,8 @@ namespace UAVXGUI
             // Yaw
             if (parameterForm.YawRatePropNumericUpDown.Focused)
                 helpstring = help.GetString("Proportional");
+            if (parameterForm.YawRateDiffNumericUpDown.Focused)
+                helpstring = help.GetString("Differential");
             if (parameterForm.CrossTrackNumericUpDown.Focused)
                 helpstring = help.GetString("CrossTrack");
 
@@ -869,9 +871,7 @@ namespace UAVXGUI
 
                 int p = Convert.ToInt16(Field.Tag);
 
-                if (p == 91)
-                    P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 0.001);
-                else
+
                 if ((p == 64) || (p == 83) || (p == 84) || (p == 89))
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 0.1);
                 else
@@ -1435,8 +1435,8 @@ namespace UAVXGUI
                         ParamUpdate(AccLPFComboBox);
                         break;
                     case 91:
-                       // MaxPropHzNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 1000.0);
-                       // ParamUpdate(MaxPropHzNumericUpDown);
+                        YawRateDiffNumericUpDown.Value = UAVXP[p - 1].Value;
+                       ParamUpdate(YawRateDiffNumericUpDown);
                         break;
                     case 92:
                         CycleTimemSComboBox.SelectedIndex = UAVXP[p - 1].Value;
