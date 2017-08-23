@@ -4912,10 +4912,10 @@
     <value>Pitchl Rate D</value>
   </data>
   <data name="TuneParamComboBox.Items9" xml:space="preserve">
-    <value>Yaw Angle P</value>
+    <value>Yaw Rate P</value>
   </data>
   <data name="TuneParamComboBox.Items10" xml:space="preserve">
-    <value>Yaw Rate P</value>
+    <value>Yaw Rate D</value>
   </data>
   <data name="TuneParamComboBox.Items11" xml:space="preserve">
     <value>Altitude Error P</value>
