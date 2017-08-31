@@ -158,6 +158,8 @@
             this.PitchAnglePropNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.PitchRatePropNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.PIDGroupBox = new System.Windows.Forms.GroupBox();
+            this.ThrottleGainLabel = new System.Windows.Forms.Label();
+            this.ThrottleGainNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.YawRateDiffNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.MaxCompassYawRateLabel = new System.Windows.Forms.Label();
             this.MaxPitchRateTextBox = new System.Windows.Forms.TextBox();
@@ -264,8 +266,6 @@
             this.FWPitchThrottleFFNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.ServoSenseLabel = new System.Windows.Forms.Label();
             this.ParamTemplateComboBox = new System.Windows.Forms.ComboBox();
-            this.ThrottleGainLabel = new System.Windows.Forms.Label();
-            this.ThrottleGainNumericUpDown = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.DescDelayNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavRTHAltNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AttThrFFNumericUpDown)).BeginInit();
@@ -322,6 +322,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PitchAnglePropNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PitchRatePropNumericUpDown)).BeginInit();
             this.PIDGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ThrottleGainNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.YawRateDiffNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxCompassYawRateNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxPitchAngleNumericUpDown)).BeginInit();
@@ -350,7 +351,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.FWAileronDifferentialNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWSpoilerDecayTimeNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWPitchThrottleFFNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ThrottleGainNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // DescDelayNumericUpDown
@@ -906,7 +906,8 @@
             resources.GetString("ESCComboBox.Items4"),
             resources.GetString("ESCComboBox.Items5"),
             resources.GetString("ESCComboBox.Items6"),
-            resources.GetString("ESCComboBox.Items7")});
+            resources.GetString("ESCComboBox.Items7"),
+            resources.GetString("ESCComboBox.Items8")});
             this.ESCComboBox.Name = "ESCComboBox";
             this.ESCComboBox.Tag = "36";
             this.ESCComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
@@ -2051,6 +2052,32 @@
             this.PIDGroupBox.Name = "PIDGroupBox";
             this.PIDGroupBox.TabStop = false;
             this.PIDGroupBox.Tag = "89";
+            // 
+            // ThrottleGainLabel
+            // 
+            resources.ApplyResources(this.ThrottleGainLabel, "ThrottleGainLabel");
+            this.ThrottleGainLabel.Name = "ThrottleGainLabel";
+            // 
+            // ThrottleGainNumericUpDown
+            // 
+            this.ThrottleGainNumericUpDown.BackColor = System.Drawing.Color.White;
+            this.ThrottleGainNumericUpDown.DecimalPlaces = 2;
+            resources.ApplyResources(this.ThrottleGainNumericUpDown, "ThrottleGainNumericUpDown");
+            this.ThrottleGainNumericUpDown.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
+            this.ThrottleGainNumericUpDown.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.ThrottleGainNumericUpDown.Name = "ThrottleGainNumericUpDown";
+            this.ThrottleGainNumericUpDown.Tag = "93";
+            this.ThrottleGainNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.ThrottleGainNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.ThrottleGainNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
             // YawRateDiffNumericUpDown
             // 
@@ -3202,32 +3229,6 @@
             this.ParamTemplateComboBox.Name = "ParamTemplateComboBox";
             this.ParamTemplateComboBox.Tag = "";
             // 
-            // ThrottleGainLabel
-            // 
-            resources.ApplyResources(this.ThrottleGainLabel, "ThrottleGainLabel");
-            this.ThrottleGainLabel.Name = "ThrottleGainLabel";
-            // 
-            // ThrottleGainNumericUpDown
-            // 
-            this.ThrottleGainNumericUpDown.BackColor = System.Drawing.Color.White;
-            this.ThrottleGainNumericUpDown.DecimalPlaces = 2;
-            resources.ApplyResources(this.ThrottleGainNumericUpDown, "ThrottleGainNumericUpDown");
-            this.ThrottleGainNumericUpDown.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
-            this.ThrottleGainNumericUpDown.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.ThrottleGainNumericUpDown.Name = "ThrottleGainNumericUpDown";
-            this.ThrottleGainNumericUpDown.Tag = "93";
-            this.ThrottleGainNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.ThrottleGainNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
-            this.ThrottleGainNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
-            // 
             // ParameterForm
             // 
             resources.ApplyResources(this, "$this");
@@ -3312,6 +3313,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PitchRatePropNumericUpDown)).EndInit();
             this.PIDGroupBox.ResumeLayout(false);
             this.PIDGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ThrottleGainNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.YawRateDiffNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxCompassYawRateNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxPitchAngleNumericUpDown)).EndInit();
@@ -3344,7 +3346,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.FWAileronDifferentialNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWSpoilerDecayTimeNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWPitchThrottleFFNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ThrottleGainNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
