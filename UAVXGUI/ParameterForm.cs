@@ -430,6 +430,9 @@ namespace UAVXGUI
             if (parameterForm.MadgwickKpAccNumericUpDown.Focused)
                 helpstring = help.GetString("MadgwickKp");
 
+            if (parameterForm.ThrottleGainNumericUpDown.Focused)
+                helpstring = help.GetString("ThrottleGain");
+
             if (parameterForm.GyroComboBox.Focused)
                 helpstring = help.GetString("GyroType");
 
@@ -878,7 +881,7 @@ namespace UAVXGUI
                     if ((p == 54) || (p == 18) || (p == 22) || (p == 32) || (p == 39) || (p == 46) || (p == 53) || (p == 58) || (p == 70))
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 10.0);
                 else
-                    if ((p == 85) || (p == 86))
+                    if ((p == 85) || (p == 86) || (p == 93))
                         P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 100.0);
                 else
                     P[CurrPS, p - 1].Value = Convert.ToByte(Field.Value);
@@ -1222,6 +1225,7 @@ namespace UAVXGUI
                         break;
                     case 48:
                         GyroLPFComboBox.SelectedIndex = UAVXP[p-1].Value;
+                        GyroLPFComboBox.BackColor = (GyroLPFComboBox.SelectedIndex < 2) ? Color.Orange : Color.White;
                         ParamUpdate(GyroLPFComboBox);
                         break;
                     case 49:
@@ -1402,11 +1406,11 @@ namespace UAVXGUI
                         break;
                     case 83:
                         MaxRollRateTextBox.Text = string.Format("{0:n0}", Convert.ToDecimal(UAVXP[p - 1].Value * 10.0));
-                        MaxRollRateTextBox.BackColor = (Convert.ToDecimal(UAVXP[p - 1].Value * 10.0) > 720) ? Color.Orange : PIDGroupBox.BackColor;
+                        MaxRollRateTextBox.BackColor = (Convert.ToDecimal(UAVXP[p - 1].Value * 10.0) > 720) ? Color.Orange : Color.White;
                         break;
                     case 84:
                         MaxPitchRateTextBox.Text = string.Format("{0:n0}", Convert.ToDecimal(UAVXP[p - 1].Value * 10.0));
-                        MaxPitchRateTextBox.BackColor = (Convert.ToDecimal(UAVXP[p - 1].Value * 10.0) > 720) ? Color.Orange : PIDGroupBox.BackColor;
+                        MaxPitchRateTextBox.BackColor = (Convert.ToDecimal(UAVXP[p - 1].Value * 10.0) > 720) ? Color.Orange : Color.White;
                         break;
 
                     case 85:
@@ -1432,6 +1436,7 @@ namespace UAVXGUI
 
                     case 90:
                         AccLPFComboBox.SelectedIndex = UAVXP[p - 1].Value;
+                        AccLPFComboBox.BackColor = (AccLPFComboBox.SelectedIndex < 4) ? Color.Orange : Color.White;
                         ParamUpdate(AccLPFComboBox);
                         break;
                     case 91:
@@ -1442,8 +1447,10 @@ namespace UAVXGUI
                         CycleTimemSComboBox.SelectedIndex = UAVXP[p - 1].Value;
                         ParamUpdate(CycleTimemSComboBox);
                         break;
-
-
+                    case 93:
+                        ThrottleGainNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.01);
+                        ParamUpdate(ThrottleGainNumericUpDown);
+                        break;
                     case 94: // Aux5
                         Ch10NumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(Ch10NumericUpDown);

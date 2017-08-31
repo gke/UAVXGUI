@@ -264,6 +264,8 @@
             this.FWPitchThrottleFFNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.ServoSenseLabel = new System.Windows.Forms.Label();
             this.ParamTemplateComboBox = new System.Windows.Forms.ComboBox();
+            this.ThrottleGainLabel = new System.Windows.Forms.Label();
+            this.ThrottleGainNumericUpDown = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.DescDelayNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavRTHAltNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AttThrFFNumericUpDown)).BeginInit();
@@ -348,6 +350,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.FWAileronDifferentialNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWSpoilerDecayTimeNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWPitchThrottleFFNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ThrottleGainNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // DescDelayNumericUpDown
@@ -2004,6 +2007,8 @@
             // 
             // PIDGroupBox
             // 
+            this.PIDGroupBox.Controls.Add(this.ThrottleGainLabel);
+            this.PIDGroupBox.Controls.Add(this.ThrottleGainNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.YawRateDiffNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.MaxCompassYawRateLabel);
             this.PIDGroupBox.Controls.Add(this.MaxPitchRateTextBox);
@@ -3197,6 +3202,32 @@
             this.ParamTemplateComboBox.Name = "ParamTemplateComboBox";
             this.ParamTemplateComboBox.Tag = "";
             // 
+            // ThrottleGainLabel
+            // 
+            resources.ApplyResources(this.ThrottleGainLabel, "ThrottleGainLabel");
+            this.ThrottleGainLabel.Name = "ThrottleGainLabel";
+            // 
+            // ThrottleGainNumericUpDown
+            // 
+            this.ThrottleGainNumericUpDown.BackColor = System.Drawing.Color.White;
+            this.ThrottleGainNumericUpDown.DecimalPlaces = 2;
+            resources.ApplyResources(this.ThrottleGainNumericUpDown, "ThrottleGainNumericUpDown");
+            this.ThrottleGainNumericUpDown.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
+            this.ThrottleGainNumericUpDown.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.ThrottleGainNumericUpDown.Name = "ThrottleGainNumericUpDown";
+            this.ThrottleGainNumericUpDown.Tag = "93";
+            this.ThrottleGainNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.ThrottleGainNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.ThrottleGainNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            // 
             // ParameterForm
             // 
             resources.ApplyResources(this, "$this");
@@ -3313,6 +3344,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.FWAileronDifferentialNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWSpoilerDecayTimeNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWPitchThrottleFFNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ThrottleGainNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3552,6 +3584,8 @@
         public System.Windows.Forms.ComboBox CycleTimemSComboBox;
         private System.Windows.Forms.Label CycleTimemSLabel;
         public System.Windows.Forms.NumericUpDown YawRateDiffNumericUpDown;
+        private System.Windows.Forms.Label ThrottleGainLabel;
+        public System.Windows.Forms.NumericUpDown ThrottleGainNumericUpDown;
 
 
     }
