@@ -213,12 +213,15 @@ namespace UAVXGUI
         public const byte UAVXInertialPacketTag = 55; // unused
         public const byte UAVXMinimOSDPacketTag = 56;
         public const byte UAVXTuningPacketTag = 57;
-         public const byte UAVUKFPacketTag = 58;
-        public const byte UAVXGuidancePacketTag = 59;
-        public const byte UAVXFusionPacketTag = 60;
-        public const byte UAVXSoaringPacketTag = 61;
-        public const byte UAVXCalibrationPacketTag = 62;
-        public const byte UAVXRevPacketTag = 63;
+
+	 public const byte UAVXUKFPacketTag = 58;
+	 public const byte UAVXGuidancePacketTag = 59;
+	 public const byte UAVXFusionPacketTag = 60;
+	 public const byte UAVXSoaringPacketTag = 61;
+	 public const byte UAVXCalibrationPacketTag = 62;
+	 public const byte UAVXAnglePIDPacketTag = 63;
+     public const byte UAVXRatePIDPacketTag = 64;
+     public const byte UAVXAltPIDPacketTag = 65;
 
         public const byte FrSkyPacketTag = 99;
 
@@ -312,6 +315,9 @@ namespace UAVXGUI
             "UAVXFusionPacketTag",
             "UAVXSoaringPacketTag",
             "UAVXCalibrationPacketTag",
+            "UAVXAnglePIDPacketTag",
+            "UAVXRatePIDPacketTag",
+            "UAVXAltPIDPacketTag",
              
             // needs padding strings zzz
 
@@ -625,6 +631,12 @@ namespace UAVXGUI
 
         short[] DFT = new short[32];
         short DFTFreq = 0;
+
+        float[] PID = new float[32];
+        public static byte MaxPID;
+        public Boolean AnglePIDHeader = false;
+        public Boolean RatePIDHeader = false;
+        public Boolean AltPIDHeader = false;
 
         public static short WPDistanceT;
 
@@ -962,6 +974,30 @@ namespace UAVXGUI
 
             SaveBBFileStream = new System.IO.FileStream(FileName + "_BB.log", System.IO.FileMode.Create);
             SaveBBFileBinaryWriter = new System.IO.BinaryWriter(SaveBBFileStream);
+
+        }
+
+        private void WriteTextPIDRateFileHeader()
+        {
+
+            int i;
+            for (i = 0; i < 3;i++ )
+                SaveTextLogFileStreamWriter.Write("Desired, Rate, RateP, RateD, DriveOut,");
+            SaveTextLogFileStreamWriter.WriteLine();
+        }
+
+        private void WriteTextPIDAngleFileHeader()
+        {
+            int i;
+            for (i = 0; i < 2; i++ )
+                SaveTextLogFileStreamWriter.Write("Desired, Angle, AngleP, AngleI, RateOut,");
+            SaveTextLogFileStreamWriter.Write("AccBF, AccLR, AccUD");
+            SaveTextLogFileStreamWriter.WriteLine();
+        }
+
+        private void WriteTextPIDAltitudeFileHeader()
+        {    
+             SaveTextLogFileStreamWriter.WriteLine("Alt, DesAlt, AltE, AltP, AltI, DesROC, ROC, ROCP, ROCD, AltComp, DesThr, CruiseThr ");
 
         }
 
@@ -2730,6 +2766,64 @@ namespace UAVXGUI
                     MissionTimeTextBox.Text = string.Format("{0:n0}", MissionTimeMilliSecT / 1000);
 
                     break;
+
+                case UAVXAnglePIDPacketTag:
+                        
+                    if (!AnglePIDHeader)
+                    {
+                        AnglePIDHeader = true;
+                        WriteTextPIDAngleFileHeader();
+                    }
+                    MaxPID = ExtractByte(ref UAVXPacket, (byte)(2));
+                    for (b = 0; b < MaxPID; b++)
+                    {
+                        float Temp = ExtractByte(ref UAVXPacket, (byte)(b + 3));
+                        PID[b] = (Temp > 127.0f ? Temp - 256.0f : Temp) / 128.0f;
+                    }
+
+                    WriteTextPIDLogFile();
+
+                    break;
+                case UAVXRatePIDPacketTag:
+
+                    if (!RatePIDHeader)
+                    {
+                        RatePIDHeader = true;
+                        WriteTextPIDRateFileHeader();
+                    }
+                    MaxPID = ExtractByte(ref UAVXPacket, (byte)(2));
+                    for (b = 0; b < MaxPID; b++)
+                    {
+                        float Temp = ExtractByte(ref UAVXPacket, (byte)(b + 3));
+                        PID[b] = (Temp > 127.0f ? Temp - 256.0f : Temp) / 128.0f;
+                    }
+
+                    WriteTextPIDLogFile();
+
+                    break;
+
+                case UAVXAltPIDPacketTag:
+
+                    if (!AltPIDHeader)
+                    {
+                        AltPIDHeader = true;
+                        WriteTextPIDAltitudeFileHeader();
+                    }
+
+                    SaveTextLogFileStreamWriter.Write( ExtractByte(ref UAVXPacket, (byte)(2)) * 0.01f + ","); // Desired Altitude
+                    SaveTextLogFileStreamWriter.Write(ExtractByte(ref UAVXPacket, (byte)(4)) * 0.01f + ","); // Altitude
+
+                    MaxPID = ExtractByte(ref UAVXPacket, (byte)(6));
+                    for (b = 0; b < MaxPID; b++)
+                    {
+                        float Temp = ExtractByte(ref UAVXPacket, (byte)(b + 7));
+                        PID[b] = (Temp > 127.0f ? Temp - 256.0f : Temp) / 128.0f;
+                    }
+
+                    WriteTextPIDLogFile();
+
+                    break;
+
                 case UAVXDFTPacketTag:
 
                     DFTFreq = ExtractShort(ref UAVXPacket, (byte)(2));
@@ -3011,6 +3105,18 @@ namespace UAVXGUI
 
         //___________________________________________________________________________________
 
+
+        void WriteTextPIDLogFile()
+        {
+            short i, c;
+
+            for (i = 0; i < MaxPID; i++)
+                    SaveTextLogFileStreamWriter.Write(PID[i] + ",");
+
+            SaveTextLogFileStreamWriter.WriteLine();
+            SaveTextLogFileStreamWriter.Flush();
+
+        }
 
         void WriteTextLogFile()
         {

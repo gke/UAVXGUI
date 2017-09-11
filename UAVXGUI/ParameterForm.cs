@@ -359,7 +359,7 @@ namespace UAVXGUI
             if (parameterForm.bit42CheckBox.Focused)
                 helpstring = help.GetString("RebootConfig");
             if (parameterForm.bit52CheckBox.Focused)
-                helpstring = help.GetString("BoardInverted");
+                helpstring = help.GetString("TurnToWP");
             if (parameterForm.bit62CheckBox.Focused)
                 helpstring = help.GetString("unassigned");
 
@@ -1225,8 +1225,13 @@ namespace UAVXGUI
                         break;
                     case 48:
                         GyroLPFComboBox.SelectedIndex = UAVXP[p-1].Value;
-                        GyroLPFComboBox.BackColor = (GyroLPFComboBox.SelectedIndex < 2) ? Color.Orange : Color.White;
-                        ParamUpdate(GyroLPFComboBox);
+                        if (GyroLPFComboBox.SelectedIndex < 2)
+                            GyroLPFComboBox.BackColor = Color.Orange;
+                        else if (GyroLPFComboBox.SelectedIndex > 3)
+                            GyroLPFComboBox.BackColor = Color.Red;
+                        else
+                            GyroLPFComboBox.BackColor = Color.White;
+                            ParamUpdate(GyroLPFComboBox);
                         break;
                     case 49:
                         CrossTrackNumericUpDown.Value = UAVXP[p-1].Value;
@@ -1386,8 +1391,7 @@ namespace UAVXGUI
                         ParamUpdate(MaxRollAngleNumericUpDown);
                         break;
                     case 78:
-                        TuneParamComboBox.SelectedIndex = UAVXP[p - 1].Value;
-                        ParamUpdate(TuneParamComboBox);
+                        // unused
                         break;
                     case 79:
                         TurnoutNumericUpDown.Value = UAVXP[p - 1].Value;
@@ -1436,7 +1440,12 @@ namespace UAVXGUI
 
                     case 90:
                         AccLPFComboBox.SelectedIndex = UAVXP[p - 1].Value;
-                        AccLPFComboBox.BackColor = (AccLPFComboBox.SelectedIndex < 4) ? Color.Orange : Color.White;
+                        if (AccLPFComboBox.SelectedIndex < 4)
+                            AccLPFComboBox.BackColor = Color.Orange;
+                        else if (AccLPFComboBox.SelectedIndex > 5)
+                            AccLPFComboBox.BackColor = Color.Red;
+                        else
+                            AccLPFComboBox.BackColor = Color.White;
                         ParamUpdate(AccLPFComboBox);
                         break;
                     case 91:

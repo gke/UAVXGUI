@@ -193,8 +193,6 @@
             this.SetDefaultParamButton = new System.Windows.Forms.Button();
             this.CheckDownLinkTimer = new System.Windows.Forms.Timer(this.components);
             this.RCGroupBox = new System.Windows.Forms.GroupBox();
-            this.TuneParamLabel = new System.Windows.Forms.Label();
-            this.TuneParamComboBox = new System.Windows.Forms.ComboBox();
             this.RC11TextBox = new System.Windows.Forms.TextBox();
             this.RC10TextBox = new System.Windows.Forms.TextBox();
             this.RC9TextBox = new System.Windows.Forms.TextBox();
@@ -882,7 +880,11 @@
             resources.GetString("TelemetryComboBox.Items3"),
             resources.GetString("TelemetryComboBox.Items4"),
             resources.GetString("TelemetryComboBox.Items5"),
-            resources.GetString("TelemetryComboBox.Items6")});
+            resources.GetString("TelemetryComboBox.Items6"),
+            resources.GetString("TelemetryComboBox.Items7"),
+            resources.GetString("TelemetryComboBox.Items8"),
+            resources.GetString("TelemetryComboBox.Items9"),
+            resources.GetString("TelemetryComboBox.Items10")});
             this.TelemetryComboBox.Name = "TelemetryComboBox";
             this.TelemetryComboBox.Tag = "45";
             this.TelemetryComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
@@ -1229,7 +1231,8 @@
             this.ArmingModeComboBox.Items.AddRange(new object[] {
             resources.GetString("ArmingModeComboBox.Items"),
             resources.GetString("ArmingModeComboBox.Items1"),
-            resources.GetString("ArmingModeComboBox.Items2")});
+            resources.GetString("ArmingModeComboBox.Items2"),
+            resources.GetString("ArmingModeComboBox.Items3")});
             this.ArmingModeComboBox.Name = "ArmingModeComboBox";
             this.ArmingModeComboBox.Tag = "4";
             this.ArmingModeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
@@ -2398,8 +2401,6 @@
             // 
             // RCGroupBox
             // 
-            this.RCGroupBox.Controls.Add(this.TuneParamLabel);
-            this.RCGroupBox.Controls.Add(this.TuneParamComboBox);
             this.RCGroupBox.Controls.Add(this.RC11TextBox);
             this.RCGroupBox.Controls.Add(this.RC10TextBox);
             this.RCGroupBox.Controls.Add(this.RC9TextBox);
@@ -2460,42 +2461,6 @@
             resources.ApplyResources(this.RCGroupBox, "RCGroupBox");
             this.RCGroupBox.Name = "RCGroupBox";
             this.RCGroupBox.TabStop = false;
-            // 
-            // TuneParamLabel
-            // 
-            resources.ApplyResources(this.TuneParamLabel, "TuneParamLabel");
-            this.TuneParamLabel.ForeColor = System.Drawing.Color.Black;
-            this.TuneParamLabel.Name = "TuneParamLabel";
-            // 
-            // TuneParamComboBox
-            // 
-            resources.ApplyResources(this.TuneParamComboBox, "TuneParamComboBox");
-            this.TuneParamComboBox.FormattingEnabled = true;
-            this.TuneParamComboBox.Items.AddRange(new object[] {
-            resources.GetString("TuneParamComboBox.Items"),
-            resources.GetString("TuneParamComboBox.Items1"),
-            resources.GetString("TuneParamComboBox.Items2"),
-            resources.GetString("TuneParamComboBox.Items3"),
-            resources.GetString("TuneParamComboBox.Items4"),
-            resources.GetString("TuneParamComboBox.Items5"),
-            resources.GetString("TuneParamComboBox.Items6"),
-            resources.GetString("TuneParamComboBox.Items7"),
-            resources.GetString("TuneParamComboBox.Items8"),
-            resources.GetString("TuneParamComboBox.Items9"),
-            resources.GetString("TuneParamComboBox.Items10"),
-            resources.GetString("TuneParamComboBox.Items11"),
-            resources.GetString("TuneParamComboBox.Items12"),
-            resources.GetString("TuneParamComboBox.Items13"),
-            resources.GetString("TuneParamComboBox.Items14"),
-            resources.GetString("TuneParamComboBox.Items15"),
-            resources.GetString("TuneParamComboBox.Items16"),
-            resources.GetString("TuneParamComboBox.Items17"),
-            resources.GetString("TuneParamComboBox.Items18"),
-            resources.GetString("TuneParamComboBox.Items19")});
-            this.TuneParamComboBox.Name = "TuneParamComboBox";
-            this.TuneParamComboBox.Tag = "78";
-            this.TuneParamComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
-            this.TuneParamComboBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
             // RC11TextBox
             // 
@@ -2592,6 +2557,7 @@
             // Ch12Label
             // 
             resources.ApplyResources(this.Ch12Label, "Ch12Label");
+            this.Ch12Label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.Ch12Label.ForeColor = System.Drawing.Color.Black;
             this.Ch12Label.Name = "Ch12Label";
             // 
@@ -3552,8 +3518,6 @@
         public System.Windows.Forms.NumericUpDown Ch12NumericUpDown;
         private System.Windows.Forms.Label ComboPort2Label;
         public System.Windows.Forms.ComboBox ComboPort2ComboBox;
-        private System.Windows.Forms.Label TuneParamLabel;
-        public System.Windows.Forms.ComboBox TuneParamComboBox;
         public System.Windows.Forms.NumericUpDown FWClimbAngleNumericUpDown;
         private System.Windows.Forms.Label FWClimbAngleLabel;
         private System.Windows.Forms.Label NavMaxVelLabel;
