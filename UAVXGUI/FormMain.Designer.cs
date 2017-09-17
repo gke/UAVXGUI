@@ -243,9 +243,9 @@ namespace UAVXGUI
             this.CalibrateMagButton = new System.Windows.Forms.Button();
             this.DrivesGroupBox = new System.Windows.Forms.GroupBox();
             this.PWMT9 = new System.Windows.Forms.TextBox();
-            this.PWMT8 = new System.Windows.Forms.TextBox();
             this.PWMT7 = new System.Windows.Forms.TextBox();
             this.PWMT6 = new System.Windows.Forms.TextBox();
+            this.PWMT8 = new System.Windows.Forms.TextBox();
             this.PWMT5 = new System.Windows.Forms.TextBox();
             this.PWMT4 = new System.Windows.Forms.TextBox();
             this.PWMT3 = new System.Windows.Forms.TextBox();
@@ -255,13 +255,13 @@ namespace UAVXGUI
             this.PWMT0ProgressBar = new System.Windows.Forms.ProgressBar();
             this.PWMT6ProgressBar = new System.Windows.Forms.ProgressBar();
             this.PWMT1ProgressBar = new System.Windows.Forms.ProgressBar();
-            this.PWMT9ProgressBar = new System.Windows.Forms.ProgressBar();
             this.PWMT5ProgressBar = new System.Windows.Forms.ProgressBar();
-            this.PWMT8ProgressBar = new System.Windows.Forms.ProgressBar();
             this.PWMT2ProgressBar = new System.Windows.Forms.ProgressBar();
             this.PWMT7ProgressBar = new System.Windows.Forms.ProgressBar();
+            this.PWMT9ProgressBar = new System.Windows.Forms.ProgressBar();
             this.PWMT4ProgressBar = new System.Windows.Forms.ProgressBar();
             this.PWMT3ProgressBar = new System.Windows.Forms.ProgressBar();
+            this.PWMT8ProgressBar = new System.Windows.Forms.ProgressBar();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker3 = new System.ComponentModel.BackgroundWorker();
@@ -287,7 +287,12 @@ namespace UAVXGUI
             this.UtilisationLabel = new System.Windows.Forms.Label();
             this.UtilisationProgressBar = new System.Windows.Forms.ProgressBar();
             this.CalibrationGroupBox = new System.Windows.Forms.GroupBox();
-            this.CalibrateAcc6PointButton = new System.Windows.Forms.Button();
+            this.NyquistMargin = new System.Windows.Forms.Label();
+            this.GyroLPF = new System.Windows.Forms.Label();
+            this.AccLPF = new System.Windows.Forms.Label();
+            this.NyquistMarginLabel = new System.Windows.Forms.Label();
+            this.AccLPFLabel = new System.Windows.Forms.Label();
+            this.GyroLPFLabel = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.MZCalBiasLabel = new System.Windows.Forms.Label();
             this.MYCalBiasLabel = new System.Windows.Forms.Label();
@@ -318,6 +323,7 @@ namespace UAVXGUI
             this.RollCalLabel = new System.Windows.Forms.Label();
             this.RollGyroMLabel = new System.Windows.Forms.Label();
             this.PitchGyroMLabel = new System.Windows.Forms.Label();
+            this.CalibrateAcc6PointButton = new System.Windows.Forms.Button();
             this.PlotButton = new System.Windows.Forms.Button();
             this.FWGlideOffsetAngle = new System.Windows.Forms.TextBox();
             this.NewTuningParameter = new System.Windows.Forms.TextBox();
@@ -327,14 +333,9 @@ namespace UAVXGUI
             this.RateEnergyLabel = new System.Windows.Forms.Label();
             this.FlightStateLabel = new System.Windows.Forms.Label();
             this.TuningGroupBox = new System.Windows.Forms.GroupBox();
-            this.NyquistMargin = new System.Windows.Forms.Label();
-            this.GyroLPF = new System.Windows.Forms.Label();
-            this.AccLPF = new System.Windows.Forms.Label();
-            this.NyquistMarginLabel = new System.Windows.Forms.Label();
-            this.AccLPFLabel = new System.Windows.Forms.Label();
-            this.GyroLPFLabel = new System.Windows.Forms.Label();
             this.attitudeIndicatorInstrumentControl1 = new Instruments.AttitudeIndicatorInstrumentControl();
             this.headingIndicatorInstrumentControl1 = new Instruments.HeadingIndicatorInstrumentControl();
+            this.DiagnosticCheckBox = new System.Windows.Forms.CheckBox();
             this.GyroGroupBox.SuspendLayout();
             this.ControlsGroupBox.SuspendLayout();
             this.AttitudeGroupBox.SuspendLayout();
@@ -2354,7 +2355,7 @@ namespace UAVXGUI
             this.SpeechGroupBox.Controls.Add(this.SpeakVoltsCheckBox);
             this.SpeechGroupBox.Location = new System.Drawing.Point(843, 104);
             this.SpeechGroupBox.Name = "SpeechGroupBox";
-            this.SpeechGroupBox.Size = new System.Drawing.Size(162, 85);
+            this.SpeechGroupBox.Size = new System.Drawing.Size(162, 80);
             this.SpeechGroupBox.TabIndex = 183;
             this.SpeechGroupBox.TabStop = false;
             this.SpeechGroupBox.Text = "Speech";
@@ -2515,6 +2516,7 @@ namespace UAVXGUI
             // 
             // DrivesGroupBox
             // 
+            this.DrivesGroupBox.Controls.Add(this.DiagnosticCheckBox);
             this.DrivesGroupBox.Controls.Add(this.PWMT9);
             this.DrivesGroupBox.Controls.Add(this.PWMT7);
             this.DrivesGroupBox.Controls.Add(this.PWMT6);
@@ -2535,9 +2537,9 @@ namespace UAVXGUI
             this.DrivesGroupBox.Controls.Add(this.PWMT4ProgressBar);
             this.DrivesGroupBox.Controls.Add(this.PWMT3ProgressBar);
             this.DrivesGroupBox.Controls.Add(this.PWMT8ProgressBar);
-            this.DrivesGroupBox.Location = new System.Drawing.Point(843, 298);
+            this.DrivesGroupBox.Location = new System.Drawing.Point(843, 289);
             this.DrivesGroupBox.Name = "DrivesGroupBox";
-            this.DrivesGroupBox.Size = new System.Drawing.Size(162, 167);
+            this.DrivesGroupBox.Size = new System.Drawing.Size(162, 187);
             this.DrivesGroupBox.TabIndex = 210;
             this.DrivesGroupBox.TabStop = false;
             this.DrivesGroupBox.Text = "Motors/Servos (%)";
@@ -2546,7 +2548,7 @@ namespace UAVXGUI
             // 
             this.PWMT9.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PWMT9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PWMT9.Location = new System.Drawing.Point(13, 148);
+            this.PWMT9.Location = new System.Drawing.Point(13, 166);
             this.PWMT9.Name = "PWMT9";
             this.PWMT9.ReadOnly = true;
             this.PWMT9.Size = new System.Drawing.Size(25, 13);
@@ -2554,23 +2556,11 @@ namespace UAVXGUI
             this.PWMT9.Text = "0";
             this.PWMT9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // PWMT8
-            // 
-            this.PWMT8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PWMT8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PWMT8.Location = new System.Drawing.Point(13, 133);
-            this.PWMT8.Name = "PWMT8";
-            this.PWMT8.ReadOnly = true;
-            this.PWMT8.Size = new System.Drawing.Size(25, 13);
-            this.PWMT8.TabIndex = 206;
-            this.PWMT8.Text = "0";
-            this.PWMT8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // PWMT7
             // 
             this.PWMT7.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PWMT7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PWMT7.Location = new System.Drawing.Point(13, 118);
+            this.PWMT7.Location = new System.Drawing.Point(13, 136);
             this.PWMT7.Name = "PWMT7";
             this.PWMT7.ReadOnly = true;
             this.PWMT7.Size = new System.Drawing.Size(25, 13);
@@ -2582,7 +2572,7 @@ namespace UAVXGUI
             // 
             this.PWMT6.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PWMT6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PWMT6.Location = new System.Drawing.Point(13, 103);
+            this.PWMT6.Location = new System.Drawing.Point(13, 121);
             this.PWMT6.Name = "PWMT6";
             this.PWMT6.ReadOnly = true;
             this.PWMT6.Size = new System.Drawing.Size(25, 13);
@@ -2590,11 +2580,23 @@ namespace UAVXGUI
             this.PWMT6.Text = "0";
             this.PWMT6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // PWMT8
+            // 
+            this.PWMT8.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PWMT8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PWMT8.Location = new System.Drawing.Point(13, 151);
+            this.PWMT8.Name = "PWMT8";
+            this.PWMT8.ReadOnly = true;
+            this.PWMT8.Size = new System.Drawing.Size(25, 13);
+            this.PWMT8.TabIndex = 206;
+            this.PWMT8.Text = "0";
+            this.PWMT8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // PWMT5
             // 
             this.PWMT5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PWMT5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PWMT5.Location = new System.Drawing.Point(13, 88);
+            this.PWMT5.Location = new System.Drawing.Point(13, 106);
             this.PWMT5.Name = "PWMT5";
             this.PWMT5.ReadOnly = true;
             this.PWMT5.Size = new System.Drawing.Size(25, 13);
@@ -2606,7 +2608,7 @@ namespace UAVXGUI
             // 
             this.PWMT4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PWMT4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PWMT4.Location = new System.Drawing.Point(13, 73);
+            this.PWMT4.Location = new System.Drawing.Point(13, 91);
             this.PWMT4.Name = "PWMT4";
             this.PWMT4.ReadOnly = true;
             this.PWMT4.Size = new System.Drawing.Size(25, 13);
@@ -2618,7 +2620,7 @@ namespace UAVXGUI
             // 
             this.PWMT3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PWMT3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PWMT3.Location = new System.Drawing.Point(13, 58);
+            this.PWMT3.Location = new System.Drawing.Point(13, 76);
             this.PWMT3.Name = "PWMT3";
             this.PWMT3.ReadOnly = true;
             this.PWMT3.Size = new System.Drawing.Size(25, 13);
@@ -2630,7 +2632,7 @@ namespace UAVXGUI
             // 
             this.PWMT2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PWMT2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PWMT2.Location = new System.Drawing.Point(13, 43);
+            this.PWMT2.Location = new System.Drawing.Point(13, 61);
             this.PWMT2.Name = "PWMT2";
             this.PWMT2.ReadOnly = true;
             this.PWMT2.Size = new System.Drawing.Size(25, 13);
@@ -2642,7 +2644,7 @@ namespace UAVXGUI
             // 
             this.PWMT1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PWMT1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PWMT1.Location = new System.Drawing.Point(13, 28);
+            this.PWMT1.Location = new System.Drawing.Point(13, 46);
             this.PWMT1.Name = "PWMT1";
             this.PWMT1.ReadOnly = true;
             this.PWMT1.Size = new System.Drawing.Size(25, 13);
@@ -2654,7 +2656,7 @@ namespace UAVXGUI
             // 
             this.PWMT0.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PWMT0.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PWMT0.Location = new System.Drawing.Point(13, 13);
+            this.PWMT0.Location = new System.Drawing.Point(13, 31);
             this.PWMT0.Name = "PWMT0";
             this.PWMT0.ReadOnly = true;
             this.PWMT0.Size = new System.Drawing.Size(25, 13);
@@ -2664,7 +2666,7 @@ namespace UAVXGUI
             // 
             // PWMT0ProgressBar
             // 
-            this.PWMT0ProgressBar.Location = new System.Drawing.Point(48, 13);
+            this.PWMT0ProgressBar.Location = new System.Drawing.Point(48, 31);
             this.PWMT0ProgressBar.Maximum = 1000;
             this.PWMT0ProgressBar.Name = "PWMT0ProgressBar";
             this.PWMT0ProgressBar.Size = new System.Drawing.Size(108, 10);
@@ -2673,7 +2675,7 @@ namespace UAVXGUI
             // 
             // PWMT6ProgressBar
             // 
-            this.PWMT6ProgressBar.Location = new System.Drawing.Point(48, 103);
+            this.PWMT6ProgressBar.Location = new System.Drawing.Point(48, 121);
             this.PWMT6ProgressBar.Maximum = 1000;
             this.PWMT6ProgressBar.Name = "PWMT6ProgressBar";
             this.PWMT6ProgressBar.Size = new System.Drawing.Size(108, 10);
@@ -2682,43 +2684,25 @@ namespace UAVXGUI
             // 
             // PWMT1ProgressBar
             // 
-            this.PWMT1ProgressBar.Location = new System.Drawing.Point(48, 28);
+            this.PWMT1ProgressBar.Location = new System.Drawing.Point(48, 46);
             this.PWMT1ProgressBar.Maximum = 1000;
             this.PWMT1ProgressBar.Name = "PWMT1ProgressBar";
             this.PWMT1ProgressBar.Size = new System.Drawing.Size(108, 10);
             this.PWMT1ProgressBar.Step = 1;
             this.PWMT1ProgressBar.TabIndex = 192;
             // 
-            // PWMT9ProgressBar
-            // 
-            this.PWMT9ProgressBar.Location = new System.Drawing.Point(48, 149);
-            this.PWMT9ProgressBar.Maximum = 1000;
-            this.PWMT9ProgressBar.Name = "PWMT9ProgressBar";
-            this.PWMT9ProgressBar.Size = new System.Drawing.Size(108, 10);
-            this.PWMT9ProgressBar.Step = 1;
-            this.PWMT9ProgressBar.TabIndex = 188;
-            // 
             // PWMT5ProgressBar
             // 
-            this.PWMT5ProgressBar.Location = new System.Drawing.Point(48, 88);
+            this.PWMT5ProgressBar.Location = new System.Drawing.Point(48, 106);
             this.PWMT5ProgressBar.Maximum = 1000;
             this.PWMT5ProgressBar.Name = "PWMT5ProgressBar";
             this.PWMT5ProgressBar.Size = new System.Drawing.Size(108, 10);
             this.PWMT5ProgressBar.Step = 1;
             this.PWMT5ProgressBar.TabIndex = 196;
             // 
-            // PWMT8ProgressBar
-            // 
-            this.PWMT8ProgressBar.Location = new System.Drawing.Point(48, 133);
-            this.PWMT8ProgressBar.Maximum = 1000;
-            this.PWMT8ProgressBar.Name = "PWMT8ProgressBar";
-            this.PWMT8ProgressBar.Size = new System.Drawing.Size(108, 10);
-            this.PWMT8ProgressBar.Step = 1;
-            this.PWMT8ProgressBar.TabIndex = 187;
-            // 
             // PWMT2ProgressBar
             // 
-            this.PWMT2ProgressBar.Location = new System.Drawing.Point(48, 43);
+            this.PWMT2ProgressBar.Location = new System.Drawing.Point(48, 61);
             this.PWMT2ProgressBar.Maximum = 1000;
             this.PWMT2ProgressBar.Name = "PWMT2ProgressBar";
             this.PWMT2ProgressBar.Size = new System.Drawing.Size(108, 10);
@@ -2727,16 +2711,25 @@ namespace UAVXGUI
             // 
             // PWMT7ProgressBar
             // 
-            this.PWMT7ProgressBar.Location = new System.Drawing.Point(48, 118);
+            this.PWMT7ProgressBar.Location = new System.Drawing.Point(48, 136);
             this.PWMT7ProgressBar.Maximum = 1000;
             this.PWMT7ProgressBar.Name = "PWMT7ProgressBar";
             this.PWMT7ProgressBar.Size = new System.Drawing.Size(108, 10);
             this.PWMT7ProgressBar.Step = 1;
             this.PWMT7ProgressBar.TabIndex = 186;
             // 
+            // PWMT9ProgressBar
+            // 
+            this.PWMT9ProgressBar.Location = new System.Drawing.Point(48, 167);
+            this.PWMT9ProgressBar.Maximum = 1000;
+            this.PWMT9ProgressBar.Name = "PWMT9ProgressBar";
+            this.PWMT9ProgressBar.Size = new System.Drawing.Size(108, 10);
+            this.PWMT9ProgressBar.Step = 1;
+            this.PWMT9ProgressBar.TabIndex = 188;
+            // 
             // PWMT4ProgressBar
             // 
-            this.PWMT4ProgressBar.Location = new System.Drawing.Point(48, 73);
+            this.PWMT4ProgressBar.Location = new System.Drawing.Point(48, 91);
             this.PWMT4ProgressBar.Maximum = 1000;
             this.PWMT4ProgressBar.Name = "PWMT4ProgressBar";
             this.PWMT4ProgressBar.Size = new System.Drawing.Size(108, 10);
@@ -2745,12 +2738,21 @@ namespace UAVXGUI
             // 
             // PWMT3ProgressBar
             // 
-            this.PWMT3ProgressBar.Location = new System.Drawing.Point(48, 58);
+            this.PWMT3ProgressBar.Location = new System.Drawing.Point(48, 76);
             this.PWMT3ProgressBar.Maximum = 1000;
             this.PWMT3ProgressBar.Name = "PWMT3ProgressBar";
             this.PWMT3ProgressBar.Size = new System.Drawing.Size(108, 10);
             this.PWMT3ProgressBar.Step = 1;
             this.PWMT3ProgressBar.TabIndex = 194;
+            // 
+            // PWMT8ProgressBar
+            // 
+            this.PWMT8ProgressBar.Location = new System.Drawing.Point(48, 151);
+            this.PWMT8ProgressBar.Maximum = 1000;
+            this.PWMT8ProgressBar.Name = "PWMT8ProgressBar";
+            this.PWMT8ProgressBar.Size = new System.Drawing.Size(108, 10);
+            this.PWMT8ProgressBar.Step = 1;
+            this.PWMT8ProgressBar.TabIndex = 187;
             // 
             // MissionTimeTextBox
             // 
@@ -2793,7 +2795,7 @@ namespace UAVXGUI
             this.SpectraGroupBox.Controls.Add(this.DFTBar8);
             this.SpectraGroupBox.Controls.Add(this.DFTBar5);
             this.SpectraGroupBox.Controls.Add(this.DFTBar4);
-            this.SpectraGroupBox.Location = new System.Drawing.Point(843, 195);
+            this.SpectraGroupBox.Location = new System.Drawing.Point(843, 186);
             this.SpectraGroupBox.Name = "SpectraGroupBox";
             this.SpectraGroupBox.Size = new System.Drawing.Size(162, 100);
             this.SpectraGroupBox.TabIndex = 215;
@@ -2947,15 +2949,59 @@ namespace UAVXGUI
             this.CalibrationGroupBox.TabStop = false;
             this.CalibrationGroupBox.Text = "Calibration and Filters";
             // 
-            // CalibrateAcc6PointButton
+            // NyquistMargin
             // 
-            this.CalibrateAcc6PointButton.Location = new System.Drawing.Point(868, 511);
-            this.CalibrateAcc6PointButton.Name = "CalibrateAcc6PointButton";
-            this.CalibrateAcc6PointButton.Size = new System.Drawing.Size(50, 23);
-            this.CalibrateAcc6PointButton.TabIndex = 217;
-            this.CalibrateAcc6PointButton.Text = "Acc6Pt";
-            this.CalibrateAcc6PointButton.UseVisualStyleBackColor = true;
-            this.CalibrateAcc6PointButton.Click += new System.EventHandler(this.CalibrateAcc6PointButton_Click);
+            this.NyquistMargin.AutoSize = true;
+            this.NyquistMargin.Location = new System.Drawing.Point(131, 137);
+            this.NyquistMargin.Name = "NyquistMargin";
+            this.NyquistMargin.Size = new System.Drawing.Size(64, 13);
+            this.NyquistMargin.TabIndex = 220;
+            this.NyquistMargin.Text = "Nyquist (Hz)";
+            // 
+            // GyroLPF
+            // 
+            this.GyroLPF.AutoSize = true;
+            this.GyroLPF.Location = new System.Drawing.Point(131, 118);
+            this.GyroLPF.Name = "GyroLPF";
+            this.GyroLPF.Size = new System.Drawing.Size(54, 13);
+            this.GyroLPF.TabIndex = 219;
+            this.GyroLPF.Text = "gLPF (Hz)";
+            // 
+            // AccLPF
+            // 
+            this.AccLPF.AutoSize = true;
+            this.AccLPF.Location = new System.Drawing.Point(131, 100);
+            this.AccLPF.Name = "AccLPF";
+            this.AccLPF.Size = new System.Drawing.Size(54, 13);
+            this.AccLPF.TabIndex = 218;
+            this.AccLPF.Text = "aLPF (Hz)";
+            // 
+            // NyquistMarginLabel
+            // 
+            this.NyquistMarginLabel.Location = new System.Drawing.Point(197, 138);
+            this.NyquistMarginLabel.Name = "NyquistMarginLabel";
+            this.NyquistMarginLabel.Size = new System.Drawing.Size(40, 13);
+            this.NyquistMarginLabel.TabIndex = 217;
+            this.NyquistMarginLabel.Text = "0";
+            this.NyquistMarginLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // AccLPFLabel
+            // 
+            this.AccLPFLabel.Location = new System.Drawing.Point(197, 100);
+            this.AccLPFLabel.Name = "AccLPFLabel";
+            this.AccLPFLabel.Size = new System.Drawing.Size(40, 13);
+            this.AccLPFLabel.TabIndex = 216;
+            this.AccLPFLabel.Text = "0";
+            this.AccLPFLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // GyroLPFLabel
+            // 
+            this.GyroLPFLabel.Location = new System.Drawing.Point(197, 118);
+            this.GyroLPFLabel.Name = "GyroLPFLabel";
+            this.GyroLPFLabel.Size = new System.Drawing.Size(40, 13);
+            this.GyroLPFLabel.TabIndex = 215;
+            this.GyroLPFLabel.Text = "0";
+            this.GyroLPFLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label22
             // 
@@ -3227,6 +3273,16 @@ namespace UAVXGUI
             this.PitchGyroMLabel.Text = "0";
             this.PitchGyroMLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // CalibrateAcc6PointButton
+            // 
+            this.CalibrateAcc6PointButton.Location = new System.Drawing.Point(868, 511);
+            this.CalibrateAcc6PointButton.Name = "CalibrateAcc6PointButton";
+            this.CalibrateAcc6PointButton.Size = new System.Drawing.Size(50, 23);
+            this.CalibrateAcc6PointButton.TabIndex = 217;
+            this.CalibrateAcc6PointButton.Text = "Acc6Pt";
+            this.CalibrateAcc6PointButton.UseVisualStyleBackColor = true;
+            this.CalibrateAcc6PointButton.Click += new System.EventHandler(this.CalibrateAcc6PointButton_Click);
+            // 
             // PlotButton
             // 
             this.PlotButton.BackColor = System.Drawing.Color.Green;
@@ -3317,60 +3373,6 @@ namespace UAVXGUI
             this.TuningGroupBox.TabStop = false;
             this.TuningGroupBox.Text = "Tuning";
             // 
-            // NyquistMargin
-            // 
-            this.NyquistMargin.AutoSize = true;
-            this.NyquistMargin.Location = new System.Drawing.Point(131, 137);
-            this.NyquistMargin.Name = "NyquistMargin";
-            this.NyquistMargin.Size = new System.Drawing.Size(64, 13);
-            this.NyquistMargin.TabIndex = 220;
-            this.NyquistMargin.Text = "Nyquist (Hz)";
-            // 
-            // GyroLPF
-            // 
-            this.GyroLPF.AutoSize = true;
-            this.GyroLPF.Location = new System.Drawing.Point(131, 118);
-            this.GyroLPF.Name = "GyroLPF";
-            this.GyroLPF.Size = new System.Drawing.Size(54, 13);
-            this.GyroLPF.TabIndex = 219;
-            this.GyroLPF.Text = "gLPF (Hz)";
-            // 
-            // AccLPF
-            // 
-            this.AccLPF.AutoSize = true;
-            this.AccLPF.Location = new System.Drawing.Point(131, 100);
-            this.AccLPF.Name = "AccLPF";
-            this.AccLPF.Size = new System.Drawing.Size(54, 13);
-            this.AccLPF.TabIndex = 218;
-            this.AccLPF.Text = "aLPF (Hz)";
-            // 
-            // NyquistMarginLabel
-            // 
-            this.NyquistMarginLabel.Location = new System.Drawing.Point(197, 138);
-            this.NyquistMarginLabel.Name = "NyquistMarginLabel";
-            this.NyquistMarginLabel.Size = new System.Drawing.Size(40, 13);
-            this.NyquistMarginLabel.TabIndex = 217;
-            this.NyquistMarginLabel.Text = "0";
-            this.NyquistMarginLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // AccLPFLabel
-            // 
-            this.AccLPFLabel.Location = new System.Drawing.Point(197, 100);
-            this.AccLPFLabel.Name = "AccLPFLabel";
-            this.AccLPFLabel.Size = new System.Drawing.Size(40, 13);
-            this.AccLPFLabel.TabIndex = 216;
-            this.AccLPFLabel.Text = "0";
-            this.AccLPFLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // GyroLPFLabel
-            // 
-            this.GyroLPFLabel.Location = new System.Drawing.Point(197, 118);
-            this.GyroLPFLabel.Name = "GyroLPFLabel";
-            this.GyroLPFLabel.Size = new System.Drawing.Size(40, 13);
-            this.GyroLPFLabel.TabIndex = 215;
-            this.GyroLPFLabel.Text = "0";
-            this.GyroLPFLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // attitudeIndicatorInstrumentControl1
             // 
             this.attitudeIndicatorInstrumentControl1.Location = new System.Drawing.Point(323, 118);
@@ -3386,6 +3388,16 @@ namespace UAVXGUI
             this.headingIndicatorInstrumentControl1.Size = new System.Drawing.Size(210, 218);
             this.headingIndicatorInstrumentControl1.TabIndex = 4;
             this.headingIndicatorInstrumentControl1.Text = "headingIndicatorInstrumentControl1";
+            // 
+            // DiagnosticCheckBox
+            // 
+            this.DiagnosticCheckBox.AutoSize = true;
+            this.DiagnosticCheckBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.DiagnosticCheckBox.Location = new System.Drawing.Point(141, 11);
+            this.DiagnosticCheckBox.Name = "DiagnosticCheckBox";
+            this.DiagnosticCheckBox.Size = new System.Drawing.Size(15, 14);
+            this.DiagnosticCheckBox.TabIndex = 226;
+            this.DiagnosticCheckBox.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
@@ -3808,6 +3820,7 @@ namespace UAVXGUI
         private System.Windows.Forms.Label AccLPFLabel;
         private System.Windows.Forms.Label GyroLPFLabel;
         private System.Windows.Forms.GroupBox TuningGroupBox;
+        private System.Windows.Forms.CheckBox DiagnosticCheckBox;
     }
 }
 

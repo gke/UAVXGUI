@@ -250,7 +250,7 @@ namespace UAVXGUI
 
         static NavStates PrevNavState = NavStates.NavStateUndefined;
 
-        public enum NavComs { navVia, navOrbit, navPerch, navPOI, navUnknown };
+        public enum NavComs { navVia, navOrbit, navPerch, navPOI, navLand, navUnknown };
 
         public static string[] NavComNames = {
             "Via",
@@ -2187,12 +2187,11 @@ namespace UAVXGUI
 
         Color PWDiag(short PWDiag)
         {
-            return (Math.Abs(PWDiag) > 3  ? Color.Orange : Math.Abs(PWDiag) > 5  ? Color.Red : Color.White);
+            return (PWDiag > 3  ? Color.Orange : PWDiag > 5  ? Color.Red : Color.White);
         }
 
         void UpdateMotors()
         {
-            bool ShowDiag = false;
 
                 PWMT0ProgressBar.Value = Limit(PWMT[0], 0, 1000);
                 PWMT1ProgressBar.Value = Limit(PWMT[1], 0, 1000);
@@ -2202,7 +2201,7 @@ namespace UAVXGUI
                 PWMT4ProgressBar.Value = Limit(PWMT[4], 0, 1000);
                 PWMT5ProgressBar.Value = Limit(PWMT[5], 0, 1000);
 
-                if (ShowDiag) {
+                if (DiagnosticCheckBox.Checked) {
                     PWMT0.Text = string.Format("{0:n0}", PWMDiagT[0]);
                     PWMT1.Text = string.Format("{0:n0}", PWMDiagT[1]);
                     PWMT2.Text = string.Format("{0:n0}", PWMDiagT[2]);
@@ -2237,7 +2236,7 @@ namespace UAVXGUI
                     PWMT8ProgressBar.Value = Limit(PWMT[8], 0, 1000);
                     PWMT9ProgressBar.Value = Limit(PWMT[9], 0, 1000);
 
-                    if (ShowDiag)
+                    if (DiagnosticCheckBox.Checked)
                     {
                         PWMT6.Text = string.Format("{0:n0}", PWMDiagT[6]);
                         PWMT7.Text = string.Format("{0:n0}", PWMDiagT[7]);

@@ -1602,6 +1602,12 @@ namespace UAVXGUI
                     case FormMain.NavComs.navPOI:
                         pic = Properties.Resources.marker_poi;
                         break;
+                    case FormMain.NavComs.navLand:
+                        pic = Properties.Resources.marker_land;
+                        drawBrush.Color = Color.Yellow;
+                        g.DrawString("LND", drawFont, drawBrush, -12, -51);
+                        drawBrush.Color = Color.White;
+                        break;
                     case FormMain.NavComs.navPerch:
                         pic = Properties.Resources.marker_land;
                         drawBrush.Color = Color.Yellow;
