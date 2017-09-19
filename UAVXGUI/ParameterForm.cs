@@ -349,7 +349,7 @@ namespace UAVXGUI
                 helpstring = help.GetString("ManualAltHold");
 
             if (parameterForm.bit02CheckBox.Focused)
-                helpstring = help.GetString("SWFilters");
+                helpstring = help.GetString("PavelFilter");
             if (parameterForm.bit12CheckBox.Focused)
                 helpstring = help.GetString("FastStart");
             if (parameterForm.bit22CheckBox.Focused)
@@ -374,6 +374,9 @@ namespace UAVXGUI
                 helpstring = help.GetString("NavVelocity");
             if (parameterForm.InertialSchemeComboBox.Focused)
                 helpstring = help.GetString("InertialScheme");
+
+            if (parameterForm.DerivativeLPFNumericUpDown.Focused)
+                helpstring = help.GetString("DerivativeFilter");
 
             if (parameterForm.ParamTemplateComboBox.Focused)
                 helpstring = help.GetString("ParamTemplate");
@@ -421,10 +424,10 @@ namespace UAVXGUI
             if (parameterForm.HysteresisNumericUpDown.Focused)
                 helpstring = help.GetString("Hysteresis");
 
-            if (parameterForm.GyroLPFComboBox.Focused)
+            if (parameterForm.GyroLPFNumericUpDown.Focused)
                 helpstring = help.GetString("GyroLPF");
 
-            if (parameterForm.AccLPFComboBox.Focused)
+            if (parameterForm.AccLPFNumericUpDown.Focused)
                 helpstring = help.GetString("AccLPF");
 
             if (parameterForm.MadgwickKpAccNumericUpDown.Focused)
@@ -1224,14 +1227,10 @@ namespace UAVXGUI
                         ParamUpdate(DescDelayNumericUpDown);
                         break;
                     case 48:
-                        GyroLPFComboBox.SelectedIndex = UAVXP[p-1].Value;
-                        if (GyroLPFComboBox.SelectedIndex < 2)
-                            GyroLPFComboBox.BackColor = Color.Orange;
-                        else if (GyroLPFComboBox.SelectedIndex > 3)
-                            GyroLPFComboBox.BackColor = Color.Red;
-                        else
-                            GyroLPFComboBox.BackColor = Color.White;
-                            ParamUpdate(GyroLPFComboBox);
+                        GyroLPFNumericUpDown.Value = UAVXP[p - 1].Value;
+                        GyroLPFNumericUpDown.BackColor =  (GyroLPFNumericUpDown.Value < 50) ?
+                            Color.Orange : Color.White;
+                        ParamUpdate(GyroLPFNumericUpDown);
                         break;
                     case 49:
                         CrossTrackNumericUpDown.Value = UAVXP[p-1].Value;
@@ -1391,7 +1390,10 @@ namespace UAVXGUI
                         ParamUpdate(MaxRollAngleNumericUpDown);
                         break;
                     case 78:
-                        // unused
+                        DerivativeLPFNumericUpDown.Value = UAVXP[p - 1].Value;
+                        DerivativeLPFNumericUpDown.BackColor = (DerivativeLPFNumericUpDown.Value >= GyroLPFNumericUpDown.Value) ?
+                            Color.Red : Color.White;
+                        ParamUpdate(DerivativeLPFNumericUpDown);
                         break;
                     case 79:
                         TurnoutNumericUpDown.Value = UAVXP[p - 1].Value;
@@ -1439,14 +1441,10 @@ namespace UAVXGUI
                         break;
 
                     case 90:
-                        AccLPFComboBox.SelectedIndex = UAVXP[p - 1].Value;
-                        if (AccLPFComboBox.SelectedIndex < 4)
-                            AccLPFComboBox.BackColor = Color.Orange;
-                        else if (AccLPFComboBox.SelectedIndex > 5)
-                            AccLPFComboBox.BackColor = Color.Red;
-                        else
-                            AccLPFComboBox.BackColor = Color.White;
-                        ParamUpdate(AccLPFComboBox);
+                        AccLPFNumericUpDown.Value = UAVXP[p - 1].Value;
+                        AccLPFNumericUpDown.BackColor = (AccLPFNumericUpDown.Value >= DerivativeLPFNumericUpDown.Value) ?
+                            Color.Red : Color.White;
+                        ParamUpdate(AccLPFNumericUpDown);
                         break;
                     case 91:
                         YawRateDiffNumericUpDown.Value = UAVXP[p - 1].Value;

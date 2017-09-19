@@ -242,6 +242,7 @@ namespace UAVXGUI
             this.CalibrateIMUButton = new System.Windows.Forms.Button();
             this.CalibrateMagButton = new System.Windows.Forms.Button();
             this.DrivesGroupBox = new System.Windows.Forms.GroupBox();
+            this.DiagnosticCheckBox = new System.Windows.Forms.CheckBox();
             this.PWMT9 = new System.Windows.Forms.TextBox();
             this.PWMT7 = new System.Windows.Forms.TextBox();
             this.PWMT6 = new System.Windows.Forms.TextBox();
@@ -287,6 +288,7 @@ namespace UAVXGUI
             this.UtilisationLabel = new System.Windows.Forms.Label();
             this.UtilisationProgressBar = new System.Windows.Forms.ProgressBar();
             this.CalibrationGroupBox = new System.Windows.Forms.GroupBox();
+            this.DerivativeLPFLabel = new System.Windows.Forms.Label();
             this.NyquistMargin = new System.Windows.Forms.Label();
             this.GyroLPF = new System.Windows.Forms.Label();
             this.AccLPF = new System.Windows.Forms.Label();
@@ -335,7 +337,6 @@ namespace UAVXGUI
             this.TuningGroupBox = new System.Windows.Forms.GroupBox();
             this.attitudeIndicatorInstrumentControl1 = new Instruments.AttitudeIndicatorInstrumentControl();
             this.headingIndicatorInstrumentControl1 = new Instruments.HeadingIndicatorInstrumentControl();
-            this.DiagnosticCheckBox = new System.Windows.Forms.CheckBox();
             this.GyroGroupBox.SuspendLayout();
             this.ControlsGroupBox.SuspendLayout();
             this.AttitudeGroupBox.SuspendLayout();
@@ -2544,6 +2545,16 @@ namespace UAVXGUI
             this.DrivesGroupBox.TabStop = false;
             this.DrivesGroupBox.Text = "Motors/Servos (%)";
             // 
+            // DiagnosticCheckBox
+            // 
+            this.DiagnosticCheckBox.AutoSize = true;
+            this.DiagnosticCheckBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.DiagnosticCheckBox.Location = new System.Drawing.Point(141, 11);
+            this.DiagnosticCheckBox.Name = "DiagnosticCheckBox";
+            this.DiagnosticCheckBox.Size = new System.Drawing.Size(15, 14);
+            this.DiagnosticCheckBox.TabIndex = 226;
+            this.DiagnosticCheckBox.UseVisualStyleBackColor = true;
+            // 
             // PWMT9
             // 
             this.PWMT9.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -2906,6 +2917,7 @@ namespace UAVXGUI
             // 
             // CalibrationGroupBox
             // 
+            this.CalibrationGroupBox.Controls.Add(this.DerivativeLPFLabel);
             this.CalibrationGroupBox.Controls.Add(this.NyquistMargin);
             this.CalibrationGroupBox.Controls.Add(this.GyroLPF);
             this.CalibrationGroupBox.Controls.Add(this.AccLPF);
@@ -2949,6 +2961,15 @@ namespace UAVXGUI
             this.CalibrationGroupBox.TabStop = false;
             this.CalibrationGroupBox.Text = "Calibration and Filters";
             // 
+            // DerivativeLPFLabel
+            // 
+            this.DerivativeLPFLabel.Location = new System.Drawing.Point(192, 118);
+            this.DerivativeLPFLabel.Name = "DerivativeLPFLabel";
+            this.DerivativeLPFLabel.Size = new System.Drawing.Size(20, 13);
+            this.DerivativeLPFLabel.TabIndex = 221;
+            this.DerivativeLPFLabel.Text = "0";
+            this.DerivativeLPFLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // NyquistMargin
             // 
             this.NyquistMargin.AutoSize = true;
@@ -2961,24 +2982,24 @@ namespace UAVXGUI
             // GyroLPF
             // 
             this.GyroLPF.AutoSize = true;
-            this.GyroLPF.Location = new System.Drawing.Point(131, 118);
+            this.GyroLPF.Location = new System.Drawing.Point(132, 118);
             this.GyroLPF.Name = "GyroLPF";
-            this.GyroLPF.Size = new System.Drawing.Size(54, 13);
+            this.GyroLPF.Size = new System.Drawing.Size(59, 13);
             this.GyroLPF.TabIndex = 219;
-            this.GyroLPF.Text = "gLPF (Hz)";
+            this.GyroLPF.Text = "Deriv/Gyro";
             // 
             // AccLPF
             // 
             this.AccLPF.AutoSize = true;
-            this.AccLPF.Location = new System.Drawing.Point(131, 100);
+            this.AccLPF.Location = new System.Drawing.Point(132, 100);
             this.AccLPF.Name = "AccLPF";
-            this.AccLPF.Size = new System.Drawing.Size(54, 13);
+            this.AccLPF.Size = new System.Drawing.Size(73, 13);
             this.AccLPF.TabIndex = 218;
-            this.AccLPF.Text = "aLPF (Hz)";
+            this.AccLPF.Text = "LPF(Hz)   Acc";
             // 
             // NyquistMarginLabel
             // 
-            this.NyquistMarginLabel.Location = new System.Drawing.Point(197, 138);
+            this.NyquistMarginLabel.Location = new System.Drawing.Point(204, 137);
             this.NyquistMarginLabel.Name = "NyquistMarginLabel";
             this.NyquistMarginLabel.Size = new System.Drawing.Size(40, 13);
             this.NyquistMarginLabel.TabIndex = 217;
@@ -2987,7 +3008,7 @@ namespace UAVXGUI
             // 
             // AccLPFLabel
             // 
-            this.AccLPFLabel.Location = new System.Drawing.Point(197, 100);
+            this.AccLPFLabel.Location = new System.Drawing.Point(204, 99);
             this.AccLPFLabel.Name = "AccLPFLabel";
             this.AccLPFLabel.Size = new System.Drawing.Size(40, 13);
             this.AccLPFLabel.TabIndex = 216;
@@ -2996,7 +3017,7 @@ namespace UAVXGUI
             // 
             // GyroLPFLabel
             // 
-            this.GyroLPFLabel.Location = new System.Drawing.Point(197, 118);
+            this.GyroLPFLabel.Location = new System.Drawing.Point(204, 118);
             this.GyroLPFLabel.Name = "GyroLPFLabel";
             this.GyroLPFLabel.Size = new System.Drawing.Size(40, 13);
             this.GyroLPFLabel.TabIndex = 215;
@@ -3006,7 +3027,7 @@ namespace UAVXGUI
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(130, 22);
+            this.label22.Location = new System.Drawing.Point(131, 22);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(59, 13);
             this.label22.TabIndex = 214;
@@ -3015,7 +3036,7 @@ namespace UAVXGUI
             // MZCalBiasLabel
             // 
             this.MZCalBiasLabel.AutoSize = true;
-            this.MZCalBiasLabel.Location = new System.Drawing.Point(131, 79);
+            this.MZCalBiasLabel.Location = new System.Drawing.Point(132, 79);
             this.MZCalBiasLabel.Name = "MZCalBiasLabel";
             this.MZCalBiasLabel.Size = new System.Drawing.Size(22, 13);
             this.MZCalBiasLabel.TabIndex = 213;
@@ -3024,7 +3045,7 @@ namespace UAVXGUI
             // MYCalBiasLabel
             // 
             this.MYCalBiasLabel.AutoSize = true;
-            this.MYCalBiasLabel.Location = new System.Drawing.Point(131, 61);
+            this.MYCalBiasLabel.Location = new System.Drawing.Point(132, 62);
             this.MYCalBiasLabel.Name = "MYCalBiasLabel";
             this.MYCalBiasLabel.Size = new System.Drawing.Size(22, 13);
             this.MYCalBiasLabel.TabIndex = 212;
@@ -3033,7 +3054,7 @@ namespace UAVXGUI
             // MXCalBiasLabel
             // 
             this.MXCalBiasLabel.AutoSize = true;
-            this.MXCalBiasLabel.Location = new System.Drawing.Point(131, 43);
+            this.MXCalBiasLabel.Location = new System.Drawing.Point(132, 43);
             this.MXCalBiasLabel.Name = "MXCalBiasLabel";
             this.MXCalBiasLabel.Size = new System.Drawing.Size(22, 13);
             this.MXCalBiasLabel.TabIndex = 211;
@@ -3041,7 +3062,7 @@ namespace UAVXGUI
             // 
             // MZBiasLabel
             // 
-            this.MZBiasLabel.Location = new System.Drawing.Point(197, 81);
+            this.MZBiasLabel.Location = new System.Drawing.Point(204, 79);
             this.MZBiasLabel.Name = "MZBiasLabel";
             this.MZBiasLabel.Size = new System.Drawing.Size(40, 13);
             this.MZBiasLabel.TabIndex = 210;
@@ -3050,7 +3071,7 @@ namespace UAVXGUI
             // 
             // MXBiasLabel
             // 
-            this.MXBiasLabel.Location = new System.Drawing.Point(197, 43);
+            this.MXBiasLabel.Location = new System.Drawing.Point(204, 43);
             this.MXBiasLabel.Name = "MXBiasLabel";
             this.MXBiasLabel.Size = new System.Drawing.Size(40, 13);
             this.MXBiasLabel.TabIndex = 209;
@@ -3059,7 +3080,7 @@ namespace UAVXGUI
             // 
             // MYBiasLabel
             // 
-            this.MYBiasLabel.Location = new System.Drawing.Point(197, 62);
+            this.MYBiasLabel.Location = new System.Drawing.Point(204, 62);
             this.MYBiasLabel.Name = "MYBiasLabel";
             this.MYBiasLabel.Size = new System.Drawing.Size(40, 13);
             this.MYBiasLabel.TabIndex = 208;
@@ -3068,7 +3089,7 @@ namespace UAVXGUI
             // 
             // MZScaleLabel
             // 
-            this.MZScaleLabel.Location = new System.Drawing.Point(149, 81);
+            this.MZScaleLabel.Location = new System.Drawing.Point(150, 79);
             this.MZScaleLabel.Name = "MZScaleLabel";
             this.MZScaleLabel.Size = new System.Drawing.Size(40, 13);
             this.MZScaleLabel.TabIndex = 207;
@@ -3095,7 +3116,7 @@ namespace UAVXGUI
             // 
             // MXScaleLabel
             // 
-            this.MXScaleLabel.Location = new System.Drawing.Point(149, 43);
+            this.MXScaleLabel.Location = new System.Drawing.Point(150, 43);
             this.MXScaleLabel.Name = "MXScaleLabel";
             this.MXScaleLabel.Size = new System.Drawing.Size(40, 13);
             this.MXScaleLabel.TabIndex = 206;
@@ -3104,7 +3125,7 @@ namespace UAVXGUI
             // 
             // MYScaleLabel
             // 
-            this.MYScaleLabel.Location = new System.Drawing.Point(149, 62);
+            this.MYScaleLabel.Location = new System.Drawing.Point(150, 62);
             this.MYScaleLabel.Name = "MYScaleLabel";
             this.MYScaleLabel.Size = new System.Drawing.Size(40, 13);
             this.MYScaleLabel.TabIndex = 205;
@@ -3203,7 +3224,7 @@ namespace UAVXGUI
             // 
             // RollGyroCLabel
             // 
-            this.RollGyroCLabel.Location = new System.Drawing.Point(83, 41);
+            this.RollGyroCLabel.Location = new System.Drawing.Point(83, 43);
             this.RollGyroCLabel.Name = "RollGyroCLabel";
             this.RollGyroCLabel.Size = new System.Drawing.Size(40, 13);
             this.RollGyroCLabel.TabIndex = 71;
@@ -3212,7 +3233,7 @@ namespace UAVXGUI
             // 
             // YawGyroMLabel
             // 
-            this.YawGyroMLabel.Location = new System.Drawing.Point(37, 81);
+            this.YawGyroMLabel.Location = new System.Drawing.Point(37, 79);
             this.YawGyroMLabel.Name = "YawGyroMLabel";
             this.YawGyroMLabel.Size = new System.Drawing.Size(40, 13);
             this.YawGyroMLabel.TabIndex = 70;
@@ -3222,7 +3243,7 @@ namespace UAVXGUI
             // YawCalLabel
             // 
             this.YawCalLabel.AutoSize = true;
-            this.YawCalLabel.Location = new System.Drawing.Point(9, 81);
+            this.YawCalLabel.Location = new System.Drawing.Point(9, 79);
             this.YawCalLabel.Name = "YawCalLabel";
             this.YawCalLabel.Size = new System.Drawing.Size(20, 13);
             this.YawCalLabel.TabIndex = 69;
@@ -3230,7 +3251,7 @@ namespace UAVXGUI
             // 
             // PitchGyroCLabel
             // 
-            this.PitchGyroCLabel.Location = new System.Drawing.Point(83, 60);
+            this.PitchGyroCLabel.Location = new System.Drawing.Point(83, 62);
             this.PitchGyroCLabel.Name = "PitchGyroCLabel";
             this.PitchGyroCLabel.Size = new System.Drawing.Size(40, 13);
             this.PitchGyroCLabel.TabIndex = 68;
@@ -3388,16 +3409,6 @@ namespace UAVXGUI
             this.headingIndicatorInstrumentControl1.Size = new System.Drawing.Size(210, 218);
             this.headingIndicatorInstrumentControl1.TabIndex = 4;
             this.headingIndicatorInstrumentControl1.Text = "headingIndicatorInstrumentControl1";
-            // 
-            // DiagnosticCheckBox
-            // 
-            this.DiagnosticCheckBox.AutoSize = true;
-            this.DiagnosticCheckBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.DiagnosticCheckBox.Location = new System.Drawing.Point(141, 11);
-            this.DiagnosticCheckBox.Name = "DiagnosticCheckBox";
-            this.DiagnosticCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.DiagnosticCheckBox.TabIndex = 226;
-            this.DiagnosticCheckBox.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
@@ -3821,6 +3832,7 @@ namespace UAVXGUI
         private System.Windows.Forms.Label GyroLPFLabel;
         private System.Windows.Forms.GroupBox TuningGroupBox;
         private System.Windows.Forms.CheckBox DiagnosticCheckBox;
+        private System.Windows.Forms.Label DerivativeLPFLabel;
     }
 }
 

@@ -2586,13 +2586,15 @@ namespace UAVXGUI
                      MZScaleLabel.Text = string.Format("{0:n3}", Cal[16] * 0.001);
 	                 MZBiasLabel.Text = string.Format("{0:n3}", Cal[17] * 0.001);
 
-                     int Nyquist = Cal[18] / 4;
-                     AccLPFLabel.BackColor =  Nyquist < Cal[19] ? System.Drawing.Color.Red : System.Drawing.Color.Green;
-                     GyroLPFLabel.BackColor = Nyquist < Cal[20] ? System.Drawing.Color.Red : System.Drawing.Color.Green;
+                     int Nyquist = (Cal[18] + 2) / 4;
+                     AccLPFLabel.BackColor = Cal[19] >= (Cal[20]/3) ? System.Drawing.Color.Orange : System.Drawing.Color.Green;
+                     GyroLPFLabel.BackColor = Cal[20] >= Nyquist   ? System.Drawing.Color.Red : System.Drawing.Color.Green;
+                     DerivativeLPFLabel.BackColor = Cal[19] >= Cal[20] ? System.Drawing.Color.Orange : System.Drawing.Color.Green;
 
-                     NyquistMarginLabel.Text = string.Format("{0:n0}", Cal[18] / 2);
+                     NyquistMarginLabel.Text = string.Format("{0:n0}", (Cal[18]+1) / 2);
                      AccLPFLabel.Text = string.Format("{0:n0}", Cal[19]);
                      GyroLPFLabel.Text = string.Format("{0:n0}", Cal[20]);
+                     DerivativeLPFLabel.Text = string.Format("{0:n0}", Cal[21]);
   
                     break;
 

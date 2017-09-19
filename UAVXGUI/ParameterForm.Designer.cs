@@ -83,10 +83,9 @@
             this.GPSTypeComboBox = new System.Windows.Forms.ComboBox();
             this.GPSTypeLabel = new System.Windows.Forms.Label();
             this.MadgwickKpMagLabel = new System.Windows.Forms.Label();
-            this.GyroLPFLabel = new System.Windows.Forms.Label();
+            this.GyroLabel = new System.Windows.Forms.Label();
             this.MadgwickKpMagNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.InertialSchemeComboBox = new System.Windows.Forms.ComboBox();
-            this.GyroLPFComboBox = new System.Windows.Forms.ComboBox();
             this.MadgwickKpAccNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.MadgwickKpAccLabel = new System.Windows.Forms.Label();
             this.AccConfNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -193,6 +192,7 @@
             this.SetDefaultParamButton = new System.Windows.Forms.Button();
             this.CheckDownLinkTimer = new System.Windows.Forms.Timer(this.components);
             this.RCGroupBox = new System.Windows.Forms.GroupBox();
+            this.DerivativeFilterLabel = new System.Windows.Forms.Label();
             this.RC11TextBox = new System.Windows.Forms.TextBox();
             this.RC10TextBox = new System.Windows.Forms.TextBox();
             this.RC9TextBox = new System.Windows.Forms.TextBox();
@@ -239,10 +239,13 @@
             this.bit22CheckBox = new System.Windows.Forms.CheckBox();
             this.bit12CheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.GyroLPFNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.AccLPFNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.DerivLabel = new System.Windows.Forms.Label();
             this.CycleTimemSComboBox = new System.Windows.Forms.ComboBox();
+            this.DerivativeLPFNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CycleTimemSLabel = new System.Windows.Forms.Label();
-            this.AccLPFComboBox = new System.Windows.Forms.ComboBox();
-            this.AccLPFLabel = new System.Windows.Forms.Label();
+            this.AccLabel = new System.Windows.Forms.Label();
             this.AirspeedLabel = new System.Windows.Forms.Label();
             this.AirspeedComboBox = new System.Windows.Forms.ComboBox();
             this.FWGroupBox = new System.Windows.Forms.GroupBox();
@@ -340,6 +343,9 @@
             this.ConfigGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wsLEDsNumericUpDown)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GyroLPFNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccLPFNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DerivativeLPFNumericUpDown)).BeginInit();
             this.FWGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FWAileronRudderFFNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWAltSpoilerFFNumericUpDown)).BeginInit();
@@ -1069,10 +1075,10 @@
             resources.ApplyResources(this.MadgwickKpMagLabel, "MadgwickKpMagLabel");
             this.MadgwickKpMagLabel.Name = "MadgwickKpMagLabel";
             // 
-            // GyroLPFLabel
+            // GyroLabel
             // 
-            resources.ApplyResources(this.GyroLPFLabel, "GyroLPFLabel");
-            this.GyroLPFLabel.Name = "GyroLPFLabel";
+            resources.ApplyResources(this.GyroLabel, "GyroLabel");
+            this.GyroLabel.Name = "GyroLabel";
             // 
             // MadgwickKpMagNumericUpDown
             // 
@@ -1112,26 +1118,6 @@
             this.InertialSchemeComboBox.Tag = "13";
             this.InertialSchemeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
             this.InertialSchemeComboBox.Enter += new System.EventHandler(this.infoGetFocus);
-            // 
-            // GyroLPFComboBox
-            // 
-            this.GyroLPFComboBox.DisplayMember = "3";
-            resources.ApplyResources(this.GyroLPFComboBox, "GyroLPFComboBox");
-            this.GyroLPFComboBox.FormattingEnabled = true;
-            this.GyroLPFComboBox.Items.AddRange(new object[] {
-            resources.GetString("GyroLPFComboBox.Items"),
-            resources.GetString("GyroLPFComboBox.Items1"),
-            resources.GetString("GyroLPFComboBox.Items2"),
-            resources.GetString("GyroLPFComboBox.Items3"),
-            resources.GetString("GyroLPFComboBox.Items4"),
-            resources.GetString("GyroLPFComboBox.Items5"),
-            resources.GetString("GyroLPFComboBox.Items6"),
-            resources.GetString("GyroLPFComboBox.Items7")});
-            this.GyroLPFComboBox.Name = "GyroLPFComboBox";
-            this.GyroLPFComboBox.Tag = "48";
-            this.GyroLPFComboBox.ValueMember = "3";
-            this.GyroLPFComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
-            this.GyroLPFComboBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
             // MadgwickKpAccNumericUpDown
             // 
@@ -2401,6 +2387,7 @@
             // 
             // RCGroupBox
             // 
+            this.RCGroupBox.Controls.Add(this.DerivativeFilterLabel);
             this.RCGroupBox.Controls.Add(this.RC11TextBox);
             this.RCGroupBox.Controls.Add(this.RC10TextBox);
             this.RCGroupBox.Controls.Add(this.RC9TextBox);
@@ -2461,6 +2448,11 @@
             resources.ApplyResources(this.RCGroupBox, "RCGroupBox");
             this.RCGroupBox.Name = "RCGroupBox";
             this.RCGroupBox.TabStop = false;
+            // 
+            // DerivativeFilterLabel
+            // 
+            resources.ApplyResources(this.DerivativeFilterLabel, "DerivativeFilterLabel");
+            this.DerivativeFilterLabel.Name = "DerivativeFilterLabel";
             // 
             // RC11TextBox
             // 
@@ -2872,18 +2864,20 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.GyroLPFNumericUpDown);
+            this.groupBox2.Controls.Add(this.AccLPFNumericUpDown);
+            this.groupBox2.Controls.Add(this.DerivLabel);
             this.groupBox2.Controls.Add(this.CycleTimemSComboBox);
+            this.groupBox2.Controls.Add(this.DerivativeLPFNumericUpDown);
             this.groupBox2.Controls.Add(this.CycleTimemSLabel);
-            this.groupBox2.Controls.Add(this.AccLPFComboBox);
-            this.groupBox2.Controls.Add(this.AccLPFLabel);
+            this.groupBox2.Controls.Add(this.AccLabel);
             this.groupBox2.Controls.Add(this.AirspeedLabel);
             this.groupBox2.Controls.Add(this.AirspeedComboBox);
             this.groupBox2.Controls.Add(this.RangefinderLabel1);
-            this.groupBox2.Controls.Add(this.GyroLPFComboBox);
             this.groupBox2.Controls.Add(this.MadgwickKpMagLabel);
             this.groupBox2.Controls.Add(this.RangefinderComboBox);
             this.groupBox2.Controls.Add(this.AccConfLabel);
-            this.groupBox2.Controls.Add(this.GyroLPFLabel);
+            this.groupBox2.Controls.Add(this.GyroLabel);
             this.groupBox2.Controls.Add(this.MadgwickKpMagNumericUpDown);
             this.groupBox2.Controls.Add(this.labelGyros1);
             this.groupBox2.Controls.Add(this.AccConfNumericUpDown);
@@ -2895,6 +2889,51 @@
             resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
+            // 
+            // GyroLPFNumericUpDown
+            // 
+            this.GyroLPFNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.GyroLPFNumericUpDown, "GyroLPFNumericUpDown");
+            this.GyroLPFNumericUpDown.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.GyroLPFNumericUpDown.Name = "GyroLPFNumericUpDown";
+            this.GyroLPFNumericUpDown.Tag = "48";
+            this.GyroLPFNumericUpDown.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.GyroLPFNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.GyroLPFNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.GyroLPFNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            // 
+            // AccLPFNumericUpDown
+            // 
+            this.AccLPFNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.AccLPFNumericUpDown, "AccLPFNumericUpDown");
+            this.AccLPFNumericUpDown.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.AccLPFNumericUpDown.Name = "AccLPFNumericUpDown";
+            this.AccLPFNumericUpDown.Tag = "90";
+            this.AccLPFNumericUpDown.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.AccLPFNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.AccLPFNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.AccLPFNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            // 
+            // DerivLabel
+            // 
+            resources.ApplyResources(this.DerivLabel, "DerivLabel");
+            this.DerivLabel.Name = "DerivLabel";
             // 
             // CycleTimemSComboBox
             // 
@@ -2911,33 +2950,35 @@
             this.CycleTimemSComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
             this.CycleTimemSComboBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
+            // DerivativeLPFNumericUpDown
+            // 
+            this.DerivativeLPFNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.DerivativeLPFNumericUpDown, "DerivativeLPFNumericUpDown");
+            this.DerivativeLPFNumericUpDown.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.DerivativeLPFNumericUpDown.Name = "DerivativeLPFNumericUpDown";
+            this.DerivativeLPFNumericUpDown.Tag = "78";
+            this.DerivativeLPFNumericUpDown.Value = new decimal(new int[] {
+            75,
+            0,
+            0,
+            0});
+            this.DerivativeLPFNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.DerivativeLPFNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.DerivativeLPFNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            // 
             // CycleTimemSLabel
             // 
             resources.ApplyResources(this.CycleTimemSLabel, "CycleTimemSLabel");
             this.CycleTimemSLabel.Name = "CycleTimemSLabel";
             // 
-            // AccLPFComboBox
+            // AccLabel
             // 
-            resources.ApplyResources(this.AccLPFComboBox, "AccLPFComboBox");
-            this.AccLPFComboBox.FormattingEnabled = true;
-            this.AccLPFComboBox.Items.AddRange(new object[] {
-            resources.GetString("AccLPFComboBox.Items"),
-            resources.GetString("AccLPFComboBox.Items1"),
-            resources.GetString("AccLPFComboBox.Items2"),
-            resources.GetString("AccLPFComboBox.Items3"),
-            resources.GetString("AccLPFComboBox.Items4"),
-            resources.GetString("AccLPFComboBox.Items5"),
-            resources.GetString("AccLPFComboBox.Items6"),
-            resources.GetString("AccLPFComboBox.Items7")});
-            this.AccLPFComboBox.Name = "AccLPFComboBox";
-            this.AccLPFComboBox.Tag = "90";
-            this.AccLPFComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
-            this.AccLPFComboBox.Enter += new System.EventHandler(this.infoGetFocus);
-            // 
-            // AccLPFLabel
-            // 
-            resources.ApplyResources(this.AccLPFLabel, "AccLPFLabel");
-            this.AccLPFLabel.Name = "AccLPFLabel";
+            resources.ApplyResources(this.AccLabel, "AccLabel");
+            this.AccLabel.Name = "AccLabel";
             // 
             // AirspeedLabel
             // 
@@ -3302,6 +3343,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.wsLEDsNumericUpDown)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GyroLPFNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccLPFNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DerivativeLPFNumericUpDown)).EndInit();
             this.FWGroupBox.ResumeLayout(false);
             this.FWGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FWAileronRudderFFNumericUpDown)).EndInit();
@@ -3343,9 +3387,8 @@
         private System.Windows.Forms.Label GPSTypeLabel;
         public System.Windows.Forms.CheckBox bit31CheckBox;
         private System.Windows.Forms.Label PropSenseLabel;
-        private System.Windows.Forms.Label GyroLPFLabel;
+        private System.Windows.Forms.Label GyroLabel;
         public System.Windows.Forms.ComboBox InertialSchemeComboBox;
-        public System.Windows.Forms.ComboBox GyroLPFComboBox;
         public System.Windows.Forms.CheckBox bit61CheckBox;
         public System.Windows.Forms.CheckBox bit21CheckBox;
         public System.Windows.Forms.NumericUpDown MadgwickKpAccNumericUpDown;
@@ -3544,13 +3587,17 @@
         private System.Windows.Forms.Label TurnoutLabel;
         private System.Windows.Forms.Label MaxCompassYawRateLabel;
         public System.Windows.Forms.NumericUpDown MaxCompassYawRateNumericUpDown;
-        public System.Windows.Forms.ComboBox AccLPFComboBox;
-        private System.Windows.Forms.Label AccLPFLabel;
+        private System.Windows.Forms.Label AccLabel;
         public System.Windows.Forms.ComboBox CycleTimemSComboBox;
         private System.Windows.Forms.Label CycleTimemSLabel;
         public System.Windows.Forms.NumericUpDown YawRateDiffNumericUpDown;
         private System.Windows.Forms.Label ThrottleGainLabel;
         public System.Windows.Forms.NumericUpDown ThrottleGainNumericUpDown;
+        private System.Windows.Forms.Label DerivativeFilterLabel;
+        public System.Windows.Forms.NumericUpDown GyroLPFNumericUpDown;
+        public System.Windows.Forms.NumericUpDown AccLPFNumericUpDown;
+        private System.Windows.Forms.Label DerivLabel;
+        public System.Windows.Forms.NumericUpDown DerivativeLPFNumericUpDown;
 
 
     }
