@@ -2932,7 +2932,6 @@ namespace UAVXGUI
 
                     FWRateEnergy.Text = string.Format("{0:n0}", FWRateEnergyT);
                     FWGlideOffsetAngle.Text = string.Format("{0:n1}", (float)FWGlideOffsetAngleT*0.1f);
-                    NewTuningParameter.Text = string.Format("{0:n0}", NewTuningParameterT);
 
                         // plus 4 more 16bit values
 
