@@ -242,7 +242,10 @@ namespace UAVXGUI
             this.CalibrateIMUButton = new System.Windows.Forms.Button();
             this.CalibrateMagButton = new System.Windows.Forms.Button();
             this.DrivesGroupBox = new System.Windows.Forms.GroupBox();
+            this.ImbalanceLabel = new System.Windows.Forms.Label();
+            this.FWRateEnergy = new System.Windows.Forms.TextBox();
             this.DiagnosticCheckBox = new System.Windows.Forms.CheckBox();
+            this.RateEnergyLabel = new System.Windows.Forms.Label();
             this.PWMT9 = new System.Windows.Forms.TextBox();
             this.PWMT7 = new System.Windows.Forms.TextBox();
             this.PWMT6 = new System.Windows.Forms.TextBox();
@@ -275,14 +278,14 @@ namespace UAVXGUI
             this.WarningPictureBox = new System.Windows.Forms.PictureBox();
             this.GPSBypassButton = new System.Windows.Forms.Button();
             this.SpectraGroupBox = new System.Windows.Forms.GroupBox();
-            this.DFTBar1 = new System.Windows.Forms.ProgressBar();
-            this.DFTBar7 = new System.Windows.Forms.ProgressBar();
-            this.DFTBar2 = new System.Windows.Forms.ProgressBar();
-            this.DFTBar6 = new System.Windows.Forms.ProgressBar();
-            this.DFTBar3 = new System.Windows.Forms.ProgressBar();
-            this.DFTBar8 = new System.Windows.Forms.ProgressBar();
-            this.DFTBar5 = new System.Windows.Forms.ProgressBar();
-            this.DFTBar4 = new System.Windows.Forms.ProgressBar();
+            this.NoiseBar1 = new System.Windows.Forms.ProgressBar();
+            this.NoiseBar7 = new System.Windows.Forms.ProgressBar();
+            this.NoiseBar2 = new System.Windows.Forms.ProgressBar();
+            this.NoiseBar6 = new System.Windows.Forms.ProgressBar();
+            this.NoiseBar3 = new System.Windows.Forms.ProgressBar();
+            this.NoiseBar8 = new System.Windows.Forms.ProgressBar();
+            this.NoiseBar5 = new System.Windows.Forms.ProgressBar();
+            this.NoiseBar4 = new System.Windows.Forms.ProgressBar();
             this.DumpBBButton = new System.Windows.Forms.Button();
             this.AlarmsButton = new System.Windows.Forms.Button();
             this.UtilisationLabel = new System.Windows.Forms.Label();
@@ -329,13 +332,10 @@ namespace UAVXGUI
             this.PlotButton = new System.Windows.Forms.Button();
             this.FWGlideOffsetAngle = new System.Windows.Forms.TextBox();
             this.FWGlideAngleOffsetLabel = new System.Windows.Forms.Label();
-            this.FWRateEnergy = new System.Windows.Forms.TextBox();
-            this.RateEnergyLabel = new System.Windows.Forms.Label();
             this.FlightStateLabel = new System.Windows.Forms.Label();
             this.TuningGroupBox = new System.Windows.Forms.GroupBox();
             this.attitudeIndicatorInstrumentControl1 = new Instruments.AttitudeIndicatorInstrumentControl();
             this.headingIndicatorInstrumentControl1 = new Instruments.HeadingIndicatorInstrumentControl();
-            this.ImbalanceLabel = new System.Windows.Forms.Label();
             this.GyroGroupBox.SuspendLayout();
             this.ControlsGroupBox.SuspendLayout();
             this.AttitudeGroupBox.SuspendLayout();
@@ -1975,9 +1975,9 @@ namespace UAVXGUI
             // 
             // ErrNoS
             // 
-            this.ErrNoS.Location = new System.Drawing.Point(269, 36);
+            this.ErrNoS.Location = new System.Drawing.Point(255, 36);
             this.ErrNoS.Name = "ErrNoS";
-            this.ErrNoS.Size = new System.Drawing.Size(32, 13);
+            this.ErrNoS.Size = new System.Drawing.Size(46, 13);
             this.ErrNoS.TabIndex = 171;
             this.ErrNoS.Text = "0";
             this.ErrNoS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1987,9 +1987,9 @@ namespace UAVXGUI
             this.ErrNoSLabel.AutoSize = true;
             this.ErrNoSLabel.Location = new System.Drawing.Point(235, 36);
             this.ErrNoSLabel.Name = "ErrNoSLabel";
-            this.ErrNoSLabel.Size = new System.Drawing.Size(30, 13);
+            this.ErrNoSLabel.Size = new System.Drawing.Size(14, 13);
             this.ErrNoSLabel.TabIndex = 170;
-            this.ErrNoSLabel.Text = "ERR";
+            this.ErrNoSLabel.Text = "#";
             // 
             // RawCheckBox
             // 
@@ -2002,9 +2002,9 @@ namespace UAVXGUI
             // 
             // BadS
             // 
-            this.BadS.Location = new System.Drawing.Point(269, 15);
+            this.BadS.Location = new System.Drawing.Point(262, 15);
             this.BadS.Name = "BadS";
-            this.BadS.Size = new System.Drawing.Size(32, 13);
+            this.BadS.Size = new System.Drawing.Size(39, 14);
             this.BadS.TabIndex = 77;
             this.BadS.Text = "0";
             this.BadS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2083,9 +2083,9 @@ namespace UAVXGUI
             // 
             // GyroFailS
             // 
-            this.GyroFailS.Location = new System.Drawing.Point(112, 16);
+            this.GyroFailS.Location = new System.Drawing.Point(111, 16);
             this.GyroFailS.Name = "GyroFailS";
-            this.GyroFailS.Size = new System.Drawing.Size(35, 13);
+            this.GyroFailS.Size = new System.Drawing.Size(36, 13);
             this.GyroFailS.TabIndex = 68;
             this.GyroFailS.Text = "0";
             this.GyroFailS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2547,6 +2547,24 @@ namespace UAVXGUI
             this.DrivesGroupBox.TabStop = false;
             this.DrivesGroupBox.Text = "Motors/Servos (%)";
             // 
+            // ImbalanceLabel
+            // 
+            this.ImbalanceLabel.AutoSize = true;
+            this.ImbalanceLabel.Location = new System.Drawing.Point(52, 17);
+            this.ImbalanceLabel.Name = "ImbalanceLabel";
+            this.ImbalanceLabel.Size = new System.Drawing.Size(84, 13);
+            this.ImbalanceLabel.TabIndex = 228;
+            this.ImbalanceLabel.Text = "Drive Imbalance";
+            // 
+            // FWRateEnergy
+            // 
+            this.FWRateEnergy.Location = new System.Drawing.Point(111, 189);
+            this.FWRateEnergy.Name = "FWRateEnergy";
+            this.FWRateEnergy.ReadOnly = true;
+            this.FWRateEnergy.Size = new System.Drawing.Size(45, 20);
+            this.FWRateEnergy.TabIndex = 226;
+            this.FWRateEnergy.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // DiagnosticCheckBox
             // 
             this.DiagnosticCheckBox.AutoSize = true;
@@ -2556,6 +2574,15 @@ namespace UAVXGUI
             this.DiagnosticCheckBox.Size = new System.Drawing.Size(15, 14);
             this.DiagnosticCheckBox.TabIndex = 226;
             this.DiagnosticCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // RateEnergyLabel
+            // 
+            this.RateEnergyLabel.AutoSize = true;
+            this.RateEnergyLabel.Location = new System.Drawing.Point(11, 192);
+            this.RateEnergyLabel.Name = "RateEnergyLabel";
+            this.RateEnergyLabel.Size = new System.Drawing.Size(80, 13);
+            this.RateEnergyLabel.TabIndex = 227;
+            this.RateEnergyLabel.Text = "FW Servo Jitter";
             // 
             // PWMT9
             // 
@@ -2800,84 +2827,84 @@ namespace UAVXGUI
             // 
             // SpectraGroupBox
             // 
-            this.SpectraGroupBox.Controls.Add(this.DFTBar1);
-            this.SpectraGroupBox.Controls.Add(this.DFTBar7);
-            this.SpectraGroupBox.Controls.Add(this.DFTBar2);
-            this.SpectraGroupBox.Controls.Add(this.DFTBar6);
-            this.SpectraGroupBox.Controls.Add(this.DFTBar3);
-            this.SpectraGroupBox.Controls.Add(this.DFTBar8);
-            this.SpectraGroupBox.Controls.Add(this.DFTBar5);
-            this.SpectraGroupBox.Controls.Add(this.DFTBar4);
+            this.SpectraGroupBox.Controls.Add(this.NoiseBar1);
+            this.SpectraGroupBox.Controls.Add(this.NoiseBar7);
+            this.SpectraGroupBox.Controls.Add(this.NoiseBar2);
+            this.SpectraGroupBox.Controls.Add(this.NoiseBar6);
+            this.SpectraGroupBox.Controls.Add(this.NoiseBar3);
+            this.SpectraGroupBox.Controls.Add(this.NoiseBar8);
+            this.SpectraGroupBox.Controls.Add(this.NoiseBar5);
+            this.SpectraGroupBox.Controls.Add(this.NoiseBar4);
             this.SpectraGroupBox.Location = new System.Drawing.Point(843, 186);
             this.SpectraGroupBox.Name = "SpectraGroupBox";
             this.SpectraGroupBox.Size = new System.Drawing.Size(162, 105);
             this.SpectraGroupBox.TabIndex = 215;
             this.SpectraGroupBox.TabStop = false;
-            this.SpectraGroupBox.Text = "Vibration Spectra (0.1G FS)";
+            this.SpectraGroupBox.Text = "Acc (0.5G FS)";
             // 
-            // DFTBar1
+            // NoiseBar1
             // 
-            this.DFTBar1.Location = new System.Drawing.Point(6, 17);
-            this.DFTBar1.Name = "DFTBar1";
-            this.DFTBar1.Size = new System.Drawing.Size(150, 10);
-            this.DFTBar1.Step = 1;
-            this.DFTBar1.TabIndex = 191;
+            this.NoiseBar1.Location = new System.Drawing.Point(6, 17);
+            this.NoiseBar1.Name = "NoiseBar1";
+            this.NoiseBar1.Size = new System.Drawing.Size(150, 10);
+            this.NoiseBar1.Step = 1;
+            this.NoiseBar1.TabIndex = 191;
             // 
-            // DFTBar7
+            // NoiseBar7
             // 
-            this.DFTBar7.Location = new System.Drawing.Point(6, 77);
-            this.DFTBar7.Name = "DFTBar7";
-            this.DFTBar7.Size = new System.Drawing.Size(150, 10);
-            this.DFTBar7.Step = 1;
-            this.DFTBar7.TabIndex = 197;
+            this.NoiseBar7.Location = new System.Drawing.Point(6, 77);
+            this.NoiseBar7.Name = "NoiseBar7";
+            this.NoiseBar7.Size = new System.Drawing.Size(150, 10);
+            this.NoiseBar7.Step = 1;
+            this.NoiseBar7.TabIndex = 197;
             // 
-            // DFTBar2
+            // NoiseBar2
             // 
-            this.DFTBar2.Location = new System.Drawing.Point(6, 27);
-            this.DFTBar2.Name = "DFTBar2";
-            this.DFTBar2.Size = new System.Drawing.Size(150, 10);
-            this.DFTBar2.Step = 1;
-            this.DFTBar2.TabIndex = 192;
+            this.NoiseBar2.Location = new System.Drawing.Point(6, 27);
+            this.NoiseBar2.Name = "NoiseBar2";
+            this.NoiseBar2.Size = new System.Drawing.Size(150, 10);
+            this.NoiseBar2.Step = 1;
+            this.NoiseBar2.TabIndex = 192;
             // 
-            // DFTBar6
+            // NoiseBar6
             // 
-            this.DFTBar6.Location = new System.Drawing.Point(6, 67);
-            this.DFTBar6.Name = "DFTBar6";
-            this.DFTBar6.Size = new System.Drawing.Size(150, 10);
-            this.DFTBar6.Step = 1;
-            this.DFTBar6.TabIndex = 196;
+            this.NoiseBar6.Location = new System.Drawing.Point(6, 67);
+            this.NoiseBar6.Name = "NoiseBar6";
+            this.NoiseBar6.Size = new System.Drawing.Size(150, 10);
+            this.NoiseBar6.Step = 1;
+            this.NoiseBar6.TabIndex = 196;
             // 
-            // DFTBar3
+            // NoiseBar3
             // 
-            this.DFTBar3.Location = new System.Drawing.Point(6, 37);
-            this.DFTBar3.Name = "DFTBar3";
-            this.DFTBar3.Size = new System.Drawing.Size(150, 10);
-            this.DFTBar3.Step = 1;
-            this.DFTBar3.TabIndex = 193;
+            this.NoiseBar3.Location = new System.Drawing.Point(6, 37);
+            this.NoiseBar3.Name = "NoiseBar3";
+            this.NoiseBar3.Size = new System.Drawing.Size(150, 10);
+            this.NoiseBar3.Step = 1;
+            this.NoiseBar3.TabIndex = 193;
             // 
-            // DFTBar8
+            // NoiseBar8
             // 
-            this.DFTBar8.Location = new System.Drawing.Point(6, 87);
-            this.DFTBar8.Name = "DFTBar8";
-            this.DFTBar8.Size = new System.Drawing.Size(150, 10);
-            this.DFTBar8.Step = 1;
-            this.DFTBar8.TabIndex = 186;
+            this.NoiseBar8.Location = new System.Drawing.Point(6, 87);
+            this.NoiseBar8.Name = "NoiseBar8";
+            this.NoiseBar8.Size = new System.Drawing.Size(150, 10);
+            this.NoiseBar8.Step = 1;
+            this.NoiseBar8.TabIndex = 186;
             // 
-            // DFTBar5
+            // NoiseBar5
             // 
-            this.DFTBar5.Location = new System.Drawing.Point(6, 57);
-            this.DFTBar5.Name = "DFTBar5";
-            this.DFTBar5.Size = new System.Drawing.Size(150, 10);
-            this.DFTBar5.Step = 1;
-            this.DFTBar5.TabIndex = 195;
+            this.NoiseBar5.Location = new System.Drawing.Point(6, 57);
+            this.NoiseBar5.Name = "NoiseBar5";
+            this.NoiseBar5.Size = new System.Drawing.Size(150, 10);
+            this.NoiseBar5.Step = 1;
+            this.NoiseBar5.TabIndex = 195;
             // 
-            // DFTBar4
+            // NoiseBar4
             // 
-            this.DFTBar4.Location = new System.Drawing.Point(6, 47);
-            this.DFTBar4.Name = "DFTBar4";
-            this.DFTBar4.Size = new System.Drawing.Size(150, 10);
-            this.DFTBar4.Step = 1;
-            this.DFTBar4.TabIndex = 194;
+            this.NoiseBar4.Location = new System.Drawing.Point(6, 47);
+            this.NoiseBar4.Name = "NoiseBar4";
+            this.NoiseBar4.Size = new System.Drawing.Size(150, 10);
+            this.NoiseBar4.Step = 1;
+            this.NoiseBar4.TabIndex = 194;
             // 
             // DumpBBButton
             // 
@@ -3336,24 +3363,6 @@ namespace UAVXGUI
             this.FWGlideAngleOffsetLabel.TabIndex = 225;
             this.FWGlideAngleOffsetLabel.Text = "FWPitchE (Deg)";
             // 
-            // FWRateEnergy
-            // 
-            this.FWRateEnergy.Location = new System.Drawing.Point(111, 189);
-            this.FWRateEnergy.Name = "FWRateEnergy";
-            this.FWRateEnergy.ReadOnly = true;
-            this.FWRateEnergy.Size = new System.Drawing.Size(45, 20);
-            this.FWRateEnergy.TabIndex = 226;
-            this.FWRateEnergy.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // RateEnergyLabel
-            // 
-            this.RateEnergyLabel.AutoSize = true;
-            this.RateEnergyLabel.Location = new System.Drawing.Point(11, 192);
-            this.RateEnergyLabel.Name = "RateEnergyLabel";
-            this.RateEnergyLabel.Size = new System.Drawing.Size(80, 13);
-            this.RateEnergyLabel.TabIndex = 227;
-            this.RateEnergyLabel.Text = "FW Servo Jitter";
-            // 
             // FlightStateLabel
             // 
             this.FlightStateLabel.AutoSize = true;
@@ -3389,15 +3398,6 @@ namespace UAVXGUI
             this.headingIndicatorInstrumentControl1.Size = new System.Drawing.Size(210, 218);
             this.headingIndicatorInstrumentControl1.TabIndex = 4;
             this.headingIndicatorInstrumentControl1.Text = "headingIndicatorInstrumentControl1";
-            // 
-            // ImbalanceLabel
-            // 
-            this.ImbalanceLabel.AutoSize = true;
-            this.ImbalanceLabel.Location = new System.Drawing.Point(52, 17);
-            this.ImbalanceLabel.Name = "ImbalanceLabel";
-            this.ImbalanceLabel.Size = new System.Drawing.Size(84, 13);
-            this.ImbalanceLabel.TabIndex = 228;
-            this.ImbalanceLabel.Text = "Drive Imbalance";
             // 
             // FormMain
             // 
@@ -3746,14 +3746,14 @@ namespace UAVXGUI
         private System.Windows.Forms.Button GPSBypassButton;
         private System.Windows.Forms.CheckBox SpeakVarioCheckBox;
         private System.Windows.Forms.GroupBox SpectraGroupBox;
-        private System.Windows.Forms.ProgressBar DFTBar1;
-        private System.Windows.Forms.ProgressBar DFTBar7;
-        private System.Windows.Forms.ProgressBar DFTBar2;
-        private System.Windows.Forms.ProgressBar DFTBar6;
-        private System.Windows.Forms.ProgressBar DFTBar3;
-        private System.Windows.Forms.ProgressBar DFTBar8;
-        private System.Windows.Forms.ProgressBar DFTBar5;
-        private System.Windows.Forms.ProgressBar DFTBar4;
+        private System.Windows.Forms.ProgressBar NoiseBar1;
+        private System.Windows.Forms.ProgressBar NoiseBar7;
+        private System.Windows.Forms.ProgressBar NoiseBar2;
+        private System.Windows.Forms.ProgressBar NoiseBar6;
+        private System.Windows.Forms.ProgressBar NoiseBar3;
+        private System.Windows.Forms.ProgressBar NoiseBar8;
+        private System.Windows.Forms.ProgressBar NoiseBar5;
+        private System.Windows.Forms.ProgressBar NoiseBar4;
         private System.Windows.Forms.Button DumpBBButton;
         private System.Windows.Forms.Button AlarmsButton;
         private System.Windows.Forms.Label UtilisationLabel;

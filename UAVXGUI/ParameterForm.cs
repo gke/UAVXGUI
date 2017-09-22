@@ -285,6 +285,9 @@ namespace UAVXGUI
             //   if (parameterForm.RxTypeComboBox.Focused || YawIntLimit2NumericUpDown.Focused)
             //       helpstring = help.GetString("IntegralLimiter");
 
+            if (parameterForm.GyroSlewRateNumericUpDown.Focused)
+                helpstring = help.GetString("GyroSlewRate");
+
 
             // General
 
@@ -877,6 +880,9 @@ namespace UAVXGUI
 
                 int p = Convert.ToInt16(Field.Tag);
 
+                if ((p == 92) )
+                    P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 0.01);
+                else
 
                 if ((p == 64) || (p == 83) || (p == 84) || (p == 89))
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 0.1);
@@ -884,7 +890,7 @@ namespace UAVXGUI
                     if ((p == 54) || (p == 18) || (p == 22) || (p == 32) || (p == 39) || (p == 46) || (p == 53) || (p == 58) || (p == 70))
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 10.0);
                 else
-                    if ((p == 85) || (p == 86) || (p == 93))
+                        if ((p == 85) || (p == 86) || (p == 93))
                         P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 100.0);
                 else
                     P[CurrPS, p - 1].Value = Convert.ToByte(Field.Value);
@@ -1451,8 +1457,8 @@ namespace UAVXGUI
                        ParamUpdate(YawRateDiffNumericUpDown);
                         break;
                     case 92:
-                        CycleTimemSComboBox.SelectedIndex = UAVXP[p - 1].Value;
-                        ParamUpdate(CycleTimemSComboBox);
+                        GyroSlewRateNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 100.0f);
+                        ParamUpdate(GyroSlewRateNumericUpDown);
                         break;
                     case 93:
                         ThrottleGainNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.01);

@@ -208,7 +208,7 @@ namespace UAVXGUI
         public const byte UAVXRequestPacketTag = 50;
         public const byte UAVXAckPacketTag = 51;
         public const byte UAVXMiscPacketTag = 52;
-        public const byte UAVXDFTPacketTag = 53;
+        public const byte UAVXNoisePacketTag = 53;
         public const byte UAVXBBPacketTag = 54;
         public const byte UAVXInertialPacketTag = 55; // unused
         public const byte UAVXMinimOSDPacketTag = 56;
@@ -305,7 +305,7 @@ namespace UAVXGUI
             "UAVXRequestPacketTag",
 	        "UAVXAckPacketTag",
 	        "UAVXMiscPacketTag",
-	        "UAVXDFTPacketTag",
+	        "UAVXNoisePacketTag",
 	        "UAVXBBPacketTag",
 	        "UAVXInertialPacketTag",
 	        "UAVXMinimOSDPacketTag",
@@ -629,9 +629,9 @@ namespace UAVXGUI
 
         public static double[] Inertial = new double[32];
 
-        short[] DFT = new short[32];
-        short DFTFreq = 0;
-
+        short[] Noise = new short[32];
+        float NoiseErrors = 0;
+        byte NoiseIsGyro = 0;
         float[] PID = new float[32];
         public static byte MaxPID;
         public Boolean AnglePIDHeader = false;
@@ -2825,22 +2825,26 @@ namespace UAVXGUI
 
                     break;
 
-                case UAVXDFTPacketTag:
+                case UAVXNoisePacketTag:
 
-                    DFTFreq = ExtractShort(ref UAVXPacket, (byte)(2));
+                    NoiseIsGyro = ExtractByte(ref UAVXPacket, (byte)(2));
+                    NoiseErrors = ExtractShort(ref UAVXPacket, (byte)(3)) * 0.01f;
 
+                    SpectraGroupBox.Text = NoiseIsGyro != 0 ? "Gyro (Deg/S/S) " + string.Format("{0:n2}", NoiseErrors) + "%" : "Acc (0.5G FS)";
+                    SpectraGroupBox.BackColor = NoiseErrors > 1.0 ? System.Drawing.Color.Orange : System.Drawing.SystemColors.Control; 
+      
                     for (p = 0; p < 8; p++)
-                        DFT[p] = ExtractShort(ref UAVXPacket, (byte)(4 + p * 2));
+                        Noise[p] = ExtractShort(ref UAVXPacket, (byte)(5 + p * 2));
 
-                       DFTBar1.Value = Limit(DFT[0], 0, 100);
-                       DFTBar2.Value = Limit(DFT[1], 0, 100);
-                       DFTBar3.Value = Limit(DFT[2], 0, 100);
-                       DFTBar4.Value = Limit(DFT[3], 0, 100);
+                       NoiseBar1.Value = Limit(Noise[0], 0, 100);
+                       NoiseBar2.Value = Limit(Noise[1], 0, 100);
+                       NoiseBar3.Value = Limit(Noise[2], 0, 100);
+                       NoiseBar4.Value = Limit(Noise[3], 0, 100);
 
-                       DFTBar5.Value = Limit(DFT[4], 0, 100);
-                       DFTBar6.Value = Limit(DFT[5], 0, 100);
-                       DFTBar7.Value = Limit(DFT[6], 0, 100);
-                       DFTBar8.Value = Limit(DFT[7], 0, 100);
+                       NoiseBar5.Value = Limit(Noise[4], 0, 100);
+                       NoiseBar6.Value = Limit(Noise[5], 0, 100);
+                       NoiseBar7.Value = Limit(Noise[6], 0, 100);
+                       NoiseBar8.Value = Limit(Noise[7], 0, 100);
 
                     break;
                 case UAVXNavPacketTag:
