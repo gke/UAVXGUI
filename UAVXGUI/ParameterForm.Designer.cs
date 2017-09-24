@@ -1169,7 +1169,7 @@
             this.AccConfNumericUpDown.Name = "AccConfNumericUpDown";
             this.AccConfNumericUpDown.Tag = "53";
             this.AccConfNumericUpDown.Value = new decimal(new int[] {
-            2,
+            4,
             0,
             0,
             65536});
@@ -2908,7 +2908,7 @@
             this.GyroSlewRateNumericUpDown.Name = "GyroSlewRateNumericUpDown";
             this.GyroSlewRateNumericUpDown.Tag = "92";
             this.GyroSlewRateNumericUpDown.Value = new decimal(new int[] {
-            4000,
+            2000,
             0,
             0,
             0});
@@ -2920,11 +2920,6 @@
             // 
             this.GyroLPFNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
             resources.ApplyResources(this.GyroLPFNumericUpDown, "GyroLPFNumericUpDown");
-            this.GyroLPFNumericUpDown.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
             this.GyroLPFNumericUpDown.Name = "GyroLPFNumericUpDown";
             this.GyroLPFNumericUpDown.Tag = "48";
             this.GyroLPFNumericUpDown.Value = new decimal(new int[] {
@@ -2941,14 +2936,14 @@
             this.AccLPFNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
             resources.ApplyResources(this.AccLPFNumericUpDown, "AccLPFNumericUpDown");
             this.AccLPFNumericUpDown.Maximum = new decimal(new int[] {
-            255,
+            20,
             0,
             0,
             0});
             this.AccLPFNumericUpDown.Name = "AccLPFNumericUpDown";
             this.AccLPFNumericUpDown.Tag = "90";
             this.AccLPFNumericUpDown.Value = new decimal(new int[] {
-            20,
+            15,
             0,
             0,
             0});
@@ -2965,15 +2960,10 @@
             // 
             this.DerivativeLPFNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
             resources.ApplyResources(this.DerivativeLPFNumericUpDown, "DerivativeLPFNumericUpDown");
-            this.DerivativeLPFNumericUpDown.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
             this.DerivativeLPFNumericUpDown.Name = "DerivativeLPFNumericUpDown";
             this.DerivativeLPFNumericUpDown.Tag = "78";
             this.DerivativeLPFNumericUpDown.Value = new decimal(new int[] {
-            75,
+            30,
             0,
             0,
             0});

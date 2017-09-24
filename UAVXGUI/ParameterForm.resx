@@ -754,7 +754,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelGyros1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 116</value>
+    <value>6, 115</value>
   </data>
   <data name="labelGyros1.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 13</value>
@@ -1696,7 +1696,7 @@
     <value>NoControl</value>
   </data>
   <data name="RangefinderLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 142</value>
+    <value>6, 141</value>
   </data>
   <data name="RangefinderLabel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>21, 13</value>
@@ -1900,7 +1900,7 @@
     <value>156, 40</value>
   </data>
   <data name="MadgwickKpMagNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 20</value>
+    <value>45, 20</value>
   </data>
   <data name="MadgwickKpMagNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
@@ -1957,10 +1957,10 @@
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="MadgwickKpAccNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>154, 15</value>
+    <value>156, 15</value>
   </data>
   <data name="MadgwickKpAccNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
+    <value>45, 20</value>
   </data>
   <data name="MadgwickKpAccNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
@@ -2014,10 +2014,10 @@
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="AccConfNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>56, 37</value>
+    <value>59, 37</value>
   </data>
   <data name="AccConfNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 20</value>
+    <value>52, 20</value>
   </data>
   <data name="AccConfNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>39</value>
@@ -2044,7 +2044,7 @@
     <value>NoControl</value>
   </data>
   <data name="AccConfLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 45</value>
+    <value>6, 44</value>
   </data>
   <data name="AccConfLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 13</value>
@@ -2074,7 +2074,7 @@
     <value>NoControl</value>
   </data>
   <data name="InertialLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 21</value>
+    <value>6, 20</value>
   </data>
   <data name="InertialLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>25, 13</value>
@@ -3292,7 +3292,7 @@
     <value>NoControl</value>
   </data>
   <data name="NavMaxAngleLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 144</value>
+    <value>7, 144</value>
   </data>
   <data name="NavMaxAngleLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 13</value>
@@ -3463,7 +3463,7 @@
     <value>NoControl</value>
   </data>
   <data name="CrossTrackLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 119</value>
+    <value>7, 119</value>
   </data>
   <data name="CrossTrackLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 13</value>
@@ -6199,10 +6199,10 @@
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="GyroSlewRateNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>56, 59</value>
+    <value>59, 59</value>
   </data>
   <data name="GyroSlewRateNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 20</value>
+    <value>52, 20</value>
   </data>
   <data name="GyroSlewRateNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>235</value>
@@ -6229,7 +6229,7 @@
     <value>156, 85</value>
   </data>
   <data name="GyroLPFNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 20</value>
+    <value>45, 20</value>
   </data>
   <data name="GyroLPFNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>234</value>
@@ -6253,10 +6253,10 @@
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="AccLPFNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>154, 61</value>
+    <value>156, 61</value>
   </data>
   <data name="AccLPFNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
+    <value>45, 20</value>
   </data>
   <data name="AccLPFNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>233</value>
@@ -6283,7 +6283,7 @@
     <value>NoControl</value>
   </data>
   <data name="DerivLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 89</value>
+    <value>6, 88</value>
   </data>
   <data name="DerivLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 13</value>
@@ -6310,10 +6310,10 @@
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="DerivativeLPFNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>56, 83</value>
+    <value>59, 83</value>
   </data>
   <data name="DerivativeLPFNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 20</value>
+    <value>52, 20</value>
   </data>
   <data name="DerivativeLPFNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>231</value>
@@ -6340,16 +6340,16 @@
     <value>NoControl</value>
   </data>
   <data name="GyroSlewLimitLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 65</value>
+    <value>6, 64</value>
   </data>
   <data name="GyroSlewLimitLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 13</value>
+    <value>49, 13</value>
   </data>
   <data name="GyroSlewLimitLabel.TabIndex" type="System.Int32, mscorlib">
     <value>155</value>
   </data>
   <data name="GyroSlewLimitLabel.Text" xml:space="preserve">
-    <value>Slew</value>
+    <value>Slew Lim</value>
   </data>
   <data name="&gt;&gt;GyroSlewLimitLabel.Name" xml:space="preserve">
     <value>GyroSlewLimitLabel</value>
@@ -6400,7 +6400,7 @@
     <value>NoControl</value>
   </data>
   <data name="AirspeedLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 169</value>
+    <value>6, 168</value>
   </data>
   <data name="AirspeedLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 13</value>

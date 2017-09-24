@@ -3013,9 +3013,9 @@ namespace UAVXGUI
             this.GyroLPF.AutoSize = true;
             this.GyroLPF.Location = new System.Drawing.Point(132, 118);
             this.GyroLPF.Name = "GyroLPF";
-            this.GyroLPF.Size = new System.Drawing.Size(59, 13);
+            this.GyroLPF.Size = new System.Drawing.Size(60, 13);
             this.GyroLPF.TabIndex = 219;
-            this.GyroLPF.Text = "Deriv/Gyro";
+            this.GyroLPF.Text = "Deriv/Rate";
             // 
             // AccLPF
             // 
