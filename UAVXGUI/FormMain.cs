@@ -367,10 +367,10 @@ namespace UAVXGUI
 
         enum FlagValues
         {
-				AltControlEnabled,
-                UsingGPSAltitude,
-				VRSHazard,
-				LostModel,
+            AltControlEnabled,
+				UsingGPSAlt,
+				RapidDescentHazard,
+				LandingSwitch,
 				NearLevel,
 				LowBatt,
 				GPSValid,
@@ -403,28 +403,28 @@ namespace UAVXGUI
 				Emulation,
 				MagLocked,
 				DrivesArmed,
-				NavigationActive,
-				SticksUnchangedAlarm,
+				AccZBump,
+				UseManualAltHold,
 
 				// 4
 				Signal,
 				DumpingBB,
 				ParametersValid,
 				RCNewValues,
-				NewCommands,
+				Unused_4_4,
 				IMUActive,
 				MagnetometerActive,
 				IsArmed,
 
 				// 5
-				NewGPSPosition,
+				Unused_5_0,
 				InvertMagnetometer,
 				MagCalibrated,
 				UsingUplink,
 				NewAltitudeValue,
 				IMUCalibrated,
 				CrossTrackActive,
-				AccCalibrated,
+				AccCalibrated
 
         };
 
@@ -1008,13 +1008,14 @@ namespace UAVXGUI
             SaveTextLogFileStreamWriter.Write("Time, Flight," +
 
                 "AltHEn," +
-                "GPSAltVal," + // stick programmed
+                "GPSAltActive," + // stick programmed
                 "VRSHaz," +
-                "Lost," +
+                "LandSw," +
                 "Level," +
                 "LowBatt," +
                 "GPSVal," +
                 "NavVal," +
+
 
                 "BaroFail," +
                 "IMUFail," +
@@ -1040,26 +1041,26 @@ namespace UAVXGUI
                 "Emulation," +
                 "MagLocked," +
                 "DrivesArmed," +
-                "NavActive," +
-                "StkFreeze," +
+                "AccZBump," +
+                "ManualAH," +
 
                 "Signal," +
                 "DumpBB," +
                 "ParamVal," +
                 "RCNew," +
-                "NewComm," +
+                "Unused," +
                 "IMUActive," +
                 "MagActive," +
                 "ARMED," +
 
-                "NewGPSPos," +
+                "Unused," +
                 "InvertMag," +
                 "MagCal," +
                 "Uplink," +
                 "NewAltVal," +
                 "IMUCal," +
                 "CTrackActive," +
-                "FSEn,");
+                "6ptAccCal,");
 
             SaveTextLogFileStreamWriter.Write("StateT," +
             "BattV," +
@@ -1067,7 +1068,6 @@ namespace UAVXGUI
             "BattCh," +
             "RCGlitches, Interval, #Ch, ");
 
- 
             for (i = 0; i < 9; i++)
                 SaveTextLogFileStreamWriter.Write("RC["+ (i+1) + "],");
 
@@ -1683,15 +1683,15 @@ namespace UAVXGUI
             AltHoldBox.BackColor = F[(byte)FlagValues.AltControlEnabled] ?
                 System.Drawing.Color.Green : System.Drawing.Color.Red;
 
-            GPSAltitudeBox.BackColor = F[(byte)FlagValues.UsingGPSAltitude] ?
+            GPSAltitudeBox.BackColor = F[(byte)FlagValues.UsingGPSAlt] ?
                 System.Drawing.Color.Green : FlagsGroupBox.BackColor;
 
             TurnToPOIBox.BackColor = F[(byte)FlagValues.UsingPOI] ?
                 System.Drawing.Color.Green : FlagsGroupBox.BackColor;
 
-            VRSHazardDetected = (F[(byte)FlagValues.VRSHazard]);
+            VRSHazardDetected = (F[(byte)FlagValues.RapidDescentHazard]);
 
-            LostModelBox.BackColor = F[(byte)FlagValues.LostModel] ? 
+            LandingSwitchBox.BackColor = F[(byte)FlagValues.LandingSwitch] ? 
                 System.Drawing.Color.Red : FlagsGroupBox.BackColor;
 
             NearLevelBox.BackColor = F[(byte)FlagValues.NearLevel] ? 
@@ -2283,8 +2283,12 @@ namespace UAVXGUI
                     System.Drawing.Color.Orange : AltitudeGroupBox.BackColor;
 
             RangefinderAltitude.Text = string.Format("{0:n2}", (float)RangefinderAltitudeT * 0.01);
-            AltitudeSource.Text = F[(byte)FlagValues.UsingRangefinderAlt] ?   
-                "Rangefinder" : "Barometer";
+             if (F[(byte)FlagValues.UsingRangefinderAlt]) 
+                AltitudeSource.Text = "Rangefinder";
+            else if (F[(byte)FlagValues.UsingGPSAlt])
+                 AltitudeSource.Text =  "GPS"; 
+            else
+            AltitudeSource.Text =  "Barometer";
             CurrAlt = AltitudeT * 0.01;
 
             if (AccConfidenceT >= 67)

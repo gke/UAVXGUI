@@ -121,6 +121,7 @@ namespace UAVXGUI
             this.CloseProximityBox = new System.Windows.Forms.TextBox();
             this.ProximityBox = new System.Windows.Forms.TextBox();
             this.UseRTHAutoDescendBox = new System.Windows.Forms.TextBox();
+            this.LandingSwitchBox = new System.Windows.Forms.TextBox();
             this.LowBatteryBox = new System.Windows.Forms.TextBox();
             this.UsingUplinkFlagBox = new System.Windows.Forms.TextBox();
             this.IMUFailBox = new System.Windows.Forms.TextBox();
@@ -128,7 +129,6 @@ namespace UAVXGUI
             this.BaroFailBox = new System.Windows.Forms.TextBox();
             this.MagFailBox = new System.Windows.Forms.TextBox();
             this.MagLockedBox = new System.Windows.Forms.TextBox();
-            this.LostModelBox = new System.Windows.Forms.TextBox();
             this.FlagsGroupBox = new System.Windows.Forms.GroupBox();
             this.GPSStatBox = new System.Windows.Forms.GroupBox();
             this.GPScAcc = new System.Windows.Forms.TextBox();
@@ -1059,6 +1059,7 @@ namespace UAVXGUI
             this.flowLayoutPanel1.Controls.Add(this.CloseProximityBox);
             this.flowLayoutPanel1.Controls.Add(this.ProximityBox);
             this.flowLayoutPanel1.Controls.Add(this.UseRTHAutoDescendBox);
+            this.flowLayoutPanel1.Controls.Add(this.LandingSwitchBox);
             this.flowLayoutPanel1.Controls.Add(this.LowBatteryBox);
             this.flowLayoutPanel1.Controls.Add(this.UsingUplinkFlagBox);
             this.flowLayoutPanel1.Controls.Add(this.IMUFailBox);
@@ -1066,7 +1067,6 @@ namespace UAVXGUI
             this.flowLayoutPanel1.Controls.Add(this.BaroFailBox);
             this.flowLayoutPanel1.Controls.Add(this.MagFailBox);
             this.flowLayoutPanel1.Controls.Add(this.MagLockedBox);
-            this.flowLayoutPanel1.Controls.Add(this.LostModelBox);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 19);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(237, 336);
@@ -1272,10 +1272,21 @@ namespace UAVXGUI
             this.UseRTHAutoDescendBox.Text = "Using Auto Land";
             this.UseRTHAutoDescendBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // LandingSwitchBox
+            // 
+            this.LandingSwitchBox.BackColor = System.Drawing.SystemColors.Window;
+            this.LandingSwitchBox.Location = new System.Drawing.Point(3, 237);
+            this.LandingSwitchBox.Name = "LandingSwitchBox";
+            this.LandingSwitchBox.ReadOnly = true;
+            this.LandingSwitchBox.Size = new System.Drawing.Size(109, 20);
+            this.LandingSwitchBox.TabIndex = 103;
+            this.LandingSwitchBox.Text = "Contact Sw";
+            this.LandingSwitchBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // LowBatteryBox
             // 
             this.LowBatteryBox.BackColor = System.Drawing.SystemColors.Window;
-            this.LowBatteryBox.Location = new System.Drawing.Point(3, 237);
+            this.LowBatteryBox.Location = new System.Drawing.Point(118, 237);
             this.LowBatteryBox.Name = "LowBatteryBox";
             this.LowBatteryBox.ReadOnly = true;
             this.LowBatteryBox.Size = new System.Drawing.Size(109, 20);
@@ -1286,7 +1297,7 @@ namespace UAVXGUI
             // UsingUplinkFlagBox
             // 
             this.UsingUplinkFlagBox.BackColor = System.Drawing.SystemColors.Window;
-            this.UsingUplinkFlagBox.Location = new System.Drawing.Point(118, 237);
+            this.UsingUplinkFlagBox.Location = new System.Drawing.Point(3, 263);
             this.UsingUplinkFlagBox.Name = "UsingUplinkFlagBox";
             this.UsingUplinkFlagBox.ReadOnly = true;
             this.UsingUplinkFlagBox.Size = new System.Drawing.Size(109, 20);
@@ -1297,7 +1308,7 @@ namespace UAVXGUI
             // IMUFailBox
             // 
             this.IMUFailBox.BackColor = System.Drawing.SystemColors.Window;
-            this.IMUFailBox.Location = new System.Drawing.Point(3, 263);
+            this.IMUFailBox.Location = new System.Drawing.Point(118, 263);
             this.IMUFailBox.Name = "IMUFailBox";
             this.IMUFailBox.ReadOnly = true;
             this.IMUFailBox.Size = new System.Drawing.Size(109, 20);
@@ -1308,7 +1319,7 @@ namespace UAVXGUI
             // GPSFailBox
             // 
             this.GPSFailBox.BackColor = System.Drawing.SystemColors.Window;
-            this.GPSFailBox.Location = new System.Drawing.Point(118, 263);
+            this.GPSFailBox.Location = new System.Drawing.Point(3, 289);
             this.GPSFailBox.Name = "GPSFailBox";
             this.GPSFailBox.ReadOnly = true;
             this.GPSFailBox.Size = new System.Drawing.Size(109, 20);
@@ -1319,7 +1330,7 @@ namespace UAVXGUI
             // BaroFailBox
             // 
             this.BaroFailBox.BackColor = System.Drawing.SystemColors.Window;
-            this.BaroFailBox.Location = new System.Drawing.Point(3, 289);
+            this.BaroFailBox.Location = new System.Drawing.Point(118, 289);
             this.BaroFailBox.Name = "BaroFailBox";
             this.BaroFailBox.ReadOnly = true;
             this.BaroFailBox.Size = new System.Drawing.Size(109, 20);
@@ -1330,7 +1341,7 @@ namespace UAVXGUI
             // MagFailBox
             // 
             this.MagFailBox.BackColor = System.Drawing.SystemColors.Window;
-            this.MagFailBox.Location = new System.Drawing.Point(118, 289);
+            this.MagFailBox.Location = new System.Drawing.Point(3, 315);
             this.MagFailBox.Name = "MagFailBox";
             this.MagFailBox.ReadOnly = true;
             this.MagFailBox.Size = new System.Drawing.Size(109, 20);
@@ -1341,25 +1352,13 @@ namespace UAVXGUI
             // MagLockedBox
             // 
             this.MagLockedBox.BackColor = System.Drawing.SystemColors.Window;
-            this.MagLockedBox.Location = new System.Drawing.Point(3, 315);
+            this.MagLockedBox.Location = new System.Drawing.Point(118, 315);
             this.MagLockedBox.Name = "MagLockedBox";
             this.MagLockedBox.ReadOnly = true;
             this.MagLockedBox.Size = new System.Drawing.Size(109, 20);
             this.MagLockedBox.TabIndex = 127;
             this.MagLockedBox.Text = "Mag Lock Error";
             this.MagLockedBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // LostModelBox
-            // 
-            this.LostModelBox.BackColor = System.Drawing.SystemColors.Window;
-            this.LostModelBox.Location = new System.Drawing.Point(118, 315);
-            this.LostModelBox.Name = "LostModelBox";
-            this.LostModelBox.ReadOnly = true;
-            this.LostModelBox.Size = new System.Drawing.Size(109, 20);
-            this.LostModelBox.TabIndex = 103;
-            this.LostModelBox.Text = "Lost Model";
-            this.LostModelBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.LostModelBox.Visible = false;
             // 
             // FlagsGroupBox
             // 
@@ -3583,7 +3582,7 @@ namespace UAVXGUI
         private System.Windows.Forms.TextBox AltHoldBox;
         private System.Windows.Forms.TextBox TurnToPOIBox;
         private System.Windows.Forms.TextBox UsingUplinkFlagBox;
-        private System.Windows.Forms.TextBox LostModelBox;
+        private System.Windows.Forms.TextBox LandingSwitchBox;
         private System.Windows.Forms.TextBox NearLevelBox;
         private System.Windows.Forms.TextBox LowBatteryBox;
         private System.Windows.Forms.TextBox GPSValidBox;

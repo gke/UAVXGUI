@@ -72,9 +72,10 @@ namespace UAVXGUI
             this.DistanceLabel = new System.Windows.Forms.Label();
             this.OriginGroupBox = new System.Windows.Forms.GroupBox();
             this.DefAltitudeLabel = new System.Windows.Forms.Label();
+            this.CentreButton = new System.Windows.Forms.Button();
+            this.MapProviderComboBox = new System.Windows.Forms.ComboBox();
             this.DefAltitudeNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.AltitudeOverTerrainCheckBox = new System.Windows.Forms.CheckBox();
-            this.SetHomeManuallyCheckBox = new System.Windows.Forms.CheckBox();
             this.LaunchLonLabel = new System.Windows.Forms.Label();
             this.LaunchLatLabel = new System.Windows.Forms.Label();
             this.LoiterTimeLabel = new System.Windows.Forms.Label();
@@ -97,10 +98,7 @@ namespace UAVXGUI
             this.Down = new System.Windows.Forms.DataGridViewImageColumn();
             this.DEL = new System.Windows.Forms.DataGridViewImageColumn();
             this.MenuMain = new System.Windows.Forms.MenuStrip();
-            this.OnlineGroupBox = new System.Windows.Forms.GroupBox();
             this.MapZoomLabel = new System.Windows.Forms.Label();
-            this.MapProviderComboBox = new System.Windows.Forms.ComboBox();
-            this.SearchButton = new System.Windows.Forms.Button();
             this.LocationAddress = new System.Windows.Forms.TextBox();
             this.MapZoomNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.GoToCheckBox = new System.Windows.Forms.CheckBox();
@@ -144,7 +142,6 @@ namespace UAVXGUI
             ((System.ComponentModel.ISupportInitialize)(this.DefAltitudeNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoiterTimeNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.M)).BeginInit();
-            this.OnlineGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MapZoomNumericUpDown)).BeginInit();
             this.contextMenuStripMap.SuspendLayout();
             this.ProximityGroupBox.SuspendLayout();
@@ -195,9 +192,11 @@ namespace UAVXGUI
             // OriginGroupBox
             // 
             this.OriginGroupBox.Controls.Add(this.DefAltitudeLabel);
+            this.OriginGroupBox.Controls.Add(this.CentreButton);
+            this.OriginGroupBox.Controls.Add(this.MapProviderComboBox);
             this.OriginGroupBox.Controls.Add(this.DefAltitudeNumericUpDown);
             this.OriginGroupBox.Controls.Add(this.AltitudeOverTerrainCheckBox);
-            this.OriginGroupBox.Controls.Add(this.SetHomeManuallyCheckBox);
+            this.OriginGroupBox.Controls.Add(this.LocationAddress);
             this.OriginGroupBox.Controls.Add(this.LaunchLonLabel);
             this.OriginGroupBox.Controls.Add(this.LaunchLatLabel);
             this.OriginGroupBox.Controls.Add(this.LoiterTimeLabel);
@@ -206,7 +205,7 @@ namespace UAVXGUI
             this.OriginGroupBox.Controls.Add(this.LoiterTimeNumericUpDown);
             this.OriginGroupBox.Location = new System.Drawing.Point(7, 513);
             this.OriginGroupBox.Name = "OriginGroupBox";
-            this.OriginGroupBox.Size = new System.Drawing.Size(222, 91);
+            this.OriginGroupBox.Size = new System.Drawing.Size(222, 142);
             this.OriginGroupBox.TabIndex = 24;
             this.OriginGroupBox.TabStop = false;
             this.OriginGroupBox.Text = "Options";
@@ -219,6 +218,26 @@ namespace UAVXGUI
             this.DefAltitudeLabel.Size = new System.Drawing.Size(45, 13);
             this.DefAltitudeLabel.TabIndex = 188;
             this.DefAltitudeLabel.Text = "Def. Alt.";
+            // 
+            // CentreButton
+            // 
+            this.CentreButton.Location = new System.Drawing.Point(134, 38);
+            this.CentreButton.Name = "CentreButton";
+            this.CentreButton.Size = new System.Drawing.Size(82, 23);
+            this.CentreButton.TabIndex = 48;
+            this.CentreButton.Text = "Centre";
+            this.CentreButton.UseVisualStyleBackColor = true;
+            this.CentreButton.Click += new System.EventHandler(this.SearchButton_Click);
+            // 
+            // MapProviderComboBox
+            // 
+            this.MapProviderComboBox.FormattingEnabled = true;
+            this.MapProviderComboBox.Location = new System.Drawing.Point(10, 91);
+            this.MapProviderComboBox.Name = "MapProviderComboBox";
+            this.MapProviderComboBox.Size = new System.Drawing.Size(206, 21);
+            this.MapProviderComboBox.TabIndex = 53;
+            this.MapProviderComboBox.Text = "BingHybridMap";
+            this.MapProviderComboBox.SelectedIndexChanged += new System.EventHandler(this.MapProviderComboBox_SelectedIndexChanged);
             // 
             // DefAltitudeNumericUpDown
             // 
@@ -251,17 +270,6 @@ namespace UAVXGUI
             this.AltitudeOverTerrainCheckBox.UseVisualStyleBackColor = true;
             this.AltitudeOverTerrainCheckBox.CheckedChanged += new System.EventHandler(this.AltitudeOverTerrainitudeCheckBox_CheckedChanged);
             // 
-            // SetHomeManuallyCheckBox
-            // 
-            this.SetHomeManuallyCheckBox.AutoSize = true;
-            this.SetHomeManuallyCheckBox.Location = new System.Drawing.Point(134, 41);
-            this.SetHomeManuallyCheckBox.Name = "SetHomeManuallyCheckBox";
-            this.SetHomeManuallyCheckBox.Size = new System.Drawing.Size(72, 17);
-            this.SetHomeManuallyCheckBox.TabIndex = 172;
-            this.SetHomeManuallyCheckBox.Text = "Set Origin";
-            this.SetHomeManuallyCheckBox.UseVisualStyleBackColor = true;
-            this.SetHomeManuallyCheckBox.CheckedChanged += new System.EventHandler(this.SetHomeManuallyCheckBox_CheckedChanged);
-            // 
             // LaunchLonLabel
             // 
             this.LaunchLonLabel.AutoSize = true;
@@ -291,10 +299,8 @@ namespace UAVXGUI
             // 
             // LaunchLat
             // 
-            this.LaunchLat.Enabled = false;
             this.LaunchLat.Location = new System.Drawing.Point(39, 14);
             this.LaunchLat.Name = "LaunchLat";
-            this.LaunchLat.ReadOnly = true;
             this.LaunchLat.Size = new System.Drawing.Size(87, 20);
             this.LaunchLat.TabIndex = 3;
             this.LaunchLat.Text = "0.000000";
@@ -305,10 +311,8 @@ namespace UAVXGUI
             // 
             // LaunchLon
             // 
-            this.LaunchLon.Enabled = false;
             this.LaunchLon.Location = new System.Drawing.Point(39, 40);
             this.LaunchLon.Name = "LaunchLon";
-            this.LaunchLon.ReadOnly = true;
             this.LaunchLon.Size = new System.Drawing.Size(89, 20);
             this.LaunchLon.TabIndex = 4;
             this.LaunchLon.Text = "0.000000";
@@ -510,62 +514,28 @@ namespace UAVXGUI
             this.MenuMain.Text = "menuStrip1";
             this.MenuMain.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.MenuMain_ItemClicked);
             // 
-            // OnlineGroupBox
-            // 
-            this.OnlineGroupBox.Controls.Add(this.MapZoomLabel);
-            this.OnlineGroupBox.Controls.Add(this.MapProviderComboBox);
-            this.OnlineGroupBox.Controls.Add(this.SearchButton);
-            this.OnlineGroupBox.Controls.Add(this.LocationAddress);
-            this.OnlineGroupBox.Controls.Add(this.MapZoomNumericUpDown);
-            this.OnlineGroupBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.OnlineGroupBox.Location = new System.Drawing.Point(7, 609);
-            this.OnlineGroupBox.Name = "OnlineGroupBox";
-            this.OnlineGroupBox.Size = new System.Drawing.Size(534, 49);
-            this.OnlineGroupBox.TabIndex = 51;
-            this.OnlineGroupBox.TabStop = false;
-            this.OnlineGroupBox.Text = "Map";
-            // 
             // MapZoomLabel
             // 
             this.MapZoomLabel.AutoSize = true;
-            this.MapZoomLabel.Location = new System.Drawing.Point(439, 22);
+            this.MapZoomLabel.Location = new System.Drawing.Point(446, 586);
             this.MapZoomLabel.Name = "MapZoomLabel";
             this.MapZoomLabel.Size = new System.Drawing.Size(34, 13);
             this.MapZoomLabel.TabIndex = 183;
             this.MapZoomLabel.Text = "Zoom";
             // 
-            // MapProviderComboBox
-            // 
-            this.MapProviderComboBox.FormattingEnabled = true;
-            this.MapProviderComboBox.Location = new System.Drawing.Point(293, 19);
-            this.MapProviderComboBox.Name = "MapProviderComboBox";
-            this.MapProviderComboBox.Size = new System.Drawing.Size(138, 21);
-            this.MapProviderComboBox.TabIndex = 53;
-            this.MapProviderComboBox.Text = "BingHybridMap";
-            this.MapProviderComboBox.SelectedIndexChanged += new System.EventHandler(this.MapProviderComboBox_SelectedIndexChanged);
-            // 
-            // SearchButton
-            // 
-            this.SearchButton.Location = new System.Drawing.Point(237, 17);
-            this.SearchButton.Name = "SearchButton";
-            this.SearchButton.Size = new System.Drawing.Size(50, 23);
-            this.SearchButton.TabIndex = 48;
-            this.SearchButton.Text = "Search";
-            this.SearchButton.UseVisualStyleBackColor = true;
-            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
-            // 
             // LocationAddress
             // 
-            this.LocationAddress.Location = new System.Drawing.Point(5, 19);
+            this.LocationAddress.Location = new System.Drawing.Point(10, 116);
             this.LocationAddress.Name = "LocationAddress";
-            this.LocationAddress.Size = new System.Drawing.Size(226, 20);
+            this.LocationAddress.Size = new System.Drawing.Size(206, 20);
             this.LocationAddress.TabIndex = 46;
+            this.LocationAddress.Visible = false;
             this.LocationAddress.TextChanged += new System.EventHandler(this.SearchAddressTextBox_TextChanged);
             this.LocationAddress.Enter += new System.EventHandler(this.SearchAddressTextBox_Enter);
             // 
             // MapZoomNumericUpDown
             // 
-            this.MapZoomNumericUpDown.Location = new System.Drawing.Point(483, 20);
+            this.MapZoomNumericUpDown.Location = new System.Drawing.Point(486, 584);
             this.MapZoomNumericUpDown.Maximum = new decimal(new int[] {
             20,
             0,
@@ -592,7 +562,7 @@ namespace UAVXGUI
             // GoToCheckBox
             // 
             this.GoToCheckBox.AutoSize = true;
-            this.GoToCheckBox.Location = new System.Drawing.Point(449, 581);
+            this.GoToCheckBox.Location = new System.Drawing.Point(9, 96);
             this.GoToCheckBox.Name = "GoToCheckBox";
             this.GoToCheckBox.Size = new System.Drawing.Size(94, 17);
             this.GoToCheckBox.TabIndex = 182;
@@ -605,7 +575,7 @@ namespace UAVXGUI
             this.ShowFlightPathCheckBox.AutoSize = true;
             this.ShowFlightPathCheckBox.Checked = true;
             this.ShowFlightPathCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ShowFlightPathCheckBox.Location = new System.Drawing.Point(6, 42);
+            this.ShowFlightPathCheckBox.Location = new System.Drawing.Point(7, 39);
             this.ShowFlightPathCheckBox.Name = "ShowFlightPathCheckBox";
             this.ShowFlightPathCheckBox.Size = new System.Drawing.Size(54, 17);
             this.ShowFlightPathCheckBox.TabIndex = 174;
@@ -859,10 +829,11 @@ namespace UAVXGUI
             this.ProximityGroupBox.Controls.Add(this.FenceRadiusSetting);
             this.ProximityGroupBox.Controls.Add(this.ProxRadiusLabel);
             this.ProximityGroupBox.Controls.Add(this.ProximityAlt);
+            this.ProximityGroupBox.Controls.Add(this.GoToCheckBox);
             this.ProximityGroupBox.Controls.Add(this.ProximityAltLabel);
             this.ProximityGroupBox.Location = new System.Drawing.Point(235, 513);
             this.ProximityGroupBox.Name = "ProximityGroupBox";
-            this.ProximityGroupBox.Size = new System.Drawing.Size(121, 91);
+            this.ProximityGroupBox.Size = new System.Drawing.Size(121, 142);
             this.ProximityGroupBox.TabIndex = 181;
             this.ProximityGroupBox.TabStop = false;
             this.ProximityGroupBox.Text = "Proximity (M)";
@@ -899,7 +870,7 @@ namespace UAVXGUI
             this.groupBox1.Controls.Add(this.ShowWPCheckBox);
             this.groupBox1.Location = new System.Drawing.Point(362, 513);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(76, 91);
+            this.groupBox1.Size = new System.Drawing.Size(76, 142);
             this.groupBox1.TabIndex = 187;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Show";
@@ -944,13 +915,13 @@ namespace UAVXGUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(963, 661);
+            this.Controls.Add(this.MapZoomLabel);
+            this.Controls.Add(this.MapZoomNumericUpDown);
             this.Controls.Add(this.CurrentAltitude);
             this.Controls.Add(this.LoadMissionButton);
             this.Controls.Add(this.SaveMissionButton);
-            this.Controls.Add(this.GoToCheckBox);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.UAVXWriteButton);
-            this.Controls.Add(this.OnlineGroupBox);
             this.Controls.Add(this.UAVXReadButton);
             this.Controls.Add(this.ProximityGroupBox);
             this.Controls.Add(this.OfflineMapLabel);
@@ -973,8 +944,6 @@ namespace UAVXGUI
             ((System.ComponentModel.ISupportInitialize)(this.DefAltitudeNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoiterTimeNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.M)).EndInit();
-            this.OnlineGroupBox.ResumeLayout(false);
-            this.OnlineGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MapZoomNumericUpDown)).EndInit();
             this.contextMenuStripMap.ResumeLayout(false);
             this.ProximityGroupBox.ResumeLayout(false);
@@ -997,13 +966,11 @@ namespace UAVXGUI
         private Label LaunchLonLabel;
         private Label LaunchLatLabel;
         private TextBox LaunchLat;
-        private CheckBox SetHomeManuallyCheckBox;
         private TextBox LaunchLon;
         private DataGridView M;
         private MenuStrip MenuMain;
-        private GroupBox OnlineGroupBox;
         private ComboBox MapProviderComboBox;
-        private Button SearchButton;
+        private Button CentreButton;
         private TextBox LocationAddress;
         private NumericUpDown MapZoomNumericUpDown;
         private Label label8;

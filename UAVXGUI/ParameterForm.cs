@@ -1041,6 +1041,7 @@ namespace UAVXGUI
                         break;
                     case 7:
                         AltPosKpNumericUpDown.Value = UAVXP[p - 1].Value;
+                        AltPosKpNumericUpDown.BackColor = UAVXP[p - 1].Value > 10 ? System.Drawing.Color.White : System.Drawing.Color.Orange;
                         ParamUpdate(AltPosKpNumericUpDown);
                         break;
                     case 8:
@@ -1153,6 +1154,7 @@ namespace UAVXGUI
                         break;
                     case 30:
                         AltVelKpNumericUpDown.Value = UAVXP[p-1].Value;
+                        AltVelKpNumericUpDown.BackColor = UAVXP[p - 1].Value < 10 ? System.Drawing.Color.White : System.Drawing.Color.Orange;
                         ParamUpdate(AltVelKpNumericUpDown);
                         break;
                     case 31:

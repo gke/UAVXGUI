@@ -121,7 +121,7 @@ namespace UAVXGUI
      //   static short AirframeT = 4;
 
         short FenceRadius;
-        double LongitudeCorrectionT;
+        double LongitudeCorrectionT = 1.0f;
         //bool WPInvalid = false;
 
     //    double nAltHold;
@@ -147,12 +147,10 @@ namespace UAVXGUI
             GoToCheckBox.Checked = false; //  Properties.Settings.Default.GoToEnable;
 
             AltitudeOverTerrainCheckBox.Checked = Properties.Settings.Default.AltitudeOverTerrain;
-            SetHomeManuallyCheckBox.Checked = Properties.Settings.Default.SetHomeManually;
         
             LocationAddress.Text = Properties.Settings.Default.SearchAddress;
 
             AltitudeOverTerrainCheckBox.Checked = Properties.Settings.Default.AltitudeOverTerrain;
-            SetHomeManuallyCheckBox.Checked = Properties.Settings.Default.SetHomeManually;
 
             FormMain.Mission.OriginLatitude = Convert.ToInt32(Properties.Settings.Default.HomeLatitude * 1e7);
             LaunchLat.Text = Convert.ToString(Properties.Settings.Default.HomeLatitude);
@@ -160,7 +158,7 @@ namespace UAVXGUI
             FormMain.Mission.OriginLongitude = Convert.ToInt32(Properties.Settings.Default.HomeLongitude * 1e7);
             LaunchLon.Text = Convert.ToString(Properties.Settings.Default.HomeLongitude);
 
-         //   FormMain.LongitudeCorrectionT = Math.Abs(Math.Cos(Math.PI / 180.0 * (double)FormMain.Mission.OriginLatitude * 1e7));
+            LongitudeCorrectionT = Math.Abs(Math.Cos(Math.PI / 180.0 * (double)FormMain.Mission.OriginLatitude * 1e7));
          //zzz   LongitudeCorrection.Text = string.Format("{0:n2}", LongitudeCorrectionT);
 
             FormMain.Mission.RTHAltitudeHold = Properties.Settings.Default.RTHAltitudeHold;
@@ -561,37 +559,41 @@ namespace UAVXGUI
    
         } // GoToCheckBox_CheckChanged
 
-        private void SetHomeManuallyCheckBox_CheckedChanged(object sender, EventArgs e)
+ 
+        private void optLocation_CheckedChanged() //object sender, EventArgs e)
         {
-            Properties.Settings.Default.SetHomeManually = SetHomeManuallyCheckBox.Checked;
-            LaunchLat.Enabled = SetHomeManuallyCheckBox.Checked;
-            LaunchLon.Enabled = SetHomeManuallyCheckBox.Checked;
-            if (SetHomeManuallyCheckBox.Checked)
-                UAVXOptions |= 0;
-            else
-                UAVXOptions &= 0;
-        } // SetHomeManuallyCheckBox_CheckedChanged
 
+            Properties.Settings.Default.HomeLatitude = Convert.ToDouble(LaunchLat.Text);
+            Properties.Settings.Default.HomeLongitude = Convert.ToDouble(LaunchLon.Text);
 
+            LongitudeCorrectionT = Math.Abs(Math.Cos(Math.PI / 180.0 * (double)Properties.Settings.Default.HomeLatitude * 1e-7));
 
-        private void optLocation_CheckedChanged(object sender, EventArgs e)
-        {
+            MainMap.Position = copterPos = new PointLatLng(Convert.ToDouble(LaunchLat.Text), Convert.ToDouble(LaunchLon.Text));
+
+            FormMain.GPSLatitudeT = 0;
+
+            MainMap.Invalidate(false);
+            CentreButton.BackColor = System.Drawing.Color.Orange;
 
         } // optLocation_CheckedChanged
 
         private void UseDefaultHome() {
+        
             LaunchLat.Text = Convert.ToString(DEFAULT_HOME_LAT);
             LaunchLon.Text = Convert.ToString(DEFAULT_HOME_LON);
+
             Properties.Settings.Default.HomeLatitude = Convert.ToDouble(LaunchLat.Text);
             Properties.Settings.Default.HomeLongitude = Convert.ToDouble(LaunchLon.Text);
-            MainMap.Position = copterPos = new PointLatLng(DEFAULT_HOME_LAT, DEFAULT_HOME_LON);
+            MainMap.Position = copterPos = new PointLatLng(Convert.ToDouble(LaunchLat.Text), Convert.ToDouble(LaunchLon.Text));
             MainMap.Invalidate(false);
-            SearchButton.BackColor = System.Drawing.Color.Orange;
+            CentreButton.BackColor = System.Drawing.Color.Orange;
+      
         } // UseDefaultHome
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
 
+            /*
             if (LocationAddress.Text == "")
                 UseDefaultHome();
             else
@@ -619,7 +621,9 @@ namespace UAVXGUI
                 else 
                     UseDefaultHome();
             }
-
+             * */
+            optLocation_CheckedChanged();
+            CentreButton.BackColor = System.Drawing.Color.Green;
 
         } // SearchButton_Click
 
@@ -634,7 +638,7 @@ namespace UAVXGUI
 
         private void SearchAddressTextBox_Enter(object sender, EventArgs e)
         {
-            this.AcceptButton = SearchButton;
+            this.AcceptButton = CentreButton;
 
         } // SearchAddressTextBox_Enter
 
@@ -1703,7 +1707,6 @@ namespace UAVXGUI
                 MissionFileStreamWriter.WriteLine("OPTIONS:" + ProximityRadius.Text
                     + "," + ProximityAlt.Text
                     + "," + FenceRadiusSetting.Text
-                    + "," + SetHomeManuallyCheckBox.Checked
                     + "," + AltitudeOverTerrainCheckBox.Checked
                     + "," + FormMain.Mission.RTHAltitudeHold
                     + "," + MapZoomNumericUpDown.Value.ToString());
@@ -1818,16 +1821,14 @@ namespace UAVXGUI
                                 ProximityRadius.Text = string.Format("{0:n0}", Convert.ToInt16(sParam[0]));
                                 ProximityAlt.Text = string.Format("{0:n0}", Convert.ToInt16(sParam[1]));
                                 FenceRadiusSetting.Text = string.Format("{0:n0}", Convert.ToInt16(sParam[2]));
-                                SetHomeManuallyCheckBox.Checked = Convert.ToBoolean(sParam[3]);
-                                AltitudeOverTerrainCheckBox.Checked = Convert.ToBoolean(sParam[4]);
-                                FormMain.Mission.RTHAltitudeHold = Convert.ToInt16(sParam[5]);
+                                AltitudeOverTerrainCheckBox.Checked = Convert.ToBoolean(sParam[3]);
+                                FormMain.Mission.RTHAltitudeHold = Convert.ToInt16(sParam[4]);
                                 if (sParam.GetUpperBound(0) >= 5)
-                                    MapZoomNumericUpDown.Value = Convert.ToInt32(sParam[6]);
+                                    MapZoomNumericUpDown.Value = Convert.ToInt32(sParam[5]);
 
                                 Properties.Settings.Default.ProximityRadius = Convert.ToByte(sParam[0]);
                                 Properties.Settings.Default.ProximityAltitude = Convert.ToByte(sParam[1]);
                                 Properties.Settings.Default.FenceRadius = Convert.ToInt16(sParam[2]);
-                                Properties.Settings.Default.SetHomeManually = SetHomeManuallyCheckBox.Checked;
                                 Properties.Settings.Default.AltitudeOverTerrain = AltitudeOverTerrainCheckBox.Checked;
 
                                 break;
@@ -1964,7 +1965,7 @@ namespace UAVXGUI
                 M[mPV, rowM].Value = string.Format("{0:n1}", FormMain.WP[wp].OrbitVelocity);
             }
 
-            UAVXReadButton.BackColor = System.Drawing.Color.Green;
+            UAVXWriteButton.BackColor = UAVXReadButton.BackColor = System.Drawing.Color.Green;
 
         } // UAVXDownload
 
@@ -1985,18 +1986,7 @@ namespace UAVXGUI
                 FormMain.Mission.FenceRadius = Convert.ToInt16(Convert.ToDouble(FenceRadiusSetting.Text));
                 FormMain.Mission.RTHAltitudeHold = Convert.ToInt16(Convert.ToDouble(DefAltitudeNumericUpDown.Text));
 
-                //Verifying if we going to setup home position manually
-                if (SetHomeManuallyCheckBox.Checked)
-                {
-                    FormMain.Mission.OriginLatitude = (int)(Convert.ToDouble(LaunchLat.Text) * (double)1e7);
-                    FormMain.Mission.OriginLongitude = (int)(Convert.ToDouble(LaunchLon.Text) * (double)1e7);
-
-                    LongitudeCorrectionT = Math.Abs(Math.Cos(Math.PI / 180.0 * (double)FormMain.Mission.OriginLatitude * 1e-7));
-                  //zzz  LongitudeCorrection.Text = string.Format("{0:n2}", LongitudeCorrectionT);
-                    UAVXOptions |= 0;
-                }
-                else
-                    UAVXOptions &= 0;
+                UAVXOptions &= 0;
 
                 FormMain.Mission.NoOfWayPoints = (byte)M.Rows.Count;
 
