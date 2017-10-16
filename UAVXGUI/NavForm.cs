@@ -36,9 +36,9 @@ namespace UAVXGUI
 
     public partial class NavForm : Form
     {
-        const double DEFAULT_HOME_LAT = -38.0556105; // Crossover
-        const double DEFAULT_HOME_LON = 145.9696235;
-        const double DEFAULT_LON_CORR = 0.79f;
+        const double DEFAULT_HOME_LAT = 0;
+        const double DEFAULT_HOME_LON = 0;
+        const double DEFAULT_LON_CORR = 1.0f;
 
         // ASCII Constants
         const byte NUL = 0;
@@ -152,16 +152,15 @@ namespace UAVXGUI
 
             AltitudeOverTerrainCheckBox.Checked = Properties.Settings.Default.AltitudeOverTerrain;
 
-            FormMain.Mission.OriginLatitude = Convert.ToInt32(Properties.Settings.Default.HomeLatitude * 1e7);
-            LaunchLat.Text = Convert.ToString(Properties.Settings.Default.HomeLatitude);
+            FormMain.Mission.OriginLatitude = 0; // zzz Convert.ToInt32(Properties.Settings.Default.HomeLatitude * 1e7);
+            StartLat.Text = Convert.ToString(Properties.Settings.Default.HomeLatitude);
 
-            FormMain.Mission.OriginLongitude = Convert.ToInt32(Properties.Settings.Default.HomeLongitude * 1e7);
-            LaunchLon.Text = Convert.ToString(Properties.Settings.Default.HomeLongitude);
+            FormMain.Mission.OriginLongitude = 0; // zzz Convert.ToInt32(Properties.Settings.Default.HomeLongitude * 1e7);
+            StartLon.Text = Convert.ToString(Properties.Settings.Default.HomeLongitude);
 
-            LongitudeCorrectionT = Math.Abs(Math.Cos(Math.PI / 180.0 * (double)FormMain.Mission.OriginLatitude * 1e7));
+            LongitudeCorrectionT = Math.Abs(Math.Cos(Math.PI / 180.0 * (double)Convert.ToInt32(Properties.Settings.Default.HomeLatitude * 1e7)));
          //zzz   LongitudeCorrection.Text = string.Format("{0:n2}", LongitudeCorrectionT);
 
-            FormMain.Mission.RTHAltitudeHold = Properties.Settings.Default.RTHAltitudeHold;
             FormMain.Mission.RTHAltitudeHold = Properties.Settings.Default.RTHAltitudeHold;
 
             FormMain.Mission.ProximityRadius = Properties.Settings.Default.ProximityRadius;
@@ -200,7 +199,7 @@ namespace UAVXGUI
             // black screen MainMap.ForceDoubleBuffer = true;
             MainMap.Manager.Mode = AccessMode.ServerAndCache;
 
-            MainMap.Position = copterPos = new PointLatLng((double)FormMain.Mission.OriginLatitude * 1e-7, (double)FormMain.Mission.OriginLongitude * 1e-7);
+            MainMap.Position = copterPos = new PointLatLng(Convert.ToDouble(StartLat.Text), Convert.ToDouble(StartLon.Text));
             currentMarker = new GMarkerGoogle(MainMap.Position, GMarkerGoogleType.red);
 
             // map events
@@ -350,7 +349,14 @@ namespace UAVXGUI
                 //Display copter marker
                 GMOverlayLiveData.Markers.Add(new GMapMarkerCopter(GPS_pos, (float)FormMain.HeadingT * 0.001f, (float)FormMain.GPSHeadingT * 0.001f, (float)FormMain.WPBearingT * 0.001f, Convert.ToByte(FormMain.AirframeT)));
 
-                MainMap.Position = GPS_pos;
+                if (CentreCurrPositionCheckBox.Checked) {
+                    MainMap.Position = GPS_pos;
+                    StartLat.Text = String.Format("{0:0.000000}", MainMap.Position.Lat);
+                    StartLon.Text = String.Format("{0:0.000000}", MainMap.Position.Lng);
+                }
+
+               
+
                 MainMap.Invalidate(false);
 
             }
@@ -562,69 +568,30 @@ namespace UAVXGUI
  
         private void optLocation_CheckedChanged() //object sender, EventArgs e)
         {
+            CentreCurrPositionCheckBox.Checked = false;
 
-            Properties.Settings.Default.HomeLatitude = Convert.ToDouble(LaunchLat.Text);
-            Properties.Settings.Default.HomeLongitude = Convert.ToDouble(LaunchLon.Text);
+           // StartLat.Text = String.Format("{0:0.000000}", MainMap.Position.Lat);
+           // StartLon.Text = String.Format("{0:0.000000}", MainMap.Position.Lng);
+
+            Properties.Settings.Default.HomeLatitude = Convert.ToDouble(StartLat.Text);
+            Properties.Settings.Default.HomeLongitude = Convert.ToDouble(StartLon.Text);
 
             LongitudeCorrectionT = Math.Abs(Math.Cos(Math.PI / 180.0 * (double)Properties.Settings.Default.HomeLatitude * 1e-7));
 
-            MainMap.Position = copterPos = new PointLatLng(Convert.ToDouble(LaunchLat.Text), Convert.ToDouble(LaunchLon.Text));
+            MainMap.Position = copterPos = new PointLatLng(Convert.ToDouble(StartLat.Text), Convert.ToDouble(StartLon.Text));
 
             FormMain.GPSLatitudeT = 0;
 
             MainMap.Invalidate(false);
-            CentreButton.BackColor = System.Drawing.Color.Orange;
+            MapCentreButton.BackColor = System.Drawing.Color.Orange;
 
         } // optLocation_CheckedChanged
 
-        private void UseDefaultHome() {
-        
-            LaunchLat.Text = Convert.ToString(DEFAULT_HOME_LAT);
-            LaunchLon.Text = Convert.ToString(DEFAULT_HOME_LON);
-
-            Properties.Settings.Default.HomeLatitude = Convert.ToDouble(LaunchLat.Text);
-            Properties.Settings.Default.HomeLongitude = Convert.ToDouble(LaunchLon.Text);
-            MainMap.Position = copterPos = new PointLatLng(Convert.ToDouble(LaunchLat.Text), Convert.ToDouble(LaunchLon.Text));
-            MainMap.Invalidate(false);
-            CentreButton.BackColor = System.Drawing.Color.Orange;
-      
-        } // UseDefaultHome
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-
-            /*
-            if (LocationAddress.Text == "")
-                UseDefaultHome();
-            else
-            {
-                GeoCoderStatusCode status = GeoCoderStatusCode.Unknow;
-                var pp1 = GMapProviders.BingHybridMap.GetPoint(LocationAddress.Text, out status);
-                if (pp1 != null && status == GeoCoderStatusCode.G_GEO_SUCCESS)
-                {
-                    SearchButton.BackColor = System.Drawing.Color.Green;
-                    center.Position = (PointLatLng)pp1;
-                    if (SetHomeManuallyCheckBox.Checked)
-                    {
-                        LaunchLat.Text = Convert.ToString(center.Position.Lat);
-                        LaunchLon.Text = Convert.ToString(center.Position.Lng);
-                        Properties.Settings.Default.HomeLatitude = Convert.ToDouble(LaunchLat.Text);        
-                        Properties.Settings.Default.HomeLongitude = Convert.ToDouble(LaunchLon.Text);
-                        FormMain.Mission.OriginLatitude = Convert.ToInt32(Properties.Settings.Default.HomeLatitude * 1e7);
-                        FormMain.Mission.OriginLongitude = Convert.ToInt32(Properties.Settings.Default.HomeLongitude * 1e7);
-                    }
-
-                    MainMap.Position = center.Position;
-                    MainMap.Invalidate(false);
-                    Properties.Settings.Default.SearchAddress = LocationAddress.Text;
-                }
-                else 
-                    UseDefaultHome();
-            }
-             * */
             optLocation_CheckedChanged();
-            CentreButton.BackColor = System.Drawing.Color.Green;
-
+            MapCentreButton.BackColor = System.Drawing.Color.Green;
         } // SearchButton_Click
 
 
@@ -638,7 +605,7 @@ namespace UAVXGUI
 
         private void SearchAddressTextBox_Enter(object sender, EventArgs e)
         {
-            this.AcceptButton = CentreButton;
+            this.AcceptButton = MapCentreButton;
 
         } // SearchAddressTextBox_Enter
 
@@ -671,51 +638,51 @@ namespace UAVXGUI
         } // FenceRadius_TextChanged
   
 
-        private void launchLat_Leave(object sender, EventArgs e)
+        private void StartLat_Leave(object sender, EventArgs e)
         {
             double outValue;
-            double.TryParse(LaunchLat.Text, out outValue);
+            double.TryParse(StartLat.Text, out outValue);
             if (outValue != 0) {
-                Properties.Settings.Default.HomeLatitude = Convert.ToDouble(LaunchLat.Text);
-                FormMain.Mission.OriginLatitude = Convert.ToInt32(Properties.Settings.Default.HomeLatitude * 1e7);
+                Properties.Settings.Default.HomeLatitude = Convert.ToDouble(StartLat.Text);
+                //zzz FormMain.Mission.OriginLatitude = Convert.ToInt32(Properties.Settings.Default.HomeLatitude * 1e7);
             }
 
-        } // launchLat_Leave
+        } // StartLat_Leave
 
-        private void launchLon_Leave(object sender, EventArgs e)
+        private void StartLon_Leave(object sender, EventArgs e)
         {
             double outValue;
 
-            double.TryParse(LaunchLon.Text, out outValue);
+            double.TryParse(StartLon.Text, out outValue);
             if (outValue != 0) {
-                Properties.Settings.Default.HomeLongitude = Convert.ToDouble(LaunchLon.Text);
-                FormMain.Mission.OriginLongitude = Convert.ToInt32(Properties.Settings.Default.HomeLongitude * 1e7);
+                Properties.Settings.Default.HomeLongitude = Convert.ToDouble(StartLon.Text);
+                // zzz FormMain.Mission.OriginLongitude = Convert.ToInt32(Properties.Settings.Default.HomeLongitude * 1e7);
             }
 
-        } // launchLon_Leave
+        } // StartLon_Leave
 
-        private void launchLon_KeyPress(object sender, KeyPressEventArgs e)
+        private void StartLon_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar.ToString() == "\r")
-                launchLon_Leave(sender, e);
-        } // launchLon_KeyPress
+                StartLon_Leave(sender, e);
+        } // StartLon_KeyPress
 
-        private void launchLat_KeyPress(object sender, KeyPressEventArgs e)
+        private void StartLat_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar.ToString() == "\r")
-                launchLat_Leave(sender, e);
-        } // launchLat_KeyPress
+                StartLat_Leave(sender, e);
+        } // StartLat_KeyPress
 
-        private void launchLat_TextChanged(object sender, EventArgs e)
+        private void StartLat_TextChanged(object sender, EventArgs e)
         {
             UAVXWriteButton.BackColor = System.Drawing.Color.Orange;
-        } // launchLat_TextChanged
+        } // StartLat_TextChanged
 
 
-        private void launchLon_TextChanged(object sender, EventArgs e)
+        private void StartLon_TextChanged(object sender, EventArgs e)
         {
             UAVXWriteButton.BackColor = System.Drawing.Color.Orange;
-        } // launchLon_TextChanged
+        } // StartLon_TextChanged
 
 
         private void MapZoomNumericUpDown_Click(object sender, EventArgs e)
@@ -815,8 +782,8 @@ namespace UAVXGUI
 
             if (UseOverTerrainMode)
             {
-                nHomeAlt = GetAltitudeData(Convert.ToDouble(LaunchLat.Text.Replace(
-                    ".", separatorFormat)), Convert.ToDouble(LaunchLon.Text.Replace(
+                nHomeAlt = GetAltitudeData(Convert.ToDouble(StartLat.Text.Replace(
+                    ".", separatorFormat)), Convert.ToDouble(StartLon.Text.Replace(
                     ".", separatorFormat)));
             }
 
@@ -996,7 +963,7 @@ namespace UAVXGUI
             double Distance;
 
             if (FenceRadius > 0) {
-            Distance = MainMap.MapProvider.Projection.GetDistance(
+                Distance = MainMap.MapProvider.Projection.GetDistance(
                 new PointLatLng(FormMain.Mission.OriginLatitude * 1e-7, FormMain.Mission.OriginLongitude * 1e-7), 
                 new PointLatLng(Lat, Lon)
                 ) * 1000.0;
@@ -1085,6 +1052,7 @@ namespace UAVXGUI
             point.Lng = Limit1(point.Lng, 180);
             center.Position = point;
             MousePosLabel.Text = "Lat:" + String.Format("{0:0.000000}", point.Lat) + " Lon:" + String.Format("{0:0.000000}", point.Lng);
+
         } // MainMap_OnCurrentPositionChanged
 
         void MainMap_OnMarkerLeave(GMapMarker item)
@@ -1222,6 +1190,8 @@ namespace UAVXGUI
                     double latdif = start.Lat - point.Lat;
                     double lngdif = start.Lng - point.Lng;
                     MainMap.Position = new PointLatLng(center.Position.Lat + latdif, center.Position.Lng + lngdif);
+                    StartLat.Text = String.Format("{0:0.000000}", MainMap.Position.Lat); // zzz
+                    StartLon.Text = String.Format("{0:0.000000}", MainMap.Position.Lng);
                 }
                 else
                 {
@@ -1712,8 +1682,8 @@ namespace UAVXGUI
                     + "," + MapZoomNumericUpDown.Value.ToString());
 
                 MissionFileStreamWriter.WriteLine("HOME:"
-                    + LaunchLat.Text
-                    + "," + LaunchLon.Text
+                    + StartLat.Text
+                    + "," + StartLon.Text
                     );
 
                 for (rowM = 0; rowM < M.Rows.Count; rowM++)
@@ -1837,8 +1807,8 @@ namespace UAVXGUI
                                      System.Globalization.CultureInfo.GetCultureInfo("en-US"), out nLat);
                                 double.TryParse(sParam[1], System.Globalization.NumberStyles.Float,
                                     System.Globalization.CultureInfo.GetCultureInfo("en-US"), out nLon);
-                                LaunchLat.Text = Convert.ToString(nLat);
-                                LaunchLon.Text = Convert.ToString(nLon);
+                                StartLat.Text = Convert.ToString(nLat);
+                                StartLon.Text = Convert.ToString(nLon);
                                 break;
                             default:
                                 if (M.Rows.Count <= FormMain.MaxWayPoints - 1)
@@ -1934,13 +1904,13 @@ namespace UAVXGUI
                 System.Globalization.CultureInfo.GetCultureInfo("en-US"), out nLon);
 
             if (nLat != 0)
-                LaunchLat.Text = nLat.ToString();
+                StartLat.Text = nLat.ToString();
 
             if (nLon != 0)
-                LaunchLon.Text = nLon.ToString();
+                StartLon.Text = nLon.ToString();
 
-            launchLat_Leave(null, null);
-            launchLon_Leave(null, null);
+            StartLat_Leave(null, null);
+            StartLon_Leave(null, null);
 
             M.Rows.Clear();
             for (wp = 1; wp <= FormMain.Mission.NoOfWayPoints; wp++)

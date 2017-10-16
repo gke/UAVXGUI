@@ -167,9 +167,9 @@ namespace UAVXGUI
         const float MILLIRADDEG = (float)0.057295;
         const short DEGMILLIRAD = 17;
 
-        const double DEFAULT_HOME_LAT = -38.0556105; // Crossover
-        const double DEFAULT_HOME_LON = 145.9696235;
-        const double DEFAULT_LON_CORR = 0.79f;
+        const double DEFAULT_HOME_LAT = 0; 
+        const double DEFAULT_HOME_LON = 0;
+        const double DEFAULT_LON_CORR = 1.0f;
 
         public const byte MaxWayPoints = 14;
 
@@ -365,7 +365,7 @@ namespace UAVXGUI
         };
 
 
-        enum FlagValues
+        public enum FlagValues
         {
             AltControlEnabled,
 				UsingGPSAlt,
@@ -411,13 +411,13 @@ namespace UAVXGUI
 				DumpingBB,
 				ParametersValid,
 				RCNewValues,
-				Unused_4_4,
+				UsingWPNavigation,
 				IMUActive,
 				MagnetometerActive,
 				IsArmed,
 
 				// 5
-				Unused_5_0,
+				IsFixedWing,
 				InvertMagnetometer,
 				MagCalibrated,
 				UsingUplink,
@@ -428,7 +428,8 @@ namespace UAVXGUI
 
         };
 
-
+        public static bool UsingFixedWing = false;
+        public static bool NoUplink = false;
 
         // struct not used - just to document packet format
         // byte UAVXFlightPacketTag;   
@@ -470,7 +471,7 @@ namespace UAVXGUI
         int BaroTemperatureT;
         int BaroPressureT;
  
-        int RawAltitudeT, RawFAltitudeT;
+        int BaroAltitudeT, BaroRawAltitudeT;
 
         short AccZT, HRAccZT, HRAccZBiasT, FWGlideOffsetAngleT, NewTuningParameterT, FWRateEnergyT;
 
@@ -501,7 +502,7 @@ namespace UAVXGUI
 
         public static short GPSVelT;                  // 22
         public static short GPSHeadingT;              // 24
-        public static int GPAltitudeT;            // 26 3b
+        public static int GPSAltitudeT;            // 26 3b
         public static int GPSLatitudeT;               // 29 
         public static int GPSLongitudeT;              // 33
         public static int NorthPosET;                 // 40
@@ -722,7 +723,7 @@ namespace UAVXGUI
 
         bool InFlight = false;
 
-        bool[] F = new bool[72];
+        public static bool[] F = new bool[72];
 
         string FileName;
 
@@ -768,6 +769,10 @@ namespace UAVXGUI
           SpeakNavCheckBox.Checked = Properties.Settings.Default.SpeakNav;
           SpeechEnableCheckBox.Checked = Properties.Settings.Default.SpeechEnable;
           timer_announce.Interval = Properties.Settings.Default.SpeakInterval * 1000;
+
+          Mission.OriginAltitude = 0;
+          Mission.OriginLatitude = 0; 
+          Mission.OriginLongitude = 0;
 
           string[] AvailableCOMPorts = ComPorts.readPorts();
           foreach (string AvailableCOMPort in AvailableCOMPorts)
@@ -1048,12 +1053,12 @@ namespace UAVXGUI
                 "DumpBB," +
                 "ParamVal," +
                 "RCNew," +
-                "Unused," +
+                "WPNav," +
                 "IMUActive," +
                 "MagActive," +
                 "ARMED," +
 
-                "Unused," +
+                "FixedWing," +
                 "InvertMag," +
                 "MagCal," +
                 "Uplink," +
@@ -1125,11 +1130,11 @@ namespace UAVXGUI
 
             "CruiseThrottle," +
             "BaroT, " +
-             "BaroP, " +
-            "RFAlt," +
+            "BaroP, " +
+            "BaroRawAlt," +
+            "BaroAlt," +
             "GPSAlt," +
-            "RawAlt," +
-            "FAlt," +
+            "RFAlt," +
             "RelAlt," +
             "DesAlt," +
             "ROC," +
@@ -1680,6 +1685,10 @@ namespace UAVXGUI
 
             ExtractFlags();
 
+            UsingFixedWing = F[(byte)FlagValues.IsFixedWing];
+
+            NoUplink = !F[(byte)FlagValues.UsingUplink];
+
             AltHoldBox.BackColor = F[(byte)FlagValues.AltControlEnabled] ?
                 System.Drawing.Color.Green : System.Drawing.Color.Red;
 
@@ -2138,7 +2147,7 @@ namespace UAVXGUI
                     GPSVel.Text = string.Format("{0:n1}", (double)GPSVelT * 0.1); // M/Sec
                     //GPSROC.Text = string.Format("{0:n1}", (float)GPSROCT * 0.01);
                     GPSHeading.Text = string.Format("{0:n0}", (float)GPSHeadingT * MILLIRADDEG);
-                    GPSAltitude.Text = string.Format("{0:n1}", (double)GPAltitudeT * 0.01);
+                    GPSAltitude.Text = string.Format("{0:n1}", (double)GPSAltitudeT * 0.01);
                     GPSLongitude.Text = string.Format("{0:n6}", (double)GPSLongitudeT * 1e-7);
                     GPSLatitude.Text = string.Format("{0:n6}", (double)GPSLatitudeT * 1e-7);
 
@@ -2272,7 +2281,7 @@ namespace UAVXGUI
         void UpdateAltitude()
         {
             ROC.Text = string.Format("{0:n1}", (float)ROCT * 0.01);
-            BaroAltitude.Text = string.Format("{0:n1}", (float)RawAltitudeT * 0.01);
+            BaroAltitude.Text = string.Format("{0:n1}", (float)BaroAltitudeT * 0.01);
             BaroAltitude.BackColor =  (AltitudeT * 0.01) > MaximumAltitudeLimit ?
                 System.Drawing.Color.Orange : AltitudeGroupBox.BackColor;
 
@@ -2687,7 +2696,7 @@ namespace UAVXGUI
                     BaroTemperatureT = ExtractShort(ref UAVXPacket, 66);
                     BaroPressureT = ExtractInt24(ref UAVXPacket, 68);
 
-                    RawAltitudeT = ExtractInt24(ref UAVXPacket, 71);
+                    BaroAltitudeT = ExtractInt24(ref UAVXPacket, 71);
 
                     AccZT = ExtractByte(ref UAVXPacket, 74);
                     if (AccZT > 127) AccZT -= 256;
@@ -2869,7 +2878,7 @@ namespace UAVXGUI
                     CrossTrackET = ExtractShort(ref UAVXPacket, 17);
                     GPSVelT = ExtractShort(ref UAVXPacket, 19);
                     GPSHeadingT = ExtractShort(ref UAVXPacket, 21);
-                    GPAltitudeT = ExtractInt24(ref UAVXPacket, 23);
+                    GPSAltitudeT = ExtractInt24(ref UAVXPacket, 23);
                     GPSLatitudeT = ExtractInt(ref UAVXPacket, 26);
                     GPSLongitudeT = ExtractInt(ref UAVXPacket, 30);
 
@@ -2931,7 +2940,7 @@ namespace UAVXGUI
                 case UAVXFusionPacketTag:
 
                     HRAccZT = ExtractShort(ref UAVXPacket, 2);
-                    RawFAltitudeT = ExtractInt24(ref UAVXPacket, 4);
+                    BaroRawAltitudeT = ExtractInt24(ref UAVXPacket, 4);
                     FROCT = ExtractShort(ref UAVXPacket, 7);
                     HRAccZBiasT = ExtractShort(ref UAVXPacket, 9);
                     FWRateEnergyT = ExtractShort(ref UAVXPacket, 11);
@@ -3017,38 +3026,55 @@ namespace UAVXGUI
         {
 	        int p;
 
-	        SendPacketHeader();
+            if (NoUplink)
+            {
+                speech.SpeakAsync("No connection to flight controller, possible use of telemetry Rx by GPS on parallel Rx Version 3 board when armed.");
+            }
+            else
+            {
 
-	        TxESCu8(UAVXParamPacketTag);
-	        TxESCu8(MAX_PARAMS + 1);
+                SendPacketHeader();
 
-	        TxESCu8(ParameterForm.CurrPS);
-	        for (p = 0; p < MAX_PARAMS; p++)
-                TxESCi8(Convert.ToByte(ParameterForm.P[ParameterForm.CurrPS, p].Value)); 
+                TxESCu8(UAVXParamPacketTag);
+                TxESCu8(MAX_PARAMS + 1);
 
-	        SendPacketTrailer();
-            //speech.SpeakAsync("Uploaded set " + ParameterForm.CurrPS);
-            speech.SpeakAsync("Updating parameters");
+                TxESCu8(ParameterForm.CurrPS);
+                for (p = 0; p < MAX_PARAMS; p++)
+                    TxESCi8(Convert.ToByte(ParameterForm.P[ParameterForm.CurrPS, p].Value));
+
+                SendPacketTrailer();
+                //speech.SpeakAsync("Uploaded set " + ParameterForm.CurrPS);
+                speech.SpeakAsync("Updating parameters");
+            }
 
         } // SendParamsPacket
 
         public static void SendRequestPacket(byte Tag, byte a1, byte a2)
         {
            // TxLabel.Text = "Request " + TagNames[Tag];
-            SendPacketHeader();
-            TxESCu8(UAVXRequestPacketTag);
-            TxESCu8(3);
 
-            TxESCu8(Tag);
-            TxESCu8(a1);
-            TxESCu8(a2);
+            if (NoUplink)
+            {
+                speech.SpeakAsync("No connection to flight controller, possible use of telemetry Rx by GPS on parallel Rx Version 3 board when armed.");
+            }
+            else
+            {
+                SendPacketHeader();
+                TxESCu8(UAVXRequestPacketTag);
+                TxESCu8(3);
 
-            SendPacketTrailer();
-            if (Tag == UAVXParamPacketTag) {
-                if (a1 < 4)
-                    speech.SpeakAsync("Using selected default, CAUTION Ensure parameters match the actual aircraft BEFORE setting the ESC type"); // + a1);
-                else
-                    speech.SpeakAsync("Reading parameters");
+                TxESCu8(Tag);
+                TxESCu8(a1);
+                TxESCu8(a2);
+
+                SendPacketTrailer();
+                if (Tag == UAVXParamPacketTag)
+                {
+                    if (a1 < 4)
+                        speech.SpeakAsync("Using selected default, CAUTION Ensure parameters match the actual aircraft BEFORE setting the ESC type"); // + a1);
+                    else
+                        speech.SpeakAsync("Reading parameters");
+                }
             }
         } // SendRequestPacket
 
@@ -3071,11 +3097,12 @@ namespace UAVXGUI
             SendPacketHeader();
 
             TxESCu8(UAVXOriginPacketTag);
-            TxESCu8(15);
+            TxESCu8(17);
 
             TxESCu8(Mission.NoOfWayPoints);
             TxESCu8(Mission.ProximityAltitude);
             TxESCu8(Mission.ProximityRadius);
+            TxESCi16(Mission.FenceRadius);
 
             TxESCi16(Mission.OriginAltitude);
             TxESCi32(Mission.OriginLatitude);
@@ -3198,7 +3225,7 @@ namespace UAVXGUI
 
             GPSVelT * 0.1 + "," +
             GPSHeadingT * MILLIRADDEG + "," +
-            GPAltitudeT * 0.01 + "," +
+            GPSAltitudeT * 0.01 + "," +
             GPSLatitudeT * 1e-7 + "," +
             GPSLongitudeT * 1e-7 + "," +
 
@@ -3212,11 +3239,10 @@ namespace UAVXGUI
             BaroTemperatureT * 0.01 + "," +
 
             BaroPressureT * 0.001 + "," +
+            BaroRawAltitudeT * 0.01 + "," +  
+            BaroAltitudeT * 0.01 + "," +
+            GPSAltitudeT * 0.01 + "," +
             RangefinderAltitudeT * 0.01 + "," +
-            GPAltitudeT * 0.01 + "," +
-            RawAltitudeT * 0.01 + "," +
-            RawFAltitudeT * 0.01 + "," +
-
             AltitudeT * 0.01 + "," +
             DesiredAltitudeT * 0.01 + "," +
             ROCT * 0.01 + "," +

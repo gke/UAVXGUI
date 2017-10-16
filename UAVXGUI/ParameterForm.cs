@@ -193,6 +193,7 @@ namespace UAVXGUI
                 ReadParamsButton.BackColor = System.Drawing.Color.Green;
                 WriteParamsButton.Visible = true;
                 ParamsStale= false;
+                FWGroupBox.Visible = FormMain.UsingFixedWing;
                 updateForm();
             }
 
@@ -206,7 +207,7 @@ namespace UAVXGUI
             UpdateRCChannels();
 
             RxLoopbackButton.BackColor = FormMain.RxLoopbackEnabled ?
-   Color.Orange : RCGroupBox.BackColor;
+            Color.Orange : RCGroupBox.BackColor;
 
   
         }
@@ -1041,7 +1042,7 @@ namespace UAVXGUI
                         break;
                     case 7:
                         AltPosKpNumericUpDown.Value = UAVXP[p - 1].Value;
-                        AltPosKpNumericUpDown.BackColor = UAVXP[p - 1].Value > 10 ? System.Drawing.Color.White : System.Drawing.Color.Orange;
+                        AltPosKpNumericUpDown.BackColor = UAVXP[p - 1].Value <= 10 ? System.Drawing.Color.White : System.Drawing.Color.Orange;
                         ParamUpdate(AltPosKpNumericUpDown);
                         break;
                     case 8:
@@ -1154,7 +1155,7 @@ namespace UAVXGUI
                         break;
                     case 30:
                         AltVelKpNumericUpDown.Value = UAVXP[p-1].Value;
-                        AltVelKpNumericUpDown.BackColor = UAVXP[p - 1].Value < 10 ? System.Drawing.Color.White : System.Drawing.Color.Orange;
+                        AltVelKpNumericUpDown.BackColor = UAVXP[p - 1].Value >= 10 ? System.Drawing.Color.White : System.Drawing.Color.Orange;
                         ParamUpdate(AltVelKpNumericUpDown);
                         break;
                     case 31:

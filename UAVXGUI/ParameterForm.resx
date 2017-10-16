@@ -5077,13 +5077,13 @@
     <value>9, 274</value>
   </data>
   <data name="Ch10Label.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 13</value>
+    <value>45, 13</value>
   </data>
   <data name="Ch10Label.TabIndex" type="System.Int32, mscorlib">
     <value>230</value>
   </data>
   <data name="Ch10Label.Text" xml:space="preserve">
-    <value>Tune</value>
+    <value>WPNav</value>
   </data>
   <data name="&gt;&gt;Ch10Label.Name" xml:space="preserve">
     <value>Ch10Label</value>
