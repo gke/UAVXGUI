@@ -47,7 +47,7 @@ namespace UAVXGUI
             this.PitchRate = new System.Windows.Forms.TextBox();
             this.RollRate = new System.Windows.Forms.TextBox();
             this.LRAcc = new System.Windows.Forms.TextBox();
-            this.YawAngleError = new System.Windows.Forms.TextBox();
+            this.YawAngle = new System.Windows.Forms.TextBox();
             this.DUAcc = new System.Windows.Forms.TextBox();
             this.FBAcc = new System.Windows.Forms.TextBox();
             this.VoltsLabel = new System.Windows.Forms.Label();
@@ -493,14 +493,14 @@ namespace UAVXGUI
             this.LRAcc.TabIndex = 21;
             this.LRAcc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // YawAngleError
+            // YawAngle
             // 
-            this.YawAngleError.Location = new System.Drawing.Point(45, 97);
-            this.YawAngleError.Name = "YawAngleError";
-            this.YawAngleError.ReadOnly = true;
-            this.YawAngleError.Size = new System.Drawing.Size(25, 20);
-            this.YawAngleError.TabIndex = 20;
-            this.YawAngleError.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.YawAngle.Location = new System.Drawing.Point(45, 97);
+            this.YawAngle.Name = "YawAngle";
+            this.YawAngle.ReadOnly = true;
+            this.YawAngle.Size = new System.Drawing.Size(25, 20);
+            this.YawAngle.TabIndex = 20;
+            this.YawAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // DUAcc
             // 
@@ -892,7 +892,7 @@ namespace UAVXGUI
             this.AttitudeGroupBox.Controls.Add(this.RollLabel);
             this.AttitudeGroupBox.Controls.Add(this.RollAngle);
             this.AttitudeGroupBox.Controls.Add(this.PitchAngle);
-            this.AttitudeGroupBox.Controls.Add(this.YawAngleError);
+            this.AttitudeGroupBox.Controls.Add(this.YawAngle);
             this.AttitudeGroupBox.Location = new System.Drawing.Point(95, 57);
             this.AttitudeGroupBox.Name = "AttitudeGroupBox";
             this.AttitudeGroupBox.Size = new System.Drawing.Size(77, 124);
@@ -914,9 +914,9 @@ namespace UAVXGUI
             this.YawLabel.AutoSize = true;
             this.YawLabel.Location = new System.Drawing.Point(4, 100);
             this.YawLabel.Name = "YawLabel";
-            this.YawLabel.Size = new System.Drawing.Size(35, 13);
+            this.YawLabel.Size = new System.Drawing.Size(28, 13);
             this.YawLabel.TabIndex = 109;
-            this.YawLabel.Text = "YawE";
+            this.YawLabel.Text = "Yaw";
             // 
             // PitchLabel
             // 
@@ -3532,7 +3532,7 @@ namespace UAVXGUI
         private System.Windows.Forms.TextBox PitchRate;
         private System.Windows.Forms.TextBox RollRate;
         private System.Windows.Forms.TextBox LRAcc;
-        private System.Windows.Forms.TextBox YawAngleError;
+        private System.Windows.Forms.TextBox YawAngle;
         private System.Windows.Forms.TextBox DUAcc;
         private System.Windows.Forms.TextBox FBAcc;
         private System.Windows.Forms.Label VoltsLabel;

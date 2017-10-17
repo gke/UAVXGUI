@@ -1997,7 +1997,7 @@ namespace UAVXGUI
                 YawGyro.Text = string.Format("{0:n2}", YawRateT * MILLIRADDEG);
                 RollAngle.Text = string.Format("{0:n0}", RollAngleT * MILLIRADDEG);
                 PitchAngle.Text = string.Format("{0:n0}", PitchAngleT * MILLIRADDEG);
-                YawAngleError.Text = string.Format("{0:n0}", YawAngleT * MILLIRADDEG);
+                YawAngle.Text = string.Format("{0:n0}", YawAngleT * MILLIRADDEG);
         }
 
         void UpdateAccelerations()
