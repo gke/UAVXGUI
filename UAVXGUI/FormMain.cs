@@ -245,6 +245,7 @@ namespace UAVXGUI
             JustGliding,
             RateControl,
             BypassControl,
+            HorizonControl,
             NavStateUndefined
         };
 
@@ -399,7 +400,7 @@ namespace UAVXGUI
 				// 3
 				UsingPOI,
 				Bypass,
-				UsingRateControl,
+				UsingAngleControl,
 				Emulation,
 				MagLocked,
 				DrivesArmed,
@@ -1042,7 +1043,7 @@ namespace UAVXGUI
 
                 "UsePOI," +   // stick programmed
                 "Bypass," +
-                "Rate," +
+                "Angle," +
                 "Emulation," +
                 "MagLocked," +
                 "DrivesArmed," +
@@ -1461,6 +1462,8 @@ namespace UAVXGUI
                             break;
                         case NavStates.RateControl: speech.SpeakAsync("Rate Control.");
                             break;
+                        case NavStates.HorizonControl: speech.SpeakAsync("Horizon Control.");
+                            break;
                         case NavStates.BypassControl: speech.SpeakAsync("Manual.");
                             break;
                      //   case NavStates.AcquiringAltitude: speech.SpeakAsync("Acquiring altitude.");
@@ -1782,8 +1785,8 @@ namespace UAVXGUI
 
             WarningPictureBox.Visible = F[(byte)FlagValues.IsArmed];
 
-            RateControlBox.BackColor = F[(byte)FlagValues.UsingRateControl] ?
-                System.Drawing.Color.Orange : FlagsGroupBox.BackColor;
+            AngleControlBox.BackColor = F[(byte)FlagValues.UsingAngleControl] ?
+                System.Drawing.Color.Green : System.Drawing.Color.Orange;
 
             EmulationTextBox.Text = F[(byte)FlagValues.Emulation] ? 
                 "EMULATION" : " ";
@@ -1959,6 +1962,10 @@ namespace UAVXGUI
                 case NavStates.BypassControl:
                     NavState.Text = "BYPASS";
                     NavState.BackColor = System.Drawing.Color.Red;
+                    break;
+                case NavStates.HorizonControl:
+                    NavState.Text = "HORIZON";
+                    NavState.BackColor = System.Drawing.Color.Yellow;
                     break;
                 default: NavState.Text = "Unknown"; break;
             } // switch

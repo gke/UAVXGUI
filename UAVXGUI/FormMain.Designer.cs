@@ -104,7 +104,7 @@ namespace UAVXGUI
             this.BatteryChargeLabel = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.BypassBox = new System.Windows.Forms.TextBox();
-            this.RateControlBox = new System.Windows.Forms.TextBox();
+            this.AngleControlBox = new System.Windows.Forms.TextBox();
             this.GPSValidBox = new System.Windows.Forms.TextBox();
             this.NavValidBox = new System.Windows.Forms.TextBox();
             this.AltHoldBox = new System.Windows.Forms.TextBox();
@@ -1042,7 +1042,7 @@ namespace UAVXGUI
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.BypassBox);
-            this.flowLayoutPanel1.Controls.Add(this.RateControlBox);
+            this.flowLayoutPanel1.Controls.Add(this.AngleControlBox);
             this.flowLayoutPanel1.Controls.Add(this.GPSValidBox);
             this.flowLayoutPanel1.Controls.Add(this.NavValidBox);
             this.flowLayoutPanel1.Controls.Add(this.AltHoldBox);
@@ -1083,16 +1083,16 @@ namespace UAVXGUI
             this.BypassBox.Text = "Bypass";
             this.BypassBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // RateControlBox
+            // AngleControlBox
             // 
-            this.RateControlBox.BackColor = System.Drawing.SystemColors.Window;
-            this.RateControlBox.Location = new System.Drawing.Point(118, 3);
-            this.RateControlBox.Name = "RateControlBox";
-            this.RateControlBox.ReadOnly = true;
-            this.RateControlBox.Size = new System.Drawing.Size(109, 20);
-            this.RateControlBox.TabIndex = 116;
-            this.RateControlBox.Text = "Rate Control";
-            this.RateControlBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.AngleControlBox.BackColor = System.Drawing.SystemColors.Window;
+            this.AngleControlBox.Location = new System.Drawing.Point(118, 3);
+            this.AngleControlBox.Name = "AngleControlBox";
+            this.AngleControlBox.ReadOnly = true;
+            this.AngleControlBox.Size = new System.Drawing.Size(109, 20);
+            this.AngleControlBox.TabIndex = 116;
+            this.AngleControlBox.Text = "Angle Control";
+            this.AngleControlBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // GPSValidBox
             // 
@@ -3595,7 +3595,7 @@ namespace UAVXGUI
         private System.Windows.Forms.TextBox ThrottleMovingBox;
         private System.Windows.Forms.TextBox HoldingAltBox;
         private System.Windows.Forms.TextBox NavigateBox;
-        private System.Windows.Forms.TextBox RateControlBox;
+        private System.Windows.Forms.TextBox AngleControlBox;
         private System.Windows.Forms.TextBox ProximityBox;
         private System.Windows.Forms.TextBox CloseProximityBox;
         private System.Windows.Forms.TextBox UseRTHAutoDescendBox;
