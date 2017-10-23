@@ -71,18 +71,19 @@ namespace UAVXGUI
             this.MainMap = new GMap.NET.WindowsForms.GMapControl();
             this.DistanceLabel = new System.Windows.Forms.Label();
             this.OriginGroupBox = new System.Windows.Forms.GroupBox();
-            this.DefAltitudeLabel = new System.Windows.Forms.Label();
+            this.ShowMissionCheckBox = new System.Windows.Forms.CheckBox();
+            this.ShowFlightPathCheckBox = new System.Windows.Forms.CheckBox();
             this.MapCentreButton = new System.Windows.Forms.Button();
             this.MapProviderComboBox = new System.Windows.Forms.ComboBox();
-            this.DefAltitudeNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.AltitudeOverTerrainCheckBox = new System.Windows.Forms.CheckBox();
-            this.LocationAddress = new System.Windows.Forms.TextBox();
+            this.ShowWPCheckBox = new System.Windows.Forms.CheckBox();
             this.StartLonLabel = new System.Windows.Forms.Label();
             this.StartLatLabel = new System.Windows.Forms.Label();
-            this.LoiterTimeLabel = new System.Windows.Forms.Label();
             this.StartLat = new System.Windows.Forms.TextBox();
             this.StartLon = new System.Windows.Forms.TextBox();
-            this.LoiterTimeNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.AltitudeOverTerrainCheckBox = new System.Windows.Forms.CheckBox();
+            this.DefAltitudeLabel = new System.Windows.Forms.Label();
+            this.LocationAddress = new System.Windows.Forms.TextBox();
+            this.LoiterTimeLabel = new System.Windows.Forms.Label();
             this.M = new System.Windows.Forms.DataGridView();
             this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Lat = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -102,18 +103,15 @@ namespace UAVXGUI
             this.MapZoomLabel = new System.Windows.Forms.Label();
             this.MapZoomNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.GoToCheckBox = new System.Windows.Forms.CheckBox();
-            this.ShowFlightPathCheckBox = new System.Windows.Forms.CheckBox();
-            this.ShowMissionCheckBox = new System.Windows.Forms.CheckBox();
-            this.ShowWPCheckBox = new System.Windows.Forms.CheckBox();
             this.ProxRadiusLabel = new System.Windows.Forms.Label();
-            this.ProximityRadius = new System.Windows.Forms.TextBox();
+            this.ProximityRadiusTextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.UAVXWriteButton = new System.Windows.Forms.Button();
             this.UAVXReadButton = new System.Windows.Forms.Button();
-            this.ProximityAlt = new System.Windows.Forms.TextBox();
+            this.ProximityAltTextBox = new System.Windows.Forms.TextBox();
             this.ClickMapLabel = new System.Windows.Forms.Label();
             this.FenceRadiusLabel = new System.Windows.Forms.Label();
-            this.FenceRadiusSetting = new System.Windows.Forms.TextBox();
+            this.FenceRadiusTextBox = new System.Windows.Forms.TextBox();
             this.ProximityAltLabel = new System.Windows.Forms.Label();
             this.PerchContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ViaContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -128,7 +126,9 @@ namespace UAVXGUI
             this.contextMenuStripMap = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ContextMenuSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.OfflineMapLabel = new System.Windows.Forms.Label();
-            this.ProximityGroupBox = new System.Windows.Forms.GroupBox();
+            this.WPDefaultsGroupBox = new System.Windows.Forms.GroupBox();
+            this.DefaultLoiterTextBox = new System.Windows.Forms.TextBox();
+            this.DefaultAltTextBox = new System.Windows.Forms.TextBox();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
@@ -139,12 +139,10 @@ namespace UAVXGUI
             this.CentreCurrPositionCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).BeginInit();
             this.OriginGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DefAltitudeNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LoiterTimeNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.M)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MapZoomNumericUpDown)).BeginInit();
             this.contextMenuStripMap.SuspendLayout();
-            this.ProximityGroupBox.SuspendLayout();
+            this.WPDefaultsGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // eventLog1
@@ -195,7 +193,6 @@ namespace UAVXGUI
             this.OriginGroupBox.Controls.Add(this.MapCentreButton);
             this.OriginGroupBox.Controls.Add(this.MapProviderComboBox);
             this.OriginGroupBox.Controls.Add(this.ShowWPCheckBox);
-            this.OriginGroupBox.Controls.Add(this.AltitudeOverTerrainCheckBox);
             this.OriginGroupBox.Controls.Add(this.StartLonLabel);
             this.OriginGroupBox.Controls.Add(this.StartLatLabel);
             this.OriginGroupBox.Controls.Add(this.StartLat);
@@ -207,19 +204,35 @@ namespace UAVXGUI
             this.OriginGroupBox.TabStop = false;
             this.OriginGroupBox.Text = "Locate";
             // 
-            // DefAltitudeLabel
+            // ShowMissionCheckBox
             // 
-            this.DefAltitudeLabel.AutoSize = true;
-            this.DefAltitudeLabel.Location = new System.Drawing.Point(390, 456);
-            this.DefAltitudeLabel.Name = "DefAltitudeLabel";
-            this.DefAltitudeLabel.Size = new System.Drawing.Size(45, 13);
-            this.DefAltitudeLabel.TabIndex = 188;
-            this.DefAltitudeLabel.Text = "Def. Alt.";
-            this.DefAltitudeLabel.Visible = false;
+            this.ShowMissionCheckBox.AutoSize = true;
+            this.ShowMissionCheckBox.Checked = true;
+            this.ShowMissionCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ShowMissionCheckBox.Location = new System.Drawing.Point(15, 108);
+            this.ShowMissionCheckBox.Name = "ShowMissionCheckBox";
+            this.ShowMissionCheckBox.Size = new System.Drawing.Size(61, 17);
+            this.ShowMissionCheckBox.TabIndex = 171;
+            this.ShowMissionCheckBox.Text = "Mission";
+            this.ShowMissionCheckBox.UseVisualStyleBackColor = true;
+            this.ShowMissionCheckBox.CheckedChanged += new System.EventHandler(this.ShowMissionCheckBox_CheckedChanged);
+            // 
+            // ShowFlightPathCheckBox
+            // 
+            this.ShowFlightPathCheckBox.AutoSize = true;
+            this.ShowFlightPathCheckBox.Checked = true;
+            this.ShowFlightPathCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ShowFlightPathCheckBox.Location = new System.Drawing.Point(152, 109);
+            this.ShowFlightPathCheckBox.Name = "ShowFlightPathCheckBox";
+            this.ShowFlightPathCheckBox.Size = new System.Drawing.Size(54, 17);
+            this.ShowFlightPathCheckBox.TabIndex = 174;
+            this.ShowFlightPathCheckBox.Text = "Track";
+            this.ShowFlightPathCheckBox.UseVisualStyleBackColor = true;
+            this.ShowFlightPathCheckBox.CheckedChanged += new System.EventHandler(this.ShowFlightPathCheckBox_CheckedChanged);
             // 
             // MapCentreButton
             // 
-            this.MapCentreButton.Location = new System.Drawing.Point(134, 38);
+            this.MapCentreButton.Location = new System.Drawing.Point(132, 12);
             this.MapCentreButton.Name = "MapCentreButton";
             this.MapCentreButton.Size = new System.Drawing.Size(81, 23);
             this.MapCentreButton.TabIndex = 48;
@@ -237,47 +250,18 @@ namespace UAVXGUI
             this.MapProviderComboBox.Text = "BingHybridMap";
             this.MapProviderComboBox.SelectedIndexChanged += new System.EventHandler(this.MapProviderComboBox_SelectedIndexChanged);
             // 
-            // DefAltitudeNumericUpDown
+            // ShowWPCheckBox
             // 
-            this.DefAltitudeNumericUpDown.Location = new System.Drawing.Point(451, 449);
-            this.DefAltitudeNumericUpDown.Maximum = new decimal(new int[] {
-            300,
-            0,
-            0,
-            0});
-            this.DefAltitudeNumericUpDown.Name = "DefAltitudeNumericUpDown";
-            this.DefAltitudeNumericUpDown.ReadOnly = true;
-            this.DefAltitudeNumericUpDown.Size = new System.Drawing.Size(47, 20);
-            this.DefAltitudeNumericUpDown.TabIndex = 187;
-            this.DefAltitudeNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.DefAltitudeNumericUpDown.Value = new decimal(new int[] {
-            15,
-            0,
-            0,
-            0});
-            this.DefAltitudeNumericUpDown.Visible = false;
-            this.DefAltitudeNumericUpDown.Click += new System.EventHandler(this.DefAltitudeNumericUpDown_Click);
-            // 
-            // AltitudeOverTerrainCheckBox
-            // 
-            this.AltitudeOverTerrainCheckBox.AutoSize = true;
-            this.AltitudeOverTerrainCheckBox.Location = new System.Drawing.Point(134, 16);
-            this.AltitudeOverTerrainCheckBox.Name = "AltitudeOverTerrainCheckBox";
-            this.AltitudeOverTerrainCheckBox.Size = new System.Drawing.Size(85, 17);
-            this.AltitudeOverTerrainCheckBox.TabIndex = 30;
-            this.AltitudeOverTerrainCheckBox.Text = "Over Terrain";
-            this.AltitudeOverTerrainCheckBox.UseVisualStyleBackColor = true;
-            this.AltitudeOverTerrainCheckBox.CheckedChanged += new System.EventHandler(this.AltitudeOverTerrainitudeCheckBox_CheckedChanged);
-            // 
-            // LocationAddress
-            // 
-            this.LocationAddress.Location = new System.Drawing.Point(317, 414);
-            this.LocationAddress.Name = "LocationAddress";
-            this.LocationAddress.Size = new System.Drawing.Size(206, 20);
-            this.LocationAddress.TabIndex = 46;
-            this.LocationAddress.Visible = false;
-            this.LocationAddress.TextChanged += new System.EventHandler(this.SearchAddressTextBox_TextChanged);
-            this.LocationAddress.Enter += new System.EventHandler(this.SearchAddressTextBox_Enter);
+            this.ShowWPCheckBox.AutoSize = true;
+            this.ShowWPCheckBox.Checked = true;
+            this.ShowWPCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ShowWPCheckBox.Location = new System.Drawing.Point(86, 109);
+            this.ShowWPCheckBox.Name = "ShowWPCheckBox";
+            this.ShowWPCheckBox.Size = new System.Drawing.Size(49, 17);
+            this.ShowWPCheckBox.TabIndex = 172;
+            this.ShowWPCheckBox.Text = "WPs";
+            this.ShowWPCheckBox.UseVisualStyleBackColor = true;
+            this.ShowWPCheckBox.CheckedChanged += new System.EventHandler(this.ShowWPCheckBox_CheckedChanged);
             // 
             // StartLonLabel
             // 
@@ -296,16 +280,6 @@ namespace UAVXGUI
             this.StartLatLabel.Size = new System.Drawing.Size(28, 13);
             this.StartLatLabel.TabIndex = 26;
             this.StartLatLabel.Text = "Lat.:";
-            // 
-            // LoiterTimeLabel
-            // 
-            this.LoiterTimeLabel.AutoSize = true;
-            this.LoiterTimeLabel.Location = new System.Drawing.Point(390, 480);
-            this.LoiterTimeLabel.Name = "LoiterTimeLabel";
-            this.LoiterTimeLabel.Size = new System.Drawing.Size(56, 13);
-            this.LoiterTimeLabel.TabIndex = 186;
-            this.LoiterTimeLabel.Text = "Def. Loiter";
-            this.LoiterTimeLabel.Visible = false;
             // 
             // StartLat
             // 
@@ -331,21 +305,45 @@ namespace UAVXGUI
             this.StartLon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.StartLon_KeyPress);
             this.StartLon.Leave += new System.EventHandler(this.StartLon_Leave);
             // 
-            // LoiterTimeNumericUpDown
+            // AltitudeOverTerrainCheckBox
             // 
-            this.LoiterTimeNumericUpDown.Location = new System.Drawing.Point(458, 478);
-            this.LoiterTimeNumericUpDown.Maximum = new decimal(new int[] {
-            300,
-            0,
-            0,
-            0});
-            this.LoiterTimeNumericUpDown.Name = "LoiterTimeNumericUpDown";
-            this.LoiterTimeNumericUpDown.ReadOnly = true;
-            this.LoiterTimeNumericUpDown.Size = new System.Drawing.Size(47, 20);
-            this.LoiterTimeNumericUpDown.TabIndex = 184;
-            this.LoiterTimeNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.LoiterTimeNumericUpDown.Visible = false;
-            this.LoiterTimeNumericUpDown.Click += new System.EventHandler(this.LoiterTimeNumericUpDown_Click);
+            this.AltitudeOverTerrainCheckBox.AutoSize = true;
+            this.AltitudeOverTerrainCheckBox.Location = new System.Drawing.Point(159, 451);
+            this.AltitudeOverTerrainCheckBox.Name = "AltitudeOverTerrainCheckBox";
+            this.AltitudeOverTerrainCheckBox.Size = new System.Drawing.Size(85, 17);
+            this.AltitudeOverTerrainCheckBox.TabIndex = 30;
+            this.AltitudeOverTerrainCheckBox.Text = "Over Terrain";
+            this.AltitudeOverTerrainCheckBox.UseVisualStyleBackColor = true;
+            this.AltitudeOverTerrainCheckBox.Visible = false;
+            this.AltitudeOverTerrainCheckBox.CheckedChanged += new System.EventHandler(this.AltitudeOverTerrainitudeCheckBox_CheckedChanged);
+            // 
+            // DefAltitudeLabel
+            // 
+            this.DefAltitudeLabel.AutoSize = true;
+            this.DefAltitudeLabel.Location = new System.Drawing.Point(6, 92);
+            this.DefAltitudeLabel.Name = "DefAltitudeLabel";
+            this.DefAltitudeLabel.Size = new System.Drawing.Size(45, 13);
+            this.DefAltitudeLabel.TabIndex = 188;
+            this.DefAltitudeLabel.Text = "Def. Alt.";
+            // 
+            // LocationAddress
+            // 
+            this.LocationAddress.Location = new System.Drawing.Point(317, 414);
+            this.LocationAddress.Name = "LocationAddress";
+            this.LocationAddress.Size = new System.Drawing.Size(206, 20);
+            this.LocationAddress.TabIndex = 46;
+            this.LocationAddress.Visible = false;
+            this.LocationAddress.TextChanged += new System.EventHandler(this.SearchAddressTextBox_TextChanged);
+            this.LocationAddress.Enter += new System.EventHandler(this.SearchAddressTextBox_Enter);
+            // 
+            // LoiterTimeLabel
+            // 
+            this.LoiterTimeLabel.AutoSize = true;
+            this.LoiterTimeLabel.Location = new System.Drawing.Point(5, 118);
+            this.LoiterTimeLabel.Name = "LoiterTimeLabel";
+            this.LoiterTimeLabel.Size = new System.Drawing.Size(56, 13);
+            this.LoiterTimeLabel.TabIndex = 186;
+            this.LoiterTimeLabel.Text = "Def. Loiter";
             // 
             // M
             // 
@@ -571,64 +569,24 @@ namespace UAVXGUI
             this.GoToCheckBox.UseVisualStyleBackColor = true;
             this.GoToCheckBox.CheckedChanged += new System.EventHandler(this.GoToCheckBox_CheckChanged);
             // 
-            // ShowFlightPathCheckBox
-            // 
-            this.ShowFlightPathCheckBox.AutoSize = true;
-            this.ShowFlightPathCheckBox.Checked = true;
-            this.ShowFlightPathCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ShowFlightPathCheckBox.Location = new System.Drawing.Point(152, 109);
-            this.ShowFlightPathCheckBox.Name = "ShowFlightPathCheckBox";
-            this.ShowFlightPathCheckBox.Size = new System.Drawing.Size(54, 17);
-            this.ShowFlightPathCheckBox.TabIndex = 174;
-            this.ShowFlightPathCheckBox.Text = "Track";
-            this.ShowFlightPathCheckBox.UseVisualStyleBackColor = true;
-            this.ShowFlightPathCheckBox.CheckedChanged += new System.EventHandler(this.ShowFlightPathCheckBox_CheckedChanged);
-            // 
-            // ShowMissionCheckBox
-            // 
-            this.ShowMissionCheckBox.AutoSize = true;
-            this.ShowMissionCheckBox.Checked = true;
-            this.ShowMissionCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ShowMissionCheckBox.Location = new System.Drawing.Point(15, 108);
-            this.ShowMissionCheckBox.Name = "ShowMissionCheckBox";
-            this.ShowMissionCheckBox.Size = new System.Drawing.Size(61, 17);
-            this.ShowMissionCheckBox.TabIndex = 171;
-            this.ShowMissionCheckBox.Text = "Mission";
-            this.ShowMissionCheckBox.UseVisualStyleBackColor = true;
-            this.ShowMissionCheckBox.CheckedChanged += new System.EventHandler(this.ShowMissionCheckBox_CheckedChanged);
-            // 
-            // ShowWPCheckBox
-            // 
-            this.ShowWPCheckBox.AutoSize = true;
-            this.ShowWPCheckBox.Checked = true;
-            this.ShowWPCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ShowWPCheckBox.Location = new System.Drawing.Point(86, 109);
-            this.ShowWPCheckBox.Name = "ShowWPCheckBox";
-            this.ShowWPCheckBox.Size = new System.Drawing.Size(49, 17);
-            this.ShowWPCheckBox.TabIndex = 172;
-            this.ShowWPCheckBox.Text = "WPs";
-            this.ShowWPCheckBox.UseVisualStyleBackColor = true;
-            this.ShowWPCheckBox.CheckedChanged += new System.EventHandler(this.ShowWPCheckBox_CheckedChanged);
-            // 
             // ProxRadiusLabel
             // 
             this.ProxRadiusLabel.AutoSize = true;
             this.ProxRadiusLabel.Location = new System.Drawing.Point(6, 17);
             this.ProxRadiusLabel.Name = "ProxRadiusLabel";
-            this.ProxRadiusLabel.Size = new System.Drawing.Size(40, 13);
+            this.ProxRadiusLabel.Size = new System.Drawing.Size(67, 13);
             this.ProxRadiusLabel.TabIndex = 55;
-            this.ProxRadiusLabel.Text = "Radius";
+            this.ProxRadiusLabel.Text = "Prox. Radius";
             // 
-            // ProximityRadius
+            // ProximityRadiusTextBox
             // 
-            this.ProximityRadius.Location = new System.Drawing.Point(82, 13);
-            this.ProximityRadius.Name = "ProximityRadius";
-            this.ProximityRadius.Size = new System.Drawing.Size(33, 20);
-            this.ProximityRadius.TabIndex = 53;
-            this.ProximityRadius.Text = "10";
-            this.ProximityRadius.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ProximityRadius.TextChanged += new System.EventHandler(this.ProximityRadius_TextChanged);
-            this.ProximityRadius.Leave += new System.EventHandler(this.ProximityRadius_Leave);
+            this.ProximityRadiusTextBox.Location = new System.Drawing.Point(82, 13);
+            this.ProximityRadiusTextBox.Name = "ProximityRadiusTextBox";
+            this.ProximityRadiusTextBox.Size = new System.Drawing.Size(33, 20);
+            this.ProximityRadiusTextBox.TabIndex = 53;
+            this.ProximityRadiusTextBox.Text = "10";
+            this.ProximityRadiusTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ProximityRadiusTextBox.TextChanged += new System.EventHandler(this.ProximityRadius_TextChanged);
             // 
             // label8
             // 
@@ -659,16 +617,15 @@ namespace UAVXGUI
             this.UAVXReadButton.UseVisualStyleBackColor = true;
             this.UAVXReadButton.Click += new System.EventHandler(this.UAVXReadButton_Click);
             // 
-            // ProximityAlt
+            // ProximityAltTextBox
             // 
-            this.ProximityAlt.Location = new System.Drawing.Point(82, 40);
-            this.ProximityAlt.Name = "ProximityAlt";
-            this.ProximityAlt.Size = new System.Drawing.Size(32, 20);
-            this.ProximityAlt.TabIndex = 56;
-            this.ProximityAlt.Text = "2";
-            this.ProximityAlt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ProximityAlt.TextChanged += new System.EventHandler(this.ProximityAlt_TextChanged);
-            this.ProximityAlt.Leave += new System.EventHandler(this.ProximityAlt_Leave);
+            this.ProximityAltTextBox.Location = new System.Drawing.Point(82, 40);
+            this.ProximityAltTextBox.Name = "ProximityAltTextBox";
+            this.ProximityAltTextBox.Size = new System.Drawing.Size(32, 20);
+            this.ProximityAltTextBox.TabIndex = 56;
+            this.ProximityAltTextBox.Text = "2";
+            this.ProximityAltTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ProximityAltTextBox.TextChanged += new System.EventHandler(this.ProximityAlt_TextChanged);
             // 
             // ClickMapLabel
             // 
@@ -693,24 +650,24 @@ namespace UAVXGUI
             this.FenceRadiusLabel.TabIndex = 59;
             this.FenceRadiusLabel.Text = "Range Check";
             // 
-            // FenceRadiusSetting
+            // FenceRadiusTextBox
             // 
-            this.FenceRadiusSetting.Location = new System.Drawing.Point(82, 64);
-            this.FenceRadiusSetting.Name = "FenceRadiusSetting";
-            this.FenceRadiusSetting.Size = new System.Drawing.Size(33, 20);
-            this.FenceRadiusSetting.TabIndex = 58;
-            this.FenceRadiusSetting.Text = "200";
-            this.FenceRadiusSetting.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.FenceRadiusSetting.TextChanged += new System.EventHandler(this.FenceRadius_TextChanged);
+            this.FenceRadiusTextBox.Location = new System.Drawing.Point(82, 64);
+            this.FenceRadiusTextBox.Name = "FenceRadiusTextBox";
+            this.FenceRadiusTextBox.Size = new System.Drawing.Size(33, 20);
+            this.FenceRadiusTextBox.TabIndex = 58;
+            this.FenceRadiusTextBox.Text = "200";
+            this.FenceRadiusTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.FenceRadiusTextBox.TextChanged += new System.EventHandler(this.FenceRadius_TextChanged);
             // 
             // ProximityAltLabel
             // 
             this.ProximityAltLabel.AutoSize = true;
             this.ProximityAltLabel.Location = new System.Drawing.Point(6, 43);
             this.ProximityAltLabel.Name = "ProximityAltLabel";
-            this.ProximityAltLabel.Size = new System.Drawing.Size(42, 13);
+            this.ProximityAltLabel.Size = new System.Drawing.Size(69, 13);
             this.ProximityAltLabel.TabIndex = 57;
-            this.ProximityAltLabel.Text = "Altitude";
+            this.ProximityAltLabel.Text = "Prox. Altitude";
             // 
             // PerchContextMenuItem
             // 
@@ -823,20 +780,44 @@ namespace UAVXGUI
             this.OfflineMapLabel.Text = " Using Local Map - No Internet";
             this.OfflineMapLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // ProximityGroupBox
+            // WPDefaultsGroupBox
             // 
-            this.ProximityGroupBox.Controls.Add(this.FenceRadiusLabel);
-            this.ProximityGroupBox.Controls.Add(this.ProximityRadius);
-            this.ProximityGroupBox.Controls.Add(this.FenceRadiusSetting);
-            this.ProximityGroupBox.Controls.Add(this.ProxRadiusLabel);
-            this.ProximityGroupBox.Controls.Add(this.ProximityAlt);
-            this.ProximityGroupBox.Controls.Add(this.ProximityAltLabel);
-            this.ProximityGroupBox.Location = new System.Drawing.Point(235, 513);
-            this.ProximityGroupBox.Name = "ProximityGroupBox";
-            this.ProximityGroupBox.Size = new System.Drawing.Size(121, 142);
-            this.ProximityGroupBox.TabIndex = 181;
-            this.ProximityGroupBox.TabStop = false;
-            this.ProximityGroupBox.Text = "Proximity (M)";
+            this.WPDefaultsGroupBox.Controls.Add(this.DefaultLoiterTextBox);
+            this.WPDefaultsGroupBox.Controls.Add(this.DefaultAltTextBox);
+            this.WPDefaultsGroupBox.Controls.Add(this.FenceRadiusLabel);
+            this.WPDefaultsGroupBox.Controls.Add(this.ProximityRadiusTextBox);
+            this.WPDefaultsGroupBox.Controls.Add(this.FenceRadiusTextBox);
+            this.WPDefaultsGroupBox.Controls.Add(this.DefAltitudeLabel);
+            this.WPDefaultsGroupBox.Controls.Add(this.ProxRadiusLabel);
+            this.WPDefaultsGroupBox.Controls.Add(this.ProximityAltTextBox);
+            this.WPDefaultsGroupBox.Controls.Add(this.ProximityAltLabel);
+            this.WPDefaultsGroupBox.Controls.Add(this.LoiterTimeLabel);
+            this.WPDefaultsGroupBox.Location = new System.Drawing.Point(235, 513);
+            this.WPDefaultsGroupBox.Name = "WPDefaultsGroupBox";
+            this.WPDefaultsGroupBox.Size = new System.Drawing.Size(121, 142);
+            this.WPDefaultsGroupBox.TabIndex = 181;
+            this.WPDefaultsGroupBox.TabStop = false;
+            this.WPDefaultsGroupBox.Text = "WP Defaults (M)";
+            // 
+            // DefaultLoiterTextBox
+            // 
+            this.DefaultLoiterTextBox.Location = new System.Drawing.Point(82, 115);
+            this.DefaultLoiterTextBox.Name = "DefaultLoiterTextBox";
+            this.DefaultLoiterTextBox.Size = new System.Drawing.Size(33, 20);
+            this.DefaultLoiterTextBox.TabIndex = 192;
+            this.DefaultLoiterTextBox.Text = "15";
+            this.DefaultLoiterTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DefaultLoiterTextBox.TextChanged += new System.EventHandler(this.DefaultLoiterTextBox_TextChanged);
+            // 
+            // DefaultAltTextBox
+            // 
+            this.DefaultAltTextBox.Location = new System.Drawing.Point(82, 89);
+            this.DefaultAltTextBox.Name = "DefaultAltTextBox";
+            this.DefaultAltTextBox.Size = new System.Drawing.Size(33, 20);
+            this.DefaultAltTextBox.TabIndex = 191;
+            this.DefaultAltTextBox.Text = "15";
+            this.DefaultAltTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DefaultAltTextBox.TextChanged += new System.EventHandler(this.DefaultAltTextBox_TextChanged);
             // 
             // dataGridViewImageColumn1
             // 
@@ -900,6 +881,8 @@ namespace UAVXGUI
             // CentreCurrPositionCheckBox
             // 
             this.CentreCurrPositionCheckBox.AutoSize = true;
+            this.CentreCurrPositionCheckBox.Checked = true;
+            this.CentreCurrPositionCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.CentreCurrPositionCheckBox.Location = new System.Drawing.Point(393, 584);
             this.CentreCurrPositionCheckBox.Name = "CentreCurrPositionCheckBox";
             this.CentreCurrPositionCheckBox.Size = new System.Drawing.Size(93, 17);
@@ -915,19 +898,16 @@ namespace UAVXGUI
             this.ClientSize = new System.Drawing.Size(963, 661);
             this.Controls.Add(this.GoToCheckBox);
             this.Controls.Add(this.CentreCurrPositionCheckBox);
-            this.Controls.Add(this.DefAltitudeLabel);
             this.Controls.Add(this.MapZoomLabel);
             this.Controls.Add(this.MapZoomNumericUpDown);
+            this.Controls.Add(this.AltitudeOverTerrainCheckBox);
             this.Controls.Add(this.CurrentAltitude);
-            this.Controls.Add(this.LoiterTimeNumericUpDown);
-            this.Controls.Add(this.LoiterTimeLabel);
-            this.Controls.Add(this.DefAltitudeNumericUpDown);
             this.Controls.Add(this.LoadMissionButton);
             this.Controls.Add(this.LocationAddress);
             this.Controls.Add(this.SaveMissionButton);
             this.Controls.Add(this.UAVXWriteButton);
             this.Controls.Add(this.UAVXReadButton);
-            this.Controls.Add(this.ProximityGroupBox);
+            this.Controls.Add(this.WPDefaultsGroupBox);
             this.Controls.Add(this.OfflineMapLabel);
             this.Controls.Add(this.DistanceLabel);
             this.Controls.Add(this.MousePosLabel);
@@ -945,13 +925,11 @@ namespace UAVXGUI
             ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).EndInit();
             this.OriginGroupBox.ResumeLayout(false);
             this.OriginGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DefAltitudeNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LoiterTimeNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.M)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MapZoomNumericUpDown)).EndInit();
             this.contextMenuStripMap.ResumeLayout(false);
-            this.ProximityGroupBox.ResumeLayout(false);
-            this.ProximityGroupBox.PerformLayout();
+            this.WPDefaultsGroupBox.ResumeLayout(false);
+            this.WPDefaultsGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -980,12 +958,12 @@ namespace UAVXGUI
         private Button UAVXReadButton;
         private Label ClickMapLabel;
         private Label FenceRadiusLabel;
-        private TextBox FenceRadiusSetting;
+        private TextBox FenceRadiusTextBox;
         private Label ProximityAltLabel;
-        private TextBox ProximityAlt;
+        private TextBox ProximityAltTextBox;
         private Label ProxRadiusLabel;
         private CheckBox AltitudeOverTerrainCheckBox;
-        private TextBox ProximityRadius;
+        private TextBox ProximityRadiusTextBox;
        // private static SerialPort serialPort1;
       //  private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer_updatemap;
@@ -1008,14 +986,12 @@ namespace UAVXGUI
         private Label OfflineMapLabel;
         private CheckBox GoToCheckBox;
         private Label MapZoomLabel;
-        private GroupBox ProximityGroupBox;
+        private GroupBox WPDefaultsGroupBox;
         private Label LoiterTimeLabel;
-        private NumericUpDown LoiterTimeNumericUpDown;
         private DataGridViewImageColumn dataGridViewImageColumn1;
         private DataGridViewImageColumn dataGridViewImageColumn2;
         private DataGridViewImageColumn dataGridViewImageColumn3;
         private Label DefAltitudeLabel;
-        private NumericUpDown DefAltitudeNumericUpDown;
         private Button LoadMissionButton;
         private Button SaveMissionButton;
         private DataGridViewTextBoxColumn Number;
@@ -1034,6 +1010,8 @@ namespace UAVXGUI
         private DataGridViewImageColumn DEL;
         private TextBox CurrentAltitude;
         private CheckBox CentreCurrPositionCheckBox;
+        private TextBox DefaultLoiterTextBox;
+        private TextBox DefaultAltTextBox;
 
 
         //private GMap.NET.WindowsForms.GMapControl MainMap;

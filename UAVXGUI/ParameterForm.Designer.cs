@@ -1685,7 +1685,7 @@
             // 
             resources.ApplyResources(this.NavMaxVelNumericUpDown, "NavMaxVelNumericUpDown");
             this.NavMaxVelNumericUpDown.Maximum = new decimal(new int[] {
-            90,
+            25,
             0,
             0,
             0});

@@ -269,7 +269,6 @@ namespace UAVXGUI
         const double MilliRadToDeg = (double)(RadToDeg * 0.001);
         // const float AttitudeToDegrees = 156.0f;
 
-        // const int DefaultFenceRadius = 100;
         public int MaximumFenceRadius = 250; // You carry total responsibility if you increase this value
         public const int MaximumAltitudeLimit = 120; // You carry total responsibility if you increase this value 
 
@@ -626,7 +625,6 @@ namespace UAVXGUI
             public short OriginAltitude;       // 12
             public int OriginLatitude;         // 14
             public int OriginLongitude;        // 18
-            public short RTHAltitudeHold;      // 22
         };
 
         public static double[] Inertial = new double[32];
@@ -1460,11 +1458,11 @@ namespace UAVXGUI
                             break;
                         case NavStates.PIC: speech.SpeakAsync("Pilot in command.");
                             break;
-                        case NavStates.RateControl: speech.SpeakAsync("Rate Control.");
+                        case NavStates.RateControl: speech.SpeakAsync("Rate Mode");
                             break;
-                        case NavStates.HorizonControl: speech.SpeakAsync("Horizon Control.");
+                        case NavStates.HorizonControl: speech.SpeakAsync("Horizon Mode");
                             break;
-                        case NavStates.BypassControl: speech.SpeakAsync("Manual.");
+                        case NavStates.BypassControl: speech.SpeakAsync("Manual");
                             break;
                      //   case NavStates.AcquiringAltitude: speech.SpeakAsync("Acquiring altitude.");
                      //       SpeakClimbDescend();
@@ -2397,14 +2395,14 @@ namespace UAVXGUI
                     case UAVXOriginPacketTag:
 	                    Mission.NoOfWayPoints = UAVXPacket[2];
 
-                        Mission.ProximityAltitude = ExtractByte(ref UAVXPacket, 3);
-                        Mission.ProximityRadius = ExtractByte(ref UAVXPacket, 4);
+                        Properties.Settings.Default.Velocity = ExtractByte(ref UAVXPacket, 3) * 0.1f;
+                        Mission.ProximityAltitude = ExtractByte(ref UAVXPacket, 4);
+                        Mission.ProximityRadius = ExtractByte(ref UAVXPacket, 5);
+                        Mission.FenceRadius = ExtractShort(ref UAVXPacket, 6);
 
-                        Mission.OriginAltitude = ExtractShort(ref UAVXPacket, 5);
-                        Mission.OriginLatitude = ExtractInt(ref UAVXPacket, 7);
-                        Mission.OriginLongitude = ExtractInt(ref UAVXPacket, 11);
-
-                        Mission.RTHAltitudeHold = ExtractShort(ref UAVXPacket, 15);
+                        Mission.OriginAltitude = ExtractShort(ref UAVXPacket, 8);
+                        Mission.OriginLatitude = ExtractInt(ref UAVXPacket, 10);
+                        Mission.OriginLongitude = ExtractInt(ref UAVXPacket, 14);
 
 	                    NewMissionAvailable = true;
 
@@ -3099,23 +3097,15 @@ namespace UAVXGUI
 
         private static void SendOriginPacket()
         {
-           // TxLabel.Text = "Origin";
-
             SendPacketHeader();
 
             TxESCu8(UAVXOriginPacketTag);
-            TxESCu8(17);
+            TxESCu8(5);
 
             TxESCu8(Mission.NoOfWayPoints);
             TxESCu8(Mission.ProximityAltitude);
             TxESCu8(Mission.ProximityRadius);
             TxESCi16(Mission.FenceRadius);
-
-            TxESCi16(Mission.OriginAltitude);
-            TxESCi32(Mission.OriginLatitude);
-            TxESCi32(Mission.OriginLongitude);
-
-            TxESCi16(Mission.RTHAltitudeHold);
 
             SendPacketTrailer();
         } // SendOriginPacket

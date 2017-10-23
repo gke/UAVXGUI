@@ -2545,13 +2545,13 @@
     <value>9, 194</value>
   </data>
   <data name="Ch6Label.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 13</value>
+    <value>50, 13</value>
   </data>
   <data name="Ch6Label.TabIndex" type="System.Int32, mscorlib">
     <value>125</value>
   </data>
   <data name="Ch6Label.Text" xml:space="preserve">
-    <value>Ctrl. Mode</value>
+    <value>Att Mode</value>
   </data>
   <data name="&gt;&gt;Ch6Label.Name" xml:space="preserve">
     <value>Ch6Label</value>
@@ -2659,13 +2659,13 @@
     <value>9, 174</value>
   </data>
   <data name="Ch5Label.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 13</value>
+    <value>57, 13</value>
   </data>
   <data name="Ch5Label.TabIndex" type="System.Int32, mscorlib">
     <value>121</value>
   </data>
   <data name="Ch5Label.Text" xml:space="preserve">
-    <value>Nav/RTH</value>
+    <value>Nav Mode</value>
   </data>
   <data name="&gt;&gt;Ch5Label.Name" xml:space="preserve">
     <value>Ch5Label</value>

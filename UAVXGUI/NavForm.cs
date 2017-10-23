@@ -103,11 +103,11 @@ namespace UAVXGUI
         PointLatLng end;
         PointLatLng start;
 
-        const double DefaultVelocity = 3.0f;
-        const short DefaultLoiter = 10;
-        const double DefaultOrbitRadius = 10.0f;
-        const double DefaultOrbitGroundAltitude = 0.0f;
-        const double DefaultOrbitVelocity = 1.5f;
+     //   const double DefaultVelocity = 3.0f;
+     //   const short DefaultLoiter = 10;
+     //   const double DefaultOrbitRadius = 10.0f;
+     //   const double DefaultOrbitGroundAltitude = 0.0f;
+     //   const double DefaultOrbitVelocity = 1.5f;
 
         const short RCMaximum = 1000;
         const double OUTMaximumScale = 0.5; // 100/200 % for PWM at least
@@ -124,9 +124,6 @@ namespace UAVXGUI
         double LongitudeCorrectionT = 1.0f;
         //bool WPInvalid = false;
 
-    //    double nAltHold;
-        double nProximityRadius;
-        double nProximityAlt;
         double nHomeAlt;
 
         string sLastLoaded;
@@ -161,17 +158,18 @@ namespace UAVXGUI
             LongitudeCorrectionT = Math.Abs(Math.Cos(Math.PI / 180.0 * (double)Convert.ToInt32(Properties.Settings.Default.HomeLatitude * 1e7)));
          //zzz   LongitudeCorrection.Text = string.Format("{0:n2}", LongitudeCorrectionT);
 
-            FormMain.Mission.RTHAltitudeHold = Properties.Settings.Default.RTHAltitudeHold;
+            DefaultAltTextBox.Text = string.Format("{0:n0}", Properties.Settings.Default.Altitude);
 
             FormMain.Mission.ProximityRadius = Properties.Settings.Default.ProximityRadius;
-            DefAltitudeNumericUpDown.Text = string.Format("{0:n0}", FormMain.Mission.RTHAltitudeHold);
+            ProximityRadiusTextBox.Text = string.Format("{0:n0}", FormMain.Mission.ProximityRadius);
 
             FormMain.Mission.ProximityAltitude = Properties.Settings.Default.ProximityAltitude;
-            ProximityAlt.Text = string.Format("{0:n0}", FormMain.Mission.ProximityAltitude);
+            ProximityAltTextBox.Text = string.Format("{0:n0}", FormMain.Mission.ProximityAltitude);
 
             FormMain.Mission.FenceRadius = Properties.Settings.Default.FenceRadius;
+            FenceRadiusTextBox.Text = string.Format("{0:n0}", FormMain.Mission.FenceRadius);
 
-            LoiterTimeNumericUpDown.Text = string.Format("{0:n0}", Properties.Settings.Default.LoiterTime); 
+            DefaultLoiterTextBox.Text = string.Format("{0:n0}", Properties.Settings.Default.LoiterTime);
 
             PerformLayout();
 
@@ -614,26 +612,29 @@ namespace UAVXGUI
         private void FenceRadius_TextChanged(object sender, EventArgs e)
         {
 
-            if (FenceRadiusSetting.Text == "")
+            if (FenceRadiusTextBox.Text == "")
             {
                 FenceRadius = -1;
-                FenceRadiusSetting.BackColor = System.Drawing.Color.Red;
+                FenceRadiusTextBox.BackColor = System.Drawing.Color.Red;
             }
             else
             {
-                FenceRadius = Convert.ToInt16(FenceRadiusSetting.Text);
+                short outValue;
+                short.TryParse(StartLat.Text, out outValue);
+                FenceRadius = outValue;
                 if (FenceRadius <= 50)
-                    FenceRadiusSetting.BackColor = System.Drawing.Color.White;
+                    FenceRadiusTextBox.BackColor = System.Drawing.Color.White;
                 else
                     if (FenceRadius <= 100)
-                        FenceRadiusSetting.BackColor = System.Drawing.Color.Lime;
+                        FenceRadiusTextBox.BackColor = System.Drawing.Color.Lime;
                     else
                         if (FenceRadius <= 150)
-                            FenceRadiusSetting.BackColor = System.Drawing.Color.Orange;
+                            FenceRadiusTextBox.BackColor = System.Drawing.Color.Orange;
                         else
-                            FenceRadiusSetting.BackColor = System.Drawing.Color.Red;
+                            FenceRadiusTextBox.BackColor = System.Drawing.Color.Red;
             }
-            Properties.Settings.Default.FenceRadius = FormMain.Mission.FenceRadius;
+            Properties.Settings.Default.FenceRadius = FormMain.Mission.FenceRadius = FenceRadius;
+            UAVXWriteButton.BackColor = System.Drawing.Color.Orange;
  
         } // FenceRadius_TextChanged
   
@@ -644,7 +645,7 @@ namespace UAVXGUI
             double.TryParse(StartLat.Text, out outValue);
             if (outValue != 0) {
                 Properties.Settings.Default.HomeLatitude = Convert.ToDouble(StartLat.Text);
-                //zzz FormMain.Mission.OriginLatitude = Convert.ToInt32(Properties.Settings.Default.HomeLatitude * 1e7);
+               //zzz FormMain.Mission.OriginLatitude = Convert.ToInt32(Properties.Settings.Default.HomeLatitude * 1e7);
             }
 
         } // StartLat_Leave
@@ -656,7 +657,7 @@ namespace UAVXGUI
             double.TryParse(StartLon.Text, out outValue);
             if (outValue != 0) {
                 Properties.Settings.Default.HomeLongitude = Convert.ToDouble(StartLon.Text);
-                // zzz FormMain.Mission.OriginLongitude = Convert.ToInt32(Properties.Settings.Default.HomeLongitude * 1e7);
+                //zzzFormMain.Mission.OriginLongitude = Convert.ToInt32(Properties.Settings.Default.HomeLongitude * 1e7);//zzz
             }
 
         } // StartLon_Leave
@@ -692,70 +693,40 @@ namespace UAVXGUI
         } // MapZoomNumericUpDown_Click
 
 
-        private void LoiterTimeNumericUpDown_Click(object sender, EventArgs e)
+        private void DefaultLoiterTextBox_TextChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.LoiterTime = Convert.ToInt16(LoiterTimeNumericUpDown.Text); 
-        } // LoiterTimeNumericUpDown_Click
+            short outValue;
+            Properties.Settings.Default.LoiterTime = (short.TryParse(DefaultLoiterTextBox.Text, out outValue)) ?
+                 (short)outValue : Properties.Settings.Default.LoiterTime;
+        } // DefaultLoiterTextBox_TextChanged
 
 
-        private void DefAltitudeNumericUpDown_Click(object sender, EventArgs e)
+        private void DefaultAltTextBox_TextChanged(object sender, EventArgs e)
         {
-            FormMain.Mission.RTHAltitudeHold = Properties.Settings.Default.RTHAltitudeHold = Convert.ToInt16(DefAltitudeNumericUpDown.Text);
-
-        } // DefAltitudeNumericUpDown_Click
+            short outValue;
+            Properties.Settings.Default.Altitude = (short.TryParse(DefaultAltTextBox.Text, out outValue)) ?
+                 (short)outValue : Properties.Settings.Default.ProximityAltitude;
+        } // DefaultAltTextBox_TextChanged
 
 
         private void ProximityRadius_TextChanged(object sender, EventArgs e)
         {
-            double outValue;
+            byte outValue;
 
-            nProximityRadius = (double.TryParse(ProximityRadius.Text, out outValue)) ?
-                (double)outValue : Properties.Settings.Default.ProximityRadius;
+            Properties.Settings.Default.ProximityRadius = (byte.TryParse(ProximityRadiusTextBox.Text, out outValue)) ?
+                (byte)outValue : Properties.Settings.Default.ProximityRadius;
             UAVXWriteButton.BackColor = System.Drawing.Color.Orange;
-            Properties.Settings.Default.ProximityRadius = Convert.ToByte(nProximityRadius);
+  
         } // ProximityRadius_TextChanged
 
         private void ProximityAlt_TextChanged(object sender, EventArgs e)
         {
-            double outValue;
+            byte outValue;
 
-            nProximityAlt = (double.TryParse(ProximityAlt.Text, out outValue)) ?
-                (double)outValue : Properties.Settings.Default.ProximityAltitude;
+            Properties.Settings.Default.ProximityAltitude = (byte.TryParse(ProximityAltTextBox.Text, out outValue)) ?
+                (byte)outValue : Properties.Settings.Default.ProximityAltitude;
             UAVXWriteButton.BackColor = System.Drawing.Color.Orange;
-            Properties.Settings.Default.ProximityAltitude = Convert.ToByte(nProximityAlt);
-
         } // ProximityAlt_TextChanged
-
-        private void ProximityRadius_Leave(object sender, EventArgs e)
-        {
-            byte outValue;
-            FormMain.Mission.ProximityRadius = (byte.TryParse(ProximityRadius.Text, out outValue)) ?
-                outValue : Properties.Settings.Default.ProximityRadius;
-
-            ProximityRadius.Text = string.Format("{0:n0}", FormMain.Mission.ProximityRadius);
-            Properties.Settings.Default.ProximityRadius = Convert.ToByte(FormMain.Mission.ProximityRadius);
-        } // ProximityRadius_Leave
-
-        private void ProximityAlt_Leave(object sender, EventArgs e)
-        {
-            byte outValue;
-            FormMain.Mission.ProximityAltitude = (byte.TryParse(ProximityAlt.Text, out outValue)) ?
-                outValue : FormMain.Mission.ProximityAltitude;
-
-            ProximityAlt.Text = string.Format("{0:n0}", FormMain.Mission.ProximityAltitude);
-            Properties.Settings.Default.ProximityAltitude = Convert.ToByte(FormMain.Mission.ProximityAltitude);
-        } // ProximityAlt_Leave
-
-        private void FenceRadius_Leave(object sender, EventArgs e)
-        {
-            short outValue;
-            FormMain.Mission.FenceRadius = (short.TryParse(FenceRadiusSetting.Text, out outValue)) ?
-                outValue : FormMain.Mission.FenceRadius;
-
-            FenceRadiusSetting.Text = string.Format("{0:n0}", FormMain.Mission.FenceRadius);
-            Properties.Settings.Default.FenceRadius = Convert.ToByte(FormMain.Mission.FenceRadius);
-        } // FenceRadius_Leave
-
 
         void MainMap_OnMapZoomChanged()
         {
@@ -895,31 +866,36 @@ namespace UAVXGUI
         private void ViaContextMenuItem_Click(object sender, EventArgs e)
         {
             if (!GoToEnabled)
-            addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navVia], start.Lat, start.Lng, FormMain.Mission.RTHAltitudeHold, DefaultVelocity, Convert.ToInt32(LoiterTimeNumericUpDown.Value), 0, 0, 0);
+                addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navVia], start.Lat, start.Lng, Properties.Settings.Default.Altitude, Properties.Settings.Default.Velocity, Convert.ToInt32(DefaultLoiterTextBox.Text), 0, 0, 0);
         } // ViaContextMenuItem_Click
 
         private void OrbitContextMenuItem_Click(object sender, EventArgs e)
         {
-            if (!GoToEnabled) addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navOrbit], start.Lat, start.Lng, FormMain.Mission.RTHAltitudeHold, DefaultVelocity, 30, DefaultOrbitRadius, DefaultOrbitGroundAltitude, DefaultOrbitVelocity);
+            if (!GoToEnabled) addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navOrbit], start.Lat, start.Lng, 
+                Properties.Settings.Default.Altitude, Properties.Settings.Default.Velocity, 30, 
+                Properties.Settings.Default.OrbitRadius, Properties.Settings.Default.OrbitVelocity, 0);
         } // OrbitContextMenuItem_Click
 
         private void PerchContextMenuItem_Click(object sender, EventArgs e)
         {
-            if (!GoToEnabled) addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navPerch], start.Lat, start.Lng, FormMain.Mission.RTHAltitudeHold, DefaultVelocity, -1, 0, 0, 0);
+            if (!GoToEnabled) addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navPerch], start.Lat, start.Lng, 
+                Properties.Settings.Default.Altitude, Properties.Settings.Default.Velocity, -1, 0, 0, 0);
         } // PerchContextMenuItem_Click
 
         private void GotoWP()
         {
             M.Rows.Clear();
             updateMap();
-            addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navVia], start.Lat, start.Lng, FormMain.Mission.RTHAltitudeHold, DefaultVelocity, 600, 0, 0, 0);
+            addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navVia], start.Lat, start.Lng, 
+                Properties.Settings.Default.Altitude, Properties.Settings.Default.Velocity, 600, 0, 0, 0);
         } // GoToWP
 
 
         private void POIContextMenuItem_Click(object sender, EventArgs e)
         {
             if (!GoToEnabled)
-            addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navPOI], start.Lat, start.Lng, FormMain.Mission.RTHAltitudeHold, 0, 0, 0, 0, 0);
+            addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navPOI], start.Lat, start.Lng, 
+                Properties.Settings.Default.Altitude, 0, 0, 0, 0, 0);
         } // POIContextMenuItem_Click
 
 
@@ -1128,7 +1104,8 @@ namespace UAVXGUI
                     else
                     {
                         if ((Control.ModifierKeys == Keys.Control) && (!GoToEnabled))
-                            addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navVia], currentMarker.Position.Lat, currentMarker.Position.Lng, FormMain.Mission.RTHAltitudeHold, DefaultVelocity, DefaultLoiter, 0, 0, 0);
+                            addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navVia], currentMarker.Position.Lat, currentMarker.Position.Lng,
+                                Properties.Settings.Default.Altitude, Properties.Settings.Default.Velocity, Properties.Settings.Default.LoiterTime, 0, 0, 0);
                     }
                 else
                 {
@@ -1674,11 +1651,10 @@ namespace UAVXGUI
                 System.IO.FileStream MissionFileStream = new System.IO.FileStream(dlg.FileName + ".txt", System.IO.FileMode.Create);
                 System.IO.StreamWriter MissionFileStreamWriter = new System.IO.StreamWriter(MissionFileStream, System.Text.Encoding.ASCII);
 
-                MissionFileStreamWriter.WriteLine("OPTIONS:" + ProximityRadius.Text
-                    + "," + ProximityAlt.Text
-                    + "," + FenceRadiusSetting.Text
+                MissionFileStreamWriter.WriteLine("OPTIONS:" + ProximityRadiusTextBox.Text
+                    + "," + ProximityAltTextBox.Text
+                    + "," + FenceRadiusTextBox.Text
                     + "," + AltitudeOverTerrainCheckBox.Checked
-                    + "," + FormMain.Mission.RTHAltitudeHold
                     + "," + MapZoomNumericUpDown.Value.ToString());
 
                 MissionFileStreamWriter.WriteLine("HOME:"
@@ -1788,13 +1764,13 @@ namespace UAVXGUI
                         switch (sObjType)
                         {
                             case "OPTIONS":
-                                ProximityRadius.Text = string.Format("{0:n0}", Convert.ToInt16(sParam[0]));
-                                ProximityAlt.Text = string.Format("{0:n0}", Convert.ToInt16(sParam[1]));
-                                FenceRadiusSetting.Text = string.Format("{0:n0}", Convert.ToInt16(sParam[2]));
+                                ProximityRadiusTextBox.Text = string.Format("{0:n0}", Convert.ToInt16(sParam[0]));
+                                ProximityAltTextBox.Text = string.Format("{0:n0}", Convert.ToInt16(sParam[1]));
+                                FenceRadiusTextBox.Text = string.Format("{0:n0}", Convert.ToInt16(sParam[2]));
                                 AltitudeOverTerrainCheckBox.Checked = Convert.ToBoolean(sParam[3]);
-                                FormMain.Mission.RTHAltitudeHold = Convert.ToInt16(sParam[4]);
-                                if (sParam.GetUpperBound(0) >= 5)
-                                    MapZoomNumericUpDown.Value = Convert.ToInt32(sParam[5]);
+                 
+                                if (sParam.GetUpperBound(0) >= 4)
+                                    MapZoomNumericUpDown.Value = Convert.ToInt32(sParam[4]);
 
                                 Properties.Settings.Default.ProximityRadius = Convert.ToByte(sParam[0]);
                                 Properties.Settings.Default.ProximityAltitude = Convert.ToByte(sParam[1]);
@@ -1890,9 +1866,9 @@ namespace UAVXGUI
             int wp, rowM;
 
 
-            ProximityRadius.Text = string.Format("{0:n0}", FormMain.Mission.ProximityRadius);
-            ProximityAlt.Text = string.Format("{0:n0}", FormMain.Mission.ProximityAltitude);
-            FenceRadiusSetting.Text = string.Format("{0:n0}", FormMain.Mission.FenceRadius);
+            ProximityRadiusTextBox.Text = string.Format("{0:n0}", FormMain.Mission.ProximityRadius);
+            ProximityAltTextBox.Text = string.Format("{0:n0}", FormMain.Mission.ProximityAltitude);
+            FenceRadiusTextBox.Text = string.Format("{0:n0}", FormMain.Mission.FenceRadius);
 
             double nLat, nLon;
 
@@ -1951,10 +1927,9 @@ namespace UAVXGUI
                 Properties.Settings.Default.LastMissionLoaded = sLastLoaded;
 
                 //COnverting general variables
-                FormMain.Mission.ProximityRadius = Convert.ToByte(Convert.ToDouble(ProximityRadius.Text));
-                FormMain.Mission.ProximityAltitude = Convert.ToByte(Convert.ToDouble(ProximityAlt.Text));
-                FormMain.Mission.FenceRadius = Convert.ToInt16(Convert.ToDouble(FenceRadiusSetting.Text));
-                FormMain.Mission.RTHAltitudeHold = Convert.ToInt16(Convert.ToDouble(DefAltitudeNumericUpDown.Text));
+                FormMain.Mission.ProximityRadius = Convert.ToByte(Convert.ToDouble(ProximityRadiusTextBox.Text));
+                FormMain.Mission.ProximityAltitude = Convert.ToByte(Convert.ToDouble(ProximityAltTextBox.Text));
+                FormMain.Mission.FenceRadius = Convert.ToInt16(Convert.ToDouble(FenceRadiusTextBox.Text));
 
                 UAVXOptions &= 0;
 
