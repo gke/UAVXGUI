@@ -370,8 +370,6 @@ namespace UAVXGUI
             if (parameterForm.RxLoopbackButton.Focused)
                 helpstring = help.GetString("RxLoopBack");
 
-            if (parameterForm.CruiseThrNumericUpDown.Focused)
-                helpstring = help.GetString("AircraftMass");
             if (parameterForm.NavPosKpNumericUpDown.Focused)
                 helpstring = help.GetString("NavPosition");
             if (parameterForm.NavVelKpNumericUpDown.Focused)
@@ -1311,6 +1309,7 @@ namespace UAVXGUI
                     case 62:
                         GPSTypeComboBox.SelectedIndex = UAVXP[p-1].Value;
                         ParamUpdate(GPSTypeComboBox);
+                        NavGroupBox.Visible = GPSTypeComboBox.SelectedIndex < 5;
                         break;
                     case 63:
                         AttThrFFNumericUpDown.Value = UAVXP[p-1].Value;

@@ -39,7 +39,6 @@
             this.AltVelKpNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.DescentRateNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.DescentRateLabel = new System.Windows.Forms.Label();
-            this.CruiseThrNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.HysteresisNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.ModifiersGroupBox1 = new System.Windows.Forms.GroupBox();
             this.PropSenseLabel = new System.Windows.Forms.Label();
@@ -68,20 +67,22 @@
             this.GeneralGroupBox = new System.Windows.Forms.GroupBox();
             this.ComboPort2Label = new System.Windows.Forms.Label();
             this.labelTelemetry1 = new System.Windows.Forms.Label();
-            this.ComboPort2ComboBox = new System.Windows.Forms.ComboBox();
             this.TelemetryComboBox = new System.Windows.Forms.ComboBox();
             this.labelESC1 = new System.Windows.Forms.Label();
             this.ESCComboBox = new System.Windows.Forms.ComboBox();
             this.BaroScaleLabel = new System.Windows.Forms.Label();
+            this.ComboPort2ComboBox = new System.Windows.Forms.ComboBox();
             this.AFTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.AirspeedLabel = new System.Windows.Forms.Label();
+            this.AirspeedComboBox = new System.Windows.Forms.ComboBox();
+            this.GPSTypeLabel = new System.Windows.Forms.Label();
+            this.RangefinderLabel1 = new System.Windows.Forms.Label();
+            this.RangefinderComboBox = new System.Windows.Forms.ComboBox();
+            this.GPSTypeComboBox = new System.Windows.Forms.ComboBox();
             this.LowMotorRunLabel = new System.Windows.Forms.Label();
             this.LowMotorRunNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.EstCruiseLabel = new System.Windows.Forms.Label();
             this.EstCruiseNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.RangefinderLabel1 = new System.Windows.Forms.Label();
-            this.RangefinderComboBox = new System.Windows.Forms.ComboBox();
-            this.GPSTypeComboBox = new System.Windows.Forms.ComboBox();
-            this.GPSTypeLabel = new System.Windows.Forms.Label();
             this.MadgwickKpMagLabel = new System.Windows.Forms.Label();
             this.GyroLabel = new System.Windows.Forms.Label();
             this.MadgwickKpMagNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -128,7 +129,7 @@
             this.bit41CheckBox = new System.Windows.Forms.CheckBox();
             this.ComboPort1Label = new System.Windows.Forms.Label();
             this.bit01CheckBox = new System.Windows.Forms.CheckBox();
-            this.groupBoxGPS1 = new System.Windows.Forms.GroupBox();
+            this.NavGroupBox = new System.Windows.Forms.GroupBox();
             this.NavMaxAngleNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.TurnoutLabel = new System.Windows.Forms.Label();
             this.TurnoutNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -192,7 +193,6 @@
             this.SetDefaultParamButton = new System.Windows.Forms.Button();
             this.CheckDownLinkTimer = new System.Windows.Forms.Timer(this.components);
             this.RCGroupBox = new System.Windows.Forms.GroupBox();
-            this.DerivativeFilterLabel = new System.Windows.Forms.Label();
             this.RC11TextBox = new System.Windows.Forms.TextBox();
             this.RC10TextBox = new System.Windows.Forms.TextBox();
             this.RC9TextBox = new System.Windows.Forms.TextBox();
@@ -246,8 +246,6 @@
             this.DerivativeLPFNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.GyroSlewLimitLabel = new System.Windows.Forms.Label();
             this.AccLabel = new System.Windows.Forms.Label();
-            this.AirspeedLabel = new System.Windows.Forms.Label();
-            this.AirspeedComboBox = new System.Windows.Forms.ComboBox();
             this.FWGroupBox = new System.Windows.Forms.GroupBox();
             this.FWAilRudFF = new System.Windows.Forms.Label();
             this.FWAileronRudderFFNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -272,7 +270,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.AttThrFFNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltVelKpNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DescentRateNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CruiseThrNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HysteresisNumericUpDown)).BeginInit();
             this.ModifiersGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BalanceNumericUpDown)).BeginInit();
@@ -303,7 +300,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Ch7NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch4NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChNumericUpDown)).BeginInit();
-            this.groupBoxGPS1.SuspendLayout();
+            this.NavGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NavMaxAngleNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TurnoutNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavMaxVelNumericUpDown)).BeginInit();
@@ -465,25 +462,6 @@
             // 
             resources.ApplyResources(this.DescentRateLabel, "DescentRateLabel");
             this.DescentRateLabel.Name = "DescentRateLabel";
-            // 
-            // CruiseThrNumericUpDown
-            // 
-            resources.ApplyResources(this.CruiseThrNumericUpDown, "CruiseThrNumericUpDown");
-            this.CruiseThrNumericUpDown.Maximum = new decimal(new int[] {
-            127,
-            0,
-            0,
-            0});
-            this.CruiseThrNumericUpDown.Name = "CruiseThrNumericUpDown";
-            this.CruiseThrNumericUpDown.Tag = "20";
-            this.CruiseThrNumericUpDown.Value = new decimal(new int[] {
-            15,
-            0,
-            0,
-            0});
-            this.CruiseThrNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.CruiseThrNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
-            this.CruiseThrNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
             // HysteresisNumericUpDown
             // 
@@ -836,15 +814,18 @@
             // 
             this.GeneralGroupBox.Controls.Add(this.ComboPort2Label);
             this.GeneralGroupBox.Controls.Add(this.labelTelemetry1);
-            this.GeneralGroupBox.Controls.Add(this.ComboPort2ComboBox);
             this.GeneralGroupBox.Controls.Add(this.TelemetryComboBox);
             this.GeneralGroupBox.Controls.Add(this.labelESC1);
             this.GeneralGroupBox.Controls.Add(this.ESCComboBox);
             this.GeneralGroupBox.Controls.Add(this.BaroScaleLabel);
             this.GeneralGroupBox.Controls.Add(this.AFTypeComboBox);
-            this.GeneralGroupBox.Controls.Add(this.LowMotorRunLabel);
-            this.GeneralGroupBox.Controls.Add(this.LowMotorRunNumericUpDown);
-            this.GeneralGroupBox.Controls.Add(this.CruiseThrNumericUpDown);
+            this.GeneralGroupBox.Controls.Add(this.AirspeedLabel);
+            this.GeneralGroupBox.Controls.Add(this.ComboPort2ComboBox);
+            this.GeneralGroupBox.Controls.Add(this.AirspeedComboBox);
+            this.GeneralGroupBox.Controls.Add(this.GPSTypeLabel);
+            this.GeneralGroupBox.Controls.Add(this.RangefinderLabel1);
+            this.GeneralGroupBox.Controls.Add(this.RangefinderComboBox);
+            this.GeneralGroupBox.Controls.Add(this.GPSTypeComboBox);
             resources.ApplyResources(this.GeneralGroupBox, "GeneralGroupBox");
             this.GeneralGroupBox.Name = "GeneralGroupBox";
             this.GeneralGroupBox.TabStop = false;
@@ -860,21 +841,6 @@
             resources.ApplyResources(this.labelTelemetry1, "labelTelemetry1");
             this.labelTelemetry1.ForeColor = System.Drawing.Color.Black;
             this.labelTelemetry1.Name = "labelTelemetry1";
-            // 
-            // ComboPort2ComboBox
-            // 
-            resources.ApplyResources(this.ComboPort2ComboBox, "ComboPort2ComboBox");
-            this.ComboPort2ComboBox.FormattingEnabled = true;
-            this.ComboPort2ComboBox.Items.AddRange(new object[] {
-            resources.GetString("ComboPort2ComboBox.Items"),
-            resources.GetString("ComboPort2ComboBox.Items1"),
-            resources.GetString("ComboPort2ComboBox.Items2"),
-            resources.GetString("ComboPort2ComboBox.Items3"),
-            resources.GetString("ComboPort2ComboBox.Items4")});
-            this.ComboPort2ComboBox.Name = "ComboPort2ComboBox";
-            this.ComboPort2ComboBox.Tag = "76";
-            this.ComboPort2ComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
-            this.ComboPort2ComboBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
             // TelemetryComboBox
             // 
@@ -926,6 +892,21 @@
             // 
             resources.ApplyResources(this.BaroScaleLabel, "BaroScaleLabel");
             this.BaroScaleLabel.Name = "BaroScaleLabel";
+            // 
+            // ComboPort2ComboBox
+            // 
+            resources.ApplyResources(this.ComboPort2ComboBox, "ComboPort2ComboBox");
+            this.ComboPort2ComboBox.FormattingEnabled = true;
+            this.ComboPort2ComboBox.Items.AddRange(new object[] {
+            resources.GetString("ComboPort2ComboBox.Items"),
+            resources.GetString("ComboPort2ComboBox.Items1"),
+            resources.GetString("ComboPort2ComboBox.Items2"),
+            resources.GetString("ComboPort2ComboBox.Items3"),
+            resources.GetString("ComboPort2ComboBox.Items4")});
+            this.ComboPort2ComboBox.Name = "ComboPort2ComboBox";
+            this.ComboPort2ComboBox.Tag = "76";
+            this.ComboPort2ComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
+            this.ComboPort2ComboBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
             // AFTypeComboBox
             // 
@@ -979,6 +960,71 @@
             this.AFTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
             this.AFTypeComboBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
+            // AirspeedLabel
+            // 
+            resources.ApplyResources(this.AirspeedLabel, "AirspeedLabel");
+            this.AirspeedLabel.ForeColor = System.Drawing.Color.Black;
+            this.AirspeedLabel.Name = "AirspeedLabel";
+            // 
+            // AirspeedComboBox
+            // 
+            resources.ApplyResources(this.AirspeedComboBox, "AirspeedComboBox");
+            this.AirspeedComboBox.FormattingEnabled = true;
+            this.AirspeedComboBox.Items.AddRange(new object[] {
+            resources.GetString("AirspeedComboBox.Items"),
+            resources.GetString("AirspeedComboBox.Items1"),
+            resources.GetString("AirspeedComboBox.Items2"),
+            resources.GetString("AirspeedComboBox.Items3"),
+            resources.GetString("AirspeedComboBox.Items4")});
+            this.AirspeedComboBox.Name = "AirspeedComboBox";
+            this.AirspeedComboBox.Tag = "72";
+            this.AirspeedComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
+            this.AirspeedComboBox.Enter += new System.EventHandler(this.infoGetFocus);
+            // 
+            // GPSTypeLabel
+            // 
+            resources.ApplyResources(this.GPSTypeLabel, "GPSTypeLabel");
+            this.GPSTypeLabel.ForeColor = System.Drawing.Color.Black;
+            this.GPSTypeLabel.Name = "GPSTypeLabel";
+            // 
+            // RangefinderLabel1
+            // 
+            resources.ApplyResources(this.RangefinderLabel1, "RangefinderLabel1");
+            this.RangefinderLabel1.ForeColor = System.Drawing.Color.Black;
+            this.RangefinderLabel1.Name = "RangefinderLabel1";
+            // 
+            // RangefinderComboBox
+            // 
+            resources.ApplyResources(this.RangefinderComboBox, "RangefinderComboBox");
+            this.RangefinderComboBox.FormattingEnabled = true;
+            this.RangefinderComboBox.Items.AddRange(new object[] {
+            resources.GetString("RangefinderComboBox.Items"),
+            resources.GetString("RangefinderComboBox.Items1"),
+            resources.GetString("RangefinderComboBox.Items2"),
+            resources.GetString("RangefinderComboBox.Items3"),
+            resources.GetString("RangefinderComboBox.Items4"),
+            resources.GetString("RangefinderComboBox.Items5")});
+            this.RangefinderComboBox.Name = "RangefinderComboBox";
+            this.RangefinderComboBox.Tag = "9";
+            this.RangefinderComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
+            this.RangefinderComboBox.Enter += new System.EventHandler(this.infoGetFocus);
+            // 
+            // GPSTypeComboBox
+            // 
+            resources.ApplyResources(this.GPSTypeComboBox, "GPSTypeComboBox");
+            this.GPSTypeComboBox.FormattingEnabled = true;
+            this.GPSTypeComboBox.Items.AddRange(new object[] {
+            resources.GetString("GPSTypeComboBox.Items"),
+            resources.GetString("GPSTypeComboBox.Items1"),
+            resources.GetString("GPSTypeComboBox.Items2"),
+            resources.GetString("GPSTypeComboBox.Items3"),
+            resources.GetString("GPSTypeComboBox.Items4"),
+            resources.GetString("GPSTypeComboBox.Items5")});
+            this.GPSTypeComboBox.Name = "GPSTypeComboBox";
+            this.GPSTypeComboBox.Tag = "62";
+            this.GPSTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
+            this.GPSTypeComboBox.Enter += new System.EventHandler(this.infoGetFocus);
+            // 
             // LowMotorRunLabel
             // 
             resources.ApplyResources(this.LowMotorRunLabel, "LowMotorRunLabel");
@@ -1026,50 +1072,6 @@
             this.EstCruiseNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
             this.EstCruiseNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
             this.EstCruiseNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
-            // 
-            // RangefinderLabel1
-            // 
-            resources.ApplyResources(this.RangefinderLabel1, "RangefinderLabel1");
-            this.RangefinderLabel1.ForeColor = System.Drawing.Color.Black;
-            this.RangefinderLabel1.Name = "RangefinderLabel1";
-            // 
-            // RangefinderComboBox
-            // 
-            resources.ApplyResources(this.RangefinderComboBox, "RangefinderComboBox");
-            this.RangefinderComboBox.FormattingEnabled = true;
-            this.RangefinderComboBox.Items.AddRange(new object[] {
-            resources.GetString("RangefinderComboBox.Items"),
-            resources.GetString("RangefinderComboBox.Items1"),
-            resources.GetString("RangefinderComboBox.Items2"),
-            resources.GetString("RangefinderComboBox.Items3"),
-            resources.GetString("RangefinderComboBox.Items4"),
-            resources.GetString("RangefinderComboBox.Items5")});
-            this.RangefinderComboBox.Name = "RangefinderComboBox";
-            this.RangefinderComboBox.Tag = "9";
-            this.RangefinderComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
-            this.RangefinderComboBox.Enter += new System.EventHandler(this.infoGetFocus);
-            // 
-            // GPSTypeComboBox
-            // 
-            resources.ApplyResources(this.GPSTypeComboBox, "GPSTypeComboBox");
-            this.GPSTypeComboBox.FormattingEnabled = true;
-            this.GPSTypeComboBox.Items.AddRange(new object[] {
-            resources.GetString("GPSTypeComboBox.Items"),
-            resources.GetString("GPSTypeComboBox.Items1"),
-            resources.GetString("GPSTypeComboBox.Items2"),
-            resources.GetString("GPSTypeComboBox.Items3"),
-            resources.GetString("GPSTypeComboBox.Items4"),
-            resources.GetString("GPSTypeComboBox.Items5")});
-            this.GPSTypeComboBox.Name = "GPSTypeComboBox";
-            this.GPSTypeComboBox.Tag = "62";
-            this.GPSTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
-            this.GPSTypeComboBox.Enter += new System.EventHandler(this.infoGetFocus);
-            // 
-            // GPSTypeLabel
-            // 
-            resources.ApplyResources(this.GPSTypeLabel, "GPSTypeLabel");
-            this.GPSTypeLabel.ForeColor = System.Drawing.Color.Black;
-            this.GPSTypeLabel.Name = "GPSTypeLabel";
             // 
             // MadgwickKpMagLabel
             // 
@@ -1601,37 +1603,35 @@
             this.bit01CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
             this.bit01CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
-            // groupBoxGPS1
+            // NavGroupBox
             // 
-            this.groupBoxGPS1.Controls.Add(this.EstCruiseLabel);
-            this.groupBoxGPS1.Controls.Add(this.NavMaxAngleNumericUpDown);
-            this.groupBoxGPS1.Controls.Add(this.TurnoutLabel);
-            this.groupBoxGPS1.Controls.Add(this.EstCruiseNumericUpDown);
-            this.groupBoxGPS1.Controls.Add(this.TurnoutNumericUpDown);
-            this.groupBoxGPS1.Controls.Add(this.NavMaxAngleLabel);
-            this.groupBoxGPS1.Controls.Add(this.NavMaxVelLabel);
-            this.groupBoxGPS1.Controls.Add(this.NavMaxVelNumericUpDown);
-            this.groupBoxGPS1.Controls.Add(this.GPSTypeLabel);
-            this.groupBoxGPS1.Controls.Add(this.DescDelayNumericUpDown);
-            this.groupBoxGPS1.Controls.Add(this.NavRTHAltNumericUpDown);
-            this.groupBoxGPS1.Controls.Add(this.GPSTypeComboBox);
-            this.groupBoxGPS1.Controls.Add(this.labelNavRTHAlt1);
-            this.groupBoxGPS1.Controls.Add(this.NavPosKpLabel);
-            this.groupBoxGPS1.Controls.Add(this.NavVelKpNumericUpDown);
-            this.groupBoxGPS1.Controls.Add(this.DescentRateNumericUpDown);
-            this.groupBoxGPS1.Controls.Add(this.DescDelayLabel1);
-            this.groupBoxGPS1.Controls.Add(this.DescentRateLabel);
-            this.groupBoxGPS1.Controls.Add(this.NavPosKpNumericUpDown);
-            this.groupBoxGPS1.Controls.Add(this.NavVelKpLabel);
-            this.groupBoxGPS1.Controls.Add(this.CrossTrackNumericUpDown);
-            this.groupBoxGPS1.Controls.Add(this.CrossTrackLabel);
-            this.groupBoxGPS1.Controls.Add(this.labelNavMagVar1);
-            this.groupBoxGPS1.Controls.Add(this.NavMagVarNumericUpDown);
-            this.groupBoxGPS1.Controls.Add(this.NavPosKiNumericUpDown);
-            this.groupBoxGPS1.Controls.Add(this.NavPosKiLabel);
-            resources.ApplyResources(this.groupBoxGPS1, "groupBoxGPS1");
-            this.groupBoxGPS1.Name = "groupBoxGPS1";
-            this.groupBoxGPS1.TabStop = false;
+            this.NavGroupBox.Controls.Add(this.EstCruiseLabel);
+            this.NavGroupBox.Controls.Add(this.NavMaxAngleNumericUpDown);
+            this.NavGroupBox.Controls.Add(this.TurnoutLabel);
+            this.NavGroupBox.Controls.Add(this.EstCruiseNumericUpDown);
+            this.NavGroupBox.Controls.Add(this.TurnoutNumericUpDown);
+            this.NavGroupBox.Controls.Add(this.NavMaxAngleLabel);
+            this.NavGroupBox.Controls.Add(this.NavMaxVelLabel);
+            this.NavGroupBox.Controls.Add(this.NavMaxVelNumericUpDown);
+            this.NavGroupBox.Controls.Add(this.DescDelayNumericUpDown);
+            this.NavGroupBox.Controls.Add(this.NavRTHAltNumericUpDown);
+            this.NavGroupBox.Controls.Add(this.labelNavRTHAlt1);
+            this.NavGroupBox.Controls.Add(this.NavPosKpLabel);
+            this.NavGroupBox.Controls.Add(this.NavVelKpNumericUpDown);
+            this.NavGroupBox.Controls.Add(this.DescentRateNumericUpDown);
+            this.NavGroupBox.Controls.Add(this.DescDelayLabel1);
+            this.NavGroupBox.Controls.Add(this.DescentRateLabel);
+            this.NavGroupBox.Controls.Add(this.NavPosKpNumericUpDown);
+            this.NavGroupBox.Controls.Add(this.NavVelKpLabel);
+            this.NavGroupBox.Controls.Add(this.CrossTrackNumericUpDown);
+            this.NavGroupBox.Controls.Add(this.CrossTrackLabel);
+            this.NavGroupBox.Controls.Add(this.labelNavMagVar1);
+            this.NavGroupBox.Controls.Add(this.NavMagVarNumericUpDown);
+            this.NavGroupBox.Controls.Add(this.NavPosKiNumericUpDown);
+            this.NavGroupBox.Controls.Add(this.NavPosKiLabel);
+            resources.ApplyResources(this.NavGroupBox, "NavGroupBox");
+            this.NavGroupBox.Name = "NavGroupBox";
+            this.NavGroupBox.TabStop = false;
             // 
             // NavMaxAngleNumericUpDown
             // 
@@ -2388,16 +2388,17 @@
             // 
             // RCGroupBox
             // 
-            this.RCGroupBox.Controls.Add(this.DerivativeFilterLabel);
             this.RCGroupBox.Controls.Add(this.RC11TextBox);
             this.RCGroupBox.Controls.Add(this.RC10TextBox);
             this.RCGroupBox.Controls.Add(this.RC9TextBox);
             this.RCGroupBox.Controls.Add(this.RC9ProgressBar);
             this.RCGroupBox.Controls.Add(this.RC11ProgressBar);
             this.RCGroupBox.Controls.Add(this.RC10ProgressBar);
+            this.RCGroupBox.Controls.Add(this.LowMotorRunLabel);
             this.RCGroupBox.Controls.Add(this.Ch10Label);
             this.RCGroupBox.Controls.Add(this.Ch10NumericUpDown);
             this.RCGroupBox.Controls.Add(this.Ch11Label);
+            this.RCGroupBox.Controls.Add(this.LowMotorRunNumericUpDown);
             this.RCGroupBox.Controls.Add(this.Ch11NumericUpDown);
             this.RCGroupBox.Controls.Add(this.ComboPort1ComboBox);
             this.RCGroupBox.Controls.Add(this.ComboPort1Label);
@@ -2449,11 +2450,6 @@
             resources.ApplyResources(this.RCGroupBox, "RCGroupBox");
             this.RCGroupBox.Name = "RCGroupBox";
             this.RCGroupBox.TabStop = false;
-            // 
-            // DerivativeFilterLabel
-            // 
-            resources.ApplyResources(this.DerivativeFilterLabel, "DerivativeFilterLabel");
-            this.DerivativeFilterLabel.Name = "DerivativeFilterLabel";
             // 
             // RC11TextBox
             // 
@@ -2872,19 +2868,15 @@
             this.groupBox2.Controls.Add(this.DerivativeLPFNumericUpDown);
             this.groupBox2.Controls.Add(this.GyroSlewLimitLabel);
             this.groupBox2.Controls.Add(this.AccLabel);
-            this.groupBox2.Controls.Add(this.AirspeedLabel);
-            this.groupBox2.Controls.Add(this.AirspeedComboBox);
-            this.groupBox2.Controls.Add(this.RangefinderLabel1);
             this.groupBox2.Controls.Add(this.MadgwickKpMagLabel);
-            this.groupBox2.Controls.Add(this.RangefinderComboBox);
             this.groupBox2.Controls.Add(this.AccConfLabel);
             this.groupBox2.Controls.Add(this.GyroLabel);
             this.groupBox2.Controls.Add(this.MadgwickKpMagNumericUpDown);
             this.groupBox2.Controls.Add(this.labelGyros1);
             this.groupBox2.Controls.Add(this.AccConfNumericUpDown);
-            this.groupBox2.Controls.Add(this.GyroComboBox);
             this.groupBox2.Controls.Add(this.MadgwickKpAccLabel);
             this.groupBox2.Controls.Add(this.InertialSchemeComboBox);
+            this.groupBox2.Controls.Add(this.GyroComboBox);
             this.groupBox2.Controls.Add(this.MadgwickKpAccNumericUpDown);
             this.groupBox2.Controls.Add(this.InertialLabel);
             resources.ApplyResources(this.groupBox2, "groupBox2");
@@ -2920,6 +2912,11 @@
             // 
             this.GyroLPFNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
             resources.ApplyResources(this.GyroLPFNumericUpDown, "GyroLPFNumericUpDown");
+            this.GyroLPFNumericUpDown.Maximum = new decimal(new int[] {
+            150,
+            0,
+            0,
+            0});
             this.GyroLPFNumericUpDown.Name = "GyroLPFNumericUpDown";
             this.GyroLPFNumericUpDown.Tag = "48";
             this.GyroLPFNumericUpDown.Value = new decimal(new int[] {
@@ -2980,27 +2977,6 @@
             // 
             resources.ApplyResources(this.AccLabel, "AccLabel");
             this.AccLabel.Name = "AccLabel";
-            // 
-            // AirspeedLabel
-            // 
-            resources.ApplyResources(this.AirspeedLabel, "AirspeedLabel");
-            this.AirspeedLabel.ForeColor = System.Drawing.Color.Black;
-            this.AirspeedLabel.Name = "AirspeedLabel";
-            // 
-            // AirspeedComboBox
-            // 
-            resources.ApplyResources(this.AirspeedComboBox, "AirspeedComboBox");
-            this.AirspeedComboBox.FormattingEnabled = true;
-            this.AirspeedComboBox.Items.AddRange(new object[] {
-            resources.GetString("AirspeedComboBox.Items"),
-            resources.GetString("AirspeedComboBox.Items1"),
-            resources.GetString("AirspeedComboBox.Items2"),
-            resources.GetString("AirspeedComboBox.Items3"),
-            resources.GetString("AirspeedComboBox.Items4")});
-            this.AirspeedComboBox.Name = "AirspeedComboBox";
-            this.AirspeedComboBox.Tag = "72";
-            this.AirspeedComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
-            this.AirspeedComboBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
             // FWGroupBox
             // 
@@ -3257,14 +3233,13 @@
             this.Controls.Add(this.CameraGroupBox);
             this.Controls.Add(this.BatteryBox);
             this.Controls.Add(this.GeneralGroupBox);
-            this.Controls.Add(this.groupBoxGPS1);
+            this.Controls.Add(this.NavGroupBox);
             this.Name = "ParameterForm";
             ((System.ComponentModel.ISupportInitialize)(this.DescDelayNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavRTHAltNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AttThrFFNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltVelKpNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DescentRateNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CruiseThrNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HysteresisNumericUpDown)).EndInit();
             this.ModifiersGroupBox1.ResumeLayout(false);
             this.ModifiersGroupBox1.PerformLayout();
@@ -3299,8 +3274,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Ch7NumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch4NumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChNumericUpDown)).EndInit();
-            this.groupBoxGPS1.ResumeLayout(false);
-            this.groupBoxGPS1.PerformLayout();
+            this.NavGroupBox.ResumeLayout(false);
+            this.NavGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NavMaxAngleNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TurnoutNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavMaxVelNumericUpDown)).EndInit();
@@ -3365,7 +3340,7 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBoxGPS1;
+        private System.Windows.Forms.GroupBox NavGroupBox;
         private System.Windows.Forms.Label NavPosKpLabel;
         public System.Windows.Forms.NumericUpDown NavPosKpNumericUpDown;
         public System.Windows.Forms.NumericUpDown CrossTrackNumericUpDown;
@@ -3488,7 +3463,6 @@
         public System.Windows.Forms.NumericUpDown DescentRateNumericUpDown;
         private System.Windows.Forms.Label DescentRateLabel;
         public System.Windows.Forms.NumericUpDown HysteresisNumericUpDown;
-        public System.Windows.Forms.NumericUpDown CruiseThrNumericUpDown;
         private System.Windows.Forms.Button WriteParamsButton;
         private System.Windows.Forms.Button ReadParamsButton;
         private System.Windows.Forms.Button LoadParamsButton;
@@ -3594,7 +3568,6 @@
         public System.Windows.Forms.NumericUpDown YawRateDiffNumericUpDown;
         private System.Windows.Forms.Label ThrottleGainLabel;
         public System.Windows.Forms.NumericUpDown ThrottleGainNumericUpDown;
-        private System.Windows.Forms.Label DerivativeFilterLabel;
         public System.Windows.Forms.NumericUpDown GyroLPFNumericUpDown;
         public System.Windows.Forms.NumericUpDown AccLPFNumericUpDown;
         private System.Windows.Forms.Label DerivLabel;
