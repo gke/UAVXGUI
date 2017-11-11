@@ -131,12 +131,10 @@
             this.bit01CheckBox = new System.Windows.Forms.CheckBox();
             this.NavGroupBox = new System.Windows.Forms.GroupBox();
             this.NavMaxAngleNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.TurnoutLabel = new System.Windows.Forms.Label();
             this.TurnoutNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.NavMaxAngleLabel = new System.Windows.Forms.Label();
             this.NavMaxVelLabel = new System.Windows.Forms.Label();
             this.NavMaxVelNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.MaxCompassYawRateLabel = new System.Windows.Forms.Label();
             this.MaxCompassYawRateNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.NavPosKpLabel = new System.Windows.Forms.Label();
             this.NavPosKpNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -1620,16 +1618,12 @@
             // 
             this.NavGroupBox.Controls.Add(this.NavMaxAngleNumericUpDown);
             this.NavGroupBox.Controls.Add(this.EstCruiseLabel);
-            this.NavGroupBox.Controls.Add(this.TurnoutLabel);
-            this.NavGroupBox.Controls.Add(this.TurnoutNumericUpDown);
             this.NavGroupBox.Controls.Add(this.NavMaxAngleLabel);
             this.NavGroupBox.Controls.Add(this.EstCruiseNumericUpDown);
             this.NavGroupBox.Controls.Add(this.NavMaxVelLabel);
             this.NavGroupBox.Controls.Add(this.NavMaxVelNumericUpDown);
             this.NavGroupBox.Controls.Add(this.DescDelayNumericUpDown);
-            this.NavGroupBox.Controls.Add(this.MaxCompassYawRateLabel);
             this.NavGroupBox.Controls.Add(this.LowMotorRunLabel);
-            this.NavGroupBox.Controls.Add(this.MaxCompassYawRateNumericUpDown);
             this.NavGroupBox.Controls.Add(this.NavRTHAltNumericUpDown);
             this.NavGroupBox.Controls.Add(this.labelNavRTHAlt1);
             this.NavGroupBox.Controls.Add(this.NavPosKpLabel);
@@ -1641,9 +1635,7 @@
             this.NavGroupBox.Controls.Add(this.NavVelKpLabel);
             this.NavGroupBox.Controls.Add(this.CrossTrackNumericUpDown);
             this.NavGroupBox.Controls.Add(this.CrossTrackLabel);
-            this.NavGroupBox.Controls.Add(this.MaxAltCompNumericUpDown);
             this.NavGroupBox.Controls.Add(this.labelNavMagVar1);
-            this.NavGroupBox.Controls.Add(this.MaxAltComp);
             this.NavGroupBox.Controls.Add(this.NavMagVarNumericUpDown);
             this.NavGroupBox.Controls.Add(this.NavPosKiNumericUpDown);
             this.NavGroupBox.Controls.Add(this.NavPosKiLabel);
@@ -1669,11 +1661,6 @@
             this.NavMaxAngleNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
             this.NavMaxAngleNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
             this.NavMaxAngleNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
-            // 
-            // TurnoutLabel
-            // 
-            resources.ApplyResources(this.TurnoutLabel, "TurnoutLabel");
-            this.TurnoutLabel.Name = "TurnoutLabel";
             // 
             // TurnoutNumericUpDown
             // 
@@ -1717,11 +1704,6 @@
             this.NavMaxVelNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
             this.NavMaxVelNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
             this.NavMaxVelNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
-            // 
-            // MaxCompassYawRateLabel
-            // 
-            resources.ApplyResources(this.MaxCompassYawRateLabel, "MaxCompassYawRateLabel");
-            this.MaxCompassYawRateLabel.Name = "MaxCompassYawRateLabel";
             // 
             // MaxCompassYawRateNumericUpDown
             // 
@@ -2074,6 +2056,7 @@
             this.PIDGroupBox.Controls.Add(this.YawRateIntNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.YawRateIntLimNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.HysteresisNumericUpDown);
+            this.PIDGroupBox.Controls.Add(this.TurnoutNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.RollRateIntNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.HysteresisLabel);
             this.PIDGroupBox.Controls.Add(this.label1);
@@ -2082,6 +2065,7 @@
             this.PIDGroupBox.Controls.Add(this.label2);
             this.PIDGroupBox.Controls.Add(this.PitchRateIntLimNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.ThrottleGainLabel);
+            this.PIDGroupBox.Controls.Add(this.MaxCompassYawRateNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.ThrottleGainNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.YawRateDiffNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.MaxPitchRateTextBox);
@@ -2508,6 +2492,8 @@
             this.RCGroupBox.Controls.Add(this.RxLoopbackButton);
             this.RCGroupBox.Controls.Add(this.RCPacketIntervalLabel);
             this.RCGroupBox.Controls.Add(this.RxChannelsNumericUpDown);
+            this.RCGroupBox.Controls.Add(this.MaxAltCompNumericUpDown);
+            this.RCGroupBox.Controls.Add(this.MaxAltComp);
             this.RCGroupBox.Controls.Add(this.DiscoveredRCChannelsLabel);
             this.RCGroupBox.Controls.Add(this.RCuSCheckBox);
             this.RCGroupBox.Controls.Add(this.RC8TextBox);
@@ -3673,8 +3659,6 @@
         public System.Windows.Forms.NumericUpDown FWAileronRudderFFNumericUpDown;
         private System.Windows.Forms.Label FWAltSpoilerFFLabel;
         public System.Windows.Forms.NumericUpDown FWAltSpoilerFFNumericUpDown;
-        private System.Windows.Forms.Label TurnoutLabel;
-        private System.Windows.Forms.Label MaxCompassYawRateLabel;
         public System.Windows.Forms.NumericUpDown MaxCompassYawRateNumericUpDown;
         private System.Windows.Forms.Label AccLabel;
         private System.Windows.Forms.Label GyroSlewLimitLabel;
