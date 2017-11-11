@@ -142,7 +142,8 @@ namespace UAVXGUI
 			25,			// AltThrottleFF,	    63
 			10,			// StickScaleYaw,		64
             //TODO:
-            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+             0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
         };
 
         public ParameterForm()
@@ -249,8 +250,10 @@ namespace UAVXGUI
                 helpstring = help.GetString("ProportionalAngle");
             if (parameterForm.AltVelKdNumericUpDown.Focused)
                 helpstring = help.GetString("AltDifferential");
-            if (parameterForm.RollIntLimitNumericUpDown.Focused)
+            if ((parameterForm.RollAngleIntLimitNumericUpDown.Focused) || (parameterForm.RollRateIntLimNumericUpDown.Focused))
                 helpstring = help.GetString("IntegralLimiter");
+            if ((parameterForm.RollAngleIntNumericUpDown.Focused) || (parameterForm.RollRateIntNumericUpDown.Focused))
+                helpstring = help.GetString("Integral");
 
             // Pitch
             if (parameterForm.PitchRatePropNumericUpDown.Focused)
@@ -263,8 +266,10 @@ namespace UAVXGUI
                 helpstring = help.GetString("ProportionalAngle");
             if (parameterForm.AltLPFNumericUpDown.Focused)
                 helpstring = help.GetString("DifferentialFC");
-            if (parameterForm.PitchIntLimitNumericUpDown.Focused)
+            if ((parameterForm.PitchAngleIntLimitNumericUpDown.Focused) || (parameterForm.PitchRateIntLimNumericUpDown.Focused) )
                 helpstring = help.GetString("IntegralLimiter");
+            if ((parameterForm.PitchAngleIntNumericUpDown.Focused) || (parameterForm.PitchRateIntNumericUpDown.Focused))
+                helpstring = help.GetString("Integral");
 
             if (parameterForm.BalanceNumericUpDown.Focused)
                 helpstring = help.GetString("Balance");
@@ -329,8 +334,7 @@ namespace UAVXGUI
 
             if (parameterForm.FWSpoilerDecayTimeNumericUpDown.Focused)
                 helpstring = help.GetString("FWFlapDecayTime");
-            if (parameterForm.FWAltHoldDecayTimeNumericUpDown.Focused)
-                helpstring = help.GetString("FWAltHoldDecayTime");
+
             if (parameterForm.TurnoutNumericUpDown.Focused)
                 helpstring = help.GetString("Turnout");
 
@@ -472,7 +476,7 @@ namespace UAVXGUI
             if (parameterForm.NavPosKiNumericUpDown.Focused)
                 helpstring = help.GetString("NavWind");
 
-            if (parameterForm.AltPosKiNumericUpDown.Focused)
+            if (parameterForm.AltPosIntNumericUpDown.Focused)
                 helpstring = help.GetString("AltIntegral");
 
             // return helpstring;
@@ -1019,8 +1023,8 @@ namespace UAVXGUI
                         ParamUpdate(RollRatePropNumericUpDown);
                         break;
                     case 2:
-                        AltPosKiNumericUpDown.Value = UAVXP[p-1].Value;
-                        ParamUpdate(AltPosKiNumericUpDown);
+                        AltPosIntNumericUpDown.Value = UAVXP[p-1].Value;
+                        ParamUpdate(AltPosIntNumericUpDown);
                         break;
                     case 3:
                         RollAnglePropNumericUpDown.Value = UAVXP[p-1].Value;
@@ -1031,8 +1035,8 @@ namespace UAVXGUI
                          ParamUpdate(ArmingModeComboBox);
                         break;
                     case 5:
-                        RollIntLimitNumericUpDown.Value = UAVXP[p-1].Value;
-                        ParamUpdate(RollIntLimitNumericUpDown);
+                        RollAngleIntLimitNumericUpDown.Value = UAVXP[p-1].Value;
+                        ParamUpdate(RollAngleIntLimitNumericUpDown);
                         break;
                     case 6:
                         PitchRatePropNumericUpDown.Value = UAVXP[p-1].Value;
@@ -1052,8 +1056,8 @@ namespace UAVXGUI
                         ParamUpdate(RangefinderComboBox);
                         break;
                     case 10:
-                        PitchIntLimitNumericUpDown.Value = UAVXP[p-1].Value;
-                         ParamUpdate(PitchIntLimitNumericUpDown);
+                        PitchAngleIntLimitNumericUpDown.Value = UAVXP[p-1].Value;
+                         ParamUpdate(PitchAngleIntLimitNumericUpDown);
                         break;
                     case 11:
                         YawRatePropNumericUpDown.Value = UAVXP[p-1].Value;
@@ -1119,8 +1123,8 @@ namespace UAVXGUI
                         ParamUpdate(HysteresisNumericUpDown);
                         break;
                     case 22:
-                        FWAltHoldDecayTimeNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
-                        ParamUpdate(FWAltHoldDecayTimeNumericUpDown);
+                       // FWAltHoldDecayTimeNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
+                      //  ParamUpdate(FWAltHoldDecayTimeNumericUpDown);
                         break;
                     case 23:
                         LowMotorRunNumericUpDown.Value = UAVXP[p-1].Value;
@@ -1477,6 +1481,32 @@ namespace UAVXGUI
                     case 96: // Aux7
                         Ch12NumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(Ch12NumericUpDown);
+                        break;
+
+                    case 97: 
+                        RollRateIntNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(RollRateIntNumericUpDown);
+                        break;
+                    case 98: 
+                        RollRateIntLimNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(RollRateIntLimNumericUpDown);
+                        break;
+                    case 99: 
+                        PitchRateIntNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(PitchRateIntNumericUpDown);
+                        break;
+                    case 100: 
+                        PitchRateIntLimNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(PitchRateIntLimNumericUpDown);
+                        break;
+
+                    case 101: 
+                        YawRateIntNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(YawRateIntNumericUpDown);
+                        break;
+                    case 102: 
+                        YawRateIntLimNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(YawRateIntLimNumericUpDown);
                         break;
 
                     default: break; // up to case 64 available

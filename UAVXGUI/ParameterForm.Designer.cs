@@ -71,9 +71,9 @@
             this.labelESC1 = new System.Windows.Forms.Label();
             this.ESCComboBox = new System.Windows.Forms.ComboBox();
             this.BaroScaleLabel = new System.Windows.Forms.Label();
-            this.ComboPort2ComboBox = new System.Windows.Forms.ComboBox();
             this.AFTypeComboBox = new System.Windows.Forms.ComboBox();
             this.AirspeedLabel = new System.Windows.Forms.Label();
+            this.ComboPort2ComboBox = new System.Windows.Forms.ComboBox();
             this.AirspeedComboBox = new System.Windows.Forms.ComboBox();
             this.GPSTypeLabel = new System.Windows.Forms.Label();
             this.RangefinderLabel1 = new System.Windows.Forms.Label();
@@ -136,15 +136,19 @@
             this.NavMaxAngleLabel = new System.Windows.Forms.Label();
             this.NavMaxVelLabel = new System.Windows.Forms.Label();
             this.NavMaxVelNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.MaxCompassYawRateLabel = new System.Windows.Forms.Label();
+            this.MaxCompassYawRateNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.NavPosKpLabel = new System.Windows.Forms.Label();
             this.NavPosKpNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CrossTrackNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CrossTrackLabel = new System.Windows.Forms.Label();
+            this.MaxAltCompNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.labelNavMagVar1 = new System.Windows.Forms.Label();
+            this.MaxAltComp = new System.Windows.Forms.Label();
             this.NavMagVarNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.NavPosKiNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.NavPosKiLabel = new System.Windows.Forms.Label();
-            this.AltPosKiNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.AltPosIntNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.BaroLPFHzLabel = new System.Windows.Forms.Label();
             this.AltPosKpNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.AltLPFNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -154,30 +158,32 @@
             this.YawRatePropNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.PitchAngleIntNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.PitchRateDiffNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.PitchIntLimitNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.PitchAngleIntLimitNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.PitchAnglePropNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.PitchRatePropNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.PIDGroupBox = new System.Windows.Forms.GroupBox();
+            this.YawRateIntNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.YawRateIntLimNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.RollRateIntNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.HysteresisLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.PitchRateIntNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.RollRateIntLimNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.PitchRateIntLimNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.ThrottleGainLabel = new System.Windows.Forms.Label();
             this.ThrottleGainNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.YawRateDiffNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.MaxCompassYawRateLabel = new System.Windows.Forms.Label();
             this.MaxPitchRateTextBox = new System.Windows.Forms.TextBox();
-            this.MaxCompassYawRateNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.MaxRollRateTextBox = new System.Windows.Forms.TextBox();
             this.MaxPitchAngleNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.HysteresisLabel = new System.Windows.Forms.Label();
-            this.FWAltHoldDecayTimeNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.AltHoldDecayTimeLabel = new System.Windows.Forms.Label();
             this.RollAngleIntNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.RollAngleIntLabel = new System.Windows.Forms.Label();
-            this.MaxAltCompNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.MaxAltComp = new System.Windows.Forms.Label();
             this.AngleScaleAngleLabel = new System.Windows.Forms.Label();
             this.RollRateDiffNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.MaxRollAngleNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.RollRateDiffLabel = new System.Windows.Forms.Label();
-            this.RollIntLimitNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.RollAngleIntLimitNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.RollIntLimitLabel = new System.Windows.Forms.Label();
             this.RollAnglePropNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.RollAnglePropLabel = new System.Windows.Forms.Label();
@@ -193,6 +199,7 @@
             this.SetDefaultParamButton = new System.Windows.Forms.Button();
             this.CheckDownLinkTimer = new System.Windows.Forms.Timer(this.components);
             this.RCGroupBox = new System.Windows.Forms.GroupBox();
+            this.ThrottleIdleLabel = new System.Windows.Forms.Label();
             this.RC11TextBox = new System.Windows.Forms.TextBox();
             this.RC10TextBox = new System.Windows.Forms.TextBox();
             this.RC9TextBox = new System.Windows.Forms.TextBox();
@@ -263,8 +270,8 @@
             this.FWSpoilerDecayTimeNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.PitchThrottleFFxLabel = new System.Windows.Forms.Label();
             this.FWPitchThrottleFFNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.ServoSenseLabel = new System.Windows.Forms.Label();
             this.ParamTemplateComboBox = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.DescDelayNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavRTHAltNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AttThrFFNumericUpDown)).BeginInit();
@@ -304,11 +311,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.NavMaxAngleNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TurnoutNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavMaxVelNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxCompassYawRateNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavPosKpNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrossTrackNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxAltCompNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavMagVarNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavPosKiNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AltPosKiNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AltPosIntNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltPosKpNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltLPFNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltVelKdNumericUpDown)).BeginInit();
@@ -316,20 +325,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.YawRatePropNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PitchAngleIntNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PitchRateDiffNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PitchIntLimitNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PitchAngleIntLimitNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PitchAnglePropNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PitchRatePropNumericUpDown)).BeginInit();
             this.PIDGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.YawRateIntNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.YawRateIntLimNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RollRateIntNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PitchRateIntNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RollRateIntLimNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PitchRateIntLimNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ThrottleGainNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.YawRateDiffNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MaxCompassYawRateNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxPitchAngleNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FWAltHoldDecayTimeNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RollAngleIntNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MaxAltCompNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RollRateDiffNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxRollAngleNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RollIntLimitNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RollAngleIntLimitNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RollAnglePropNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RollRatePropNumericUpDown)).BeginInit();
             this.RCGroupBox.SuspendLayout();
@@ -353,6 +365,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.FWAileronDifferentialNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWSpoilerDecayTimeNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWPitchThrottleFFNumericUpDown)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // DescDelayNumericUpDown
@@ -893,21 +906,6 @@
             resources.ApplyResources(this.BaroScaleLabel, "BaroScaleLabel");
             this.BaroScaleLabel.Name = "BaroScaleLabel";
             // 
-            // ComboPort2ComboBox
-            // 
-            resources.ApplyResources(this.ComboPort2ComboBox, "ComboPort2ComboBox");
-            this.ComboPort2ComboBox.FormattingEnabled = true;
-            this.ComboPort2ComboBox.Items.AddRange(new object[] {
-            resources.GetString("ComboPort2ComboBox.Items"),
-            resources.GetString("ComboPort2ComboBox.Items1"),
-            resources.GetString("ComboPort2ComboBox.Items2"),
-            resources.GetString("ComboPort2ComboBox.Items3"),
-            resources.GetString("ComboPort2ComboBox.Items4")});
-            this.ComboPort2ComboBox.Name = "ComboPort2ComboBox";
-            this.ComboPort2ComboBox.Tag = "76";
-            this.ComboPort2ComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
-            this.ComboPort2ComboBox.Enter += new System.EventHandler(this.infoGetFocus);
-            // 
             // AFTypeComboBox
             // 
             this.AFTypeComboBox.AutoCompleteCustomSource.AddRange(new string[] {
@@ -965,6 +963,21 @@
             resources.ApplyResources(this.AirspeedLabel, "AirspeedLabel");
             this.AirspeedLabel.ForeColor = System.Drawing.Color.Black;
             this.AirspeedLabel.Name = "AirspeedLabel";
+            // 
+            // ComboPort2ComboBox
+            // 
+            resources.ApplyResources(this.ComboPort2ComboBox, "ComboPort2ComboBox");
+            this.ComboPort2ComboBox.FormattingEnabled = true;
+            this.ComboPort2ComboBox.Items.AddRange(new object[] {
+            resources.GetString("ComboPort2ComboBox.Items"),
+            resources.GetString("ComboPort2ComboBox.Items1"),
+            resources.GetString("ComboPort2ComboBox.Items2"),
+            resources.GetString("ComboPort2ComboBox.Items3"),
+            resources.GetString("ComboPort2ComboBox.Items4")});
+            this.ComboPort2ComboBox.Name = "ComboPort2ComboBox";
+            this.ComboPort2ComboBox.Tag = "76";
+            this.ComboPort2ComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
+            this.ComboPort2ComboBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
             // AirspeedComboBox
             // 
@@ -1041,7 +1054,7 @@
             this.LowMotorRunNumericUpDown.Name = "LowMotorRunNumericUpDown";
             this.LowMotorRunNumericUpDown.Tag = "23";
             this.LowMotorRunNumericUpDown.Value = new decimal(new int[] {
-            45,
+            10,
             0,
             0,
             0});
@@ -1605,15 +1618,18 @@
             // 
             // NavGroupBox
             // 
-            this.NavGroupBox.Controls.Add(this.EstCruiseLabel);
             this.NavGroupBox.Controls.Add(this.NavMaxAngleNumericUpDown);
+            this.NavGroupBox.Controls.Add(this.EstCruiseLabel);
             this.NavGroupBox.Controls.Add(this.TurnoutLabel);
-            this.NavGroupBox.Controls.Add(this.EstCruiseNumericUpDown);
             this.NavGroupBox.Controls.Add(this.TurnoutNumericUpDown);
             this.NavGroupBox.Controls.Add(this.NavMaxAngleLabel);
+            this.NavGroupBox.Controls.Add(this.EstCruiseNumericUpDown);
             this.NavGroupBox.Controls.Add(this.NavMaxVelLabel);
             this.NavGroupBox.Controls.Add(this.NavMaxVelNumericUpDown);
             this.NavGroupBox.Controls.Add(this.DescDelayNumericUpDown);
+            this.NavGroupBox.Controls.Add(this.MaxCompassYawRateLabel);
+            this.NavGroupBox.Controls.Add(this.LowMotorRunLabel);
+            this.NavGroupBox.Controls.Add(this.MaxCompassYawRateNumericUpDown);
             this.NavGroupBox.Controls.Add(this.NavRTHAltNumericUpDown);
             this.NavGroupBox.Controls.Add(this.labelNavRTHAlt1);
             this.NavGroupBox.Controls.Add(this.NavPosKpLabel);
@@ -1625,7 +1641,9 @@
             this.NavGroupBox.Controls.Add(this.NavVelKpLabel);
             this.NavGroupBox.Controls.Add(this.CrossTrackNumericUpDown);
             this.NavGroupBox.Controls.Add(this.CrossTrackLabel);
+            this.NavGroupBox.Controls.Add(this.MaxAltCompNumericUpDown);
             this.NavGroupBox.Controls.Add(this.labelNavMagVar1);
+            this.NavGroupBox.Controls.Add(this.MaxAltComp);
             this.NavGroupBox.Controls.Add(this.NavMagVarNumericUpDown);
             this.NavGroupBox.Controls.Add(this.NavPosKiNumericUpDown);
             this.NavGroupBox.Controls.Add(this.NavPosKiLabel);
@@ -1700,6 +1718,36 @@
             this.NavMaxVelNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
             this.NavMaxVelNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
+            // MaxCompassYawRateLabel
+            // 
+            resources.ApplyResources(this.MaxCompassYawRateLabel, "MaxCompassYawRateLabel");
+            this.MaxCompassYawRateLabel.Name = "MaxCompassYawRateLabel";
+            // 
+            // MaxCompassYawRateNumericUpDown
+            // 
+            this.MaxCompassYawRateNumericUpDown.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.MaxCompassYawRateNumericUpDown, "MaxCompassYawRateNumericUpDown");
+            this.MaxCompassYawRateNumericUpDown.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.MaxCompassYawRateNumericUpDown.Maximum = new decimal(new int[] {
+            2550,
+            0,
+            0,
+            0});
+            this.MaxCompassYawRateNumericUpDown.Name = "MaxCompassYawRateNumericUpDown";
+            this.MaxCompassYawRateNumericUpDown.Tag = "89";
+            this.MaxCompassYawRateNumericUpDown.Value = new decimal(new int[] {
+            90,
+            0,
+            0,
+            0});
+            this.MaxCompassYawRateNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.MaxCompassYawRateNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.MaxCompassYawRateNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            // 
             // NavPosKpLabel
             // 
             resources.ApplyResources(this.NavPosKpLabel, "NavPosKpLabel");
@@ -1750,10 +1798,35 @@
             resources.ApplyResources(this.CrossTrackLabel, "CrossTrackLabel");
             this.CrossTrackLabel.Name = "CrossTrackLabel";
             // 
+            // MaxAltCompNumericUpDown
+            // 
+            this.MaxAltCompNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.MaxAltCompNumericUpDown, "MaxAltCompNumericUpDown");
+            this.MaxAltCompNumericUpDown.Maximum = new decimal(new int[] {
+            70,
+            0,
+            0,
+            0});
+            this.MaxAltCompNumericUpDown.Name = "MaxAltCompNumericUpDown";
+            this.MaxAltCompNumericUpDown.Tag = "67";
+            this.MaxAltCompNumericUpDown.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.MaxAltCompNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.MaxAltCompNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.MaxAltCompNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            // 
             // labelNavMagVar1
             // 
             resources.ApplyResources(this.labelNavMagVar1, "labelNavMagVar1");
             this.labelNavMagVar1.Name = "labelNavMagVar1";
+            // 
+            // MaxAltComp
+            // 
+            resources.ApplyResources(this.MaxAltComp, "MaxAltComp");
+            this.MaxAltComp.Name = "MaxAltComp";
             // 
             // NavMagVarNumericUpDown
             // 
@@ -1799,19 +1872,19 @@
             resources.ApplyResources(this.NavPosKiLabel, "NavPosKiLabel");
             this.NavPosKiLabel.Name = "NavPosKiLabel";
             // 
-            // AltPosKiNumericUpDown
+            // AltPosIntNumericUpDown
             // 
-            resources.ApplyResources(this.AltPosKiNumericUpDown, "AltPosKiNumericUpDown");
-            this.AltPosKiNumericUpDown.Maximum = new decimal(new int[] {
+            resources.ApplyResources(this.AltPosIntNumericUpDown, "AltPosIntNumericUpDown");
+            this.AltPosIntNumericUpDown.Maximum = new decimal(new int[] {
             127,
             0,
             0,
             0});
-            this.AltPosKiNumericUpDown.Name = "AltPosKiNumericUpDown";
-            this.AltPosKiNumericUpDown.Tag = "2";
-            this.AltPosKiNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.AltPosKiNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
-            this.AltPosKiNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            this.AltPosIntNumericUpDown.Name = "AltPosIntNumericUpDown";
+            this.AltPosIntNumericUpDown.Tag = "2";
+            this.AltPosIntNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.AltPosIntNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.AltPosIntNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
             // BaroLPFHzLabel
             // 
@@ -1949,24 +2022,24 @@
             this.PitchRateDiffNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
             this.PitchRateDiffNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
-            // PitchIntLimitNumericUpDown
+            // PitchAngleIntLimitNumericUpDown
             // 
-            resources.ApplyResources(this.PitchIntLimitNumericUpDown, "PitchIntLimitNumericUpDown");
-            this.PitchIntLimitNumericUpDown.Maximum = new decimal(new int[] {
+            resources.ApplyResources(this.PitchAngleIntLimitNumericUpDown, "PitchAngleIntLimitNumericUpDown");
+            this.PitchAngleIntLimitNumericUpDown.Maximum = new decimal(new int[] {
             90,
             0,
             0,
             0});
-            this.PitchIntLimitNumericUpDown.Name = "PitchIntLimitNumericUpDown";
-            this.PitchIntLimitNumericUpDown.Tag = "10";
-            this.PitchIntLimitNumericUpDown.Value = new decimal(new int[] {
+            this.PitchAngleIntLimitNumericUpDown.Name = "PitchAngleIntLimitNumericUpDown";
+            this.PitchAngleIntLimitNumericUpDown.Tag = "10";
+            this.PitchAngleIntLimitNumericUpDown.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.PitchIntLimitNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.PitchIntLimitNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
-            this.PitchIntLimitNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            this.PitchAngleIntLimitNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.PitchAngleIntLimitNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.PitchAngleIntLimitNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
             // PitchAnglePropNumericUpDown
             // 
@@ -1998,40 +2071,40 @@
             // 
             // PIDGroupBox
             // 
+            this.PIDGroupBox.Controls.Add(this.YawRateIntNumericUpDown);
+            this.PIDGroupBox.Controls.Add(this.YawRateIntLimNumericUpDown);
+            this.PIDGroupBox.Controls.Add(this.HysteresisNumericUpDown);
+            this.PIDGroupBox.Controls.Add(this.RollRateIntNumericUpDown);
+            this.PIDGroupBox.Controls.Add(this.HysteresisLabel);
+            this.PIDGroupBox.Controls.Add(this.label1);
+            this.PIDGroupBox.Controls.Add(this.PitchRateIntNumericUpDown);
+            this.PIDGroupBox.Controls.Add(this.RollRateIntLimNumericUpDown);
+            this.PIDGroupBox.Controls.Add(this.label2);
+            this.PIDGroupBox.Controls.Add(this.PitchRateIntLimNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.ThrottleGainLabel);
             this.PIDGroupBox.Controls.Add(this.ThrottleGainNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.YawRateDiffNumericUpDown);
-            this.PIDGroupBox.Controls.Add(this.MaxCompassYawRateLabel);
             this.PIDGroupBox.Controls.Add(this.MaxPitchRateTextBox);
-            this.PIDGroupBox.Controls.Add(this.MaxCompassYawRateNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.MaxRollRateTextBox);
             this.PIDGroupBox.Controls.Add(this.MaxPitchAngleNumericUpDown);
-            this.PIDGroupBox.Controls.Add(this.HysteresisLabel);
             this.PIDGroupBox.Controls.Add(this.RateScaleLabel);
             this.PIDGroupBox.Controls.Add(this.AltPosKpNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.AltVelKdNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.MaxYawRateNumericUpDown);
-            this.PIDGroupBox.Controls.Add(this.FWAltHoldDecayTimeNumericUpDown);
-            this.PIDGroupBox.Controls.Add(this.AltHoldDecayTimeLabel);
             this.PIDGroupBox.Controls.Add(this.RollAngleIntNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.RollAngleIntLabel);
-            this.PIDGroupBox.Controls.Add(this.BaroLPFHzLabel);
-            this.PIDGroupBox.Controls.Add(this.AltLPFNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.PitchAngleIntNumericUpDown);
-            this.PIDGroupBox.Controls.Add(this.MaxAltCompNumericUpDown);
-            this.PIDGroupBox.Controls.Add(this.AltPosKiNumericUpDown);
+            this.PIDGroupBox.Controls.Add(this.AltPosIntNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.AltVelKpNumericUpDown);
-            this.PIDGroupBox.Controls.Add(this.MaxAltComp);
             this.PIDGroupBox.Controls.Add(this.AngleScaleAngleLabel);
             this.PIDGroupBox.Controls.Add(this.RollRateDiffNumericUpDown);
-            this.PIDGroupBox.Controls.Add(this.HysteresisNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.MaxRollAngleNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.YawRatePropNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.RollRateDiffLabel);
             this.PIDGroupBox.Controls.Add(this.PitchRateDiffNumericUpDown);
-            this.PIDGroupBox.Controls.Add(this.RollIntLimitNumericUpDown);
+            this.PIDGroupBox.Controls.Add(this.RollAngleIntLimitNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.RollIntLimitLabel);
-            this.PIDGroupBox.Controls.Add(this.PitchIntLimitNumericUpDown);
+            this.PIDGroupBox.Controls.Add(this.PitchAngleIntLimitNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.RollAnglePropNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.RollAnglePropLabel);
             this.PIDGroupBox.Controls.Add(this.PitchAnglePropNumericUpDown);
@@ -2042,6 +2115,127 @@
             this.PIDGroupBox.Name = "PIDGroupBox";
             this.PIDGroupBox.TabStop = false;
             this.PIDGroupBox.Tag = "89";
+            // 
+            // YawRateIntNumericUpDown
+            // 
+            this.YawRateIntNumericUpDown.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            resources.ApplyResources(this.YawRateIntNumericUpDown, "YawRateIntNumericUpDown");
+            this.YawRateIntNumericUpDown.Maximum = new decimal(new int[] {
+            127,
+            0,
+            0,
+            0});
+            this.YawRateIntNumericUpDown.Name = "YawRateIntNumericUpDown";
+            this.YawRateIntNumericUpDown.Tag = "101";
+            this.YawRateIntNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.YawRateIntNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.YawRateIntNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            // 
+            // YawRateIntLimNumericUpDown
+            // 
+            this.YawRateIntLimNumericUpDown.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            resources.ApplyResources(this.YawRateIntLimNumericUpDown, "YawRateIntLimNumericUpDown");
+            this.YawRateIntLimNumericUpDown.Maximum = new decimal(new int[] {
+            90,
+            0,
+            0,
+            0});
+            this.YawRateIntLimNumericUpDown.Name = "YawRateIntLimNumericUpDown";
+            this.YawRateIntLimNumericUpDown.Tag = "102";
+            this.YawRateIntLimNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.YawRateIntLimNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.YawRateIntLimNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.YawRateIntLimNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            // 
+            // RollRateIntNumericUpDown
+            // 
+            this.RollRateIntNumericUpDown.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            resources.ApplyResources(this.RollRateIntNumericUpDown, "RollRateIntNumericUpDown");
+            this.RollRateIntNumericUpDown.Maximum = new decimal(new int[] {
+            127,
+            0,
+            0,
+            0});
+            this.RollRateIntNumericUpDown.Name = "RollRateIntNumericUpDown";
+            this.RollRateIntNumericUpDown.Tag = "97";
+            this.RollRateIntNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.RollRateIntNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.RollRateIntNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            // 
+            // HysteresisLabel
+            // 
+            resources.ApplyResources(this.HysteresisLabel, "HysteresisLabel");
+            this.HysteresisLabel.ForeColor = System.Drawing.Color.Black;
+            this.HysteresisLabel.Name = "HysteresisLabel";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // PitchRateIntNumericUpDown
+            // 
+            this.PitchRateIntNumericUpDown.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            resources.ApplyResources(this.PitchRateIntNumericUpDown, "PitchRateIntNumericUpDown");
+            this.PitchRateIntNumericUpDown.Maximum = new decimal(new int[] {
+            127,
+            0,
+            0,
+            0});
+            this.PitchRateIntNumericUpDown.Name = "PitchRateIntNumericUpDown";
+            this.PitchRateIntNumericUpDown.Tag = "99";
+            this.PitchRateIntNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.PitchRateIntNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.PitchRateIntNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            // 
+            // RollRateIntLimNumericUpDown
+            // 
+            this.RollRateIntLimNumericUpDown.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            resources.ApplyResources(this.RollRateIntLimNumericUpDown, "RollRateIntLimNumericUpDown");
+            this.RollRateIntLimNumericUpDown.Maximum = new decimal(new int[] {
+            90,
+            0,
+            0,
+            0});
+            this.RollRateIntLimNumericUpDown.Name = "RollRateIntLimNumericUpDown";
+            this.RollRateIntLimNumericUpDown.Tag = "98";
+            this.RollRateIntLimNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.RollRateIntLimNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.RollRateIntLimNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.RollRateIntLimNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // PitchRateIntLimNumericUpDown
+            // 
+            this.PitchRateIntLimNumericUpDown.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            resources.ApplyResources(this.PitchRateIntLimNumericUpDown, "PitchRateIntLimNumericUpDown");
+            this.PitchRateIntLimNumericUpDown.Maximum = new decimal(new int[] {
+            90,
+            0,
+            0,
+            0});
+            this.PitchRateIntLimNumericUpDown.Name = "PitchRateIntLimNumericUpDown";
+            this.PitchRateIntLimNumericUpDown.Tag = "100";
+            this.PitchRateIntLimNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.PitchRateIntLimNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.PitchRateIntLimNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.PitchRateIntLimNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
             // ThrottleGainLabel
             // 
@@ -2083,42 +2277,12 @@
             this.YawRateDiffNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
             this.YawRateDiffNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
-            // MaxCompassYawRateLabel
-            // 
-            resources.ApplyResources(this.MaxCompassYawRateLabel, "MaxCompassYawRateLabel");
-            this.MaxCompassYawRateLabel.Name = "MaxCompassYawRateLabel";
-            // 
             // MaxPitchRateTextBox
             // 
             resources.ApplyResources(this.MaxPitchRateTextBox, "MaxPitchRateTextBox");
             this.MaxPitchRateTextBox.Name = "MaxPitchRateTextBox";
             this.MaxPitchRateTextBox.ReadOnly = true;
             this.MaxPitchRateTextBox.Tag = "84";
-            // 
-            // MaxCompassYawRateNumericUpDown
-            // 
-            this.MaxCompassYawRateNumericUpDown.BackColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.MaxCompassYawRateNumericUpDown, "MaxCompassYawRateNumericUpDown");
-            this.MaxCompassYawRateNumericUpDown.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.MaxCompassYawRateNumericUpDown.Maximum = new decimal(new int[] {
-            2550,
-            0,
-            0,
-            0});
-            this.MaxCompassYawRateNumericUpDown.Name = "MaxCompassYawRateNumericUpDown";
-            this.MaxCompassYawRateNumericUpDown.Tag = "89";
-            this.MaxCompassYawRateNumericUpDown.Value = new decimal(new int[] {
-            90,
-            0,
-            0,
-            0});
-            this.MaxCompassYawRateNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.MaxCompassYawRateNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
-            this.MaxCompassYawRateNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
             // MaxRollRateTextBox
             // 
@@ -2146,44 +2310,6 @@
             this.MaxPitchAngleNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
             this.MaxPitchAngleNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
-            // HysteresisLabel
-            // 
-            resources.ApplyResources(this.HysteresisLabel, "HysteresisLabel");
-            this.HysteresisLabel.ForeColor = System.Drawing.Color.Black;
-            this.HysteresisLabel.Name = "HysteresisLabel";
-            // 
-            // FWAltHoldDecayTimeNumericUpDown
-            // 
-            this.FWAltHoldDecayTimeNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
-            this.FWAltHoldDecayTimeNumericUpDown.DecimalPlaces = 1;
-            resources.ApplyResources(this.FWAltHoldDecayTimeNumericUpDown, "FWAltHoldDecayTimeNumericUpDown");
-            this.FWAltHoldDecayTimeNumericUpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.FWAltHoldDecayTimeNumericUpDown.Maximum = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            this.FWAltHoldDecayTimeNumericUpDown.Name = "FWAltHoldDecayTimeNumericUpDown";
-            this.FWAltHoldDecayTimeNumericUpDown.Tag = "22";
-            this.FWAltHoldDecayTimeNumericUpDown.Value = new decimal(new int[] {
-            15,
-            0,
-            0,
-            65536});
-            this.FWAltHoldDecayTimeNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.FWAltHoldDecayTimeNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
-            this.FWAltHoldDecayTimeNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
-            // 
-            // AltHoldDecayTimeLabel
-            // 
-            resources.ApplyResources(this.AltHoldDecayTimeLabel, "AltHoldDecayTimeLabel");
-            this.AltHoldDecayTimeLabel.Name = "AltHoldDecayTimeLabel";
-            this.AltHoldDecayTimeLabel.Tag = "";
-            // 
             // RollAngleIntNumericUpDown
             // 
             resources.ApplyResources(this.RollAngleIntNumericUpDown, "RollAngleIntNumericUpDown");
@@ -2202,31 +2328,6 @@
             // 
             resources.ApplyResources(this.RollAngleIntLabel, "RollAngleIntLabel");
             this.RollAngleIntLabel.Name = "RollAngleIntLabel";
-            // 
-            // MaxAltCompNumericUpDown
-            // 
-            this.MaxAltCompNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
-            resources.ApplyResources(this.MaxAltCompNumericUpDown, "MaxAltCompNumericUpDown");
-            this.MaxAltCompNumericUpDown.Maximum = new decimal(new int[] {
-            70,
-            0,
-            0,
-            0});
-            this.MaxAltCompNumericUpDown.Name = "MaxAltCompNumericUpDown";
-            this.MaxAltCompNumericUpDown.Tag = "67";
-            this.MaxAltCompNumericUpDown.Value = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            this.MaxAltCompNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.MaxAltCompNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
-            this.MaxAltCompNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
-            // 
-            // MaxAltComp
-            // 
-            resources.ApplyResources(this.MaxAltComp, "MaxAltComp");
-            this.MaxAltComp.Name = "MaxAltComp";
             // 
             // AngleScaleAngleLabel
             // 
@@ -2273,24 +2374,24 @@
             this.RollRateDiffLabel.Name = "RollRateDiffLabel";
             this.RollRateDiffLabel.Tag = "";
             // 
-            // RollIntLimitNumericUpDown
+            // RollAngleIntLimitNumericUpDown
             // 
-            resources.ApplyResources(this.RollIntLimitNumericUpDown, "RollIntLimitNumericUpDown");
-            this.RollIntLimitNumericUpDown.Maximum = new decimal(new int[] {
+            resources.ApplyResources(this.RollAngleIntLimitNumericUpDown, "RollAngleIntLimitNumericUpDown");
+            this.RollAngleIntLimitNumericUpDown.Maximum = new decimal(new int[] {
             90,
             0,
             0,
             0});
-            this.RollIntLimitNumericUpDown.Name = "RollIntLimitNumericUpDown";
-            this.RollIntLimitNumericUpDown.Tag = "5";
-            this.RollIntLimitNumericUpDown.Value = new decimal(new int[] {
+            this.RollAngleIntLimitNumericUpDown.Name = "RollAngleIntLimitNumericUpDown";
+            this.RollAngleIntLimitNumericUpDown.Tag = "5";
+            this.RollAngleIntLimitNumericUpDown.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.RollIntLimitNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.RollIntLimitNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
-            this.RollIntLimitNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            this.RollAngleIntLimitNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.RollAngleIntLimitNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.RollAngleIntLimitNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
             // RollIntLimitLabel
             // 
@@ -2388,17 +2489,17 @@
             // 
             // RCGroupBox
             // 
+            this.RCGroupBox.Controls.Add(this.ThrottleIdleLabel);
             this.RCGroupBox.Controls.Add(this.RC11TextBox);
             this.RCGroupBox.Controls.Add(this.RC10TextBox);
             this.RCGroupBox.Controls.Add(this.RC9TextBox);
+            this.RCGroupBox.Controls.Add(this.LowMotorRunNumericUpDown);
             this.RCGroupBox.Controls.Add(this.RC9ProgressBar);
             this.RCGroupBox.Controls.Add(this.RC11ProgressBar);
             this.RCGroupBox.Controls.Add(this.RC10ProgressBar);
-            this.RCGroupBox.Controls.Add(this.LowMotorRunLabel);
             this.RCGroupBox.Controls.Add(this.Ch10Label);
             this.RCGroupBox.Controls.Add(this.Ch10NumericUpDown);
             this.RCGroupBox.Controls.Add(this.Ch11Label);
-            this.RCGroupBox.Controls.Add(this.LowMotorRunNumericUpDown);
             this.RCGroupBox.Controls.Add(this.Ch11NumericUpDown);
             this.RCGroupBox.Controls.Add(this.ComboPort1ComboBox);
             this.RCGroupBox.Controls.Add(this.ComboPort1Label);
@@ -2450,6 +2551,11 @@
             resources.ApplyResources(this.RCGroupBox, "RCGroupBox");
             this.RCGroupBox.Name = "RCGroupBox";
             this.RCGroupBox.TabStop = false;
+            // 
+            // ThrottleIdleLabel
+            // 
+            resources.ApplyResources(this.ThrottleIdleLabel, "ThrottleIdleLabel");
+            this.ThrottleIdleLabel.Name = "ThrottleIdleLabel";
             // 
             // RC11TextBox
             // 
@@ -2861,16 +2967,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.GyroSlewRateNumericUpDown);
-            this.groupBox2.Controls.Add(this.GyroLPFNumericUpDown);
-            this.groupBox2.Controls.Add(this.AccLPFNumericUpDown);
-            this.groupBox2.Controls.Add(this.DerivLabel);
-            this.groupBox2.Controls.Add(this.DerivativeLPFNumericUpDown);
-            this.groupBox2.Controls.Add(this.GyroSlewLimitLabel);
-            this.groupBox2.Controls.Add(this.AccLabel);
             this.groupBox2.Controls.Add(this.MadgwickKpMagLabel);
             this.groupBox2.Controls.Add(this.AccConfLabel);
-            this.groupBox2.Controls.Add(this.GyroLabel);
             this.groupBox2.Controls.Add(this.MadgwickKpMagNumericUpDown);
             this.groupBox2.Controls.Add(this.labelGyros1);
             this.groupBox2.Controls.Add(this.AccConfNumericUpDown);
@@ -2997,7 +3095,6 @@
             this.FWGroupBox.Controls.Add(this.FWSpoilerDecayTimeNumericUpDown);
             this.FWGroupBox.Controls.Add(this.PitchThrottleFFxLabel);
             this.FWGroupBox.Controls.Add(this.FWPitchThrottleFFNumericUpDown);
-            this.FWGroupBox.Controls.Add(this.ServoSenseLabel);
             this.FWGroupBox.Controls.Add(this.RollPitchFFLabel);
             this.FWGroupBox.Controls.Add(this.FWRollPitchFFNumericUpDown);
             this.FWGroupBox.Controls.Add(this.Sense01Button);
@@ -3194,11 +3291,6 @@
             this.FWPitchThrottleFFNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
             this.FWPitchThrottleFFNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
-            // ServoSenseLabel
-            // 
-            resources.ApplyResources(this.ServoSenseLabel, "ServoSenseLabel");
-            this.ServoSenseLabel.Name = "ServoSenseLabel";
-            // 
             // ParamTemplateComboBox
             // 
             this.ParamTemplateComboBox.DisplayMember = "0";
@@ -3213,10 +3305,27 @@
             this.ParamTemplateComboBox.Name = "ParamTemplateComboBox";
             this.ParamTemplateComboBox.Tag = "";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.GyroSlewRateNumericUpDown);
+            this.groupBox1.Controls.Add(this.AccLPFNumericUpDown);
+            this.groupBox1.Controls.Add(this.GyroLPFNumericUpDown);
+            this.groupBox1.Controls.Add(this.GyroLabel);
+            this.groupBox1.Controls.Add(this.AccLabel);
+            this.groupBox1.Controls.Add(this.DerivLabel);
+            this.groupBox1.Controls.Add(this.GyroSlewLimitLabel);
+            this.groupBox1.Controls.Add(this.DerivativeLPFNumericUpDown);
+            this.groupBox1.Controls.Add(this.AltLPFNumericUpDown);
+            this.groupBox1.Controls.Add(this.BaroLPFHzLabel);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
             // ParameterForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.ParamTemplateComboBox);
             this.Controls.Add(this.FWGroupBox);
             this.Controls.Add(this.groupBox2);
@@ -3279,11 +3388,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.NavMaxAngleNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TurnoutNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavMaxVelNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxCompassYawRateNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavPosKpNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrossTrackNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxAltCompNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavMagVarNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavPosKiNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AltPosKiNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AltPosIntNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltPosKpNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltLPFNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltVelKdNumericUpDown)).EndInit();
@@ -3291,21 +3402,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.YawRatePropNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PitchAngleIntNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PitchRateDiffNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PitchIntLimitNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PitchAngleIntLimitNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PitchAnglePropNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PitchRatePropNumericUpDown)).EndInit();
             this.PIDGroupBox.ResumeLayout(false);
             this.PIDGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.YawRateIntNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.YawRateIntLimNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RollRateIntNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PitchRateIntNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RollRateIntLimNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PitchRateIntLimNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ThrottleGainNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.YawRateDiffNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MaxCompassYawRateNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxPitchAngleNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FWAltHoldDecayTimeNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RollAngleIntNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MaxAltCompNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RollRateDiffNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxRollAngleNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RollIntLimitNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RollAngleIntLimitNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RollAnglePropNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RollRatePropNumericUpDown)).EndInit();
             this.RCGroupBox.ResumeLayout(false);
@@ -3333,6 +3447,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.FWAileronDifferentialNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWSpoilerDecayTimeNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWPitchThrottleFFNumericUpDown)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3349,7 +3465,7 @@
         public System.Windows.Forms.NumericUpDown NavMagVarNumericUpDown;
         public System.Windows.Forms.NumericUpDown NavPosKiNumericUpDown;
         private System.Windows.Forms.Label NavPosKiLabel;
-        public System.Windows.Forms.NumericUpDown AltPosKiNumericUpDown;
+        public System.Windows.Forms.NumericUpDown AltPosIntNumericUpDown;
         private System.Windows.Forms.Label BaroLPFHzLabel;
         private System.Windows.Forms.GroupBox GeneralGroupBox;
         private System.Windows.Forms.Label RangefinderLabel1;
@@ -3439,7 +3555,7 @@
         public System.Windows.Forms.NumericUpDown YawRatePropNumericUpDown;
         public System.Windows.Forms.NumericUpDown PitchAngleIntNumericUpDown;
         public System.Windows.Forms.NumericUpDown PitchRateDiffNumericUpDown;
-        public System.Windows.Forms.NumericUpDown PitchIntLimitNumericUpDown;
+        public System.Windows.Forms.NumericUpDown PitchAngleIntLimitNumericUpDown;
         public System.Windows.Forms.NumericUpDown PitchAnglePropNumericUpDown;
         public System.Windows.Forms.NumericUpDown AltLPFNumericUpDown;
         public System.Windows.Forms.NumericUpDown PitchRatePropNumericUpDown;
@@ -3448,7 +3564,7 @@
         private System.Windows.Forms.Label RollAngleIntLabel;
         public System.Windows.Forms.NumericUpDown RollRateDiffNumericUpDown;
         private System.Windows.Forms.Label RollRateDiffLabel;
-        public System.Windows.Forms.NumericUpDown RollIntLimitNumericUpDown;
+        public System.Windows.Forms.NumericUpDown RollAngleIntLimitNumericUpDown;
         private System.Windows.Forms.Label RollIntLimitLabel;
         public System.Windows.Forms.NumericUpDown RollAnglePropNumericUpDown;
         private System.Windows.Forms.Label RollAnglePropLabel;
@@ -3504,9 +3620,6 @@
         public System.Windows.Forms.NumericUpDown FWPitchThrottleFFNumericUpDown;
         private System.Windows.Forms.Label MaxAltComp;
         public System.Windows.Forms.NumericUpDown MaxRollAngleNumericUpDown;
-        private System.Windows.Forms.Label ServoSenseLabel;
-        private System.Windows.Forms.Label AltHoldDecayTimeLabel;
-        public System.Windows.Forms.NumericUpDown FWAltHoldDecayTimeNumericUpDown;
         private System.Windows.Forms.Label FWSpoilerDecayTimeLabel;
         public System.Windows.Forms.NumericUpDown FWSpoilerDecayTimeNumericUpDown;
         private System.Windows.Forms.Label FWAileronDifferentialLabel;
@@ -3573,6 +3686,16 @@
         private System.Windows.Forms.Label DerivLabel;
         public System.Windows.Forms.NumericUpDown DerivativeLPFNumericUpDown;
         public System.Windows.Forms.NumericUpDown GyroSlewRateNumericUpDown;
+        public System.Windows.Forms.NumericUpDown RollRateIntNumericUpDown;
+        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.NumericUpDown PitchRateIntNumericUpDown;
+        public System.Windows.Forms.NumericUpDown RollRateIntLimNumericUpDown;
+        private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.NumericUpDown PitchRateIntLimNumericUpDown;
+        private System.Windows.Forms.Label ThrottleIdleLabel;
+        private System.Windows.Forms.GroupBox groupBox1;
+        public System.Windows.Forms.NumericUpDown YawRateIntNumericUpDown;
+        public System.Windows.Forms.NumericUpDown YawRateIntLimNumericUpDown;
 
 
     }

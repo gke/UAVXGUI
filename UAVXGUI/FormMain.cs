@@ -186,7 +186,7 @@ namespace UAVXGUI
 
         static SpeechSynthesizer speech;
 
-        public const byte MAX_PARAMS = 96;
+        public const byte MAX_PARAMS = 128;
         public const byte MAX_PARAM_SETS = 1; // 4;
         public const short RC_MAX_CHANNELS = 20; // graphic restriction
         const short RCMaximum = 1000;
