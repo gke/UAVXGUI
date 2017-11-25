@@ -131,21 +131,21 @@
             this.bit01CheckBox = new System.Windows.Forms.CheckBox();
             this.NavGroupBox = new System.Windows.Forms.GroupBox();
             this.NavMaxAngleNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.TurnoutNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.NavMaxAngleLabel = new System.Windows.Forms.Label();
             this.NavMaxVelLabel = new System.Windows.Forms.Label();
             this.NavMaxVelNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.MaxCompassYawRateNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.NavPosKpLabel = new System.Windows.Forms.Label();
             this.NavPosKpNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CrossTrackNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CrossTrackLabel = new System.Windows.Forms.Label();
-            this.MaxAltCompNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.labelNavMagVar1 = new System.Windows.Forms.Label();
-            this.MaxAltComp = new System.Windows.Forms.Label();
             this.NavMagVarNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.NavPosKiNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.NavPosKiLabel = new System.Windows.Forms.Label();
+            this.TurnoutNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.MaxCompassYawRateNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.MaxAltCompNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.MaxAltComp = new System.Windows.Forms.Label();
             this.AltPosIntNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.BaroLPFHzLabel = new System.Windows.Forms.Label();
             this.AltPosKpNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -307,14 +307,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.ChNumericUpDown)).BeginInit();
             this.NavGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NavMaxAngleNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TurnoutNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavMaxVelNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MaxCompassYawRateNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavPosKpNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrossTrackNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MaxAltCompNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavMagVarNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavPosKiNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TurnoutNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxCompassYawRateNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxAltCompNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltPosIntNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltPosKpNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltLPFNumericUpDown)).BeginInit();
@@ -950,7 +950,8 @@
             resources.GetString("AFTypeComboBox.Items19"),
             resources.GetString("AFTypeComboBox.Items20"),
             resources.GetString("AFTypeComboBox.Items21"),
-            resources.GetString("AFTypeComboBox.Items22")});
+            resources.GetString("AFTypeComboBox.Items22"),
+            resources.GetString("AFTypeComboBox.Items23")});
             this.AFTypeComboBox.Name = "AFTypeComboBox";
             this.AFTypeComboBox.Tag = "44";
             this.AFTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
@@ -1662,20 +1663,6 @@
             this.NavMaxAngleNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
             this.NavMaxAngleNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
-            // TurnoutNumericUpDown
-            // 
-            resources.ApplyResources(this.TurnoutNumericUpDown, "TurnoutNumericUpDown");
-            this.TurnoutNumericUpDown.Name = "TurnoutNumericUpDown";
-            this.TurnoutNumericUpDown.Tag = "79";
-            this.TurnoutNumericUpDown.Value = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            this.TurnoutNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.TurnoutNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
-            this.TurnoutNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
-            // 
             // NavMaxAngleLabel
             // 
             resources.ApplyResources(this.NavMaxAngleLabel, "NavMaxAngleLabel");
@@ -1704,31 +1691,6 @@
             this.NavMaxVelNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
             this.NavMaxVelNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
             this.NavMaxVelNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
-            // 
-            // MaxCompassYawRateNumericUpDown
-            // 
-            this.MaxCompassYawRateNumericUpDown.BackColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.MaxCompassYawRateNumericUpDown, "MaxCompassYawRateNumericUpDown");
-            this.MaxCompassYawRateNumericUpDown.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.MaxCompassYawRateNumericUpDown.Maximum = new decimal(new int[] {
-            2550,
-            0,
-            0,
-            0});
-            this.MaxCompassYawRateNumericUpDown.Name = "MaxCompassYawRateNumericUpDown";
-            this.MaxCompassYawRateNumericUpDown.Tag = "89";
-            this.MaxCompassYawRateNumericUpDown.Value = new decimal(new int[] {
-            90,
-            0,
-            0,
-            0});
-            this.MaxCompassYawRateNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.MaxCompassYawRateNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
-            this.MaxCompassYawRateNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
             // NavPosKpLabel
             // 
@@ -1780,35 +1742,10 @@
             resources.ApplyResources(this.CrossTrackLabel, "CrossTrackLabel");
             this.CrossTrackLabel.Name = "CrossTrackLabel";
             // 
-            // MaxAltCompNumericUpDown
-            // 
-            this.MaxAltCompNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
-            resources.ApplyResources(this.MaxAltCompNumericUpDown, "MaxAltCompNumericUpDown");
-            this.MaxAltCompNumericUpDown.Maximum = new decimal(new int[] {
-            70,
-            0,
-            0,
-            0});
-            this.MaxAltCompNumericUpDown.Name = "MaxAltCompNumericUpDown";
-            this.MaxAltCompNumericUpDown.Tag = "67";
-            this.MaxAltCompNumericUpDown.Value = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            this.MaxAltCompNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.MaxAltCompNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
-            this.MaxAltCompNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
-            // 
             // labelNavMagVar1
             // 
             resources.ApplyResources(this.labelNavMagVar1, "labelNavMagVar1");
             this.labelNavMagVar1.Name = "labelNavMagVar1";
-            // 
-            // MaxAltComp
-            // 
-            resources.ApplyResources(this.MaxAltComp, "MaxAltComp");
-            this.MaxAltComp.Name = "MaxAltComp";
             // 
             // NavMagVarNumericUpDown
             // 
@@ -1853,6 +1790,70 @@
             // 
             resources.ApplyResources(this.NavPosKiLabel, "NavPosKiLabel");
             this.NavPosKiLabel.Name = "NavPosKiLabel";
+            // 
+            // TurnoutNumericUpDown
+            // 
+            resources.ApplyResources(this.TurnoutNumericUpDown, "TurnoutNumericUpDown");
+            this.TurnoutNumericUpDown.Name = "TurnoutNumericUpDown";
+            this.TurnoutNumericUpDown.Tag = "79";
+            this.TurnoutNumericUpDown.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.TurnoutNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.TurnoutNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.TurnoutNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            // 
+            // MaxCompassYawRateNumericUpDown
+            // 
+            this.MaxCompassYawRateNumericUpDown.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.MaxCompassYawRateNumericUpDown, "MaxCompassYawRateNumericUpDown");
+            this.MaxCompassYawRateNumericUpDown.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.MaxCompassYawRateNumericUpDown.Maximum = new decimal(new int[] {
+            2550,
+            0,
+            0,
+            0});
+            this.MaxCompassYawRateNumericUpDown.Name = "MaxCompassYawRateNumericUpDown";
+            this.MaxCompassYawRateNumericUpDown.Tag = "89";
+            this.MaxCompassYawRateNumericUpDown.Value = new decimal(new int[] {
+            90,
+            0,
+            0,
+            0});
+            this.MaxCompassYawRateNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.MaxCompassYawRateNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.MaxCompassYawRateNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            // 
+            // MaxAltCompNumericUpDown
+            // 
+            this.MaxAltCompNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.MaxAltCompNumericUpDown, "MaxAltCompNumericUpDown");
+            this.MaxAltCompNumericUpDown.Maximum = new decimal(new int[] {
+            70,
+            0,
+            0,
+            0});
+            this.MaxAltCompNumericUpDown.Name = "MaxAltCompNumericUpDown";
+            this.MaxAltCompNumericUpDown.Tag = "67";
+            this.MaxAltCompNumericUpDown.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.MaxAltCompNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.MaxAltCompNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.MaxAltCompNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            // 
+            // MaxAltComp
+            // 
+            resources.ApplyResources(this.MaxAltComp, "MaxAltComp");
+            this.MaxAltComp.Name = "MaxAltComp";
             // 
             // AltPosIntNumericUpDown
             // 
@@ -3372,14 +3373,14 @@
             this.NavGroupBox.ResumeLayout(false);
             this.NavGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NavMaxAngleNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TurnoutNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavMaxVelNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MaxCompassYawRateNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavPosKpNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrossTrackNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MaxAltCompNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavMagVarNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavPosKiNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TurnoutNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxCompassYawRateNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxAltCompNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltPosIntNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltPosKpNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltLPFNumericUpDown)).EndInit();

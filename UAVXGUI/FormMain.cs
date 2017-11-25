@@ -343,6 +343,7 @@ namespace UAVXGUI
             "Delta",
             "Aileron",
             "Spoilerons",
+            "VTail",
             "Rudder Elevator",
             "VTOL",
             "Gimbal",
