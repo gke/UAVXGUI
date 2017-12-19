@@ -2070,7 +2070,7 @@
             this.PIDGroupBox.Controls.Add(this.ThrottleGainNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.YawRateDiffNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.MaxPitchRateTextBox);
-            this.PIDGroupBox.Controls.Add(this.MaxRollRateTextBox);
+            this.PIDGroupBox.Controls.Add(this.MaxPitchRateTextBox);
             this.PIDGroupBox.Controls.Add(this.MaxPitchAngleNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.RateScaleLabel);
             this.PIDGroupBox.Controls.Add(this.AltPosKpNumericUpDown);
@@ -2271,10 +2271,10 @@
             // 
             // MaxRollRateTextBox
             // 
-            resources.ApplyResources(this.MaxRollRateTextBox, "MaxRollRateTextBox");
-            this.MaxRollRateTextBox.Name = "MaxRollRateTextBox";
-            this.MaxRollRateTextBox.ReadOnly = true;
-            this.MaxRollRateTextBox.Tag = "83";
+            resources.ApplyResources(this.MaxPitchRateTextBox, "MaxPitchRateTextBox");
+            this.MaxPitchRateTextBox.Name = "MaxRollRateTextBox";
+            this.MaxPitchRateTextBox.ReadOnly = true;
+            this.MaxPitchRateTextBox.Tag = "83";
             // 
             // MaxPitchAngleNumericUpDown
             // 

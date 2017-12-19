@@ -186,6 +186,14 @@ namespace UAVXGUI
 
         static SpeechSynthesizer speech;
 
+        const int Pitch = 0;
+        const int Roll = 1;
+        const int Yaw = 2;
+
+        const byte FB = 0;
+        const byte LR = 1; 
+        const byte DU = 2;
+
         public const byte MAX_PARAMS = 128;
         public const byte MAX_PARAM_SETS = 1; // 4;
         public const short RC_MAX_CHANNELS = 20; // graphic restriction
@@ -443,18 +451,13 @@ namespace UAVXGUI
         short BatteryChargeT;           // 13
         short RCGlitchesT;              // 15
         short DesiredThrottleT;         // 17
-        short DesiredRollT;             // 19
-        short DesiredPitchT;            // 21
-        short DesiredYawT;              // 23
-        short RollRateT;                // 25
-        short PitchRateT;               // 27
-        short YawRateT;                 // 29
-        short RollAngleT;               // 31
-        short PitchAngleT;              // 33
-        short YawAngleT; //HeadingE     // 35
-        short LRAccT;                   // 37
-        short FBAccT;                   // 39
-        short DUAccT;                   // 41
+
+
+        short[] DesiredAngleT = new short[3];
+        short[] AngleT = new short[3];
+        short[] AccT = new short[3];
+        short[] DesiredRateT = new short[3]; 
+        short[] RateT = new short[3];
 
         short ROCT;                     // 43
         short FROCT;
@@ -1078,17 +1081,22 @@ namespace UAVXGUI
 
             SaveTextLogFileStreamWriter.Write("DesThr," +
             "DesRoll," +
+             "RollAngle," +
+             "LRAcc," +
+             "DesRollRate," +
+             "RollRate," +
+
             "DesPitch," +
-            "DesYaw," +
-            "RollRate/RawAngle," +
-            "PitchRate/RawAngle," +
-            "YawGyro," +
-            "RollAngle," +
             "PitchAngle," +
-            "YawAngleError," +
-            "LRAcc," +
             "FBAcc," +
-            "DUAcc," +
+            "DesPitchRate," +
+            "PitchRate," +
+
+            "DesYaw," +  
+            "YawAngleError," +
+            "DUAcc," +      
+            "DesYawRate," +       
+            "YawRate," +          
             "AccConf," );
 
             if (Airframe.Text == "Flying_Wing")
@@ -1194,7 +1202,7 @@ namespace UAVXGUI
 
             ", " +
 
-        "AFType, ");
+        "AFType");
 
         SaveTextLogFileStreamWriter.WriteLine();
         }
@@ -1829,7 +1837,7 @@ namespace UAVXGUI
                 MagFailBox.BackColor = System.Drawing.Color.Orange;
             }
 
-            int MagLockE = (int) ((MagHeadingT - YawAngleT) * MILLIRADDEG);
+            int MagLockE = (int) ((MagHeadingT - AngleT[Yaw]) * MILLIRADDEG);
             if (MagLockE > 180) 
                 MagLockE -= 360;
             else
@@ -1998,19 +2006,19 @@ namespace UAVXGUI
 
         void UpdateAttitude()
         {
-                RollRate.Text = string.Format("{0:n2}", RollRateT * MILLIRADDEG);
-                PitchRate.Text = string.Format("{0:n2}", PitchRateT * MILLIRADDEG);
-                YawGyro.Text = string.Format("{0:n2}", YawRateT * MILLIRADDEG);
-                RollAngle.Text = string.Format("{0:n0}", RollAngleT * MILLIRADDEG);
-                PitchAngle.Text = string.Format("{0:n0}", PitchAngleT * MILLIRADDEG);
-                YawAngle.Text = string.Format("{0:n0}", YawAngleT * MILLIRADDEG);
+                RollRate.Text = string.Format("{0:n2}", RateT[Roll] * MILLIRADDEG);
+                PitchRate.Text = string.Format("{0:n2}", RateT[Pitch] * MILLIRADDEG);
+                YawGyro.Text = string.Format("{0:n2}", RateT[Yaw] * MILLIRADDEG);
+                RollAngle.Text = string.Format("{0:n1}", AngleT[Roll] * MILLIRADDEG);
+                PitchAngle.Text = string.Format("{0:n1}", AngleT[Pitch] * MILLIRADDEG);
+                YawAngle.Text = string.Format("{0:n1}", AngleT[Yaw] * MILLIRADDEG);
         }
 
         void UpdateAccelerations()
         {
-                LRAcc.Text = string.Format("{0:n2}", (float)LRAccT * 0.001);
-                FBAcc.Text = string.Format("{0:n2}", (float)FBAccT * 0.001);
-                DUAcc.Text = string.Format("{0:n2}", (float)DUAccT * 0.001);
+                LRAcc.Text = string.Format("{0:n2}", (float)AccT[LR] * 0.001);
+                FBAcc.Text = string.Format("{0:n2}", (float)AccT[FB] * 0.001);
+                DUAcc.Text = string.Format("{0:n2}", (float)AccT[DU] * 0.001);
 
                 FBAccLabel.Text = "FB";
                 DUAccLabel.Text = "DU";
@@ -2080,13 +2088,27 @@ namespace UAVXGUI
 
         void UpdateControls()
         {
-                DesiredThrottle.Text = string.Format("{0:n0}", ((float)DesiredThrottleT * 100.0) / RCMaximum);
-                DesiredRoll.Text = string.Format("{0:n0}", ((float)DesiredRollT * 100.0) / RCMaximum);
-                DesiredPitch.Text = string.Format("{0:n0}", ((float)DesiredPitchT * 100.0) / RCMaximum);
-                DesiredYaw.Text = string.Format("{0:n0}", ((float)DesiredYawT * 100.0) / RCMaximum);
+                DesiredThrottle.Text = string.Format("{0:n0}", ((float)(RCChannel[0] - 1000) * 100.0) / RCMaximum);
+                DesiredRoll.Text = string.Format("{0:n0}", ((float)(RCChannel[1] - 1500) * 200.0 - 150.0) / RCMaximum);
+                DesiredPitch.Text = string.Format("{0:n0}", ((float)(RCChannel[2] - 1500) * 200.0 - 150.0) / RCMaximum);
+                DesiredYaw.Text = string.Format("{0:n0}", ((float)(RCChannel[3] - 1500) * 200.0 - 150.0) / RCMaximum);
         }
 
       
+        void GetAttitude(short p) {
+            short a, i;
+
+            DesiredThrottleT = ExtractShort(ref UAVXPacket, p);
+
+            for (a = Pitch; a <=Yaw; a++) {
+              i =  Convert.ToInt16(p + 2 + a * 10);
+               DesiredAngleT[a] = ExtractShort(ref UAVXPacket, i);
+               AngleT[a] = ExtractShort(ref UAVXPacket, (byte)(i + 2));
+               AccT[a] = ExtractShort(ref UAVXPacket, (byte)(i + 4));
+               DesiredRateT[a] = ExtractShort(ref UAVXPacket, (byte)(i + 6));
+               RateT[a] = ExtractShort(ref UAVXPacket, (byte)(i + 8));
+            }
+        }
 
         void DoMotorsAndTime(short p)
         {
@@ -2440,8 +2462,8 @@ namespace UAVXGUI
                     BatteryCurrentT = ExtractShort(ref UAVXPacket, 13);
                     BatteryChargeT = ExtractShort(ref UAVXPacket, 15);
 
-                    RollAngleT = ExtractShort(ref UAVXPacket, 17);
-                    PitchAngleT = ExtractShort(ref UAVXPacket, 19);
+                    AngleT[Roll] = ExtractShort(ref UAVXPacket, 17);
+                    AngleT[Pitch] = ExtractShort(ref UAVXPacket, 19);
                     AltitudeT = ExtractInt24(ref UAVXPacket, 21);
                     ROCT = ExtractShort(ref UAVXPacket, 24);  
                     HeadingT = ExtractShort(ref UAVXPacket, 26);
@@ -2507,10 +2529,10 @@ namespace UAVXGUI
                     BatteryCurrentT = ExtractShort(ref UAVXPacket, 4);
                     BatteryChargeT = ExtractShort(ref UAVXPacket, 6);
 
-                    RollAngleT = ExtractShort(ref UAVXPacket, 8);
-                    RollAngleT *= DEGMILLIRAD;
-                    PitchAngleT = ExtractShort(ref UAVXPacket, 10);
-                    PitchAngleT *= DEGMILLIRAD;
+                    AngleT[Roll] = ExtractShort(ref UAVXPacket, 8);
+                    AngleT[Roll] *= DEGMILLIRAD;
+                    AngleT[Pitch] = ExtractShort(ref UAVXPacket, 10);
+                    AngleT[Pitch] *= DEGMILLIRAD;
 
                     AltitudeT = ExtractInt24(ref UAVXPacket, 12);
                     DesiredAltitudeT = ExtractInt24(ref UAVXPacket, 15);
@@ -2520,7 +2542,7 @@ namespace UAVXGUI
 
                     HeadingT = ExtractShort(ref UAVXPacket, 22); // degrees
                     HeadingT *= DEGMILLIRAD;
-                        GPSHeadingT = ExtractShort(ref UAVXPacket, 24); // degrees
+                    GPSHeadingT = ExtractShort(ref UAVXPacket, 24); // degrees
 
                     GPSLatitudeT = ExtractInt(ref UAVXPacket, 26);
                     GPSLongitudeT = ExtractInt(ref UAVXPacket, 30);
@@ -2648,8 +2670,6 @@ namespace UAVXGUI
 
                     DoOrientation();
 
-
-
                     break;
                 case UAVXFlightPacketTag:
                     FlightPacketsReceived++;
@@ -2662,54 +2682,39 @@ namespace UAVXGUI
                     BatteryCurrentT = ExtractShort(ref UAVXPacket, 11);
                     BatteryChargeT = ExtractShort(ref UAVXPacket, 13);
                     RCGlitchesT = ExtractShort(ref UAVXPacket, 15);
-                    DesiredThrottleT = ExtractShort(ref UAVXPacket, 17);
 
-                    DesiredRollT = ExtractShort(ref UAVXPacket, 19);
-                    DesiredPitchT = ExtractShort(ref UAVXPacket, 21);
-                    DesiredYawT = ExtractShort(ref UAVXPacket, 23);
-
-                    RollRateT = ExtractShort(ref UAVXPacket, 25);
-                    PitchRateT = ExtractShort(ref UAVXPacket, 27);
-                    YawRateT = ExtractShort(ref UAVXPacket, 29);
-
-                    RollAngleT = ExtractShort(ref UAVXPacket, 31);
-                    PitchAngleT = ExtractShort(ref UAVXPacket, 33);
-                    YawAngleT = ExtractShort(ref UAVXPacket, 35);
-
-                    FBAccT = ExtractShort(ref UAVXPacket, 37);
-                    LRAccT = ExtractShort(ref UAVXPacket, 39);
-                    DUAccT = ExtractShort(ref UAVXPacket, 41);
-
-                    ROCT = ExtractShort(ref UAVXPacket, 43);
+                    GetAttitude(17);
+                    
+                    ROCT = ExtractShort(ref UAVXPacket, 49);
  
-                    AltitudeT = ExtractInt24(ref UAVXPacket, 45);
+                    AltitudeT = ExtractInt24(ref UAVXPacket, 51);
 
-                    CruiseThrottleT = ExtractShort(ref UAVXPacket, 48);
-                    RangefinderAltitudeT = ExtractShort(ref UAVXPacket, 50);
+                    CruiseThrottleT = ExtractShort(ref UAVXPacket, 54);
+                    RangefinderAltitudeT = ExtractShort(ref UAVXPacket, 56);
 
-                    DesiredAltitudeT = ExtractInt24(ref UAVXPacket, 52); 
+                    DesiredAltitudeT = ExtractInt24(ref UAVXPacket, 58); 
 
-                    HeadingT = ExtractShort(ref UAVXPacket, 55);
-                    DesiredHeadingT = ExtractShort(ref UAVXPacket, 57);
+                    HeadingT = ExtractShort(ref UAVXPacket, 61);
+                    DesiredHeadingT = ExtractShort(ref UAVXPacket, 63);
 
-                    TiltFFCompT = ExtractShort(ref UAVXPacket, 59);
+                    TiltFFCompT = ExtractShort(ref UAVXPacket, 65);
 
-                    BattFFCompT = ExtractShort(ref UAVXPacket, 61);
+                    BattFFCompT = ExtractShort(ref UAVXPacket, 67);
 
-                    AltCompT = ExtractShort(ref UAVXPacket, 63);
-                    AccConfidenceT = ExtractByte(ref UAVXPacket, 65);
+                    AltCompT = ExtractShort(ref UAVXPacket, 69);
+                    AccConfidenceT = ExtractByte(ref UAVXPacket, 71);
 
-                    BaroTemperatureT = ExtractShort(ref UAVXPacket, 66);
-                    BaroPressureT = ExtractInt24(ref UAVXPacket, 68);
+                    BaroTemperatureT = ExtractShort(ref UAVXPacket, 72);
+                    BaroPressureT = ExtractInt24(ref UAVXPacket, 74);
 
-                    BaroAltitudeT = ExtractInt24(ref UAVXPacket, 71);
+                    BaroAltitudeT = ExtractInt24(ref UAVXPacket, 77);
 
-                    AccZT = ExtractByte(ref UAVXPacket, 74);
+                    AccZT = ExtractByte(ref UAVXPacket, 80);
                     if (AccZT > 127) AccZT -= 256;
 
-                    MagHeadingT = ExtractShort(ref UAVXPacket,75);
+                    MagHeadingT = ExtractShort(ref UAVXPacket,81);
 
-                    DoMotorsAndTime(77);
+                    DoMotorsAndTime(83);
 
                     UpdateFlags();
                     UpdateFlightState();
@@ -2751,29 +2756,17 @@ namespace UAVXGUI
 
                     break;
                 case UAVXControlPacketTag:
+                        int a;
                     ControlPacketsReceived++;
 
-                    DesiredThrottleT = ExtractShort(ref UAVXPacket, 2);
-                    DesiredRollT = ExtractShort(ref UAVXPacket, 4);
-                    DesiredPitchT = ExtractShort(ref UAVXPacket, 6);
-                    DesiredYawT = ExtractShort(ref UAVXPacket, 8);
-                    RollRateT = ExtractShort(ref UAVXPacket, 10);
-                    PitchRateT = ExtractShort(ref UAVXPacket, 12);
-                    YawRateT = ExtractShort(ref UAVXPacket, 14);
-                    RollAngleT = ExtractShort(ref UAVXPacket, 16);
-                    PitchAngleT = ExtractShort(ref UAVXPacket, 18);
-                    YawAngleT = ExtractShort(ref UAVXPacket, 20);
+                   GetAttitude(2);
 
-                    FBAccT = ExtractShort(ref UAVXPacket, 22);
-                    LRAccT = ExtractShort(ref UAVXPacket, 24);
-                    DUAccT = ExtractShort(ref UAVXPacket, 26);
-
-                    AirframeT = ExtractByte(ref UAVXPacket, 28);
+                    AirframeT = ExtractByte(ref UAVXPacket, 34);
 
                     UAVXArm = (AirframeT & 0x80) != 0;
                     AirframeT &= 0x7f;
 
-                    DoMotorsAndTime(29); 
+                    DoMotorsAndTime(35); 
 
                     UpdateControls();
                     UpdateAttitude();
@@ -2968,8 +2961,8 @@ namespace UAVXGUI
                 || (RxPacketTag == UAVXFlightPacketTag) 
                 || ( RxPacketTag == UAVXMinPacketTag ) )
             {
-                FlightRoll = PitchAngleT * OSO + RollAngleT * OCO;
-                FlightPitch = PitchAngleT * OCO - RollAngleT * OSO;
+                FlightRoll = AngleT[Pitch] * OSO + AngleT[Roll] * OCO;
+                FlightPitch = AngleT[Pitch] * OCO - AngleT[Roll] * OSO;
 
                 FlightRollp = FlightRoll;
                 FlightPitchp = FlightPitch;
@@ -3141,7 +3134,7 @@ namespace UAVXGUI
 
         void WriteTextPIDLogFile()
         {
-            short i, c;
+            short i;
 
             for (i = 0; i < MaxPID; i++)
                     SaveTextLogFileStreamWriter.Write(PID[i] + ",");
@@ -3184,24 +3177,16 @@ namespace UAVXGUI
             for (c = 0; c < 9; c++)
                  SaveTextLogFileStreamWriter.Write(RCChannel[c] * 0.001 + ",");
 
-            SaveTextLogFileStreamWriter.Write(DesiredThrottleT * 0.001+ "," +
-            DesiredRollT * 0.001 + "," +
-            DesiredPitchT * 0.001 + "," +
-            DesiredYawT * 0.001 + "," );
+            SaveTextLogFileStreamWriter.Write(DesiredThrottleT * 0.001+ ",");
 
-            SaveTextLogFileStreamWriter.Write(
-            RollRateT * MILLIRADDEG + "," +
-            PitchRateT * MILLIRADDEG + "," +
-            YawRateT * MILLIRADDEG + "," +
-
-            RollAngleT * MILLIRADDEG + "," +
-            PitchAngleT * MILLIRADDEG + "," +
-            YawAngleT * MILLIRADDEG + ",");
- 
-            SaveTextLogFileStreamWriter.Write(
-            FBAccT * 0.001 + "," +
-            LRAccT * 0.001 + "," +
-            DUAccT * 0.001 + "," );
+            for (i = 0; i < 3; i++)
+            {
+                SaveTextLogFileStreamWriter.Write(DesiredAngleT[i] * 0.001 + "," +
+                AngleT[i] * 0.001 + "," +
+                AccT[i] * 0.001 + "," + //zzz FB/LR need to be reversed
+                DesiredRateT[i] * 0.001 + "," +
+                RateT[i] * 0.001 + ",");
+            }
 
             SaveTextLogFileStreamWriter.Write(AccConfidenceT * 0.01 + "," ); 
 

@@ -1423,8 +1423,8 @@ namespace UAVXGUI
                        ParamUpdate(FWTrimAngleNumericUpDown);
                         break;
                     case 83:
-                        MaxRollRateTextBox.Text = string.Format("{0:n0}", Convert.ToDecimal(UAVXP[p - 1].Value * 10.0));
-                        MaxRollRateTextBox.BackColor = (Convert.ToDecimal(UAVXP[p - 1].Value * 10.0) > 720) ? Color.Orange : Color.White;
+                        MaxPitchRateTextBox.Text = string.Format("{0:n0}", Convert.ToDecimal(UAVXP[p - 1].Value * 10.0));
+                        MaxPitchRateTextBox.BackColor = (Convert.ToDecimal(UAVXP[p - 1].Value * 10.0) > 720) ? Color.Orange : Color.White;
                         break;
                     case 84:
                         MaxPitchRateTextBox.Text = string.Format("{0:n0}", Convert.ToDecimal(UAVXP[p - 1].Value * 10.0));

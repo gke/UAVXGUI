@@ -2495,7 +2495,7 @@ namespace UAVXGUI
             // 
             // CalibrateIMUButton
             // 
-            this.CalibrateIMUButton.Location = new System.Drawing.Point(868, 528);
+            this.CalibrateIMUButton.Location = new System.Drawing.Point(873, 574);
             this.CalibrateIMUButton.Name = "CalibrateIMUButton";
             this.CalibrateIMUButton.Size = new System.Drawing.Size(50, 23);
             this.CalibrateIMUButton.TabIndex = 199;
@@ -2505,7 +2505,7 @@ namespace UAVXGUI
             // 
             // CalibrateMagButton
             // 
-            this.CalibrateMagButton.Location = new System.Drawing.Point(924, 528);
+            this.CalibrateMagButton.Location = new System.Drawing.Point(929, 574);
             this.CalibrateMagButton.Name = "CalibrateMagButton";
             this.CalibrateMagButton.Size = new System.Drawing.Size(50, 23);
             this.CalibrateMagButton.TabIndex = 201;
@@ -2516,9 +2516,7 @@ namespace UAVXGUI
             // DrivesGroupBox
             // 
             this.DrivesGroupBox.Controls.Add(this.ImbalanceLabel);
-            this.DrivesGroupBox.Controls.Add(this.FWRateEnergy);
             this.DrivesGroupBox.Controls.Add(this.DiagnosticCheckBox);
-            this.DrivesGroupBox.Controls.Add(this.RateEnergyLabel);
             this.DrivesGroupBox.Controls.Add(this.PWMT9);
             this.DrivesGroupBox.Controls.Add(this.PWMT7);
             this.DrivesGroupBox.Controls.Add(this.PWMT6);
@@ -2541,7 +2539,7 @@ namespace UAVXGUI
             this.DrivesGroupBox.Controls.Add(this.PWMT8ProgressBar);
             this.DrivesGroupBox.Location = new System.Drawing.Point(843, 297);
             this.DrivesGroupBox.Name = "DrivesGroupBox";
-            this.DrivesGroupBox.Size = new System.Drawing.Size(162, 217);
+            this.DrivesGroupBox.Size = new System.Drawing.Size(162, 193);
             this.DrivesGroupBox.TabIndex = 210;
             this.DrivesGroupBox.TabStop = false;
             this.DrivesGroupBox.Text = "Motors/Servos (%)";
@@ -2557,7 +2555,7 @@ namespace UAVXGUI
             // 
             // FWRateEnergy
             // 
-            this.FWRateEnergy.Location = new System.Drawing.Point(111, 189);
+            this.FWRateEnergy.Location = new System.Drawing.Point(111, 42);
             this.FWRateEnergy.Name = "FWRateEnergy";
             this.FWRateEnergy.ReadOnly = true;
             this.FWRateEnergy.Size = new System.Drawing.Size(45, 20);
@@ -2577,7 +2575,7 @@ namespace UAVXGUI
             // RateEnergyLabel
             // 
             this.RateEnergyLabel.AutoSize = true;
-            this.RateEnergyLabel.Location = new System.Drawing.Point(11, 192);
+            this.RateEnergyLabel.Location = new System.Drawing.Point(8, 45);
             this.RateEnergyLabel.Name = "RateEnergyLabel";
             this.RateEnergyLabel.Size = new System.Drawing.Size(80, 13);
             this.RateEnergyLabel.TabIndex = 227;
@@ -2816,7 +2814,7 @@ namespace UAVXGUI
             // 
             // GPSBypassButton
             // 
-            this.GPSBypassButton.Location = new System.Drawing.Point(924, 557);
+            this.GPSBypassButton.Location = new System.Drawing.Point(929, 603);
             this.GPSBypassButton.Name = "GPSBypassButton";
             this.GPSBypassButton.Size = new System.Drawing.Size(50, 23);
             this.GPSBypassButton.TabIndex = 213;
@@ -3324,7 +3322,7 @@ namespace UAVXGUI
             // 
             // CalibrateAcc6PointButton
             // 
-            this.CalibrateAcc6PointButton.Location = new System.Drawing.Point(868, 557);
+            this.CalibrateAcc6PointButton.Location = new System.Drawing.Point(873, 603);
             this.CalibrateAcc6PointButton.Name = "CalibrateAcc6PointButton";
             this.CalibrateAcc6PointButton.Size = new System.Drawing.Size(50, 23);
             this.CalibrateAcc6PointButton.TabIndex = 217;
@@ -3374,10 +3372,12 @@ namespace UAVXGUI
             // TuningGroupBox
             // 
             this.TuningGroupBox.Controls.Add(this.FWGlideOffsetAngle);
+            this.TuningGroupBox.Controls.Add(this.FWRateEnergy);
             this.TuningGroupBox.Controls.Add(this.FWGlideAngleOffsetLabel);
-            this.TuningGroupBox.Location = new System.Drawing.Point(843, 586);
+            this.TuningGroupBox.Controls.Add(this.RateEnergyLabel);
+            this.TuningGroupBox.Location = new System.Drawing.Point(843, 496);
             this.TuningGroupBox.Name = "TuningGroupBox";
-            this.TuningGroupBox.Size = new System.Drawing.Size(162, 42);
+            this.TuningGroupBox.Size = new System.Drawing.Size(162, 72);
             this.TuningGroupBox.TabIndex = 228;
             this.TuningGroupBox.TabStop = false;
             this.TuningGroupBox.Text = "FW Trim";
