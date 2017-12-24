@@ -160,6 +160,7 @@
             this.PitchAnglePropNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.PitchRatePropNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.PIDGroupBox = new System.Windows.Forms.GroupBox();
+            this.MaxRollRateTextBox = new System.Windows.Forms.TextBox();
             this.YawRateIntNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.YawRateIntLimNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.RollRateIntNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -173,7 +174,6 @@
             this.ThrottleGainNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.YawRateDiffNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.MaxPitchRateTextBox = new System.Windows.Forms.TextBox();
-            this.MaxRollRateTextBox = new System.Windows.Forms.TextBox();
             this.MaxPitchAngleNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.RollAngleIntNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.RollAngleIntLabel = new System.Windows.Forms.Label();
@@ -2054,6 +2054,7 @@
             // 
             // PIDGroupBox
             // 
+            this.PIDGroupBox.Controls.Add(this.MaxRollRateTextBox);
             this.PIDGroupBox.Controls.Add(this.YawRateIntNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.YawRateIntLimNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.HysteresisNumericUpDown);
@@ -2069,7 +2070,6 @@
             this.PIDGroupBox.Controls.Add(this.MaxCompassYawRateNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.ThrottleGainNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.YawRateDiffNumericUpDown);
-            this.PIDGroupBox.Controls.Add(this.MaxPitchRateTextBox);
             this.PIDGroupBox.Controls.Add(this.MaxPitchRateTextBox);
             this.PIDGroupBox.Controls.Add(this.MaxPitchAngleNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.RateScaleLabel);
@@ -2100,6 +2100,13 @@
             this.PIDGroupBox.Name = "PIDGroupBox";
             this.PIDGroupBox.TabStop = false;
             this.PIDGroupBox.Tag = "89";
+            // 
+            // MaxRollRateTextBox
+            // 
+            resources.ApplyResources(this.MaxRollRateTextBox, "MaxRollRateTextBox");
+            this.MaxRollRateTextBox.Name = "MaxRollRateTextBox";
+            this.MaxRollRateTextBox.ReadOnly = true;
+            this.MaxRollRateTextBox.Tag = "83";
             // 
             // YawRateIntNumericUpDown
             // 
@@ -2268,13 +2275,6 @@
             this.MaxPitchRateTextBox.Name = "MaxPitchRateTextBox";
             this.MaxPitchRateTextBox.ReadOnly = true;
             this.MaxPitchRateTextBox.Tag = "84";
-            // 
-            // MaxRollRateTextBox
-            // 
-            resources.ApplyResources(this.MaxPitchRateTextBox, "MaxPitchRateTextBox");
-            this.MaxPitchRateTextBox.Name = "MaxRollRateTextBox";
-            this.MaxPitchRateTextBox.ReadOnly = true;
-            this.MaxPitchRateTextBox.Tag = "83";
             // 
             // MaxPitchAngleNumericUpDown
             // 
@@ -3654,7 +3654,6 @@
         public System.Windows.Forms.ComboBox ParamTemplateComboBox;
         public System.Windows.Forms.NumericUpDown CurrentScaleNumericUpDown;
         public System.Windows.Forms.NumericUpDown VoltScaleNumericUpDown;
-        private System.Windows.Forms.TextBox MaxRollRateTextBox;
         private System.Windows.Forms.TextBox MaxPitchRateTextBox;
         private System.Windows.Forms.Label FWAilRudFF;
         public System.Windows.Forms.NumericUpDown FWAileronRudderFFNumericUpDown;
@@ -3681,6 +3680,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         public System.Windows.Forms.NumericUpDown YawRateIntNumericUpDown;
         public System.Windows.Forms.NumericUpDown YawRateIntLimNumericUpDown;
+        private System.Windows.Forms.TextBox MaxRollRateTextBox;
 
 
     }
