@@ -679,7 +679,7 @@
     <value>NoControl</value>
   </data>
   <data name="RollPitchFFLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 122</value>
+    <value>6, 147</value>
   </data>
   <data name="RollPitchFFLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 13</value>
@@ -700,13 +700,13 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;RollPitchFFLabel.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>18</value>
   </data>
   <data name="FWRollPitchFFNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="FWRollPitchFFNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 118</value>
+    <value>93, 143</value>
   </data>
   <data name="FWRollPitchFFNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 20</value>
@@ -727,7 +727,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;FWRollPitchFFNumericUpDown.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>19</value>
   </data>
   <data name="GyroComboBox.AutoCompleteCustomSource" xml:space="preserve">
     <value>MLX90609-R2</value>
@@ -3304,7 +3304,7 @@
     <value>Off</value>
   </data>
   <data name="Sense51Button.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 248</value>
+    <value>114, 273</value>
   </data>
   <data name="Sense51Button.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 15</value>
@@ -3322,7 +3322,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;Sense51Button.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>25</value>
   </data>
   <data name="Sense41Button.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -3331,7 +3331,7 @@
     <value>Off</value>
   </data>
   <data name="Sense41Button.Location" type="System.Drawing.Point, System.Drawing">
-    <value>94, 248</value>
+    <value>94, 273</value>
   </data>
   <data name="Sense41Button.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 15</value>
@@ -3349,7 +3349,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;Sense41Button.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>24</value>
   </data>
   <data name="Sense21Button.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -3358,7 +3358,7 @@
     <value>Off</value>
   </data>
   <data name="Sense21Button.Location" type="System.Drawing.Point, System.Drawing">
-    <value>52, 248</value>
+    <value>52, 273</value>
   </data>
   <data name="Sense21Button.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 15</value>
@@ -3376,7 +3376,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;Sense21Button.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>22</value>
   </data>
   <data name="Sense31Button.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -3385,7 +3385,7 @@
     <value>Off</value>
   </data>
   <data name="Sense31Button.Location" type="System.Drawing.Point, System.Drawing">
-    <value>73, 248</value>
+    <value>73, 273</value>
   </data>
   <data name="Sense31Button.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 15</value>
@@ -3403,7 +3403,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;Sense31Button.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>23</value>
   </data>
   <data name="Sense11Button.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -3412,7 +3412,7 @@
     <value>Off</value>
   </data>
   <data name="Sense11Button.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 248</value>
+    <value>31, 273</value>
   </data>
   <data name="Sense11Button.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 15</value>
@@ -3430,13 +3430,13 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;Sense11Button.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>21</value>
   </data>
   <data name="Sense01Button.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="Sense01Button.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 248</value>
+    <value>11, 273</value>
   </data>
   <data name="Sense01Button.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 15</value>
@@ -3454,7 +3454,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;Sense01Button.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>20</value>
   </data>
   <data name="bit11CheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4596,6 +4596,354 @@
   <data name="&gt;&gt;PitchRatePropNumericUpDown.ZOrder" xml:space="preserve">
     <value>41</value>
   </data>
+  <data name="&gt;&gt;MaxRollRateTextBox.Name" xml:space="preserve">
+    <value>MaxRollRateTextBox</value>
+  </data>
+  <data name="&gt;&gt;MaxRollRateTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MaxRollRateTextBox.Parent" xml:space="preserve">
+    <value>PIDGroupBox</value>
+  </data>
+  <data name="&gt;&gt;MaxRollRateTextBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;YawRateIntNumericUpDown.Name" xml:space="preserve">
+    <value>YawRateIntNumericUpDown</value>
+  </data>
+  <data name="&gt;&gt;YawRateIntNumericUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;YawRateIntNumericUpDown.Parent" xml:space="preserve">
+    <value>PIDGroupBox</value>
+  </data>
+  <data name="&gt;&gt;YawRateIntNumericUpDown.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;YawRateIntLimNumericUpDown.Name" xml:space="preserve">
+    <value>YawRateIntLimNumericUpDown</value>
+  </data>
+  <data name="&gt;&gt;YawRateIntLimNumericUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;YawRateIntLimNumericUpDown.Parent" xml:space="preserve">
+    <value>PIDGroupBox</value>
+  </data>
+  <data name="&gt;&gt;YawRateIntLimNumericUpDown.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;RollRateIntNumericUpDown.Name" xml:space="preserve">
+    <value>RollRateIntNumericUpDown</value>
+  </data>
+  <data name="&gt;&gt;RollRateIntNumericUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RollRateIntNumericUpDown.Parent" xml:space="preserve">
+    <value>PIDGroupBox</value>
+  </data>
+  <data name="&gt;&gt;RollRateIntNumericUpDown.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;HysteresisLabel.Name" xml:space="preserve">
+    <value>HysteresisLabel</value>
+  </data>
+  <data name="&gt;&gt;HysteresisLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;HysteresisLabel.Parent" xml:space="preserve">
+    <value>PIDGroupBox</value>
+  </data>
+  <data name="&gt;&gt;HysteresisLabel.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>PIDGroupBox</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;PitchRateIntNumericUpDown.Name" xml:space="preserve">
+    <value>PitchRateIntNumericUpDown</value>
+  </data>
+  <data name="&gt;&gt;PitchRateIntNumericUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PitchRateIntNumericUpDown.Parent" xml:space="preserve">
+    <value>PIDGroupBox</value>
+  </data>
+  <data name="&gt;&gt;PitchRateIntNumericUpDown.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;RollRateIntLimNumericUpDown.Name" xml:space="preserve">
+    <value>RollRateIntLimNumericUpDown</value>
+  </data>
+  <data name="&gt;&gt;RollRateIntLimNumericUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RollRateIntLimNumericUpDown.Parent" xml:space="preserve">
+    <value>PIDGroupBox</value>
+  </data>
+  <data name="&gt;&gt;RollRateIntLimNumericUpDown.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>PIDGroupBox</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;PitchRateIntLimNumericUpDown.Name" xml:space="preserve">
+    <value>PitchRateIntLimNumericUpDown</value>
+  </data>
+  <data name="&gt;&gt;PitchRateIntLimNumericUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PitchRateIntLimNumericUpDown.Parent" xml:space="preserve">
+    <value>PIDGroupBox</value>
+  </data>
+  <data name="&gt;&gt;PitchRateIntLimNumericUpDown.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;ThrottleGainLabel.Name" xml:space="preserve">
+    <value>ThrottleGainLabel</value>
+  </data>
+  <data name="&gt;&gt;ThrottleGainLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ThrottleGainLabel.Parent" xml:space="preserve">
+    <value>PIDGroupBox</value>
+  </data>
+  <data name="&gt;&gt;ThrottleGainLabel.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;ThrottleGainNumericUpDown.Name" xml:space="preserve">
+    <value>ThrottleGainNumericUpDown</value>
+  </data>
+  <data name="&gt;&gt;ThrottleGainNumericUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ThrottleGainNumericUpDown.Parent" xml:space="preserve">
+    <value>PIDGroupBox</value>
+  </data>
+  <data name="&gt;&gt;ThrottleGainNumericUpDown.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;YawRateDiffNumericUpDown.Name" xml:space="preserve">
+    <value>YawRateDiffNumericUpDown</value>
+  </data>
+  <data name="&gt;&gt;YawRateDiffNumericUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;YawRateDiffNumericUpDown.Parent" xml:space="preserve">
+    <value>PIDGroupBox</value>
+  </data>
+  <data name="&gt;&gt;YawRateDiffNumericUpDown.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;MaxPitchRateTextBox.Name" xml:space="preserve">
+    <value>MaxPitchRateTextBox</value>
+  </data>
+  <data name="&gt;&gt;MaxPitchRateTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MaxPitchRateTextBox.Parent" xml:space="preserve">
+    <value>PIDGroupBox</value>
+  </data>
+  <data name="&gt;&gt;MaxPitchRateTextBox.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;MaxPitchAngleNumericUpDown.Name" xml:space="preserve">
+    <value>MaxPitchAngleNumericUpDown</value>
+  </data>
+  <data name="&gt;&gt;MaxPitchAngleNumericUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MaxPitchAngleNumericUpDown.Parent" xml:space="preserve">
+    <value>PIDGroupBox</value>
+  </data>
+  <data name="&gt;&gt;MaxPitchAngleNumericUpDown.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;RollAngleIntNumericUpDown.Name" xml:space="preserve">
+    <value>RollAngleIntNumericUpDown</value>
+  </data>
+  <data name="&gt;&gt;RollAngleIntNumericUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RollAngleIntNumericUpDown.Parent" xml:space="preserve">
+    <value>PIDGroupBox</value>
+  </data>
+  <data name="&gt;&gt;RollAngleIntNumericUpDown.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;RollAngleIntLabel.Name" xml:space="preserve">
+    <value>RollAngleIntLabel</value>
+  </data>
+  <data name="&gt;&gt;RollAngleIntLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RollAngleIntLabel.Parent" xml:space="preserve">
+    <value>PIDGroupBox</value>
+  </data>
+  <data name="&gt;&gt;RollAngleIntLabel.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="&gt;&gt;AngleScaleAngleLabel.Name" xml:space="preserve">
+    <value>AngleScaleAngleLabel</value>
+  </data>
+  <data name="&gt;&gt;AngleScaleAngleLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AngleScaleAngleLabel.Parent" xml:space="preserve">
+    <value>PIDGroupBox</value>
+  </data>
+  <data name="&gt;&gt;AngleScaleAngleLabel.ZOrder" xml:space="preserve">
+    <value>27</value>
+  </data>
+  <data name="&gt;&gt;RollRateDiffNumericUpDown.Name" xml:space="preserve">
+    <value>RollRateDiffNumericUpDown</value>
+  </data>
+  <data name="&gt;&gt;RollRateDiffNumericUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RollRateDiffNumericUpDown.Parent" xml:space="preserve">
+    <value>PIDGroupBox</value>
+  </data>
+  <data name="&gt;&gt;RollRateDiffNumericUpDown.ZOrder" xml:space="preserve">
+    <value>28</value>
+  </data>
+  <data name="&gt;&gt;MaxRollAngleNumericUpDown.Name" xml:space="preserve">
+    <value>MaxRollAngleNumericUpDown</value>
+  </data>
+  <data name="&gt;&gt;MaxRollAngleNumericUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MaxRollAngleNumericUpDown.Parent" xml:space="preserve">
+    <value>PIDGroupBox</value>
+  </data>
+  <data name="&gt;&gt;MaxRollAngleNumericUpDown.ZOrder" xml:space="preserve">
+    <value>29</value>
+  </data>
+  <data name="&gt;&gt;RollRateDiffLabel.Name" xml:space="preserve">
+    <value>RollRateDiffLabel</value>
+  </data>
+  <data name="&gt;&gt;RollRateDiffLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RollRateDiffLabel.Parent" xml:space="preserve">
+    <value>PIDGroupBox</value>
+  </data>
+  <data name="&gt;&gt;RollRateDiffLabel.ZOrder" xml:space="preserve">
+    <value>31</value>
+  </data>
+  <data name="&gt;&gt;RollAngleIntLimitNumericUpDown.Name" xml:space="preserve">
+    <value>RollAngleIntLimitNumericUpDown</value>
+  </data>
+  <data name="&gt;&gt;RollAngleIntLimitNumericUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RollAngleIntLimitNumericUpDown.Parent" xml:space="preserve">
+    <value>PIDGroupBox</value>
+  </data>
+  <data name="&gt;&gt;RollAngleIntLimitNumericUpDown.ZOrder" xml:space="preserve">
+    <value>33</value>
+  </data>
+  <data name="&gt;&gt;RollIntLimitLabel.Name" xml:space="preserve">
+    <value>RollIntLimitLabel</value>
+  </data>
+  <data name="&gt;&gt;RollIntLimitLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RollIntLimitLabel.Parent" xml:space="preserve">
+    <value>PIDGroupBox</value>
+  </data>
+  <data name="&gt;&gt;RollIntLimitLabel.ZOrder" xml:space="preserve">
+    <value>34</value>
+  </data>
+  <data name="&gt;&gt;RollAnglePropNumericUpDown.Name" xml:space="preserve">
+    <value>RollAnglePropNumericUpDown</value>
+  </data>
+  <data name="&gt;&gt;RollAnglePropNumericUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RollAnglePropNumericUpDown.Parent" xml:space="preserve">
+    <value>PIDGroupBox</value>
+  </data>
+  <data name="&gt;&gt;RollAnglePropNumericUpDown.ZOrder" xml:space="preserve">
+    <value>36</value>
+  </data>
+  <data name="&gt;&gt;RollAnglePropLabel.Name" xml:space="preserve">
+    <value>RollAnglePropLabel</value>
+  </data>
+  <data name="&gt;&gt;RollAnglePropLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RollAnglePropLabel.Parent" xml:space="preserve">
+    <value>PIDGroupBox</value>
+  </data>
+  <data name="&gt;&gt;RollAnglePropLabel.ZOrder" xml:space="preserve">
+    <value>37</value>
+  </data>
+  <data name="&gt;&gt;RollRatePropNumericUpDown.Name" xml:space="preserve">
+    <value>RollRatePropNumericUpDown</value>
+  </data>
+  <data name="&gt;&gt;RollRatePropNumericUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RollRatePropNumericUpDown.Parent" xml:space="preserve">
+    <value>PIDGroupBox</value>
+  </data>
+  <data name="&gt;&gt;RollRatePropNumericUpDown.ZOrder" xml:space="preserve">
+    <value>39</value>
+  </data>
+  <data name="&gt;&gt;RollRatePropLabel.Name" xml:space="preserve">
+    <value>RollRatePropLabel</value>
+  </data>
+  <data name="&gt;&gt;RollRatePropLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RollRatePropLabel.Parent" xml:space="preserve">
+    <value>PIDGroupBox</value>
+  </data>
+  <data name="&gt;&gt;RollRatePropLabel.ZOrder" xml:space="preserve">
+    <value>40</value>
+  </data>
+  <data name="PIDGroupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 44</value>
+  </data>
+  <data name="PIDGroupBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>303, 265</value>
+  </data>
+  <data name="PIDGroupBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="PIDGroupBox.Text" xml:space="preserve">
+    <value>Roll/Pitch/Yaw/Alt</value>
+  </data>
+  <data name="&gt;&gt;PIDGroupBox.Name" xml:space="preserve">
+    <value>PIDGroupBox</value>
+  </data>
+  <data name="&gt;&gt;PIDGroupBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PIDGroupBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;PIDGroupBox.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
   <data name="MaxRollRateTextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
@@ -5361,30 +5709,6 @@
   <data name="&gt;&gt;RollRatePropLabel.ZOrder" xml:space="preserve">
     <value>40</value>
   </data>
-  <data name="PIDGroupBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 44</value>
-  </data>
-  <data name="PIDGroupBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>303, 265</value>
-  </data>
-  <data name="PIDGroupBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="PIDGroupBox.Text" xml:space="preserve">
-    <value>Roll/Pitch/Yaw/Alt</value>
-  </data>
-  <data name="&gt;&gt;PIDGroupBox.Name" xml:space="preserve">
-    <value>PIDGroupBox</value>
-  </data>
-  <data name="&gt;&gt;PIDGroupBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PIDGroupBox.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;PIDGroupBox.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
   <metadata name="parameterOpenFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>407, 0</value>
   </metadata>
@@ -5541,462 +5865,6 @@
   <metadata name="CheckDownLinkTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>760, 0</value>
   </metadata>
-  <data name="&gt;&gt;ThrottleIdleLabel.Name" xml:space="preserve">
-    <value>ThrottleIdleLabel</value>
-  </data>
-  <data name="&gt;&gt;ThrottleIdleLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ThrottleIdleLabel.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;ThrottleIdleLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;RC11TextBox.Name" xml:space="preserve">
-    <value>RC11TextBox</value>
-  </data>
-  <data name="&gt;&gt;RC11TextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RC11TextBox.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;RC11TextBox.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;RC10TextBox.Name" xml:space="preserve">
-    <value>RC10TextBox</value>
-  </data>
-  <data name="&gt;&gt;RC10TextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RC10TextBox.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;RC10TextBox.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;RC9TextBox.Name" xml:space="preserve">
-    <value>RC9TextBox</value>
-  </data>
-  <data name="&gt;&gt;RC9TextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RC9TextBox.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;RC9TextBox.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;RC9ProgressBar.Name" xml:space="preserve">
-    <value>RC9ProgressBar</value>
-  </data>
-  <data name="&gt;&gt;RC9ProgressBar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RC9ProgressBar.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;RC9ProgressBar.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;RC11ProgressBar.Name" xml:space="preserve">
-    <value>RC11ProgressBar</value>
-  </data>
-  <data name="&gt;&gt;RC11ProgressBar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RC11ProgressBar.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;RC11ProgressBar.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;RC10ProgressBar.Name" xml:space="preserve">
-    <value>RC10ProgressBar</value>
-  </data>
-  <data name="&gt;&gt;RC10ProgressBar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RC10ProgressBar.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;RC10ProgressBar.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;Ch10Label.Name" xml:space="preserve">
-    <value>Ch10Label</value>
-  </data>
-  <data name="&gt;&gt;Ch10Label.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Ch10Label.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;Ch10Label.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;Ch10NumericUpDown.Name" xml:space="preserve">
-    <value>Ch10NumericUpDown</value>
-  </data>
-  <data name="&gt;&gt;Ch10NumericUpDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Ch10NumericUpDown.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;Ch10NumericUpDown.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;Ch11Label.Name" xml:space="preserve">
-    <value>Ch11Label</value>
-  </data>
-  <data name="&gt;&gt;Ch11Label.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Ch11Label.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;Ch11Label.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;Ch11NumericUpDown.Name" xml:space="preserve">
-    <value>Ch11NumericUpDown</value>
-  </data>
-  <data name="&gt;&gt;Ch11NumericUpDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Ch11NumericUpDown.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;Ch11NumericUpDown.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;Ch12Label.Name" xml:space="preserve">
-    <value>Ch12Label</value>
-  </data>
-  <data name="&gt;&gt;Ch12Label.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Ch12Label.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;Ch12Label.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;Ch12NumericUpDown.Name" xml:space="preserve">
-    <value>Ch12NumericUpDown</value>
-  </data>
-  <data name="&gt;&gt;Ch12NumericUpDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Ch12NumericUpDown.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;Ch12NumericUpDown.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;RxLoopbackButton.Name" xml:space="preserve">
-    <value>RxLoopbackButton</value>
-  </data>
-  <data name="&gt;&gt;RxLoopbackButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RxLoopbackButton.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;RxLoopbackButton.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;RCPacketIntervalLabel.Name" xml:space="preserve">
-    <value>RCPacketIntervalLabel</value>
-  </data>
-  <data name="&gt;&gt;RCPacketIntervalLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RCPacketIntervalLabel.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;RCPacketIntervalLabel.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;RxChannelsNumericUpDown.Name" xml:space="preserve">
-    <value>RxChannelsNumericUpDown</value>
-  </data>
-  <data name="&gt;&gt;RxChannelsNumericUpDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RxChannelsNumericUpDown.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;RxChannelsNumericUpDown.ZOrder" xml:space="preserve">
-    <value>18</value>
-  </data>
-  <data name="&gt;&gt;DiscoveredRCChannelsLabel.Name" xml:space="preserve">
-    <value>DiscoveredRCChannelsLabel</value>
-  </data>
-  <data name="&gt;&gt;DiscoveredRCChannelsLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;DiscoveredRCChannelsLabel.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;DiscoveredRCChannelsLabel.ZOrder" xml:space="preserve">
-    <value>21</value>
-  </data>
-  <data name="&gt;&gt;RCuSCheckBox.Name" xml:space="preserve">
-    <value>RCuSCheckBox</value>
-  </data>
-  <data name="&gt;&gt;RCuSCheckBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RCuSCheckBox.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;RCuSCheckBox.ZOrder" xml:space="preserve">
-    <value>22</value>
-  </data>
-  <data name="&gt;&gt;RC8TextBox.Name" xml:space="preserve">
-    <value>RC8TextBox</value>
-  </data>
-  <data name="&gt;&gt;RC8TextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RC8TextBox.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;RC8TextBox.ZOrder" xml:space="preserve">
-    <value>23</value>
-  </data>
-  <data name="&gt;&gt;RC7TextBox.Name" xml:space="preserve">
-    <value>RC7TextBox</value>
-  </data>
-  <data name="&gt;&gt;RC7TextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RC7TextBox.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;RC7TextBox.ZOrder" xml:space="preserve">
-    <value>24</value>
-  </data>
-  <data name="&gt;&gt;RC6TextBox.Name" xml:space="preserve">
-    <value>RC6TextBox</value>
-  </data>
-  <data name="&gt;&gt;RC6TextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RC6TextBox.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;RC6TextBox.ZOrder" xml:space="preserve">
-    <value>25</value>
-  </data>
-  <data name="&gt;&gt;RC5TextBox.Name" xml:space="preserve">
-    <value>RC5TextBox</value>
-  </data>
-  <data name="&gt;&gt;RC5TextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RC5TextBox.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;RC5TextBox.ZOrder" xml:space="preserve">
-    <value>26</value>
-  </data>
-  <data name="&gt;&gt;RC4TextBox.Name" xml:space="preserve">
-    <value>RC4TextBox</value>
-  </data>
-  <data name="&gt;&gt;RC4TextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RC4TextBox.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;RC4TextBox.ZOrder" xml:space="preserve">
-    <value>27</value>
-  </data>
-  <data name="&gt;&gt;RC3TextBox.Name" xml:space="preserve">
-    <value>RC3TextBox</value>
-  </data>
-  <data name="&gt;&gt;RC3TextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RC3TextBox.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;RC3TextBox.ZOrder" xml:space="preserve">
-    <value>28</value>
-  </data>
-  <data name="&gt;&gt;RC2TextBox.Name" xml:space="preserve">
-    <value>RC2TextBox</value>
-  </data>
-  <data name="&gt;&gt;RC2TextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RC2TextBox.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;RC2TextBox.ZOrder" xml:space="preserve">
-    <value>29</value>
-  </data>
-  <data name="&gt;&gt;RC1TextBox.Name" xml:space="preserve">
-    <value>RC1TextBox</value>
-  </data>
-  <data name="&gt;&gt;RC1TextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RC1TextBox.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;RC1TextBox.ZOrder" xml:space="preserve">
-    <value>30</value>
-  </data>
-  <data name="&gt;&gt;RC0TextBox.Name" xml:space="preserve">
-    <value>RC0TextBox</value>
-  </data>
-  <data name="&gt;&gt;RC0TextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RC0TextBox.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;RC0TextBox.ZOrder" xml:space="preserve">
-    <value>31</value>
-  </data>
-  <data name="&gt;&gt;RC0ProgressBar.Name" xml:space="preserve">
-    <value>RC0ProgressBar</value>
-  </data>
-  <data name="&gt;&gt;RC0ProgressBar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RC0ProgressBar.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;RC0ProgressBar.ZOrder" xml:space="preserve">
-    <value>32</value>
-  </data>
-  <data name="&gt;&gt;RC6ProgressBar.Name" xml:space="preserve">
-    <value>RC6ProgressBar</value>
-  </data>
-  <data name="&gt;&gt;RC6ProgressBar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RC6ProgressBar.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;RC6ProgressBar.ZOrder" xml:space="preserve">
-    <value>33</value>
-  </data>
-  <data name="&gt;&gt;RC1ProgressBar.Name" xml:space="preserve">
-    <value>RC1ProgressBar</value>
-  </data>
-  <data name="&gt;&gt;RC1ProgressBar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RC1ProgressBar.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;RC1ProgressBar.ZOrder" xml:space="preserve">
-    <value>34</value>
-  </data>
-  <data name="&gt;&gt;RC5ProgressBar.Name" xml:space="preserve">
-    <value>RC5ProgressBar</value>
-  </data>
-  <data name="&gt;&gt;RC5ProgressBar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RC5ProgressBar.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;RC5ProgressBar.ZOrder" xml:space="preserve">
-    <value>35</value>
-  </data>
-  <data name="&gt;&gt;RC8ProgressBar.Name" xml:space="preserve">
-    <value>RC8ProgressBar</value>
-  </data>
-  <data name="&gt;&gt;RC8ProgressBar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RC8ProgressBar.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;RC8ProgressBar.ZOrder" xml:space="preserve">
-    <value>36</value>
-  </data>
-  <data name="&gt;&gt;RC2ProgressBar.Name" xml:space="preserve">
-    <value>RC2ProgressBar</value>
-  </data>
-  <data name="&gt;&gt;RC2ProgressBar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RC2ProgressBar.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;RC2ProgressBar.ZOrder" xml:space="preserve">
-    <value>37</value>
-  </data>
-  <data name="&gt;&gt;RC7ProgressBar.Name" xml:space="preserve">
-    <value>RC7ProgressBar</value>
-  </data>
-  <data name="&gt;&gt;RC7ProgressBar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RC7ProgressBar.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;RC7ProgressBar.ZOrder" xml:space="preserve">
-    <value>38</value>
-  </data>
-  <data name="&gt;&gt;RC4ProgressBar.Name" xml:space="preserve">
-    <value>RC4ProgressBar</value>
-  </data>
-  <data name="&gt;&gt;RC4ProgressBar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RC4ProgressBar.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;RC4ProgressBar.ZOrder" xml:space="preserve">
-    <value>39</value>
-  </data>
-  <data name="&gt;&gt;RC3ProgressBar.Name" xml:space="preserve">
-    <value>RC3ProgressBar</value>
-  </data>
-  <data name="&gt;&gt;RC3ProgressBar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RC3ProgressBar.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;RC3ProgressBar.ZOrder" xml:space="preserve">
-    <value>40</value>
-  </data>
-  <data name="RCGroupBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>538, 236</value>
-  </data>
-  <data name="RCGroupBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>264, 391</value>
-  </data>
-  <data name="RCGroupBox.TabIndex" type="System.Int32, mscorlib">
-    <value>111</value>
-  </data>
-  <data name="RCGroupBox.Text" xml:space="preserve">
-    <value>RC (%)</value>
-  </data>
-  <data name="&gt;&gt;RCGroupBox.Name" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;RCGroupBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RCGroupBox.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;RCGroupBox.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="ThrottleIdleLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -6256,13 +6124,13 @@
     <value>6, 314</value>
   </data>
   <data name="Ch11Label.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 13</value>
+    <value>65, 13</value>
   </data>
   <data name="Ch11Label.TabIndex" type="System.Int32, mscorlib">
     <value>232</value>
   </data>
   <data name="Ch11Label.Text" xml:space="preserve">
-    <value>Transition</value>
+    <value>Trans VTOL</value>
   </data>
   <data name="&gt;&gt;Ch11Label.Name" xml:space="preserve">
     <value>Ch11Label</value>
@@ -6981,6 +6849,30 @@
   <data name="&gt;&gt;RC3ProgressBar.ZOrder" xml:space="preserve">
     <value>40</value>
   </data>
+  <data name="RCGroupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>538, 236</value>
+  </data>
+  <data name="RCGroupBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>264, 391</value>
+  </data>
+  <data name="RCGroupBox.TabIndex" type="System.Int32, mscorlib">
+    <value>111</value>
+  </data>
+  <data name="RCGroupBox.Text" xml:space="preserve">
+    <value>RC (%)</value>
+  </data>
+  <data name="&gt;&gt;RCGroupBox.Name" xml:space="preserve">
+    <value>RCGroupBox</value>
+  </data>
+  <data name="&gt;&gt;RCGroupBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RCGroupBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;RCGroupBox.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <data name="bit02CheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -7617,6 +7509,30 @@
   <data name="FWGroupBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
   </data>
+  <data name="&gt;&gt;FWClimbThrNumericUpDown.Name" xml:space="preserve">
+    <value>FWClimbThrNumericUpDown</value>
+  </data>
+  <data name="&gt;&gt;FWClimbThrNumericUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FWClimbThrNumericUpDown.Parent" xml:space="preserve">
+    <value>FWGroupBox</value>
+  </data>
+  <data name="&gt;&gt;FWClimbThrNumericUpDown.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ClimbThrLabel.Name" xml:space="preserve">
+    <value>ClimbThrLabel</value>
+  </data>
+  <data name="&gt;&gt;ClimbThrLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ClimbThrLabel.Parent" xml:space="preserve">
+    <value>FWGroupBox</value>
+  </data>
+  <data name="&gt;&gt;ClimbThrLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="&gt;&gt;FWAilRudFF.Name" xml:space="preserve">
     <value>FWAilRudFF</value>
   </data>
@@ -7627,7 +7543,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;FWAilRudFF.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;FWAileronRudderFFNumericUpDown.Name" xml:space="preserve">
     <value>FWAileronRudderFFNumericUpDown</value>
@@ -7639,7 +7555,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;FWAileronRudderFFNumericUpDown.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;FWAltSpoilerFFLabel.Name" xml:space="preserve">
     <value>FWAltSpoilerFFLabel</value>
@@ -7651,7 +7567,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;FWAltSpoilerFFLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;FWAltSpoilerFFNumericUpDown.Name" xml:space="preserve">
     <value>FWAltSpoilerFFNumericUpDown</value>
@@ -7663,7 +7579,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;FWAltSpoilerFFNumericUpDown.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;FWTrimAngleNumericUpDown.Name" xml:space="preserve">
     <value>FWTrimAngleNumericUpDown</value>
@@ -7675,19 +7591,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;FWTrimAngleNumericUpDown.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;FWTrimAngleLabel.Name" xml:space="preserve">
-    <value>FWTrimAngleLabel</value>
-  </data>
-  <data name="&gt;&gt;FWTrimAngleLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;FWTrimAngleLabel.Parent" xml:space="preserve">
-    <value>FWGroupBox</value>
-  </data>
-  <data name="&gt;&gt;FWTrimAngleLabel.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;FWClimbAngleNumericUpDown.Name" xml:space="preserve">
     <value>FWClimbAngleNumericUpDown</value>
@@ -7699,7 +7603,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;FWClimbAngleNumericUpDown.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;FWClimbAngleLabel.Name" xml:space="preserve">
     <value>FWClimbAngleLabel</value>
@@ -7711,7 +7615,19 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;FWClimbAngleLabel.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;FWTrimAngleLabel.Name" xml:space="preserve">
+    <value>FWTrimAngleLabel</value>
+  </data>
+  <data name="&gt;&gt;FWTrimAngleLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FWTrimAngleLabel.Parent" xml:space="preserve">
+    <value>FWGroupBox</value>
+  </data>
+  <data name="&gt;&gt;FWTrimAngleLabel.ZOrder" xml:space="preserve">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;BestROCNumericUpDown.Name" xml:space="preserve">
     <value>BestROCNumericUpDown</value>
@@ -7723,7 +7639,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;BestROCNumericUpDown.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="&gt;&gt;BestROCLabel.Name" xml:space="preserve">
     <value>BestROCLabel</value>
@@ -7735,7 +7651,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;BestROCLabel.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="&gt;&gt;FWAileronDifferentialLabel.Name" xml:space="preserve">
     <value>FWAileronDifferentialLabel</value>
@@ -7747,7 +7663,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;FWAileronDifferentialLabel.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="&gt;&gt;FWAileronDifferentialNumericUpDown.Name" xml:space="preserve">
     <value>FWAileronDifferentialNumericUpDown</value>
@@ -7759,7 +7675,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;FWAileronDifferentialNumericUpDown.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="&gt;&gt;FWSpoilerDecayTimeLabel.Name" xml:space="preserve">
     <value>FWSpoilerDecayTimeLabel</value>
@@ -7771,7 +7687,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;FWSpoilerDecayTimeLabel.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="&gt;&gt;FWSpoilerDecayTimeNumericUpDown.Name" xml:space="preserve">
     <value>FWSpoilerDecayTimeNumericUpDown</value>
@@ -7783,7 +7699,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;FWSpoilerDecayTimeNumericUpDown.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <data name="&gt;&gt;PitchThrottleFFxLabel.Name" xml:space="preserve">
     <value>PitchThrottleFFxLabel</value>
@@ -7795,7 +7711,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;PitchThrottleFFxLabel.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
   <data name="&gt;&gt;FWPitchThrottleFFNumericUpDown.Name" xml:space="preserve">
     <value>FWPitchThrottleFFNumericUpDown</value>
@@ -7807,7 +7723,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;FWPitchThrottleFFNumericUpDown.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>17</value>
   </data>
   <data name="FWGroupBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 313</value>
@@ -7833,6 +7749,63 @@
   <data name="&gt;&gt;FWGroupBox.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="FWClimbThrNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="FWClimbThrNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>93, 65</value>
+  </data>
+  <data name="FWClimbThrNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 20</value>
+  </data>
+  <data name="FWClimbThrNumericUpDown.TabIndex" type="System.Int32, mscorlib">
+    <value>178</value>
+  </data>
+  <data name="FWClimbThrNumericUpDown.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;FWClimbThrNumericUpDown.Name" xml:space="preserve">
+    <value>FWClimbThrNumericUpDown</value>
+  </data>
+  <data name="&gt;&gt;FWClimbThrNumericUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FWClimbThrNumericUpDown.Parent" xml:space="preserve">
+    <value>FWGroupBox</value>
+  </data>
+  <data name="&gt;&gt;FWClimbThrNumericUpDown.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ClimbThrLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ClimbThrLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ClimbThrLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 69</value>
+  </data>
+  <data name="ClimbThrLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 13</value>
+  </data>
+  <data name="ClimbThrLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>177</value>
+  </data>
+  <data name="ClimbThrLabel.Text" xml:space="preserve">
+    <value>Climb Thr(%)</value>
+  </data>
+  <data name="&gt;&gt;ClimbThrLabel.Name" xml:space="preserve">
+    <value>ClimbThrLabel</value>
+  </data>
+  <data name="&gt;&gt;ClimbThrLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ClimbThrLabel.Parent" xml:space="preserve">
+    <value>FWGroupBox</value>
+  </data>
+  <data name="&gt;&gt;ClimbThrLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="FWAilRudFF.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -7840,7 +7813,7 @@
     <value>NoControl</value>
   </data>
   <data name="FWAilRudFF.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 147</value>
+    <value>6, 172</value>
   </data>
   <data name="FWAilRudFF.Size" type="System.Drawing.Size, System.Drawing">
     <value>67, 13</value>
@@ -7861,13 +7834,13 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;FWAilRudFF.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="FWAileronRudderFFNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="FWAileronRudderFFNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 144</value>
+    <value>93, 169</value>
   </data>
   <data name="FWAileronRudderFFNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 20</value>
@@ -7888,7 +7861,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;FWAileronRudderFFNumericUpDown.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="FWAltSpoilerFFLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7897,7 +7870,7 @@
     <value>NoControl</value>
   </data>
   <data name="FWAltSpoilerFFLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 172</value>
+    <value>6, 197</value>
   </data>
   <data name="FWAltSpoilerFFLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 13</value>
@@ -7918,13 +7891,13 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;FWAltSpoilerFFLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="FWAltSpoilerFFNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="FWAltSpoilerFFNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 170</value>
+    <value>93, 195</value>
   </data>
   <data name="FWAltSpoilerFFNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 20</value>
@@ -7945,7 +7918,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;FWAltSpoilerFFNumericUpDown.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="FWTrimAngleNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -7972,7 +7945,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;FWTrimAngleNumericUpDown.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="FWTrimAngleLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7984,13 +7957,13 @@
     <value>6, 44</value>
   </data>
   <data name="FWTrimAngleLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 13</value>
+    <value>81, 13</value>
   </data>
   <data name="FWTrimAngleLabel.TabIndex" type="System.Int32, mscorlib">
     <value>171</value>
   </data>
   <data name="FWTrimAngleLabel.Text" xml:space="preserve">
-    <value>Trim (Deg)</value>
+    <value>AOA Trim (Deg)</value>
   </data>
   <data name="&gt;&gt;FWTrimAngleLabel.Name" xml:space="preserve">
     <value>FWTrimAngleLabel</value>
@@ -8002,13 +7975,13 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;FWTrimAngleLabel.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="FWClimbAngleNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="FWClimbAngleNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 66</value>
+    <value>93, 91</value>
   </data>
   <data name="FWClimbAngleNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 20</value>
@@ -8029,7 +8002,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;FWClimbAngleNumericUpDown.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="FWClimbAngleLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -8038,7 +8011,7 @@
     <value>NoControl</value>
   </data>
   <data name="FWClimbAngleLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 69</value>
+    <value>6, 94</value>
   </data>
   <data name="FWClimbAngleLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 13</value>
@@ -8059,7 +8032,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;FWClimbAngleLabel.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="BestROCNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -8086,7 +8059,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;BestROCNumericUpDown.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="BestROCLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -8116,7 +8089,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;BestROCLabel.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="FWAileronDifferentialLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -8125,7 +8098,7 @@
     <value>NoControl</value>
   </data>
   <data name="FWAileronDifferentialLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 198</value>
+    <value>6, 223</value>
   </data>
   <data name="FWAileronDifferentialLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 13</value>
@@ -8146,13 +8119,13 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;FWAileronDifferentialLabel.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="FWAileronDifferentialNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="FWAileronDifferentialNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 196</value>
+    <value>93, 221</value>
   </data>
   <data name="FWAileronDifferentialNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 20</value>
@@ -8173,7 +8146,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;FWAileronDifferentialNumericUpDown.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="FWSpoilerDecayTimeLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -8182,7 +8155,7 @@
     <value>NoControl</value>
   </data>
   <data name="FWSpoilerDecayTimeLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 223</value>
+    <value>6, 248</value>
   </data>
   <data name="FWSpoilerDecayTimeLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>86, 13</value>
@@ -8203,13 +8176,13 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;FWSpoilerDecayTimeLabel.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="FWSpoilerDecayTimeNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="FWSpoilerDecayTimeNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 220</value>
+    <value>93, 245</value>
   </data>
   <data name="FWSpoilerDecayTimeNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 20</value>
@@ -8230,7 +8203,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;FWSpoilerDecayTimeNumericUpDown.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <data name="PitchThrottleFFxLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -8239,7 +8212,7 @@
     <value>NoControl</value>
   </data>
   <data name="PitchThrottleFFxLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 94</value>
+    <value>6, 119</value>
   </data>
   <data name="PitchThrottleFFxLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 13</value>
@@ -8260,13 +8233,13 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;PitchThrottleFFxLabel.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
   <data name="FWPitchThrottleFFNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="FWPitchThrottleFFNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 92</value>
+    <value>93, 117</value>
   </data>
   <data name="FWPitchThrottleFFNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 20</value>
@@ -8287,7 +8260,7 @@
     <value>FWGroupBox</value>
   </data>
   <data name="&gt;&gt;FWPitchThrottleFFNumericUpDown.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>17</value>
   </data>
   <data name="ParamTemplateComboBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>

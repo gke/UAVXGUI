@@ -890,7 +890,7 @@ namespace UAVXGUI
                 if ((p == 64) || (p == 83) || (p == 84) || (p == 89))
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 0.1);
                 else
-                    if ((p == 54) || (p == 18) || (p == 22) || (p == 32) || (p == 39) || (p == 46) || (p == 53) || (p == 58) || (p == 70))
+                    if ((p == 54) || (p == 18) || (p == 32) || (p == 39) || (p == 46) || (p == 53) || (p == 58) || (p == 70))
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 10.0);
                 else
                         if ((p == 85) || (p == 86) || (p == 93))
@@ -1123,8 +1123,8 @@ namespace UAVXGUI
                         ParamUpdate(HysteresisNumericUpDown);
                         break;
                     case 22:
-                       // FWAltHoldDecayTimeNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
-                      //  ParamUpdate(FWAltHoldDecayTimeNumericUpDown);
+                        FWClimbThrNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(FWClimbThrNumericUpDown);
                         break;
                     case 23:
                         LowMotorRunNumericUpDown.Value = UAVXP[p-1].Value;

@@ -252,6 +252,8 @@
             this.GyroSlewLimitLabel = new System.Windows.Forms.Label();
             this.AccLabel = new System.Windows.Forms.Label();
             this.FWGroupBox = new System.Windows.Forms.GroupBox();
+            this.FWClimbThrNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.ClimbThrLabel = new System.Windows.Forms.Label();
             this.FWAilRudFF = new System.Windows.Forms.Label();
             this.FWAileronRudderFFNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.FWAltSpoilerFFLabel = new System.Windows.Forms.Label();
@@ -355,6 +357,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.AccLPFNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DerivativeLPFNumericUpDown)).BeginInit();
             this.FWGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FWClimbThrNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWAileronRudderFFNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWAltSpoilerFFNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWTrimAngleNumericUpDown)).BeginInit();
@@ -3066,14 +3069,16 @@
             // FWGroupBox
             // 
             resources.ApplyResources(this.FWGroupBox, "FWGroupBox");
+            this.FWGroupBox.Controls.Add(this.FWClimbThrNumericUpDown);
+            this.FWGroupBox.Controls.Add(this.ClimbThrLabel);
             this.FWGroupBox.Controls.Add(this.FWAilRudFF);
             this.FWGroupBox.Controls.Add(this.FWAileronRudderFFNumericUpDown);
             this.FWGroupBox.Controls.Add(this.FWAltSpoilerFFLabel);
             this.FWGroupBox.Controls.Add(this.FWAltSpoilerFFNumericUpDown);
             this.FWGroupBox.Controls.Add(this.FWTrimAngleNumericUpDown);
-            this.FWGroupBox.Controls.Add(this.FWTrimAngleLabel);
             this.FWGroupBox.Controls.Add(this.FWClimbAngleNumericUpDown);
             this.FWGroupBox.Controls.Add(this.FWClimbAngleLabel);
+            this.FWGroupBox.Controls.Add(this.FWTrimAngleLabel);
             this.FWGroupBox.Controls.Add(this.BestROCNumericUpDown);
             this.FWGroupBox.Controls.Add(this.BestROCLabel);
             this.FWGroupBox.Controls.Add(this.FWAileronDifferentialLabel);
@@ -3092,6 +3097,32 @@
             this.FWGroupBox.Controls.Add(this.Sense51Button);
             this.FWGroupBox.Name = "FWGroupBox";
             this.FWGroupBox.TabStop = false;
+            // 
+            // FWClimbThrNumericUpDown
+            // 
+            this.FWClimbThrNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.FWClimbThrNumericUpDown, "FWClimbThrNumericUpDown");
+            this.FWClimbThrNumericUpDown.Maximum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.FWClimbThrNumericUpDown.Name = "FWClimbThrNumericUpDown";
+            this.FWClimbThrNumericUpDown.Tag = "22";
+            this.FWClimbThrNumericUpDown.Value = new decimal(new int[] {
+            70,
+            0,
+            0,
+            0});
+            this.FWClimbThrNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.FWClimbThrNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.FWClimbThrNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            // 
+            // ClimbThrLabel
+            // 
+            resources.ApplyResources(this.ClimbThrLabel, "ClimbThrLabel");
+            this.ClimbThrLabel.BackColor = System.Drawing.Color.Salmon;
+            this.ClimbThrLabel.Name = "ClimbThrLabel";
             // 
             // FWAilRudFF
             // 
@@ -3186,6 +3217,7 @@
             // FWClimbAngleLabel
             // 
             resources.ApplyResources(this.FWClimbAngleLabel, "FWClimbAngleLabel");
+            this.FWClimbAngleLabel.BackColor = System.Drawing.Color.Salmon;
             this.FWClimbAngleLabel.Name = "FWClimbAngleLabel";
             // 
             // BestROCNumericUpDown
@@ -3426,6 +3458,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DerivativeLPFNumericUpDown)).EndInit();
             this.FWGroupBox.ResumeLayout(false);
             this.FWGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FWClimbThrNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWAileronRudderFFNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWAltSpoilerFFNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWTrimAngleNumericUpDown)).EndInit();
@@ -3681,6 +3714,8 @@
         public System.Windows.Forms.NumericUpDown YawRateIntNumericUpDown;
         public System.Windows.Forms.NumericUpDown YawRateIntLimNumericUpDown;
         private System.Windows.Forms.TextBox MaxRollRateTextBox;
+        public System.Windows.Forms.NumericUpDown FWClimbThrNumericUpDown;
+        private System.Windows.Forms.Label ClimbThrLabel;
 
 
     }

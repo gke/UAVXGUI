@@ -370,6 +370,7 @@ namespace UAVXGUI
             IREmulate,
             Preflight,
             Ready,
+            Launching,
             UnknownFlightState
         };
 
@@ -1899,6 +1900,9 @@ namespace UAVXGUI
                     break;
                 case FlightStates.Ready: FlightState.Text = "Ready";
                     FlightState.BackColor = System.Drawing.Color.Gold;
+                    break;
+                case FlightStates.Launching: FlightState.Text = "Launching";
+                    FlightState.BackColor = System.Drawing.Color.Orange;
                     break;
                 default: FlightState.Text = "Unknown"; break;
             } // switch
