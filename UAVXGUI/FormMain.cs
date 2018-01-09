@@ -1081,17 +1081,19 @@ namespace UAVXGUI
                 SaveTextLogFileStreamWriter.Write("RC["+ (i+1) + "],");
 
             SaveTextLogFileStreamWriter.Write("DesThr," +
-            "DesRoll," +
-             "RollAngle," +
-             "LRAcc," +
-             "DesRollRate," +
-             "RollRate," +
+         
 
             "DesPitch," +
             "PitchAngle," +
             "FBAcc," +
             "DesPitchRate," +
             "PitchRate," +
+
+               "DesRoll," +
+             "RollAngle," +
+             "LRAcc," +
+             "DesRollRate," +
+             "RollRate," +
 
             "DesYaw," +  
             "YawAngleError," +
