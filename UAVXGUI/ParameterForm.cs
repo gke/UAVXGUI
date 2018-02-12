@@ -250,10 +250,6 @@ namespace UAVXGUI
                 helpstring = help.GetString("ProportionalAngle");
             if (parameterForm.AltVelKdNumericUpDown.Focused)
                 helpstring = help.GetString("AltDifferential");
-            if ((parameterForm.RollAngleIntLimitNumericUpDown.Focused) || (parameterForm.RollRateIntLimNumericUpDown.Focused))
-                helpstring = help.GetString("IntegralLimiter");
-            if ((parameterForm.RollAngleIntNumericUpDown.Focused) || (parameterForm.RollRateIntNumericUpDown.Focused))
-                helpstring = help.GetString("Integral");
 
             // Pitch
             if (parameterForm.PitchRatePropNumericUpDown.Focused)
@@ -266,10 +262,7 @@ namespace UAVXGUI
                 helpstring = help.GetString("ProportionalAngle");
             if (parameterForm.AltLPFNumericUpDown.Focused)
                 helpstring = help.GetString("DifferentialFC");
-            if ((parameterForm.PitchAngleIntLimitNumericUpDown.Focused) || (parameterForm.PitchRateIntLimNumericUpDown.Focused) )
-                helpstring = help.GetString("IntegralLimiter");
-            if ((parameterForm.PitchAngleIntNumericUpDown.Focused) || (parameterForm.PitchRateIntNumericUpDown.Focused))
-                helpstring = help.GetString("Integral");
+
 
             if (parameterForm.BalanceNumericUpDown.Focused)
                 helpstring = help.GetString("Balance");
@@ -381,7 +374,7 @@ namespace UAVXGUI
             if (parameterForm.InertialSchemeComboBox.Focused)
                 helpstring = help.GetString("InertialScheme");
 
-            if (parameterForm.DerivativeLPFNumericUpDown.Focused)
+            if (parameterForm.YawGyroLPFNumericUpDown.Focused)
                 helpstring = help.GetString("DerivativeFilter");
 
             if (parameterForm.ParamTemplateComboBox.Focused)
@@ -430,10 +423,10 @@ namespace UAVXGUI
             if (parameterForm.HysteresisNumericUpDown.Focused)
                 helpstring = help.GetString("Hysteresis");
 
-            if (parameterForm.GyroLPFNumericUpDown.Focused)
+            if (parameterForm.GyroLPFComboBox.Focused)
                 helpstring = help.GetString("GyroLPF");
 
-            if (parameterForm.AccLPFNumericUpDown.Focused)
+            if (parameterForm.AccLPFComboBox.Focused)
                 helpstring = help.GetString("AccLPF");
 
             if (parameterForm.MadgwickKpAccNumericUpDown.Focused)
@@ -893,7 +886,7 @@ namespace UAVXGUI
                     if ((p == 54) || (p == 18) || (p == 32) || (p == 39) || (p == 46) || (p == 53) || (p == 58) || (p == 70))
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 10.0);
                 else
-                        if ((p == 85) || (p == 86) || (p == 93))
+                        if ((p == 85) || (p == 86))
                         P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 100.0);
                 else
                     P[CurrPS, p - 1].Value = Convert.ToByte(Field.Value);
@@ -1060,7 +1053,7 @@ namespace UAVXGUI
                          ParamUpdate(PitchAngleIntLimitNumericUpDown);
                         break;
                     case 11:
-                        YawRatePropNumericUpDown.Value = UAVXP[p-1].Value;
+                        YawRatePropNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(YawRatePropNumericUpDown);
                         break;
                     case 12:
@@ -1143,9 +1136,8 @@ namespace UAVXGUI
                         ParamUpdate(CameraPitchNumericUpDown);
                         break;
                     case 27:
-                        //YawAnglePropTextBox.Text = string.Format("{0:n0}", Convert.ToDecimal(UAVXP[p - 1].Value));
-                        //YawAnglePropNumericUpDown.Value = UAVXP[p-1].Value;
-                        //ParamUpdate(YawAnglePropNumericUpDown);
+                        ServoLPFHzNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(ServoLPFHzNumericUpDown);
                         break;
                     case 28:
                         PitchRateDiffNumericUpDown.Value = UAVXP[p-1].Value;
@@ -1238,10 +1230,10 @@ namespace UAVXGUI
                         ParamUpdate(DescDelayNumericUpDown);
                         break;
                     case 48:
-                        GyroLPFNumericUpDown.Value = UAVXP[p - 1].Value;
-                        GyroLPFNumericUpDown.BackColor =  (GyroLPFNumericUpDown.Value < 50) ?
-                            Color.Orange : Color.White;
-                        ParamUpdate(GyroLPFNumericUpDown);
+                        GyroLPFComboBox.SelectedIndex = UAVXP[p - 1].Value;
+                        //GyroLPFNumericUpDown.BackColor =  (GyroLPFNumericUpDown.Value < 50) ?
+                        //    Color.Orange : Color.White;
+                        ParamUpdate(GyroLPFComboBox);
                         break;
                     case 49:
                         CrossTrackNumericUpDown.Value = UAVXP[p-1].Value;
@@ -1402,10 +1394,10 @@ namespace UAVXGUI
                         ParamUpdate(MaxRollAngleNumericUpDown);
                         break;
                     case 78:
-                        DerivativeLPFNumericUpDown.Value = UAVXP[p - 1].Value;
-                        DerivativeLPFNumericUpDown.BackColor = (DerivativeLPFNumericUpDown.Value >= GyroLPFNumericUpDown.Value) ?
-                            Color.Red : Color.White;
-                        ParamUpdate(DerivativeLPFNumericUpDown);
+                        YawGyroLPFNumericUpDown.Value = UAVXP[p - 1].Value;
+                       // YawGyroLPFNumericUpDown.BackColor = (YawGyroLPFNumericUpDown.Value >= GyroLPFNumericUpDown.Value) ?
+                       //     Color.Red : Color.White;
+                        ParamUpdate(YawGyroLPFNumericUpDown);
                         break;
                     case 79:
                         TurnoutNumericUpDown.Value = UAVXP[p - 1].Value;
@@ -1453,10 +1445,8 @@ namespace UAVXGUI
                         break;
 
                     case 90:
-                        AccLPFNumericUpDown.Value = UAVXP[p - 1].Value;
-                        AccLPFNumericUpDown.BackColor = (AccLPFNumericUpDown.Value >= DerivativeLPFNumericUpDown.Value) ?
-                            Color.Red : Color.White;
-                        ParamUpdate(AccLPFNumericUpDown);
+                        AccLPFComboBox.SelectedIndex = UAVXP[p - 1].Value;
+                        ParamUpdate(AccLPFComboBox);
                         break;
                     case 91:
                         YawRateDiffNumericUpDown.Value = UAVXP[p - 1].Value;
@@ -1467,7 +1457,7 @@ namespace UAVXGUI
                         ParamUpdate(GyroSlewRateNumericUpDown);
                         break;
                     case 93:
-                        ThrottleGainNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.01);
+                        ThrottleGainNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(ThrottleGainNumericUpDown);
                         break;
                     case 94: // Aux5
@@ -1482,31 +1472,28 @@ namespace UAVXGUI
                         Ch12NumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(Ch12NumericUpDown);
                         break;
-
-                    case 97: 
-                        RollRateIntNumericUpDown.Value = UAVXP[p - 1].Value;
-                        ParamUpdate(RollRateIntNumericUpDown);
+                    case 97:
+                        YawAnglePropTextBox.Text = string.Format("{0:n0}", UAVXP[p - 1].Value);
+                        P[CurrPS, p - 1].Value = UAVXP[p - 1].Value;
                         break;
-                    case 98: 
-                        RollRateIntLimNumericUpDown.Value = UAVXP[p - 1].Value;
-                        ParamUpdate(RollRateIntLimNumericUpDown);
+                    case 98:
+                       YawAngleIntNumericUpDown.Value = UAVXP[p - 1].Value;
+                       ParamUpdate(YawAngleIntNumericUpDown);
                         break;
                     case 99: 
-                        PitchRateIntNumericUpDown.Value = UAVXP[p - 1].Value;
-                        ParamUpdate(PitchRateIntNumericUpDown);
+                        YawAngleIntLimitNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(YawAngleIntLimitNumericUpDown);
                         break;
                     case 100: 
-                        PitchRateIntLimNumericUpDown.Value = UAVXP[p - 1].Value;
-                        ParamUpdate(PitchRateIntLimNumericUpDown);
+                        AltPosIntLimitNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(AltPosIntLimitNumericUpDown);
                         break;
-
                     case 101: 
-                        YawRateIntNumericUpDown.Value = UAVXP[p - 1].Value;
-                        ParamUpdate(YawRateIntNumericUpDown);
+                        MotorStopComboBox.SelectedIndex = UAVXP[p - 1].Value;
+                        ParamUpdate(MotorStopComboBox);
                         break;
                     case 102: 
-                        YawRateIntLimNumericUpDown.Value = UAVXP[p - 1].Value;
-                        ParamUpdate(YawRateIntLimNumericUpDown);
+                       
                         break;
 
                     default: break; // up to case 64 available

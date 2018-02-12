@@ -866,14 +866,17 @@ namespace UAVXGUI
         private void ViaContextMenuItem_Click(object sender, EventArgs e)
         {
             if (!GoToEnabled)
-                addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navVia], start.Lat, start.Lng, Properties.Settings.Default.Altitude, Properties.Settings.Default.Velocity, Convert.ToInt32(DefaultLoiterTextBox.Text), 0, 0, 0);
+                addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navVia], start.Lat, start.Lng, 
+                    Properties.Settings.Default.Altitude, Properties.Settings.Default.Velocity, 
+                    Convert.ToInt32(DefaultLoiterTextBox.Text), Properties.Settings.Default.OrbitRadius, 
+                    Properties.Settings.Default.OrbitVelocity, 25);
         } // ViaContextMenuItem_Click
 
         private void OrbitContextMenuItem_Click(object sender, EventArgs e)
         {
-            if (!GoToEnabled) addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navOrbit], start.Lat, start.Lng, 
+            if (!GoToEnabled) addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navOrbit], start.Lat, start.Lng,
                 Properties.Settings.Default.Altitude, Properties.Settings.Default.Velocity, 30, 
-                Properties.Settings.Default.OrbitRadius, Properties.Settings.Default.OrbitVelocity, 0);
+                Properties.Settings.Default.OrbitRadius, Properties.Settings.Default.OrbitVelocity, 25);
         } // OrbitContextMenuItem_Click
 
         private void PerchContextMenuItem_Click(object sender, EventArgs e)

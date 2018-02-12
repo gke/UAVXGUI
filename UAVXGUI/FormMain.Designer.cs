@@ -195,10 +195,10 @@ namespace UAVXGUI
             this.FailsafeSLabel = new System.Windows.Forms.Label();
             this.GyroSLabel = new System.Windows.Forms.Label();
             this.RCFailSafeS = new System.Windows.Forms.Label();
-            this.I2CESCFailS = new System.Windows.Forms.Label();
+            this.SaturationS = new System.Windows.Forms.Label();
             this.GPSInvalidSLabel = new System.Windows.Forms.Label();
             this.GPSFailS = new System.Windows.Forms.Label();
-            this.ESCSLabel = new System.Windows.Forms.Label();
+            this.SaturationLabel = new System.Windows.Forms.Label();
             this.GyroFailS = new System.Windows.Forms.Label();
             this.AccFailLabel = new System.Windows.Forms.Label();
             this.AccFailS = new System.Windows.Forms.Label();
@@ -243,9 +243,7 @@ namespace UAVXGUI
             this.CalibrateMagButton = new System.Windows.Forms.Button();
             this.DrivesGroupBox = new System.Windows.Forms.GroupBox();
             this.ImbalanceLabel = new System.Windows.Forms.Label();
-            this.FWRateEnergy = new System.Windows.Forms.TextBox();
             this.DiagnosticCheckBox = new System.Windows.Forms.CheckBox();
-            this.RateEnergyLabel = new System.Windows.Forms.Label();
             this.PWMT9 = new System.Windows.Forms.TextBox();
             this.PWMT7 = new System.Windows.Forms.TextBox();
             this.PWMT6 = new System.Windows.Forms.TextBox();
@@ -266,6 +264,8 @@ namespace UAVXGUI
             this.PWMT4ProgressBar = new System.Windows.Forms.ProgressBar();
             this.PWMT3ProgressBar = new System.Windows.Forms.ProgressBar();
             this.PWMT8ProgressBar = new System.Windows.Forms.ProgressBar();
+            this.FWRateEnergy = new System.Windows.Forms.TextBox();
+            this.RateEnergyLabel = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker3 = new System.ComponentModel.BackgroundWorker();
@@ -291,13 +291,13 @@ namespace UAVXGUI
             this.UtilisationLabel = new System.Windows.Forms.Label();
             this.UtilisationProgressBar = new System.Windows.Forms.ProgressBar();
             this.CalibrationGroupBox = new System.Windows.Forms.GroupBox();
-            this.DerivativeLPFLabel = new System.Windows.Forms.Label();
+            this.YawPitchRollGyroLabel = new System.Windows.Forms.Label();
             this.NyquistMargin = new System.Windows.Forms.Label();
             this.GyroLPF = new System.Windows.Forms.Label();
             this.AccLPF = new System.Windows.Forms.Label();
             this.NyquistMarginLabel = new System.Windows.Forms.Label();
             this.AccLPFLabel = new System.Windows.Forms.Label();
-            this.GyroLPFLabel = new System.Windows.Forms.Label();
+            this.PitchRollGyroLabel = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.MZCalBiasLabel = new System.Windows.Forms.Label();
             this.MYCalBiasLabel = new System.Windows.Forms.Label();
@@ -377,19 +377,19 @@ namespace UAVXGUI
             // 
             // RollAngle
             // 
-            this.RollAngle.Location = new System.Drawing.Point(45, 45);
+            this.RollAngle.Location = new System.Drawing.Point(38, 45);
             this.RollAngle.Name = "RollAngle";
             this.RollAngle.ReadOnly = true;
-            this.RollAngle.Size = new System.Drawing.Size(25, 20);
+            this.RollAngle.Size = new System.Drawing.Size(32, 20);
             this.RollAngle.TabIndex = 5;
             this.RollAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // PitchAngle
             // 
-            this.PitchAngle.Location = new System.Drawing.Point(45, 71);
+            this.PitchAngle.Location = new System.Drawing.Point(38, 71);
             this.PitchAngle.Name = "PitchAngle";
             this.PitchAngle.ReadOnly = true;
-            this.PitchAngle.Size = new System.Drawing.Size(25, 20);
+            this.PitchAngle.Size = new System.Drawing.Size(32, 20);
             this.PitchAngle.TabIndex = 6;
             this.PitchAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -495,16 +495,16 @@ namespace UAVXGUI
             // 
             // YawAngle
             // 
-            this.YawAngle.Location = new System.Drawing.Point(45, 97);
+            this.YawAngle.Location = new System.Drawing.Point(38, 97);
             this.YawAngle.Name = "YawAngle";
             this.YawAngle.ReadOnly = true;
-            this.YawAngle.Size = new System.Drawing.Size(25, 20);
+            this.YawAngle.Size = new System.Drawing.Size(32, 20);
             this.YawAngle.TabIndex = 20;
             this.YawAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // DUAcc
             // 
-            this.DUAcc.Location = new System.Drawing.Point(39, 71);
+            this.DUAcc.Location = new System.Drawing.Point(38, 71);
             this.DUAcc.Name = "DUAcc";
             this.DUAcc.ReadOnly = true;
             this.DUAcc.Size = new System.Drawing.Size(32, 20);
@@ -513,7 +513,7 @@ namespace UAVXGUI
             // 
             // FBAcc
             // 
-            this.FBAcc.Location = new System.Drawing.Point(39, 16);
+            this.FBAcc.Location = new System.Drawing.Point(38, 16);
             this.FBAcc.Name = "FBAcc";
             this.FBAcc.ReadOnly = true;
             this.FBAcc.Size = new System.Drawing.Size(32, 20);
@@ -1952,10 +1952,10 @@ namespace UAVXGUI
             this.ErrorStatsGroupBox.Controls.Add(this.FailsafeSLabel);
             this.ErrorStatsGroupBox.Controls.Add(this.GyroSLabel);
             this.ErrorStatsGroupBox.Controls.Add(this.RCFailSafeS);
-            this.ErrorStatsGroupBox.Controls.Add(this.I2CESCFailS);
+            this.ErrorStatsGroupBox.Controls.Add(this.SaturationS);
             this.ErrorStatsGroupBox.Controls.Add(this.GPSInvalidSLabel);
             this.ErrorStatsGroupBox.Controls.Add(this.GPSFailS);
-            this.ErrorStatsGroupBox.Controls.Add(this.ESCSLabel);
+            this.ErrorStatsGroupBox.Controls.Add(this.SaturationLabel);
             this.ErrorStatsGroupBox.Controls.Add(this.GyroFailS);
             this.ErrorStatsGroupBox.Controls.Add(this.AccFailLabel);
             this.ErrorStatsGroupBox.Controls.Add(this.AccFailS);
@@ -2044,14 +2044,14 @@ namespace UAVXGUI
             this.RCFailSafeS.Text = "0";
             this.RCFailSafeS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // I2CESCFailS
+            // SaturationS
             // 
-            this.I2CESCFailS.Location = new System.Drawing.Point(187, 14);
-            this.I2CESCFailS.Name = "I2CESCFailS";
-            this.I2CESCFailS.Size = new System.Drawing.Size(42, 14);
-            this.I2CESCFailS.TabIndex = 65;
-            this.I2CESCFailS.Text = "0";
-            this.I2CESCFailS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.SaturationS.Location = new System.Drawing.Point(187, 14);
+            this.SaturationS.Name = "SaturationS";
+            this.SaturationS.Size = new System.Drawing.Size(42, 14);
+            this.SaturationS.TabIndex = 65;
+            this.SaturationS.Text = "0";
+            this.SaturationS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // GPSInvalidSLabel
             // 
@@ -2071,14 +2071,14 @@ namespace UAVXGUI
             this.GPSFailS.Text = "0";
             this.GPSFailS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // ESCSLabel
+            // SaturationLabel
             // 
-            this.ESCSLabel.AutoSize = true;
-            this.ESCSLabel.Location = new System.Drawing.Point(153, 15);
-            this.ESCSLabel.Name = "ESCSLabel";
-            this.ESCSLabel.Size = new System.Drawing.Size(28, 13);
-            this.ESCSLabel.TabIndex = 52;
-            this.ESCSLabel.Text = "ESC";
+            this.SaturationLabel.AutoSize = true;
+            this.SaturationLabel.Location = new System.Drawing.Point(153, 15);
+            this.SaturationLabel.Name = "SaturationLabel";
+            this.SaturationLabel.Size = new System.Drawing.Size(24, 13);
+            this.SaturationLabel.TabIndex = 52;
+            this.SaturationLabel.Text = "Clip";
             // 
             // GyroFailS
             // 
@@ -2515,6 +2515,7 @@ namespace UAVXGUI
             // 
             // DrivesGroupBox
             // 
+            this.DrivesGroupBox.BackColor = System.Drawing.SystemColors.Control;
             this.DrivesGroupBox.Controls.Add(this.ImbalanceLabel);
             this.DrivesGroupBox.Controls.Add(this.DiagnosticCheckBox);
             this.DrivesGroupBox.Controls.Add(this.PWMT9);
@@ -2553,15 +2554,6 @@ namespace UAVXGUI
             this.ImbalanceLabel.TabIndex = 228;
             this.ImbalanceLabel.Text = "Drive Imbalance";
             // 
-            // FWRateEnergy
-            // 
-            this.FWRateEnergy.Location = new System.Drawing.Point(111, 42);
-            this.FWRateEnergy.Name = "FWRateEnergy";
-            this.FWRateEnergy.ReadOnly = true;
-            this.FWRateEnergy.Size = new System.Drawing.Size(45, 20);
-            this.FWRateEnergy.TabIndex = 226;
-            this.FWRateEnergy.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // DiagnosticCheckBox
             // 
             this.DiagnosticCheckBox.AutoSize = true;
@@ -2571,15 +2563,6 @@ namespace UAVXGUI
             this.DiagnosticCheckBox.Size = new System.Drawing.Size(15, 14);
             this.DiagnosticCheckBox.TabIndex = 226;
             this.DiagnosticCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // RateEnergyLabel
-            // 
-            this.RateEnergyLabel.AutoSize = true;
-            this.RateEnergyLabel.Location = new System.Drawing.Point(8, 45);
-            this.RateEnergyLabel.Name = "RateEnergyLabel";
-            this.RateEnergyLabel.Size = new System.Drawing.Size(80, 13);
-            this.RateEnergyLabel.TabIndex = 227;
-            this.RateEnergyLabel.Text = "FW Servo Jitter";
             // 
             // PWMT9
             // 
@@ -2791,6 +2774,24 @@ namespace UAVXGUI
             this.PWMT8ProgressBar.Step = 1;
             this.PWMT8ProgressBar.TabIndex = 187;
             // 
+            // FWRateEnergy
+            // 
+            this.FWRateEnergy.Location = new System.Drawing.Point(111, 42);
+            this.FWRateEnergy.Name = "FWRateEnergy";
+            this.FWRateEnergy.ReadOnly = true;
+            this.FWRateEnergy.Size = new System.Drawing.Size(45, 20);
+            this.FWRateEnergy.TabIndex = 226;
+            this.FWRateEnergy.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // RateEnergyLabel
+            // 
+            this.RateEnergyLabel.AutoSize = true;
+            this.RateEnergyLabel.Location = new System.Drawing.Point(8, 45);
+            this.RateEnergyLabel.Name = "RateEnergyLabel";
+            this.RateEnergyLabel.Size = new System.Drawing.Size(60, 13);
+            this.RateEnergyLabel.TabIndex = 227;
+            this.RateEnergyLabel.Text = "Servo Jitter";
+            // 
             // MissionTimeTextBox
             // 
             this.MissionTimeTextBox.BackColor = System.Drawing.SystemColors.Control;
@@ -2943,13 +2944,13 @@ namespace UAVXGUI
             // 
             // CalibrationGroupBox
             // 
-            this.CalibrationGroupBox.Controls.Add(this.DerivativeLPFLabel);
+            this.CalibrationGroupBox.Controls.Add(this.YawPitchRollGyroLabel);
             this.CalibrationGroupBox.Controls.Add(this.NyquistMargin);
             this.CalibrationGroupBox.Controls.Add(this.GyroLPF);
             this.CalibrationGroupBox.Controls.Add(this.AccLPF);
             this.CalibrationGroupBox.Controls.Add(this.NyquistMarginLabel);
             this.CalibrationGroupBox.Controls.Add(this.AccLPFLabel);
-            this.CalibrationGroupBox.Controls.Add(this.GyroLPFLabel);
+            this.CalibrationGroupBox.Controls.Add(this.PitchRollGyroLabel);
             this.CalibrationGroupBox.Controls.Add(this.label22);
             this.CalibrationGroupBox.Controls.Add(this.MZCalBiasLabel);
             this.CalibrationGroupBox.Controls.Add(this.MYCalBiasLabel);
@@ -2987,14 +2988,14 @@ namespace UAVXGUI
             this.CalibrationGroupBox.TabStop = false;
             this.CalibrationGroupBox.Text = "Calibration and Filters";
             // 
-            // DerivativeLPFLabel
+            // YawPitchRollGyroLabel
             // 
-            this.DerivativeLPFLabel.Location = new System.Drawing.Point(192, 118);
-            this.DerivativeLPFLabel.Name = "DerivativeLPFLabel";
-            this.DerivativeLPFLabel.Size = new System.Drawing.Size(20, 13);
-            this.DerivativeLPFLabel.TabIndex = 221;
-            this.DerivativeLPFLabel.Text = "0";
-            this.DerivativeLPFLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.YawPitchRollGyroLabel.Location = new System.Drawing.Point(192, 118);
+            this.YawPitchRollGyroLabel.Name = "YawPitchRollGyroLabel";
+            this.YawPitchRollGyroLabel.Size = new System.Drawing.Size(20, 13);
+            this.YawPitchRollGyroLabel.TabIndex = 221;
+            this.YawPitchRollGyroLabel.Text = "0";
+            this.YawPitchRollGyroLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // NyquistMargin
             // 
@@ -3010,9 +3011,9 @@ namespace UAVXGUI
             this.GyroLPF.AutoSize = true;
             this.GyroLPF.Location = new System.Drawing.Point(132, 118);
             this.GyroLPF.Name = "GyroLPF";
-            this.GyroLPF.Size = new System.Drawing.Size(60, 13);
+            this.GyroLPF.Size = new System.Drawing.Size(57, 13);
             this.GyroLPF.TabIndex = 219;
-            this.GyroLPF.Text = "Deriv/Rate";
+            this.GyroLPF.Text = "Gyro Y-PR";
             // 
             // AccLPF
             // 
@@ -3041,14 +3042,14 @@ namespace UAVXGUI
             this.AccLPFLabel.Text = "0";
             this.AccLPFLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // GyroLPFLabel
+            // PitchRollGyroLabel
             // 
-            this.GyroLPFLabel.Location = new System.Drawing.Point(204, 118);
-            this.GyroLPFLabel.Name = "GyroLPFLabel";
-            this.GyroLPFLabel.Size = new System.Drawing.Size(40, 13);
-            this.GyroLPFLabel.TabIndex = 215;
-            this.GyroLPFLabel.Text = "0";
-            this.GyroLPFLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.PitchRollGyroLabel.Location = new System.Drawing.Point(204, 118);
+            this.PitchRollGyroLabel.Name = "PitchRollGyroLabel";
+            this.PitchRollGyroLabel.Size = new System.Drawing.Size(40, 13);
+            this.PitchRollGyroLabel.TabIndex = 215;
+            this.PitchRollGyroLabel.Text = "0";
+            this.PitchRollGyroLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label22
             // 
@@ -3356,9 +3357,9 @@ namespace UAVXGUI
             this.FWGlideAngleOffsetLabel.AutoSize = true;
             this.FWGlideAngleOffsetLabel.Location = new System.Drawing.Point(6, 19);
             this.FWGlideAngleOffsetLabel.Name = "FWGlideAngleOffsetLabel";
-            this.FWGlideAngleOffsetLabel.Size = new System.Drawing.Size(84, 13);
+            this.FWGlideAngleOffsetLabel.Size = new System.Drawing.Size(67, 13);
             this.FWGlideAngleOffsetLabel.TabIndex = 225;
-            this.FWGlideAngleOffsetLabel.Text = "FWPitchE (Deg)";
+            this.FWGlideAngleOffsetLabel.Text = "PitchE (Deg)";
             // 
             // FlightStateLabel
             // 
@@ -3646,13 +3647,13 @@ namespace UAVXGUI
         private System.Windows.Forms.Label GyroFailS;
         private System.Windows.Forms.Label GPSInvalidSLabel;
         private System.Windows.Forms.Label GPSFailS;
-        private System.Windows.Forms.Label I2CESCFailS;
+        private System.Windows.Forms.Label SaturationS;
         private System.Windows.Forms.Label CompassFailLabel;
         private System.Windows.Forms.Label AccFailLabel;
         private System.Windows.Forms.Label CompassFailS;
         private System.Windows.Forms.Label BaroFailLabel;
         private System.Windows.Forms.Label BaroFailS;
-        private System.Windows.Forms.Label ESCSLabel;
+        private System.Windows.Forms.Label SaturationLabel;
         private System.Windows.Forms.Label AccFailS;
         private System.Windows.Forms.Label FailsafeSLabel;
         private System.Windows.Forms.Label RCFailSafeS;
@@ -3815,10 +3816,10 @@ namespace UAVXGUI
         private System.Windows.Forms.Label AccLPF;
         private System.Windows.Forms.Label NyquistMarginLabel;
         private System.Windows.Forms.Label AccLPFLabel;
-        private System.Windows.Forms.Label GyroLPFLabel;
+        private System.Windows.Forms.Label PitchRollGyroLabel;
         private System.Windows.Forms.GroupBox TuningGroupBox;
         private System.Windows.Forms.CheckBox DiagnosticCheckBox;
-        private System.Windows.Forms.Label DerivativeLPFLabel;
+        private System.Windows.Forms.Label YawPitchRollGyroLabel;
         private System.Windows.Forms.Label ImbalanceLabel;
     }
 }

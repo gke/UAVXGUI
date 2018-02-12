@@ -230,6 +230,8 @@ namespace UAVXGUI
 	 public const byte UAVXAnglePIDPacketTag = 63;
      public const byte UAVXRatePIDPacketTag = 64;
      public const byte UAVXAltPIDPacketTag = 65;
+     public const byte UAVXGPSPIDPacketTag = 66;
+     public const byte UAVXRawIMUPacketTag = 67;
 
         public const byte FrSkyPacketTag = 99;
 
@@ -417,10 +419,10 @@ namespace UAVXGUI
 				UseManualAltHold,
 
 				// 4
-				Signal,
+				Saturation,
 				DumpingBB,
 				ParametersValid,
-				RCNewValues,
+				Signal,
 				UsingWPNavigation,
 				IMUActive,
 				MagnetometerActive,
@@ -485,7 +487,8 @@ namespace UAVXGUI
         short[] PWMT = new short[10];    // 63
         short[] PWMDiagT = new short[10];
 
-        int MissionTimeMilliSecT;      
+        int MissionTimeMilliSecT;
+        int MissionTimeMicroSecT; 
 
         // UAVXNavPacket
         //byte UAVXNavPacketTag;
@@ -557,7 +560,7 @@ namespace UAVXGUI
         //should be an enum!!!
         const byte GPSAltitudeX = 0;
         const byte BaroRelAltitudeX = 1;
-        const byte ESCI2CFailX = 2;
+        const byte SaturationX = 2;
         const byte GPSMinSatsX = 3;
         const byte MinROCX = 4;
         const byte MaxROCX = 5;
@@ -642,6 +645,8 @@ namespace UAVXGUI
         public Boolean AnglePIDHeader = false;
         public Boolean RatePIDHeader = false;
         public Boolean AltPIDHeader = false;
+        short[] RawIMU = new short[7];
+        public Boolean RawIMUHeader = false;
 
         public static short WPDistanceT;
 
@@ -1010,6 +1015,12 @@ namespace UAVXGUI
 
         }
 
+        private void WriteTextIMUFileHeader()
+        {
+            SaveTextLogFileStreamWriter.WriteLine("TimeuS, Ax, Ay, Az, Gx, Gy, Gz");
+
+        }
+
         private void WriteTextLogFileHeader()
         {
             int i;
@@ -1171,7 +1182,7 @@ namespace UAVXGUI
 
             "GPSAltX," +
             "BaroRelAltX," +
-            "ESCI2CFailX," +
+            "ClipX," +
             "GPSMinSatsX," +
             "MinROCX," +
             "MaxROCX," +
@@ -1360,6 +1371,9 @@ namespace UAVXGUI
                 if (F[(byte)FlagValues.IsArmed]) speech.SpeakAsync("Arming Switch.");
                 if (DesiredThrottleT > 0) speech.SpeakAsync("Throttle open.");
                 if (!F[(byte)FlagValues.Signal]) speech.SpeakAsync("No signal.");
+
+                if (RCChannel[4] >= 1200) speech.SpeakAsync("Navigate or return home selected.");
+
                 if (!F[(byte)FlagValues.IMUActive]) speech.SpeakAsync("IMU inactive.");
                 if (!F[(byte)FlagValues.BaroActive]) speech.SpeakAsync("Barometer inactive.");
                 if (!F[(byte)FlagValues.MagnetometerActive]) speech.SpeakAsync("Magnetometer inactive.");
@@ -1856,6 +1870,9 @@ namespace UAVXGUI
 
            UsingUplinkFlagBox.BackColor = F[(byte)FlagValues.UsingUplink] ?
                System.Drawing.Color.Green : System.Drawing.Color.Orange;
+
+            DrivesGroupBox.BackColor = F[(byte)FlagValues.Saturation] ?
+               System.Drawing.Color.Orange : System.Drawing.SystemColors.Control;
             
         }
 
@@ -2094,7 +2111,8 @@ namespace UAVXGUI
 
         void UpdateControls()
         {
-                DesiredThrottle.Text = string.Format("{0:n0}", ((float)(RCChannel[0] - 1000) * 100.0) / RCMaximum);
+            DesiredThrottle.Text = string.Format("{0:n1}", (float)(DesiredThrottleT * 0.1));
+            //DesiredThrottle.Text = string.Format("{0:n0}", ((float)(RCChannel[0] - 1000) * 100.0) / RCMaximum);
                 DesiredRoll.Text = string.Format("{0:n0}", ((float)(RCChannel[1] - 1500) * 200.0 - 150.0) / RCMaximum);
                 DesiredPitch.Text = string.Format("{0:n0}", ((float)(RCChannel[2] - 1500) * 200.0 - 150.0) / RCMaximum);
                 DesiredYaw.Text = string.Format("{0:n0}", ((float)(RCChannel[3] - 1500) * 200.0 - 150.0) / RCMaximum);
@@ -2588,7 +2606,7 @@ namespace UAVXGUI
 
                     Heading.Text = string.Format("{0:n0}", (float)HeadingT * MILLIRADDEG);                
                     
-                    DesiredThrottle.Text = string.Format("{0:n0}", DesiredThrottleT);
+                   // DesiredThrottle.Text = string.Format("{0:n0}", DesiredThrottleT);
 
                     UpdateGPS();
 
@@ -2635,13 +2653,13 @@ namespace UAVXGUI
 
                      int Nyquist = (Cal[18] + 2) / 4;
                      AccLPFLabel.BackColor = Cal[19] >= (Cal[20]/3) ? System.Drawing.Color.Orange : System.Drawing.Color.Green;
-                     GyroLPFLabel.BackColor = Cal[20] >= Nyquist   ? System.Drawing.Color.Red : System.Drawing.Color.Green;
-                     DerivativeLPFLabel.BackColor = Cal[19] >= Cal[20] ? System.Drawing.Color.Orange : System.Drawing.Color.Green;
+                     PitchRollGyroLabel.BackColor = Cal[20] >= Nyquist   ? System.Drawing.Color.Red : System.Drawing.Color.Green;
+                     YawPitchRollGyroLabel.BackColor = Cal[19] >= Cal[20] ? System.Drawing.Color.Orange : System.Drawing.Color.Green;
 
                      NyquistMarginLabel.Text = string.Format("{0:n0}", (Cal[18]+1) / 2);
                      AccLPFLabel.Text = string.Format("{0:n0}", Cal[19]);
-                     GyroLPFLabel.Text = string.Format("{0:n0}", Cal[20]);
-                     DerivativeLPFLabel.Text = string.Format("{0:n0}", Cal[21]);
+                     PitchRollGyroLabel.Text = string.Format("{0:n0}", Cal[20]);
+                     YawPitchRollGyroLabel.Text = string.Format("{0:n0}", Cal[21]);
   
                     break;
 
@@ -2662,7 +2680,7 @@ namespace UAVXGUI
                     GyroFailS.Text = string.Format("{0:n0}", Stats[GyroFailsX]);
                     CompassFailS.Text = string.Format("{0:n0}", Stats[CompassFailsX]);
                     BaroFailS.Text = string.Format("{0:n0}", Stats[BaroFailsX]);
-                    I2CESCFailS.Text = string.Format("{0:n0}", Stats[ESCI2CFailX]);
+                    SaturationS.Text = string.Format("{0:n0}", Stats[SaturationX]);
                     RCFailSafeS.Text = string.Format("{0:n0}", Stats[RCFailSafesX]);
 
 
@@ -2818,6 +2836,24 @@ namespace UAVXGUI
                     }
 
                     WriteTextPIDLogFile();
+
+                    break;
+
+                case UAVXRawIMUPacketTag:
+
+                    if (!RawIMUHeader)
+                    {
+                        RawIMUHeader = true;
+                        WriteTextIMUFileHeader();
+                    }
+
+
+                    MissionTimeMicroSecT = ExtractInt(ref UAVXPacket, (byte)(2));
+                    for (b = 0; b < 6; b++)
+                        RawIMU[b] = ExtractShort(ref UAVXPacket, (byte)(b*2 + 6));
+
+
+                    WriteTextIMULogFile();
 
                     break;
 
@@ -3137,6 +3173,19 @@ namespace UAVXGUI
 
         //___________________________________________________________________________________
 
+
+        void WriteTextIMULogFile()
+        {
+            short i;
+
+            SaveTextLogFileStreamWriter.Write(MissionTimeMicroSecT + ",");
+            for (i = 0; i < 6; i++)
+                SaveTextLogFileStreamWriter.Write(RawIMU[i] + ",");
+
+            SaveTextLogFileStreamWriter.WriteLine();
+            SaveTextLogFileStreamWriter.Flush();
+
+        }
 
         void WriteTextPIDLogFile()
         {
