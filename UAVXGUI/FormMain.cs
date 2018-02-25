@@ -1011,8 +1011,7 @@ namespace UAVXGUI
 
         private void WriteTextPIDAltitudeFileHeader()
         {    
-             SaveTextLogFileStreamWriter.WriteLine("Alt, DesAlt, AltE, AltP, AltI, DesROC, ROC, ROCP, ROCD, AltComp, DesThr, CruiseThr ");
-
+             SaveTextLogFileStreamWriter.WriteLine("Alt, DesAlt, AltE, AltP, AltI, DesROC, ROC, ROCP, ROCI, ROCD, AltComp, DesThr, CruiseThr ");
         }
 
         private void WriteTextIMUFileHeader()
@@ -2009,7 +2008,7 @@ namespace UAVXGUI
             switch (AlarmStateT)
             {
                 case 0: AlarmState.Text = "No Failsafes";
-                    AlarmState.BackColor = System.Drawing.Color.Orange;
+                    AlarmState.BackColor = System.Drawing.Color.Green;
                     break;
                 case 1: AlarmState.Text = "Monitoring";
                     AlarmState.BackColor = System.Drawing.Color.Green;
@@ -2022,6 +2021,18 @@ namespace UAVXGUI
                     break;
                 case 4: AlarmState.Text = "Fence RTH";
                     AlarmState.BackColor = System.Drawing.Color.Red;
+                    break;
+                case 5: AlarmState.Text = "Upside down";
+                    AlarmState.BackColor = System.Drawing.Color.Red;
+                    break;
+                case 6: AlarmState.Text = "Forced landing";
+                    AlarmState.BackColor = System.Drawing.Color.Orange;
+                    break;
+                case 7: AlarmState.Text = "GPS bypass";
+                    AlarmState.BackColor = System.Drawing.Color.Blue;
+                    break;
+                case 8: AlarmState.Text = "Arming timeout";
+                    AlarmState.BackColor = System.Drawing.Color.Yellow;
                     break;
                 default: AlarmState.Text = "Unknown"; break;
             } // switch
@@ -2865,8 +2876,8 @@ namespace UAVXGUI
                         WriteTextPIDAltitudeFileHeader();
                     }
 
-                    SaveTextLogFileStreamWriter.Write( ExtractByte(ref UAVXPacket, (byte)(2)) * 0.01f + ","); // Desired Altitude
-                    SaveTextLogFileStreamWriter.Write(ExtractByte(ref UAVXPacket, (byte)(4)) * 0.01f + ","); // Altitude
+                    SaveTextLogFileStreamWriter.Write( ExtractShort(ref UAVXPacket, (byte)(2)) * 0.01f + ","); // Altitude
+                    SaveTextLogFileStreamWriter.Write(ExtractShort(ref UAVXPacket, (byte)(4)) * 0.01f + ","); // Desired Altitude
 
                     MaxPID = ExtractByte(ref UAVXPacket, (byte)(6));
                     for (b = 0; b < MaxPID; b++)
@@ -2874,6 +2885,7 @@ namespace UAVXGUI
                         float Temp = ExtractByte(ref UAVXPacket, (byte)(b + 7));
                         PID[b] = (Temp > 127.0f ? Temp - 256.0f : Temp) / 128.0f;
                     }
+                    //Alt, DesAlt, AltE, AltP, AltI, DesROC, ROC, ROCP, ROCI, ROCD, AltComp, DesThr, CruiseThr
 
                     WriteTextPIDLogFile();
 

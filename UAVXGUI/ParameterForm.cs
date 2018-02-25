@@ -309,14 +309,20 @@ namespace UAVXGUI
             if (parameterForm.MaxPitchAngleNumericUpDown.Focused)
                 helpstring = help.GetString("MaxAttitudeAngle");
 
+            if (parameterForm.AltHoldBandNumericUpDown.Focused)
+                helpstring = help.GetString("AltBand");
+
+            if (parameterForm.AltVelIntNumericUpDown.Focused)
+                helpstring = help.GetString("AltVelInt");
+            if (parameterForm.AltVelIntLimitNumericUpDown.Focused)
+                helpstring = help.GetString("AltVelIntLimit");
+
             if (parameterForm.FWClimbAngleNumericUpDown.Focused)
                 helpstring = help.GetString("ClimbAngle");
             if (parameterForm.FWTrimAngleNumericUpDown.Focused)
                 helpstring = help.GetString("TrimAngle");
-            if (parameterForm.BestROCNumericUpDown.Focused)
+            if (parameterForm.MaxROCTextBox.Focused)
                 helpstring = help.GetString("BestROC");
-            if (parameterForm.MaxAltCompNumericUpDown.Focused)
-                helpstring = help.GetString("MaxAltComp");
             if (parameterForm.FWAileronDifferentialNumericUpDown.Focused)
                 helpstring = help.GetString("FWDifferential");
             if (parameterForm.AirspeedComboBox.Focused)
@@ -420,6 +426,8 @@ namespace UAVXGUI
                 helpstring = help.GetString("DescentDelay");
             if (parameterForm.DescentRateNumericUpDown.Focused)
                 helpstring = help.GetString("DescentRate");
+            if (parameterForm.VRSDescentRateNumericUpDown.Focused)
+                helpstring = help.GetString("VRSDescentRate");
             if (parameterForm.HysteresisNumericUpDown.Focused)
                 helpstring = help.GetString("Hysteresis");
 
@@ -883,7 +891,7 @@ namespace UAVXGUI
                 if ((p == 64) || (p == 83) || (p == 84) || (p == 89))
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 0.1);
                 else
-                    if ((p == 54) || (p == 18) || (p == 32) || (p == 39) || (p == 46) || (p == 53) || (p == 58) || (p == 70))
+                    if ((p == 54) || (p == 18) || (p == 32) || (p == 39) || (p == 46) || (p == 53) || (p == 58) || (p == 70) || (p == 104))
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 10.0);
                 else
                         if ((p == 85) || (p == 86))
@@ -1328,8 +1336,8 @@ namespace UAVXGUI
                         ParamUpdate(FWPitchThrottleFFNumericUpDown);
                         break;
                     case 67:
-                        MaxAltCompNumericUpDown.Value = UAVXP[p - 1].Value;
-                        ParamUpdate(MaxAltCompNumericUpDown);
+                        AltVelIntLimitNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(AltVelIntLimitNumericUpDown);
                         break;
                     case 68:
                         FWClimbAngleNumericUpDown.Value = UAVXP[p - 1].Value;
@@ -1352,8 +1360,8 @@ namespace UAVXGUI
                         ParamUpdate(AirspeedComboBox);
                         break;
                     case 73:
-                        BestROCNumericUpDown.Value = UAVXP[p - 1].Value;
-                        ParamUpdate(BestROCNumericUpDown);
+                        MaxROCTextBox.Text = string.Format("{0:n1}", Convert.ToDecimal(UAVXP[p - 1].Value * 0.1));
+                        MaxROCTextBox.BackColor = (Convert.ToDecimal(UAVXP[p - 1].Value * 0.1) > VRSDescentRateNumericUpDown.Value) ? Color.Orange : Color.White;
                         break;
 
 // etc to param 96
@@ -1422,7 +1430,6 @@ namespace UAVXGUI
                         MaxPitchRateTextBox.Text = string.Format("{0:n0}", Convert.ToDecimal(UAVXP[p - 1].Value * 10.0));
                         MaxPitchRateTextBox.BackColor = (Convert.ToDecimal(UAVXP[p - 1].Value * 10.0) > 720) ? Color.Orange : Color.White;
                         break;
-
                     case 85:
                         CurrentScaleNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.01);
                         ParamUpdate(CurrentScaleNumericUpDown);
@@ -1492,8 +1499,17 @@ namespace UAVXGUI
                         MotorStopComboBox.SelectedIndex = UAVXP[p - 1].Value;
                         ParamUpdate(MotorStopComboBox);
                         break;
-                    case 102: 
-                       
+                    case 102:
+                        AltVelIntNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(AltVelIntNumericUpDown);
+                        break;
+                    case 103:
+                        AltHoldBandNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(AltHoldBandNumericUpDown);
+                        break;
+                    case 104:
+                      VRSDescentRateNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
+                        ParamUpdate(VRSDescentRateNumericUpDown);
                         break;
 
                     default: break; // up to case 64 available

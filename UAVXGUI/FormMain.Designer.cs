@@ -73,7 +73,6 @@ namespace UAVXGUI
             this.RangefinderAltLabel = new System.Windows.Forms.Label();
             this.GPSFixLabel = new System.Windows.Forms.Label();
             this.GPSNoOfSatsLabel = new System.Windows.Forms.Label();
-            this.AlarmStateLabel = new System.Windows.Forms.Label();
             this.GPSAltLabel = new System.Windows.Forms.Label();
             this.BaroAltitudeLabel = new System.Windows.Forms.Label();
             this.YawGyroLabel = new System.Windows.Forms.Label();
@@ -145,7 +144,6 @@ namespace UAVXGUI
             this.WayHeadingLabel = new System.Windows.Forms.Label();
             this.GPSLongitudeLabel = new System.Windows.Forms.Label();
             this.GPSLatitudeLabel = new System.Windows.Forms.Label();
-            this.NavStateLabel = new System.Windows.Forms.Label();
             this.GPSVelLabel = new System.Windows.Forms.Label();
             this.CurrWPLabel = new System.Windows.Forms.Label();
             this.GPSLatitude = new System.Windows.Forms.TextBox();
@@ -332,7 +330,6 @@ namespace UAVXGUI
             this.PlotButton = new System.Windows.Forms.Button();
             this.FWGlideOffsetAngle = new System.Windows.Forms.TextBox();
             this.FWGlideAngleOffsetLabel = new System.Windows.Forms.Label();
-            this.FlightStateLabel = new System.Windows.Forms.Label();
             this.TuningGroupBox = new System.Windows.Forms.GroupBox();
             this.attitudeIndicatorInstrumentControl1 = new Instruments.AttitudeIndicatorInstrumentControl();
             this.headingIndicatorInstrumentControl1 = new Instruments.HeadingIndicatorInstrumentControl();
@@ -669,13 +666,12 @@ namespace UAVXGUI
             // 
             // AlarmState
             // 
-            this.AlarmState.Location = new System.Drawing.Point(323, 82);
+            this.AlarmState.Location = new System.Drawing.Point(202, 28);
             this.AlarmState.Name = "AlarmState";
             this.AlarmState.ReadOnly = true;
-            this.AlarmState.Size = new System.Drawing.Size(73, 20);
+            this.AlarmState.Size = new System.Drawing.Size(114, 20);
             this.AlarmState.TabIndex = 53;
             this.AlarmState.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.AlarmState.Visible = false;
             // 
             // GPSAltitude
             // 
@@ -731,17 +727,6 @@ namespace UAVXGUI
             this.GPSNoOfSatsLabel.Size = new System.Drawing.Size(28, 13);
             this.GPSNoOfSatsLabel.TabIndex = 70;
             this.GPSNoOfSatsLabel.Text = "Sats";
-            // 
-            // AlarmStateLabel
-            // 
-            this.AlarmStateLabel.AutoSize = true;
-            this.AlarmStateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AlarmStateLabel.Location = new System.Drawing.Point(334, 63);
-            this.AlarmStateLabel.Name = "AlarmStateLabel";
-            this.AlarmStateLabel.Size = new System.Drawing.Size(23, 13);
-            this.AlarmStateLabel.TabIndex = 71;
-            this.AlarmStateLabel.Text = "Fail";
-            this.AlarmStateLabel.Visible = false;
             // 
             // GPSAltLabel
             // 
@@ -844,10 +829,10 @@ namespace UAVXGUI
             // 
             // FlightState
             // 
-            this.FlightState.Location = new System.Drawing.Point(99, 30);
+            this.FlightState.Location = new System.Drawing.Point(11, 28);
             this.FlightState.Name = "FlightState";
             this.FlightState.ReadOnly = true;
-            this.FlightState.Size = new System.Drawing.Size(73, 20);
+            this.FlightState.Size = new System.Drawing.Size(86, 20);
             this.FlightState.TabIndex = 89;
             this.FlightState.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -864,7 +849,7 @@ namespace UAVXGUI
             this.GyroGroupBox.Size = new System.Drawing.Size(77, 99);
             this.GyroGroupBox.TabIndex = 92;
             this.GyroGroupBox.TabStop = false;
-            this.GyroGroupBox.Text = "Gyros";
+            this.GyroGroupBox.Text = "Gyros(Deg)";
             // 
             // ControlsGroupBox
             // 
@@ -1505,9 +1490,9 @@ namespace UAVXGUI
             this.WayHeadingLabel.AutoSize = true;
             this.WayHeadingLabel.Location = new System.Drawing.Point(6, 161);
             this.WayHeadingLabel.Name = "WayHeadingLabel";
-            this.WayHeadingLabel.Size = new System.Drawing.Size(72, 13);
+            this.WayHeadingLabel.Size = new System.Drawing.Size(69, 13);
             this.WayHeadingLabel.TabIndex = 64;
-            this.WayHeadingLabel.Text = "Course (Deg.)";
+            this.WayHeadingLabel.Text = "Course (Deg)";
             // 
             // GPSLongitudeLabel
             // 
@@ -1526,15 +1511,6 @@ namespace UAVXGUI
             this.GPSLatitudeLabel.Size = new System.Drawing.Size(45, 13);
             this.GPSLatitudeLabel.TabIndex = 61;
             this.GPSLatitudeLabel.Text = "Latitude";
-            // 
-            // NavStateLabel
-            // 
-            this.NavStateLabel.AutoSize = true;
-            this.NavStateLabel.Location = new System.Drawing.Point(176, 33);
-            this.NavStateLabel.Name = "NavStateLabel";
-            this.NavStateLabel.Size = new System.Drawing.Size(62, 13);
-            this.NavStateLabel.TabIndex = 72;
-            this.NavStateLabel.Text = "Flight Mode";
             // 
             // GPSVelLabel
             // 
@@ -1574,10 +1550,10 @@ namespace UAVXGUI
             // 
             // NavState
             // 
-            this.NavState.Location = new System.Drawing.Point(244, 30);
+            this.NavState.Location = new System.Drawing.Point(103, 28);
             this.NavState.Name = "NavState";
             this.NavState.ReadOnly = true;
-            this.NavState.Size = new System.Drawing.Size(73, 20);
+            this.NavState.Size = new System.Drawing.Size(93, 20);
             this.NavState.TabIndex = 52;
             this.NavState.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1622,9 +1598,9 @@ namespace UAVXGUI
             this.HeadingLabel.AutoSize = true;
             this.HeadingLabel.Location = new System.Drawing.Point(6, 50);
             this.HeadingLabel.Name = "HeadingLabel";
-            this.HeadingLabel.Size = new System.Drawing.Size(79, 13);
+            this.HeadingLabel.Size = new System.Drawing.Size(76, 13);
             this.HeadingLabel.TabIndex = 41;
-            this.HeadingLabel.Text = "Heading (Deg.)";
+            this.HeadingLabel.Text = "Heading (Deg)";
             // 
             // AltitudeError
             // 
@@ -3361,15 +3337,6 @@ namespace UAVXGUI
             this.FWGlideAngleOffsetLabel.TabIndex = 225;
             this.FWGlideAngleOffsetLabel.Text = "PitchE (Deg)";
             // 
-            // FlightStateLabel
-            // 
-            this.FlightStateLabel.AutoSize = true;
-            this.FlightStateLabel.Location = new System.Drawing.Point(33, 33);
-            this.FlightStateLabel.Name = "FlightStateLabel";
-            this.FlightStateLabel.Size = new System.Drawing.Size(60, 13);
-            this.FlightStateLabel.TabIndex = 227;
-            this.FlightStateLabel.Text = "Flight State";
-            // 
             // TuningGroupBox
             // 
             this.TuningGroupBox.Controls.Add(this.FWGlideOffsetAngle);
@@ -3408,7 +3375,6 @@ namespace UAVXGUI
             this.ClientSize = new System.Drawing.Size(1013, 637);
             this.Controls.Add(this.TuningGroupBox);
             this.Controls.Add(this.CalibrateAcc6PointButton);
-            this.Controls.Add(this.FlightStateLabel);
             this.Controls.Add(this.PlotButton);
             this.Controls.Add(this.CalibrationGroupBox);
             this.Controls.Add(this.UtilisationProgressBar);
@@ -3435,9 +3401,7 @@ namespace UAVXGUI
             this.Controls.Add(this.Airframe);
             this.Controls.Add(this.ReplayProgressBar);
             this.Controls.Add(this.ReplayButton);
-            this.Controls.Add(this.NavStateLabel);
             this.Controls.Add(this.FlightState);
-            this.Controls.Add(this.AlarmStateLabel);
             this.Controls.Add(this.ErrorStatsGroupBox);
             this.Controls.Add(this.LocationBox);
             this.Controls.Add(this.EmulationTextBox);
@@ -3559,7 +3523,6 @@ namespace UAVXGUI
         private System.Windows.Forms.Label RangefinderAltLabel;
         private System.Windows.Forms.Label GPSFixLabel;
         private System.Windows.Forms.Label GPSNoOfSatsLabel;
-        private System.Windows.Forms.Label AlarmStateLabel;
         private System.Windows.Forms.Label GPSAltLabel;
         private System.Windows.Forms.Label BaroAltitudeLabel;
         private System.Windows.Forms.Label YawGyroLabel;
@@ -3609,7 +3572,6 @@ namespace UAVXGUI
         private System.Windows.Forms.Label WayHeadingLabel;
         private System.Windows.Forms.Label GPSLongitudeLabel;
         private System.Windows.Forms.Label GPSLatitudeLabel;
-        private System.Windows.Forms.Label NavStateLabel;
         private System.Windows.Forms.Label GPSVelLabel;
         private System.Windows.Forms.Label CurrWPLabel;
         private System.Windows.Forms.TextBox GPSLatitude;
@@ -3809,7 +3771,6 @@ namespace UAVXGUI
         private System.Windows.Forms.Label GPSvAccLabel;
         private System.Windows.Forms.TextBox CruiseThrottle;
         private System.Windows.Forms.Label CruiseThrottleLabel;
-        private System.Windows.Forms.Label FlightStateLabel;
         private System.Windows.Forms.Button CalibrateAcc6PointButton;
         private System.Windows.Forms.Label NyquistMargin;
         private System.Windows.Forms.Label GyroLPF;
