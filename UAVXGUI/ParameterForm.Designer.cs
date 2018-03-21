@@ -67,6 +67,8 @@
             this.GeneralGroupBox = new System.Windows.Forms.GroupBox();
             this.ComboPort2Label = new System.Windows.Forms.Label();
             this.labelTelemetry1 = new System.Windows.Forms.Label();
+            this.bit22CheckBox = new System.Windows.Forms.CheckBox();
+            this.bit12CheckBox = new System.Windows.Forms.CheckBox();
             this.TelemetryComboBox = new System.Windows.Forms.ComboBox();
             this.labelESC1 = new System.Windows.Forms.Label();
             this.ESCComboBox = new System.Windows.Forms.ComboBox();
@@ -75,6 +77,7 @@
             this.AirspeedLabel = new System.Windows.Forms.Label();
             this.ComboPort2ComboBox = new System.Windows.Forms.ComboBox();
             this.AirspeedComboBox = new System.Windows.Forms.ComboBox();
+            this.bit31CheckBox = new System.Windows.Forms.CheckBox();
             this.GPSTypeLabel = new System.Windows.Forms.Label();
             this.RangefinderLabel1 = new System.Windows.Forms.Label();
             this.RangefinderComboBox = new System.Windows.Forms.ComboBox();
@@ -96,7 +99,6 @@
             this.NavVelKpLabel = new System.Windows.Forms.Label();
             this.ArmingModeComboBox = new System.Windows.Forms.ComboBox();
             this.ArmingModeLabel = new System.Windows.Forms.Label();
-            this.bit31CheckBox = new System.Windows.Forms.CheckBox();
             this.bit61CheckBox = new System.Windows.Forms.CheckBox();
             this.bit21CheckBox = new System.Windows.Forms.CheckBox();
             this.ComboPort1ComboBox = new System.Windows.Forms.ComboBox();
@@ -130,6 +132,10 @@
             this.ComboPort1Label = new System.Windows.Forms.Label();
             this.bit01CheckBox = new System.Windows.Forms.CheckBox();
             this.NavGroupBox = new System.Windows.Forms.GroupBox();
+            this.bit52CheckBox = new System.Windows.Forms.CheckBox();
+            this.MotorStopLabel = new System.Windows.Forms.Label();
+            this.bit32CheckBox = new System.Windows.Forms.CheckBox();
+            this.MotorStopComboBox = new System.Windows.Forms.ComboBox();
             this.VRSDescentRateNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.VRSLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -196,10 +202,15 @@
             this.SetDefaultParamButton = new System.Windows.Forms.Button();
             this.CheckDownLinkTimer = new System.Windows.Forms.Timer(this.components);
             this.RCGroupBox = new System.Windows.Forms.GroupBox();
+            this.bit62CheckBox = new System.Windows.Forms.CheckBox();
             this.ThrottleIdleLabel = new System.Windows.Forms.Label();
             this.RC11TextBox = new System.Windows.Forms.TextBox();
+            this.wsLEDsNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.RC10TextBox = new System.Windows.Forms.TextBox();
             this.RC9TextBox = new System.Windows.Forms.TextBox();
+            this.bit42CheckBox = new System.Windows.Forms.CheckBox();
+            this.wsLEDsLabel = new System.Windows.Forms.Label();
+            this.bit02CheckBox = new System.Windows.Forms.CheckBox();
             this.RC9ProgressBar = new System.Windows.Forms.ProgressBar();
             this.RC11ProgressBar = new System.Windows.Forms.ProgressBar();
             this.RC10ProgressBar = new System.Windows.Forms.ProgressBar();
@@ -232,17 +243,6 @@
             this.RC7ProgressBar = new System.Windows.Forms.ProgressBar();
             this.RC4ProgressBar = new System.Windows.Forms.ProgressBar();
             this.RC3ProgressBar = new System.Windows.Forms.ProgressBar();
-            this.bit02CheckBox = new System.Windows.Forms.CheckBox();
-            this.ConfigGroupBox = new System.Windows.Forms.GroupBox();
-            this.MotorStopComboBox = new System.Windows.Forms.ComboBox();
-            this.wsLEDsNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.wsLEDsLabel = new System.Windows.Forms.Label();
-            this.bit62CheckBox = new System.Windows.Forms.CheckBox();
-            this.bit52CheckBox = new System.Windows.Forms.CheckBox();
-            this.bit42CheckBox = new System.Windows.Forms.CheckBox();
-            this.bit32CheckBox = new System.Windows.Forms.CheckBox();
-            this.bit22CheckBox = new System.Windows.Forms.CheckBox();
-            this.bit12CheckBox = new System.Windows.Forms.CheckBox();
             this.EstimatorGroupBox = new System.Windows.Forms.GroupBox();
             this.GyroSlewRateNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.YawLPFLabel = new System.Windows.Forms.Label();
@@ -355,12 +355,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.RollRatePropNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltPosIntLimitNumericUpDown)).BeginInit();
             this.RCGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.wsLEDsNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch10NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch11NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch12NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RxChannelsNumericUpDown)).BeginInit();
-            this.ConfigGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.wsLEDsNumericUpDown)).BeginInit();
             this.EstimatorGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GyroSlewRateNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.YawGyroLPFNumericUpDown)).BeginInit();
@@ -845,6 +844,9 @@
             // 
             this.GeneralGroupBox.Controls.Add(this.ComboPort2Label);
             this.GeneralGroupBox.Controls.Add(this.labelTelemetry1);
+            this.GeneralGroupBox.Controls.Add(this.bit01CheckBox);
+            this.GeneralGroupBox.Controls.Add(this.bit22CheckBox);
+            this.GeneralGroupBox.Controls.Add(this.bit12CheckBox);
             this.GeneralGroupBox.Controls.Add(this.TelemetryComboBox);
             this.GeneralGroupBox.Controls.Add(this.labelESC1);
             this.GeneralGroupBox.Controls.Add(this.ESCComboBox);
@@ -853,6 +855,7 @@
             this.GeneralGroupBox.Controls.Add(this.AirspeedLabel);
             this.GeneralGroupBox.Controls.Add(this.ComboPort2ComboBox);
             this.GeneralGroupBox.Controls.Add(this.AirspeedComboBox);
+            this.GeneralGroupBox.Controls.Add(this.bit31CheckBox);
             this.GeneralGroupBox.Controls.Add(this.GPSTypeLabel);
             this.GeneralGroupBox.Controls.Add(this.RangefinderLabel1);
             this.GeneralGroupBox.Controls.Add(this.RangefinderComboBox);
@@ -872,6 +875,26 @@
             resources.ApplyResources(this.labelTelemetry1, "labelTelemetry1");
             this.labelTelemetry1.ForeColor = System.Drawing.Color.Black;
             this.labelTelemetry1.Name = "labelTelemetry1";
+            // 
+            // bit22CheckBox
+            // 
+            resources.ApplyResources(this.bit22CheckBox, "bit22CheckBox");
+            this.bit22CheckBox.Name = "bit22CheckBox";
+            this.bit22CheckBox.Tag = "74_3";
+            this.bit22CheckBox.UseVisualStyleBackColor = true;
+            this.bit22CheckBox.CheckedChanged += new System.EventHandler(this.bitCheckBox_CheckedChanged);
+            this.bit22CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.bit22CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
+            // 
+            // bit12CheckBox
+            // 
+            resources.ApplyResources(this.bit12CheckBox, "bit12CheckBox");
+            this.bit12CheckBox.Name = "bit12CheckBox";
+            this.bit12CheckBox.Tag = "74_2";
+            this.bit12CheckBox.UseVisualStyleBackColor = true;
+            this.bit12CheckBox.CheckedChanged += new System.EventHandler(this.bitCheckBox_CheckedChanged);
+            this.bit12CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.bit12CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
             // TelemetryComboBox
             // 
@@ -993,7 +1016,9 @@
             resources.GetString("ComboPort2ComboBox.Items1"),
             resources.GetString("ComboPort2ComboBox.Items2"),
             resources.GetString("ComboPort2ComboBox.Items3"),
-            resources.GetString("ComboPort2ComboBox.Items4")});
+            resources.GetString("ComboPort2ComboBox.Items4"),
+            resources.GetString("ComboPort2ComboBox.Items5"),
+            resources.GetString("ComboPort2ComboBox.Items6")});
             this.ComboPort2ComboBox.Name = "ComboPort2ComboBox";
             this.ComboPort2ComboBox.Tag = "76";
             this.ComboPort2ComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
@@ -1013,6 +1038,16 @@
             this.AirspeedComboBox.Tag = "72";
             this.AirspeedComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
             this.AirspeedComboBox.Enter += new System.EventHandler(this.infoGetFocus);
+            // 
+            // bit31CheckBox
+            // 
+            resources.ApplyResources(this.bit31CheckBox, "bit31CheckBox");
+            this.bit31CheckBox.Name = "bit31CheckBox";
+            this.bit31CheckBox.Tag = "16_3";
+            this.bit31CheckBox.UseVisualStyleBackColor = true;
+            this.bit31CheckBox.CheckedChanged += new System.EventHandler(this.bitCheckBox_CheckedChanged);
+            this.bit31CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.bit31CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
             // GPSTypeLabel
             // 
@@ -1265,16 +1300,6 @@
             resources.ApplyResources(this.ArmingModeLabel, "ArmingModeLabel");
             this.ArmingModeLabel.ForeColor = System.Drawing.Color.Black;
             this.ArmingModeLabel.Name = "ArmingModeLabel";
-            // 
-            // bit31CheckBox
-            // 
-            resources.ApplyResources(this.bit31CheckBox, "bit31CheckBox");
-            this.bit31CheckBox.Name = "bit31CheckBox";
-            this.bit31CheckBox.Tag = "16_3";
-            this.bit31CheckBox.UseVisualStyleBackColor = true;
-            this.bit31CheckBox.CheckedChanged += new System.EventHandler(this.bitCheckBox_CheckedChanged);
-            this.bit31CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.bit31CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
             // bit61CheckBox
             // 
@@ -1638,9 +1663,18 @@
             // 
             // NavGroupBox
             // 
+            this.NavGroupBox.Controls.Add(this.bit52CheckBox);
+            this.NavGroupBox.Controls.Add(this.MotorStopLabel);
+            this.NavGroupBox.Controls.Add(this.bit32CheckBox);
+            this.NavGroupBox.Controls.Add(this.MotorStopComboBox);
+            this.NavGroupBox.Controls.Add(this.bit61CheckBox);
             this.NavGroupBox.Controls.Add(this.VRSDescentRateNumericUpDown);
+            this.NavGroupBox.Controls.Add(this.bit51CheckBox);
             this.NavGroupBox.Controls.Add(this.VRSLabel);
+            this.NavGroupBox.Controls.Add(this.bit11CheckBox);
             this.NavGroupBox.Controls.Add(this.label1);
+            this.NavGroupBox.Controls.Add(this.bit41CheckBox);
+            this.NavGroupBox.Controls.Add(this.bit21CheckBox);
             this.NavGroupBox.Controls.Add(this.TurnoutLabel);
             this.NavGroupBox.Controls.Add(this.NavMaxAngleNumericUpDown);
             this.NavGroupBox.Controls.Add(this.EstCruiseLabel);
@@ -1670,6 +1704,47 @@
             resources.ApplyResources(this.NavGroupBox, "NavGroupBox");
             this.NavGroupBox.Name = "NavGroupBox";
             this.NavGroupBox.TabStop = false;
+            // 
+            // bit52CheckBox
+            // 
+            resources.ApplyResources(this.bit52CheckBox, "bit52CheckBox");
+            this.bit52CheckBox.Name = "bit52CheckBox";
+            this.bit52CheckBox.Tag = "74_6";
+            this.bit52CheckBox.UseVisualStyleBackColor = true;
+            this.bit52CheckBox.CheckedChanged += new System.EventHandler(this.bitCheckBox_CheckedChanged);
+            this.bit52CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.bit52CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
+            // 
+            // MotorStopLabel
+            // 
+            resources.ApplyResources(this.MotorStopLabel, "MotorStopLabel");
+            this.MotorStopLabel.Name = "MotorStopLabel";
+            // 
+            // bit32CheckBox
+            // 
+            resources.ApplyResources(this.bit32CheckBox, "bit32CheckBox");
+            this.bit32CheckBox.Name = "bit32CheckBox";
+            this.bit32CheckBox.Tag = "74_4";
+            this.bit32CheckBox.UseVisualStyleBackColor = true;
+            this.bit32CheckBox.CheckedChanged += new System.EventHandler(this.bitCheckBox_CheckedChanged);
+            this.bit32CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.bit32CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
+            // 
+            // MotorStopComboBox
+            // 
+            resources.ApplyResources(this.MotorStopComboBox, "MotorStopComboBox");
+            this.MotorStopComboBox.FormattingEnabled = true;
+            this.MotorStopComboBox.Items.AddRange(new object[] {
+            resources.GetString("MotorStopComboBox.Items"),
+            resources.GetString("MotorStopComboBox.Items1"),
+            resources.GetString("MotorStopComboBox.Items2"),
+            resources.GetString("MotorStopComboBox.Items3"),
+            resources.GetString("MotorStopComboBox.Items4"),
+            resources.GetString("MotorStopComboBox.Items5")});
+            this.MotorStopComboBox.Name = "MotorStopComboBox";
+            this.MotorStopComboBox.Tag = "101";
+            this.MotorStopComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
+            this.MotorStopComboBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
             // VRSDescentRateNumericUpDown
             // 
@@ -2441,24 +2516,29 @@
             // 
             // RCGroupBox
             // 
+            this.RCGroupBox.Controls.Add(this.bit62CheckBox);
             this.RCGroupBox.Controls.Add(this.ThrottleIdleLabel);
             this.RCGroupBox.Controls.Add(this.RC11TextBox);
+            this.RCGroupBox.Controls.Add(this.wsLEDsNumericUpDown);
             this.RCGroupBox.Controls.Add(this.RC10TextBox);
             this.RCGroupBox.Controls.Add(this.RC9TextBox);
             this.RCGroupBox.Controls.Add(this.HysteresisLabel);
+            this.RCGroupBox.Controls.Add(this.bit42CheckBox);
+            this.RCGroupBox.Controls.Add(this.wsLEDsLabel);
             this.RCGroupBox.Controls.Add(this.LowMotorRunNumericUpDown);
+            this.RCGroupBox.Controls.Add(this.bit02CheckBox);
             this.RCGroupBox.Controls.Add(this.HysteresisNumericUpDown);
             this.RCGroupBox.Controls.Add(this.RC9ProgressBar);
             this.RCGroupBox.Controls.Add(this.RC11ProgressBar);
             this.RCGroupBox.Controls.Add(this.RC10ProgressBar);
             this.RCGroupBox.Controls.Add(this.Ch10Label);
             this.RCGroupBox.Controls.Add(this.Ch10NumericUpDown);
+            this.RCGroupBox.Controls.Add(this.ComboPort1Label);
             this.RCGroupBox.Controls.Add(this.Ch11Label);
             this.RCGroupBox.Controls.Add(this.Ch11NumericUpDown);
-            this.RCGroupBox.Controls.Add(this.ComboPort1ComboBox);
-            this.RCGroupBox.Controls.Add(this.ComboPort1Label);
             this.RCGroupBox.Controls.Add(this.Ch12Label);
             this.RCGroupBox.Controls.Add(this.Ch12NumericUpDown);
+            this.RCGroupBox.Controls.Add(this.ComboPort1ComboBox);
             this.RCGroupBox.Controls.Add(this.RxLoopbackButton);
             this.RCGroupBox.Controls.Add(this.RCPacketIntervalLabel);
             this.RCGroupBox.Controls.Add(this.RxChannelsNumericUpDown);
@@ -2506,6 +2586,17 @@
             this.RCGroupBox.Name = "RCGroupBox";
             this.RCGroupBox.TabStop = false;
             // 
+            // bit62CheckBox
+            // 
+            resources.ApplyResources(this.bit62CheckBox, "bit62CheckBox");
+            this.bit62CheckBox.BackColor = System.Drawing.Color.Transparent;
+            this.bit62CheckBox.Name = "bit62CheckBox";
+            this.bit62CheckBox.Tag = "74_7";
+            this.bit62CheckBox.UseVisualStyleBackColor = false;
+            this.bit62CheckBox.CheckedChanged += new System.EventHandler(this.bitCheckBox_CheckedChanged);
+            this.bit62CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.bit62CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
+            // 
             // ThrottleIdleLabel
             // 
             resources.ApplyResources(this.ThrottleIdleLabel, "ThrottleIdleLabel");
@@ -2517,6 +2608,21 @@
             resources.ApplyResources(this.RC11TextBox, "RC11TextBox");
             this.RC11TextBox.Name = "RC11TextBox";
             this.RC11TextBox.ReadOnly = true;
+            // 
+            // wsLEDsNumericUpDown
+            // 
+            this.wsLEDsNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.wsLEDsNumericUpDown, "wsLEDsNumericUpDown");
+            this.wsLEDsNumericUpDown.Maximum = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
+            this.wsLEDsNumericUpDown.Name = "wsLEDsNumericUpDown";
+            this.wsLEDsNumericUpDown.Tag = "80";
+            this.wsLEDsNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.wsLEDsNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.wsLEDsNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
             // RC10TextBox
             // 
@@ -2531,6 +2637,33 @@
             resources.ApplyResources(this.RC9TextBox, "RC9TextBox");
             this.RC9TextBox.Name = "RC9TextBox";
             this.RC9TextBox.ReadOnly = true;
+            // 
+            // bit42CheckBox
+            // 
+            resources.ApplyResources(this.bit42CheckBox, "bit42CheckBox");
+            this.bit42CheckBox.BackColor = System.Drawing.Color.OrangeRed;
+            this.bit42CheckBox.Name = "bit42CheckBox";
+            this.bit42CheckBox.Tag = "74_5";
+            this.bit42CheckBox.UseVisualStyleBackColor = false;
+            this.bit42CheckBox.CheckedChanged += new System.EventHandler(this.bitCheckBox_CheckedChanged);
+            this.bit42CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.bit42CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
+            // 
+            // wsLEDsLabel
+            // 
+            resources.ApplyResources(this.wsLEDsLabel, "wsLEDsLabel");
+            this.wsLEDsLabel.ForeColor = System.Drawing.Color.Black;
+            this.wsLEDsLabel.Name = "wsLEDsLabel";
+            // 
+            // bit02CheckBox
+            // 
+            resources.ApplyResources(this.bit02CheckBox, "bit02CheckBox");
+            this.bit02CheckBox.Name = "bit02CheckBox";
+            this.bit02CheckBox.Tag = "74_1";
+            this.bit02CheckBox.UseVisualStyleBackColor = true;
+            this.bit02CheckBox.CheckedChanged += new System.EventHandler(this.bitCheckBox_CheckedChanged);
+            this.bit02CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.bit02CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
             // RC9ProgressBar
             // 
@@ -2803,138 +2936,6 @@
             this.RC3ProgressBar.Maximum = 2200;
             this.RC3ProgressBar.Name = "RC3ProgressBar";
             this.RC3ProgressBar.Step = 1;
-            // 
-            // bit02CheckBox
-            // 
-            resources.ApplyResources(this.bit02CheckBox, "bit02CheckBox");
-            this.bit02CheckBox.Name = "bit02CheckBox";
-            this.bit02CheckBox.Tag = "74_1";
-            this.bit02CheckBox.UseVisualStyleBackColor = true;
-            this.bit02CheckBox.CheckedChanged += new System.EventHandler(this.bitCheckBox_CheckedChanged);
-            this.bit02CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.bit02CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
-            // 
-            // ConfigGroupBox
-            // 
-            this.ConfigGroupBox.Controls.Add(this.MotorStopComboBox);
-            this.ConfigGroupBox.Controls.Add(this.wsLEDsNumericUpDown);
-            this.ConfigGroupBox.Controls.Add(this.wsLEDsLabel);
-            this.ConfigGroupBox.Controls.Add(this.bit62CheckBox);
-            this.ConfigGroupBox.Controls.Add(this.bit52CheckBox);
-            this.ConfigGroupBox.Controls.Add(this.bit42CheckBox);
-            this.ConfigGroupBox.Controls.Add(this.bit32CheckBox);
-            this.ConfigGroupBox.Controls.Add(this.bit22CheckBox);
-            this.ConfigGroupBox.Controls.Add(this.bit02CheckBox);
-            this.ConfigGroupBox.Controls.Add(this.bit12CheckBox);
-            this.ConfigGroupBox.Controls.Add(this.bit01CheckBox);
-            this.ConfigGroupBox.Controls.Add(this.bit61CheckBox);
-            this.ConfigGroupBox.Controls.Add(this.bit31CheckBox);
-            this.ConfigGroupBox.Controls.Add(this.bit51CheckBox);
-            this.ConfigGroupBox.Controls.Add(this.bit11CheckBox);
-            this.ConfigGroupBox.Controls.Add(this.bit41CheckBox);
-            this.ConfigGroupBox.Controls.Add(this.bit21CheckBox);
-            resources.ApplyResources(this.ConfigGroupBox, "ConfigGroupBox");
-            this.ConfigGroupBox.Name = "ConfigGroupBox";
-            this.ConfigGroupBox.TabStop = false;
-            // 
-            // MotorStopComboBox
-            // 
-            resources.ApplyResources(this.MotorStopComboBox, "MotorStopComboBox");
-            this.MotorStopComboBox.FormattingEnabled = true;
-            this.MotorStopComboBox.Items.AddRange(new object[] {
-            resources.GetString("MotorStopComboBox.Items"),
-            resources.GetString("MotorStopComboBox.Items1"),
-            resources.GetString("MotorStopComboBox.Items2"),
-            resources.GetString("MotorStopComboBox.Items3"),
-            resources.GetString("MotorStopComboBox.Items4"),
-            resources.GetString("MotorStopComboBox.Items5")});
-            this.MotorStopComboBox.Name = "MotorStopComboBox";
-            this.MotorStopComboBox.Tag = "101";
-            this.MotorStopComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
-            this.MotorStopComboBox.Enter += new System.EventHandler(this.infoGetFocus);
-            // 
-            // wsLEDsNumericUpDown
-            // 
-            this.wsLEDsNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
-            resources.ApplyResources(this.wsLEDsNumericUpDown, "wsLEDsNumericUpDown");
-            this.wsLEDsNumericUpDown.Maximum = new decimal(new int[] {
-            12,
-            0,
-            0,
-            0});
-            this.wsLEDsNumericUpDown.Name = "wsLEDsNumericUpDown";
-            this.wsLEDsNumericUpDown.Tag = "80";
-            this.wsLEDsNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.wsLEDsNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
-            this.wsLEDsNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
-            // 
-            // wsLEDsLabel
-            // 
-            resources.ApplyResources(this.wsLEDsLabel, "wsLEDsLabel");
-            this.wsLEDsLabel.ForeColor = System.Drawing.Color.Black;
-            this.wsLEDsLabel.Name = "wsLEDsLabel";
-            // 
-            // bit62CheckBox
-            // 
-            resources.ApplyResources(this.bit62CheckBox, "bit62CheckBox");
-            this.bit62CheckBox.BackColor = System.Drawing.Color.Transparent;
-            this.bit62CheckBox.Name = "bit62CheckBox";
-            this.bit62CheckBox.Tag = "74_7";
-            this.bit62CheckBox.UseVisualStyleBackColor = false;
-            this.bit62CheckBox.CheckedChanged += new System.EventHandler(this.bitCheckBox_CheckedChanged);
-            this.bit62CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.bit62CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
-            // 
-            // bit52CheckBox
-            // 
-            resources.ApplyResources(this.bit52CheckBox, "bit52CheckBox");
-            this.bit52CheckBox.Name = "bit52CheckBox";
-            this.bit52CheckBox.Tag = "74_6";
-            this.bit52CheckBox.UseVisualStyleBackColor = true;
-            this.bit52CheckBox.CheckedChanged += new System.EventHandler(this.bitCheckBox_CheckedChanged);
-            this.bit52CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.bit52CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
-            // 
-            // bit42CheckBox
-            // 
-            resources.ApplyResources(this.bit42CheckBox, "bit42CheckBox");
-            this.bit42CheckBox.BackColor = System.Drawing.Color.OrangeRed;
-            this.bit42CheckBox.Name = "bit42CheckBox";
-            this.bit42CheckBox.Tag = "74_5";
-            this.bit42CheckBox.UseVisualStyleBackColor = false;
-            this.bit42CheckBox.CheckedChanged += new System.EventHandler(this.bitCheckBox_CheckedChanged);
-            this.bit42CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.bit42CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
-            // 
-            // bit32CheckBox
-            // 
-            resources.ApplyResources(this.bit32CheckBox, "bit32CheckBox");
-            this.bit32CheckBox.Name = "bit32CheckBox";
-            this.bit32CheckBox.Tag = "74_4";
-            this.bit32CheckBox.UseVisualStyleBackColor = true;
-            this.bit32CheckBox.CheckedChanged += new System.EventHandler(this.bitCheckBox_CheckedChanged);
-            this.bit32CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.bit32CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
-            // 
-            // bit22CheckBox
-            // 
-            resources.ApplyResources(this.bit22CheckBox, "bit22CheckBox");
-            this.bit22CheckBox.Name = "bit22CheckBox";
-            this.bit22CheckBox.Tag = "74_3";
-            this.bit22CheckBox.UseVisualStyleBackColor = true;
-            this.bit22CheckBox.CheckedChanged += new System.EventHandler(this.bitCheckBox_CheckedChanged);
-            this.bit22CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.bit22CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
-            // 
-            // bit12CheckBox
-            // 
-            resources.ApplyResources(this.bit12CheckBox, "bit12CheckBox");
-            this.bit12CheckBox.Name = "bit12CheckBox";
-            this.bit12CheckBox.Tag = "74_2";
-            this.bit12CheckBox.UseVisualStyleBackColor = true;
-            this.bit12CheckBox.CheckedChanged += new System.EventHandler(this.bitCheckBox_CheckedChanged);
-            this.bit12CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.bit12CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
             // EstimatorGroupBox
             // 
@@ -3450,7 +3451,6 @@
             this.Controls.Add(this.ParamTemplateComboBox);
             this.Controls.Add(this.FWGroupBox);
             this.Controls.Add(this.EstimatorGroupBox);
-            this.Controls.Add(this.ConfigGroupBox);
             this.Controls.Add(this.RCGroupBox);
             this.Controls.Add(this.SetDefaultParamButton);
             this.Controls.Add(this.LoadParamsButton);
@@ -3542,13 +3542,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.AltPosIntLimitNumericUpDown)).EndInit();
             this.RCGroupBox.ResumeLayout(false);
             this.RCGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.wsLEDsNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch10NumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch11NumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch12NumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RxChannelsNumericUpDown)).EndInit();
-            this.ConfigGroupBox.ResumeLayout(false);
-            this.ConfigGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.wsLEDsNumericUpDown)).EndInit();
             this.EstimatorGroupBox.ResumeLayout(false);
             this.EstimatorGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GyroSlewRateNumericUpDown)).EndInit();
@@ -3728,7 +3726,6 @@
         private System.Windows.Forms.ProgressBar RC4ProgressBar;
         private System.Windows.Forms.ProgressBar RC3ProgressBar;
         private System.Windows.Forms.CheckBox RCuSCheckBox;
-        private System.Windows.Forms.GroupBox ConfigGroupBox;
         private System.Windows.Forms.Label DiscoveredRCChannelsLabel;
         private System.Windows.Forms.Label HysteresisLabel;
         private System.Windows.Forms.Label HorizonLabel;
@@ -3831,6 +3828,7 @@
         private System.Windows.Forms.TextBox MaxROCTextBox;
         public System.Windows.Forms.NumericUpDown VRSDescentRateNumericUpDown;
         private System.Windows.Forms.Label VRSLabel;
+        private System.Windows.Forms.Label MotorStopLabel;
 
 
     }
