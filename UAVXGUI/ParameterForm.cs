@@ -377,7 +377,7 @@ namespace UAVXGUI
                 helpstring = help.GetString("NavPosition");
             if (parameterForm.NavVelKpNumericUpDown.Focused)
                 helpstring = help.GetString("NavVelocity");
-            if (parameterForm.InertialSchemeComboBox.Focused)
+            if (parameterForm.IMUOptionComboBox.Focused)
                 helpstring = help.GetString("InertialScheme");
 
             if (parameterForm.YawGyroLPFNumericUpDown.Focused)
@@ -884,11 +884,11 @@ namespace UAVXGUI
 
                 int p = Convert.ToInt16(Field.Tag);
 
-                if ((p == 92) )
+                if ((p == 92) || (p == 106))
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 0.01);
                 else
 
-                if ((p == 64) || (p == 83) || (p == 84) || (p == 89))
+                if ((p == 64) || (p == 83) || (p == 84) || (p == 89) )
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 0.1);
                 else
                     if ((p == 54) || (p == 18) || (p == 32) || (p == 39) || (p == 46) || (p == 53) || (p == 58) || (p == 70) || (p == 104))
@@ -1069,8 +1069,8 @@ namespace UAVXGUI
                         ParamUpdate(RollRateDiffNumericUpDown);
                         break;
                     case 13:
-                        InertialSchemeComboBox.SelectedIndex = UAVXP[p-1].Value;
-                        ParamUpdate(InertialSchemeComboBox);
+                        IMUOptionComboBox.SelectedIndex = UAVXP[p-1].Value;
+                        ParamUpdate(IMUOptionComboBox);
                         break;
                     case 14:
                         AltVelKdNumericUpDown.Value =  UAVXP[p-1].Value;
@@ -1510,6 +1510,14 @@ namespace UAVXGUI
                     case 104:
                       VRSDescentRateNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
                         ParamUpdate(VRSDescentRateNumericUpDown);
+                        break;
+                    case 105:
+                        OSLPFComboBox.SelectedIndex = UAVXP[p - 1].Value;
+                        ParamUpdate(OSLPFComboBox);
+                        break;
+                    case 106:
+                        OSLPFHzNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 100.0);
+                        ParamUpdate(OSLPFHzNumericUpDown);
                         break;
 
                     default: break; // up to case 64 available

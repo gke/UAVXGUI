@@ -65,23 +65,29 @@
             this.BatteryNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.BatteryCapacityLabel = new System.Windows.Forms.Label();
             this.GeneralGroupBox = new System.Windows.Forms.GroupBox();
-            this.ComboPort2Label = new System.Windows.Forms.Label();
+            this.bit62CheckBox = new System.Windows.Forms.CheckBox();
             this.labelTelemetry1 = new System.Windows.Forms.Label();
+            this.bit01CheckBox = new System.Windows.Forms.CheckBox();
+            this.wsLEDsNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.bit22CheckBox = new System.Windows.Forms.CheckBox();
             this.bit12CheckBox = new System.Windows.Forms.CheckBox();
             this.TelemetryComboBox = new System.Windows.Forms.ComboBox();
             this.labelESC1 = new System.Windows.Forms.Label();
+            this.wsLEDsLabel = new System.Windows.Forms.Label();
+            this.bit42CheckBox = new System.Windows.Forms.CheckBox();
             this.ESCComboBox = new System.Windows.Forms.ComboBox();
             this.BaroScaleLabel = new System.Windows.Forms.Label();
+            this.bit02CheckBox = new System.Windows.Forms.CheckBox();
             this.AFTypeComboBox = new System.Windows.Forms.ComboBox();
             this.AirspeedLabel = new System.Windows.Forms.Label();
-            this.ComboPort2ComboBox = new System.Windows.Forms.ComboBox();
             this.AirspeedComboBox = new System.Windows.Forms.ComboBox();
             this.bit31CheckBox = new System.Windows.Forms.CheckBox();
             this.GPSTypeLabel = new System.Windows.Forms.Label();
             this.RangefinderLabel1 = new System.Windows.Forms.Label();
             this.RangefinderComboBox = new System.Windows.Forms.ComboBox();
             this.GPSTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.ComboPort2Label = new System.Windows.Forms.Label();
+            this.ComboPort2ComboBox = new System.Windows.Forms.ComboBox();
             this.LowMotorRunLabel = new System.Windows.Forms.Label();
             this.LowMotorRunNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.EstCruiseLabel = new System.Windows.Forms.Label();
@@ -89,12 +95,12 @@
             this.MadgwickKpMagLabel = new System.Windows.Forms.Label();
             this.GyroLabel = new System.Windows.Forms.Label();
             this.MadgwickKpMagNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.InertialSchemeComboBox = new System.Windows.Forms.ComboBox();
+            this.IMUOptionComboBox = new System.Windows.Forms.ComboBox();
             this.MadgwickKpAccNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.MadgwickKpAccLabel = new System.Windows.Forms.Label();
             this.AccConfNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.AccConfLabel = new System.Windows.Forms.Label();
-            this.InertialLabel = new System.Windows.Forms.Label();
+            this.IMUComboLabel = new System.Windows.Forms.Label();
             this.NavVelKpNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.NavVelKpLabel = new System.Windows.Forms.Label();
             this.ArmingModeComboBox = new System.Windows.Forms.ComboBox();
@@ -130,7 +136,6 @@
             this.bit51CheckBox = new System.Windows.Forms.CheckBox();
             this.bit41CheckBox = new System.Windows.Forms.CheckBox();
             this.ComboPort1Label = new System.Windows.Forms.Label();
-            this.bit01CheckBox = new System.Windows.Forms.CheckBox();
             this.NavGroupBox = new System.Windows.Forms.GroupBox();
             this.bit52CheckBox = new System.Windows.Forms.CheckBox();
             this.MotorStopLabel = new System.Windows.Forms.Label();
@@ -202,15 +207,10 @@
             this.SetDefaultParamButton = new System.Windows.Forms.Button();
             this.CheckDownLinkTimer = new System.Windows.Forms.Timer(this.components);
             this.RCGroupBox = new System.Windows.Forms.GroupBox();
-            this.bit62CheckBox = new System.Windows.Forms.CheckBox();
             this.ThrottleIdleLabel = new System.Windows.Forms.Label();
             this.RC11TextBox = new System.Windows.Forms.TextBox();
-            this.wsLEDsNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.RC10TextBox = new System.Windows.Forms.TextBox();
             this.RC9TextBox = new System.Windows.Forms.TextBox();
-            this.bit42CheckBox = new System.Windows.Forms.CheckBox();
-            this.wsLEDsLabel = new System.Windows.Forms.Label();
-            this.bit02CheckBox = new System.Windows.Forms.CheckBox();
             this.RC9ProgressBar = new System.Windows.Forms.ProgressBar();
             this.RC11ProgressBar = new System.Windows.Forms.ProgressBar();
             this.RC10ProgressBar = new System.Windows.Forms.ProgressBar();
@@ -268,6 +268,9 @@
             this.FWPitchThrottleFFNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.ParamTemplateComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.OSLPFHzNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.OSLPFComboBox = new System.Windows.Forms.ComboBox();
             this.AccLPFComboBox = new System.Windows.Forms.ComboBox();
             this.GyroLPFComboBox = new System.Windows.Forms.ComboBox();
             this.ServoLPFHzLabel = new System.Windows.Forms.Label();
@@ -305,6 +308,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.BatteryCapacityNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BatteryNumericUpDown)).BeginInit();
             this.GeneralGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.wsLEDsNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LowMotorRunNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EstCruiseNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MadgwickKpMagNumericUpDown)).BeginInit();
@@ -355,7 +359,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.RollRatePropNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltPosIntLimitNumericUpDown)).BeginInit();
             this.RCGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.wsLEDsNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch10NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch11NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch12NumericUpDown)).BeginInit();
@@ -373,6 +376,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.FWSpoilerDecayTimeNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWPitchThrottleFFNumericUpDown)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OSLPFHzNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ServoLPFHzNumericUpDown)).BeginInit();
             this.AltitudeGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AltVelIntLimitNumericUpDown)).BeginInit();
@@ -842,18 +846,21 @@
             // 
             // GeneralGroupBox
             // 
-            this.GeneralGroupBox.Controls.Add(this.ComboPort2Label);
+            this.GeneralGroupBox.Controls.Add(this.bit62CheckBox);
             this.GeneralGroupBox.Controls.Add(this.labelTelemetry1);
             this.GeneralGroupBox.Controls.Add(this.bit01CheckBox);
+            this.GeneralGroupBox.Controls.Add(this.wsLEDsNumericUpDown);
             this.GeneralGroupBox.Controls.Add(this.bit22CheckBox);
             this.GeneralGroupBox.Controls.Add(this.bit12CheckBox);
             this.GeneralGroupBox.Controls.Add(this.TelemetryComboBox);
             this.GeneralGroupBox.Controls.Add(this.labelESC1);
+            this.GeneralGroupBox.Controls.Add(this.wsLEDsLabel);
+            this.GeneralGroupBox.Controls.Add(this.bit42CheckBox);
             this.GeneralGroupBox.Controls.Add(this.ESCComboBox);
             this.GeneralGroupBox.Controls.Add(this.BaroScaleLabel);
+            this.GeneralGroupBox.Controls.Add(this.bit02CheckBox);
             this.GeneralGroupBox.Controls.Add(this.AFTypeComboBox);
             this.GeneralGroupBox.Controls.Add(this.AirspeedLabel);
-            this.GeneralGroupBox.Controls.Add(this.ComboPort2ComboBox);
             this.GeneralGroupBox.Controls.Add(this.AirspeedComboBox);
             this.GeneralGroupBox.Controls.Add(this.bit31CheckBox);
             this.GeneralGroupBox.Controls.Add(this.GPSTypeLabel);
@@ -864,17 +871,47 @@
             this.GeneralGroupBox.Name = "GeneralGroupBox";
             this.GeneralGroupBox.TabStop = false;
             // 
-            // ComboPort2Label
+            // bit62CheckBox
             // 
-            resources.ApplyResources(this.ComboPort2Label, "ComboPort2Label");
-            this.ComboPort2Label.ForeColor = System.Drawing.Color.Black;
-            this.ComboPort2Label.Name = "ComboPort2Label";
+            resources.ApplyResources(this.bit62CheckBox, "bit62CheckBox");
+            this.bit62CheckBox.BackColor = System.Drawing.Color.Transparent;
+            this.bit62CheckBox.Name = "bit62CheckBox";
+            this.bit62CheckBox.Tag = "74_7";
+            this.bit62CheckBox.UseVisualStyleBackColor = false;
+            this.bit62CheckBox.CheckedChanged += new System.EventHandler(this.bitCheckBox_CheckedChanged);
+            this.bit62CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.bit62CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
             // labelTelemetry1
             // 
             resources.ApplyResources(this.labelTelemetry1, "labelTelemetry1");
             this.labelTelemetry1.ForeColor = System.Drawing.Color.Black;
             this.labelTelemetry1.Name = "labelTelemetry1";
+            // 
+            // bit01CheckBox
+            // 
+            resources.ApplyResources(this.bit01CheckBox, "bit01CheckBox");
+            this.bit01CheckBox.Name = "bit01CheckBox";
+            this.bit01CheckBox.Tag = "16_0";
+            this.bit01CheckBox.UseVisualStyleBackColor = true;
+            this.bit01CheckBox.CheckedChanged += new System.EventHandler(this.bitCheckBox_CheckedChanged);
+            this.bit01CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.bit01CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
+            // 
+            // wsLEDsNumericUpDown
+            // 
+            this.wsLEDsNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.wsLEDsNumericUpDown, "wsLEDsNumericUpDown");
+            this.wsLEDsNumericUpDown.Maximum = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
+            this.wsLEDsNumericUpDown.Name = "wsLEDsNumericUpDown";
+            this.wsLEDsNumericUpDown.Tag = "80";
+            this.wsLEDsNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.wsLEDsNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.wsLEDsNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
             // bit22CheckBox
             // 
@@ -912,7 +949,8 @@
             resources.GetString("TelemetryComboBox.Items8"),
             resources.GetString("TelemetryComboBox.Items9"),
             resources.GetString("TelemetryComboBox.Items10"),
-            resources.GetString("TelemetryComboBox.Items11")});
+            resources.GetString("TelemetryComboBox.Items11"),
+            resources.GetString("TelemetryComboBox.Items12")});
             this.TelemetryComboBox.Name = "TelemetryComboBox";
             this.TelemetryComboBox.Tag = "45";
             this.TelemetryComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
@@ -923,6 +961,23 @@
             resources.ApplyResources(this.labelESC1, "labelESC1");
             this.labelESC1.ForeColor = System.Drawing.Color.Black;
             this.labelESC1.Name = "labelESC1";
+            // 
+            // wsLEDsLabel
+            // 
+            resources.ApplyResources(this.wsLEDsLabel, "wsLEDsLabel");
+            this.wsLEDsLabel.ForeColor = System.Drawing.Color.Black;
+            this.wsLEDsLabel.Name = "wsLEDsLabel";
+            // 
+            // bit42CheckBox
+            // 
+            resources.ApplyResources(this.bit42CheckBox, "bit42CheckBox");
+            this.bit42CheckBox.BackColor = System.Drawing.SystemColors.Control;
+            this.bit42CheckBox.Name = "bit42CheckBox";
+            this.bit42CheckBox.Tag = "74_5";
+            this.bit42CheckBox.UseVisualStyleBackColor = false;
+            this.bit42CheckBox.CheckedChanged += new System.EventHandler(this.bitCheckBox_CheckedChanged);
+            this.bit42CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.bit42CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
             // ESCComboBox
             // 
@@ -947,6 +1002,16 @@
             // 
             resources.ApplyResources(this.BaroScaleLabel, "BaroScaleLabel");
             this.BaroScaleLabel.Name = "BaroScaleLabel";
+            // 
+            // bit02CheckBox
+            // 
+            resources.ApplyResources(this.bit02CheckBox, "bit02CheckBox");
+            this.bit02CheckBox.Name = "bit02CheckBox";
+            this.bit02CheckBox.Tag = "74_1";
+            this.bit02CheckBox.UseVisualStyleBackColor = true;
+            this.bit02CheckBox.CheckedChanged += new System.EventHandler(this.bitCheckBox_CheckedChanged);
+            this.bit02CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.bit02CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
             // AFTypeComboBox
             // 
@@ -1006,23 +1071,6 @@
             resources.ApplyResources(this.AirspeedLabel, "AirspeedLabel");
             this.AirspeedLabel.ForeColor = System.Drawing.Color.Black;
             this.AirspeedLabel.Name = "AirspeedLabel";
-            // 
-            // ComboPort2ComboBox
-            // 
-            resources.ApplyResources(this.ComboPort2ComboBox, "ComboPort2ComboBox");
-            this.ComboPort2ComboBox.FormattingEnabled = true;
-            this.ComboPort2ComboBox.Items.AddRange(new object[] {
-            resources.GetString("ComboPort2ComboBox.Items"),
-            resources.GetString("ComboPort2ComboBox.Items1"),
-            resources.GetString("ComboPort2ComboBox.Items2"),
-            resources.GetString("ComboPort2ComboBox.Items3"),
-            resources.GetString("ComboPort2ComboBox.Items4"),
-            resources.GetString("ComboPort2ComboBox.Items5"),
-            resources.GetString("ComboPort2ComboBox.Items6")});
-            this.ComboPort2ComboBox.Name = "ComboPort2ComboBox";
-            this.ComboPort2ComboBox.Tag = "76";
-            this.ComboPort2ComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
-            this.ComboPort2ComboBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
             // AirspeedComboBox
             // 
@@ -1092,6 +1140,29 @@
             this.GPSTypeComboBox.Tag = "62";
             this.GPSTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
             this.GPSTypeComboBox.Enter += new System.EventHandler(this.infoGetFocus);
+            // 
+            // ComboPort2Label
+            // 
+            resources.ApplyResources(this.ComboPort2Label, "ComboPort2Label");
+            this.ComboPort2Label.ForeColor = System.Drawing.Color.Black;
+            this.ComboPort2Label.Name = "ComboPort2Label";
+            // 
+            // ComboPort2ComboBox
+            // 
+            resources.ApplyResources(this.ComboPort2ComboBox, "ComboPort2ComboBox");
+            this.ComboPort2ComboBox.FormattingEnabled = true;
+            this.ComboPort2ComboBox.Items.AddRange(new object[] {
+            resources.GetString("ComboPort2ComboBox.Items"),
+            resources.GetString("ComboPort2ComboBox.Items1"),
+            resources.GetString("ComboPort2ComboBox.Items2"),
+            resources.GetString("ComboPort2ComboBox.Items3"),
+            resources.GetString("ComboPort2ComboBox.Items4"),
+            resources.GetString("ComboPort2ComboBox.Items5"),
+            resources.GetString("ComboPort2ComboBox.Items6")});
+            this.ComboPort2ComboBox.Name = "ComboPort2ComboBox";
+            this.ComboPort2ComboBox.Tag = "76";
+            this.ComboPort2ComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
+            this.ComboPort2ComboBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
             // LowMotorRunLabel
             // 
@@ -1177,18 +1248,19 @@
             this.MadgwickKpMagNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
             this.MadgwickKpMagNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
-            // InertialSchemeComboBox
+            // IMUOptionComboBox
             // 
-            resources.ApplyResources(this.InertialSchemeComboBox, "InertialSchemeComboBox");
-            this.InertialSchemeComboBox.FormattingEnabled = true;
-            this.InertialSchemeComboBox.Items.AddRange(new object[] {
-            resources.GetString("InertialSchemeComboBox.Items"),
-            resources.GetString("InertialSchemeComboBox.Items1"),
-            resources.GetString("InertialSchemeComboBox.Items2")});
-            this.InertialSchemeComboBox.Name = "InertialSchemeComboBox";
-            this.InertialSchemeComboBox.Tag = "13";
-            this.InertialSchemeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
-            this.InertialSchemeComboBox.Enter += new System.EventHandler(this.infoGetFocus);
+            resources.ApplyResources(this.IMUOptionComboBox, "IMUOptionComboBox");
+            this.IMUOptionComboBox.FormattingEnabled = true;
+            this.IMUOptionComboBox.Items.AddRange(new object[] {
+            resources.GetString("IMUOptionComboBox.Items"),
+            resources.GetString("IMUOptionComboBox.Items1"),
+            resources.GetString("IMUOptionComboBox.Items2"),
+            resources.GetString("IMUOptionComboBox.Items3")});
+            this.IMUOptionComboBox.Name = "IMUOptionComboBox";
+            this.IMUOptionComboBox.Tag = "13";
+            this.IMUOptionComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
+            this.IMUOptionComboBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
             // MadgwickKpAccNumericUpDown
             // 
@@ -1252,10 +1324,10 @@
             resources.ApplyResources(this.AccConfLabel, "AccConfLabel");
             this.AccConfLabel.Name = "AccConfLabel";
             // 
-            // InertialLabel
+            // IMUComboLabel
             // 
-            resources.ApplyResources(this.InertialLabel, "InertialLabel");
-            this.InertialLabel.Name = "InertialLabel";
+            resources.ApplyResources(this.IMUComboLabel, "IMUComboLabel");
+            this.IMUComboLabel.Name = "IMUComboLabel";
             // 
             // NavVelKpNumericUpDown
             // 
@@ -1650,16 +1722,6 @@
             resources.ApplyResources(this.ComboPort1Label, "ComboPort1Label");
             this.ComboPort1Label.ForeColor = System.Drawing.Color.Black;
             this.ComboPort1Label.Name = "ComboPort1Label";
-            // 
-            // bit01CheckBox
-            // 
-            resources.ApplyResources(this.bit01CheckBox, "bit01CheckBox");
-            this.bit01CheckBox.Name = "bit01CheckBox";
-            this.bit01CheckBox.Tag = "16_0";
-            this.bit01CheckBox.UseVisualStyleBackColor = true;
-            this.bit01CheckBox.CheckedChanged += new System.EventHandler(this.bitCheckBox_CheckedChanged);
-            this.bit01CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.bit01CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
             // NavGroupBox
             // 
@@ -2516,23 +2578,20 @@
             // 
             // RCGroupBox
             // 
-            this.RCGroupBox.Controls.Add(this.bit62CheckBox);
             this.RCGroupBox.Controls.Add(this.ThrottleIdleLabel);
+            this.RCGroupBox.Controls.Add(this.ComboPort2Label);
             this.RCGroupBox.Controls.Add(this.RC11TextBox);
-            this.RCGroupBox.Controls.Add(this.wsLEDsNumericUpDown);
             this.RCGroupBox.Controls.Add(this.RC10TextBox);
             this.RCGroupBox.Controls.Add(this.RC9TextBox);
             this.RCGroupBox.Controls.Add(this.HysteresisLabel);
-            this.RCGroupBox.Controls.Add(this.bit42CheckBox);
-            this.RCGroupBox.Controls.Add(this.wsLEDsLabel);
             this.RCGroupBox.Controls.Add(this.LowMotorRunNumericUpDown);
-            this.RCGroupBox.Controls.Add(this.bit02CheckBox);
             this.RCGroupBox.Controls.Add(this.HysteresisNumericUpDown);
             this.RCGroupBox.Controls.Add(this.RC9ProgressBar);
             this.RCGroupBox.Controls.Add(this.RC11ProgressBar);
             this.RCGroupBox.Controls.Add(this.RC10ProgressBar);
             this.RCGroupBox.Controls.Add(this.Ch10Label);
             this.RCGroupBox.Controls.Add(this.Ch10NumericUpDown);
+            this.RCGroupBox.Controls.Add(this.ComboPort2ComboBox);
             this.RCGroupBox.Controls.Add(this.ComboPort1Label);
             this.RCGroupBox.Controls.Add(this.Ch11Label);
             this.RCGroupBox.Controls.Add(this.Ch11NumericUpDown);
@@ -2586,17 +2645,6 @@
             this.RCGroupBox.Name = "RCGroupBox";
             this.RCGroupBox.TabStop = false;
             // 
-            // bit62CheckBox
-            // 
-            resources.ApplyResources(this.bit62CheckBox, "bit62CheckBox");
-            this.bit62CheckBox.BackColor = System.Drawing.Color.Transparent;
-            this.bit62CheckBox.Name = "bit62CheckBox";
-            this.bit62CheckBox.Tag = "74_7";
-            this.bit62CheckBox.UseVisualStyleBackColor = false;
-            this.bit62CheckBox.CheckedChanged += new System.EventHandler(this.bitCheckBox_CheckedChanged);
-            this.bit62CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.bit62CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
-            // 
             // ThrottleIdleLabel
             // 
             resources.ApplyResources(this.ThrottleIdleLabel, "ThrottleIdleLabel");
@@ -2608,21 +2656,6 @@
             resources.ApplyResources(this.RC11TextBox, "RC11TextBox");
             this.RC11TextBox.Name = "RC11TextBox";
             this.RC11TextBox.ReadOnly = true;
-            // 
-            // wsLEDsNumericUpDown
-            // 
-            this.wsLEDsNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
-            resources.ApplyResources(this.wsLEDsNumericUpDown, "wsLEDsNumericUpDown");
-            this.wsLEDsNumericUpDown.Maximum = new decimal(new int[] {
-            12,
-            0,
-            0,
-            0});
-            this.wsLEDsNumericUpDown.Name = "wsLEDsNumericUpDown";
-            this.wsLEDsNumericUpDown.Tag = "80";
-            this.wsLEDsNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.wsLEDsNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
-            this.wsLEDsNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
             // RC10TextBox
             // 
@@ -2637,33 +2670,6 @@
             resources.ApplyResources(this.RC9TextBox, "RC9TextBox");
             this.RC9TextBox.Name = "RC9TextBox";
             this.RC9TextBox.ReadOnly = true;
-            // 
-            // bit42CheckBox
-            // 
-            resources.ApplyResources(this.bit42CheckBox, "bit42CheckBox");
-            this.bit42CheckBox.BackColor = System.Drawing.Color.OrangeRed;
-            this.bit42CheckBox.Name = "bit42CheckBox";
-            this.bit42CheckBox.Tag = "74_5";
-            this.bit42CheckBox.UseVisualStyleBackColor = false;
-            this.bit42CheckBox.CheckedChanged += new System.EventHandler(this.bitCheckBox_CheckedChanged);
-            this.bit42CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.bit42CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
-            // 
-            // wsLEDsLabel
-            // 
-            resources.ApplyResources(this.wsLEDsLabel, "wsLEDsLabel");
-            this.wsLEDsLabel.ForeColor = System.Drawing.Color.Black;
-            this.wsLEDsLabel.Name = "wsLEDsLabel";
-            // 
-            // bit02CheckBox
-            // 
-            resources.ApplyResources(this.bit02CheckBox, "bit02CheckBox");
-            this.bit02CheckBox.Name = "bit02CheckBox";
-            this.bit02CheckBox.Tag = "74_1";
-            this.bit02CheckBox.UseVisualStyleBackColor = true;
-            this.bit02CheckBox.CheckedChanged += new System.EventHandler(this.bitCheckBox_CheckedChanged);
-            this.bit02CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.bit02CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
             // RC9ProgressBar
             // 
@@ -2945,10 +2951,10 @@
             this.EstimatorGroupBox.Controls.Add(this.labelGyros1);
             this.EstimatorGroupBox.Controls.Add(this.AccConfNumericUpDown);
             this.EstimatorGroupBox.Controls.Add(this.MadgwickKpAccLabel);
-            this.EstimatorGroupBox.Controls.Add(this.InertialSchemeComboBox);
+            this.EstimatorGroupBox.Controls.Add(this.IMUOptionComboBox);
             this.EstimatorGroupBox.Controls.Add(this.GyroComboBox);
             this.EstimatorGroupBox.Controls.Add(this.MadgwickKpAccNumericUpDown);
-            this.EstimatorGroupBox.Controls.Add(this.InertialLabel);
+            this.EstimatorGroupBox.Controls.Add(this.IMUComboLabel);
             resources.ApplyResources(this.EstimatorGroupBox, "EstimatorGroupBox");
             this.EstimatorGroupBox.Name = "EstimatorGroupBox";
             this.EstimatorGroupBox.TabStop = false;
@@ -3241,6 +3247,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.OSLPFHzNumericUpDown);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.OSLPFComboBox);
             this.groupBox1.Controls.Add(this.AccLPFComboBox);
             this.groupBox1.Controls.Add(this.GyroLPFComboBox);
             this.groupBox1.Controls.Add(this.ServoLPFHzLabel);
@@ -3256,6 +3265,52 @@
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // OSLPFHzNumericUpDown
+            // 
+            this.OSLPFHzNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.OSLPFHzNumericUpDown, "OSLPFHzNumericUpDown");
+            this.OSLPFHzNumericUpDown.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.OSLPFHzNumericUpDown.Maximum = new decimal(new int[] {
+            4000,
+            0,
+            0,
+            0});
+            this.OSLPFHzNumericUpDown.Name = "OSLPFHzNumericUpDown";
+            this.OSLPFHzNumericUpDown.Tag = "106";
+            this.OSLPFHzNumericUpDown.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.OSLPFHzNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.OSLPFHzNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.OSLPFHzNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Name = "label2";
+            // 
+            // OSLPFComboBox
+            // 
+            resources.ApplyResources(this.OSLPFComboBox, "OSLPFComboBox");
+            this.OSLPFComboBox.FormattingEnabled = true;
+            this.OSLPFComboBox.Items.AddRange(new object[] {
+            resources.GetString("OSLPFComboBox.Items"),
+            resources.GetString("OSLPFComboBox.Items1"),
+            resources.GetString("OSLPFComboBox.Items2"),
+            resources.GetString("OSLPFComboBox.Items3"),
+            resources.GetString("OSLPFComboBox.Items4")});
+            this.OSLPFComboBox.Name = "OSLPFComboBox";
+            this.OSLPFComboBox.Tag = "105";
+            this.OSLPFComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
+            this.OSLPFComboBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
             // AccLPFComboBox
             // 
@@ -3489,6 +3544,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.BatteryNumericUpDown)).EndInit();
             this.GeneralGroupBox.ResumeLayout(false);
             this.GeneralGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.wsLEDsNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LowMotorRunNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EstCruiseNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MadgwickKpMagNumericUpDown)).EndInit();
@@ -3542,7 +3598,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.AltPosIntLimitNumericUpDown)).EndInit();
             this.RCGroupBox.ResumeLayout(false);
             this.RCGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.wsLEDsNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch10NumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch11NumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch12NumericUpDown)).EndInit();
@@ -3563,6 +3618,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.FWPitchThrottleFFNumericUpDown)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OSLPFHzNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ServoLPFHzNumericUpDown)).EndInit();
             this.AltitudeGroupBox.ResumeLayout(false);
             this.AltitudeGroupBox.PerformLayout();
@@ -3601,7 +3657,7 @@
         public System.Windows.Forms.CheckBox bit31CheckBox;
         private System.Windows.Forms.Label PropSenseLabel;
         private System.Windows.Forms.Label GyroLabel;
-        public System.Windows.Forms.ComboBox InertialSchemeComboBox;
+        public System.Windows.Forms.ComboBox IMUOptionComboBox;
         public System.Windows.Forms.CheckBox bit61CheckBox;
         public System.Windows.Forms.CheckBox bit21CheckBox;
         public System.Windows.Forms.NumericUpDown MadgwickKpAccNumericUpDown;
@@ -3611,7 +3667,7 @@
         public System.Windows.Forms.NumericUpDown AccConfNumericUpDown;
         private System.Windows.Forms.Label AccConfLabel;
         public System.Windows.Forms.ComboBox ComboPort1ComboBox;
-        private System.Windows.Forms.Label InertialLabel;
+        private System.Windows.Forms.Label IMUComboLabel;
         private System.Windows.Forms.Label BaroScaleLabel;
         public System.Windows.Forms.NumericUpDown Ch9NumericUpDown;
         private System.Windows.Forms.Label Ch9Label;
@@ -3829,6 +3885,9 @@
         public System.Windows.Forms.NumericUpDown VRSDescentRateNumericUpDown;
         private System.Windows.Forms.Label VRSLabel;
         private System.Windows.Forms.Label MotorStopLabel;
+        public System.Windows.Forms.NumericUpDown OSLPFHzNumericUpDown;
+        private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.ComboBox OSLPFComboBox;
 
 
     }

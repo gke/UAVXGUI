@@ -1374,13 +1374,14 @@ namespace UAVXGUI
                 if (RCChannel[4] >= 1200) speech.SpeakAsync("Navigate or return home selected.");
 
                 if (!F[(byte)FlagValues.IMUActive]) speech.SpeakAsync("IMU inactive.");
-                if (!F[(byte)FlagValues.BaroActive]) speech.SpeakAsync("Barometer inactive.");
-                if (!F[(byte)FlagValues.MagnetometerActive]) speech.SpeakAsync("Magnetometer inactive.");
+                if (!F[(byte)FlagValues.BaroActive]) speech.SpeakAsync("Barometer inactive or not installed.");
+                if (!F[(byte)FlagValues.MagnetometerActive]) speech.SpeakAsync("Magnetometer inactive or not installed.");
                 if (!F[(byte)FlagValues.IMUCalibrated]) speech.SpeakAsync("IMU uncalibrated.");
-                if (!F[(byte)FlagValues.MagCalibrated]) speech.SpeakAsync("Magnetometer uncalibrated.");
+                if (F[(byte)FlagValues.MagnetometerActive] && !F[(byte)FlagValues.MagCalibrated]) 
+                    speech.SpeakAsync("Magnetometer uncalibrated.");
                 if (F[(byte)FlagValues.LowBatt]) SpeakBattery();
                 if (((F[(byte)FlagValues.ReturnHome] || F[(byte)FlagValues.Navigate]) && !F[(byte)FlagValues.Bypass])) speech.SpeakAsync("Navigation enabled.");
-                if (!F[(byte)FlagValues.ParametersValid]) speech.SpeakAsync("Invalid Parameters.");
+                if (!F[(byte)FlagValues.ParametersValid]) speech.SpeakAsync("In valid Parameters.");
 
                 AlarmsButton.BackColor = System.Drawing.SystemColors.Control;
 
