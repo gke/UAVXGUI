@@ -123,9 +123,8 @@
   <data name="InertialScheme" xml:space="preserve">
     <value>"Reserved" is for gke so don't use or bad things could happen;).</value>
   </data>
-  <data name="UnusedFailsafes" xml:space="preserve">
-    <value>ENABLES Failsafes. It is STRONGLY recommended you ENABLE failsafes otherwise the behaviour of your aircraft on 
-    loss of the radio control link will be UNPREDICTABLE - AT YOUR RISK. See the Failsafes Wiki</value>
+  <data name="GPSAltitude" xml:space="preserve">
+    <value>ENABLES the use of GPS for altitude and ROC for fixed wing aircraft.</value>
   </data>
   <data name="ManualAltHold" xml:space="preserve">
     <value>DISABLES altitude hold including for failsafe. While useful when you wish to completely manage altitude hold this is not recommended.</value>
@@ -136,7 +135,9 @@
       <data name="FastStart" xml:space="preserve">
     <value>ENABLES fast starts by using the gyro bias from IMU calibration and in theory allows takeoffs without needing to be still immediately after arming.</value>
   </data>
-
+        <data name="PavelFilter" xml:space="preserve">
+    <value>ENABLES Pavel noise robust derivative filter.</value>
+  </data>
       <data name="BLHeli" xml:space="preserve">
     <value>ENABLES ESC programming using BLHeliSuite.</value>
   </data>
@@ -152,12 +153,15 @@ The result is identical to a power cycle and can be used to avoid the flashing c
       <data name="unassigned" xml:space="preserve">
     <value>UNASSIGNED CONFIG2 CHECKBOX - GKE.</value>
   </data>
-  <data name="BoardInverted" xml:space="preserve">
-    <value>ENABLES Board AUVX board to be mounted inverted.</value>
+  <data name="TurnToWP" xml:space="preserve">
+    <value>ENABLES turn towards WP and Home when navigating.</value>
   </data>
   <data name="MadgwickKp" xml:space="preserve">
     <value>Controls how much correction to gyro drift is applied by the accelerometer for the Madgwick attitude estimators. 
     Too large causes jitter and over reliance on the accelerometers. Too small may cause drift from level flight.</value>
+  </data>
+    <data name="ThrottleGain" xml:space="preserve">
+    <value>The rate at which the motor/servo control offsets are reduced when the throttle increases above that required for hover or cruise - effectively primitive gain scheduling.</value>
   </data>
   <data name="RxType" xml:space="preserve">
     <value>There are a wide range of options available for connecting receivers to UAVX. CompoundPPM, or CPPM is when a
@@ -187,7 +191,7 @@ Mode 2: Rudder/Throttle left hand Ailerons/Elevator right hand. Rudder available
     change for 5-10 minutes before flying.</value>
   </data>
   <data name="Differential" xml:space="preserve">
-    <value>Corrects oscillations. The value is too high or too low, when the quad bounces or oscillates. For Yaw use 0.</value>
+    <value>This counters disturbances to roll or pitch caused by influences such as air turbulence. For FW aircraft this should be zero or close to zero to avoid servo jitter.</value>
     <comment>Direkt aus der Anleitung entnommen (Test)</comment>
   </data>
     <data name="DifferentialFC" xml:space="preserve">
@@ -195,7 +199,13 @@ Mode 2: Rudder/Throttle left hand Ailerons/Elevator right hand. Rudder available
     <comment>Direkt aus der Anleitung entnommen (Test)</comment>
   </data>
   <data name="AttThrFF" xml:space="preserve">
-    <value>Determines the thorottle compensation required to overcome loss of lift in a multicopter when pitching and/or rolling.</value>
+    <value>Determines the throttle compensation required to overcome loss of lift in a multicopter when pitching and/or rolling.</value>
+  </data>
+    <data name="VoltScale" xml:space="preserve">
+    <value>Used for scaling the battery volts display value to the actual value.</value>
+  </data>
+    <data name="CurrentScale" xml:space="preserve">
+    <value>Used for scaling the battery current display value to the actual value.</value>
   </data>
     <data name="FWRollPitchFF" xml:space="preserve">
     <value>For FW determines the fraction of roll command applied to elevator to lift nose in turns.</value>
@@ -209,8 +219,20 @@ Mode 2: Rudder/Throttle left hand Ailerons/Elevator right hand. Rudder available
     <data name="MaxPitchAngle" xml:space="preserve">
     <value>Mainly for FW but for multicopters should be set to the same value for Max Roll Angle parameter. Maximum pitch angle in angle control and navigation. Helps limit deep dives and stalls when climbing.</value>
  </data>
-  <data name="MaxRollAngle" xml:space="preserve">
-    <value>Maximum roll angle in angle control and navigation.</value>
+  <data name="ClimbAngle" xml:space="preserve">
+    <value>Nominal FW best climb angle.</value>
+ </data>
+  <data name="AltBand" xml:space="preserve">
+    <value>This is the altitude error which gives the maximum rate of climb or descent for altitude hold.</value>
+ </data>
+  <data name="AltVelInt" xml:space="preserve">
+    <value>Attempts to reduce the final ROC error. Important for continuing to reduce the throttle after landing. Effectively it is seconds until minimum throttle is reached.</value>
+ </data>
+  <data name="AltVelIntLimit" xml:space="preserve">
+    <value>The maximum integral and also overall correction applied to the throttle.</value>
+ </data>
+    <data name="TrimAngle" xml:space="preserve">
+    <value>Nominal FW desired pitch trim angle. DO NOT trim aircraft using accelerometer trims.</value>
  </data>
   <data name="MaxAltComp" xml:space="preserve">
     <value>The maximum throttle compensation above or below cruise throttle permitted for altitude control.</value>
@@ -276,14 +298,31 @@ Mode 2: Rudder/Throttle left hand Ailerons/Elevator right hand. Rudder available
   </data>
   <data name="DescentRate" xml:space="preserve">
     <value>This controls the maximum descent rate when changing to a new lower altitude in WP navigation or when performing and Autoland. 
-    Units are in decimetres.</value>
+    </value>
   </data>
-  <data name="LEDs" xml:space="preserve">
-    <value>ENABLES external WS2812 LEDs.</value>
+  <data name="VRSDescentRate" xml:space="preserve">
+    <value>If your descent rate exceeds this for multicopters during navigation then it will attempt to orbit in forward flight to avoid dropping into its own prop wash.</value>
   </data>
+  <data name="ManualAH" xml:space="preserve">
+    <value>ENABLES Manual Altitude Hold. CAUTION there will be no altitutude hold on RTH, Position hold or navigation if checked.</value>
+  </data>
+
+ 
+  <data name="AccLPF" xml:space="preserve">
+    <value>The frequency above which accelerometer signals are filtered out.</value>
+  </data>
+   <data name="GyroLPF" xml:space="preserve">
+    <value>The frequency above which gyro rate signals are filtered out.</value>
+  </data>
+   <data name="MaxPropHz" xml:space="preserve">
+    <value>The maximum motor RPM multiplied by the number of blades in a propellor. Used to calculate a filter frequency above which any sudden changes to the aircraft attitude is reduced. As the propellor blades pass the arms of a multicopter they cause it to roll/pitch. This motion is not a true disturbance but one induced by the aircraft itself.</value>
+  </data>
+     <data name="ClockPeriod" xml:space="preserve">
+    <value>Sets the period of the main control loop.</value>
+  </data>
+  
   <data name="Hysteresis" xml:space="preserve">
-    <value>Desired heading is updated if the yaw stick movement is greater than this value. It is difficult not to input 
-    a yaw command when moving the stick forward or backward!
+    <value>Stick input is ignored below this value to reduce jitters. If the yaw stick deflection is above this then any WP navigation yaw command is ignored and the desired heading tracks the heading as the aircraft yaws!
   Note: You should NEVER have Roll/Pitch or Yaw trim offsets in your Tx. Use the accelerometer trimming process to get 
   stable hover position. If you use Yaw trim you will NOT have heading hold.
 </value>
@@ -320,27 +359,42 @@ Note how motors start and the stick responsiveness and flight performance.  Usua
     <value> Reduces the final error in altitude hold. </value>
   </data>
   <data name="Integral" xml:space="preserve">
-    <value> Always the same sign as proportional!
-Affects the total gyro/acc value over time. The higher the value, the more accelerometer self-leveling emphasis there will be.  A value too high causes the quad to osciillate, a value that is too small causes a poor return to  level.   
-Recommended Pitch and Roll "I" values of 0 to 15.</value>
+    <value>Helps to remove any steady state error in angle or rate.   For angle too high a value causes the quad to osciillate, a value that is too small causes a poor return to  level.</value>
     <comment>Direkt aus der Anleitung entnommen (Test)</comment>
   </data>
   <data name="ProportionalAngle" xml:space="preserve">
-    <value>When the using angle control mode the aircraft attitude should be proportional to the stick defelection.
-Pa (angle) by the outer control loop which now controls angle rather than rate. Ia reduces the final error from level flight. Pr (rate) is used by the inner rate control loop. The D term which attempts to remove wind and disturbances is shared with the rate control scheme. Always positive.</value>
+    <value>Used to remove reduce any steady state error in pitch/roll angles. For long periods of banking this can result in an effect called integral with the aircraft maintaining the bank angle for some time before returning to level flight.</value>
     <comment>Direkt aus der Anleitung entnommen (Test)</comment>
   </data>
   <data name="IntegralLimiter" xml:space="preserve">
-    <value>Determines the maximum value the integral term in a control loop can have. Low value causes slow return to level.  Too high a value can cause flips.  Recommended values for pitch and roll of +4 to +15. Recommended values for yaw of +1 to +2.  Upper value is automatically limitied by the your integral setting.</value>
+    <value>If there is a steady state error in the achieved roll/pitch angle/rate then this error is accumulated as an additional angle/rate command. This parameter is the maximum additional angle commanded. It should be kept much less than the maximum angle parameter otherwise the aircraft will return slowly to level flight when sticks are centred.</value>
   </data>
   <data name="RollYawMix" xml:space="preserve">
     <value>FW aircraft it controls how much roll is coupled into the pitch command compensating for a tendency to pitch down in turns.</value>
   </data>
-  <data name="YawScale" xml:space="preserve">
-    <value>Yaw stick sensitivity or multiplier. Two is twice as sensitive.</value>
+  <data name="MaxYawRate" xml:space="preserve">
+    <value>The maximum commanded yaw rate for full yaw stick deflection or effectively yaw sensitivity. The actual yaw rate may be lower depending on the Pi parameter.</value>
   </data>
-  <data name="RollPitchScale" xml:space="preserve">
-    <value>Roll/Pitch stick sensitivity or multiplier for RATE CONTROL when not in Bypass Mode. Two is twice as sensitive.</value>
+    <data name="MaxCompassYawRate" xml:space="preserve">
+    <value>This the maximum rate at which yaw will track any error in compass heading. It will generally be much lower in value than the Max Yaw Rate used for rudder stick commands.</value>
+  </data>
+     <data name="Turnout" xml:space="preserve">
+    <value>This is the heading error at which yaw or bank will start reducing to zero. For heading errors greater than this the aircraft will remain at the maximum value set.</value>
+  </data>
+  <data name="MaxAttitudeAngle" xml:space="preserve">
+    <value>Roll/Pitch stick sensitivity. Determines maximum commanded attitude angle at full stick deflection.</value>
+  </data>
+  <data name="ParamTemplate" xml:space="preserve">
+    <value>UAVX has a number of default templates which you may choose from initially. WARNING - these will require tuning.</value>
+  </data>
+    <data name="InertialScheme" xml:space="preserve">
+    <value>Selects the attitude estimation technique to be used. Madgwick IMU is probably the simplest and most reliable Madgwick AHRS attempts to fuse the magnetomter readings to estimate yaw but can be noisy.</value>
+  </data>
+      <data name="DerivativeFilter" xml:space="preserve">
+    <value>Selects the type of filter to be used for reducing derivative noise. The derivative term in the PID controller is intended to reject/compensate for sudden external disturbances to the aircraft's attitude however other self induced disturbances caused by prop wash etc can be magnified if not effectively filtered. THe MAFilt is known to work reasonable well.</value>
+  </data>
+  <data name="MaxAttitudeRate" xml:space="preserve">
+    <value>Roll/Pitch stick sensitivity in rate mode. It is currently computed from max angle and Po parameters.</value>
   </data>
   <data name="PPMDSM2" xml:space="preserve">
     <value>Currently the traditional PPM/PCM format is supported along with DSM2. DSM2 must use the ACTRO model with no mixing.</value>
@@ -378,6 +432,9 @@ Does not work for UAVP PIC VERSION - uses specific hex file for the required air
   <data name="Limiter" xml:space="preserve">
     <value>Scales altitude error to desired of climb or descent.</value>
   </data>
+    <data name="GyroSlewRate" xml:space="preserve">
+    <value>Noisy motors and props and hard mounted flight controllers can cause the gyros to emit impossible changes in gyro rates. This is used to the to impose an upper limit on gyro measurements which is acceptable.</value>
+  </data>
   <data name="Neutral" xml:space="preserve">
     <value>Neutral values of the accelerometer are captured when the quad is initially powered on.  It is important that the quad is not jiggled if neutral values are taken and input into the data windows.  These values will vary by accelerometer and breakout board installation, but should remain fairly constant over time. They should be re-checked especially after a very "hard landing", or a board re-mount.  You can also use the "Get values" button to automatically copy the data to the windows.  As a suggestion to get better accelerometer values, load and use the testfirmware to check the values and get a good average.  The testfirmware allows you to check the accelerometer values repeatedly by clicking on the Tools/Testsoftware/Liinear Sensor check line.</value>
   </data>
@@ -385,14 +442,11 @@ Does not work for UAVP PIC VERSION - uses specific hex file for the required air
     <value>Wind and other forces may push the aircraft off a direct line between waypoints or when returning home. This paramter determines how strongly the aircraft tries to reduce the distance from the direct path.</value>
   </data>
   <data name="Proportional" xml:space="preserve">
-    <value>Affects gyro control strength corresponding to stick input.
-The value is too low, when the quad reacts poorly or uncontrollably to stick inputs. The value is too high if the yaw is oscillating. The value will be positive for the yaw if the props on the front are CW rotatiing.  
-Recommended values for pitch and roll 10 to 25.  Recommended values for yaw 15 to 35. </value>
+    <value>This controls for FW aircraft the amount of servo deflection required to achieve the commanded pitch/roll/yaw rates or similarly for multicopters the throttle setpoints to achieve the same. </value>
     <comment>Direkt aus der Anleitung entnommen (Test)</comment>
   </data>
   <data name="Unterspannung" xml:space="preserve">
-    <value>Alarm setting for the red LED and buzzer if installed for the LiPo voltage.
-Recommended values for 3s Lipos from 43 to 48.</value>
+    <value>Alarm setting for the LiPo voltage.</value>
   </data>
   <data name="Fence" xml:space="preserve">
     <value>Permitted radius of operation. Breach causes RTH when failsafes enabled.

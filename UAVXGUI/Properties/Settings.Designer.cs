@@ -362,12 +362,12 @@ namespace UAVXGUI.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("15")]
-        public short RTHAltitudeHold {
+        public short Altitude {
             get {
-                return ((short)(this["RTHAltitudeHold"]));
+                return ((short)(this["Altitude"]));
             }
             set {
-                this["RTHAltitudeHold"] = value;
+                this["Altitude"] = value;
             }
         }
         
@@ -464,6 +464,54 @@ namespace UAVXGUI.Properties {
             }
             set {
                 this["SpeakVario"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("150")]
+        public double RangeLimit {
+            get {
+                return ((double)(this["RangeLimit"]));
+            }
+            set {
+                this["RangeLimit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public double OrbitRadius {
+            get {
+                return ((double)(this["OrbitRadius"]));
+            }
+            set {
+                this["OrbitRadius"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public double OrbitVelocity {
+            get {
+                return ((double)(this["OrbitVelocity"]));
+            }
+            set {
+                this["OrbitVelocity"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public double Velocity {
+            get {
+                return ((double)(this["Velocity"]));
+            }
+            set {
+                this["Velocity"] = value;
             }
         }
     }

@@ -86,7 +86,7 @@
     <Setting Name="FenceRadius" Type="System.Int16" Scope="User">
       <Value Profile="(Default)">150</Value>
     </Setting>
-    <Setting Name="RTHAltitudeHold" Type="System.Int16" Scope="User">
+    <Setting Name="Altitude" Type="System.Int16" Scope="User">
       <Value Profile="(Default)">15</Value>
     </Setting>
     <Setting Name="AltitudeOverTerrain" Type="System.Boolean" Scope="User">
@@ -112,6 +112,18 @@
     </Setting>
     <Setting Name="SpeakVario" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="RangeLimit" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">150</Value>
+    </Setting>
+    <Setting Name="OrbitRadius" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="OrbitVelocity" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="Velocity" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
     </Setting>
   </Settings>
 </SettingsFile>
