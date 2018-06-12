@@ -413,7 +413,7 @@ namespace UAVXGUI
 				Bypass,
 				UsingAngleControl,
 				Emulation,
-				MagLocked,
+				BadBusConfig,
 				DrivesArmed,
 				AccZBump,
 				UseManualAltHold,
@@ -1058,7 +1058,7 @@ namespace UAVXGUI
                 "Bypass," +
                 "Angle," +
                 "Emulation," +
-                "MagLocked," +
+                "BadBusConfig," +
                 "DrivesArmed," +
                 "AccZBump," +
                 "ManualAH," +
@@ -1367,21 +1367,28 @@ namespace UAVXGUI
             {
                 AlarmsButton.BackColor = Color.Orange;
 
-                if (F[(byte)FlagValues.IsArmed]) speech.SpeakAsync("Arming Switch.");
-                if (DesiredThrottleT > 0) speech.SpeakAsync("Throttle open.");
-                if (!F[(byte)FlagValues.Signal]) speech.SpeakAsync("No signal.");
-
-                if (RCChannel[4] >= 1200) speech.SpeakAsync("Navigate or return home selected.");
-
-                if (!F[(byte)FlagValues.IMUActive]) speech.SpeakAsync("IMU inactive.");
-                if (!F[(byte)FlagValues.BaroActive]) speech.SpeakAsync("Barometer inactive or not installed.");
-                if (!F[(byte)FlagValues.MagnetometerActive]) speech.SpeakAsync("Magnetometer inactive or not installed.");
-                if (!F[(byte)FlagValues.IMUCalibrated]) speech.SpeakAsync("IMU uncalibrated.");
-                if (F[(byte)FlagValues.MagnetometerActive] && !F[(byte)FlagValues.MagCalibrated]) 
-                    speech.SpeakAsync("Magnetometer uncalibrated.");
-                if (F[(byte)FlagValues.LowBatt]) SpeakBattery();
-                if (((F[(byte)FlagValues.ReturnHome] || F[(byte)FlagValues.Navigate]) && !F[(byte)FlagValues.Bypass])) speech.SpeakAsync("Navigation enabled.");
+                if (F[(byte)FlagValues.BadBusConfig] ||!F[(byte)FlagValues.ParametersValid]) {
+                   if (F[(byte)FlagValues.BadBusConfig]) speech.SpeakAsync("Bus Device Table Order Incorrect.");
                 if (!F[(byte)FlagValues.ParametersValid]) speech.SpeakAsync("In valid Parameters.");
+            }
+                else
+                {
+                    if (F[(byte)FlagValues.IsArmed]) speech.SpeakAsync("Arming Switch.");
+                    if (DesiredThrottleT > 0) speech.SpeakAsync("Throttle open.");
+                    if (!F[(byte)FlagValues.Signal]) speech.SpeakAsync("No signal.");
+
+                    if (RCChannel[4] >= 1200) speech.SpeakAsync("Navigate or return home selected.");
+
+                    if (!F[(byte)FlagValues.IMUActive]) speech.SpeakAsync("IMU inactive.");
+                    if (!F[(byte)FlagValues.BaroActive]) speech.SpeakAsync("Barometer inactive or not installed.");
+                    if (!F[(byte)FlagValues.MagnetometerActive]) speech.SpeakAsync("Magnetometer inactive or not installed.");
+                    if (!F[(byte)FlagValues.IMUCalibrated]) speech.SpeakAsync("IMU uncalibrated.");
+                    if (F[(byte)FlagValues.MagnetometerActive] && !F[(byte)FlagValues.MagCalibrated])
+                        speech.SpeakAsync("Magnetometer uncalibrated.");
+                    if (F[(byte)FlagValues.LowBatt]) SpeakBattery();
+                    if (((F[(byte)FlagValues.ReturnHome] || F[(byte)FlagValues.Navigate]) && !F[(byte)FlagValues.Bypass])) speech.SpeakAsync("Navigation enabled.");
+                }
+               
 
                 AlarmsButton.BackColor = System.Drawing.SystemColors.Control;
 
@@ -1854,16 +1861,9 @@ namespace UAVXGUI
                 MagFailBox.BackColor = System.Drawing.Color.Orange;
             }
 
-            int MagLockE = (int) ((MagHeadingT - AngleT[Yaw]) * MILLIRADDEG);
-            if (MagLockE > 180) 
-                MagLockE -= 360;
-            else
-                if (MagLockE < -180) 
-                    MagLockE += 180;
-
-            MagLockedBox.Text = "Mag Lock " + MagLockE;
-            MagLockedBox.BackColor = (F[(byte)FlagValues.MagLocked] && F[(byte)FlagValues.MagCalibrated]) ?
-                Color.Green: System.Drawing.Color.Orange;     
+  
+            BadBusConfigBox.BackColor = F[(byte)FlagValues.BadBusConfig] ?
+                System.Drawing.Color.Red: Color.Green;     
 
             DumpBBButton.BackColor = F[(byte)FlagValues.DumpingBB] ?
                  Color.Orange : System.Drawing.SystemColors.Control;

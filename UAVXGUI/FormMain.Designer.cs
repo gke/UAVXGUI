@@ -127,7 +127,7 @@ namespace UAVXGUI
             this.GPSFailBox = new System.Windows.Forms.TextBox();
             this.BaroFailBox = new System.Windows.Forms.TextBox();
             this.MagFailBox = new System.Windows.Forms.TextBox();
-            this.MagLockedBox = new System.Windows.Forms.TextBox();
+            this.BadBusConfigBox = new System.Windows.Forms.TextBox();
             this.FlagsGroupBox = new System.Windows.Forms.GroupBox();
             this.GPSStatBox = new System.Windows.Forms.GroupBox();
             this.GPScAcc = new System.Windows.Forms.TextBox();
@@ -1051,7 +1051,7 @@ namespace UAVXGUI
             this.flowLayoutPanel1.Controls.Add(this.GPSFailBox);
             this.flowLayoutPanel1.Controls.Add(this.BaroFailBox);
             this.flowLayoutPanel1.Controls.Add(this.MagFailBox);
-            this.flowLayoutPanel1.Controls.Add(this.MagLockedBox);
+            this.flowLayoutPanel1.Controls.Add(this.BadBusConfigBox);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 19);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(237, 336);
@@ -1334,16 +1334,16 @@ namespace UAVXGUI
             this.MagFailBox.Text = "Mag Error";
             this.MagFailBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // MagLockedBox
+            // BadBusConfigBox
             // 
-            this.MagLockedBox.BackColor = System.Drawing.SystemColors.Window;
-            this.MagLockedBox.Location = new System.Drawing.Point(118, 315);
-            this.MagLockedBox.Name = "MagLockedBox";
-            this.MagLockedBox.ReadOnly = true;
-            this.MagLockedBox.Size = new System.Drawing.Size(109, 20);
-            this.MagLockedBox.TabIndex = 127;
-            this.MagLockedBox.Text = "Mag Lock Error";
-            this.MagLockedBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BadBusConfigBox.BackColor = System.Drawing.SystemColors.Window;
+            this.BadBusConfigBox.Location = new System.Drawing.Point(118, 315);
+            this.BadBusConfigBox.Name = "BadBusConfigBox";
+            this.BadBusConfigBox.ReadOnly = true;
+            this.BadBusConfigBox.Size = new System.Drawing.Size(109, 20);
+            this.BadBusConfigBox.TabIndex = 127;
+            this.BadBusConfigBox.Text = "Bus Dev Config";
+            this.BadBusConfigBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // FlagsGroupBox
             // 
@@ -3757,7 +3757,7 @@ namespace UAVXGUI
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox MagLockedBox;
+        private System.Windows.Forms.TextBox BadBusConfigBox;
         private System.Windows.Forms.Button PlotButton;
         private System.Windows.Forms.TextBox FWGlideOffsetAngle;
         private System.Windows.Forms.Label FWGlideAngleOffsetLabel;
