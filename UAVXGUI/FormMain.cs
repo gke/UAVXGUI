@@ -1377,6 +1377,7 @@ namespace UAVXGUI
                     if (DesiredThrottleT > 0) speech.SpeakAsync("Throttle open.");
                     if (!F[(byte)FlagValues.Signal]) speech.SpeakAsync("No signal.");
 
+                    if (!F[(byte)FlagValues.OriginValid]) speech.SpeakAsync("Launch Location Not Acquired.");
                     if (RCChannel[4] >= 1200) speech.SpeakAsync("Navigate or return home selected.");
 
                     if (!F[(byte)FlagValues.IMUActive]) speech.SpeakAsync("IMU inactive.");
