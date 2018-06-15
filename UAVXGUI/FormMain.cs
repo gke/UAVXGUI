@@ -1229,6 +1229,7 @@ namespace UAVXGUI
                 UAVXCloseTelemetry();
                 ConnectButton.Text = "Disconnected";
                 ConnectButton.BackColor = System.Drawing.Color.Red;
+                BootLoadButton.BackColor = System.Drawing.Color.Green;
             }
             else
             {
@@ -1541,6 +1542,7 @@ namespace UAVXGUI
                     serialPort1.Open();
                     ConnectButton.Text = "Connected";
                     ConnectButton.BackColor = System.Drawing.Color.Green;
+                    BootLoadButton.BackColor = System.Drawing.Color.Green;
                     CreateSaveLogFile();
                     RxHead = RxTail = 0;
                     InitPollPacket();

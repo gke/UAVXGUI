@@ -3369,12 +3369,13 @@ namespace UAVXGUI
             // 
             // BootLoadButton
             // 
+            this.BootLoadButton.BackColor = System.Drawing.Color.Green;
             this.BootLoadButton.Location = new System.Drawing.Point(630, 0);
             this.BootLoadButton.Name = "BootLoadButton";
             this.BootLoadButton.Size = new System.Drawing.Size(75, 23);
             this.BootLoadButton.TabIndex = 229;
             this.BootLoadButton.Text = "BOOTLOAD";
-            this.BootLoadButton.UseVisualStyleBackColor = true;
+            this.BootLoadButton.UseVisualStyleBackColor = false;
             this.BootLoadButton.Click += new System.EventHandler(this.BootLoadButton_Click);
             // 
             // FormMain
