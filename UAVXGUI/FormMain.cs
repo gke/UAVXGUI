@@ -242,7 +242,7 @@ namespace UAVXGUI
         };
 
         public enum MiscComms 
-        { miscCalIMU, miscCalMag, miscLB, miscUnused, miscBBDump, miscGPSBypass, miscCalAcc, miscCalGyro}
+        { miscCalIMU, miscCalMag, miscLB, miscUnused, miscBBDump, miscGPSBypass, miscCalAcc, miscCalGyro, miscBootLoad}
 
         public enum NavStates
         {
@@ -1292,7 +1292,18 @@ namespace UAVXGUI
             }
         }
 
-
+        private void BootLoadButton_Click(object sender, EventArgs e)
+        {
+            if ((StateT == FlightStates.Preflight) || (StateT == FlightStates.Ready))
+            {
+                SendRequestPacket(UAVXMiscPacketTag, (byte)MiscComms.miscBootLoad, 0);
+                BootLoadButton.BackColor = Color.Red;
+                InFlight = false;
+                UAVXCloseTelemetry();
+                ConnectButton.Text = "Disconnected";
+                ConnectButton.BackColor = System.Drawing.Color.Red;
+            }
+        }
         private void DumpBBButton_Click(object sender, EventArgs e)
         {
             if (((StateT == FlightStates.Preflight) || (StateT == FlightStates.Ready)) && !F[(byte)FlagValues.DumpingBB])

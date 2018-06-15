@@ -333,6 +333,7 @@ namespace UAVXGUI
             this.TuningGroupBox = new System.Windows.Forms.GroupBox();
             this.attitudeIndicatorInstrumentControl1 = new Instruments.AttitudeIndicatorInstrumentControl();
             this.headingIndicatorInstrumentControl1 = new Instruments.HeadingIndicatorInstrumentControl();
+            this.BootLoadButton = new System.Windows.Forms.Button();
             this.GyroGroupBox.SuspendLayout();
             this.ControlsGroupBox.SuspendLayout();
             this.AttitudeGroupBox.SuspendLayout();
@@ -2175,7 +2176,7 @@ namespace UAVXGUI
             // 
             // ReplayButton
             // 
-            this.ReplayButton.Location = new System.Drawing.Point(712, 0);
+            this.ReplayButton.Location = new System.Drawing.Point(791, 0);
             this.ReplayButton.Name = "ReplayButton";
             this.ReplayButton.Size = new System.Drawing.Size(75, 23);
             this.ReplayButton.TabIndex = 164;
@@ -2185,9 +2186,9 @@ namespace UAVXGUI
             // 
             // ReplayProgressBar
             // 
-            this.ReplayProgressBar.Location = new System.Drawing.Point(792, 0);
+            this.ReplayProgressBar.Location = new System.Drawing.Point(873, 0);
             this.ReplayProgressBar.Name = "ReplayProgressBar";
-            this.ReplayProgressBar.Size = new System.Drawing.Size(160, 23);
+            this.ReplayProgressBar.Size = new System.Drawing.Size(79, 23);
             this.ReplayProgressBar.TabIndex = 165;
             // 
             // Airframe
@@ -2882,7 +2883,7 @@ namespace UAVXGUI
             // 
             // DumpBBButton
             // 
-            this.DumpBBButton.Location = new System.Drawing.Point(630, 0);
+            this.DumpBBButton.Location = new System.Drawing.Point(711, 0);
             this.DumpBBButton.Name = "DumpBBButton";
             this.DumpBBButton.Size = new System.Drawing.Size(75, 23);
             this.DumpBBButton.TabIndex = 216;
@@ -3366,6 +3367,16 @@ namespace UAVXGUI
             this.headingIndicatorInstrumentControl1.TabIndex = 4;
             this.headingIndicatorInstrumentControl1.Text = "headingIndicatorInstrumentControl1";
             // 
+            // BootLoadButton
+            // 
+            this.BootLoadButton.Location = new System.Drawing.Point(630, 0);
+            this.BootLoadButton.Name = "BootLoadButton";
+            this.BootLoadButton.Size = new System.Drawing.Size(75, 23);
+            this.BootLoadButton.TabIndex = 229;
+            this.BootLoadButton.Text = "BOOTLOAD";
+            this.BootLoadButton.UseVisualStyleBackColor = true;
+            this.BootLoadButton.Click += new System.EventHandler(this.BootLoadButton_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3373,6 +3384,7 @@ namespace UAVXGUI
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1013, 637);
+            this.Controls.Add(this.BootLoadButton);
             this.Controls.Add(this.TuningGroupBox);
             this.Controls.Add(this.CalibrateAcc6PointButton);
             this.Controls.Add(this.PlotButton);
@@ -3782,6 +3794,7 @@ namespace UAVXGUI
         private System.Windows.Forms.CheckBox DiagnosticCheckBox;
         private System.Windows.Forms.Label YawPitchRollGyroLabel;
         private System.Windows.Forms.Label ImbalanceLabel;
+        private System.Windows.Forms.Button BootLoadButton;
     }
 }
 
