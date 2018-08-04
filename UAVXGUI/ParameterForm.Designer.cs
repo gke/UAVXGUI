@@ -632,7 +632,8 @@
             resources.GetString("GyroComboBox.Items3"),
             resources.GetString("GyroComboBox.Items4"),
             resources.GetString("GyroComboBox.Items5"),
-            resources.GetString("GyroComboBox.Items6")});
+            resources.GetString("GyroComboBox.Items6"),
+            resources.GetString("GyroComboBox.Items7")});
             this.GyroComboBox.Name = "GyroComboBox";
             this.GyroComboBox.Tag = "35";
             this.GyroComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
