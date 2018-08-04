@@ -1732,7 +1732,6 @@
             this.NavGroupBox.Controls.Add(this.MotorStopComboBox);
             this.NavGroupBox.Controls.Add(this.bit61CheckBox);
             this.NavGroupBox.Controls.Add(this.VRSDescentRateNumericUpDown);
-            this.NavGroupBox.Controls.Add(this.bit51CheckBox);
             this.NavGroupBox.Controls.Add(this.VRSLabel);
             this.NavGroupBox.Controls.Add(this.bit11CheckBox);
             this.NavGroupBox.Controls.Add(this.label1);
@@ -3024,6 +3023,7 @@
             this.FWGroupBox.Controls.Add(this.FWAileronRudderFFNumericUpDown);
             this.FWGroupBox.Controls.Add(this.FWAltSpoilerFFLabel);
             this.FWGroupBox.Controls.Add(this.FWAltSpoilerFFNumericUpDown);
+            this.FWGroupBox.Controls.Add(this.bit51CheckBox);
             this.FWGroupBox.Controls.Add(this.FWTrimAngleNumericUpDown);
             this.FWGroupBox.Controls.Add(this.FWClimbAngleNumericUpDown);
             this.FWGroupBox.Controls.Add(this.FWClimbAngleLabel);
