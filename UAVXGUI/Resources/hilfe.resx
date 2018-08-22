@@ -145,9 +145,8 @@
       <data name="Glider" xml:space="preserve">
     <value>ENABLES  aircraft to expore autonomous thermal hunting. WP Missions are not allowed.</value>
   </data>
-        <data name="RebootConfig" xml:space="preserve">
-    <value>POTENTIALLY DANGEROUS USE AT YOUR OWN RISK- If checked forces a reboot if any parameter changes which may as a consequence change the Arm processor port pin functions. This includes changes to aircraft type specifically the control of motors and servos, rx type, gps port.
-The result is identical to a power cycle and can be used to avoid the flashing catastrophe flashing LEDs which some may find annoying/inconvenient but without causing a pause to allow you to rethink your changes.</value>
+        <data name="GyroOS" xml:space="preserve">
+    <value>Enables gyro oversampling at 8KHz for SPI bus connected IMU (UAVXV4 boards).</value>
   </data>
   
       <data name="unassigned" xml:space="preserve">
@@ -477,7 +476,7 @@ Does not work for UAVP PIC VERSION - uses specific hex file for the required air
     <value>The GPS positions are combined with the estimated position from the accelerometers. This trims how much of each is used. Experiment!</value>
   </data>
   <data name="NavGPSSlew" xml:space="preserve">
-    <value>Sets the the maximum pitch/roll angle when navigating or performing a RTH. Experiment!</value>
+    <value>Sets the maximum pitch/roll angle when navigating or performing a RTH. Experiment!</value>
   </data>
   <data name="NeutralRadius" xml:space="preserve">
     <value>Within this radius from the hold point the aircraft relies upon its neutral stability and the GPS is not used. Outside this radius the GPS signals are used. Values 0-5 Metres.</value>

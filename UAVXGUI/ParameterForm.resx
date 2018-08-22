@@ -2230,16 +2230,16 @@
     <value>NoControl</value>
   </data>
   <data name="GyroLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>111, 18</value>
+    <value>109, 20</value>
   </data>
   <data name="GyroLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 13</value>
+    <value>27, 13</value>
   </data>
   <data name="GyroLabel.TabIndex" type="System.Int32, mscorlib">
     <value>92</value>
   </data>
   <data name="GyroLabel.Text" xml:space="preserve">
-    <value>Gyro </value>
+    <value>P/R</value>
   </data>
   <data name="&gt;&gt;GyroLabel.Name" xml:space="preserve">
     <value>GyroLabel</value>
@@ -2251,7 +2251,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;GyroLabel.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>12</value>
   </data>
   <data name="MadgwickKpMagNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -4240,16 +4240,16 @@
     <value>NoControl</value>
   </data>
   <data name="BaroLPFHzLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 67</value>
+    <value>106, 93</value>
   </data>
   <data name="BaroLPFHzLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>19, 13</value>
+    <value>42, 13</value>
   </data>
   <data name="BaroLPFHzLabel.TabIndex" type="System.Int32, mscorlib">
     <value>60</value>
   </data>
   <data name="BaroLPFHzLabel.Text" xml:space="preserve">
-    <value>Alt</value>
+    <value>Altitude</value>
   </data>
   <data name="&gt;&gt;BaroLPFHzLabel.Name" xml:space="preserve">
     <value>BaroLPFHzLabel</value>
@@ -4261,7 +4261,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;BaroLPFHzLabel.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>11</value>
   </data>
   <data name="AltPosKpNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -4294,7 +4294,7 @@
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="AltLPFNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>47, 66</value>
+    <value>147, 90</value>
   </data>
   <data name="AltLPFNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 20</value>
@@ -4315,7 +4315,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;AltLPFNumericUpDown.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>10</value>
   </data>
   <data name="AltVelKdNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -6405,6 +6405,63 @@
   <data name="&gt;&gt;RCGroupBox.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="GyroSlewRateNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="GyroSlewRateNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 90</value>
+  </data>
+  <data name="GyroSlewRateNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 20</value>
+  </data>
+  <data name="GyroSlewRateNumericUpDown.TabIndex" type="System.Int32, mscorlib">
+    <value>235</value>
+  </data>
+  <data name="GyroSlewRateNumericUpDown.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;GyroSlewRateNumericUpDown.Name" xml:space="preserve">
+    <value>GyroSlewRateNumericUpDown</value>
+  </data>
+  <data name="&gt;&gt;GyroSlewRateNumericUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GyroSlewRateNumericUpDown.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;GyroSlewRateNumericUpDown.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="GyroSlewLimitLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="GyroSlewLimitLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="GyroSlewLimitLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 93</value>
+  </data>
+  <data name="GyroSlewLimitLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 13</value>
+  </data>
+  <data name="GyroSlewLimitLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>155</value>
+  </data>
+  <data name="GyroSlewLimitLabel.Text" xml:space="preserve">
+    <value>Slew%</value>
+  </data>
+  <data name="&gt;&gt;GyroSlewLimitLabel.Name" xml:space="preserve">
+    <value>GyroSlewLimitLabel</value>
+  </data>
+  <data name="&gt;&gt;GyroSlewLimitLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GyroSlewLimitLabel.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;GyroSlewLimitLabel.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
   <data name="EstimatorGroupBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
@@ -6432,33 +6489,6 @@
   <data name="&gt;&gt;EstimatorGroupBox.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="GyroSlewRateNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
-  </data>
-  <data name="GyroSlewRateNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>47, 42</value>
-  </data>
-  <data name="GyroSlewRateNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 20</value>
-  </data>
-  <data name="GyroSlewRateNumericUpDown.TabIndex" type="System.Int32, mscorlib">
-    <value>235</value>
-  </data>
-  <data name="GyroSlewRateNumericUpDown.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;GyroSlewRateNumericUpDown.Name" xml:space="preserve">
-    <value>GyroSlewRateNumericUpDown</value>
-  </data>
-  <data name="&gt;&gt;GyroSlewRateNumericUpDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GyroSlewRateNumericUpDown.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;GyroSlewRateNumericUpDown.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
   <data name="YawLPFLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -6466,7 +6496,7 @@
     <value>NoControl</value>
   </data>
   <data name="YawLPFLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>111, 43</value>
+    <value>7, 71</value>
   </data>
   <data name="YawLPFLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>28, 13</value>
@@ -6487,13 +6517,13 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;YawLPFLabel.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>13</value>
   </data>
   <data name="YawGyroLPFNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="YawGyroLPFNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>149, 43</value>
+    <value>45, 67</value>
   </data>
   <data name="YawGyroLPFNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 20</value>
@@ -6514,37 +6544,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;YawGyroLPFNumericUpDown.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="GyroSlewLimitLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="GyroSlewLimitLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="GyroSlewLimitLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 44</value>
-  </data>
-  <data name="GyroSlewLimitLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 13</value>
-  </data>
-  <data name="GyroSlewLimitLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>155</value>
-  </data>
-  <data name="GyroSlewLimitLabel.Text" xml:space="preserve">
-    <value>Slew</value>
-  </data>
-  <data name="&gt;&gt;GyroSlewLimitLabel.Name" xml:space="preserve">
-    <value>GyroSlewLimitLabel</value>
-  </data>
-  <data name="&gt;&gt;GyroSlewLimitLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GyroSlewLimitLabel.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;GyroSlewLimitLabel.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>14</value>
   </data>
   <data name="AccLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7105,7 +7105,7 @@
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="OSLPFHzNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>149, 91</value>
+    <value>147, 43</value>
   </data>
   <data name="OSLPFHzNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 20</value>
@@ -7135,7 +7135,7 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 92</value>
+    <value>7, 44</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>28, 13</value>
@@ -7177,7 +7177,7 @@
     <value>noOS</value>
   </data>
   <data name="OSLPFComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>47, 90</value>
+    <value>45, 42</value>
   </data>
   <data name="OSLPFComboBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 21</value>
@@ -7273,7 +7273,7 @@
     <value>5</value>
   </data>
   <data name="GyroLPFComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>149, 16</value>
+    <value>147, 16</value>
   </data>
   <data name="GyroLPFComboBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 21</value>
@@ -7300,7 +7300,7 @@
     <value>NoControl</value>
   </data>
   <data name="ServoLPFHzLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>111, 68</value>
+    <value>106, 70</value>
   </data>
   <data name="ServoLPFHzLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 13</value>
@@ -7327,7 +7327,7 @@
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="ServoLPFHzNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>149, 67</value>
+    <value>147, 67</value>
   </data>
   <data name="ServoLPFHzNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 20</value>

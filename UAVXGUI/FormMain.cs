@@ -1177,6 +1177,8 @@ namespace UAVXGUI
 
             "SensorTemp,");
 
+            SaveTextLogFileStreamWriter.Write("Noise,N1,N2,N3,N4,N5,N6,N7,N8,");
+
             SaveTextLogFileStreamWriter.Write("Stats," +
 
             "GPSAltX," +
@@ -2764,7 +2766,17 @@ namespace UAVXGUI
 
                     MagHeadingT = ExtractShort(ref UAVXPacket,81);
 
-                    DoMotorsAndTime(83);
+                    MPU6XXXTempT = ExtractShort(ref UAVXPacket, 83);
+
+                    SensorTemp.Text = string.Format("{0:n1}", MPU6XXXTempT * 0.1);
+
+                    if (MPU6XXXTempT < 0.0)
+                        SensorTemp.BackColor = System.Drawing.Color.LightSteelBlue;
+                    else
+                        SensorTemp.BackColor = MPU6XXXTempT > 300.0 ?
+                            System.Drawing.Color.Orange : EnvGroupBox.BackColor;
+
+                    DoMotorsAndTime(85);
 
                     UpdateFlags();
                     UpdateFlightState();
@@ -2909,10 +2921,9 @@ namespace UAVXGUI
                 case UAVXNoisePacketTag:
 
                     NoiseIsGyro = ExtractByte(ref UAVXPacket, (byte)(2));
-                    NoiseErrors = ExtractShort(ref UAVXPacket, (byte)(3)) * 0.01f;
+                    NoiseErrors = ExtractShort(ref UAVXPacket, (byte)(3));
 
-                    SpectraGroupBox.Text = NoiseIsGyro != 0 ? "Gyro (Deg/S/S) " + string.Format("{0:n2}", NoiseErrors) + "%" : "Acc (0.5G FS)";
-                    SpectraGroupBox.BackColor = NoiseErrors > 1.0 ? System.Drawing.Color.Orange : System.Drawing.SystemColors.Control; 
+                    SpectraGroupBox.Text = NoiseIsGyro != 0 ? "Gyro (Max % FS) " + string.Format("{0:n0}", NoiseErrors) : "Acc (0.5G FS)";
       
                     for (p = 0; p < 8; p++)
                         Noise[p] = ExtractShort(ref UAVXPacket, (byte)(5 + p * 2));
@@ -2954,7 +2965,7 @@ namespace UAVXGUI
                     EastPosET = ExtractInt(ref UAVXPacket, 38);
                     NavStateTimeoutT = ExtractInt24(ref UAVXPacket, 42);
 
-                    MPU6XXXTempT = ExtractShort(ref UAVXPacket, 45);
+                   // MPU6XXXTempT = ExtractShort(ref UAVXPacket, 45);
                     GPSMissionTimeT = ExtractInt(ref UAVXPacket, 47);
 
                     NavSensitivityT = ExtractShort(ref UAVXPacket, 51);
@@ -2980,18 +2991,10 @@ namespace UAVXGUI
                     NavStateTimeout.Text = NavStateTimeoutT >= 0 ?
                         string.Format("{0:n0}", (float)NavStateTimeoutT * 0.001) : " ";
 
-                    SensorTemp.Text = string.Format("{0:n1}", MPU6XXXTempT * 0.1);
-
                     NavSensitivity.Text = string.Format("{0:n0}", (NavSensitivityT) * 0.1);
                     NavRCorr.Text = string.Format("{0:n0}", NavRCorrT * 0.1);
                     NavPCorr.Text = string.Format("{0:n0}", NavPCorrT * 0.1);
                     NavYCorr.Text = string.Format("{0:n0}", NavYCorrT);
-
-                    if (MPU6XXXTempT < 0.0)
-                        SensorTemp.BackColor = System.Drawing.Color.LightSteelBlue;
-                    else
-                        SensorTemp.BackColor = MPU6XXXTempT > 300.0 ?
-                            System.Drawing.Color.Orange : EnvGroupBox.BackColor;
 
                     break;
                     case UAVXGuidancePacketTag:
@@ -3334,6 +3337,14 @@ namespace UAVXGUI
             DesiredHeadingT * MILLIRADDEG + "," +
 
             MPU6XXXTempT * 0.1 + ",");
+
+            if (NoiseIsGyro != 0)
+                SaveTextLogFileStreamWriter.Write("GyroDelta,");
+            else
+                SaveTextLogFileStreamWriter.Write("AccDFT,");
+ 
+            for (i = 0; i < 8; i++)
+                SaveTextLogFileStreamWriter.Write(Noise[i] + ",");
 
             SaveTextLogFileStreamWriter.Write("Stats,");
 

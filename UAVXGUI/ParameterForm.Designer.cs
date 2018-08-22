@@ -243,11 +243,11 @@
             this.RC7ProgressBar = new System.Windows.Forms.ProgressBar();
             this.RC4ProgressBar = new System.Windows.Forms.ProgressBar();
             this.RC3ProgressBar = new System.Windows.Forms.ProgressBar();
-            this.EstimatorGroupBox = new System.Windows.Forms.GroupBox();
             this.GyroSlewRateNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.GyroSlewLimitLabel = new System.Windows.Forms.Label();
+            this.EstimatorGroupBox = new System.Windows.Forms.GroupBox();
             this.YawLPFLabel = new System.Windows.Forms.Label();
             this.YawGyroLPFNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.GyroSlewLimitLabel = new System.Windows.Forms.Label();
             this.AccLabel = new System.Windows.Forms.Label();
             this.FWGroupBox = new System.Windows.Forms.GroupBox();
             this.FWClimbThrNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -363,8 +363,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Ch11NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch12NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RxChannelsNumericUpDown)).BeginInit();
-            this.EstimatorGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GyroSlewRateNumericUpDown)).BeginInit();
+            this.EstimatorGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.YawGyroLPFNumericUpDown)).BeginInit();
             this.FWGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FWClimbThrNumericUpDown)).BeginInit();
@@ -2943,6 +2943,31 @@
             this.RC3ProgressBar.Name = "RC3ProgressBar";
             this.RC3ProgressBar.Step = 1;
             // 
+            // GyroSlewRateNumericUpDown
+            // 
+            this.GyroSlewRateNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.GyroSlewRateNumericUpDown, "GyroSlewRateNumericUpDown");
+            this.GyroSlewRateNumericUpDown.Maximum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.GyroSlewRateNumericUpDown.Name = "GyroSlewRateNumericUpDown";
+            this.GyroSlewRateNumericUpDown.Tag = "92";
+            this.GyroSlewRateNumericUpDown.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.GyroSlewRateNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.GyroSlewRateNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.GyroSlewRateNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            // 
+            // GyroSlewLimitLabel
+            // 
+            resources.ApplyResources(this.GyroSlewLimitLabel, "GyroSlewLimitLabel");
+            this.GyroSlewLimitLabel.Name = "GyroSlewLimitLabel";
+            // 
             // EstimatorGroupBox
             // 
             this.EstimatorGroupBox.Controls.Add(this.MadgwickKpMagLabel);
@@ -2958,31 +2983,6 @@
             resources.ApplyResources(this.EstimatorGroupBox, "EstimatorGroupBox");
             this.EstimatorGroupBox.Name = "EstimatorGroupBox";
             this.EstimatorGroupBox.TabStop = false;
-            // 
-            // GyroSlewRateNumericUpDown
-            // 
-            this.GyroSlewRateNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
-            resources.ApplyResources(this.GyroSlewRateNumericUpDown, "GyroSlewRateNumericUpDown");
-            this.GyroSlewRateNumericUpDown.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.GyroSlewRateNumericUpDown.Maximum = new decimal(new int[] {
-            25500,
-            0,
-            0,
-            0});
-            this.GyroSlewRateNumericUpDown.Name = "GyroSlewRateNumericUpDown";
-            this.GyroSlewRateNumericUpDown.Tag = "92";
-            this.GyroSlewRateNumericUpDown.Value = new decimal(new int[] {
-            2000,
-            0,
-            0,
-            0});
-            this.GyroSlewRateNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.GyroSlewRateNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
-            this.GyroSlewRateNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
             // YawLPFLabel
             // 
@@ -3003,11 +3003,6 @@
             this.YawGyroLPFNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
             this.YawGyroLPFNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
             this.YawGyroLPFNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
-            // 
-            // GyroSlewLimitLabel
-            // 
-            resources.ApplyResources(this.GyroSlewLimitLabel, "GyroSlewLimitLabel");
-            this.GyroSlewLimitLabel.Name = "GyroSlewLimitLabel";
             // 
             // AccLabel
             // 
@@ -3257,12 +3252,12 @@
             this.groupBox1.Controls.Add(this.ServoLPFHzNumericUpDown);
             this.groupBox1.Controls.Add(this.GyroSlewRateNumericUpDown);
             this.groupBox1.Controls.Add(this.AccLabel);
-            this.groupBox1.Controls.Add(this.GyroLabel);
-            this.groupBox1.Controls.Add(this.YawLPFLabel);
             this.groupBox1.Controls.Add(this.GyroSlewLimitLabel);
-            this.groupBox1.Controls.Add(this.YawGyroLPFNumericUpDown);
             this.groupBox1.Controls.Add(this.AltLPFNumericUpDown);
             this.groupBox1.Controls.Add(this.BaroLPFHzLabel);
+            this.groupBox1.Controls.Add(this.GyroLabel);
+            this.groupBox1.Controls.Add(this.YawLPFLabel);
+            this.groupBox1.Controls.Add(this.YawGyroLPFNumericUpDown);
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
@@ -3603,9 +3598,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.Ch11NumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch12NumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RxChannelsNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GyroSlewRateNumericUpDown)).EndInit();
             this.EstimatorGroupBox.ResumeLayout(false);
             this.EstimatorGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GyroSlewRateNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.YawGyroLPFNumericUpDown)).EndInit();
             this.FWGroupBox.ResumeLayout(false);
             this.FWGroupBox.PerformLayout();

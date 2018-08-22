@@ -364,7 +364,7 @@ namespace UAVXGUI
             if (parameterForm.bit32CheckBox.Focused)
                 helpstring = help.GetString("Glider");
             if (parameterForm.bit42CheckBox.Focused)
-                helpstring = help.GetString("RebootConfig");
+                helpstring = help.GetString("GyroOS");
             if (parameterForm.bit52CheckBox.Focused)
                 helpstring = help.GetString("TurnToWP");
             if (parameterForm.bit62CheckBox.Focused)
@@ -884,7 +884,7 @@ namespace UAVXGUI
 
                 int p = Convert.ToInt16(Field.Tag);
 
-                if ((p == 92) || (p == 106))
+                if ((p == 106))
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 0.01);
                 else
 
@@ -1460,7 +1460,7 @@ namespace UAVXGUI
                        ParamUpdate(YawRateDiffNumericUpDown);
                         break;
                     case 92:
-                        GyroSlewRateNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 100.0f);
+                        GyroSlewRateNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(GyroSlewRateNumericUpDown);
                         break;
                     case 93:
