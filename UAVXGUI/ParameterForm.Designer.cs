@@ -122,7 +122,7 @@
             this.RollChLabel = new System.Windows.Forms.Label();
             this.Ch7NumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.Ch4NumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.ChNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.Ch1NumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.Ch4Label = new System.Windows.Forms.Label();
             this.ThrottleChLabel = new System.Windows.Forms.Label();
             this.Ch7Label = new System.Windows.Forms.Label();
@@ -323,7 +323,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Ch2NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch7NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch4NumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ChNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Ch1NumericUpDown)).BeginInit();
             this.NavGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VRSDescentRateNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavMaxAngleNumericUpDown)).BeginInit();
@@ -847,7 +847,6 @@
             // 
             // GeneralGroupBox
             // 
-            this.GeneralGroupBox.Controls.Add(this.bit62CheckBox);
             this.GeneralGroupBox.Controls.Add(this.labelTelemetry1);
             this.GeneralGroupBox.Controls.Add(this.bit01CheckBox);
             this.GeneralGroupBox.Controls.Add(this.wsLEDsNumericUpDown);
@@ -856,10 +855,8 @@
             this.GeneralGroupBox.Controls.Add(this.TelemetryComboBox);
             this.GeneralGroupBox.Controls.Add(this.labelESC1);
             this.GeneralGroupBox.Controls.Add(this.wsLEDsLabel);
-            this.GeneralGroupBox.Controls.Add(this.bit42CheckBox);
             this.GeneralGroupBox.Controls.Add(this.ESCComboBox);
             this.GeneralGroupBox.Controls.Add(this.BaroScaleLabel);
-            this.GeneralGroupBox.Controls.Add(this.bit02CheckBox);
             this.GeneralGroupBox.Controls.Add(this.AFTypeComboBox);
             this.GeneralGroupBox.Controls.Add(this.AirspeedLabel);
             this.GeneralGroupBox.Controls.Add(this.AirspeedComboBox);
@@ -1601,24 +1598,24 @@
             this.Ch4NumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
             this.Ch4NumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
-            // ChNumericUpDown
+            // Ch1NumericUpDown
             // 
-            resources.ApplyResources(this.ChNumericUpDown, "ChNumericUpDown");
-            this.ChNumericUpDown.Maximum = new decimal(new int[] {
+            resources.ApplyResources(this.Ch1NumericUpDown, "Ch1NumericUpDown");
+            this.Ch1NumericUpDown.Maximum = new decimal(new int[] {
             12,
             0,
             0,
             0});
-            this.ChNumericUpDown.Name = "ChNumericUpDown";
-            this.ChNumericUpDown.Tag = "17";
-            this.ChNumericUpDown.Value = new decimal(new int[] {
+            this.Ch1NumericUpDown.Name = "Ch1NumericUpDown";
+            this.Ch1NumericUpDown.Tag = "17";
+            this.Ch1NumericUpDown.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.ChNumericUpDown.ValueChanged += new System.EventHandler(this.RxChannels_Changed);
-            this.ChNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
-            this.ChNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            this.Ch1NumericUpDown.ValueChanged += new System.EventHandler(this.RxChannels_Changed);
+            this.Ch1NumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.Ch1NumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
             // Ch4Label
             // 
@@ -2578,6 +2575,7 @@
             // 
             // RCGroupBox
             // 
+            this.RCGroupBox.Controls.Add(this.bit62CheckBox);
             this.RCGroupBox.Controls.Add(this.ThrottleIdleLabel);
             this.RCGroupBox.Controls.Add(this.ComboPort2Label);
             this.RCGroupBox.Controls.Add(this.RC11TextBox);
@@ -2626,7 +2624,7 @@
             this.RCGroupBox.Controls.Add(this.Ch7Label);
             this.RCGroupBox.Controls.Add(this.ThrottleChLabel);
             this.RCGroupBox.Controls.Add(this.Ch4Label);
-            this.RCGroupBox.Controls.Add(this.ChNumericUpDown);
+            this.RCGroupBox.Controls.Add(this.Ch1NumericUpDown);
             this.RCGroupBox.Controls.Add(this.Ch4NumericUpDown);
             this.RCGroupBox.Controls.Add(this.Ch7NumericUpDown);
             this.RCGroupBox.Controls.Add(this.RollChLabel);
@@ -3244,16 +3242,18 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.OSLPFHzNumericUpDown);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.OSLPFComboBox);
             this.groupBox1.Controls.Add(this.AccLPFComboBox);
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.GyroLPFComboBox);
             this.groupBox1.Controls.Add(this.ServoLPFHzLabel);
+            this.groupBox1.Controls.Add(this.OSLPFComboBox);
             this.groupBox1.Controls.Add(this.ServoLPFHzNumericUpDown);
             this.groupBox1.Controls.Add(this.GyroSlewRateNumericUpDown);
+            this.groupBox1.Controls.Add(this.bit42CheckBox);
             this.groupBox1.Controls.Add(this.AccLabel);
             this.groupBox1.Controls.Add(this.GyroSlewLimitLabel);
             this.groupBox1.Controls.Add(this.AltLPFNumericUpDown);
+            this.groupBox1.Controls.Add(this.bit02CheckBox);
             this.groupBox1.Controls.Add(this.BaroLPFHzLabel);
             this.groupBox1.Controls.Add(this.GyroLabel);
             this.groupBox1.Controls.Add(this.YawLPFLabel);
@@ -3555,7 +3555,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Ch2NumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch7NumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch4NumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ChNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Ch1NumericUpDown)).EndInit();
             this.NavGroupBox.ResumeLayout(false);
             this.NavGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VRSDescentRateNumericUpDown)).EndInit();
@@ -3679,7 +3679,7 @@
         private System.Windows.Forms.Label RollChLabel;
         public System.Windows.Forms.NumericUpDown Ch7NumericUpDown;
         public System.Windows.Forms.NumericUpDown Ch4NumericUpDown;
-        public System.Windows.Forms.NumericUpDown ChNumericUpDown;
+        public System.Windows.Forms.NumericUpDown Ch1NumericUpDown;
         private System.Windows.Forms.Label Ch4Label;
         private System.Windows.Forms.Label ThrottleChLabel;
         private System.Windows.Forms.Label Ch7Label;

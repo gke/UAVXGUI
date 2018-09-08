@@ -97,6 +97,7 @@ namespace UAVXGUI
 			10, 		// PercentIdleThr,		23c
 			3, 			// RollKiAngle,			24
 			3, 			// PitchKiAngle,		25
+
 			10, 		// CamPitchKp,			26c
 			8, 			// YawKpAngle(Compass),	27
 			45,			// PitchKdRate,			28 UAVP 10
@@ -108,6 +109,7 @@ namespace UAVXGUI
 			15, 		    // NavRTHAlt,			33
 			0,			// NavMagVar,			34c
 			4,  	    // SensorHint,     		35c
+
 			7, 		    // ESCType,				36c
 			7, 			// UnusedRxChannels,			37c
 			2,			// RxRollCh,			38
@@ -119,6 +121,7 @@ namespace UAVXGUI
 			4,			// RxYawCh,				43
 			4,	        // AFType,				44c
 			1,          // TelemetryType,	45c
+
 			10,		    // MaxDescentRateDmpS, 	46
 			15,			// DescentDelayS,		47
 			2, 	        // GyroLPF,		        48 UAVP MPU_RA_DLPF_BW_98
@@ -130,20 +133,94 @@ namespace UAVXGUI
 			4,			// AccConfSD,			53c
 			3,			// BatteryCapacity,		54c
 			7,			// RxAux2Ch,			55c
+
 			8,			// RxAux3Ch,			56
 			20, 	    // NavPosKp,			57
-
 			20,			// AltLPF,				58
 			50,			// Balance,				59
 			9,			// RxAux4Ch,			60
-			5,			// NavVelIntLimit,		61
 
+			5,			// NavVelIntLimit,		61
 			1,	        // GPSProtocol,			62
 			25,			// AltThrottleFF,	    63
 			10,			// StickScaleYaw,		64
-            //TODO:
-            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-             0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+            0, // FWRollPitchFF 65
+
+            0, // FWPitchThrottleFF 66 
+            30, // AltVelIntLimit
+            60, // FWMaxClimbAngle 68
+            15, // NavMaxAngle 69
+            0, // FWSpoilerDecayTime 70
+            
+            0, // FWAileronDifferential 71
+            0, // ASSensorType 72
+            2, // MaxROC 73
+            0, // Config2Bits
+            60, // MaxPitchAngle 75
+
+            0, // 76
+            60, // MaxRollAngle 77
+            50, // YawLPFHz 78
+            20, // NavHeadingTurnout 79
+            0, // WS2812Leds 80
+
+            50, // MinhAcc 81
+            0,
+            60, // MaxRollRate 83
+            60, // MaxPitchRate 84
+            100, // CurrentScale 85
+            
+            100, // VoltScale 86
+            0, // FWAileronRudderMix 87
+            0, // FWAltSpoilerFF 88
+            6, // MaxCompassYawRate 89
+            0, // AccLPFSel 90
+            
+            45, // YawRateKd 91
+            5, // GyroSlewRate 92
+            0, // ThrottleGainRate 93
+            10, // RxAux5Ch 94
+            11, // RxAux6Ch 95
+            
+            12, // RxAux7Ch 96
+            0, // YawAngleKp 97
+            5,  // YawAngleKi 98
+            10, // YawAngleIntLimit 99
+            15, // AltPosIntLimit 100
+            
+            0, // MotorStopSel 101
+            8, // AltVelKi 102
+            10, // AltHoldBand 103
+            30, // VRSDescentRate 104
+            1, // OSLPFType 105
+            
+            40, // OSLPFHz 106
+            0, // 107 -> UNUSED
+            0, // 
+            0,
+            0,
+            
+            0, // 111
+            0,
+            0,
+            0,
+            0,
+            
+            0,
+            0,
+            0,
+            0,
+            0,
+            
+            0, // 121
+            0,
+            0,
+            0,
+            0,
+            
+            0,
+            0,
+            0 // 128
         };
 
         public ParameterForm()
@@ -682,7 +759,7 @@ namespace UAVXGUI
         private void RefreshRxChannels()
         {
 
-            ChNumericUpDown.BackColor = System.Drawing.Color.White;
+            Ch1NumericUpDown.BackColor = System.Drawing.Color.White;
             Ch2NumericUpDown.BackColor = System.Drawing.Color.White;
             Ch3NumericUpDown.BackColor = System.Drawing.Color.White;
             Ch4NumericUpDown.BackColor = System.Drawing.Color.White;
@@ -1104,8 +1181,8 @@ namespace UAVXGUI
                         P[CurrPS, p-1].Value = config;
                         break;
                     case 17:
-                        ChNumericUpDown.Value = UAVXP[p-1].Value;
-                        ParamUpdate(ChNumericUpDown);
+                        Ch1NumericUpDown.Value = UAVXP[p-1].Value;
+                        ParamUpdate(Ch1NumericUpDown);
                         break;
                     case 18:
                         BatteryNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
