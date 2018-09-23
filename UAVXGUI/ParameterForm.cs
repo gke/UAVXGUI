@@ -275,12 +275,8 @@ namespace UAVXGUI
                 updateForm();
             }
 
-      
 
-            // CPPM, Deltang1024, Spek1024, Spek2048, FutabaSBus
-            // ParallelPPM, DM9GKE, Deltang1024GKE, Spek1024GKE, Spek2048GKE
-
-            RxChannelsNumericUpDown.Visible = ComboPort1ComboBox.SelectedIndex == 5;
+          RxChannelsNumericUpDown.Visible = ComboPort1ComboBox.SelectedIndex == 2;
             RefreshRxChannels();
             UpdateRCChannels();
 
@@ -764,14 +760,14 @@ namespace UAVXGUI
             Ch3NumericUpDown.BackColor = System.Drawing.Color.White;
             Ch4NumericUpDown.BackColor = System.Drawing.Color.White;
 
-            Ch5NumericUpDown.BackColor = ChannelColour(Ch5NumericUpDown.Value <= FormMain.DiscoveredRCChannelsT);
-            Ch6NumericUpDown.BackColor = ChannelColour(Ch6NumericUpDown.Value <= FormMain.DiscoveredRCChannelsT);
-            Ch7NumericUpDown.BackColor = ChannelColour(Ch7NumericUpDown.Value <= FormMain.DiscoveredRCChannelsT);
-            Ch8NumericUpDown.BackColor = ChannelColour(Ch8NumericUpDown.Value <= FormMain.DiscoveredRCChannelsT);
-            Ch9NumericUpDown.BackColor = ChannelColour(Ch9NumericUpDown.Value <= FormMain.DiscoveredRCChannelsT);
-            Ch10NumericUpDown.BackColor = ChannelColour(Ch10NumericUpDown.Value <= FormMain.DiscoveredRCChannelsT);
-            Ch11NumericUpDown.BackColor = ChannelColour(Ch11NumericUpDown.Value <= FormMain.DiscoveredRCChannelsT);
-            Ch12NumericUpDown.BackColor = ChannelColour(Ch12NumericUpDown.Value <= FormMain.DiscoveredRCChannelsT);
+            Ch5NumericUpDown.BackColor = ChannelColour(Ch5NumericUpDown.Value < FormMain.DiscoveredRCChannelsT);
+            Ch6NumericUpDown.BackColor = ChannelColour(Ch6NumericUpDown.Value < FormMain.DiscoveredRCChannelsT);
+            Ch7NumericUpDown.BackColor = ChannelColour(Ch7NumericUpDown.Value < FormMain.DiscoveredRCChannelsT);
+            Ch8NumericUpDown.BackColor = ChannelColour(Ch8NumericUpDown.Value < FormMain.DiscoveredRCChannelsT);
+            Ch9NumericUpDown.BackColor = ChannelColour(Ch9NumericUpDown.Value < FormMain.DiscoveredRCChannelsT);
+            Ch10NumericUpDown.BackColor = ChannelColour(Ch10NumericUpDown.Value < FormMain.DiscoveredRCChannelsT);
+            Ch11NumericUpDown.BackColor = ChannelColour(Ch11NumericUpDown.Value < FormMain.DiscoveredRCChannelsT);
+            Ch12NumericUpDown.BackColor = ChannelColour(Ch12NumericUpDown.Value < FormMain.DiscoveredRCChannelsT);
 
         }
 
@@ -968,7 +964,7 @@ namespace UAVXGUI
                 if ((p == 64) || (p == 83) || (p == 84) || (p == 89) )
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 0.1);
                 else
-                    if ((p == 54) || (p == 18) || (p == 32) || (p == 39) || (p == 46) || (p == 53) || (p == 58) || (p == 70) || (p == 104))
+                    if ((p == 54) || (p == 18) || (p == 32) || (p == 34) || (p == 39) || (p == 46) || (p == 53) || (p == 58) || (p == 70) || (p == 104))
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 10.0);
                 else
                         if ((p == 85) || (p == 86))
@@ -1250,7 +1246,7 @@ namespace UAVXGUI
                         ParamUpdate(NavRTHAltNumericUpDown);
                         break;
                     case 34:
-                        NavMagVarNumericUpDown.Value = UAVXP[p-1].Value;
+                        NavMagVarNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
                         NavMagVarNumericUpDown.BackColor = UAVXP[p - 1].Value != 0 ? System.Drawing.Color.White : System.Drawing.Color.Orange;
                         ParamUpdate(NavMagVarNumericUpDown);
                         break;
@@ -1609,7 +1605,7 @@ namespace UAVXGUI
             // turn off parameter button colour
         }
 
-      
+     
 
  
    

@@ -122,10 +122,10 @@
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="DescDelayNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 14</value>
+    <value>201, 16</value>
   </data>
   <data name="DescDelayNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 20</value>
+    <value>51, 20</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="DescDelayNumericUpDown.TabIndex" type="System.Int32, mscorlib">
@@ -181,10 +181,10 @@
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="NavRTHAltNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 65</value>
+    <value>201, 63</value>
   </data>
   <data name="NavRTHAltNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 20</value>
+    <value>51, 20</value>
   </data>
   <data name="NavRTHAltNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -238,7 +238,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelNavRTHAlt1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 69</value>
+    <value>128, 67</value>
   </data>
   <data name="labelNavRTHAlt1.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 13</value>
@@ -322,10 +322,10 @@
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="DescentRateNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 39</value>
+    <value>201, 39</value>
   </data>
   <data name="DescentRateNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 20</value>
+    <value>51, 20</value>
   </data>
   <data name="DescentRateNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>46</value>
@@ -1153,13 +1153,13 @@
     <value>5, 212</value>
   </data>
   <data name="bit01CheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 17</value>
+    <value>72, 17</value>
   </data>
   <data name="bit01CheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
   </data>
   <data name="bit01CheckBox.Text" xml:space="preserve">
-    <value>Mag Ext I2C</value>
+    <value>Ext Mag</value>
   </data>
   <data name="&gt;&gt;bit01CheckBox.Name" xml:space="preserve">
     <value>bit01CheckBox</value>
@@ -1939,7 +1939,7 @@
     <value>NoControl</value>
   </data>
   <data name="bit42CheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 123</value>
+    <value>9, 122</value>
   </data>
   <data name="bit42CheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 17</value>
@@ -1972,7 +1972,7 @@
     <value>NoControl</value>
   </data>
   <data name="bit02CheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>99, 123</value>
+    <value>98, 120</value>
   </data>
   <data name="bit02CheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 17</value>
@@ -2140,7 +2140,7 @@
     <value>NoControl</value>
   </data>
   <data name="EstCruiseLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 173</value>
+    <value>128, 163</value>
   </data>
   <data name="EstCruiseLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 13</value>
@@ -2167,10 +2167,10 @@
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="EstCruiseNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 169</value>
+    <value>201, 159</value>
   </data>
   <data name="EstCruiseNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 20</value>
+    <value>51, 20</value>
   </data>
   <data name="EstCruiseNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>247</value>
@@ -2461,7 +2461,7 @@
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="NavVelKpNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>77, 91</value>
+    <value>77, 87</value>
   </data>
   <data name="NavVelKpNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 20</value>
@@ -2491,7 +2491,7 @@
     <value>NoControl</value>
   </data>
   <data name="NavVelKpLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 94</value>
+    <value>6, 90</value>
   </data>
   <data name="NavVelKpLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>28, 13</value>
@@ -3442,7 +3442,7 @@
     <value>NoControl</value>
   </data>
   <data name="bit41CheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>266, 13</value>
+    <value>266, 15</value>
   </data>
   <data name="bit41CheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>106, 17</value>
@@ -3535,7 +3535,7 @@
     <value>NoControl</value>
   </data>
   <data name="MotorStopLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 198</value>
+    <value>6, 210</value>
   </data>
   <data name="MotorStopLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 13</value>
@@ -3613,7 +3613,7 @@
     <value />
   </data>
   <data name="MotorStopComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>77, 194</value>
+    <value>77, 206</value>
   </data>
   <data name="MotorStopComboBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>165, 21</value>
@@ -3640,10 +3640,10 @@
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="VRSDescentRateNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 91</value>
+    <value>201, 87</value>
   </data>
   <data name="VRSDescentRateNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 20</value>
+    <value>51, 20</value>
   </data>
   <data name="VRSDescentRateNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>251</value>
@@ -3670,7 +3670,7 @@
     <value>NoControl</value>
   </data>
   <data name="VRSLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 95</value>
+    <value>128, 91</value>
   </data>
   <data name="VRSLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 13</value>
@@ -3700,7 +3700,7 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 148</value>
+    <value>128, 139</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>67, 13</value>
@@ -3730,7 +3730,7 @@
     <value>NoControl</value>
   </data>
   <data name="TurnoutLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 148</value>
+    <value>6, 139</value>
   </data>
   <data name="TurnoutLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 13</value>
@@ -3757,7 +3757,7 @@
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="NavMaxAngleNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>77, 169</value>
+    <value>77, 159</value>
   </data>
   <data name="NavMaxAngleNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 20</value>
@@ -3787,7 +3787,7 @@
     <value>NoControl</value>
   </data>
   <data name="NavMaxAngleLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 172</value>
+    <value>6, 163</value>
   </data>
   <data name="NavMaxAngleLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 13</value>
@@ -3814,10 +3814,10 @@
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="MaxCompassYawRateNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 144</value>
+    <value>201, 135</value>
   </data>
   <data name="MaxCompassYawRateNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 20</value>
+    <value>51, 20</value>
   </data>
   <data name="MaxCompassYawRateNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>168</value>
@@ -3844,7 +3844,7 @@
     <value>NoControl</value>
   </data>
   <data name="NavMaxVelLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 69</value>
+    <value>6, 67</value>
   </data>
   <data name="NavMaxVelLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 13</value>
@@ -3871,7 +3871,7 @@
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="TurnoutNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>77, 144</value>
+    <value>77, 135</value>
   </data>
   <data name="TurnoutNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 20</value>
@@ -3898,7 +3898,7 @@
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="NavMaxVelNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>77, 65</value>
+    <value>77, 63</value>
   </data>
   <data name="NavMaxVelNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 20</value>
@@ -3982,7 +3982,7 @@
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="CrossTrackNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>77, 117</value>
+    <value>77, 113</value>
   </data>
   <data name="CrossTrackNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 20</value>
@@ -4012,7 +4012,7 @@
     <value>NoControl</value>
   </data>
   <data name="CrossTrackLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 121</value>
+    <value>6, 117</value>
   </data>
   <data name="CrossTrackLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>43, 13</value>
@@ -4042,7 +4042,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelNavMagVar1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 121</value>
+    <value>128, 117</value>
   </data>
   <data name="labelNavMagVar1.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 13</value>
@@ -4069,10 +4069,10 @@
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="NavMagVarNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 117</value>
+    <value>201, 113</value>
   </data>
   <data name="NavMagVarNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 20</value>
+    <value>51, 20</value>
   </data>
   <data name="NavMagVarNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
@@ -5596,13 +5596,13 @@
     <value>7, 272</value>
   </data>
   <data name="Ch10Label.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 13</value>
+    <value>44, 13</value>
   </data>
   <data name="Ch10Label.TabIndex" type="System.Int32, mscorlib">
     <value>230</value>
   </data>
   <data name="Ch10Label.Text" xml:space="preserve">
-    <value>WPNav</value>
+    <value>Unused</value>
   </data>
   <data name="&gt;&gt;Ch10Label.Name" xml:space="preserve">
     <value>Ch10Label</value>
