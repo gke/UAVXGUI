@@ -356,10 +356,11 @@ namespace UAVXGUI
             "VTail",
             "Rudder Elevator",
             "VTOL",
+            "VTOL2",
             "Gimbal",
             "Instrumentation",
             "IREmulator",
-            "Unknown" };
+            "Unknown Aircraft" };
 
         public enum FlightStates
         {

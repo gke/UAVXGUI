@@ -266,7 +266,6 @@
             this.FWSpoilerDecayTimeNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.PitchThrottleFFxLabel = new System.Windows.Forms.Label();
             this.FWPitchThrottleFFNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.ParamTemplateComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.OSLPFHzNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.AccLPFComboBox = new System.Windows.Forms.ComboBox();
@@ -288,6 +287,7 @@
             this.AltPosKpLabel = new System.Windows.Forms.Label();
             this.AltVelKpLabel = new System.Windows.Forms.Label();
             this.AltVelKdLabel = new System.Windows.Forms.Label();
+            this.ParamTemplateNumericUpDown = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.DescDelayNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavRTHAltNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AttThrFFNumericUpDown)).BeginInit();
@@ -382,6 +382,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.AltVelIntLimitNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltVelIntNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltHoldBandNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ParamTemplateNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // DescDelayNumericUpDown
@@ -1026,7 +1027,8 @@
             resources.GetString("AFTypeComboBox.Items20"),
             resources.GetString("AFTypeComboBox.Items21"),
             resources.GetString("AFTypeComboBox.Items22"),
-            resources.GetString("AFTypeComboBox.Items23")});
+            resources.GetString("AFTypeComboBox.Items23"),
+            resources.GetString("AFTypeComboBox.Items24")});
             this.AFTypeComboBox.Name = "AFTypeComboBox";
             this.AFTypeComboBox.Tag = "44";
             this.AFTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
@@ -3221,20 +3223,6 @@
             this.FWPitchThrottleFFNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
             this.FWPitchThrottleFFNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
-            // ParamTemplateComboBox
-            // 
-            this.ParamTemplateComboBox.DisplayMember = "0";
-            resources.ApplyResources(this.ParamTemplateComboBox, "ParamTemplateComboBox");
-            this.ParamTemplateComboBox.FormattingEnabled = true;
-            this.ParamTemplateComboBox.Items.AddRange(new object[] {
-            resources.GetString("ParamTemplateComboBox.Items"),
-            resources.GetString("ParamTemplateComboBox.Items1"),
-            resources.GetString("ParamTemplateComboBox.Items2"),
-            resources.GetString("ParamTemplateComboBox.Items3"),
-            resources.GetString("ParamTemplateComboBox.Items4")});
-            this.ParamTemplateComboBox.Name = "ParamTemplateComboBox";
-            this.ParamTemplateComboBox.Tag = "";
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.OSLPFHzNumericUpDown);
@@ -3489,13 +3477,29 @@
             this.AltVelKdLabel.Name = "AltVelKdLabel";
             this.AltVelKdLabel.Tag = "";
             // 
+            // ParamTemplateNumericUpDown
+            // 
+            resources.ApplyResources(this.ParamTemplateNumericUpDown, "ParamTemplateNumericUpDown");
+            this.ParamTemplateNumericUpDown.Maximum = new decimal(new int[] {
+            7,
+            0,
+            0,
+            0});
+            this.ParamTemplateNumericUpDown.Name = "ParamTemplateNumericUpDown";
+            this.ParamTemplateNumericUpDown.Tag = "61";
+            this.ParamTemplateNumericUpDown.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
             // ParameterForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ParamTemplateNumericUpDown);
             this.Controls.Add(this.AltitudeGroupBox);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.ParamTemplateComboBox);
             this.Controls.Add(this.FWGroupBox);
             this.Controls.Add(this.EstimatorGroupBox);
             this.Controls.Add(this.RCGroupBox);
@@ -3617,6 +3621,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.AltVelIntLimitNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltVelIntNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltHoldBandNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ParamTemplateNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3828,7 +3833,6 @@
         public System.Windows.Forms.NumericUpDown FWTrimAngleNumericUpDown;
         private System.Windows.Forms.Label FWTrimAngleLabel;
         public System.Windows.Forms.NumericUpDown MaxPitchAngleNumericUpDown;
-        public System.Windows.Forms.ComboBox ParamTemplateComboBox;
         public System.Windows.Forms.NumericUpDown CurrentScaleNumericUpDown;
         public System.Windows.Forms.NumericUpDown VoltScaleNumericUpDown;
         private System.Windows.Forms.TextBox MaxPitchRateTextBox;
@@ -3880,6 +3884,7 @@
         public System.Windows.Forms.NumericUpDown OSLPFHzNumericUpDown;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.ComboBox OSLPFComboBox;
+        public System.Windows.Forms.NumericUpDown ParamTemplateNumericUpDown;
 
 
     }

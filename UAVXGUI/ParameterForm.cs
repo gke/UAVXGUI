@@ -245,7 +245,6 @@ namespace UAVXGUI
             }
 
             CurrPS = 0;
-            ParamTemplateComboBox.SelectedIndex = 4;
             ReadParamsButton.BackColor = System.Drawing.Color.Orange;
             WriteParamsButton.BackColor = System.Drawing.Color.Green;
             WriteParamsButton.Visible = false;
@@ -456,7 +455,7 @@ namespace UAVXGUI
             if (parameterForm.YawGyroLPFNumericUpDown.Focused)
                 helpstring = help.GetString("DerivativeFilter");
 
-            if (parameterForm.ParamTemplateComboBox.Focused)
+            if (parameterForm.ParamTemplateNumericUpDown.Focused)
                 helpstring = help.GetString("ParamTemplate");
 
             if (parameterForm.AFTypeComboBox.Focused)
@@ -569,6 +568,8 @@ namespace UAVXGUI
         private void LoadParamsButton_Click(object sender, EventArgs e)
         {
             int p, s, nps;
+            string str;
+            string[] tokens;
 
             parameterOpenFileDialog.Filter = "Parameters (*.txt)|*.txt";
             parameterOpenFileDialog.InitialDirectory = Properties.Settings.Default.ParamDirectory;
@@ -578,12 +579,15 @@ namespace UAVXGUI
                 Properties.Settings.Default.ParamDirectory = parameterOpenFileDialog.InitialDirectory;
                 StreamReader sw = new StreamReader(parameterOpenFileDialog.FileName);//, false, Encoding.GetEncoding("windows-1252"));
 
-                nps = Convert.ToInt32(sw.ReadLine());
+              //  nps = Convert.ToInt32(sw.ReadLine());
                 nps = 1;
                 for (s = 0; s < nps; s++)
                     for (p = 0; p < FormMain.MAX_PARAMS; p++)
                     {
-                        P[s, p].Value = Convert.ToInt32(sw.ReadLine());
+                        str = sw.ReadLine();
+                        tokens = str.Split(',');
+                        P[s, p].Value = Convert.ToInt32(tokens[0]);
+
                         P[s, p].Changed = true;
                     }
 
@@ -642,10 +646,12 @@ namespace UAVXGUI
                    Properties.Settings.Default.ParamDirectory = parameterSaveFileDialog.InitialDirectory;
                     StreamWriter sw = new StreamWriter(parameterSaveFileDialog.FileName, false, Encoding.GetEncoding("windows-1252"));
 
-                   sw.WriteLine(FormMain.MAX_PARAM_SETS);
+                //    sw.WriteLine(FormMain.MAX_PARAM_SETS + ",");
+                //    sw.WriteLine(ParamTemplateComboBox.Items[1] + ",");
+
                    for (s = 0; s < FormMain.MAX_PARAM_SETS; s++)
                        for (p = 0; p < FormMain.MAX_PARAMS; p++)
-                           sw.WriteLine(P[s, p].Value);
+                           sw.WriteLine(P[s, p].Value + ",");
 
                    sw.Flush();
                    sw.Close();
@@ -674,7 +680,7 @@ namespace UAVXGUI
 
         public void SetDefaultParamButton_Click(object sender, EventArgs e)
         {
-            byte DefaultPS = Convert.ToByte(ParamTemplateComboBox.SelectedIndex);
+            byte DefaultPS = Convert.ToByte(ParamTemplateNumericUpDown.Text);
 
             FormMain.SendRequestPacket(FormMain.UAVXParamPacketTag, DefaultPS, 0);
             ParamSetNumericUpDown_KeyDown(sender, e);

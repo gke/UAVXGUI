@@ -1588,15 +1588,18 @@
     <value>VTOL</value>
   </data>
   <data name="AFTypeComboBox.Items20" xml:space="preserve">
-    <value>Gimbal</value>
+    <value>VTOL2</value>
   </data>
   <data name="AFTypeComboBox.Items21" xml:space="preserve">
-    <value>Instrumentation</value>
+    <value>Gimbal</value>
   </data>
   <data name="AFTypeComboBox.Items22" xml:space="preserve">
-    <value>IREmulator</value>
+    <value>Instrumentation</value>
   </data>
   <data name="AFTypeComboBox.Items23" xml:space="preserve">
+    <value>IREmulator</value>
+  </data>
+  <data name="AFTypeComboBox.Items24" xml:space="preserve">
     <value>Unknown Airframe</value>
   </data>
   <data name="AFTypeComboBox.Location" type="System.Drawing.Point, System.Drawing">
@@ -5368,7 +5371,7 @@
     <value>NoControl</value>
   </data>
   <data name="SetDefaultParamButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>464, 1</value>
+    <value>408, 1</value>
   </data>
   <data name="SetDefaultParamButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -7056,48 +7059,6 @@
   <data name="&gt;&gt;FWGroupBox.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="ParamTemplateComboBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
-  </data>
-  <data name="ParamTemplateComboBox.Items" xml:space="preserve">
-    <value>QuadX</value>
-  </data>
-  <data name="ParamTemplateComboBox.Items1" xml:space="preserve">
-    <value>QuadX DC Motors</value>
-  </data>
-  <data name="ParamTemplateComboBox.Items2" xml:space="preserve">
-    <value>Aileron Spoiler/Flaps</value>
-  </data>
-  <data name="ParamTemplateComboBox.Items3" xml:space="preserve">
-    <value>Flying Wing</value>
-  </data>
-  <data name="ParamTemplateComboBox.Items4" xml:space="preserve">
-    <value>- none selected</value>
-  </data>
-  <data name="ParamTemplateComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>284, 2</value>
-  </data>
-  <data name="ParamTemplateComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 21</value>
-  </data>
-  <data name="ParamTemplateComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>230</value>
-  </data>
-  <data name="ParamTemplateComboBox.Text" xml:space="preserve">
-    <value>- none selected</value>
-  </data>
-  <data name="&gt;&gt;ParamTemplateComboBox.Name" xml:space="preserve">
-    <value>ParamTemplateComboBox</value>
-  </data>
-  <data name="&gt;&gt;ParamTemplateComboBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ParamTemplateComboBox.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;ParamTemplateComboBox.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="OSLPFHzNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
@@ -7372,7 +7333,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="MaxROCTextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -7750,6 +7711,33 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;AltitudeGroupBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ParamTemplateNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="ParamTemplateNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>357, 4</value>
+  </data>
+  <data name="ParamTemplateNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 20</value>
+  </data>
+  <data name="ParamTemplateNumericUpDown.TabIndex" type="System.Int32, mscorlib">
+    <value>233</value>
+  </data>
+  <data name="ParamTemplateNumericUpDown.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;ParamTemplateNumericUpDown.Name" xml:space="preserve">
+    <value>ParamTemplateNumericUpDown</value>
+  </data>
+  <data name="&gt;&gt;ParamTemplateNumericUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ParamTemplateNumericUpDown.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ParamTemplateNumericUpDown.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
