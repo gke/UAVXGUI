@@ -164,7 +164,7 @@ namespace UAVXGUI
         const int FR_BETA_VARIO_ID =      		0x8030;
         const int FR_BETA_BARO_ALT_ID =        0x8010;
 
-        const float MILLIRADDEG = (float)0.057295;
+        public const float MILLIRADDEG = (float)0.057295;
         const short DEGMILLIRAD = 17;
 
         const double DEFAULT_HOME_LAT = 0; 
@@ -227,11 +227,10 @@ namespace UAVXGUI
 	 public const byte UAVXFusionPacketTag = 60;
 	 public const byte UAVXSoaringPacketTag = 61;
 	 public const byte UAVXCalibrationPacketTag = 62;
-	 public const byte UAVXAnglePIDPacketTag = 63;
-     public const byte UAVXRatePIDPacketTag = 64;
-     public const byte UAVXAltPIDPacketTag = 65;
-     public const byte UAVXGPSPIDPacketTag = 66;
-     public const byte UAVXRawIMUPacketTag = 67;
+	
+
+     public const byte UAVXAFNamePacketTag = 63;
+     public const byte UAVXWindPacketTag = 64;
 
         public const byte FrSkyPacketTag = 99;
 
@@ -325,10 +324,9 @@ namespace UAVXGUI
             "UAVXFusionPacketTag",
             "UAVXSoaringPacketTag",
             "UAVXCalibrationPacketTag",
-            "UAVXAnglePIDPacketTag",
-            "UAVXRatePIDPacketTag",
-            "UAVXAltPIDPacketTag",
-             
+         
+             "UAVXAFNamePacketTag",
+	 "UAVXWindPacketTag",
             // needs padding strings zzz
 
                             
@@ -489,7 +487,6 @@ namespace UAVXGUI
         short[] PWMDiagT = new short[10];
 
         int MissionTimeMilliSecT;
-        int MissionTimeMicroSecT; 
 
         // UAVXNavPacket
         //byte UAVXNavPacketTag;
@@ -665,6 +662,8 @@ namespace UAVXGUI
         public static double CurrAlt, AltError;
         double EastDiff, NorthDiff;
 
+        public static short WindDirectionT, WindSpeedT;
+
         static bool VRSHazardDetected = false;
 
         static bool AutoLandEnabled = false;
@@ -725,6 +724,30 @@ namespace UAVXGUI
 
         bool CheckSumError;
         short RxLengthErrors = 0, RxCheckSumErrors = 0, RxIllegalErrors = 0;
+
+        public static short MaxDefaultAFNames = -1;
+        public static string[] DefaultAFNames = { 
+            "Unknown0",
+            "Unknown1",
+            "Unknown2",
+            "Unknown3",
+            "Unknown4",
+            "Unknown5",
+            "Unknown6",
+            "Unknown7",
+            "Unknown8",
+            "Unknown9",
+            "Unknown10",
+            "Unknown11",
+            "Unknown12",
+            "Unknown13",
+            "Unknown14",
+            "Unknown15",
+            "Unknown16",
+            "Unknown17",
+            "Unknown18",
+            "Unknown19"
+            };
 
         double[,] Params = new double[2,MAXPARAMS];
         int[] Sticks = new int[16];
@@ -992,35 +1015,7 @@ namespace UAVXGUI
 
         }
 
-        private void WriteTextPIDRateFileHeader()
-        {
-
-            int i;
-            for (i = 0; i < 3;i++ )
-                SaveTextLogFileStreamWriter.Write("Desired, Rate, RateP, RateD, DriveOut,");
-            SaveTextLogFileStreamWriter.WriteLine();
-        }
-
-        private void WriteTextPIDAngleFileHeader()
-        {
-            int i;
-            for (i = 0; i < 2; i++ )
-                SaveTextLogFileStreamWriter.Write("Desired, Angle, AngleP, AngleI, RateOut,");
-            SaveTextLogFileStreamWriter.Write("AccBF, AccLR, AccUD");
-            SaveTextLogFileStreamWriter.WriteLine();
-        }
-
-        private void WriteTextPIDAltitudeFileHeader()
-        {    
-             SaveTextLogFileStreamWriter.WriteLine("Alt, DesAlt, AltE, AltP, AltI, DesROC, ROC, ROCP, ROCI, ROCD, AltComp, DesThr, CruiseThr ");
-        }
-
-        private void WriteTextIMUFileHeader()
-        {
-            SaveTextLogFileStreamWriter.WriteLine("TimeuS, Ax, Ay, Az, Gx, Gy, Gz");
-
-        }
-
+  
         private void WriteTextLogFileHeader()
         {
             int i;
@@ -1074,13 +1069,13 @@ namespace UAVXGUI
                 "ARMED," +
 
                 "FixedWing," +
-                "InvertMag," +
+                "WindValid," +
                 "MagCal," +
                 "Uplink," +
                 "NewAltVal," +
                 "IMUCal," +
                 "CTrackActive," +
-                "6ptAccCal,");
+                "AccCal,");
 
             SaveTextLogFileStreamWriter.Write("StateT," +
             "BattV," +
@@ -1146,6 +1141,9 @@ namespace UAVXGUI
             "GPSLat," +
             "GPSLon," +
 
+            "WindDir," +
+            "WindSpeed," +
+
             "Sens," +
             "CurrWP," +
             "WPBearing," +
@@ -1202,7 +1200,7 @@ namespace UAVXGUI
             "GPSBaroScaleX," +
             "GyroFailX," +
             "RCFailsafesX," +
-            "I2CFailX," +
+            "SIOFailX," +
 
             "UtilisationX," +
             "BadReferGKEX," +
@@ -2645,6 +2643,33 @@ namespace UAVXGUI
 
                     break;
 
+                    case UAVXAFNamePacketTag:
+                    short n;
+ 
+                    n = ExtractByte(ref UAVXPacket, 2);
+                    if (n < 20)
+                    {
+                        if (n > MaxDefaultAFNames) MaxDefaultAFNames = n;
+
+                        len = ExtractByte(ref UAVXPacket, 3);
+
+                        DefaultAFNames[n] = "";
+                        for (i = 0; i < len; i++)
+                        {
+                            char ch = (char)UAVXPacket[(short)(i + 4)];
+                            DefaultAFNames[n] += ch.ToString();
+                        }
+                    }
+
+                    break;
+                    case UAVXWindPacketTag:
+
+                    WindSpeedT = ExtractShort(ref UAVXPacket, 2);
+                    WindDirectionT = ExtractShort(ref UAVXPacket, 4);
+                    
+                    // skip vector for now
+
+                    break;
                     case UAVXCalibrationPacketTag:
 
                     CalibrationPacketsReceived++;
@@ -2819,7 +2844,6 @@ namespace UAVXGUI
 
                     break;
                 case UAVXControlPacketTag:
-                        int a;
                     ControlPacketsReceived++;
 
                    GetAttitude(2);
@@ -2840,82 +2864,6 @@ namespace UAVXGUI
                     Heading.Text = string.Format("{0:n0}", (float)HeadingT * MILLIRADDEG);
 
                     MissionTimeTextBox.Text = string.Format("{0:n0}", MissionTimeMilliSecT / 1000);
-
-                    break;
-
-                case UAVXAnglePIDPacketTag:
-                        
-                    if (!AnglePIDHeader)
-                    {
-                        AnglePIDHeader = true;
-                        WriteTextPIDAngleFileHeader();
-                    }
-                    MaxPID = ExtractByte(ref UAVXPacket, (byte)(2));
-                    for (b = 0; b < MaxPID; b++)
-                    {
-                        float Temp = ExtractByte(ref UAVXPacket, (byte)(b + 3));
-                        PID[b] = (Temp > 127.0f ? Temp - 256.0f : Temp) / 128.0f;
-                    }
-
-                    WriteTextPIDLogFile();
-
-                    break;
-                case UAVXRatePIDPacketTag:
-
-                    if (!RatePIDHeader)
-                    {
-                        RatePIDHeader = true;
-                        WriteTextPIDRateFileHeader();
-                    }
-                    MaxPID = ExtractByte(ref UAVXPacket, (byte)(2));
-                    for (b = 0; b < MaxPID; b++)
-                    {
-                        float Temp = ExtractByte(ref UAVXPacket, (byte)(b + 3));
-                        PID[b] = (Temp > 127.0f ? Temp - 256.0f : Temp) / 128.0f;
-                    }
-
-                    WriteTextPIDLogFile();
-
-                    break;
-
-                case UAVXRawIMUPacketTag:
-
-                    if (!RawIMUHeader)
-                    {
-                        RawIMUHeader = true;
-                        WriteTextIMUFileHeader();
-                    }
-
-
-                    MissionTimeMicroSecT = ExtractInt(ref UAVXPacket, (byte)(2));
-                    for (b = 0; b < 6; b++)
-                        RawIMU[b] = ExtractShort(ref UAVXPacket, (byte)(b*2 + 6));
-
-
-                    WriteTextIMULogFile();
-
-                    break;
-
-                case UAVXAltPIDPacketTag:
-
-                    if (!AltPIDHeader)
-                    {
-                        AltPIDHeader = true;
-                        WriteTextPIDAltitudeFileHeader();
-                    }
-
-                    SaveTextLogFileStreamWriter.Write( ExtractShort(ref UAVXPacket, (byte)(2)) * 0.01f + ","); // Altitude
-                    SaveTextLogFileStreamWriter.Write(ExtractShort(ref UAVXPacket, (byte)(4)) * 0.01f + ","); // Desired Altitude
-
-                    MaxPID = ExtractByte(ref UAVXPacket, (byte)(6));
-                    for (b = 0; b < MaxPID; b++)
-                    {
-                        float Temp = ExtractByte(ref UAVXPacket, (byte)(b + 7));
-                        PID[b] = (Temp > 127.0f ? Temp - 256.0f : Temp) / 128.0f;
-                    }
-                    //Alt, DesAlt, AltE, AltP, AltI, DesROC, ROC, ROCP, ROCI, ROCD, AltComp, DesThr, CruiseThr
-
-                    WriteTextPIDLogFile();
 
                     break;
 
@@ -3205,31 +3153,6 @@ namespace UAVXGUI
         //___________________________________________________________________________________
 
 
-        void WriteTextIMULogFile()
-        {
-            short i;
-
-            SaveTextLogFileStreamWriter.Write(MissionTimeMicroSecT + ",");
-            for (i = 0; i < 6; i++)
-                SaveTextLogFileStreamWriter.Write(RawIMU[i] + ",");
-
-            SaveTextLogFileStreamWriter.WriteLine();
-            SaveTextLogFileStreamWriter.Flush();
-
-        }
-
-        void WriteTextPIDLogFile()
-        {
-            short i;
-
-            for (i = 0; i < MaxPID; i++)
-                    SaveTextLogFileStreamWriter.Write(PID[i] + ",");
-
-            SaveTextLogFileStreamWriter.WriteLine();
-            SaveTextLogFileStreamWriter.Flush();
-
-        }
-
         void WriteTextLogFile()
         {
             short i, c;
@@ -3297,6 +3220,9 @@ namespace UAVXGUI
             GPSAltitudeT * 0.01 + "," +
             GPSLatitudeT * 1e-7 + "," +
             GPSLongitudeT * 1e-7 + "," +
+
+            WindDirectionT * MILLIRADDEG + "," +
+            WindSpeedT * 0.01 + "," +
 
             NavSensitivityT * 0.1 + "," +
 

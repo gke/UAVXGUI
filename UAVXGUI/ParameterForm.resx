@@ -598,7 +598,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ModifiersGroupBox1.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="RollPitchFFLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -916,7 +916,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;CameraGroupBox.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="CurrentScaleNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -1108,7 +1108,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;BatteryBox.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="labelTelemetry1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1894,7 +1894,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;GeneralGroupBox.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="bit62CheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4174,7 +4174,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;NavGroupBox.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="BestROCLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5182,7 +5182,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;PIDGroupBox.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="AltPosIntLimitNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -5269,10 +5269,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;infoTextBox.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="SaveParamsButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>95, 1</value>
+    <value>95, 4</value>
   </data>
   <data name="SaveParamsButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -5293,10 +5293,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SaveParamsButton.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="LoadParamsButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 1</value>
+    <value>14, 4</value>
   </data>
   <data name="LoadParamsButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -5317,10 +5317,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;LoadParamsButton.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="WriteParamsButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>728, 1</value>
+    <value>728, 4</value>
   </data>
   <data name="WriteParamsButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -5341,10 +5341,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;WriteParamsButton.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="ReadParamsButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>647, 1</value>
+    <value>647, 4</value>
   </data>
   <data name="ReadParamsButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -5365,22 +5365,25 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ReadParamsButton.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="SetDefaultParamButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="SetDefaultParamButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>408, 1</value>
+    <value>291, 4</value>
   </data>
   <data name="SetDefaultParamButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+    <value>47, 23</value>
   </data>
   <data name="SetDefaultParamButton.TabIndex" type="System.Int32, mscorlib">
     <value>110</value>
   </data>
   <data name="SetDefaultParamButton.Text" xml:space="preserve">
-    <value>Set Defaults</value>
+    <value>Select</value>
+  </data>
+  <data name="SetDefaultParamButton.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;SetDefaultParamButton.Name" xml:space="preserve">
     <value>SetDefaultParamButton</value>
@@ -5392,7 +5395,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SetDefaultParamButton.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <metadata name="CheckDownLinkTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>760, 0</value>
@@ -6403,7 +6406,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;RCGroupBox.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="GyroSlewRateNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -6487,7 +6490,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;EstimatorGroupBox.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="YawLPFLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7057,7 +7060,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;FWGroupBox.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="OSLPFHzNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -7333,7 +7336,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="MaxROCTextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -7711,13 +7714,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;AltitudeGroupBox.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="ParamTemplateNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="ParamTemplateNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>357, 4</value>
+    <value>344, 5</value>
   </data>
   <data name="ParamTemplateNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 20</value>
@@ -7725,8 +7728,8 @@
   <data name="ParamTemplateNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>233</value>
   </data>
-  <data name="ParamTemplateNumericUpDown.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
+  <data name="ParamTemplateNumericUpDown.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;ParamTemplateNumericUpDown.Name" xml:space="preserve">
     <value>ParamTemplateNumericUpDown</value>
@@ -7738,6 +7741,42 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ParamTemplateNumericUpDown.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="DefaultTemplateLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DefaultTemplateLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="DefaultTemplateLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="DefaultTemplateLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>395, 9</value>
+  </data>
+  <data name="DefaultTemplateLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 13</value>
+  </data>
+  <data name="DefaultTemplateLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>276</value>
+  </data>
+  <data name="DefaultTemplateLabel.Text" xml:space="preserve">
+    <value>Unknown Template</value>
+  </data>
+  <data name="DefaultTemplateLabel.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;DefaultTemplateLabel.Name" xml:space="preserve">
+    <value>DefaultTemplateLabel</value>
+  </data>
+  <data name="&gt;&gt;DefaultTemplateLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DefaultTemplateLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;DefaultTemplateLabel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

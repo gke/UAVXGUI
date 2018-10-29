@@ -267,6 +267,7 @@ namespace UAVXGUI
             {
                 UpdateParamForm = false;
                // ParamTemplateNumericUpDown.Value = CurrPS;
+
                 ReadParamsButton.BackColor = System.Drawing.Color.Green;
                 WriteParamsButton.Visible = true;
                 ParamsStale= false;
@@ -282,6 +283,13 @@ namespace UAVXGUI
             RxLoopbackButton.BackColor = FormMain.RxLoopbackEnabled ?
             Color.Orange : RCGroupBox.BackColor;
 
+            if (FormMain.MaxDefaultAFNames > -1)
+            {
+                short DefaultPS = Convert.ToInt16(ParamTemplateNumericUpDown.Text);
+                DefaultTemplateLabel.Text = FormMain.DefaultAFNames[DefaultPS];
+                ParamTemplateNumericUpDown.Maximum = FormMain.MaxDefaultAFNames;
+                SetDefaultParamButton.Visible = ParamTemplateNumericUpDown.Visible = DefaultTemplateLabel.Visible = true;
+            }
   
         }
 
@@ -676,7 +684,6 @@ namespace UAVXGUI
             Enabled = true;
             writeUpdate = true;
         }
-
 
         public void SetDefaultParamButton_Click(object sender, EventArgs e)
         {

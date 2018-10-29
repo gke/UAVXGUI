@@ -296,6 +296,9 @@ namespace UAVXGUI
 
             CurrentAltitude.Text = string.Format("{0:n1}", (float)FormMain.CurrAlt);
 
+            WindDirectionTextBox.Text = string.Format("{0:n0}",FormMain.WindDirectionT * FormMain.MILLIRADDEG);
+            WindSpeedTextBox.Text = string.Format("{0:n1}",FormMain.WindSpeedT * 0.01);
+
             Properties.Settings.Default.Save();
  
         } // timer_updatemap_Tick

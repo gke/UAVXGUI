@@ -137,6 +137,10 @@ namespace UAVXGUI
             this.SaveMissionButton = new System.Windows.Forms.Button();
             this.CurrentAltitude = new System.Windows.Forms.TextBox();
             this.CentreCurrPositionCheckBox = new System.Windows.Forms.CheckBox();
+            this.WindDirectionTextBox = new System.Windows.Forms.TextBox();
+            this.WindSpeedTextBox = new System.Windows.Forms.TextBox();
+            this.WindSpeedLabel = new System.Windows.Forms.Label();
+            this.WindDirectionLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).BeginInit();
             this.OriginGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.M)).BeginInit();
@@ -883,12 +887,48 @@ namespace UAVXGUI
             this.CentreCurrPositionCheckBox.AutoSize = true;
             this.CentreCurrPositionCheckBox.Checked = true;
             this.CentreCurrPositionCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CentreCurrPositionCheckBox.Location = new System.Drawing.Point(393, 584);
+            this.CentreCurrPositionCheckBox.Location = new System.Drawing.Point(386, 584);
             this.CentreCurrPositionCheckBox.Name = "CentreCurrPositionCheckBox";
             this.CentreCurrPositionCheckBox.Size = new System.Drawing.Size(93, 17);
             this.CentreCurrPositionCheckBox.TabIndex = 183;
             this.CentreCurrPositionCheckBox.Text = "Centre Aircraft";
             this.CentreCurrPositionCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // WindDirectionTextBox
+            // 
+            this.WindDirectionTextBox.Location = new System.Drawing.Point(413, 631);
+            this.WindDirectionTextBox.Name = "WindDirectionTextBox";
+            this.WindDirectionTextBox.Size = new System.Drawing.Size(33, 20);
+            this.WindDirectionTextBox.TabIndex = 191;
+            this.WindDirectionTextBox.Text = "10";
+            this.WindDirectionTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // WindSpeedTextBox
+            // 
+            this.WindSpeedTextBox.Location = new System.Drawing.Point(487, 631);
+            this.WindSpeedTextBox.Name = "WindSpeedTextBox";
+            this.WindSpeedTextBox.Size = new System.Drawing.Size(33, 20);
+            this.WindSpeedTextBox.TabIndex = 192;
+            this.WindSpeedTextBox.Text = "10";
+            this.WindSpeedTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // WindSpeedLabel
+            // 
+            this.WindSpeedLabel.AutoSize = true;
+            this.WindSpeedLabel.Location = new System.Drawing.Point(456, 635);
+            this.WindSpeedLabel.Name = "WindSpeedLabel";
+            this.WindSpeedLabel.Size = new System.Drawing.Size(28, 13);
+            this.WindSpeedLabel.TabIndex = 193;
+            this.WindSpeedLabel.Text = "M/S";
+            // 
+            // WindDirectionLabel
+            // 
+            this.WindDirectionLabel.AutoSize = true;
+            this.WindDirectionLabel.Location = new System.Drawing.Point(375, 635);
+            this.WindDirectionLabel.Name = "WindDirectionLabel";
+            this.WindDirectionLabel.Size = new System.Drawing.Size(32, 13);
+            this.WindDirectionLabel.TabIndex = 194;
+            this.WindDirectionLabel.Text = "Wind";
             // 
             // NavForm
             // 
@@ -896,6 +936,10 @@ namespace UAVXGUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(963, 661);
+            this.Controls.Add(this.WindDirectionLabel);
+            this.Controls.Add(this.WindSpeedLabel);
+            this.Controls.Add(this.WindSpeedTextBox);
+            this.Controls.Add(this.WindDirectionTextBox);
             this.Controls.Add(this.GoToCheckBox);
             this.Controls.Add(this.CentreCurrPositionCheckBox);
             this.Controls.Add(this.MapZoomLabel);
@@ -1012,6 +1056,10 @@ namespace UAVXGUI
         private CheckBox CentreCurrPositionCheckBox;
         private TextBox DefaultLoiterTextBox;
         private TextBox DefaultAltTextBox;
+        private Label WindDirectionLabel;
+        private Label WindSpeedLabel;
+        private TextBox WindSpeedTextBox;
+        private TextBox WindDirectionTextBox;
 
 
         //private GMap.NET.WindowsForms.GMapControl MainMap;

@@ -288,6 +288,7 @@
             this.AltVelKpLabel = new System.Windows.Forms.Label();
             this.AltVelKdLabel = new System.Windows.Forms.Label();
             this.ParamTemplateNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.DefaultTemplateLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DescDelayNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavRTHAltNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AttThrFFNumericUpDown)).BeginInit();
@@ -3486,17 +3487,18 @@
             0,
             0});
             this.ParamTemplateNumericUpDown.Name = "ParamTemplateNumericUpDown";
-            this.ParamTemplateNumericUpDown.Tag = "61";
-            this.ParamTemplateNumericUpDown.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
+            // 
+            // DefaultTemplateLabel
+            // 
+            resources.ApplyResources(this.DefaultTemplateLabel, "DefaultTemplateLabel");
+            this.DefaultTemplateLabel.Name = "DefaultTemplateLabel";
+            this.DefaultTemplateLabel.Tag = "";
             // 
             // ParameterForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.DefaultTemplateLabel);
             this.Controls.Add(this.ParamTemplateNumericUpDown);
             this.Controls.Add(this.AltitudeGroupBox);
             this.Controls.Add(this.groupBox1);
@@ -3885,6 +3887,7 @@
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.ComboBox OSLPFComboBox;
         public System.Windows.Forms.NumericUpDown ParamTemplateNumericUpDown;
+        private System.Windows.Forms.Label DefaultTemplateLabel;
 
 
     }

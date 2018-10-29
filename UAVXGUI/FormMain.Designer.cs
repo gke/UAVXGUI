@@ -331,9 +331,9 @@ namespace UAVXGUI
             this.FWGlideOffsetAngle = new System.Windows.Forms.TextBox();
             this.FWGlideAngleOffsetLabel = new System.Windows.Forms.Label();
             this.TuningGroupBox = new System.Windows.Forms.GroupBox();
+            this.BootLoadButton = new System.Windows.Forms.Button();
             this.attitudeIndicatorInstrumentControl1 = new Instruments.AttitudeIndicatorInstrumentControl();
             this.headingIndicatorInstrumentControl1 = new Instruments.HeadingIndicatorInstrumentControl();
-            this.BootLoadButton = new System.Windows.Forms.Button();
             this.GyroGroupBox.SuspendLayout();
             this.ControlsGroupBox.SuspendLayout();
             this.AttitudeGroupBox.SuspendLayout();
@@ -1516,7 +1516,7 @@ namespace UAVXGUI
             // GPSVelLabel
             // 
             this.GPSVelLabel.AutoSize = true;
-            this.GPSVelLabel.Location = new System.Drawing.Point(6, 135);
+            this.GPSVelLabel.Location = new System.Drawing.Point(6, 130);
             this.GPSVelLabel.Name = "GPSVelLabel";
             this.GPSVelLabel.Size = new System.Drawing.Size(47, 13);
             this.GPSVelLabel.TabIndex = 60;
@@ -1587,7 +1587,7 @@ namespace UAVXGUI
             // 
             // GPSVel
             // 
-            this.GPSVel.Location = new System.Drawing.Point(96, 127);
+            this.GPSVel.Location = new System.Drawing.Point(96, 126);
             this.GPSVel.Name = "GPSVel";
             this.GPSVel.ReadOnly = true;
             this.GPSVel.Size = new System.Drawing.Size(37, 20);
@@ -3351,6 +3351,17 @@ namespace UAVXGUI
             this.TuningGroupBox.TabStop = false;
             this.TuningGroupBox.Text = "FW Trim";
             // 
+            // BootLoadButton
+            // 
+            this.BootLoadButton.BackColor = System.Drawing.Color.Green;
+            this.BootLoadButton.Location = new System.Drawing.Point(630, 0);
+            this.BootLoadButton.Name = "BootLoadButton";
+            this.BootLoadButton.Size = new System.Drawing.Size(75, 23);
+            this.BootLoadButton.TabIndex = 229;
+            this.BootLoadButton.Text = "BOOTLOAD";
+            this.BootLoadButton.UseVisualStyleBackColor = false;
+            this.BootLoadButton.Click += new System.EventHandler(this.BootLoadButton_Click);
+            // 
             // attitudeIndicatorInstrumentControl1
             // 
             this.attitudeIndicatorInstrumentControl1.Location = new System.Drawing.Point(323, 118);
@@ -3366,17 +3377,6 @@ namespace UAVXGUI
             this.headingIndicatorInstrumentControl1.Size = new System.Drawing.Size(210, 218);
             this.headingIndicatorInstrumentControl1.TabIndex = 4;
             this.headingIndicatorInstrumentControl1.Text = "headingIndicatorInstrumentControl1";
-            // 
-            // BootLoadButton
-            // 
-            this.BootLoadButton.BackColor = System.Drawing.Color.Green;
-            this.BootLoadButton.Location = new System.Drawing.Point(630, 0);
-            this.BootLoadButton.Name = "BootLoadButton";
-            this.BootLoadButton.Size = new System.Drawing.Size(75, 23);
-            this.BootLoadButton.TabIndex = 229;
-            this.BootLoadButton.Text = "BOOTLOAD";
-            this.BootLoadButton.UseVisualStyleBackColor = false;
-            this.BootLoadButton.Click += new System.EventHandler(this.BootLoadButton_Click);
             // 
             // FormMain
             // 
