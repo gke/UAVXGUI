@@ -241,7 +241,7 @@ namespace UAVXGUI
         };
 
         public enum MiscComms 
-        { miscCalIMU, miscCalMag, miscLB, miscUnused, miscBBDump, miscGPSBypass, miscCalAcc, miscCalGyro, miscBootLoad}
+        { miscCalIMU, miscCalMag, miscLB, miscUnused, miscBBDump, miscGPSPassThru, miscCalAcc, miscCalGyro, miscBootLoad}
 
         public enum NavStates
         {
@@ -253,8 +253,10 @@ namespace UAVXGUI
             AltitudeLimiting,
             JustGliding,
             RateControl,
-            BypassControl,
+            PassThruControl,
             HorizonControl,
+            WPAltFail,
+            WPProximityFail,
             NavStateUndefined
         };
 
@@ -412,7 +414,7 @@ namespace UAVXGUI
 				Bypass,
 				UsingAngleControl,
 				Emulation,
-				BadBusConfig,
+				OffsetOriginValid,
 				DrivesArmed,
 				AccZBump,
 				UseManualAltHold,
@@ -650,6 +652,9 @@ namespace UAVXGUI
 
         public static MissionStruct Mission;
         public static MissionStruct NewMission;
+
+        public static short NavProximityAlt;
+        public static short NavProximityRadius;
 
         public static bool NewMissionAvailable = false;
 
@@ -1051,10 +1056,10 @@ namespace UAVXGUI
                 "UseRFAlt," +
 
                 "UsePOI," +   // stick programmed
-                "Bypass," +
+                "PassThru," +
                 "Angle," +
                 "Emulation," +
-                "BadBusConfig," +
+                "OffsetOriginValid," +
                 "DrivesArmed," +
                 "AccZBump," +
                 "ManualAH," +
@@ -1285,12 +1290,12 @@ namespace UAVXGUI
             }
         }
 
-        private void GPSBypassButton_Click(object sender, EventArgs e)
+        private void GPSPassThruButton_Click(object sender, EventArgs e)
         {
             if ((StateT == FlightStates.Preflight) || (StateT == FlightStates.Ready)) 
             {
-                SendRequestPacket(UAVXMiscPacketTag, (byte)MiscComms.miscGPSBypass, 0);
-                GPSBypassButton.BackColor = Color.Red;
+                SendRequestPacket(UAVXMiscPacketTag, (byte)MiscComms.miscGPSPassThru, 0);
+                GPSPassThruButton.BackColor = Color.Red;
             }
         }
 
@@ -1380,14 +1385,12 @@ namespace UAVXGUI
             {
                 AlarmsButton.BackColor = Color.Orange;
 
-                if (F[(byte)FlagValues.BadBusConfig] ||!F[(byte)FlagValues.ParametersValid]) {
-                   if (F[(byte)FlagValues.BadBusConfig]) speech.SpeakAsync("Bus Device Table Order Incorrect.");
                 if (!F[(byte)FlagValues.ParametersValid]) speech.SpeakAsync("In valid Parameters.");
-            }
+    
                 else
                 {
-                    if (F[(byte)FlagValues.IsArmed]) speech.SpeakAsync("Arming Switch.");
-                    if (DesiredThrottleT > 0) speech.SpeakAsync("Throttle open.");
+                    if (F[(byte)FlagValues.IsArmed]) speech.SpeakAsync("Motors armed.");
+                    if (DesiredThrottleT > 1) speech.SpeakAsync("Throttle open.");
                     if (!F[(byte)FlagValues.Signal]) speech.SpeakAsync("No signal.");
 
                     if (!F[(byte)FlagValues.OriginValid]) speech.SpeakAsync("Launch Location Not Acquired.");
@@ -1509,7 +1512,7 @@ namespace UAVXGUI
                             break;
                         case NavStates.HorizonControl: speech.SpeakAsync("Horizon Mode");
                             break;
-                        case NavStates.BypassControl: speech.SpeakAsync("Manual");
+                        case NavStates.PassThruControl: speech.SpeakAsync("Pass Thru");
                             break;
                      //   case NavStates.AcquiringAltitude: speech.SpeakAsync("Acquiring altitude.");
                      //       SpeakClimbDescend();
@@ -1827,7 +1830,7 @@ namespace UAVXGUI
             // 0x01
 
             BypassBox.BackColor = F[(byte)FlagValues.Bypass] ?
-                System.Drawing.Color.Orange : FlagsGroupBox.BackColor;
+                System.Drawing.Color.Red : FlagsGroupBox.BackColor;
 
             WarningPictureBox.Visible = F[(byte)FlagValues.IsArmed];
 
@@ -1877,8 +1880,8 @@ namespace UAVXGUI
             }
 
   
-            BadBusConfigBox.BackColor = F[(byte)FlagValues.BadBusConfig] ?
-                System.Drawing.Color.Red: Color.Green;     
+            OffsetOriginValidBox.BackColor = F[(byte)FlagValues.OffsetOriginValid] ?
+                System.Drawing.Color.Green: Color.Orange;     
 
             DumpBBButton.BackColor = F[(byte)FlagValues.DumpingBB] ?
                  Color.Orange : System.Drawing.SystemColors.Control;
@@ -2004,13 +2007,21 @@ namespace UAVXGUI
                     NavState.Text = "RATE";
                     NavState.BackColor = System.Drawing.Color.Orange;
                     break;
-                case NavStates.BypassControl:
-                    NavState.Text = "BYPASS";
+                case NavStates.PassThruControl:
+                    NavState.Text = "PASSTHRU";
                     NavState.BackColor = System.Drawing.Color.Red;
                     break;
                 case NavStates.HorizonControl:
                     NavState.Text = "HORIZON";
                     NavState.BackColor = System.Drawing.Color.Yellow;
+                    break;
+                case NavStates.WPAltFail:
+                    NavState.Text = "ALTFAIL";
+                    NavState.BackColor = System.Drawing.Color.Red;
+                    break;
+                case NavStates.WPProximityFail:
+                    NavState.Text = "PROXFAIL";
+                    NavState.BackColor = System.Drawing.Color.Red;
                     break;
                 default: NavState.Text = "Unknown"; break;
             } // switch
@@ -2470,13 +2481,12 @@ namespace UAVXGUI
 	                    Mission.NoOfWayPoints = UAVXPacket[2];
 
                         Properties.Settings.Default.Velocity = ExtractByte(ref UAVXPacket, 3) * 0.1f;
-                        Mission.ProximityAltitude = ExtractByte(ref UAVXPacket, 4);
-                        Mission.ProximityRadius = ExtractByte(ref UAVXPacket, 5);
-                        Mission.FenceRadius = ExtractShort(ref UAVXPacket, 6);
 
-                        Mission.OriginAltitude = ExtractShort(ref UAVXPacket, 8);
-                        Mission.OriginLatitude = ExtractInt(ref UAVXPacket, 10);
-                        Mission.OriginLongitude = ExtractInt(ref UAVXPacket, 14);
+                        Mission.FenceRadius = ExtractShort(ref UAVXPacket, 4);
+
+                        Mission.OriginAltitude = ExtractShort(ref UAVXPacket, 6);
+                        Mission.OriginLatitude = ExtractInt(ref UAVXPacket, 8);
+                        Mission.OriginLongitude = ExtractInt(ref UAVXPacket, 12);
 
 	                    NewMissionAvailable = true;
 
@@ -2936,7 +2946,10 @@ namespace UAVXGUI
                     UpdateGPS();
 
                     SpeakNavStatus();
-              
+
+                    NavStateTimeout.BackColor = NavStateTimeoutT < 0 ?
+                      System.Drawing.Color.Red : ControlsGroupBox.BackColor;
+
                     NavStateTimeout.Text = NavStateTimeoutT >= 0 ?
                         string.Format("{0:n0}", (float)NavStateTimeoutT * 0.001) : " ";
 
@@ -3115,11 +3128,9 @@ namespace UAVXGUI
             SendPacketHeader();
 
             TxESCu8(UAVXOriginPacketTag);
-            TxESCu8(5);
+            TxESCu8(3);
 
             TxESCu8(Mission.NoOfWayPoints);
-            TxESCu8(Mission.ProximityAltitude);
-            TxESCu8(Mission.ProximityRadius);
             TxESCi16(Mission.FenceRadius);
 
             SendPacketTrailer();

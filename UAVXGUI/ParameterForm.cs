@@ -195,8 +195,8 @@ namespace UAVXGUI
             1, // OSLPFType 105
             
             40, // OSLPFHz 106
-            0, // 107 -> UNUSED
-            0, // 
+            3, // ProxAltM 107
+            50, // ProxRadiusM 108
             0,
             0,
             
@@ -370,10 +370,10 @@ namespace UAVXGUI
 
             // General
 
-            if (parameterForm.VoltScaleNumericUpDown.Focused)
+            if (parameterForm.VoltageTrimNumericUpDown.Focused || parameterForm.VoltageFSNumericUpDown.Focused)
                 helpstring = help.GetString("VoltScale");
 
-            if (parameterForm.CurrentScaleNumericUpDown.Focused)
+            if (parameterForm.CurrentTrimNumericUpDown.Focused || parameterForm.CurrentFSNumericUpDown.Focused)
                 helpstring = help.GetString("CurrentScale");
 
             if (parameterForm.AttThrFFNumericUpDown.Focused)
@@ -969,7 +969,6 @@ namespace UAVXGUI
                 NumericUpDown Field = (NumericUpDown)Object;
 
                 int p = Convert.ToInt16(Field.Tag);
-
                 if ((p == 106))
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 0.01);
                 else
@@ -977,12 +976,9 @@ namespace UAVXGUI
                 if ((p == 64) || (p == 83) || (p == 84) || (p == 89) )
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 0.1);
                 else
-                    if ((p == 54) || (p == 18) || (p == 32) || (p == 34) || (p == 39) || (p == 46) || (p == 53) || (p == 58) || (p == 70) || (p == 104))
+                    if ((p == 54) || (p == 18) || (p == 32) || (p == 34) || (p == 39) || (p == 46) || (p == 53) || (p == 58) || (p == 70) || (p == 104) || (p == 110))
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 10.0);
-                else
-                        if ((p == 85) || (p == 86))
-                        P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 100.0);
-                else
+                else               
                     P[CurrPS, p - 1].Value = Convert.ToByte(Field.Value);
        
 
@@ -1517,12 +1513,12 @@ namespace UAVXGUI
                         MaxPitchRateTextBox.BackColor = (Convert.ToDecimal(UAVXP[p - 1].Value * 10.0) > 720) ? Color.Orange : Color.White;
                         break;
                     case 85:
-                        CurrentScaleNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.01);
-                        ParamUpdate(CurrentScaleNumericUpDown);
+                        CurrentTrimNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(CurrentTrimNumericUpDown);
                         break;
                     case 86:
-                        VoltScaleNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.01);
-                        ParamUpdate(VoltScaleNumericUpDown);
+                        VoltageTrimNumericUpDown.Value =UAVXP[p - 1].Value;
+                        ParamUpdate(VoltageTrimNumericUpDown);
                         break;
                      case 87:
                         FWAileronRudderFFNumericUpDown.Value = UAVXP[p - 1].Value;
@@ -1604,6 +1600,24 @@ namespace UAVXGUI
                     case 106:
                         OSLPFHzNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 100.0);
                         ParamUpdate(OSLPFHzNumericUpDown);
+                        break;
+                    case 107:
+                        ProximityAltNumericUpDown.Value = UAVXP[p - 1].Value;
+                        FormMain.NavProximityAlt = (short) ProximityAltNumericUpDown.Value;
+                        ParamUpdate(ProximityAltNumericUpDown);
+                        break;
+                    case 108:
+                        ProximityRadiusNumericUpDown.Value = UAVXP[p - 1].Value;
+                        FormMain.NavProximityRadius = (short)ProximityRadiusNumericUpDown.Value;
+                        ParamUpdate(ProximityRadiusNumericUpDown);
+                        break;
+                    case 109:
+                        CurrentFSNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(CurrentFSNumericUpDown);
+                        break;
+                    case 110:
+                        VoltageFSNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
+                        ParamUpdate(VoltageFSNumericUpDown);
                         break;
 
                     default: break; // up to case 64 available

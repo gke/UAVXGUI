@@ -58,12 +58,16 @@
             this.CameraRollNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CameraPropLabel = new System.Windows.Forms.Label();
             this.BatteryBox = new System.Windows.Forms.GroupBox();
-            this.CurrentScaleNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.VoltScaleNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.VoltageFSLabel = new System.Windows.Forms.Label();
+            this.CurrentFSLabel = new System.Windows.Forms.Label();
+            this.CurrentFSNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.VoltageFSNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CurrentTrimNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.BatteryCapacityNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.LowBatteryLabel = new System.Windows.Forms.Label();
-            this.BatteryNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.VoltageTrimNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.BatteryCapacityLabel = new System.Windows.Forms.Label();
+            this.BatteryNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.GeneralGroupBox = new System.Windows.Forms.GroupBox();
             this.labelTelemetry1 = new System.Windows.Forms.Label();
             this.bit01CheckBox = new System.Windows.Forms.CheckBox();
@@ -133,10 +137,14 @@
             this.Sense11Button = new System.Windows.Forms.Button();
             this.Sense01Button = new System.Windows.Forms.Button();
             this.bit11CheckBox = new System.Windows.Forms.CheckBox();
-            this.bit51CheckBox = new System.Windows.Forms.CheckBox();
             this.bit41CheckBox = new System.Windows.Forms.CheckBox();
             this.ComboPort1Label = new System.Windows.Forms.Label();
             this.NavGroupBox = new System.Windows.Forms.GroupBox();
+            this.bit51CheckBox = new System.Windows.Forms.CheckBox();
+            this.ProximityAltNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.ProximityRadiusLabel = new System.Windows.Forms.Label();
+            this.ProximityAltLabel = new System.Windows.Forms.Label();
+            this.ProximityRadiusNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.bit52CheckBox = new System.Windows.Forms.CheckBox();
             this.MotorStopLabel = new System.Windows.Forms.Label();
             this.bit32CheckBox = new System.Windows.Forms.CheckBox();
@@ -304,9 +312,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.CameraPitchNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CameraRollNumericUpDown)).BeginInit();
             this.BatteryBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CurrentScaleNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.VoltScaleNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrentFSNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VoltageFSNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrentTrimNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BatteryCapacityNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VoltageTrimNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BatteryNumericUpDown)).BeginInit();
             this.GeneralGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wsLEDsNumericUpDown)).BeginInit();
@@ -326,6 +336,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Ch4NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch1NumericUpDown)).BeginInit();
             this.NavGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ProximityAltNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProximityRadiusNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VRSDescentRateNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavMaxAngleNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxCompassYawRateNumericUpDown)).BeginInit();
@@ -727,65 +739,92 @@
             // 
             // BatteryBox
             // 
-            this.BatteryBox.Controls.Add(this.CurrentScaleNumericUpDown);
-            this.BatteryBox.Controls.Add(this.VoltScaleNumericUpDown);
+            this.BatteryBox.Controls.Add(this.VoltageFSLabel);
+            this.BatteryBox.Controls.Add(this.CurrentFSLabel);
+            this.BatteryBox.Controls.Add(this.CurrentFSNumericUpDown);
+            this.BatteryBox.Controls.Add(this.VoltageFSNumericUpDown);
+            this.BatteryBox.Controls.Add(this.CurrentTrimNumericUpDown);
             this.BatteryBox.Controls.Add(this.BatteryCapacityNumericUpDown);
             this.BatteryBox.Controls.Add(this.LowBatteryLabel);
-            this.BatteryBox.Controls.Add(this.BatteryNumericUpDown);
+            this.BatteryBox.Controls.Add(this.VoltageTrimNumericUpDown);
             this.BatteryBox.Controls.Add(this.BatteryCapacityLabel);
+            this.BatteryBox.Controls.Add(this.BatteryNumericUpDown);
             resources.ApplyResources(this.BatteryBox, "BatteryBox");
             this.BatteryBox.Name = "BatteryBox";
             this.BatteryBox.TabStop = false;
             // 
-            // CurrentScaleNumericUpDown
+            // VoltageFSLabel
             // 
-            this.CurrentScaleNumericUpDown.DecimalPlaces = 2;
-            resources.ApplyResources(this.CurrentScaleNumericUpDown, "CurrentScaleNumericUpDown");
-            this.CurrentScaleNumericUpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.CurrentScaleNumericUpDown.Maximum = new decimal(new int[] {
+            resources.ApplyResources(this.VoltageFSLabel, "VoltageFSLabel");
+            this.VoltageFSLabel.Name = "VoltageFSLabel";
+            // 
+            // CurrentFSLabel
+            // 
+            resources.ApplyResources(this.CurrentFSLabel, "CurrentFSLabel");
+            this.CurrentFSLabel.Name = "CurrentFSLabel";
+            // 
+            // CurrentFSNumericUpDown
+            // 
+            resources.ApplyResources(this.CurrentFSNumericUpDown, "CurrentFSNumericUpDown");
+            this.CurrentFSNumericUpDown.Maximum = new decimal(new int[] {
             255,
             0,
             0,
-            131072});
-            this.CurrentScaleNumericUpDown.Name = "CurrentScaleNumericUpDown";
-            this.CurrentScaleNumericUpDown.Tag = "85";
-            this.CurrentScaleNumericUpDown.Value = new decimal(new int[] {
-            100,
+            0});
+            this.CurrentFSNumericUpDown.Name = "CurrentFSNumericUpDown";
+            this.CurrentFSNumericUpDown.Tag = "109";
+            this.CurrentFSNumericUpDown.Value = new decimal(new int[] {
+            90,
             0,
             0,
-            131072});
-            this.CurrentScaleNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.CurrentScaleNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
-            this.CurrentScaleNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            0});
+            this.CurrentFSNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.CurrentFSNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.CurrentFSNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
-            // VoltScaleNumericUpDown
+            // VoltageFSNumericUpDown
             // 
-            this.VoltScaleNumericUpDown.DecimalPlaces = 2;
-            resources.ApplyResources(this.VoltScaleNumericUpDown, "VoltScaleNumericUpDown");
-            this.VoltScaleNumericUpDown.Increment = new decimal(new int[] {
+            this.VoltageFSNumericUpDown.DecimalPlaces = 1;
+            resources.ApplyResources(this.VoltageFSNumericUpDown, "VoltageFSNumericUpDown");
+            this.VoltageFSNumericUpDown.Increment = new decimal(new int[] {
             1,
             0,
             0,
-            131072});
-            this.VoltScaleNumericUpDown.Maximum = new decimal(new int[] {
+            65536});
+            this.VoltageFSNumericUpDown.Maximum = new decimal(new int[] {
             255,
             0,
             0,
-            131072});
-            this.VoltScaleNumericUpDown.Name = "VoltScaleNumericUpDown";
-            this.VoltScaleNumericUpDown.Tag = "86";
-            this.VoltScaleNumericUpDown.Value = new decimal(new int[] {
+            65536});
+            this.VoltageFSNumericUpDown.Name = "VoltageFSNumericUpDown";
+            this.VoltageFSNumericUpDown.Tag = "110";
+            this.VoltageFSNumericUpDown.Value = new decimal(new int[] {
+            126,
+            0,
+            0,
+            65536});
+            this.VoltageFSNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.VoltageFSNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.VoltageFSNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            // 
+            // CurrentTrimNumericUpDown
+            // 
+            resources.ApplyResources(this.CurrentTrimNumericUpDown, "CurrentTrimNumericUpDown");
+            this.CurrentTrimNumericUpDown.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.CurrentTrimNumericUpDown.Name = "CurrentTrimNumericUpDown";
+            this.CurrentTrimNumericUpDown.Tag = "85";
+            this.CurrentTrimNumericUpDown.Value = new decimal(new int[] {
             100,
             0,
             0,
-            131072});
-            this.VoltScaleNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.VoltScaleNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
-            this.VoltScaleNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            0});
+            this.CurrentTrimNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.CurrentTrimNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.CurrentTrimNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
             // BatteryCapacityNumericUpDown
             // 
@@ -817,6 +856,35 @@
             resources.ApplyResources(this.LowBatteryLabel, "LowBatteryLabel");
             this.LowBatteryLabel.Name = "LowBatteryLabel";
             // 
+            // VoltageTrimNumericUpDown
+            // 
+            resources.ApplyResources(this.VoltageTrimNumericUpDown, "VoltageTrimNumericUpDown");
+            this.VoltageTrimNumericUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.VoltageTrimNumericUpDown.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.VoltageTrimNumericUpDown.Name = "VoltageTrimNumericUpDown";
+            this.VoltageTrimNumericUpDown.Tag = "86";
+            this.VoltageTrimNumericUpDown.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.VoltageTrimNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.VoltageTrimNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.VoltageTrimNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            // 
+            // BatteryCapacityLabel
+            // 
+            resources.ApplyResources(this.BatteryCapacityLabel, "BatteryCapacityLabel");
+            this.BatteryCapacityLabel.Name = "BatteryCapacityLabel";
+            // 
             // BatteryNumericUpDown
             // 
             this.BatteryNumericUpDown.DecimalPlaces = 1;
@@ -841,11 +909,6 @@
             this.BatteryNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
             this.BatteryNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
             this.BatteryNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
-            // 
-            // BatteryCapacityLabel
-            // 
-            resources.ApplyResources(this.BatteryCapacityLabel, "BatteryCapacityLabel");
-            this.BatteryCapacityLabel.Name = "BatteryCapacityLabel";
             // 
             // GeneralGroupBox
             // 
@@ -1692,17 +1755,6 @@
             this.bit11CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
             this.bit11CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
-            // bit51CheckBox
-            // 
-            resources.ApplyResources(this.bit51CheckBox, "bit51CheckBox");
-            this.bit51CheckBox.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.bit51CheckBox.Name = "bit51CheckBox";
-            this.bit51CheckBox.Tag = "16_5";
-            this.bit51CheckBox.UseVisualStyleBackColor = true;
-            this.bit51CheckBox.CheckedChanged += new System.EventHandler(this.bitCheckBox_CheckedChanged);
-            this.bit51CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.bit51CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
-            // 
             // bit41CheckBox
             // 
             resources.ApplyResources(this.bit41CheckBox, "bit41CheckBox");
@@ -1721,6 +1773,11 @@
             // 
             // NavGroupBox
             // 
+            this.NavGroupBox.Controls.Add(this.bit51CheckBox);
+            this.NavGroupBox.Controls.Add(this.ProximityAltNumericUpDown);
+            this.NavGroupBox.Controls.Add(this.ProximityRadiusLabel);
+            this.NavGroupBox.Controls.Add(this.ProximityAltLabel);
+            this.NavGroupBox.Controls.Add(this.ProximityRadiusNumericUpDown);
             this.NavGroupBox.Controls.Add(this.bit52CheckBox);
             this.NavGroupBox.Controls.Add(this.MotorStopLabel);
             this.NavGroupBox.Controls.Add(this.bit32CheckBox);
@@ -1761,6 +1818,64 @@
             resources.ApplyResources(this.NavGroupBox, "NavGroupBox");
             this.NavGroupBox.Name = "NavGroupBox";
             this.NavGroupBox.TabStop = false;
+            // 
+            // bit51CheckBox
+            // 
+            resources.ApplyResources(this.bit51CheckBox, "bit51CheckBox");
+            this.bit51CheckBox.Name = "bit51CheckBox";
+            this.bit51CheckBox.Tag = "16_5";
+            this.bit51CheckBox.UseVisualStyleBackColor = true;
+            this.bit51CheckBox.CheckedChanged += new System.EventHandler(this.bitCheckBox_CheckedChanged);
+            this.bit51CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.bit51CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
+            // 
+            // ProximityAltNumericUpDown
+            // 
+            resources.ApplyResources(this.ProximityAltNumericUpDown, "ProximityAltNumericUpDown");
+            this.ProximityAltNumericUpDown.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.ProximityAltNumericUpDown.Name = "ProximityAltNumericUpDown";
+            this.ProximityAltNumericUpDown.Tag = "107";
+            this.ProximityAltNumericUpDown.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.ProximityAltNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.ProximityAltNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.ProximityAltNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            // 
+            // ProximityRadiusLabel
+            // 
+            resources.ApplyResources(this.ProximityRadiusLabel, "ProximityRadiusLabel");
+            this.ProximityRadiusLabel.Name = "ProximityRadiusLabel";
+            // 
+            // ProximityAltLabel
+            // 
+            resources.ApplyResources(this.ProximityAltLabel, "ProximityAltLabel");
+            this.ProximityAltLabel.Name = "ProximityAltLabel";
+            // 
+            // ProximityRadiusNumericUpDown
+            // 
+            resources.ApplyResources(this.ProximityRadiusNumericUpDown, "ProximityRadiusNumericUpDown");
+            this.ProximityRadiusNumericUpDown.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.ProximityRadiusNumericUpDown.Name = "ProximityRadiusNumericUpDown";
+            this.ProximityRadiusNumericUpDown.Tag = "108";
+            this.ProximityRadiusNumericUpDown.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.ProximityRadiusNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.ProximityRadiusNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.ProximityRadiusNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
             // bit52CheckBox
             // 
@@ -3015,7 +3130,6 @@
             this.FWGroupBox.Controls.Add(this.FWAileronRudderFFNumericUpDown);
             this.FWGroupBox.Controls.Add(this.FWAltSpoilerFFLabel);
             this.FWGroupBox.Controls.Add(this.FWAltSpoilerFFNumericUpDown);
-            this.FWGroupBox.Controls.Add(this.bit51CheckBox);
             this.FWGroupBox.Controls.Add(this.FWTrimAngleNumericUpDown);
             this.FWGroupBox.Controls.Add(this.FWClimbAngleNumericUpDown);
             this.FWGroupBox.Controls.Add(this.FWClimbAngleLabel);
@@ -3536,9 +3650,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.CameraRollNumericUpDown)).EndInit();
             this.BatteryBox.ResumeLayout(false);
             this.BatteryBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CurrentScaleNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.VoltScaleNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrentFSNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VoltageFSNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrentTrimNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BatteryCapacityNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VoltageTrimNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BatteryNumericUpDown)).EndInit();
             this.GeneralGroupBox.ResumeLayout(false);
             this.GeneralGroupBox.PerformLayout();
@@ -3560,6 +3676,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Ch1NumericUpDown)).EndInit();
             this.NavGroupBox.ResumeLayout(false);
             this.NavGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ProximityAltNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProximityRadiusNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VRSDescentRateNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavMaxAngleNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxCompassYawRateNumericUpDown)).EndInit();
@@ -3695,7 +3813,6 @@
         private System.Windows.Forms.Label labelTelemetry1;
         public System.Windows.Forms.ComboBox TelemetryComboBox;
         public System.Windows.Forms.CheckBox bit11CheckBox;
-        public System.Windows.Forms.CheckBox bit51CheckBox;
         private System.Windows.Forms.Label labelESC1;
         public System.Windows.Forms.ComboBox ESCComboBox;
         public System.Windows.Forms.NumericUpDown LowMotorRunNumericUpDown;
@@ -3835,8 +3952,8 @@
         public System.Windows.Forms.NumericUpDown FWTrimAngleNumericUpDown;
         private System.Windows.Forms.Label FWTrimAngleLabel;
         public System.Windows.Forms.NumericUpDown MaxPitchAngleNumericUpDown;
-        public System.Windows.Forms.NumericUpDown CurrentScaleNumericUpDown;
-        public System.Windows.Forms.NumericUpDown VoltScaleNumericUpDown;
+        public System.Windows.Forms.NumericUpDown CurrentTrimNumericUpDown;
+        public System.Windows.Forms.NumericUpDown VoltageTrimNumericUpDown;
         private System.Windows.Forms.TextBox MaxPitchRateTextBox;
         private System.Windows.Forms.Label FWAilRudFF;
         public System.Windows.Forms.NumericUpDown FWAileronRudderFFNumericUpDown;
@@ -3888,6 +4005,15 @@
         public System.Windows.Forms.ComboBox OSLPFComboBox;
         public System.Windows.Forms.NumericUpDown ParamTemplateNumericUpDown;
         private System.Windows.Forms.Label DefaultTemplateLabel;
+        public System.Windows.Forms.NumericUpDown ProximityAltNumericUpDown;
+        private System.Windows.Forms.Label ProximityRadiusLabel;
+        private System.Windows.Forms.Label ProximityAltLabel;
+        public System.Windows.Forms.NumericUpDown ProximityRadiusNumericUpDown;
+        private System.Windows.Forms.Label CurrentFSLabel;
+        public System.Windows.Forms.NumericUpDown CurrentFSNumericUpDown;
+        private System.Windows.Forms.Label VoltageFSLabel;
+        public System.Windows.Forms.NumericUpDown VoltageFSNumericUpDown;
+        public System.Windows.Forms.CheckBox bit51CheckBox;
 
 
     }

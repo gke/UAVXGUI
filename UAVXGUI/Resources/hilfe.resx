@@ -201,10 +201,10 @@ Mode 2: Rudder/Throttle left hand Ailerons/Elevator right hand. Rudder available
     <value>Determines the throttle compensation required to overcome loss of lift in a multicopter when pitching and/or rolling.</value>
   </data>
     <data name="VoltScale" xml:space="preserve">
-    <value>Used for scaling the battery volts display value to the actual value.</value>
+    <value>Nominal maximum voltage with trim scaling adjustment (%).</value>
   </data>
     <data name="CurrentScale" xml:space="preserve">
-    <value>Used for scaling the battery current display value to the actual value.</value>
+    <value>Nominal maximum voltage with trim scaling adjustment (%).</value>
   </data>
     <data name="FWRollPitchFF" xml:space="preserve">
     <value>For FW determines the fraction of roll command applied to elevator to lift nose in turns.</value>

@@ -324,7 +324,7 @@ namespace UAVXGUI
             // DefAltitudeLabel
             // 
             this.DefAltitudeLabel.AutoSize = true;
-            this.DefAltitudeLabel.Location = new System.Drawing.Point(6, 92);
+            this.DefAltitudeLabel.Location = new System.Drawing.Point(6, 43);
             this.DefAltitudeLabel.Name = "DefAltitudeLabel";
             this.DefAltitudeLabel.Size = new System.Drawing.Size(45, 13);
             this.DefAltitudeLabel.TabIndex = 188;
@@ -343,7 +343,7 @@ namespace UAVXGUI
             // LoiterTimeLabel
             // 
             this.LoiterTimeLabel.AutoSize = true;
-            this.LoiterTimeLabel.Location = new System.Drawing.Point(5, 118);
+            this.LoiterTimeLabel.Location = new System.Drawing.Point(6, 69);
             this.LoiterTimeLabel.Name = "LoiterTimeLabel";
             this.LoiterTimeLabel.Size = new System.Drawing.Size(56, 13);
             this.LoiterTimeLabel.TabIndex = 186;
@@ -576,20 +576,23 @@ namespace UAVXGUI
             // ProxRadiusLabel
             // 
             this.ProxRadiusLabel.AutoSize = true;
-            this.ProxRadiusLabel.Location = new System.Drawing.Point(6, 17);
+            this.ProxRadiusLabel.Location = new System.Drawing.Point(158, 364);
             this.ProxRadiusLabel.Name = "ProxRadiusLabel";
             this.ProxRadiusLabel.Size = new System.Drawing.Size(67, 13);
             this.ProxRadiusLabel.TabIndex = 55;
             this.ProxRadiusLabel.Text = "Prox. Radius";
+            this.ProxRadiusLabel.Visible = false;
             // 
             // ProximityRadiusTextBox
             // 
-            this.ProximityRadiusTextBox.Location = new System.Drawing.Point(82, 13);
+            this.ProximityRadiusTextBox.Location = new System.Drawing.Point(234, 361);
             this.ProximityRadiusTextBox.Name = "ProximityRadiusTextBox";
+            this.ProximityRadiusTextBox.ReadOnly = true;
             this.ProximityRadiusTextBox.Size = new System.Drawing.Size(33, 20);
             this.ProximityRadiusTextBox.TabIndex = 53;
             this.ProximityRadiusTextBox.Text = "10";
             this.ProximityRadiusTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ProximityRadiusTextBox.Visible = false;
             this.ProximityRadiusTextBox.TextChanged += new System.EventHandler(this.ProximityRadius_TextChanged);
             // 
             // label8
@@ -623,12 +626,14 @@ namespace UAVXGUI
             // 
             // ProximityAltTextBox
             // 
-            this.ProximityAltTextBox.Location = new System.Drawing.Point(82, 40);
+            this.ProximityAltTextBox.Location = new System.Drawing.Point(235, 338);
             this.ProximityAltTextBox.Name = "ProximityAltTextBox";
-            this.ProximityAltTextBox.Size = new System.Drawing.Size(32, 20);
+            this.ProximityAltTextBox.ReadOnly = true;
+            this.ProximityAltTextBox.Size = new System.Drawing.Size(33, 20);
             this.ProximityAltTextBox.TabIndex = 56;
             this.ProximityAltTextBox.Text = "2";
             this.ProximityAltTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ProximityAltTextBox.Visible = false;
             this.ProximityAltTextBox.TextChanged += new System.EventHandler(this.ProximityAlt_TextChanged);
             // 
             // ClickMapLabel
@@ -648,7 +653,7 @@ namespace UAVXGUI
             // FenceRadiusLabel
             // 
             this.FenceRadiusLabel.AutoSize = true;
-            this.FenceRadiusLabel.Location = new System.Drawing.Point(6, 67);
+            this.FenceRadiusLabel.Location = new System.Drawing.Point(6, 18);
             this.FenceRadiusLabel.Name = "FenceRadiusLabel";
             this.FenceRadiusLabel.Size = new System.Drawing.Size(73, 13);
             this.FenceRadiusLabel.TabIndex = 59;
@@ -656,7 +661,7 @@ namespace UAVXGUI
             // 
             // FenceRadiusTextBox
             // 
-            this.FenceRadiusTextBox.Location = new System.Drawing.Point(82, 64);
+            this.FenceRadiusTextBox.Location = new System.Drawing.Point(82, 15);
             this.FenceRadiusTextBox.Name = "FenceRadiusTextBox";
             this.FenceRadiusTextBox.Size = new System.Drawing.Size(33, 20);
             this.FenceRadiusTextBox.TabIndex = 58;
@@ -667,11 +672,12 @@ namespace UAVXGUI
             // ProximityAltLabel
             // 
             this.ProximityAltLabel.AutoSize = true;
-            this.ProximityAltLabel.Location = new System.Drawing.Point(6, 43);
+            this.ProximityAltLabel.Location = new System.Drawing.Point(158, 341);
             this.ProximityAltLabel.Name = "ProximityAltLabel";
             this.ProximityAltLabel.Size = new System.Drawing.Size(69, 13);
             this.ProximityAltLabel.TabIndex = 57;
             this.ProximityAltLabel.Text = "Prox. Altitude";
+            this.ProximityAltLabel.Visible = false;
             // 
             // PerchContextMenuItem
             // 
@@ -789,12 +795,8 @@ namespace UAVXGUI
             this.WPDefaultsGroupBox.Controls.Add(this.DefaultLoiterTextBox);
             this.WPDefaultsGroupBox.Controls.Add(this.DefaultAltTextBox);
             this.WPDefaultsGroupBox.Controls.Add(this.FenceRadiusLabel);
-            this.WPDefaultsGroupBox.Controls.Add(this.ProximityRadiusTextBox);
             this.WPDefaultsGroupBox.Controls.Add(this.FenceRadiusTextBox);
             this.WPDefaultsGroupBox.Controls.Add(this.DefAltitudeLabel);
-            this.WPDefaultsGroupBox.Controls.Add(this.ProxRadiusLabel);
-            this.WPDefaultsGroupBox.Controls.Add(this.ProximityAltTextBox);
-            this.WPDefaultsGroupBox.Controls.Add(this.ProximityAltLabel);
             this.WPDefaultsGroupBox.Controls.Add(this.LoiterTimeLabel);
             this.WPDefaultsGroupBox.Location = new System.Drawing.Point(235, 513);
             this.WPDefaultsGroupBox.Name = "WPDefaultsGroupBox";
@@ -805,7 +807,7 @@ namespace UAVXGUI
             // 
             // DefaultLoiterTextBox
             // 
-            this.DefaultLoiterTextBox.Location = new System.Drawing.Point(82, 115);
+            this.DefaultLoiterTextBox.Location = new System.Drawing.Point(82, 66);
             this.DefaultLoiterTextBox.Name = "DefaultLoiterTextBox";
             this.DefaultLoiterTextBox.Size = new System.Drawing.Size(33, 20);
             this.DefaultLoiterTextBox.TabIndex = 192;
@@ -815,11 +817,11 @@ namespace UAVXGUI
             // 
             // DefaultAltTextBox
             // 
-            this.DefaultAltTextBox.Location = new System.Drawing.Point(82, 89);
+            this.DefaultAltTextBox.Location = new System.Drawing.Point(82, 40);
             this.DefaultAltTextBox.Name = "DefaultAltTextBox";
             this.DefaultAltTextBox.Size = new System.Drawing.Size(33, 20);
             this.DefaultAltTextBox.TabIndex = 191;
-            this.DefaultAltTextBox.Text = "15";
+            this.DefaultAltTextBox.Text = "20";
             this.DefaultAltTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.DefaultAltTextBox.TextChanged += new System.EventHandler(this.DefaultAltTextBox_TextChanged);
             // 
@@ -900,7 +902,7 @@ namespace UAVXGUI
             this.WindDirectionTextBox.Name = "WindDirectionTextBox";
             this.WindDirectionTextBox.Size = new System.Drawing.Size(33, 20);
             this.WindDirectionTextBox.TabIndex = 191;
-            this.WindDirectionTextBox.Text = "10";
+            this.WindDirectionTextBox.Text = "0";
             this.WindDirectionTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // WindSpeedTextBox
@@ -938,11 +940,15 @@ namespace UAVXGUI
             this.ClientSize = new System.Drawing.Size(963, 661);
             this.Controls.Add(this.WindDirectionLabel);
             this.Controls.Add(this.WindSpeedLabel);
+            this.Controls.Add(this.ProximityRadiusTextBox);
             this.Controls.Add(this.WindSpeedTextBox);
             this.Controls.Add(this.WindDirectionTextBox);
             this.Controls.Add(this.GoToCheckBox);
+            this.Controls.Add(this.ProxRadiusLabel);
             this.Controls.Add(this.CentreCurrPositionCheckBox);
+            this.Controls.Add(this.ProximityAltTextBox);
             this.Controls.Add(this.MapZoomLabel);
+            this.Controls.Add(this.ProximityAltLabel);
             this.Controls.Add(this.MapZoomNumericUpDown);
             this.Controls.Add(this.AltitudeOverTerrainCheckBox);
             this.Controls.Add(this.CurrentAltitude);

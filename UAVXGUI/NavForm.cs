@@ -299,6 +299,9 @@ namespace UAVXGUI
             WindDirectionTextBox.Text = string.Format("{0:n0}",FormMain.WindDirectionT * FormMain.MILLIRADDEG);
             WindSpeedTextBox.Text = string.Format("{0:n1}",FormMain.WindSpeedT * 0.01);
 
+            ProximityAltTextBox.Text = string.Format("{0:n0}", FormMain.NavProximityAlt);
+            ProximityRadiusTextBox.Text = string.Format("{0:n0}", FormMain.NavProximityRadius);
+
             Properties.Settings.Default.Save();
  
         } // timer_updatemap_Tick
@@ -1384,7 +1387,7 @@ namespace UAVXGUI
             "Gimbal",16
             "Unknown" };
                  * */
-
+/*
                 switch (FormMain.AirframeT)
                 {
                  case 0:
@@ -1448,12 +1451,10 @@ namespace UAVXGUI
                         pic = Properties.Resources.marker_quadx;
                         break;
                 }
-            /*  
-                if ((byte)AirframeT == 4)
-                    pic = Properties.Resources.marker_quadx;
-                else
-                    pic = Properties.Resources.marker_airplane;
-*/
+            */  
+    
+                pic = (FormMain.UsingFixedWing) ? Properties.Resources.marker_airplane : Properties.Resources.marker_quadx ;
+
                 int length = 100;
                 // anti NaN
                 v = Heading - 90.0 * DegToRad;
@@ -1657,9 +1658,8 @@ namespace UAVXGUI
                 System.IO.FileStream MissionFileStream = new System.IO.FileStream(dlg.FileName + ".txt", System.IO.FileMode.Create);
                 System.IO.StreamWriter MissionFileStreamWriter = new System.IO.StreamWriter(MissionFileStream, System.Text.Encoding.ASCII);
 
-                MissionFileStreamWriter.WriteLine("OPTIONS:" + ProximityRadiusTextBox.Text
-                    + "," + ProximityAltTextBox.Text
-                    + "," + FenceRadiusTextBox.Text
+                MissionFileStreamWriter.WriteLine("OPTIONS:" 
+                    + FenceRadiusTextBox.Text
                     + "," + AltitudeOverTerrainCheckBox.Checked
                     + "," + MapZoomNumericUpDown.Value.ToString());
 
@@ -1770,17 +1770,13 @@ namespace UAVXGUI
                         switch (sObjType)
                         {
                             case "OPTIONS":
-                                ProximityRadiusTextBox.Text = string.Format("{0:n0}", Convert.ToInt16(sParam[0]));
-                                ProximityAltTextBox.Text = string.Format("{0:n0}", Convert.ToInt16(sParam[1]));
-                                FenceRadiusTextBox.Text = string.Format("{0:n0}", Convert.ToInt16(sParam[2]));
-                                AltitudeOverTerrainCheckBox.Checked = Convert.ToBoolean(sParam[3]);
+                                FenceRadiusTextBox.Text = string.Format("{0:n0}", Convert.ToInt16(sParam[0]));
+                                AltitudeOverTerrainCheckBox.Checked = Convert.ToBoolean(sParam[1]);
                  
                                 if (sParam.GetUpperBound(0) >= 4)
                                     MapZoomNumericUpDown.Value = Convert.ToInt32(sParam[4]);
 
-                                Properties.Settings.Default.ProximityRadius = Convert.ToByte(sParam[0]);
-                                Properties.Settings.Default.ProximityAltitude = Convert.ToByte(sParam[1]);
-                                Properties.Settings.Default.FenceRadius = Convert.ToInt16(sParam[2]);
+                                Properties.Settings.Default.FenceRadius = Convert.ToInt16(sParam[0]);
                                 Properties.Settings.Default.AltitudeOverTerrain = AltitudeOverTerrainCheckBox.Checked;
 
                                 break;

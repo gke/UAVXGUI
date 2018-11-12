@@ -84,7 +84,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="FenceRadius" Type="System.Int16" Scope="User">
-      <Value Profile="(Default)">150</Value>
+      <Value Profile="(Default)">400</Value>
     </Setting>
     <Setting Name="Altitude" Type="System.Int16" Scope="User">
       <Value Profile="(Default)">15</Value>

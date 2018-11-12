@@ -349,7 +349,7 @@ namespace UAVXGUI.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("150")]
+        [global::System.Configuration.DefaultSettingValueAttribute("400")]
         public short FenceRadius {
             get {
                 return ((short)(this["FenceRadius"]));
