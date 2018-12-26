@@ -2056,7 +2056,7 @@
     <value>NoControl</value>
   </data>
   <data name="bit42CheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 122</value>
+    <value>9, 96</value>
   </data>
   <data name="bit42CheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 17</value>
@@ -2089,7 +2089,7 @@
     <value>NoControl</value>
   </data>
   <data name="bit02CheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>98, 122</value>
+    <value>98, 96</value>
   </data>
   <data name="bit02CheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 17</value>
@@ -2110,7 +2110,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;bit02CheckBox.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="ComboPort2Label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2365,7 +2365,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;GyroLabel.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>13</value>
   </data>
   <data name="MadgwickKpMagNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -2644,13 +2644,13 @@
     <value>Roll Stick</value>
   </data>
   <data name="ArmingModeComboBox.Items3" xml:space="preserve">
-    <value>Tx Switch</value>
+    <value>Arm/AH/Nav</value>
   </data>
   <data name="ArmingModeComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>40, 41</value>
   </data>
   <data name="ArmingModeComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 21</value>
+    <value>98, 21</value>
   </data>
   <data name="ArmingModeComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>147</value>
@@ -4489,7 +4489,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;BaroLPFHzLabel.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>12</value>
   </data>
   <data name="AltPosKpNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -6079,7 +6079,7 @@
     <value>NoControl</value>
   </data>
   <data name="DiscoveredRCChannelsLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>138, 46</value>
+    <value>144, 46</value>
   </data>
   <data name="DiscoveredRCChannelsLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 13</value>
@@ -7294,7 +7294,7 @@
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="OSLPFHzNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 93</value>
+    <value>148, 120</value>
   </data>
   <data name="OSLPFHzNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 20</value>
@@ -7365,34 +7365,34 @@
   <data name="&gt;&gt;AccLPFComboBox.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+  <data name="OSFLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="OSFLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 96</value>
+  <data name="OSFLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 123</value>
   </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="OSFLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>28, 13</value>
   </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+  <data name="OSFLabel.TabIndex" type="System.Int32, mscorlib">
     <value>246</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
+  <data name="OSFLabel.Text" xml:space="preserve">
     <value>OSF</value>
   </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
+  <data name="&gt;&gt;OSFLabel.Name" xml:space="preserve">
+    <value>OSFLabel</value>
   </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+  <data name="&gt;&gt;OSFLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;OSFLabel.Parent" xml:space="preserve">
     <value>groupBox1</value>
   </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;OSFLabel.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="GyroLPFComboBox.AutoCompleteCustomSource" xml:space="preserve">
@@ -7492,7 +7492,7 @@
     <value>noOS</value>
   </data>
   <data name="OSLPFComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>47, 93</value>
+    <value>47, 120</value>
   </data>
   <data name="OSLPFComboBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 21</value>

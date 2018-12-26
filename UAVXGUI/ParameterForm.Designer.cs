@@ -277,7 +277,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.OSLPFHzNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.AccLPFComboBox = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.OSFLabel = new System.Windows.Forms.Label();
             this.GyroLPFComboBox = new System.Windows.Forms.ComboBox();
             this.ServoLPFHzLabel = new System.Windows.Forms.Label();
             this.OSLPFComboBox = new System.Windows.Forms.ComboBox();
@@ -954,6 +954,11 @@
             // 
             this.wsLEDsNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
             resources.ApplyResources(this.wsLEDsNumericUpDown, "wsLEDsNumericUpDown");
+            this.wsLEDsNumericUpDown.Increment = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
             this.wsLEDsNumericUpDown.Maximum = new decimal(new int[] {
             12,
             0,
@@ -3342,7 +3347,7 @@
             // 
             this.groupBox1.Controls.Add(this.OSLPFHzNumericUpDown);
             this.groupBox1.Controls.Add(this.AccLPFComboBox);
-            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.OSFLabel);
             this.groupBox1.Controls.Add(this.GyroLPFComboBox);
             this.groupBox1.Controls.Add(this.ServoLPFHzLabel);
             this.groupBox1.Controls.Add(this.OSLPFComboBox);
@@ -3352,9 +3357,9 @@
             this.groupBox1.Controls.Add(this.AccLabel);
             this.groupBox1.Controls.Add(this.GyroSlewLimitLabel);
             this.groupBox1.Controls.Add(this.AltLPFNumericUpDown);
-            this.groupBox1.Controls.Add(this.bit02CheckBox);
             this.groupBox1.Controls.Add(this.BaroLPFHzLabel);
             this.groupBox1.Controls.Add(this.GyroLabel);
+            this.groupBox1.Controls.Add(this.bit02CheckBox);
             this.groupBox1.Controls.Add(this.YawLPFLabel);
             this.groupBox1.Controls.Add(this.YawGyroLPFNumericUpDown);
             resources.ApplyResources(this.groupBox1, "groupBox1");
@@ -3403,11 +3408,11 @@
             this.AccLPFComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
             this.AccLPFComboBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
-            // label2
+            // OSFLabel
             // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Name = "label2";
+            resources.ApplyResources(this.OSFLabel, "OSFLabel");
+            this.OSFLabel.ForeColor = System.Drawing.Color.Black;
+            this.OSFLabel.Name = "OSFLabel";
             // 
             // GyroLPFComboBox
             // 
@@ -4001,7 +4006,7 @@
         private System.Windows.Forms.Label VRSLabel;
         private System.Windows.Forms.Label MotorStopLabel;
         public System.Windows.Forms.NumericUpDown OSLPFHzNumericUpDown;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label OSFLabel;
         public System.Windows.Forms.ComboBox OSLPFComboBox;
         public System.Windows.Forms.NumericUpDown ParamTemplateNumericUpDown;
         private System.Windows.Forms.Label DefaultTemplateLabel;

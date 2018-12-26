@@ -432,7 +432,7 @@ Does not work for UAVP PIC VERSION - uses specific hex file for the required air
     <value>Scales altitude error to desired of climb or descent.</value>
   </data>
     <data name="GyroSlewRate" xml:space="preserve">
-    <value>Noisy motors and props and hard mounted flight controllers can cause the gyros to emit impossible changes in gyro rates. This is used to the to impose an upper limit on gyro measurements which is acceptable.</value>
+    <value>Noisy motors and props and hard mounted flight controllers can cause the gyros to emit impossible changes in gyro rates. This is used to set the analysis windows for the Gyro Noise histogram.</value>
   </data>
   <data name="Neutral" xml:space="preserve">
     <value>Neutral values of the accelerometer are captured when the quad is initially powered on.  It is important that the quad is not jiggled if neutral values are taken and input into the data windows.  These values will vary by accelerometer and breakout board installation, but should remain fairly constant over time. They should be re-checked especially after a very "hard landing", or a board re-mount.  You can also use the "Get values" button to automatically copy the data to the windows.  As a suggestion to get better accelerometer values, load and use the testfirmware to check the values and get a good average.  The testfirmware allows you to check the accelerometer values repeatedly by clicking on the Tools/Testsoftware/Liinear Sensor check line.</value>

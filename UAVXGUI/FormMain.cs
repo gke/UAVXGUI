@@ -2947,8 +2947,8 @@ namespace UAVXGUI
 
                     SpeakNavStatus();
 
-                    NavStateTimeout.BackColor = NavStateTimeoutT < 0 ?
-                      System.Drawing.Color.Red : ControlsGroupBox.BackColor;
+                    NavStateTimeout.BackColor = NavStateTimeoutT <= 0 ?
+                      System.Drawing.Color.LightBlue : ControlsGroupBox.BackColor;
 
                     NavStateTimeout.Text = NavStateTimeoutT >= 0 ?
                         string.Format("{0:n0}", (float)NavStateTimeoutT * 0.001) : " ";
@@ -3008,7 +3008,7 @@ namespace UAVXGUI
 
             if ((RxPacketTag == UAVXMinimOSDPacketTag) || (RxPacketTag == UAVXFlightPacketTag ))
             {
-                FlightHeading = (int)((HeadingT) * MILLIRADDEG);
+                FlightHeading = (int)((MagHeadingT) * MILLIRADDEG);
                 if (FlightHeading >= 360) FlightHeading -= 360;
 
                 headingIndicatorInstrumentControl1.SetHeadingIndicatorParameters(FlightHeading);
