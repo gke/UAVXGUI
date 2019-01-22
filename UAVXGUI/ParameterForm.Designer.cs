@@ -215,7 +215,10 @@
             this.SetDefaultParamButton = new System.Windows.Forms.Button();
             this.CheckDownLinkTimer = new System.Windows.Forms.Timer(this.components);
             this.RCGroupBox = new System.Windows.Forms.GroupBox();
+            this.OSLPFHzNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.ThrottleIdleLabel = new System.Windows.Forms.Label();
+            this.OSFLabel = new System.Windows.Forms.Label();
+            this.OSLPFComboBox = new System.Windows.Forms.ComboBox();
             this.RC11TextBox = new System.Windows.Forms.TextBox();
             this.RC10TextBox = new System.Windows.Forms.TextBox();
             this.RC9TextBox = new System.Windows.Forms.TextBox();
@@ -275,12 +278,9 @@
             this.PitchThrottleFFxLabel = new System.Windows.Forms.Label();
             this.FWPitchThrottleFFNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.OSLPFHzNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.AccLPFComboBox = new System.Windows.Forms.ComboBox();
-            this.OSFLabel = new System.Windows.Forms.Label();
             this.GyroLPFComboBox = new System.Windows.Forms.ComboBox();
             this.ServoLPFHzLabel = new System.Windows.Forms.Label();
-            this.OSLPFComboBox = new System.Windows.Forms.ComboBox();
             this.ServoLPFHzNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.AltitudeGroupBox = new System.Windows.Forms.GroupBox();
             this.MaxROCTextBox = new System.Windows.Forms.TextBox();
@@ -372,6 +372,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.RollRatePropNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltPosIntLimitNumericUpDown)).BeginInit();
             this.RCGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OSLPFHzNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch10NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch11NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch12NumericUpDown)).BeginInit();
@@ -389,7 +390,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.FWSpoilerDecayTimeNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWPitchThrottleFFNumericUpDown)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.OSLPFHzNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ServoLPFHzNumericUpDown)).BeginInit();
             this.AltitudeGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AltVelIntLimitNumericUpDown)).BeginInit();
@@ -1000,14 +1000,7 @@
             resources.GetString("TelemetryComboBox.Items2"),
             resources.GetString("TelemetryComboBox.Items3"),
             resources.GetString("TelemetryComboBox.Items4"),
-            resources.GetString("TelemetryComboBox.Items5"),
-            resources.GetString("TelemetryComboBox.Items6"),
-            resources.GetString("TelemetryComboBox.Items7"),
-            resources.GetString("TelemetryComboBox.Items8"),
-            resources.GetString("TelemetryComboBox.Items9"),
-            resources.GetString("TelemetryComboBox.Items10"),
-            resources.GetString("TelemetryComboBox.Items11"),
-            resources.GetString("TelemetryComboBox.Items12")});
+            resources.GetString("TelemetryComboBox.Items5")});
             this.TelemetryComboBox.Name = "TelemetryComboBox";
             this.TelemetryComboBox.Tag = "45";
             this.TelemetryComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
@@ -2694,9 +2687,13 @@
             // 
             // RCGroupBox
             // 
+            this.RCGroupBox.Controls.Add(this.OSLPFHzNumericUpDown);
             this.RCGroupBox.Controls.Add(this.bit62CheckBox);
             this.RCGroupBox.Controls.Add(this.ThrottleIdleLabel);
+            this.RCGroupBox.Controls.Add(this.OSFLabel);
             this.RCGroupBox.Controls.Add(this.ComboPort2Label);
+            this.RCGroupBox.Controls.Add(this.bit42CheckBox);
+            this.RCGroupBox.Controls.Add(this.OSLPFComboBox);
             this.RCGroupBox.Controls.Add(this.RC11TextBox);
             this.RCGroupBox.Controls.Add(this.RC10TextBox);
             this.RCGroupBox.Controls.Add(this.RC9TextBox);
@@ -2762,10 +2759,56 @@
             this.RCGroupBox.Name = "RCGroupBox";
             this.RCGroupBox.TabStop = false;
             // 
+            // OSLPFHzNumericUpDown
+            // 
+            this.OSLPFHzNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.OSLPFHzNumericUpDown, "OSLPFHzNumericUpDown");
+            this.OSLPFHzNumericUpDown.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.OSLPFHzNumericUpDown.Maximum = new decimal(new int[] {
+            4000,
+            0,
+            0,
+            0});
+            this.OSLPFHzNumericUpDown.Name = "OSLPFHzNumericUpDown";
+            this.OSLPFHzNumericUpDown.Tag = "106";
+            this.OSLPFHzNumericUpDown.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.OSLPFHzNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.OSLPFHzNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.OSLPFHzNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            // 
             // ThrottleIdleLabel
             // 
             resources.ApplyResources(this.ThrottleIdleLabel, "ThrottleIdleLabel");
             this.ThrottleIdleLabel.Name = "ThrottleIdleLabel";
+            // 
+            // OSFLabel
+            // 
+            resources.ApplyResources(this.OSFLabel, "OSFLabel");
+            this.OSFLabel.ForeColor = System.Drawing.Color.Black;
+            this.OSFLabel.Name = "OSFLabel";
+            // 
+            // OSLPFComboBox
+            // 
+            resources.ApplyResources(this.OSLPFComboBox, "OSLPFComboBox");
+            this.OSLPFComboBox.FormattingEnabled = true;
+            this.OSLPFComboBox.Items.AddRange(new object[] {
+            resources.GetString("OSLPFComboBox.Items"),
+            resources.GetString("OSLPFComboBox.Items1"),
+            resources.GetString("OSLPFComboBox.Items2"),
+            resources.GetString("OSLPFComboBox.Items3"),
+            resources.GetString("OSLPFComboBox.Items4")});
+            this.OSLPFComboBox.Name = "OSLPFComboBox";
+            this.OSLPFComboBox.Tag = "105";
+            this.OSLPFComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
+            this.OSLPFComboBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
             // RC11TextBox
             // 
@@ -3345,15 +3388,11 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.OSLPFHzNumericUpDown);
             this.groupBox1.Controls.Add(this.AccLPFComboBox);
-            this.groupBox1.Controls.Add(this.OSFLabel);
             this.groupBox1.Controls.Add(this.GyroLPFComboBox);
             this.groupBox1.Controls.Add(this.ServoLPFHzLabel);
-            this.groupBox1.Controls.Add(this.OSLPFComboBox);
             this.groupBox1.Controls.Add(this.ServoLPFHzNumericUpDown);
             this.groupBox1.Controls.Add(this.GyroSlewRateNumericUpDown);
-            this.groupBox1.Controls.Add(this.bit42CheckBox);
             this.groupBox1.Controls.Add(this.AccLabel);
             this.groupBox1.Controls.Add(this.GyroSlewLimitLabel);
             this.groupBox1.Controls.Add(this.AltLPFNumericUpDown);
@@ -3365,31 +3404,6 @@
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
-            // 
-            // OSLPFHzNumericUpDown
-            // 
-            this.OSLPFHzNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
-            resources.ApplyResources(this.OSLPFHzNumericUpDown, "OSLPFHzNumericUpDown");
-            this.OSLPFHzNumericUpDown.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.OSLPFHzNumericUpDown.Maximum = new decimal(new int[] {
-            4000,
-            0,
-            0,
-            0});
-            this.OSLPFHzNumericUpDown.Name = "OSLPFHzNumericUpDown";
-            this.OSLPFHzNumericUpDown.Tag = "106";
-            this.OSLPFHzNumericUpDown.Value = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            this.OSLPFHzNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.OSLPFHzNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
-            this.OSLPFHzNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
             // AccLPFComboBox
             // 
@@ -3407,12 +3421,6 @@
             this.AccLPFComboBox.Tag = "90";
             this.AccLPFComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
             this.AccLPFComboBox.Enter += new System.EventHandler(this.infoGetFocus);
-            // 
-            // OSFLabel
-            // 
-            resources.ApplyResources(this.OSFLabel, "OSFLabel");
-            this.OSFLabel.ForeColor = System.Drawing.Color.Black;
-            this.OSFLabel.Name = "OSFLabel";
             // 
             // GyroLPFComboBox
             // 
@@ -3437,21 +3445,6 @@
             // 
             resources.ApplyResources(this.ServoLPFHzLabel, "ServoLPFHzLabel");
             this.ServoLPFHzLabel.Name = "ServoLPFHzLabel";
-            // 
-            // OSLPFComboBox
-            // 
-            resources.ApplyResources(this.OSLPFComboBox, "OSLPFComboBox");
-            this.OSLPFComboBox.FormattingEnabled = true;
-            this.OSLPFComboBox.Items.AddRange(new object[] {
-            resources.GetString("OSLPFComboBox.Items"),
-            resources.GetString("OSLPFComboBox.Items1"),
-            resources.GetString("OSLPFComboBox.Items2"),
-            resources.GetString("OSLPFComboBox.Items3"),
-            resources.GetString("OSLPFComboBox.Items4")});
-            this.OSLPFComboBox.Name = "OSLPFComboBox";
-            this.OSLPFComboBox.Tag = "105";
-            this.OSLPFComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
-            this.OSLPFComboBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
             // ServoLPFHzNumericUpDown
             // 
@@ -3719,6 +3712,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.AltPosIntLimitNumericUpDown)).EndInit();
             this.RCGroupBox.ResumeLayout(false);
             this.RCGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OSLPFHzNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch10NumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch11NumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch12NumericUpDown)).EndInit();
@@ -3739,7 +3733,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.FWPitchThrottleFFNumericUpDown)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.OSLPFHzNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ServoLPFHzNumericUpDown)).EndInit();
             this.AltitudeGroupBox.ResumeLayout(false);
             this.AltitudeGroupBox.PerformLayout();
