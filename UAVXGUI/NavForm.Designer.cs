@@ -79,29 +79,16 @@ namespace UAVXGUI
             this.StartLonLabel = new System.Windows.Forms.Label();
             this.StartLatLabel = new System.Windows.Forms.Label();
             this.StartLat = new System.Windows.Forms.TextBox();
+            this.CentreCurrPositionCheckBox = new System.Windows.Forms.CheckBox();
             this.StartLon = new System.Windows.Forms.TextBox();
+            this.MapZoomLabel = new System.Windows.Forms.Label();
+            this.MapZoomNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.AltitudeOverTerrainCheckBox = new System.Windows.Forms.CheckBox();
             this.DefAltitudeLabel = new System.Windows.Forms.Label();
             this.LocationAddress = new System.Windows.Forms.TextBox();
             this.LoiterTimeLabel = new System.Windows.Forms.Label();
             this.M = new System.Windows.Forms.DataGridView();
-            this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Lat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Lon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Altitude = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Hidden_Alt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SeaLevelAlt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Velocity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Loiter = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Action = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.OrbitRad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrbitVel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Up = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Down = new System.Windows.Forms.DataGridViewImageColumn();
-            this.DEL = new System.Windows.Forms.DataGridViewImageColumn();
             this.MenuMain = new System.Windows.Forms.MenuStrip();
-            this.MapZoomLabel = new System.Windows.Forms.Label();
-            this.MapZoomNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.GoToCheckBox = new System.Windows.Forms.CheckBox();
             this.ProxRadiusLabel = new System.Windows.Forms.Label();
             this.ProximityRadiusTextBox = new System.Windows.Forms.TextBox();
@@ -117,6 +104,7 @@ namespace UAVXGUI
             this.ViaContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OrbitContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.POIContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TMRContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ContextMenuSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.WPDeleteContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ClearMissionContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -136,15 +124,30 @@ namespace UAVXGUI
             this.LoadMissionButton = new System.Windows.Forms.Button();
             this.SaveMissionButton = new System.Windows.Forms.Button();
             this.CurrentAltitude = new System.Windows.Forms.TextBox();
-            this.CentreCurrPositionCheckBox = new System.Windows.Forms.CheckBox();
             this.WindDirectionTextBox = new System.Windows.Forms.TextBox();
             this.WindSpeedTextBox = new System.Windows.Forms.TextBox();
             this.WindSpeedLabel = new System.Windows.Forms.Label();
             this.WindDirectionLabel = new System.Windows.Forms.Label();
+            this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Altitude = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Hidden_Alt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SeaLevelAlt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Velocity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Loiter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Action = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.OrbitRad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrbitVel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PulseWidth = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PulsePeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Up = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Down = new System.Windows.Forms.DataGridViewImageColumn();
+            this.DEL = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).BeginInit();
             this.OriginGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.M)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MapZoomNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.M)).BeginInit();
             this.contextMenuStripMap.SuspendLayout();
             this.WPDefaultsGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -200,10 +203,13 @@ namespace UAVXGUI
             this.OriginGroupBox.Controls.Add(this.StartLonLabel);
             this.OriginGroupBox.Controls.Add(this.StartLatLabel);
             this.OriginGroupBox.Controls.Add(this.StartLat);
+            this.OriginGroupBox.Controls.Add(this.CentreCurrPositionCheckBox);
             this.OriginGroupBox.Controls.Add(this.StartLon);
+            this.OriginGroupBox.Controls.Add(this.MapZoomLabel);
+            this.OriginGroupBox.Controls.Add(this.MapZoomNumericUpDown);
             this.OriginGroupBox.Location = new System.Drawing.Point(7, 513);
             this.OriginGroupBox.Name = "OriginGroupBox";
-            this.OriginGroupBox.Size = new System.Drawing.Size(222, 142);
+            this.OriginGroupBox.Size = new System.Drawing.Size(218, 142);
             this.OriginGroupBox.TabIndex = 24;
             this.OriginGroupBox.TabStop = false;
             this.OriginGroupBox.Text = "Locate";
@@ -213,7 +219,7 @@ namespace UAVXGUI
             this.ShowMissionCheckBox.AutoSize = true;
             this.ShowMissionCheckBox.Checked = true;
             this.ShowMissionCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ShowMissionCheckBox.Location = new System.Drawing.Point(15, 108);
+            this.ShowMissionCheckBox.Location = new System.Drawing.Point(9, 95);
             this.ShowMissionCheckBox.Name = "ShowMissionCheckBox";
             this.ShowMissionCheckBox.Size = new System.Drawing.Size(61, 17);
             this.ShowMissionCheckBox.TabIndex = 171;
@@ -226,7 +232,7 @@ namespace UAVXGUI
             this.ShowFlightPathCheckBox.AutoSize = true;
             this.ShowFlightPathCheckBox.Checked = true;
             this.ShowFlightPathCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ShowFlightPathCheckBox.Location = new System.Drawing.Point(152, 109);
+            this.ShowFlightPathCheckBox.Location = new System.Drawing.Point(76, 96);
             this.ShowFlightPathCheckBox.Name = "ShowFlightPathCheckBox";
             this.ShowFlightPathCheckBox.Size = new System.Drawing.Size(54, 17);
             this.ShowFlightPathCheckBox.TabIndex = 174;
@@ -238,7 +244,7 @@ namespace UAVXGUI
             // 
             this.MapCentreButton.Location = new System.Drawing.Point(132, 12);
             this.MapCentreButton.Name = "MapCentreButton";
-            this.MapCentreButton.Size = new System.Drawing.Size(81, 23);
+            this.MapCentreButton.Size = new System.Drawing.Size(74, 23);
             this.MapCentreButton.TabIndex = 48;
             this.MapCentreButton.Text = "Map Centre";
             this.MapCentreButton.UseVisualStyleBackColor = true;
@@ -249,7 +255,7 @@ namespace UAVXGUI
             this.MapProviderComboBox.FormattingEnabled = true;
             this.MapProviderComboBox.Location = new System.Drawing.Point(9, 69);
             this.MapProviderComboBox.Name = "MapProviderComboBox";
-            this.MapProviderComboBox.Size = new System.Drawing.Size(206, 21);
+            this.MapProviderComboBox.Size = new System.Drawing.Size(197, 21);
             this.MapProviderComboBox.TabIndex = 53;
             this.MapProviderComboBox.Text = "BingHybridMap";
             this.MapProviderComboBox.SelectedIndexChanged += new System.EventHandler(this.MapProviderComboBox_SelectedIndexChanged);
@@ -259,7 +265,7 @@ namespace UAVXGUI
             this.ShowWPCheckBox.AutoSize = true;
             this.ShowWPCheckBox.Checked = true;
             this.ShowWPCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ShowWPCheckBox.Location = new System.Drawing.Point(86, 109);
+            this.ShowWPCheckBox.Location = new System.Drawing.Point(9, 115);
             this.ShowWPCheckBox.Name = "ShowWPCheckBox";
             this.ShowWPCheckBox.Size = new System.Drawing.Size(49, 17);
             this.ShowWPCheckBox.TabIndex = 172;
@@ -297,6 +303,18 @@ namespace UAVXGUI
             this.StartLat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.StartLat_KeyPress);
             this.StartLat.Leave += new System.EventHandler(this.StartLat_Leave);
             // 
+            // CentreCurrPositionCheckBox
+            // 
+            this.CentreCurrPositionCheckBox.AutoSize = true;
+            this.CentreCurrPositionCheckBox.Checked = true;
+            this.CentreCurrPositionCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CentreCurrPositionCheckBox.Location = new System.Drawing.Point(76, 115);
+            this.CentreCurrPositionCheckBox.Name = "CentreCurrPositionCheckBox";
+            this.CentreCurrPositionCheckBox.Size = new System.Drawing.Size(93, 17);
+            this.CentreCurrPositionCheckBox.TabIndex = 183;
+            this.CentreCurrPositionCheckBox.Text = "Centre Aircraft";
+            this.CentreCurrPositionCheckBox.UseVisualStyleBackColor = true;
+            // 
             // StartLon
             // 
             this.StartLon.Location = new System.Drawing.Point(39, 40);
@@ -309,10 +327,45 @@ namespace UAVXGUI
             this.StartLon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.StartLon_KeyPress);
             this.StartLon.Leave += new System.EventHandler(this.StartLon_Leave);
             // 
+            // MapZoomLabel
+            // 
+            this.MapZoomLabel.AutoSize = true;
+            this.MapZoomLabel.Location = new System.Drawing.Point(129, 43);
+            this.MapZoomLabel.Name = "MapZoomLabel";
+            this.MapZoomLabel.Size = new System.Drawing.Size(34, 13);
+            this.MapZoomLabel.TabIndex = 183;
+            this.MapZoomLabel.Text = "Zoom";
+            // 
+            // MapZoomNumericUpDown
+            // 
+            this.MapZoomNumericUpDown.Location = new System.Drawing.Point(166, 40);
+            this.MapZoomNumericUpDown.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.MapZoomNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.MapZoomNumericUpDown.Name = "MapZoomNumericUpDown";
+            this.MapZoomNumericUpDown.ReadOnly = true;
+            this.MapZoomNumericUpDown.Size = new System.Drawing.Size(40, 20);
+            this.MapZoomNumericUpDown.TabIndex = 44;
+            this.MapZoomNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MapZoomNumericUpDown.Value = new decimal(new int[] {
+            18,
+            0,
+            0,
+            0});
+            this.MapZoomNumericUpDown.TextChanged += new System.EventHandler(this.MapZoomNumericUpDown_Click);
+            this.MapZoomNumericUpDown.Click += new System.EventHandler(this.MapZoomNumericUpDown_Click);
+            // 
             // AltitudeOverTerrainCheckBox
             // 
             this.AltitudeOverTerrainCheckBox.AutoSize = true;
-            this.AltitudeOverTerrainCheckBox.Location = new System.Drawing.Point(159, 451);
+            this.AltitudeOverTerrainCheckBox.Location = new System.Drawing.Point(161, 387);
             this.AltitudeOverTerrainCheckBox.Name = "AltitudeOverTerrainCheckBox";
             this.AltitudeOverTerrainCheckBox.Size = new System.Drawing.Size(85, 17);
             this.AltitudeOverTerrainCheckBox.TabIndex = 30;
@@ -369,154 +422,18 @@ namespace UAVXGUI
             this.Action,
             this.OrbitRad,
             this.OrbitVel,
+            this.PulseWidth,
+            this.PulsePeriod,
             this.Up,
             this.Down,
             this.DEL});
-            this.M.Location = new System.Drawing.Point(547, 518);
+            this.M.Location = new System.Drawing.Point(421, 518);
             this.M.Name = "M";
             this.M.RowHeadersVisible = false;
-            this.M.Size = new System.Drawing.Size(416, 140);
+            this.M.Size = new System.Drawing.Size(542, 140);
             this.M.TabIndex = 1;
             this.M.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.M_CellContentClick);
             this.M.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.M_CellEndEdit);
-            // 
-            // Number
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Number.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Number.Frozen = true;
-            this.Number.HeaderText = "#";
-            this.Number.Name = "Number";
-            this.Number.ReadOnly = true;
-            this.Number.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Number.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Number.Width = 20;
-            // 
-            // Lat
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Lat.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Lat.HeaderText = "Lat.";
-            this.Lat.Name = "Lat";
-            this.Lat.ReadOnly = true;
-            this.Lat.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Lat.Width = 31;
-            // 
-            // Lon
-            // 
-            this.Lon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Lon.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Lon.HeaderText = "Lon.";
-            this.Lon.Name = "Lon";
-            this.Lon.ReadOnly = true;
-            this.Lon.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Lon.Width = 34;
-            // 
-            // Altitude
-            // 
-            this.Altitude.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Format = "N0";
-            dataGridViewCellStyle4.NullValue = null;
-            this.Altitude.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Altitude.HeaderText = "Alt";
-            this.Altitude.Name = "Altitude";
-            this.Altitude.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Altitude.Width = 25;
-            // 
-            // Hidden_Alt
-            // 
-            this.Hidden_Alt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.NullValue = null;
-            this.Hidden_Alt.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Hidden_Alt.HeaderText = "AOff";
-            this.Hidden_Alt.Name = "Hidden_Alt";
-            this.Hidden_Alt.ReadOnly = true;
-            this.Hidden_Alt.Visible = false;
-            // 
-            // SeaLevelAlt
-            // 
-            this.SeaLevelAlt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.NullValue = null;
-            this.SeaLevelAlt.DefaultCellStyle = dataGridViewCellStyle6;
-            this.SeaLevelAlt.HeaderText = "ASL";
-            this.SeaLevelAlt.Name = "SeaLevelAlt";
-            this.SeaLevelAlt.ReadOnly = true;
-            this.SeaLevelAlt.Width = 52;
-            // 
-            // Velocity
-            // 
-            this.Velocity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Velocity.HeaderText = "V";
-            this.Velocity.Name = "Velocity";
-            this.Velocity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Velocity.Width = 20;
-            // 
-            // Loiter
-            // 
-            this.Loiter.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Loiter.DefaultCellStyle = dataGridViewCellStyle7;
-            this.Loiter.HeaderText = "T";
-            this.Loiter.Name = "Loiter";
-            this.Loiter.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Loiter.Width = 20;
-            // 
-            // Action
-            // 
-            this.Action.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Action.HeaderText = "Action";
-            this.Action.Items.AddRange(new object[] {
-            "Via",
-            "Orbit",
-            "Perch",
-            "POI"});
-            this.Action.Name = "Action";
-            this.Action.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Action.Width = 43;
-            // 
-            // OrbitRad
-            // 
-            this.OrbitRad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.OrbitRad.HeaderText = "R";
-            this.OrbitRad.Name = "OrbitRad";
-            this.OrbitRad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.OrbitRad.Width = 21;
-            // 
-            // OrbitVel
-            // 
-            this.OrbitVel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.OrbitVel.HeaderText = "V";
-            this.OrbitVel.Name = "OrbitVel";
-            this.OrbitVel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.OrbitVel.Width = 20;
-            // 
-            // Up
-            // 
-            this.Up.HeaderText = "";
-            this.Up.Image = global::UAVXGUI.Properties.Resources.up_btn;
-            this.Up.Name = "Up";
-            this.Up.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Up.Width = 5;
-            // 
-            // Down
-            // 
-            this.Down.HeaderText = "";
-            this.Down.Image = global::UAVXGUI.Properties.Resources.down_btn;
-            this.Down.Name = "Down";
-            this.Down.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Down.Width = 5;
-            // 
-            // DEL
-            // 
-            this.DEL.HeaderText = "";
-            this.DEL.Image = global::UAVXGUI.Properties.Resources.del_btn;
-            this.DEL.Name = "DEL";
-            this.DEL.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.DEL.Width = 5;
             // 
             // MenuMain
             // 
@@ -527,50 +444,16 @@ namespace UAVXGUI
             this.MenuMain.Text = "menuStrip1";
             this.MenuMain.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.MenuMain_ItemClicked);
             // 
-            // MapZoomLabel
-            // 
-            this.MapZoomLabel.AutoSize = true;
-            this.MapZoomLabel.Location = new System.Drawing.Point(412, 560);
-            this.MapZoomLabel.Name = "MapZoomLabel";
-            this.MapZoomLabel.Size = new System.Drawing.Size(34, 13);
-            this.MapZoomLabel.TabIndex = 183;
-            this.MapZoomLabel.Text = "Zoom";
-            // 
-            // MapZoomNumericUpDown
-            // 
-            this.MapZoomNumericUpDown.Location = new System.Drawing.Point(452, 556);
-            this.MapZoomNumericUpDown.Maximum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.MapZoomNumericUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.MapZoomNumericUpDown.Name = "MapZoomNumericUpDown";
-            this.MapZoomNumericUpDown.ReadOnly = true;
-            this.MapZoomNumericUpDown.Size = new System.Drawing.Size(40, 20);
-            this.MapZoomNumericUpDown.TabIndex = 44;
-            this.MapZoomNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.MapZoomNumericUpDown.Value = new decimal(new int[] {
-            18,
-            0,
-            0,
-            0});
-            this.MapZoomNumericUpDown.TextChanged += new System.EventHandler(this.MapZoomNumericUpDown_Click);
-            this.MapZoomNumericUpDown.Click += new System.EventHandler(this.MapZoomNumericUpDown_Click);
-            // 
             // GoToCheckBox
             // 
             this.GoToCheckBox.AutoSize = true;
-            this.GoToCheckBox.Location = new System.Drawing.Point(386, 607);
+            this.GoToCheckBox.Location = new System.Drawing.Point(312, 337);
             this.GoToCheckBox.Name = "GoToCheckBox";
             this.GoToCheckBox.Size = new System.Drawing.Size(112, 17);
             this.GoToCheckBox.TabIndex = 182;
             this.GoToCheckBox.Text = "Deactivate GOTO";
             this.GoToCheckBox.UseVisualStyleBackColor = true;
+            this.GoToCheckBox.Visible = false;
             this.GoToCheckBox.CheckedChanged += new System.EventHandler(this.GoToCheckBox_CheckChanged);
             // 
             // ProxRadiusLabel
@@ -606,9 +489,9 @@ namespace UAVXGUI
             // 
             // UAVXWriteButton
             // 
-            this.UAVXWriteButton.Location = new System.Drawing.Point(452, 523);
+            this.UAVXWriteButton.Location = new System.Drawing.Point(362, 551);
             this.UAVXWriteButton.Name = "UAVXWriteButton";
-            this.UAVXWriteButton.Size = new System.Drawing.Size(68, 22);
+            this.UAVXWriteButton.Size = new System.Drawing.Size(53, 20);
             this.UAVXWriteButton.TabIndex = 20;
             this.UAVXWriteButton.Text = "Write";
             this.UAVXWriteButton.UseVisualStyleBackColor = true;
@@ -616,9 +499,9 @@ namespace UAVXGUI
             // 
             // UAVXReadButton
             // 
-            this.UAVXReadButton.Location = new System.Drawing.Point(378, 524);
+            this.UAVXReadButton.Location = new System.Drawing.Point(362, 527);
             this.UAVXReadButton.Name = "UAVXReadButton";
-            this.UAVXReadButton.Size = new System.Drawing.Size(68, 22);
+            this.UAVXReadButton.Size = new System.Drawing.Size(53, 20);
             this.UAVXReadButton.TabIndex = 19;
             this.UAVXReadButton.Text = "Read";
             this.UAVXReadButton.UseVisualStyleBackColor = true;
@@ -710,6 +593,13 @@ namespace UAVXGUI
             this.POIContextMenuItem.Text = "Set POI";
             this.POIContextMenuItem.Click += new System.EventHandler(this.POIContextMenuItem_Click);
             // 
+            // TMRContextMenuItem
+            // 
+            this.TMRContextMenuItem.Name = "TMRContextMenuItem";
+            this.TMRContextMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.TMRContextMenuItem.Text = "Set TMR";
+            this.TMRContextMenuItem.Click += new System.EventHandler(this.TMRContextMenuItem_Click);
+            // 
             // ContextMenuSeparator1
             // 
             this.ContextMenuSeparator1.Name = "ContextMenuSeparator1";
@@ -762,13 +652,14 @@ namespace UAVXGUI
             this.OrbitContextMenuItem,
             this.PerchContextMenuItem,
             this.POIContextMenuItem,
+            this.TMRContextMenuItem,
             this.ContextMenuSeparator1,
             this.WPDeleteContextMenuItem,
             this.ClearMissionContextMenuItem,
             this.ContextMenuSeparator2,
             this.FetchMapTilesContextMenuItem});
             this.contextMenuStripMap.Name = "contextMenuStripMap";
-            this.contextMenuStripMap.Size = new System.Drawing.Size(147, 170);
+            this.contextMenuStripMap.Size = new System.Drawing.Size(147, 192);
             this.contextMenuStripMap.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStripMap_Opening);
             // 
             // ContextMenuSeparator3
@@ -800,7 +691,7 @@ namespace UAVXGUI
             this.WPDefaultsGroupBox.Controls.Add(this.LoiterTimeLabel);
             this.WPDefaultsGroupBox.Location = new System.Drawing.Point(235, 513);
             this.WPDefaultsGroupBox.Name = "WPDefaultsGroupBox";
-            this.WPDefaultsGroupBox.Size = new System.Drawing.Size(121, 142);
+            this.WPDefaultsGroupBox.Size = new System.Drawing.Size(121, 90);
             this.WPDefaultsGroupBox.TabIndex = 181;
             this.WPDefaultsGroupBox.TabStop = false;
             this.WPDefaultsGroupBox.Text = "WP Defaults (M)";
@@ -884,21 +775,9 @@ namespace UAVXGUI
             this.CurrentAltitude.Text = "-1";
             this.CurrentAltitude.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // CentreCurrPositionCheckBox
-            // 
-            this.CentreCurrPositionCheckBox.AutoSize = true;
-            this.CentreCurrPositionCheckBox.Checked = true;
-            this.CentreCurrPositionCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CentreCurrPositionCheckBox.Location = new System.Drawing.Point(386, 584);
-            this.CentreCurrPositionCheckBox.Name = "CentreCurrPositionCheckBox";
-            this.CentreCurrPositionCheckBox.Size = new System.Drawing.Size(93, 17);
-            this.CentreCurrPositionCheckBox.TabIndex = 183;
-            this.CentreCurrPositionCheckBox.Text = "Centre Aircraft";
-            this.CentreCurrPositionCheckBox.UseVisualStyleBackColor = true;
-            // 
             // WindDirectionTextBox
             // 
-            this.WindDirectionTextBox.Location = new System.Drawing.Point(413, 631);
+            this.WindDirectionTextBox.Location = new System.Drawing.Point(270, 626);
             this.WindDirectionTextBox.Name = "WindDirectionTextBox";
             this.WindDirectionTextBox.Size = new System.Drawing.Size(33, 20);
             this.WindDirectionTextBox.TabIndex = 191;
@@ -907,7 +786,7 @@ namespace UAVXGUI
             // 
             // WindSpeedTextBox
             // 
-            this.WindSpeedTextBox.Location = new System.Drawing.Point(487, 631);
+            this.WindSpeedTextBox.Location = new System.Drawing.Point(343, 625);
             this.WindSpeedTextBox.Name = "WindSpeedTextBox";
             this.WindSpeedTextBox.Size = new System.Drawing.Size(33, 20);
             this.WindSpeedTextBox.TabIndex = 192;
@@ -917,7 +796,7 @@ namespace UAVXGUI
             // WindSpeedLabel
             // 
             this.WindSpeedLabel.AutoSize = true;
-            this.WindSpeedLabel.Location = new System.Drawing.Point(456, 635);
+            this.WindSpeedLabel.Location = new System.Drawing.Point(309, 628);
             this.WindSpeedLabel.Name = "WindSpeedLabel";
             this.WindSpeedLabel.Size = new System.Drawing.Size(28, 13);
             this.WindSpeedLabel.TabIndex = 193;
@@ -926,11 +805,167 @@ namespace UAVXGUI
             // WindDirectionLabel
             // 
             this.WindDirectionLabel.AutoSize = true;
-            this.WindDirectionLabel.Location = new System.Drawing.Point(375, 635);
+            this.WindDirectionLabel.Location = new System.Drawing.Point(232, 629);
             this.WindDirectionLabel.Name = "WindDirectionLabel";
             this.WindDirectionLabel.Size = new System.Drawing.Size(32, 13);
             this.WindDirectionLabel.TabIndex = 194;
             this.WindDirectionLabel.Text = "Wind";
+            // 
+            // Number
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Number.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Number.Frozen = true;
+            this.Number.HeaderText = "#";
+            this.Number.Name = "Number";
+            this.Number.ReadOnly = true;
+            this.Number.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Number.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Number.Width = 20;
+            // 
+            // Lat
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Lat.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Lat.HeaderText = "Lat.";
+            this.Lat.Name = "Lat";
+            this.Lat.ReadOnly = true;
+            this.Lat.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Lat.Width = 31;
+            // 
+            // Lon
+            // 
+            this.Lon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Lon.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Lon.HeaderText = "Lon.";
+            this.Lon.Name = "Lon";
+            this.Lon.ReadOnly = true;
+            this.Lon.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Lon.Width = 34;
+            // 
+            // Altitude
+            // 
+            this.Altitude.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.NullValue = null;
+            this.Altitude.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Altitude.HeaderText = "Alt";
+            this.Altitude.Name = "Altitude";
+            this.Altitude.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Altitude.Width = 25;
+            // 
+            // Hidden_Alt
+            // 
+            this.Hidden_Alt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.NullValue = null;
+            this.Hidden_Alt.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Hidden_Alt.HeaderText = "AOff";
+            this.Hidden_Alt.Name = "Hidden_Alt";
+            this.Hidden_Alt.ReadOnly = true;
+            this.Hidden_Alt.Visible = false;
+            this.Hidden_Alt.Width = 53;
+            // 
+            // SeaLevelAlt
+            // 
+            this.SeaLevelAlt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.NullValue = null;
+            this.SeaLevelAlt.DefaultCellStyle = dataGridViewCellStyle6;
+            this.SeaLevelAlt.HeaderText = "ASL";
+            this.SeaLevelAlt.Name = "SeaLevelAlt";
+            this.SeaLevelAlt.ReadOnly = true;
+            this.SeaLevelAlt.Width = 52;
+            // 
+            // Velocity
+            // 
+            this.Velocity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Velocity.HeaderText = "V";
+            this.Velocity.Name = "Velocity";
+            this.Velocity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Velocity.Width = 20;
+            // 
+            // Loiter
+            // 
+            this.Loiter.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Loiter.DefaultCellStyle = dataGridViewCellStyle7;
+            this.Loiter.HeaderText = "T";
+            this.Loiter.Name = "Loiter";
+            this.Loiter.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Loiter.Width = 20;
+            // 
+            // Action
+            // 
+            this.Action.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Action.HeaderText = "Action";
+            this.Action.Items.AddRange(new object[] {
+            "Via",
+            "Orbit",
+            "Perch",
+            "POI",
+            "Pulse"});
+            this.Action.Name = "Action";
+            this.Action.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Action.Width = 43;
+            // 
+            // OrbitRad
+            // 
+            this.OrbitRad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.OrbitRad.HeaderText = "R";
+            this.OrbitRad.Name = "OrbitRad";
+            this.OrbitRad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.OrbitRad.Width = 21;
+            // 
+            // OrbitVel
+            // 
+            this.OrbitVel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.OrbitVel.HeaderText = "V";
+            this.OrbitVel.Name = "OrbitVel";
+            this.OrbitVel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.OrbitVel.Width = 20;
+            // 
+            // PulseWidth
+            // 
+            this.PulseWidth.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PulseWidth.HeaderText = "Width";
+            this.PulseWidth.Name = "PulseWidth";
+            this.PulseWidth.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.PulseWidth.Width = 41;
+            // 
+            // PulsePeriod
+            // 
+            this.PulsePeriod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PulsePeriod.HeaderText = "Period";
+            this.PulsePeriod.Name = "PulsePeriod";
+            this.PulsePeriod.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.PulsePeriod.Width = 43;
+            // 
+            // Up
+            // 
+            this.Up.HeaderText = "";
+            this.Up.Image = global::UAVXGUI.Properties.Resources.up_btn;
+            this.Up.Name = "Up";
+            this.Up.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Up.Width = 5;
+            // 
+            // Down
+            // 
+            this.Down.HeaderText = "";
+            this.Down.Image = global::UAVXGUI.Properties.Resources.down_btn;
+            this.Down.Name = "Down";
+            this.Down.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Down.Width = 5;
+            // 
+            // DEL
+            // 
+            this.DEL.HeaderText = "";
+            this.DEL.Image = global::UAVXGUI.Properties.Resources.del_btn;
+            this.DEL.Name = "DEL";
+            this.DEL.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DEL.Width = 5;
             // 
             // NavForm
             // 
@@ -945,11 +980,8 @@ namespace UAVXGUI
             this.Controls.Add(this.WindDirectionTextBox);
             this.Controls.Add(this.GoToCheckBox);
             this.Controls.Add(this.ProxRadiusLabel);
-            this.Controls.Add(this.CentreCurrPositionCheckBox);
             this.Controls.Add(this.ProximityAltTextBox);
-            this.Controls.Add(this.MapZoomLabel);
             this.Controls.Add(this.ProximityAltLabel);
-            this.Controls.Add(this.MapZoomNumericUpDown);
             this.Controls.Add(this.AltitudeOverTerrainCheckBox);
             this.Controls.Add(this.CurrentAltitude);
             this.Controls.Add(this.LoadMissionButton);
@@ -975,8 +1007,8 @@ namespace UAVXGUI
             ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).EndInit();
             this.OriginGroupBox.ResumeLayout(false);
             this.OriginGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.M)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MapZoomNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.M)).EndInit();
             this.contextMenuStripMap.ResumeLayout(false);
             this.WPDefaultsGroupBox.ResumeLayout(false);
             this.WPDefaultsGroupBox.PerformLayout();
@@ -1024,6 +1056,7 @@ namespace UAVXGUI
         private Label MousePosLabel;
         private ContextMenuStrip contextMenuStripMap;
         private System.Windows.Forms.ToolStripMenuItem POIContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem TMRContextMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ViaContextMenuItem;
         private System.Windows.Forms.ToolStripMenuItem OrbitContextMenuItem;
         private System.Windows.Forms.ToolStripMenuItem PerchContextMenuItem;
@@ -1044,6 +1077,14 @@ namespace UAVXGUI
         private Label DefAltitudeLabel;
         private Button LoadMissionButton;
         private Button SaveMissionButton;
+        private TextBox CurrentAltitude;
+        private CheckBox CentreCurrPositionCheckBox;
+        private TextBox DefaultLoiterTextBox;
+        private TextBox DefaultAltTextBox;
+        private Label WindDirectionLabel;
+        private Label WindSpeedLabel;
+        private TextBox WindSpeedTextBox;
+        private TextBox WindDirectionTextBox;
         private DataGridViewTextBoxColumn Number;
         private DataGridViewTextBoxColumn Lat;
         private DataGridViewTextBoxColumn Lon;
@@ -1055,17 +1096,11 @@ namespace UAVXGUI
         private DataGridViewComboBoxColumn Action;
         private DataGridViewTextBoxColumn OrbitRad;
         private DataGridViewTextBoxColumn OrbitVel;
+        private DataGridViewTextBoxColumn PulseWidth;
+        private DataGridViewTextBoxColumn PulsePeriod;
         private DataGridViewImageColumn Up;
         private DataGridViewImageColumn Down;
         private DataGridViewImageColumn DEL;
-        private TextBox CurrentAltitude;
-        private CheckBox CentreCurrPositionCheckBox;
-        private TextBox DefaultLoiterTextBox;
-        private TextBox DefaultAltTextBox;
-        private Label WindDirectionLabel;
-        private Label WindSpeedLabel;
-        private TextBox WindSpeedTextBox;
-        private TextBox WindDirectionTextBox;
 
 
         //private GMap.NET.WindowsForms.GMapControl MainMap;

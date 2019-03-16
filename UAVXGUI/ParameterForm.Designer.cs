@@ -917,6 +917,7 @@
             this.GeneralGroupBox.Controls.Add(this.wsLEDsNumericUpDown);
             this.GeneralGroupBox.Controls.Add(this.bit22CheckBox);
             this.GeneralGroupBox.Controls.Add(this.bit12CheckBox);
+            this.GeneralGroupBox.Controls.Add(this.bit42CheckBox);
             this.GeneralGroupBox.Controls.Add(this.TelemetryComboBox);
             this.GeneralGroupBox.Controls.Add(this.labelESC1);
             this.GeneralGroupBox.Controls.Add(this.wsLEDsLabel);
@@ -2692,7 +2693,6 @@
             this.RCGroupBox.Controls.Add(this.ThrottleIdleLabel);
             this.RCGroupBox.Controls.Add(this.OSFLabel);
             this.RCGroupBox.Controls.Add(this.ComboPort2Label);
-            this.RCGroupBox.Controls.Add(this.bit42CheckBox);
             this.RCGroupBox.Controls.Add(this.OSLPFComboBox);
             this.RCGroupBox.Controls.Add(this.RC11TextBox);
             this.RCGroupBox.Controls.Add(this.RC10TextBox);

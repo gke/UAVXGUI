@@ -334,6 +334,7 @@ namespace UAVXGUI
             this.BootLoadButton = new System.Windows.Forms.Button();
             this.attitudeIndicatorInstrumentControl1 = new Instruments.AttitudeIndicatorInstrumentControl();
             this.headingIndicatorInstrumentControl1 = new Instruments.HeadingIndicatorInstrumentControl();
+            this.WPActionTextBox = new System.Windows.Forms.TextBox();
             this.GyroGroupBox.SuspendLayout();
             this.ControlsGroupBox.SuspendLayout();
             this.AttitudeGroupBox.SuspendLayout();
@@ -667,10 +668,10 @@ namespace UAVXGUI
             // 
             // AlarmState
             // 
-            this.AlarmState.Location = new System.Drawing.Point(202, 28);
+            this.AlarmState.Location = new System.Drawing.Point(230, 28);
             this.AlarmState.Name = "AlarmState";
             this.AlarmState.ReadOnly = true;
-            this.AlarmState.Size = new System.Drawing.Size(114, 20);
+            this.AlarmState.Size = new System.Drawing.Size(86, 20);
             this.AlarmState.TabIndex = 53;
             this.AlarmState.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -833,7 +834,7 @@ namespace UAVXGUI
             this.FlightState.Location = new System.Drawing.Point(11, 28);
             this.FlightState.Name = "FlightState";
             this.FlightState.ReadOnly = true;
-            this.FlightState.Size = new System.Drawing.Size(86, 20);
+            this.FlightState.Size = new System.Drawing.Size(73, 20);
             this.FlightState.TabIndex = 89;
             this.FlightState.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1551,10 +1552,10 @@ namespace UAVXGUI
             // 
             // NavState
             // 
-            this.NavState.Location = new System.Drawing.Point(103, 28);
+            this.NavState.Location = new System.Drawing.Point(89, 28);
             this.NavState.Name = "NavState";
             this.NavState.ReadOnly = true;
-            this.NavState.Size = new System.Drawing.Size(93, 20);
+            this.NavState.Size = new System.Drawing.Size(76, 20);
             this.NavState.TabIndex = 52;
             this.NavState.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -3378,6 +3379,15 @@ namespace UAVXGUI
             this.headingIndicatorInstrumentControl1.TabIndex = 4;
             this.headingIndicatorInstrumentControl1.Text = "headingIndicatorInstrumentControl1";
             // 
+            // WPActionTextBox
+            // 
+            this.WPActionTextBox.Location = new System.Drawing.Point(171, 28);
+            this.WPActionTextBox.Name = "WPActionTextBox";
+            this.WPActionTextBox.ReadOnly = true;
+            this.WPActionTextBox.Size = new System.Drawing.Size(53, 20);
+            this.WPActionTextBox.TabIndex = 230;
+            this.WPActionTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3385,6 +3395,7 @@ namespace UAVXGUI
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1013, 637);
+            this.Controls.Add(this.WPActionTextBox);
             this.Controls.Add(this.BootLoadButton);
             this.Controls.Add(this.TuningGroupBox);
             this.Controls.Add(this.CalibrateAcc6PointButton);
@@ -3796,6 +3807,7 @@ namespace UAVXGUI
         private System.Windows.Forms.Label YawPitchRollGyroLabel;
         private System.Windows.Forms.Label ImbalanceLabel;
         private System.Windows.Forms.Button BootLoadButton;
+        private System.Windows.Forms.TextBox WPActionTextBox;
     }
 }
 

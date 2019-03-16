@@ -514,5 +514,29 @@ namespace UAVXGUI.Properties {
                 this["Velocity"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.01")]
+        public double TMRWidth {
+            get {
+                return ((double)(this["TMRWidth"]));
+            }
+            set {
+                this["TMRWidth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public double TMRPeriod {
+            get {
+                return ((double)(this["TMRPeriod"]));
+            }
+            set {
+                this["TMRPeriod"] = value;
+            }
+        }
     }
 }

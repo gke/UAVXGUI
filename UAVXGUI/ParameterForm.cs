@@ -273,7 +273,7 @@ namespace UAVXGUI
                 ParamsStale= false;
                 FWGroupBox.Visible = FormMain.UsingFixedWing;
 
-                OSFLabel.Visible = OSLPFComboBox.Visible = OSLPFHzNumericUpDown.Visible = bit42CheckBox.Checked;
+              //  OSFLabel.Visible = OSLPFComboBox.Visible = OSLPFHzNumericUpDown.Visible = bit42CheckBox.Checked;
                 updateForm();
             }
 

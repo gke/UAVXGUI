@@ -171,7 +171,7 @@ namespace UAVXGUI
         const double DEFAULT_HOME_LON = 0;
         const double DEFAULT_LON_CORR = 1.0f;
 
-        public const byte MaxWayPoints = 14;
+        public const byte MaxWayPoints = 64;
 
         // ASCII Constants
         const byte NUL = 0;
@@ -262,13 +262,16 @@ namespace UAVXGUI
 
         static NavStates PrevNavState = NavStates.NavStateUndefined;
 
-        public enum NavComs { navVia, navOrbit, navPerch, navPOI, navLand, navUnknown };
+        public enum NavComs { navVia, navOrbit, navPerch, navPOI, navPulse, navGlide, navLand};
 
         public static string[] NavComNames = {
             "Via",
             "Orbit",
-            "Perch",
-            "POI"
+            "Perch", 
+            "POI",
+            "Pulse",
+            "Glide",
+            "Land"
             };
 
    //     NavComs NavCom;
@@ -374,6 +377,7 @@ namespace UAVXGUI
             Preflight,
             Ready,
             Launching,
+            ThrottleOpenCheck,
             UnknownFlightState
         };
 
@@ -431,7 +435,7 @@ namespace UAVXGUI
 
 				// 5
 				IsFixedWing,
-				InvertMagnetometer,
+				ThrottleOpen,
 				MagCalibrated,
 				UsingUplink,
 				NewAltitudeValue,
@@ -618,7 +622,10 @@ namespace UAVXGUI
             public short OrbitRadius;            // 14
             public short OrbitGroundAltitude;          // 16
             public double OrbitVelocity;          // 18
-            public byte Action;                // 19
+
+            public double TMRWidth; // 19
+            public double TMRPeriod;
+            public byte Action;                // 
         };
 
         public static WPStructNV[] WP = new WPStructNV[256]; // should use actual max packets
@@ -1314,7 +1321,9 @@ namespace UAVXGUI
         private void DumpBBButton_Click(object sender, EventArgs e)
         {
             if (((StateT == FlightStates.Preflight) || (StateT == FlightStates.Ready)) && !F[(byte)FlagValues.DumpingBB])
+            {
                 SendRequestPacket(UAVXMiscPacketTag, (byte)MiscComms.miscBBDump, 0);
+            }
         }
 
 
@@ -1390,7 +1399,7 @@ namespace UAVXGUI
                 else
                 {
                     if (F[(byte)FlagValues.IsArmed]) speech.SpeakAsync("Motors armed.");
-                    if (DesiredThrottleT > 1) speech.SpeakAsync("Throttle open.");
+                    if (F[(byte)FlagValues.ThrottleOpen]) speech.SpeakAsync("Throttle not closed.");
                     if (!F[(byte)FlagValues.Signal]) speech.SpeakAsync("No signal.");
 
                     if (!F[(byte)FlagValues.OriginValid]) speech.SpeakAsync("Launch Location Not Acquired.");
@@ -1941,6 +1950,9 @@ namespace UAVXGUI
                 case FlightStates.Launching: FlightState.Text = "Launching";
                     FlightState.BackColor = System.Drawing.Color.Orange;
                     break;
+                case FlightStates.ThrottleOpenCheck: FlightState.Text = "Throttle";
+                    FlightState.BackColor = System.Drawing.Color.Red;
+                    break;
                 default: FlightState.Text = "Unknown"; break;
             } // switch
         }
@@ -2025,7 +2037,11 @@ namespace UAVXGUI
                     break;
                 default: NavState.Text = "Unknown"; break;
             } // switch
+
+            WPActionTextBox.Text = NavComNames[WP[CurrWPT].Action];
         }
+
+    
 
         void UpdateAlarmState()
         {    
@@ -2060,6 +2076,9 @@ namespace UAVXGUI
                     break;
                 case 8: AlarmState.Text = "Arming timeout";
                     AlarmState.BackColor = System.Drawing.Color.Yellow;
+                    break;
+                case 9: AlarmState.Text = "Throttle open";
+                    AlarmState.BackColor = System.Drawing.Color.Red;
                     break;
                 default: AlarmState.Text = "Unknown"; break;
             } // switch
@@ -2473,7 +2492,12 @@ namespace UAVXGUI
                         WP[wp].OrbitRadius = ExtractShort(ref UAVXPacket, 17);
                         WP[wp].OrbitGroundAltitude = ExtractShort(ref UAVXPacket, 19);
                         WP[wp].OrbitVelocity = ExtractShort(ref UAVXPacket, 21) * 0.1;
-                        WP[wp].Action = UAVXPacket[23];
+                   
+                        WP[wp].TMRWidth = ExtractInt(ref UAVXPacket, 23) * 0.001; 
+                        WP[wp].TMRPeriod = ExtractInt(ref UAVXPacket, 27) * 0.001;
+
+                        WP[wp].Action = UAVXPacket[31];
+
 
                         break;
 
@@ -2882,7 +2906,12 @@ namespace UAVXGUI
                     NoiseIsGyro = ExtractByte(ref UAVXPacket, (byte)(2));
                     NoiseErrors = ExtractShort(ref UAVXPacket, (byte)(3));
 
-                    SpectraGroupBox.Text = NoiseIsGyro != 0 ? "Gyro (Max % FS) " + string.Format("{0:n0}", NoiseErrors) : "Acc (0.5G FS)";
+                    if (NoiseIsGyro == 3)
+                         SpectraGroupBox.Text =  "Gyro (Max % FS) " + string.Format("{0:n0}", NoiseErrors);
+                    else if (NoiseIsGyro == 4)
+                        SpectraGroupBox.Text =  "Acc (0.5G FS)";
+                    else
+                        SpectraGroupBox.Text = "IMU Freq " + string.Format("{0:n0}", NoiseErrors) + " Hz";
       
                     for (p = 0; p < 8; p++)
                         Noise[p] = ExtractShort(ref UAVXPacket, (byte)(5 + p * 2));
@@ -3144,7 +3173,7 @@ namespace UAVXGUI
             SendPacketHeader();
 
             TxESCu8(UAVXWPPacketTag);
-            TxESCu8(22);
+            TxESCu8(30);
 
             TxESCu8((byte)wp);
             TxESCi32(WP[wp].LatitudeRaw); // 1e7/degree
@@ -3156,6 +3185,10 @@ namespace UAVXGUI
             TxESCi16(WP[wp].OrbitGroundAltitude); // dM relative to Origin
             // TxESCi16(Convert.ToInt16(GetAltitudeData(WP[wp].LatitudeRaw * 1e-7, WP[wp].LongitudeRaw * 1e-7)));
             TxESCi16((short)(WP[wp].OrbitVelocity * 10.0)); // dM/S
+
+            TxESCi32((int)(WP[wp].TMRWidth * 1000.0)); // mS
+            TxESCi32((int)(WP[wp].TMRPeriod * 1000.0)); // mS
+
             TxESCu8(WP[wp].Action);
 
             SendPacketTrailer();

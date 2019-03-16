@@ -63,9 +63,12 @@ namespace UAVXGUI
         const byte mPR = 9;
         const byte mPV = 10;
 
-        const byte mUp = 11;
-        const byte mDown = 12;
-        const byte mDEL = 13;
+        const byte mPulseWidth = 11;
+        const byte mPulsePeriod = 12;
+
+        const byte mUp = 13;
+        const byte mDown = 14;
+        const byte mDEL = 15;
 
         const double RadToDeg = (double)(180.0 / Math.PI);
         const double DegToRad = (double)(1.0 / RadToDeg);
@@ -446,6 +449,10 @@ namespace UAVXGUI
                     if (sAction == "POI") 
                         AddPOIMarker((a + 1).ToString(), double.Parse(sLon), double.Parse(sLat));
                     else
+                        if (sAction == "Pulse")
+                        {
+                            // no Marker
+                        } else
                         AddMarker((a + 1).ToString(), double.Parse(sLon), double.Parse(sLat),
                          (int)double.Parse(sAlt), null, Convert.ToByte(Array.IndexOf(FormMain.NavComNames, sAction)));
     //FindIndex(Convert.ToString(sAction)));
@@ -874,29 +881,29 @@ namespace UAVXGUI
             if (!GoToEnabled)
                 addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navVia], start.Lat, start.Lng, 
                     Properties.Settings.Default.Altitude, Properties.Settings.Default.Velocity, 
-                    Convert.ToInt32(DefaultLoiterTextBox.Text), Properties.Settings.Default.OrbitRadius, 
-                    Properties.Settings.Default.OrbitVelocity, 25);
+                    Convert.ToInt32(DefaultLoiterTextBox.Text), Properties.Settings.Default.OrbitRadius,
+                    Properties.Settings.Default.OrbitVelocity, 0, 0);
         } // ViaContextMenuItem_Click
 
         private void OrbitContextMenuItem_Click(object sender, EventArgs e)
         {
             if (!GoToEnabled) addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navOrbit], start.Lat, start.Lng,
                 Properties.Settings.Default.Altitude, Properties.Settings.Default.Velocity, 30, 
-                Properties.Settings.Default.OrbitRadius, Properties.Settings.Default.OrbitVelocity, 25);
+                Properties.Settings.Default.OrbitRadius, Properties.Settings.Default.OrbitVelocity, 0, 0);
         } // OrbitContextMenuItem_Click
 
         private void PerchContextMenuItem_Click(object sender, EventArgs e)
         {
             if (!GoToEnabled) addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navPerch], start.Lat, start.Lng, 
-                Properties.Settings.Default.Altitude, Properties.Settings.Default.Velocity, -1, 0, 0, 0);
+                Properties.Settings.Default.Altitude, Properties.Settings.Default.Velocity, Convert.ToInt32(DefaultLoiterTextBox.Text), 0, 0, 0, 0);
         } // PerchContextMenuItem_Click
 
         private void GotoWP()
         {
             M.Rows.Clear();
             updateMap();
-            addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navVia], start.Lat, start.Lng, 
-                Properties.Settings.Default.Altitude, Properties.Settings.Default.Velocity, 600, 0, 0, 0);
+            addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navVia], start.Lat, start.Lng,
+                Properties.Settings.Default.Altitude, Properties.Settings.Default.Velocity, 600, 0, 0, 0, 0);
         } // GoToWP
 
 
@@ -904,8 +911,17 @@ namespace UAVXGUI
         {
             if (!GoToEnabled)
             addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navPOI], start.Lat, start.Lng, 
-                Properties.Settings.Default.Altitude, 0, 0, 0, 0, 0);
+                Properties.Settings.Default.Altitude, 0, 0, 0, 0, 0, 0);
         } // POIContextMenuItem_Click
+
+
+        private void TMRContextMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!GoToEnabled)
+                addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navPulse], start.Lat, start.Lng,
+                0, 0, 0, 0, 0, 
+                Properties.Settings.Default.TMRWidth, Properties.Settings.Default.TMRPeriod);
+        } // TMRContextMenuItem_Click
 
 
         private void ClearMissionContextMenuItem_Click(object sender, EventArgs e)
@@ -959,7 +975,7 @@ namespace UAVXGUI
         } // BeyondFenceRadius
 
 
-        private void addWP(string action, double Lat, double Lon, int Alt, double Vel, int Loiter, double P1, double P2, double P3)
+        private void addWP(string action, double Lat, double Lon, int Alt, double Vel, int Loiter, double OrbitRadius, double OrbitVel, double TMRWidth, double TMRPeriod)
         {
             if (M.Rows.Count >= FormMain.MaxWayPoints)
                 MessageBox.Show("Too many waypoints. Limit " + Convert.ToString(FormMain.MaxWayPoints), "Max waypoints reached", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -980,8 +996,11 @@ namespace UAVXGUI
                 M.Rows[selectedrow].Cells[mVel].Value = Vel;
                 M.Rows[selectedrow].Cells[mLoiter].Value = Loiter;
                 M.Rows[selectedrow].Cells[mAction].Value = action;
-                M.Rows[selectedrow].Cells[mPR].Value = P1;
-                M.Rows[selectedrow].Cells[mPV].Value = P2;
+                M.Rows[selectedrow].Cells[mPR].Value = OrbitRadius;
+                M.Rows[selectedrow].Cells[mPV].Value = OrbitVel;
+
+                M.Rows[selectedrow].Cells[mPulseWidth].Value = TMRWidth;
+                M.Rows[selectedrow].Cells[mPulsePeriod].Value = TMRPeriod;
 
                 M.Rows[selectedrow].DataGridView.EndEdit();
 
@@ -1114,7 +1133,7 @@ namespace UAVXGUI
                     {
                         if ((Control.ModifierKeys == Keys.Control) && (!GoToEnabled))
                             addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navVia], currentMarker.Position.Lat, currentMarker.Position.Lng,
-                                Properties.Settings.Default.Altitude, Properties.Settings.Default.Velocity, Properties.Settings.Default.LoiterTime, 0, 0, 0);
+                                Properties.Settings.Default.Altitude, Properties.Settings.Default.Velocity, Properties.Settings.Default.LoiterTime, 0, 0, 0, 0);
                     }
                 else
                 {
@@ -1546,19 +1565,22 @@ namespace UAVXGUI
                 switch ((FormMain.NavComs)markertype)
                 {
                     case FormMain.NavComs.navVia:
-                        pic = Properties.Resources.timed_marker;
+                        pic = Properties.Resources.marker_blue;
                         drawBrush.Color = Color.Yellow;
                         g.DrawString("VIA", drawFont, drawBrush, -12, -51);
                         drawBrush.Color = Color.White;
                         break;
                     case FormMain.NavComs.navOrbit:
-                        pic = Properties.Resources.timed_marker;
+                        pic = Properties.Resources.poshold;
                         drawBrush.Color = Color.Yellow;
                         g.DrawString("ORB", drawFont, drawBrush, -12, -51);
                         drawBrush.Color = Color.White;
                         break;
                     case FormMain.NavComs.navPOI:
                         pic = Properties.Resources.marker_poi;
+                        break;
+                    case FormMain.NavComs.navPulse:
+                        pic = Properties.Resources.timed_marker;
                         break;
                     case FormMain.NavComs.navLand:
                         pic = Properties.Resources.marker_land;
@@ -1680,7 +1702,9 @@ namespace UAVXGUI
                     + "," + M[mLoiter, rowM].Value // Loiter
                     + "," + M[mAction, rowM].Value // Action
                     + "," + M[mPR, rowM].Value // OrbitRadius
-                    + "," + M[mPV, rowM].Value // OrbitVelocitydMpS
+                    + "," + M[mPV, rowM].Value // OrbitVelocity dMpS
+                    + "," + M[mPulseWidth, rowM].Value // Timer pulse width Sec.
+                    + "," + M[mPulsePeriod, rowM].Value // Timer period Sec.
                     );
 
                 MissionFileStreamWriter.Flush();
@@ -1811,6 +1835,8 @@ namespace UAVXGUI
                                     M[mAction, np].Value = sParam[mAction];
                                     M[mPR, np].Value = string.Format("{0:n0}", sParam[mPR]);
                                     M[mPV, np].Value = string.Format("{0:n1}", sParam[mPV]);
+                                    M[mPulseWidth, np].Value = string.Format("{0:n3}", sParam[mPulseWidth]);
+                                    M[mPulsePeriod, np].Value = string.Format("{0:n3}", sParam[mPulsePeriod]);
                                 }
                                 else
                                 {
@@ -1908,9 +1934,14 @@ namespace UAVXGUI
 
                 M[mVel, rowM].Value = string.Format("{0:n1}", FormMain.WP[wp].Velocity);
                 M[mLoiter, rowM].Value = string.Format("{0:n0}", FormMain.WP[wp].Loiter);
+
                 M[mAction, rowM].Value = string.Format("{0:n0}", FormMain.NavComNames[FormMain.WP[wp].Action]);
+
                 M[mPR, rowM].Value = string.Format("{0:n0}", FormMain.WP[wp].OrbitRadius);
                 M[mPV, rowM].Value = string.Format("{0:n1}", FormMain.WP[wp].OrbitVelocity);
+
+                M[mPulseWidth, rowM].Value = string.Format("{0:n3}", FormMain.WP[wp].TMRWidth);
+                M[mPulsePeriod, rowM].Value = string.Format("{0:n3}", FormMain.WP[wp].TMRPeriod);
             }
 
             UAVXWriteButton.BackColor = UAVXReadButton.BackColor = System.Drawing.Color.Green;
@@ -1956,6 +1987,9 @@ namespace UAVXGUI
 
                     FormMain.WP[wp].OrbitRadius = Convert.ToInt16(M[mPR, rowM].Value);
                     FormMain.WP[wp].OrbitVelocity = Convert.ToDouble(M[mPV, rowM].Value);
+
+                    FormMain.WP[wp].TMRWidth = Convert.ToDouble(M[mPulseWidth, rowM].Value);
+                    FormMain.WP[wp].TMRPeriod = Convert.ToDouble(M[mPulsePeriod, rowM].Value);
                 }
 
             }
