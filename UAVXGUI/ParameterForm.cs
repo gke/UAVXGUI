@@ -192,9 +192,9 @@ namespace UAVXGUI
             8, // AltVelKi 102
             10, // AltHoldBand 103
             30, // VRSDescentRate 104
-            1, // OSLPFType 105
+            1, // Unused 105
             
-            40, // OSLPFHz 106
+            2, // NavGPSTimeout 106
             3, // ProxAltM 107
             50, // ProxRadiusM 108
             0,
@@ -273,7 +273,6 @@ namespace UAVXGUI
                 ParamsStale= false;
                 FWGroupBox.Visible = FormMain.UsingFixedWing;
 
-              //  OSFLabel.Visible = OSLPFComboBox.Visible = OSLPFHzNumericUpDown.Visible = bit42CheckBox.Checked;
                 updateForm();
             }
 
@@ -450,7 +449,7 @@ namespace UAVXGUI
             if (parameterForm.bit52CheckBox.Focused)
                 helpstring = help.GetString("TurnToWP");
             if (parameterForm.bit62CheckBox.Focused)
-                helpstring = help.GetString("unassigned");
+                helpstring = help.GetString("CameraPulseAtWP");
 
             if (parameterForm.RxLoopbackButton.Focused)
                 helpstring = help.GetString("RxLoopBack");
@@ -544,6 +543,9 @@ namespace UAVXGUI
                 helpstring = help.GetString("ArmingMode");
 
             //GPS
+
+            if (parameterForm.NavGPSTimeoutNumericUpDown.Focused)
+                helpstring = help.GetString("NavGPSTimeout");
 
             if (parameterForm.NavMaxVelNumericUpDown.Focused)
                 helpstring = help.GetString("NavMaxVel");
@@ -971,11 +973,7 @@ namespace UAVXGUI
                 NumericUpDown Field = (NumericUpDown)Object;
 
                 int p = Convert.ToInt16(Field.Tag);
-                if ((p == 106))
-                    P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 0.01);
-                else
-
-                if ((p == 64) || (p == 83) || (p == 84) || (p == 89) )
+                   if ((p == 64) || (p == 83) || (p == 84) || (p == 89) )
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 0.1);
                 else
                     if ((p == 54) || (p == 18) || (p == 32) || (p == 34) || (p == 39) || (p == 46) || (p == 53) || (p == 58) || (p == 70) || (p == 104) || (p == 110))
@@ -1421,6 +1419,13 @@ namespace UAVXGUI
                         break;
                     case 67:
                         AltVelIntLimitNumericUpDown.Value = UAVXP[p - 1].Value;
+                        if (AltVelIntLimitNumericUpDown.Value < 5)
+                            AltVelIntLimitNumericUpDown.BackColor = Color.Red;
+                        else
+                            if (AltVelIntLimitNumericUpDown.Value < 10)
+                                AltVelIntLimitNumericUpDown.BackColor = Color.Orange;
+                            else
+                                AltVelIntLimitNumericUpDown.BackColor = Color.White;
                         ParamUpdate(AltVelIntLimitNumericUpDown);
                         break;
                     case 68:
@@ -1596,12 +1601,11 @@ namespace UAVXGUI
                         ParamUpdate(VRSDescentRateNumericUpDown);
                         break;
                     case 105:
-                        OSLPFComboBox.SelectedIndex = UAVXP[p - 1].Value;
-                        ParamUpdate(OSLPFComboBox);
+                        
                         break;
                     case 106:
-                        OSLPFHzNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 100.0);
-                        ParamUpdate(OSLPFHzNumericUpDown);
+                        NavGPSTimeoutNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(NavGPSTimeoutNumericUpDown);
                         break;
                     case 107:
                         ProximityAltNumericUpDown.Value = UAVXP[p - 1].Value;

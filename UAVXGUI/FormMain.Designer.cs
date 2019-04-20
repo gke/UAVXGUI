@@ -335,6 +335,8 @@ namespace UAVXGUI
             this.attitudeIndicatorInstrumentControl1 = new Instruments.AttitudeIndicatorInstrumentControl();
             this.headingIndicatorInstrumentControl1 = new Instruments.HeadingIndicatorInstrumentControl();
             this.WPActionTextBox = new System.Windows.Forms.TextBox();
+            this.RTHBox = new System.Windows.Forms.TextBox();
+            this.NavBox = new System.Windows.Forms.TextBox();
             this.GyroGroupBox.SuspendLayout();
             this.ControlsGroupBox.SuspendLayout();
             this.AttitudeGroupBox.SuspendLayout();
@@ -1028,6 +1030,8 @@ namespace UAVXGUI
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.Controls.Add(this.NavBox);
+            this.flowLayoutPanel1.Controls.Add(this.RTHBox);
             this.flowLayoutPanel1.Controls.Add(this.GPSValidBox);
             this.flowLayoutPanel1.Controls.Add(this.NavValidBox);
             this.flowLayoutPanel1.Controls.Add(this.AngleControlBox);
@@ -1056,13 +1060,13 @@ namespace UAVXGUI
             this.flowLayoutPanel1.Controls.Add(this.BypassBox);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 19);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(237, 336);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(237, 366);
             this.flowLayoutPanel1.TabIndex = 99;
             // 
             // GPSValidBox
             // 
             this.GPSValidBox.BackColor = System.Drawing.SystemColors.Window;
-            this.GPSValidBox.Location = new System.Drawing.Point(3, 3);
+            this.GPSValidBox.Location = new System.Drawing.Point(3, 29);
             this.GPSValidBox.Name = "GPSValidBox";
             this.GPSValidBox.ReadOnly = true;
             this.GPSValidBox.Size = new System.Drawing.Size(109, 20);
@@ -1073,7 +1077,7 @@ namespace UAVXGUI
             // NavValidBox
             // 
             this.NavValidBox.BackColor = System.Drawing.SystemColors.Window;
-            this.NavValidBox.Location = new System.Drawing.Point(118, 3);
+            this.NavValidBox.Location = new System.Drawing.Point(118, 29);
             this.NavValidBox.Name = "NavValidBox";
             this.NavValidBox.ReadOnly = true;
             this.NavValidBox.Size = new System.Drawing.Size(109, 20);
@@ -1084,7 +1088,7 @@ namespace UAVXGUI
             // AngleControlBox
             // 
             this.AngleControlBox.BackColor = System.Drawing.SystemColors.Window;
-            this.AngleControlBox.Location = new System.Drawing.Point(3, 29);
+            this.AngleControlBox.Location = new System.Drawing.Point(3, 55);
             this.AngleControlBox.Name = "AngleControlBox";
             this.AngleControlBox.ReadOnly = true;
             this.AngleControlBox.Size = new System.Drawing.Size(109, 20);
@@ -1095,7 +1099,7 @@ namespace UAVXGUI
             // OffsetOriginValidBox
             // 
             this.OffsetOriginValidBox.BackColor = System.Drawing.SystemColors.Window;
-            this.OffsetOriginValidBox.Location = new System.Drawing.Point(118, 29);
+            this.OffsetOriginValidBox.Location = new System.Drawing.Point(118, 55);
             this.OffsetOriginValidBox.Name = "OffsetOriginValidBox";
             this.OffsetOriginValidBox.ReadOnly = true;
             this.OffsetOriginValidBox.Size = new System.Drawing.Size(109, 20);
@@ -1106,7 +1110,7 @@ namespace UAVXGUI
             // ThrottleMovingBox
             // 
             this.ThrottleMovingBox.BackColor = System.Drawing.SystemColors.Window;
-            this.ThrottleMovingBox.Location = new System.Drawing.Point(3, 55);
+            this.ThrottleMovingBox.Location = new System.Drawing.Point(3, 81);
             this.ThrottleMovingBox.Name = "ThrottleMovingBox";
             this.ThrottleMovingBox.ReadOnly = true;
             this.ThrottleMovingBox.Size = new System.Drawing.Size(109, 20);
@@ -1118,7 +1122,7 @@ namespace UAVXGUI
             // 
             this.AltHoldBox.AcceptsTab = true;
             this.AltHoldBox.BackColor = System.Drawing.SystemColors.Window;
-            this.AltHoldBox.Location = new System.Drawing.Point(118, 55);
+            this.AltHoldBox.Location = new System.Drawing.Point(118, 81);
             this.AltHoldBox.Name = "AltHoldBox";
             this.AltHoldBox.ReadOnly = true;
             this.AltHoldBox.Size = new System.Drawing.Size(109, 20);
@@ -1129,7 +1133,7 @@ namespace UAVXGUI
             // HoldingAltBox
             // 
             this.HoldingAltBox.BackColor = System.Drawing.SystemColors.Window;
-            this.HoldingAltBox.Location = new System.Drawing.Point(3, 81);
+            this.HoldingAltBox.Location = new System.Drawing.Point(3, 107);
             this.HoldingAltBox.Name = "HoldingAltBox";
             this.HoldingAltBox.ReadOnly = true;
             this.HoldingAltBox.Size = new System.Drawing.Size(109, 20);
@@ -1140,7 +1144,7 @@ namespace UAVXGUI
             // BaroAltValidBox
             // 
             this.BaroAltValidBox.BackColor = System.Drawing.SystemColors.Window;
-            this.BaroAltValidBox.Location = new System.Drawing.Point(118, 81);
+            this.BaroAltValidBox.Location = new System.Drawing.Point(118, 107);
             this.BaroAltValidBox.Name = "BaroAltValidBox";
             this.BaroAltValidBox.ReadOnly = true;
             this.BaroAltValidBox.Size = new System.Drawing.Size(109, 20);
@@ -1152,7 +1156,7 @@ namespace UAVXGUI
             // 
             this.GPSAltitudeBox.AcceptsTab = true;
             this.GPSAltitudeBox.BackColor = System.Drawing.SystemColors.Window;
-            this.GPSAltitudeBox.Location = new System.Drawing.Point(3, 107);
+            this.GPSAltitudeBox.Location = new System.Drawing.Point(3, 133);
             this.GPSAltitudeBox.Name = "GPSAltitudeBox";
             this.GPSAltitudeBox.ReadOnly = true;
             this.GPSAltitudeBox.Size = new System.Drawing.Size(109, 20);
@@ -1163,7 +1167,7 @@ namespace UAVXGUI
             // RangefinderAltValidBox
             // 
             this.RangefinderAltValidBox.BackColor = System.Drawing.SystemColors.Window;
-            this.RangefinderAltValidBox.Location = new System.Drawing.Point(118, 107);
+            this.RangefinderAltValidBox.Location = new System.Drawing.Point(118, 133);
             this.RangefinderAltValidBox.Name = "RangefinderAltValidBox";
             this.RangefinderAltValidBox.ReadOnly = true;
             this.RangefinderAltValidBox.Size = new System.Drawing.Size(109, 20);
@@ -1174,7 +1178,7 @@ namespace UAVXGUI
             // UsingRangefinderBox
             // 
             this.UsingRangefinderBox.BackColor = System.Drawing.SystemColors.Window;
-            this.UsingRangefinderBox.Location = new System.Drawing.Point(3, 133);
+            this.UsingRangefinderBox.Location = new System.Drawing.Point(3, 159);
             this.UsingRangefinderBox.Name = "UsingRangefinderBox";
             this.UsingRangefinderBox.ReadOnly = true;
             this.UsingRangefinderBox.Size = new System.Drawing.Size(109, 20);
@@ -1185,7 +1189,7 @@ namespace UAVXGUI
             // NearLevelBox
             // 
             this.NearLevelBox.BackColor = System.Drawing.SystemColors.Window;
-            this.NearLevelBox.Location = new System.Drawing.Point(118, 133);
+            this.NearLevelBox.Location = new System.Drawing.Point(118, 159);
             this.NearLevelBox.Name = "NearLevelBox";
             this.NearLevelBox.ReadOnly = true;
             this.NearLevelBox.Size = new System.Drawing.Size(109, 20);
@@ -1196,7 +1200,7 @@ namespace UAVXGUI
             // AttitudeHoldBox
             // 
             this.AttitudeHoldBox.BackColor = System.Drawing.SystemColors.Window;
-            this.AttitudeHoldBox.Location = new System.Drawing.Point(3, 159);
+            this.AttitudeHoldBox.Location = new System.Drawing.Point(3, 185);
             this.AttitudeHoldBox.Name = "AttitudeHoldBox";
             this.AttitudeHoldBox.ReadOnly = true;
             this.AttitudeHoldBox.Size = new System.Drawing.Size(109, 20);
@@ -1207,7 +1211,7 @@ namespace UAVXGUI
             // NavigateBox
             // 
             this.NavigateBox.BackColor = System.Drawing.SystemColors.Window;
-            this.NavigateBox.Location = new System.Drawing.Point(118, 159);
+            this.NavigateBox.Location = new System.Drawing.Point(118, 185);
             this.NavigateBox.Name = "NavigateBox";
             this.NavigateBox.ReadOnly = true;
             this.NavigateBox.Size = new System.Drawing.Size(109, 20);
@@ -1218,7 +1222,7 @@ namespace UAVXGUI
             // CloseProximityBox
             // 
             this.CloseProximityBox.BackColor = System.Drawing.SystemColors.Window;
-            this.CloseProximityBox.Location = new System.Drawing.Point(3, 185);
+            this.CloseProximityBox.Location = new System.Drawing.Point(3, 211);
             this.CloseProximityBox.Name = "CloseProximityBox";
             this.CloseProximityBox.ReadOnly = true;
             this.CloseProximityBox.Size = new System.Drawing.Size(109, 20);
@@ -1229,7 +1233,7 @@ namespace UAVXGUI
             // ProximityBox
             // 
             this.ProximityBox.BackColor = System.Drawing.SystemColors.Window;
-            this.ProximityBox.Location = new System.Drawing.Point(118, 185);
+            this.ProximityBox.Location = new System.Drawing.Point(118, 211);
             this.ProximityBox.Name = "ProximityBox";
             this.ProximityBox.ReadOnly = true;
             this.ProximityBox.Size = new System.Drawing.Size(109, 20);
@@ -1240,7 +1244,7 @@ namespace UAVXGUI
             // TurnToPOIBox
             // 
             this.TurnToPOIBox.BackColor = System.Drawing.SystemColors.Window;
-            this.TurnToPOIBox.Location = new System.Drawing.Point(3, 211);
+            this.TurnToPOIBox.Location = new System.Drawing.Point(3, 237);
             this.TurnToPOIBox.Name = "TurnToPOIBox";
             this.TurnToPOIBox.ReadOnly = true;
             this.TurnToPOIBox.Size = new System.Drawing.Size(109, 20);
@@ -1251,7 +1255,7 @@ namespace UAVXGUI
             // UseRTHAutoDescendBox
             // 
             this.UseRTHAutoDescendBox.BackColor = System.Drawing.SystemColors.Window;
-            this.UseRTHAutoDescendBox.Location = new System.Drawing.Point(118, 211);
+            this.UseRTHAutoDescendBox.Location = new System.Drawing.Point(118, 237);
             this.UseRTHAutoDescendBox.Name = "UseRTHAutoDescendBox";
             this.UseRTHAutoDescendBox.ReadOnly = true;
             this.UseRTHAutoDescendBox.Size = new System.Drawing.Size(109, 20);
@@ -1262,7 +1266,7 @@ namespace UAVXGUI
             // LandingSwitchBox
             // 
             this.LandingSwitchBox.BackColor = System.Drawing.SystemColors.Window;
-            this.LandingSwitchBox.Location = new System.Drawing.Point(3, 237);
+            this.LandingSwitchBox.Location = new System.Drawing.Point(3, 263);
             this.LandingSwitchBox.Name = "LandingSwitchBox";
             this.LandingSwitchBox.ReadOnly = true;
             this.LandingSwitchBox.Size = new System.Drawing.Size(109, 20);
@@ -1273,7 +1277,7 @@ namespace UAVXGUI
             // UsingUplinkFlagBox
             // 
             this.UsingUplinkFlagBox.BackColor = System.Drawing.SystemColors.Window;
-            this.UsingUplinkFlagBox.Location = new System.Drawing.Point(118, 237);
+            this.UsingUplinkFlagBox.Location = new System.Drawing.Point(118, 263);
             this.UsingUplinkFlagBox.Name = "UsingUplinkFlagBox";
             this.UsingUplinkFlagBox.ReadOnly = true;
             this.UsingUplinkFlagBox.Size = new System.Drawing.Size(109, 20);
@@ -1284,7 +1288,7 @@ namespace UAVXGUI
             // LowBatteryBox
             // 
             this.LowBatteryBox.BackColor = System.Drawing.SystemColors.Window;
-            this.LowBatteryBox.Location = new System.Drawing.Point(3, 263);
+            this.LowBatteryBox.Location = new System.Drawing.Point(3, 289);
             this.LowBatteryBox.Name = "LowBatteryBox";
             this.LowBatteryBox.ReadOnly = true;
             this.LowBatteryBox.Size = new System.Drawing.Size(109, 20);
@@ -1295,7 +1299,7 @@ namespace UAVXGUI
             // IMUFailBox
             // 
             this.IMUFailBox.BackColor = System.Drawing.SystemColors.Window;
-            this.IMUFailBox.Location = new System.Drawing.Point(118, 263);
+            this.IMUFailBox.Location = new System.Drawing.Point(118, 289);
             this.IMUFailBox.Name = "IMUFailBox";
             this.IMUFailBox.ReadOnly = true;
             this.IMUFailBox.Size = new System.Drawing.Size(109, 20);
@@ -1306,7 +1310,7 @@ namespace UAVXGUI
             // GPSFailBox
             // 
             this.GPSFailBox.BackColor = System.Drawing.SystemColors.Window;
-            this.GPSFailBox.Location = new System.Drawing.Point(3, 289);
+            this.GPSFailBox.Location = new System.Drawing.Point(3, 315);
             this.GPSFailBox.Name = "GPSFailBox";
             this.GPSFailBox.ReadOnly = true;
             this.GPSFailBox.Size = new System.Drawing.Size(109, 20);
@@ -1317,7 +1321,7 @@ namespace UAVXGUI
             // BaroFailBox
             // 
             this.BaroFailBox.BackColor = System.Drawing.SystemColors.Window;
-            this.BaroFailBox.Location = new System.Drawing.Point(118, 289);
+            this.BaroFailBox.Location = new System.Drawing.Point(118, 315);
             this.BaroFailBox.Name = "BaroFailBox";
             this.BaroFailBox.ReadOnly = true;
             this.BaroFailBox.Size = new System.Drawing.Size(109, 20);
@@ -1328,7 +1332,7 @@ namespace UAVXGUI
             // MagFailBox
             // 
             this.MagFailBox.BackColor = System.Drawing.SystemColors.Window;
-            this.MagFailBox.Location = new System.Drawing.Point(3, 315);
+            this.MagFailBox.Location = new System.Drawing.Point(3, 341);
             this.MagFailBox.Name = "MagFailBox";
             this.MagFailBox.ReadOnly = true;
             this.MagFailBox.Size = new System.Drawing.Size(109, 20);
@@ -1339,7 +1343,7 @@ namespace UAVXGUI
             // BypassBox
             // 
             this.BypassBox.BackColor = System.Drawing.SystemColors.Window;
-            this.BypassBox.Location = new System.Drawing.Point(118, 315);
+            this.BypassBox.Location = new System.Drawing.Point(118, 341);
             this.BypassBox.Name = "BypassBox";
             this.BypassBox.ReadOnly = true;
             this.BypassBox.Size = new System.Drawing.Size(109, 20);
@@ -1350,9 +1354,9 @@ namespace UAVXGUI
             // FlagsGroupBox
             // 
             this.FlagsGroupBox.Controls.Add(this.flowLayoutPanel1);
-            this.FlagsGroupBox.Location = new System.Drawing.Point(587, 104);
+            this.FlagsGroupBox.Location = new System.Drawing.Point(587, 82);
             this.FlagsGroupBox.Name = "FlagsGroupBox";
-            this.FlagsGroupBox.Size = new System.Drawing.Size(249, 361);
+            this.FlagsGroupBox.Size = new System.Drawing.Size(249, 385);
             this.FlagsGroupBox.TabIndex = 100;
             this.FlagsGroupBox.TabStop = false;
             this.FlagsGroupBox.Text = "Flags";
@@ -1766,14 +1770,14 @@ namespace UAVXGUI
             this.LocationBox.Controls.Add(this.WhereDistanceLabel);
             this.LocationBox.Location = new System.Drawing.Point(718, 33);
             this.LocationBox.Name = "LocationBox";
-            this.LocationBox.Size = new System.Drawing.Size(118, 69);
+            this.LocationBox.Size = new System.Drawing.Size(118, 43);
             this.LocationBox.TabIndex = 152;
             this.LocationBox.TabStop = false;
             this.LocationBox.Text = "Where?";
             // 
             // WhereDistance
             // 
-            this.WhereDistance.Location = new System.Drawing.Point(73, 40);
+            this.WhereDistance.Location = new System.Drawing.Point(73, 14);
             this.WhereDistance.Name = "WhereDistance";
             this.WhereDistance.ReadOnly = true;
             this.WhereDistance.Size = new System.Drawing.Size(39, 20);
@@ -1783,10 +1787,10 @@ namespace UAVXGUI
             // 
             // WhereBearing
             // 
-            this.WhereBearing.Location = new System.Drawing.Point(73, 14);
+            this.WhereBearing.Location = new System.Drawing.Point(22, 14);
             this.WhereBearing.Name = "WhereBearing";
             this.WhereBearing.ReadOnly = true;
-            this.WhereBearing.Size = new System.Drawing.Size(39, 20);
+            this.WhereBearing.Size = new System.Drawing.Size(35, 20);
             this.WhereBearing.TabIndex = 164;
             this.WhereBearing.Text = "0";
             this.WhereBearing.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1796,18 +1800,18 @@ namespace UAVXGUI
             this.WhereBearingLabel.AutoSize = true;
             this.WhereBearingLabel.Location = new System.Drawing.Point(6, 17);
             this.WhereBearingLabel.Name = "WhereBearingLabel";
-            this.WhereBearingLabel.Size = new System.Drawing.Size(43, 13);
+            this.WhereBearingLabel.Size = new System.Drawing.Size(14, 13);
             this.WhereBearingLabel.TabIndex = 54;
-            this.WhereBearingLabel.Text = "Bearing";
+            this.WhereBearingLabel.Text = "B";
             // 
             // WhereDistanceLabel
             // 
             this.WhereDistanceLabel.AutoSize = true;
-            this.WhereDistanceLabel.Location = new System.Drawing.Point(6, 43);
+            this.WhereDistanceLabel.Location = new System.Drawing.Point(59, 17);
             this.WhereDistanceLabel.Name = "WhereDistanceLabel";
-            this.WhereDistanceLabel.Size = new System.Drawing.Size(49, 13);
+            this.WhereDistanceLabel.Size = new System.Drawing.Size(15, 13);
             this.WhereDistanceLabel.TabIndex = 53;
-            this.WhereDistanceLabel.Text = "Distance";
+            this.WhereDistanceLabel.Text = "D";
             // 
             // groupBox1
             // 
@@ -2197,7 +2201,7 @@ namespace UAVXGUI
             this.Airframe.BackColor = System.Drawing.SystemColors.Control;
             this.Airframe.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Airframe.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Airframe.Location = new System.Drawing.Point(596, 82);
+            this.Airframe.Location = new System.Drawing.Point(262, 6);
             this.Airframe.Name = "Airframe";
             this.Airframe.Size = new System.Drawing.Size(116, 13);
             this.Airframe.TabIndex = 166;
@@ -2906,7 +2910,7 @@ namespace UAVXGUI
             // 
             this.UtilisationLabel.AutoSize = true;
             this.UtilisationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UtilisationLabel.Location = new System.Drawing.Point(334, 3);
+            this.UtilisationLabel.Location = new System.Drawing.Point(375, 3);
             this.UtilisationLabel.Name = "UtilisationLabel";
             this.UtilisationLabel.Size = new System.Drawing.Size(29, 16);
             this.UtilisationLabel.TabIndex = 218;
@@ -2914,9 +2918,9 @@ namespace UAVXGUI
             // 
             // UtilisationProgressBar
             // 
-            this.UtilisationProgressBar.Location = new System.Drawing.Point(369, 3);
+            this.UtilisationProgressBar.Location = new System.Drawing.Point(420, 2);
             this.UtilisationProgressBar.Name = "UtilisationProgressBar";
-            this.UtilisationProgressBar.Size = new System.Drawing.Size(172, 19);
+            this.UtilisationProgressBar.Size = new System.Drawing.Size(123, 19);
             this.UtilisationProgressBar.Step = 1;
             this.UtilisationProgressBar.TabIndex = 219;
             // 
@@ -2959,9 +2963,9 @@ namespace UAVXGUI
             this.CalibrationGroupBox.Controls.Add(this.RollCalLabel);
             this.CalibrationGroupBox.Controls.Add(this.RollGyroMLabel);
             this.CalibrationGroupBox.Controls.Add(this.PitchGyroMLabel);
-            this.CalibrationGroupBox.Location = new System.Drawing.Point(586, 471);
+            this.CalibrationGroupBox.Location = new System.Drawing.Point(587, 469);
             this.CalibrationGroupBox.Name = "CalibrationGroupBox";
-            this.CalibrationGroupBox.Size = new System.Drawing.Size(250, 157);
+            this.CalibrationGroupBox.Size = new System.Drawing.Size(249, 159);
             this.CalibrationGroupBox.TabIndex = 220;
             this.CalibrationGroupBox.TabStop = false;
             this.CalibrationGroupBox.Text = "Calibration and Filters";
@@ -3388,6 +3392,28 @@ namespace UAVXGUI
             this.WPActionTextBox.TabIndex = 230;
             this.WPActionTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // RTHBox
+            // 
+            this.RTHBox.BackColor = System.Drawing.SystemColors.Window;
+            this.RTHBox.Location = new System.Drawing.Point(118, 3);
+            this.RTHBox.Name = "RTHBox";
+            this.RTHBox.ReadOnly = true;
+            this.RTHBox.Size = new System.Drawing.Size(109, 20);
+            this.RTHBox.TabIndex = 126;
+            this.RTHBox.Text = "RTH";
+            this.RTHBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // NavBox
+            // 
+            this.NavBox.BackColor = System.Drawing.SystemColors.Window;
+            this.NavBox.Location = new System.Drawing.Point(3, 3);
+            this.NavBox.Name = "NavBox";
+            this.NavBox.ReadOnly = true;
+            this.NavBox.Size = new System.Drawing.Size(109, 20);
+            this.NavBox.TabIndex = 127;
+            this.NavBox.Text = "Navigate";
+            this.NavBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3808,6 +3834,8 @@ namespace UAVXGUI
         private System.Windows.Forms.Label ImbalanceLabel;
         private System.Windows.Forms.Button BootLoadButton;
         private System.Windows.Forms.TextBox WPActionTextBox;
+        private System.Windows.Forms.TextBox NavBox;
+        private System.Windows.Forms.TextBox RTHBox;
     }
 }
 

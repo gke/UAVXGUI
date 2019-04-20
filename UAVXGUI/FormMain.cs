@@ -376,7 +376,6 @@ namespace UAVXGUI
             IREmulate,
             Preflight,
             Ready,
-            Launching,
             ThrottleOpenCheck,
             UnknownFlightState
         };
@@ -1783,6 +1782,12 @@ namespace UAVXGUI
             NavValidBox.BackColor = F[(byte)FlagValues.OriginValid] ?
                 System.Drawing.Color.Green : System.Drawing.Color.Red;
 
+            RTHBox.BackColor = F[(byte)FlagValues.ReturnHome] ?
+               System.Drawing.Color.Green : FlagsGroupBox.BackColor;
+
+            NavBox.BackColor = F[(byte)FlagValues.Navigate] ?
+               System.Drawing.Color.Green : FlagsGroupBox.BackColor;
+
             //if (UAVXArm)
            // GPSROC.Visible = false;
             //else
@@ -1947,9 +1952,6 @@ namespace UAVXGUI
                 case FlightStates.Ready: FlightState.Text = "Ready";
                     FlightState.BackColor = System.Drawing.Color.Gold;
                     break;
-                case FlightStates.Launching: FlightState.Text = "Launching";
-                    FlightState.BackColor = System.Drawing.Color.Orange;
-                    break;
                 case FlightStates.ThrottleOpenCheck: FlightState.Text = "Throttle";
                     FlightState.BackColor = System.Drawing.Color.Red;
                     break;
@@ -2037,7 +2039,9 @@ namespace UAVXGUI
                     break;
                 default: NavState.Text = "Unknown"; break;
             } // switch
-
+            if (CurrWPT == 0)
+                WPActionTextBox.Text = "Land";
+            else
             WPActionTextBox.Text = NavComNames[WP[CurrWPT].Action];
         }
 
