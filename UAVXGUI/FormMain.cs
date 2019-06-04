@@ -269,7 +269,7 @@ namespace UAVXGUI
             "Orbit",
             "Perch", 
             "POI",
-            "Pulse",
+            "Survey",
             "Glide",
             "Land"
             };
@@ -466,9 +466,10 @@ namespace UAVXGUI
         short[] DesiredRateT = new short[3]; 
         short[] RateT = new short[3];
 
-        short ROCT;                     // 43
-        short FROCT;
-        int AltitudeT;          // 45 24bits
+        short ROCT, FROCT;                     // 43
+        short AccZT;
+        int RawRelAltitudeT, FAltitudeT, AltitudeT;          // 45 24bits
+        short BaroLSBOddFracT;
         short CruiseThrottleT;          // 48
         short RangefinderAltitudeT;     // 50
         public static int DesiredAltitudeT;
@@ -479,12 +480,16 @@ namespace UAVXGUI
         short AltCompT;                 // 60
         short AccConfidenceT;           // 62
 
+        int FusionuSecT;
         int BaroTemperatureT;
         int BaroPressureT;
- 
-        int BaroAltitudeT, BaroRawAltitudeT;
 
-        short AccZT, HRAccZT, HRAccZBiasT, FWGlideOffsetAngleT, NewTuningParameterT, FWRateEnergyT;
+        short BaroVarianceT;
+        short AccZVarianceT;
+ 
+        int BaroAltitudeT, AltitudeErrorT;
+
+        short  HRAccZBiasT, FWGlideOffsetAngleT, FWRateEnergyT;
 
         short MagHeadingT;
 
@@ -698,7 +703,8 @@ namespace UAVXGUI
         bool CalibrateMagEnabled = false;
 
         bool LogFileHeaderWritten = false;
-
+        bool FusionFileHeaderWritten = false;
+        bool KMLFileHeaderWritten = false;
         public static bool RxLoopbackEnabled = false;
 
 
@@ -774,9 +780,16 @@ namespace UAVXGUI
         System.IO.FileStream SaveLogFileStream;
         System.IO.BinaryWriter SaveLogFileBinaryWriter;
         System.IO.FileStream SaveBBFileStream;
-        System.IO.BinaryWriter SaveBBFileBinaryWriter; 
+        System.IO.BinaryWriter SaveBBFileBinaryWriter;
+ 
         System.IO.FileStream SaveTextLogFileStream;
         System.IO.StreamWriter SaveTextLogFileStreamWriter;
+
+        System.IO.FileStream SaveKMLLogFileStream;
+        System.IO.StreamWriter SaveKMLLogFileStreamWriter;
+
+        System.IO.FileStream SaveTextFusionFileStream;
+        System.IO.StreamWriter SaveTextFusionFileStreamWriter;
 
         System.IO.FileStream OpenLogFileStream;
         System.IO.BinaryReader OpenLogFileBinaryReader;
@@ -826,6 +839,8 @@ namespace UAVXGUI
 
           Version vrs = new Version(Application.ProductVersion);
           //this.Text = this.Text + " v" + vrs.Major + "." + vrs.Minor + "." + vrs.Build;// vrs.MajorRevision + 
+
+          FusionFileHeaderWritten = false;
 
           ReplayDelay = 20 - Convert.ToInt16(ReplayNumericUpDown.Text);
 
@@ -968,6 +983,7 @@ namespace UAVXGUI
                     SaveTextLogFileStream = new System.IO.FileStream(FileName + ".csv", System.IO.FileMode.Create);
                     SaveTextLogFileStreamWriter = new System.IO.StreamWriter(SaveTextLogFileStream, System.Text.Encoding.ASCII);
                     LogFileHeaderWritten = false;
+ 
                     DoingLogfileReplay = true;
 
                     ReplayProgressBar.Value = 0;
@@ -1000,6 +1016,7 @@ namespace UAVXGUI
             SaveLogFileStream = new System.IO.FileStream(FileName + ".log", System.IO.FileMode.Create);
             SaveLogFileBinaryWriter = new System.IO.BinaryWriter(SaveLogFileStream);
 
+
             SaveTextLogFileStream = new System.IO.FileStream(FileName + ".csv", System.IO.FileMode.Create);
             SaveTextLogFileStreamWriter = new System.IO.StreamWriter(SaveTextLogFileStream, System.Text.Encoding.ASCII);
             LogFileHeaderWritten = false;
@@ -1026,6 +1043,61 @@ namespace UAVXGUI
 
         }
 
+        private void WriteKMLFileHeader()
+        {
+
+        SaveKMLLogFileStreamWriter.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+SaveKMLLogFileStreamWriter.WriteLine("<kml xmlns=\"http://www.opengis.net/kml/2.2\">");
+  SaveKMLLogFileStreamWriter.WriteLine("<Document>");
+    SaveKMLLogFileStreamWriter.WriteLine("<name>Paths</name>");
+    SaveKMLLogFileStreamWriter.WriteLine("<description>Examples of paths. Note that the tessellate tag is by default");
+      SaveKMLLogFileStreamWriter.WriteLine("set to 0. If you want to create tessellated lines, they must be authored");
+      SaveKMLLogFileStreamWriter.WriteLine("(or edited) directly in KML.</description>");
+    SaveKMLLogFileStreamWriter.WriteLine("<Style id=\"yellowLineGreenPoly\">");
+     SaveKMLLogFileStreamWriter.WriteLine(" <LineStyle>");
+        SaveKMLLogFileStreamWriter.WriteLine("<color>7f00ffff</color>");
+       SaveKMLLogFileStreamWriter.WriteLine("<width>4</width>");
+      SaveKMLLogFileStreamWriter.WriteLine("</LineStyle>");
+      SaveKMLLogFileStreamWriter.WriteLine("<PolyStyle>");
+        SaveKMLLogFileStreamWriter.WriteLine("<color>7f00ff00</color>");
+      SaveKMLLogFileStreamWriter.WriteLine("</PolyStyle>");
+    SaveKMLLogFileStreamWriter.WriteLine("</Style>");
+   SaveKMLLogFileStreamWriter.WriteLine(" <Placemark>");
+      SaveKMLLogFileStreamWriter.WriteLine("<name>Absolute Extruded</name>");
+      SaveKMLLogFileStreamWriter.WriteLine("<description>Transparent green wall with yellow outlines</description>");
+      SaveKMLLogFileStreamWriter.WriteLine("<styleUrl>#yellowLineGreenPoly</styleUrl>");
+     SaveKMLLogFileStreamWriter.WriteLine(" <LineString>");
+       SaveKMLLogFileStreamWriter.WriteLine(" <extrude>1</extrude>");
+        SaveKMLLogFileStreamWriter.WriteLine("<tessellate>1</tessellate>");
+        SaveKMLLogFileStreamWriter.WriteLine("<altitudeMode>relativeToGround</altitudeMode>");
+        SaveKMLLogFileStreamWriter.WriteLine("<coordinates>");
+            
+        }
+        
+        private void WriteKMLLogFileData() {
+          SaveKMLLogFileStreamWriter.WriteLine("  -112.2550785337791,36.07954952145647,2357");
+         SaveKMLLogFileStreamWriter.WriteLine(" -112.2549277039738,36.08117083492122,2357");
+         SaveKMLLogFileStreamWriter.WriteLine(" -112.2552505069063,36.08260761307279,2357");
+         SaveKMLLogFileStreamWriter.WriteLine(" -112.2564540158376,36.08395660588506,2357");
+        SaveKMLLogFileStreamWriter.WriteLine("  -112.2580238976449,36.08511401044813,2357");
+         SaveKMLLogFileStreamWriter.WriteLine(" -112.2595218489022,36.08584355239394,2357");
+         SaveKMLLogFileStreamWriter.WriteLine(" -112.2608216347552,36.08612634548589,2357");
+         SaveKMLLogFileStreamWriter.WriteLine(" -112.262073428656,36.08626019085147,2357");
+         SaveKMLLogFileStreamWriter.WriteLine(" -112.2633204928495,36.08621519860091,2357");
+        SaveKMLLogFileStreamWriter.WriteLine("  -112.2644963846444,36.08627897945274,2357");
+         SaveKMLLogFileStreamWriter.WriteLine(" -112.2656969554589,36.08649599090644,2357" );
+    }
+        
+        private void WriteKMLLogFileTrailer()
+        {
+
+        SaveKMLLogFileStreamWriter.WriteLine("</coordinates>");
+      SaveKMLLogFileStreamWriter.WriteLine("</LineString>");
+   SaveKMLLogFileStreamWriter.WriteLine(" </Placemark>");
+  SaveKMLLogFileStreamWriter.WriteLine("</Document>");
+SaveKMLLogFileStreamWriter.WriteLine("</kml>");
+
+}
   
         private void WriteTextLogFileHeader()
         {
@@ -1116,8 +1188,12 @@ namespace UAVXGUI
             "YawAngleError," +
             "DUAcc," +      
             "DesYawRate," +       
-            "YawRate," +          
-            "AccConf," );
+            "YawRate," +  
+        
+            "AccConf,"+
+            "PTrim," +
+ 
+            "SEnergy,");
 
             if (Airframe.Text == "Flying_Wing")
                 SaveTextLogFileStreamWriter.Write("Thr,R-Elev,L-Elev,-,L-Flap,-,-,-,-,R-Flap,");
@@ -1162,18 +1238,18 @@ namespace UAVXGUI
             "CruiseThrottle," +
             "BaroT, " +
             "BaroP, " +
-            "BaroRawAlt," +
             "BaroAlt," +
             "GPSAlt," +
             "RFAlt," +
             "RelAlt," +
+
             "DesAlt," +
             "ROC," +
-            "FROC," +
-            "AccZ," +
-            "AccZBias," +
-            "FWEnergy," + "GlideE," + "NewParam," +
-            "AltComp," +         
+            "AltComp," +
+
+            "BaroV," +
+            "TrackAccZV," +
+            
             "TiltFFComp," +
             "BattFFComp," +
             "NorthPosE," +
@@ -2299,6 +2375,9 @@ namespace UAVXGUI
                         WayHeading.Text = "?";
                         DistanceToDesired.Text = "?";
                     }
+
+                    
+                    WriteKMLFile();
                    
         }
 
@@ -2398,10 +2477,10 @@ namespace UAVXGUI
             BaroAltitude.BackColor =  (AltitudeT * 0.01) > MaximumAltitudeLimit ?
                 System.Drawing.Color.Orange : AltitudeGroupBox.BackColor;
 
-            if ((ROCT * 0.01) < -2) 
+            if ((ROCT * 0.01) < -2.0) 
                 ROC.BackColor = System.Drawing.Color.Red;
             else
-                ROC.BackColor = (ROCT * 0.01) < -1 ?
+                ROC.BackColor = (ROCT * 0.01) < -1.0 ?
                     System.Drawing.Color.Orange : AltitudeGroupBox.BackColor;
 
             RangefinderAltitude.Text = string.Format("{0:n2}", (float)RangefinderAltitudeT * 0.01);
@@ -2603,6 +2682,8 @@ namespace UAVXGUI
 
                     MissionTimeTextBox.Text = string.Format("{0:n0}", MissionTimeMilliSecT / 1000);
 
+                    WriteTextLogFile(); // only log with this packet
+
                     break;
 
                 case UAVXMinimOSDPacketTag:
@@ -2676,6 +2757,7 @@ namespace UAVXGUI
                     UpdateGPS();
 
                     DistanceToDesired.Text = string.Format("{0:n1}", (float)WPDistanceT * 0.1f);
+
 
                     SpeakNavStatus();
 
@@ -2825,12 +2907,14 @@ namespace UAVXGUI
 
                     BaroAltitudeT = ExtractInt24(ref UAVXPacket, 77);
 
-                    AccZT = ExtractByte(ref UAVXPacket, 80);
-                    if (AccZT > 127) AccZT -= 256;
+                        // missing AccROC
+                    BaroVarianceT = ExtractShort(ref UAVXPacket, 80);
+                    AccZVarianceT = ExtractShort(ref UAVXPacket, 82);
+                
 
-                    MagHeadingT = ExtractShort(ref UAVXPacket,81);
+                    MagHeadingT = ExtractShort(ref UAVXPacket,84);
 
-                    MPU6XXXTempT = ExtractShort(ref UAVXPacket, 83);
+                    MPU6XXXTempT = ExtractShort(ref UAVXPacket, 86);
 
                     SensorTemp.Text = string.Format("{0:n1}", MPU6XXXTempT * 0.1);
 
@@ -2840,7 +2924,11 @@ namespace UAVXGUI
                         SensorTemp.BackColor = MPU6XXXTempT > 300.0 ?
                             System.Drawing.Color.Orange : EnvGroupBox.BackColor;
 
-                    DoMotorsAndTime(85);
+                        
+                    FWRateEnergyT = ExtractShort(ref UAVXPacket, 88);
+                    FWGlideOffsetAngleT = ExtractShort(ref UAVXPacket, 90);
+
+                    DoMotorsAndTime(92);
 
                     UpdateFlags();
                     UpdateFlightState();
@@ -2852,7 +2940,11 @@ namespace UAVXGUI
                     UpdateCompensation();
                     UpdateMotors();
 
+                    FWRateEnergy.Text = string.Format("{0:n0}", FWRateEnergyT);
+                    FWGlideOffsetAngle.Text = string.Format("{0:n1}", (float)FWGlideOffsetAngleT * 0.1f);
+
                     Heading.Text = string.Format("{0:n0}", (float)HeadingT * MILLIRADDEG);
+
 
                     BaroTemperature.Text = string.Format("{0:n2}", BaroTemperatureT * 0.01);
                     BaroPressure.Text = string.Format("{0:n2}", BaroPressureT * 0.001);
@@ -2898,6 +2990,8 @@ namespace UAVXGUI
                     UpdateAccelerations();
                     UpdateCompensation();
                     UpdateMotors();
+
+
 
                     Heading.Text = string.Format("{0:n0}", (float)HeadingT * MILLIRADDEG);
 
@@ -3005,18 +3099,14 @@ namespace UAVXGUI
                     break;
                 case UAVXFusionPacketTag:
 
-                    HRAccZT = ExtractShort(ref UAVXPacket, 2);
-                    BaroRawAltitudeT = ExtractInt24(ref UAVXPacket, 4);
-                    FROCT = ExtractShort(ref UAVXPacket, 7);
-                    HRAccZBiasT = ExtractShort(ref UAVXPacket, 9);
-                    FWRateEnergyT = ExtractShort(ref UAVXPacket, 11);
-                    FWGlideOffsetAngleT = ExtractShort(ref UAVXPacket, 13);
-                    NewTuningParameterT = ExtractShort(ref UAVXPacket, 15);
+                    FusionuSecT = ExtractInt(ref UAVXPacket, 2);
+                    RawRelAltitudeT = ExtractInt24(ref UAVXPacket, 6);
+                    FAltitudeT = ExtractInt24(ref UAVXPacket, 9);
+                    FROCT = ExtractShort(ref UAVXPacket, 12);
+                    AccZT = ExtractShort(ref UAVXPacket, 14);
+                    HRAccZBiasT = ExtractShort(ref UAVXPacket, 16);
 
-                    FWRateEnergy.Text = string.Format("{0:n0}", FWRateEnergyT);
-                    FWGlideOffsetAngle.Text = string.Format("{0:n1}", (float)FWGlideOffsetAngleT*0.1f);
-
-                        // plus 4 more 16bit values
+                    WriteTextFusionFile(); // only log with this packet
 
                     break;
                 default: break;
@@ -3200,6 +3290,78 @@ namespace UAVXGUI
 
         //___________________________________________________________________________________
 
+           void WriteKMLFile()
+        {
+            short i;
+
+            if (!KMLFileHeaderWritten)
+            {
+                FileName = UAVXGUI.Properties.Settings.Default.LogDirectory + "\\UAVX_" +
+                DateTime.Now.Year + "_" +
+                DateTime.Now.Month + "_" +
+                DateTime.Now.Day + "_" +
+                DateTime.Now.Hour + "_" +
+                DateTime.Now.Minute;
+
+                SaveKMLLogFileStream = new System.IO.FileStream(FileName + ".kml", System.IO.FileMode.Create);
+                SaveKMLLogFileStreamWriter = new System.IO.StreamWriter(SaveKMLLogFileStream);
+
+                WriteKMLFileHeader();
+                KMLFileHeaderWritten = true;
+            }
+
+            if ((GPSLongitudeT !=0) && (GPSLongitudeT !=0))
+                SaveKMLLogFileStreamWriter.WriteLine((double)GPSLongitudeT * 1e-7 + "," + (double)GPSLatitudeT * 1e-7 + "," + CurrAlt);// (double)GPSAltitudeT * 0.01);
+
+        }
+
+         void WriteTextFusionFile()
+        {
+            short i;
+
+            if (!FusionFileHeaderWritten)
+            {
+                 FileName = UAVXGUI.Properties.Settings.Default.LogDirectory + "\\UAVX_" + 
+                DateTime.Now.Year + "_" +
+                DateTime.Now.Month + "_" +
+                DateTime.Now.Day + "_" +
+                DateTime.Now.Hour + "_" +
+                DateTime.Now.Minute;
+
+               SaveTextFusionFileStream = new System.IO.FileStream(FileName + "_Fusion.csv", System.IO.FileMode.Create);
+               SaveTextFusionFileStreamWriter = new System.IO.StreamWriter(SaveTextFusionFileStream, System.Text.Encoding.ASCII);
+
+               SaveTextFusionFileStreamWriter.Write("Time (uS)," +   
+                  "RawRelAlt," +
+                   "RelAlt," +
+                  "ROC," +
+
+                  "AccZ," +
+                  "AccZBias," +
+                  "BaroV," +
+                  "AccZVarianceT");
+
+               SaveTextFusionFileStreamWriter.WriteLine();
+               SaveTextFusionFileStreamWriter.Flush();
+
+               FusionFileHeaderWritten = true;
+            }
+
+            SaveTextFusionFileStreamWriter.Write(FusionuSecT  + "," +
+            RawRelAltitudeT * 0.001 + "," +
+            FAltitudeT * 0.001 + "," +
+            FROCT * 0.001 + "," +  
+            AccZT * 0.001 + "," +
+            HRAccZBiasT * 0.001 + "," +
+            BaroVarianceT * 0.001 + "," +
+            AccZVarianceT * 0.001 
+             );
+
+
+         SaveTextFusionFileStreamWriter.WriteLine();
+            SaveTextFusionFileStreamWriter.Flush();
+
+   }
 
         void WriteTextLogFile()
         {
@@ -3245,7 +3407,8 @@ namespace UAVXGUI
                 RateT[i] * 0.001 + ",");
             }
 
-            SaveTextLogFileStreamWriter.Write(AccConfidenceT * 0.01 + "," ); 
+            SaveTextLogFileStreamWriter.Write(AccConfidenceT * 0.01 + ","  + FWRateEnergyT 
+                     + "," +  (float)FWGlideOffsetAngleT * 0.1f +  "," ); 
 
             for (i = 0; i < 10; i++)
                SaveTextLogFileStreamWriter.Write(PWMT[i]*0.001 + ",");
@@ -3276,30 +3439,29 @@ namespace UAVXGUI
 
             CurrWPT + "," +
 
+
+
             WPBearingT * MILLIRADDEG + "," +
 
             CruiseThrottleT * 0.001 + "," +
             BaroTemperatureT * 0.01 + "," +
 
-            BaroPressureT * 0.001 + "," +
-            BaroRawAltitudeT * 0.01 + "," +  
+            BaroPressureT * 0.001 + "," +  
             BaroAltitudeT * 0.01 + "," +
             GPSAltitudeT * 0.01 + "," +
             RangefinderAltitudeT * 0.01 + "," +
+
             AltitudeT * 0.01 + "," +
             DesiredAltitudeT * 0.01 + "," +
-            ROCT * 0.01 + "," +
-            FROCT * 0.01 + "," +
-            HRAccZT * 0.001 + "," +
-            HRAccZBiasT * 0.001 + "," +
-            FWRateEnergyT * 0.001 + "," +
-            FWGlideOffsetAngleT * 0.1 + "," +
-            NewTuningParameterT + "," +
 
+            ROCT * 0.01 + "," +
             AltCompT * 0.001 + "," +
-  
+
+            BaroVarianceT * 0.001 + "," +
+            AccZVarianceT * 0.001 + "," +
+          
             TiltFFCompT * 0.001 + "," +
-             BattFFCompT * 0.001 + "," +
+            BattFFCompT * 0.001 + "," +
 
             NorthPosET * 0.1 + "," +
             EastPosET * 0.1 + "," +
@@ -3344,6 +3506,26 @@ namespace UAVXGUI
             SaveTextLogFileStreamWriter.Flush();
             SaveTextLogFileStreamWriter.Close();
             SaveTextLogFileStream.Close();
+
+            if (FusionFileHeaderWritten)
+            {
+  
+                SaveTextFusionFileStreamWriter.Flush();
+                SaveTextFusionFileStreamWriter.Close();
+                SaveTextFusionFileStream.Close();
+                FusionFileHeaderWritten = false;
+            }
+
+            if (KMLFileHeaderWritten)
+            {
+ 
+                WriteKMLLogFileTrailer();
+                SaveKMLLogFileStreamWriter.Flush();
+                SaveKMLLogFileStreamWriter.Close();
+                SaveKMLLogFileStream.Close();
+                KMLFileHeaderWritten = false;
+            }
+
         }
 
         void UAVXCloseTelemetry()

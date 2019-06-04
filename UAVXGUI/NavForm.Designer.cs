@@ -88,6 +88,22 @@ namespace UAVXGUI
             this.LocationAddress = new System.Windows.Forms.TextBox();
             this.LoiterTimeLabel = new System.Windows.Forms.Label();
             this.M = new System.Windows.Forms.DataGridView();
+            this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Altitude = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Hidden_Alt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SeaLevelAlt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Velocity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Loiter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Action = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.OrbitRad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrbitVel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PulseWidth = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PulsePeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Up = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Down = new System.Windows.Forms.DataGridViewImageColumn();
+            this.DEL = new System.Windows.Forms.DataGridViewImageColumn();
             this.MenuMain = new System.Windows.Forms.MenuStrip();
             this.GoToCheckBox = new System.Windows.Forms.CheckBox();
             this.ProxRadiusLabel = new System.Windows.Forms.Label();
@@ -128,22 +144,6 @@ namespace UAVXGUI
             this.WindSpeedTextBox = new System.Windows.Forms.TextBox();
             this.WindSpeedLabel = new System.Windows.Forms.Label();
             this.WindDirectionLabel = new System.Windows.Forms.Label();
-            this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Lat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Lon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Altitude = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Hidden_Alt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SeaLevelAlt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Velocity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Loiter = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Action = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.OrbitRad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrbitVel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PulseWidth = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PulsePeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Up = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Down = new System.Windows.Forms.DataGridViewImageColumn();
-            this.DEL = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).BeginInit();
             this.OriginGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MapZoomNumericUpDown)).BeginInit();
@@ -435,6 +435,161 @@ namespace UAVXGUI
             this.M.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.M_CellContentClick);
             this.M.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.M_CellEndEdit);
             // 
+            // Number
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Number.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Number.Frozen = true;
+            this.Number.HeaderText = "#";
+            this.Number.Name = "Number";
+            this.Number.ReadOnly = true;
+            this.Number.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Number.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Number.Width = 20;
+            // 
+            // Lat
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Lat.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Lat.HeaderText = "Lat.";
+            this.Lat.Name = "Lat";
+            this.Lat.ReadOnly = true;
+            this.Lat.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Lat.Width = 31;
+            // 
+            // Lon
+            // 
+            this.Lon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Lon.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Lon.HeaderText = "Lon.";
+            this.Lon.Name = "Lon";
+            this.Lon.ReadOnly = true;
+            this.Lon.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Lon.Width = 34;
+            // 
+            // Altitude
+            // 
+            this.Altitude.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.NullValue = null;
+            this.Altitude.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Altitude.HeaderText = "Alt";
+            this.Altitude.Name = "Altitude";
+            this.Altitude.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Altitude.Width = 25;
+            // 
+            // Hidden_Alt
+            // 
+            this.Hidden_Alt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.NullValue = null;
+            this.Hidden_Alt.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Hidden_Alt.HeaderText = "AOff";
+            this.Hidden_Alt.Name = "Hidden_Alt";
+            this.Hidden_Alt.ReadOnly = true;
+            this.Hidden_Alt.Visible = false;
+            // 
+            // SeaLevelAlt
+            // 
+            this.SeaLevelAlt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.NullValue = null;
+            this.SeaLevelAlt.DefaultCellStyle = dataGridViewCellStyle6;
+            this.SeaLevelAlt.HeaderText = "ASL";
+            this.SeaLevelAlt.Name = "SeaLevelAlt";
+            this.SeaLevelAlt.ReadOnly = true;
+            this.SeaLevelAlt.Width = 52;
+            // 
+            // Velocity
+            // 
+            this.Velocity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Velocity.HeaderText = "V";
+            this.Velocity.Name = "Velocity";
+            this.Velocity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Velocity.Width = 20;
+            // 
+            // Loiter
+            // 
+            this.Loiter.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Loiter.DefaultCellStyle = dataGridViewCellStyle7;
+            this.Loiter.HeaderText = "T";
+            this.Loiter.Name = "Loiter";
+            this.Loiter.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Loiter.Width = 20;
+            // 
+            // Action
+            // 
+            this.Action.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Action.HeaderText = "Action";
+            this.Action.Items.AddRange(new object[] {
+            "Via",
+            "Orbit",
+            "Perch",
+            "POI",
+            "Survey"});
+            this.Action.Name = "Action";
+            this.Action.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Action.Width = 43;
+            // 
+            // OrbitRad
+            // 
+            this.OrbitRad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.OrbitRad.HeaderText = "R";
+            this.OrbitRad.Name = "OrbitRad";
+            this.OrbitRad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.OrbitRad.Width = 21;
+            // 
+            // OrbitVel
+            // 
+            this.OrbitVel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.OrbitVel.HeaderText = "V";
+            this.OrbitVel.Name = "OrbitVel";
+            this.OrbitVel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.OrbitVel.Width = 20;
+            // 
+            // PulseWidth
+            // 
+            this.PulseWidth.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PulseWidth.HeaderText = "Width";
+            this.PulseWidth.Name = "PulseWidth";
+            this.PulseWidth.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.PulseWidth.Width = 41;
+            // 
+            // PulsePeriod
+            // 
+            this.PulsePeriod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PulsePeriod.HeaderText = "Period";
+            this.PulsePeriod.Name = "PulsePeriod";
+            this.PulsePeriod.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.PulsePeriod.Width = 43;
+            // 
+            // Up
+            // 
+            this.Up.HeaderText = "";
+            this.Up.Image = global::UAVXGUI.Properties.Resources.up_btn;
+            this.Up.Name = "Up";
+            this.Up.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Up.Width = 5;
+            // 
+            // Down
+            // 
+            this.Down.HeaderText = "";
+            this.Down.Image = global::UAVXGUI.Properties.Resources.down_btn;
+            this.Down.Name = "Down";
+            this.Down.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Down.Width = 5;
+            // 
+            // DEL
+            // 
+            this.DEL.HeaderText = "";
+            this.DEL.Image = global::UAVXGUI.Properties.Resources.del_btn;
+            this.DEL.Name = "DEL";
+            this.DEL.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DEL.Width = 5;
+            // 
             // MenuMain
             // 
             this.MenuMain.Location = new System.Drawing.Point(0, 0);
@@ -597,7 +752,7 @@ namespace UAVXGUI
             // 
             this.TMRContextMenuItem.Name = "TMRContextMenuItem";
             this.TMRContextMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.TMRContextMenuItem.Text = "Set TMR";
+            this.TMRContextMenuItem.Text = "Set Survey";
             this.TMRContextMenuItem.Click += new System.EventHandler(this.TMRContextMenuItem_Click);
             // 
             // ContextMenuSeparator1
@@ -810,162 +965,6 @@ namespace UAVXGUI
             this.WindDirectionLabel.Size = new System.Drawing.Size(32, 13);
             this.WindDirectionLabel.TabIndex = 194;
             this.WindDirectionLabel.Text = "Wind";
-            // 
-            // Number
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Number.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Number.Frozen = true;
-            this.Number.HeaderText = "#";
-            this.Number.Name = "Number";
-            this.Number.ReadOnly = true;
-            this.Number.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Number.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Number.Width = 20;
-            // 
-            // Lat
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Lat.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Lat.HeaderText = "Lat.";
-            this.Lat.Name = "Lat";
-            this.Lat.ReadOnly = true;
-            this.Lat.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Lat.Width = 31;
-            // 
-            // Lon
-            // 
-            this.Lon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Lon.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Lon.HeaderText = "Lon.";
-            this.Lon.Name = "Lon";
-            this.Lon.ReadOnly = true;
-            this.Lon.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Lon.Width = 34;
-            // 
-            // Altitude
-            // 
-            this.Altitude.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Format = "N0";
-            dataGridViewCellStyle4.NullValue = null;
-            this.Altitude.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Altitude.HeaderText = "Alt";
-            this.Altitude.Name = "Altitude";
-            this.Altitude.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Altitude.Width = 25;
-            // 
-            // Hidden_Alt
-            // 
-            this.Hidden_Alt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.NullValue = null;
-            this.Hidden_Alt.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Hidden_Alt.HeaderText = "AOff";
-            this.Hidden_Alt.Name = "Hidden_Alt";
-            this.Hidden_Alt.ReadOnly = true;
-            this.Hidden_Alt.Visible = false;
-            this.Hidden_Alt.Width = 53;
-            // 
-            // SeaLevelAlt
-            // 
-            this.SeaLevelAlt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.NullValue = null;
-            this.SeaLevelAlt.DefaultCellStyle = dataGridViewCellStyle6;
-            this.SeaLevelAlt.HeaderText = "ASL";
-            this.SeaLevelAlt.Name = "SeaLevelAlt";
-            this.SeaLevelAlt.ReadOnly = true;
-            this.SeaLevelAlt.Width = 52;
-            // 
-            // Velocity
-            // 
-            this.Velocity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Velocity.HeaderText = "V";
-            this.Velocity.Name = "Velocity";
-            this.Velocity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Velocity.Width = 20;
-            // 
-            // Loiter
-            // 
-            this.Loiter.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Loiter.DefaultCellStyle = dataGridViewCellStyle7;
-            this.Loiter.HeaderText = "T";
-            this.Loiter.Name = "Loiter";
-            this.Loiter.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Loiter.Width = 20;
-            // 
-            // Action
-            // 
-            this.Action.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Action.HeaderText = "Action";
-            this.Action.Items.AddRange(new object[] {
-            "Via",
-            "Orbit",
-            "Perch",
-            "POI",
-            "Pulse"});
-            this.Action.Name = "Action";
-            this.Action.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Action.Width = 43;
-            // 
-            // OrbitRad
-            // 
-            this.OrbitRad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.OrbitRad.HeaderText = "R";
-            this.OrbitRad.Name = "OrbitRad";
-            this.OrbitRad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.OrbitRad.Width = 21;
-            // 
-            // OrbitVel
-            // 
-            this.OrbitVel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.OrbitVel.HeaderText = "V";
-            this.OrbitVel.Name = "OrbitVel";
-            this.OrbitVel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.OrbitVel.Width = 20;
-            // 
-            // PulseWidth
-            // 
-            this.PulseWidth.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.PulseWidth.HeaderText = "Width";
-            this.PulseWidth.Name = "PulseWidth";
-            this.PulseWidth.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.PulseWidth.Width = 41;
-            // 
-            // PulsePeriod
-            // 
-            this.PulsePeriod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.PulsePeriod.HeaderText = "Period";
-            this.PulsePeriod.Name = "PulsePeriod";
-            this.PulsePeriod.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.PulsePeriod.Width = 43;
-            // 
-            // Up
-            // 
-            this.Up.HeaderText = "";
-            this.Up.Image = global::UAVXGUI.Properties.Resources.up_btn;
-            this.Up.Name = "Up";
-            this.Up.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Up.Width = 5;
-            // 
-            // Down
-            // 
-            this.Down.HeaderText = "";
-            this.Down.Image = global::UAVXGUI.Properties.Resources.down_btn;
-            this.Down.Name = "Down";
-            this.Down.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Down.Width = 5;
-            // 
-            // DEL
-            // 
-            this.DEL.HeaderText = "";
-            this.DEL.Image = global::UAVXGUI.Properties.Resources.del_btn;
-            this.DEL.Name = "DEL";
-            this.DEL.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.DEL.Width = 5;
             // 
             // NavForm
             // 

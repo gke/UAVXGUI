@@ -398,6 +398,9 @@ namespace UAVXGUI
             if (parameterForm.AltVelIntLimitNumericUpDown.Focused)
                 helpstring = help.GetString("AltVelIntLimit");
 
+            if (parameterForm.AccVarianceNumericUpDown.Focused)
+                helpstring = help.GetString("AltCF");
+
             if (parameterForm.FWClimbAngleNumericUpDown.Focused)
                 helpstring = help.GetString("ClimbAngle");
             if (parameterForm.FWTrimAngleNumericUpDown.Focused)
@@ -414,6 +417,14 @@ namespace UAVXGUI
 
             if (parameterForm.FWSpoilerDecayTimeNumericUpDown.Focused)
                 helpstring = help.GetString("FWFlapDecayTime");
+
+
+            if (parameterForm.AccVarianceNumericUpDown.Focused)
+                helpstring = help.GetString("AccZVariance");
+            if (parameterForm.TrackAccZVarianceTextBox.Focused)
+                helpstring = help.GetString("TrackAccZVariance");
+            if (parameterForm.BaroVarianceTextBox.Focused)
+                helpstring = help.GetString("BaroVariance");
 
             if (parameterForm.TurnoutNumericUpDown.Focused)
                 helpstring = help.GetString("Turnout");
@@ -973,12 +984,15 @@ namespace UAVXGUI
                 NumericUpDown Field = (NumericUpDown)Object;
 
                 int p = Convert.ToInt16(Field.Tag);
+                if ((p == 105))
+                    P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 100.0);
+                else 
                    if ((p == 64) || (p == 83) || (p == 84) || (p == 89) )
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 0.1);
                 else
-                    if ((p == 54) || (p == 18) || (p == 32) || (p == 34) || (p == 39) || (p == 46) || (p == 53) || (p == 58) || (p == 70) || (p == 104) || (p == 110))
+                       if ((p == 54) || (p == 18) || (p == 32) || (p == 34) || (p == 39) || (p == 46) || (p == 53) || (p == 70) || (p == 104) || (p == 110))
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 10.0);
-                else               
+                else           
                     P[CurrPS, p - 1].Value = Convert.ToByte(Field.Value);
        
 
@@ -1377,7 +1391,7 @@ namespace UAVXGUI
                         ParamUpdate(NavPosKpNumericUpDown);
                         break;
                     case 58:
-                       AltLPFNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
+                        AltLPFNumericUpDown.Value = UAVXP[p - 1].Value;
                        ParamUpdate(AltLPFNumericUpDown);
                         break;
                     case 59:
@@ -1482,9 +1496,7 @@ namespace UAVXGUI
                         MaxPitchAngleNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(MaxPitchAngleNumericUpDown);
                         break;
-                    case 76:
-                        ComboPort2ComboBox.SelectedIndex = UAVXP[p - 1].Value;
-                        ParamUpdate(ComboPort2ComboBox);
+                    case 76: 
                         break;
                     case 77:
                         MaxRollAngleNumericUpDown.Value = UAVXP[p - 1].Value;
@@ -1601,7 +1613,8 @@ namespace UAVXGUI
                         ParamUpdate(VRSDescentRateNumericUpDown);
                         break;
                     case 105:
-                        
+                        AccVarianceNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.01);
+                        ParamUpdate(AccVarianceNumericUpDown);
                         break;
                     case 106:
                         NavGPSTimeoutNumericUpDown.Value = UAVXP[p - 1].Value;
@@ -1624,6 +1637,14 @@ namespace UAVXGUI
                     case 110:
                         VoltageFSNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
                         ParamUpdate(VoltageFSNumericUpDown);
+                        break;
+                    case 111:
+                        BaroVarianceTextBox.Text = string.Format("{0:n2}", Convert.ToDecimal(UAVXP[p - 1].Value * 0.01));
+                        P[CurrPS, p - 1].Value = UAVXP[p - 1].Value;
+                        break;
+                    case 112:
+                        TrackAccZVarianceTextBox.Text = string.Format("{0:n2}", Convert.ToDecimal(UAVXP[p - 1].Value * 0.01));
+                        P[CurrPS, p - 1].Value = UAVXP[p - 1].Value;
                         break;
 
                     default: break; // up to case 64 available

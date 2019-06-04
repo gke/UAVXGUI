@@ -449,7 +449,7 @@ namespace UAVXGUI
                     if (sAction == "POI") 
                         AddPOIMarker((a + 1).ToString(), double.Parse(sLon), double.Parse(sLat));
                     else
-                        if (sAction == "Pulse")
+                        if (sAction == "Survey")
                         {
                             // no Marker
                         } else
@@ -881,8 +881,8 @@ namespace UAVXGUI
             if (!GoToEnabled)
                 addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navVia], start.Lat, start.Lng, 
                     Properties.Settings.Default.Altitude, Properties.Settings.Default.Velocity, 
-                    Convert.ToInt32(DefaultLoiterTextBox.Text), Properties.Settings.Default.OrbitRadius,
-                    Properties.Settings.Default.OrbitVelocity, 0, 0);
+                    Convert.ToInt32(DefaultLoiterTextBox.Text), 0,
+                    0, Properties.Settings.Default.TMRWidth, Properties.Settings.Default.TMRPeriod);
         } // ViaContextMenuItem_Click
 
         private void OrbitContextMenuItem_Click(object sender, EventArgs e)
@@ -918,7 +918,7 @@ namespace UAVXGUI
         private void TMRContextMenuItem_Click(object sender, EventArgs e)
         {
             if (!GoToEnabled)
-                addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navPulse], start.Lat, start.Lng,
+                addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navPulse], 0, 0,
                 0, 0, 0, 0, 0, 
                 Properties.Settings.Default.TMRWidth, Properties.Settings.Default.TMRPeriod);
         } // TMRContextMenuItem_Click
