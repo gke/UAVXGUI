@@ -231,6 +231,7 @@ namespace UAVXGUI
 
      public const byte UAVXAFNamePacketTag = 63;
      public const byte UAVXWindPacketTag = 64;
+     public const byte UAVXTrackPacketTag = 65;
 
         public const byte FrSkyPacketTag = 99;
 
@@ -377,6 +378,8 @@ namespace UAVXGUI
             Preflight,
             Ready,
             ThrottleOpenCheck,
+            ErectingGyros,
+            MonitorInstruments,
             UnknownFlightState
         };
 
@@ -533,7 +536,8 @@ namespace UAVXGUI
         public static short NavHeadingET;             // 63
 
         //UAVXRCChannelsPacket
-
+        public static short RCNavFramesT = 0;
+        public static short RC1CaptureFramesT = 0;
 
         public static double GPSCFKpT;
         public static double AltCFKpT;
@@ -680,6 +684,8 @@ namespace UAVXGUI
 
         public static short WindDirectionT, WindSpeedT;
 
+        public static short KMLAltSource;
+
         static bool VRSHazardDetected = false;
 
         static bool AutoLandEnabled = false;
@@ -787,6 +793,8 @@ namespace UAVXGUI
 
         System.IO.FileStream SaveKMLLogFileStream;
         System.IO.StreamWriter SaveKMLLogFileStreamWriter;
+        System.IO.FileStream SaveTrackLogFileStream;
+        System.IO.StreamWriter SaveTrackLogFileStreamWriter;
 
         System.IO.FileStream SaveTextFusionFileStream;
         System.IO.StreamWriter SaveTextFusionFileStreamWriter;
@@ -1046,6 +1054,8 @@ namespace UAVXGUI
         private void WriteKMLFileHeader()
         {
 
+            SaveTrackLogFileStreamWriter.WriteLine("Lon, Lat, Alt, NavFrames, CaptureFrames, GPSSats");
+
         SaveKMLLogFileStreamWriter.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 SaveKMLLogFileStreamWriter.WriteLine("<kml xmlns=\"http://www.opengis.net/kml/2.2\">");
   SaveKMLLogFileStreamWriter.WriteLine("<Document>");
@@ -1064,29 +1074,17 @@ SaveKMLLogFileStreamWriter.WriteLine("<kml xmlns=\"http://www.opengis.net/kml/2.
     SaveKMLLogFileStreamWriter.WriteLine("</Style>");
    SaveKMLLogFileStreamWriter.WriteLine(" <Placemark>");
       SaveKMLLogFileStreamWriter.WriteLine("<name>Absolute Extruded</name>");
-      SaveKMLLogFileStreamWriter.WriteLine("<description>Transparent green wall with yellow outlines</description>");
-      SaveKMLLogFileStreamWriter.WriteLine("<styleUrl>#yellowLineGreenPoly</styleUrl>");
+     SaveKMLLogFileStreamWriter.WriteLine("<description>Transparent green wall with yellow outlines</description>");
+     SaveKMLLogFileStreamWriter.WriteLine("<styleUrl>#yellowLineGreenPoly</styleUrl>");
      SaveKMLLogFileStreamWriter.WriteLine(" <LineString>");
        SaveKMLLogFileStreamWriter.WriteLine(" <extrude>1</extrude>");
-        SaveKMLLogFileStreamWriter.WriteLine("<tessellate>1</tessellate>");
+       SaveKMLLogFileStreamWriter.WriteLine("<tessellate>1</tessellate>");
         SaveKMLLogFileStreamWriter.WriteLine("<altitudeMode>relativeToGround</altitudeMode>");
         SaveKMLLogFileStreamWriter.WriteLine("<coordinates>");
             
         }
         
-        private void WriteKMLLogFileData() {
-          SaveKMLLogFileStreamWriter.WriteLine("  -112.2550785337791,36.07954952145647,2357");
-         SaveKMLLogFileStreamWriter.WriteLine(" -112.2549277039738,36.08117083492122,2357");
-         SaveKMLLogFileStreamWriter.WriteLine(" -112.2552505069063,36.08260761307279,2357");
-         SaveKMLLogFileStreamWriter.WriteLine(" -112.2564540158376,36.08395660588506,2357");
-        SaveKMLLogFileStreamWriter.WriteLine("  -112.2580238976449,36.08511401044813,2357");
-         SaveKMLLogFileStreamWriter.WriteLine(" -112.2595218489022,36.08584355239394,2357");
-         SaveKMLLogFileStreamWriter.WriteLine(" -112.2608216347552,36.08612634548589,2357");
-         SaveKMLLogFileStreamWriter.WriteLine(" -112.262073428656,36.08626019085147,2357");
-         SaveKMLLogFileStreamWriter.WriteLine(" -112.2633204928495,36.08621519860091,2357");
-        SaveKMLLogFileStreamWriter.WriteLine("  -112.2644963846444,36.08627897945274,2357");
-         SaveKMLLogFileStreamWriter.WriteLine(" -112.2656969554589,36.08649599090644,2357" );
-    }
+ 
         
         private void WriteKMLLogFileTrailer()
         {
@@ -1381,9 +1379,14 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
             }
         }
 
+        private void KMLComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            KMLAltSource = (short)KMLComboBox.SelectedIndex;
+        }
+
         private void BootLoadButton_Click(object sender, EventArgs e)
         {
-            if ((StateT == FlightStates.Preflight) || (StateT == FlightStates.Ready))
+            if ((StateT == FlightStates.Preflight) || (StateT == FlightStates.Ready) || (StateT == FlightStates.MonitorInstruments))
             {
                 SendRequestPacket(UAVXMiscPacketTag, (byte)MiscComms.miscBootLoad, 0);
                 BootLoadButton.BackColor = Color.Red;
@@ -2031,6 +2034,12 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                 case FlightStates.ThrottleOpenCheck: FlightState.Text = "Throttle";
                     FlightState.BackColor = System.Drawing.Color.Red;
                     break;
+                case FlightStates.ErectingGyros: FlightState.Text = "Erect Gyros";
+                    FlightState.BackColor = System.Drawing.Color.Red;
+                    break;
+                case FlightStates.MonitorInstruments: FlightState.Text = "Instrumentation";
+                    FlightState.BackColor = System.Drawing.Color.Silver;
+                    break;
                 default: FlightState.Text = "Unknown"; break;
             } // switch
         }
@@ -2583,6 +2592,16 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
 
 
                         break;
+                    case UAVXTrackPacketTag:
+                        RCNavFramesT = ExtractShort(ref UAVXPacket, 2);
+                        RC1CaptureFramesT = ExtractShort(ref UAVXPacket, 4);
+                        GPSLatitudeT = ExtractInt(ref UAVXPacket, 6);
+                        GPSLongitudeT = ExtractInt(ref UAVXPacket, 10);
+                        GPSAltitudeT = ExtractInt24(ref UAVXPacket, 14);
+                        GPSNoOfSatsT = ExtractByte(ref UAVXPacket, 17);
+                        CurrAlt = (double)GPSAltitudeT * 0.01;
+                        WriteKMLFile();
+                        break;
 
                     case UAVXOriginPacketTag:
 	                    Mission.NoOfWayPoints = UAVXPacket[2];
@@ -2861,9 +2880,14 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                     BadS.Text = string.Format("{0:n0}", Stats[BadX]);
                     ErrNoS.Text = string.Format("{0:n0}", Stats[BadNumX]);
                     UtilisationLabel.Text = Stats[UtilisationX] + "%";
-                    UtilisationProgressBar.Value = Limit(Stats[UtilisationX], 0, 100);
-                    UtilisationProgressBar.ForeColor = Stats[UtilisationX] < 40 ? System.Drawing.Color.Green : Stats[UtilisationX] < 60 ? System.Drawing.Color.Orange : System.Drawing.Color.Red;
-
+                    if (Stats[UtilisationX] > 70)  
+                        UtilisationLabel.BackColor = System.Drawing.Color.Red;
+                    else 
+                        if (Stats[UtilisationX] > 40) 
+                            UtilisationLabel.BackColor = System.Drawing.Color.Orange;
+                         else         
+                            UtilisationLabel.BackColor = menuStrip1.BackColor;
+                   
                     Airframe.Text = AFNames[AirframeT];
 
                     DoOrientation();
@@ -2928,7 +2952,9 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                     FWRateEnergyT = ExtractShort(ref UAVXPacket, 88);
                     FWGlideOffsetAngleT = ExtractShort(ref UAVXPacket, 90);
 
-                    DoMotorsAndTime(92);
+                    NavStateT = (NavStates)ExtractByte(ref UAVXPacket, 92);
+
+                    DoMotorsAndTime(93);
 
                     UpdateFlags();
                     UpdateFlightState();
@@ -2938,6 +2964,7 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                     UpdateAltitude();
                     UpdateAccelerations();
                     UpdateCompensation();
+                    UpdateNavState();
                     UpdateMotors();
 
                     FWRateEnergy.Text = string.Format("{0:n0}", FWRateEnergyT);
@@ -3086,6 +3113,7 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                     NavYCorr.Text = string.Format("{0:n0}", NavYCorrT);
 
                     break;
+
                     case UAVXGuidancePacketTag:
                         UpdateWhere(2);
                     break;
@@ -3303,21 +3331,35 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                 DateTime.Now.Hour + "_" +
                 DateTime.Now.Minute;
 
-                SaveKMLLogFileStream = new System.IO.FileStream(FileName + ".kml", System.IO.FileMode.Create);
+                SaveKMLLogFileStream = new System.IO.FileStream(FileName + "_Track.kml", System.IO.FileMode.Create);
                 SaveKMLLogFileStreamWriter = new System.IO.StreamWriter(SaveKMLLogFileStream);
+
+                SaveTrackLogFileStream = new System.IO.FileStream(FileName + "_Track.csv", System.IO.FileMode.Create);
+                SaveTrackLogFileStreamWriter = new System.IO.StreamWriter(SaveTrackLogFileStream);
 
                 WriteKMLFileHeader();
                 KMLFileHeaderWritten = true;
             }
 
-            if ((GPSLongitudeT !=0) && (GPSLongitudeT !=0))
-                SaveKMLLogFileStreamWriter.WriteLine((double)GPSLongitudeT * 1e-7 + "," + (double)GPSLatitudeT * 1e-7 + "," + CurrAlt);// (double)GPSAltitudeT * 0.01);
+            if ((GPSLongitudeT != 0) && (GPSLongitudeT != 0)) {
+                SaveKMLLogFileStreamWriter.Write((double)GPSLongitudeT * 1e-7 + "," + (double)GPSLatitudeT * 1e-7 + ",");
+                    switch (KMLAltSource) {
+                        case 0: SaveKMLLogFileStreamWriter.WriteLine(CurrAlt); break;
+                        case 1: SaveKMLLogFileStreamWriter.WriteLine(RCNavFramesT); break;
+                        case 2: SaveKMLLogFileStreamWriter.WriteLine(RC1CaptureFramesT); break;
+                        case 3: SaveKMLLogFileStreamWriter.WriteLine(GPSNoOfSatsT); break;
+                    }
 
+               SaveTrackLogFileStreamWriter.WriteLine((double)GPSLongitudeT * 1e-7 + "," + (double)GPSLatitudeT * 1e-7 + ","+
+                   CurrAlt + ","+ RCNavFramesT + "," + RC1CaptureFramesT + "," + GPSNoOfSatsT);
+
+               // SaveKMLLogFileStreamWriter.WriteLine("<Placemark> <name>"+ RCNavFramesT + "</name> <Point>");
+               // SaveKMLLogFileStreamWriter.WriteLine((double)GPSLongitudeT * 1e-7 + "," + (double)GPSLatitudeT * 1e-7 + "," + CurrAlt + "</Point> </Placemark>");
+            }
         }
 
          void WriteTextFusionFile()
         {
-            short i;
 
             if (!FusionFileHeaderWritten)
             {
@@ -3523,6 +3565,10 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                 SaveKMLLogFileStreamWriter.Flush();
                 SaveKMLLogFileStreamWriter.Close();
                 SaveKMLLogFileStream.Close();
+
+                SaveTrackLogFileStreamWriter.Flush();
+                SaveTrackLogFileStreamWriter.Close();
+                SaveTrackLogFileStream.Close();
                 KMLFileHeaderWritten = false;
             }
 

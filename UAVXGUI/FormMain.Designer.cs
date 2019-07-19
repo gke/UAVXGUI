@@ -102,6 +102,8 @@ namespace UAVXGUI
             this.BatteryCharge = new System.Windows.Forms.TextBox();
             this.BatteryChargeLabel = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.NavBox = new System.Windows.Forms.TextBox();
+            this.RTHBox = new System.Windows.Forms.TextBox();
             this.GPSValidBox = new System.Windows.Forms.TextBox();
             this.NavValidBox = new System.Windows.Forms.TextBox();
             this.AngleControlBox = new System.Windows.Forms.TextBox();
@@ -287,7 +289,6 @@ namespace UAVXGUI
             this.DumpBBButton = new System.Windows.Forms.Button();
             this.AlarmsButton = new System.Windows.Forms.Button();
             this.UtilisationLabel = new System.Windows.Forms.Label();
-            this.UtilisationProgressBar = new System.Windows.Forms.ProgressBar();
             this.CalibrationGroupBox = new System.Windows.Forms.GroupBox();
             this.YawPitchRollGyroLabel = new System.Windows.Forms.Label();
             this.NyquistMargin = new System.Windows.Forms.Label();
@@ -335,8 +336,7 @@ namespace UAVXGUI
             this.attitudeIndicatorInstrumentControl1 = new Instruments.AttitudeIndicatorInstrumentControl();
             this.headingIndicatorInstrumentControl1 = new Instruments.HeadingIndicatorInstrumentControl();
             this.WPActionTextBox = new System.Windows.Forms.TextBox();
-            this.RTHBox = new System.Windows.Forms.TextBox();
-            this.NavBox = new System.Windows.Forms.TextBox();
+            this.KMLComboBox = new System.Windows.Forms.ComboBox();
             this.GyroGroupBox.SuspendLayout();
             this.ControlsGroupBox.SuspendLayout();
             this.AttitudeGroupBox.SuspendLayout();
@@ -1062,6 +1062,28 @@ namespace UAVXGUI
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(237, 366);
             this.flowLayoutPanel1.TabIndex = 99;
+            // 
+            // NavBox
+            // 
+            this.NavBox.BackColor = System.Drawing.SystemColors.Window;
+            this.NavBox.Location = new System.Drawing.Point(3, 3);
+            this.NavBox.Name = "NavBox";
+            this.NavBox.ReadOnly = true;
+            this.NavBox.Size = new System.Drawing.Size(109, 20);
+            this.NavBox.TabIndex = 127;
+            this.NavBox.Text = "Navigate";
+            this.NavBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // RTHBox
+            // 
+            this.RTHBox.BackColor = System.Drawing.SystemColors.Window;
+            this.RTHBox.Location = new System.Drawing.Point(118, 3);
+            this.RTHBox.Name = "RTHBox";
+            this.RTHBox.ReadOnly = true;
+            this.RTHBox.Size = new System.Drawing.Size(109, 20);
+            this.RTHBox.TabIndex = 126;
+            this.RTHBox.Text = "RTH";
+            this.RTHBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // GPSValidBox
             // 
@@ -2181,7 +2203,7 @@ namespace UAVXGUI
             // 
             // ReplayButton
             // 
-            this.ReplayButton.Location = new System.Drawing.Point(791, 0);
+            this.ReplayButton.Location = new System.Drawing.Point(731, 1);
             this.ReplayButton.Name = "ReplayButton";
             this.ReplayButton.Size = new System.Drawing.Size(75, 23);
             this.ReplayButton.TabIndex = 164;
@@ -2191,9 +2213,9 @@ namespace UAVXGUI
             // 
             // ReplayProgressBar
             // 
-            this.ReplayProgressBar.Location = new System.Drawing.Point(873, 0);
+            this.ReplayProgressBar.Location = new System.Drawing.Point(898, 1);
             this.ReplayProgressBar.Name = "ReplayProgressBar";
-            this.ReplayProgressBar.Size = new System.Drawing.Size(79, 23);
+            this.ReplayProgressBar.Size = new System.Drawing.Size(54, 23);
             this.ReplayProgressBar.TabIndex = 165;
             // 
             // Airframe
@@ -2201,7 +2223,7 @@ namespace UAVXGUI
             this.Airframe.BackColor = System.Drawing.SystemColors.Control;
             this.Airframe.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Airframe.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Airframe.Location = new System.Drawing.Point(262, 6);
+            this.Airframe.Location = new System.Drawing.Point(403, 99);
             this.Airframe.Name = "Airframe";
             this.Airframe.Size = new System.Drawing.Size(116, 13);
             this.Airframe.TabIndex = 166;
@@ -2888,7 +2910,7 @@ namespace UAVXGUI
             // 
             // DumpBBButton
             // 
-            this.DumpBBButton.Location = new System.Drawing.Point(711, 0);
+            this.DumpBBButton.Location = new System.Drawing.Point(650, 1);
             this.DumpBBButton.Name = "DumpBBButton";
             this.DumpBBButton.Size = new System.Drawing.Size(75, 23);
             this.DumpBBButton.TabIndex = 216;
@@ -2898,7 +2920,7 @@ namespace UAVXGUI
             // 
             // AlarmsButton
             // 
-            this.AlarmsButton.Location = new System.Drawing.Point(549, 0);
+            this.AlarmsButton.Location = new System.Drawing.Point(262, 0);
             this.AlarmsButton.Name = "AlarmsButton";
             this.AlarmsButton.Size = new System.Drawing.Size(75, 23);
             this.AlarmsButton.TabIndex = 217;
@@ -2909,20 +2931,12 @@ namespace UAVXGUI
             // UtilisationLabel
             // 
             this.UtilisationLabel.AutoSize = true;
-            this.UtilisationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UtilisationLabel.Location = new System.Drawing.Point(375, 3);
+            this.UtilisationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UtilisationLabel.Location = new System.Drawing.Point(438, 2);
             this.UtilisationLabel.Name = "UtilisationLabel";
-            this.UtilisationLabel.Size = new System.Drawing.Size(29, 16);
+            this.UtilisationLabel.Size = new System.Drawing.Size(37, 24);
             this.UtilisationLabel.TabIndex = 218;
             this.UtilisationLabel.Text = "0%";
-            // 
-            // UtilisationProgressBar
-            // 
-            this.UtilisationProgressBar.Location = new System.Drawing.Point(420, 2);
-            this.UtilisationProgressBar.Name = "UtilisationProgressBar";
-            this.UtilisationProgressBar.Size = new System.Drawing.Size(123, 19);
-            this.UtilisationProgressBar.Step = 1;
-            this.UtilisationProgressBar.TabIndex = 219;
             // 
             // CalibrationGroupBox
             // 
@@ -3359,7 +3373,7 @@ namespace UAVXGUI
             // BootLoadButton
             // 
             this.BootLoadButton.BackColor = System.Drawing.Color.Green;
-            this.BootLoadButton.Location = new System.Drawing.Point(630, 0);
+            this.BootLoadButton.Location = new System.Drawing.Point(571, 1);
             this.BootLoadButton.Name = "BootLoadButton";
             this.BootLoadButton.Size = new System.Drawing.Size(75, 23);
             this.BootLoadButton.TabIndex = 229;
@@ -3392,27 +3406,40 @@ namespace UAVXGUI
             this.WPActionTextBox.TabIndex = 230;
             this.WPActionTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // RTHBox
+            // KMLComboBox
             // 
-            this.RTHBox.BackColor = System.Drawing.SystemColors.Window;
-            this.RTHBox.Location = new System.Drawing.Point(118, 3);
-            this.RTHBox.Name = "RTHBox";
-            this.RTHBox.ReadOnly = true;
-            this.RTHBox.Size = new System.Drawing.Size(109, 20);
-            this.RTHBox.TabIndex = 126;
-            this.RTHBox.Text = "RTH";
-            this.RTHBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // NavBox
-            // 
-            this.NavBox.BackColor = System.Drawing.SystemColors.Window;
-            this.NavBox.Location = new System.Drawing.Point(3, 3);
-            this.NavBox.Name = "NavBox";
-            this.NavBox.ReadOnly = true;
-            this.NavBox.Size = new System.Drawing.Size(109, 20);
-            this.NavBox.TabIndex = 127;
-            this.NavBox.Text = "Navigate";
-            this.NavBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.KMLComboBox.AutoCompleteCustomSource.AddRange(new string[] {
+            "TriAF",
+            "TriCoaxialAF/Y6",
+            "VTailAF",
+            "QuadAF",
+            "QuadXAF",
+            "QuadCoaxAF/OctCoax",
+            "QuadCoaxXAF",
+            "HexAF",
+            "HexXAF",
+            "OctAF",
+            "OctXAF",
+            "Heli90AF",
+            "Heli120AF",
+            "ElevonAF",
+            "AileronAF",
+            "VTOLAF",
+            "GimbalAF,",
+            "AFUnknown,"});
+            this.KMLComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.KMLComboBox.FormattingEnabled = true;
+            this.KMLComboBox.Items.AddRange(new object[] {
+            "KML Alt",
+            "KML Nav",
+            "KML RC1",
+            "KML Sats"});
+            this.KMLComboBox.Location = new System.Drawing.Point(813, 2);
+            this.KMLComboBox.Name = "KMLComboBox";
+            this.KMLComboBox.Size = new System.Drawing.Size(79, 21);
+            this.KMLComboBox.TabIndex = 261;
+            this.KMLComboBox.Tag = "44";
+            this.KMLComboBox.Text = "KML Alt";
             // 
             // FormMain
             // 
@@ -3421,13 +3448,13 @@ namespace UAVXGUI
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1013, 637);
+            this.Controls.Add(this.KMLComboBox);
             this.Controls.Add(this.WPActionTextBox);
             this.Controls.Add(this.BootLoadButton);
             this.Controls.Add(this.TuningGroupBox);
             this.Controls.Add(this.CalibrateAcc6PointButton);
             this.Controls.Add(this.PlotButton);
             this.Controls.Add(this.CalibrationGroupBox);
-            this.Controls.Add(this.UtilisationProgressBar);
             this.Controls.Add(this.UtilisationLabel);
             this.Controls.Add(this.AlarmsButton);
             this.Controls.Add(this.DumpBBButton);
@@ -3773,7 +3800,6 @@ namespace UAVXGUI
         private System.Windows.Forms.TextBox BaroTemperature;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ProgressBar UtilisationProgressBar;
         private System.Windows.Forms.Label BattFFLabel;
         private System.Windows.Forms.TextBox BattFFComp;
         private System.Windows.Forms.GroupBox CalibrationGroupBox;
@@ -3836,6 +3862,7 @@ namespace UAVXGUI
         private System.Windows.Forms.TextBox WPActionTextBox;
         private System.Windows.Forms.TextBox NavBox;
         private System.Windows.Forms.TextBox RTHBox;
+        public System.Windows.Forms.ComboBox KMLComboBox;
     }
 }
 

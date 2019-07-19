@@ -149,8 +149,8 @@
     <value>Enables gyro oversampling at 8KHz for SPI bus connected IMU (UAVXV4 boards).</value>
   </data>
   
-      <data name="unassigned" xml:space="preserve">
-    <value>UNASSIGNED CONFIG2 CHECKBOX - GKE.</value>
+      <data name="CameraPulseAtWP" xml:space="preserve">
+    <value>Enables Camera pulse when a waypoint is acquired.</value>
   </data>
   <data name="TurnToWP" xml:space="preserve">
     <value>ENABLES turn towards WP and Home when navigating.</value>
@@ -227,8 +227,11 @@ Mode 2: Rudder/Throttle left hand Ailerons/Elevator right hand. Rudder available
   <data name="AltVelInt" xml:space="preserve">
     <value>Attempts to reduce the final ROC error. Important for continuing to reduce the throttle after landing. Effectively it is seconds until minimum throttle is reached.</value>
  </data>
+  <data name="AltCF" xml:space="preserve">
+    <value>Percentage of accelerometer estimated vertical velocity to use with barometer rate of climb estimate.</value>
+ </data>
   <data name="AltVelIntLimit" xml:space="preserve">
-    <value>The maximum integral and also overall correction applied to the throttle.</value>
+    <value>The maximum overall % altitude hold correction added to the throttle setting. </value>
  </data>
     <data name="TrimAngle" xml:space="preserve">
     <value>Nominal FW desired pitch trim angle. DO NOT trim aircraft using accelerometer trims.</value>
@@ -254,6 +257,19 @@ Mode 2: Rudder/Throttle left hand Ailerons/Elevator right hand. Rudder available
     <data name="FWFlapDecayTime" xml:space="preserve">
     <value>FW the time it takes for flaps/spoilers/airbrakes to close.</value>
   </data>
+  <data name="AccZVariance" xml:space="preserve">
+    <value>Default accelerometer variance for altitude filtering.</value>
+  </data>
+  <data name="TrackAccZVariance" xml:space="preserve">
+    <value>Estimated accelerometer variance for altitude filtering.</value>
+  </data>
+  <data name="BaroVariance" xml:space="preserve">
+    <value>Barometer variance captured in flight.</value>
+  </data>
+  <data name="BaroOS" xml:space="preserve">
+    <value>Controls the update frequency of the Baro. The baro samples internally at round 500Hz and choosing a lower update frequency
+    with this paramter allows the baro to use its internal oversampling filter to achieve better resolution. Start at 50.</value>
+  </data>
       <data name="wsLEDs" xml:space="preserve">
     <value>The number of WS2812 external LEDs available.</value>
   </data>
@@ -270,6 +286,9 @@ Mode 2: Rudder/Throttle left hand Ailerons/Elevator right hand. Rudder available
   </data>
   <data name="NavPosition" xml:space="preserve">
     <value>Determines the desired velocity for a given Nav position error.</value>
+  </data>
+  <data name="NavGPSTimeout" xml:space="preserve">
+    <value>The maximimum time for loss of GPS signal before failsafe forced landing is triggered.</value>
   </data>
     <data name="NavMaxVel" xml:space="preserve">
     <value>The maximimum ground speed but limited by maximum Nav Angle.</value>
@@ -363,6 +382,10 @@ Note how motors start and the stick responsiveness and flight performance.  Usua
   </data>
   <data name="ProportionalAngle" xml:space="preserve">
     <value>Used to remove reduce any steady state error in pitch/roll angles. For long periods of banking this can result in an effect called integral with the aircraft maintaining the bank angle for some time before returning to level flight.</value>
+    <comment>Direkt aus der Anleitung entnommen (Test)</comment>
+  </data>
+  <data name="FWStickScale" xml:space="preserve">
+    <value>Allows you to match bypass control to rate control control surface movement.</value>
     <comment>Direkt aus der Anleitung entnommen (Test)</comment>
   </data>
   <data name="IntegralLimiter" xml:space="preserve">

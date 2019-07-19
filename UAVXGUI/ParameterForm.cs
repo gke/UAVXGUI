@@ -320,6 +320,9 @@ namespace UAVXGUI
         public void info(ParameterForm parameterForm)
         {
 
+            if (parameterForm.FWStickScaleNumericUpDown.Focused)
+                helpstring = help.GetString("FWStickScale");
+            
             // Roll     
             if (parameterForm.RollRatePropNumericUpDown.Focused)
                 helpstring = help.GetString("Proportional");
@@ -718,6 +721,8 @@ namespace UAVXGUI
                 temp.Select(0, 3);
             }
         }
+
+
 
         private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1645,6 +1650,10 @@ namespace UAVXGUI
                     case 112:
                         TrackAccZVarianceTextBox.Text = string.Format("{0:n2}", Convert.ToDecimal(UAVXP[p - 1].Value * 0.01));
                         P[CurrPS, p - 1].Value = UAVXP[p - 1].Value;
+                        break;                    
+                    case 113:
+                        FWStickScaleNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(FWStickScaleNumericUpDown);
                         break;
 
                     default: break; // up to case 64 available

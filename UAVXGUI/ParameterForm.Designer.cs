@@ -261,7 +261,9 @@
             this.YawGyroLPFNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.AccLabel = new System.Windows.Forms.Label();
             this.FWGroupBox = new System.Windows.Forms.GroupBox();
+            this.FWStickScaleLabel = new System.Windows.Forms.Label();
             this.FWClimbThrNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.FWStickScaleNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.ClimbThrLabel = new System.Windows.Forms.Label();
             this.FWAilRudFF = new System.Windows.Forms.Label();
             this.FWAileronRudderFFNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -386,6 +388,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.YawGyroLPFNumericUpDown)).BeginInit();
             this.FWGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FWClimbThrNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FWStickScaleNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWAileronRudderFFNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWAltSpoilerFFNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWTrimAngleNumericUpDown)).BeginInit();
@@ -1033,7 +1036,8 @@
             resources.GetString("TelemetryComboBox.Items3"),
             resources.GetString("TelemetryComboBox.Items4"),
             resources.GetString("TelemetryComboBox.Items5"),
-            resources.GetString("TelemetryComboBox.Items6")});
+            resources.GetString("TelemetryComboBox.Items6"),
+            resources.GetString("TelemetryComboBox.Items7")});
             this.TelemetryComboBox.Name = "TelemetryComboBox";
             this.TelemetryComboBox.Tag = "45";
             this.TelemetryComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
@@ -2206,11 +2210,6 @@
             // 
             this.AltLPFNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
             resources.ApplyResources(this.AltLPFNumericUpDown, "AltLPFNumericUpDown");
-            this.AltLPFNumericUpDown.Maximum = new decimal(new int[] {
-            25,
-            0,
-            0,
-            0});
             this.AltLPFNumericUpDown.Name = "AltLPFNumericUpDown";
             this.AltLPFNumericUpDown.Tag = "58";
             this.AltLPFNumericUpDown.Value = new decimal(new int[] {
@@ -3147,7 +3146,9 @@
             // FWGroupBox
             // 
             resources.ApplyResources(this.FWGroupBox, "FWGroupBox");
+            this.FWGroupBox.Controls.Add(this.FWStickScaleLabel);
             this.FWGroupBox.Controls.Add(this.FWClimbThrNumericUpDown);
+            this.FWGroupBox.Controls.Add(this.FWStickScaleNumericUpDown);
             this.FWGroupBox.Controls.Add(this.ClimbThrLabel);
             this.FWGroupBox.Controls.Add(this.FWAilRudFF);
             this.FWGroupBox.Controls.Add(this.FWAileronRudderFFNumericUpDown);
@@ -3174,6 +3175,12 @@
             this.FWGroupBox.Name = "FWGroupBox";
             this.FWGroupBox.TabStop = false;
             // 
+            // FWStickScaleLabel
+            // 
+            resources.ApplyResources(this.FWStickScaleLabel, "FWStickScaleLabel");
+            this.FWStickScaleLabel.Name = "FWStickScaleLabel";
+            this.FWStickScaleLabel.Tag = "";
+            // 
             // FWClimbThrNumericUpDown
             // 
             this.FWClimbThrNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
@@ -3193,6 +3200,21 @@
             this.FWClimbThrNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
             this.FWClimbThrNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
             this.FWClimbThrNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            // 
+            // FWStickScaleNumericUpDown
+            // 
+            this.FWStickScaleNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.FWStickScaleNumericUpDown, "FWStickScaleNumericUpDown");
+            this.FWStickScaleNumericUpDown.Name = "FWStickScaleNumericUpDown";
+            this.FWStickScaleNumericUpDown.Tag = "113";
+            this.FWStickScaleNumericUpDown.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.FWStickScaleNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.FWStickScaleNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.FWStickScaleNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
             // ClimbThrLabel
             // 
@@ -3733,6 +3755,7 @@
             this.FWGroupBox.ResumeLayout(false);
             this.FWGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FWClimbThrNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FWStickScaleNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWAileronRudderFFNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWAltSpoilerFFNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWTrimAngleNumericUpDown)).EndInit();
@@ -4024,6 +4047,8 @@
         private System.Windows.Forms.Label BaroVarianceLabel;
         private System.Windows.Forms.TextBox BaroVarianceTextBox;
         private System.Windows.Forms.TextBox TrackAccZVarianceTextBox;
+        private System.Windows.Forms.Label FWStickScaleLabel;
+        public System.Windows.Forms.NumericUpDown FWStickScaleNumericUpDown;
 
 
     }
