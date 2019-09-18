@@ -483,9 +483,11 @@ namespace UAVXGUI
         short AltCompT;                 // 60
         short AccConfidenceT;           // 62
 
-        int FusionuSecT;
+        int FusionmSecT;
         int BaroTemperatureT;
         int BaroPressureT;
+
+        int FGPSROCT, FGPSAltitudeT, BaroVT, TrackAccZVT, AltPosDesiredT, AltPosErrorT, AltPosPTermT, AltPosITermT, AltRateDesiredT, AltRateErrorT, AltRatePTermT, AltRateDTermT, FAltCompT, FCruiseThrottleT;
 
         short BaroVarianceT;
         short AccZVarianceT;
@@ -3127,12 +3129,34 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                     break;
                 case UAVXFusionPacketTag:
 
-                    FusionuSecT = ExtractInt(ref UAVXPacket, 2);
+                    FusionmSecT = ExtractInt(ref UAVXPacket, 2);
                     RawRelAltitudeT = ExtractInt24(ref UAVXPacket, 6);
                     FAltitudeT = ExtractInt24(ref UAVXPacket, 9);
                     FROCT = ExtractShort(ref UAVXPacket, 12);
                     AccZT = ExtractShort(ref UAVXPacket, 14);
                     HRAccZBiasT = ExtractShort(ref UAVXPacket, 16);
+
+                    BaroVT = ExtractShort(ref UAVXPacket, 18);
+                    TrackAccZVT = ExtractShort(ref UAVXPacket, 20);
+
+                    AltPosDesiredT = ExtractInt24(ref UAVXPacket, 22);
+                    AltPosErrorT = ExtractShort(ref UAVXPacket, 25);
+	                AltPosPTermT = ExtractShort(ref UAVXPacket, 27);
+	                AltPosITermT = ExtractShort(ref UAVXPacket, 29);
+
+	                AltRateDesiredT = ExtractShort(ref UAVXPacket, 31);
+                    AltRateErrorT = ExtractShort(ref UAVXPacket, 33);
+	                AltRatePTermT = ExtractShort(ref UAVXPacket, 35);
+	                AltRateDTermT = ExtractShort(ref UAVXPacket, 37);
+
+	                FCruiseThrottleT = ExtractShort(ref UAVXPacket, 39);
+	                FAltCompT = ExtractShort(ref UAVXPacket, 41);
+
+                    FGPSAltitudeT = ExtractInt24(ref UAVXPacket, 43);
+                    FGPSROCT = ExtractShort(ref UAVXPacket, 46);
+
+                  //  ROC.Text = string.Format("{0:n1}", (float)FROCT * 0.001);
+                  //  CurrAlt = FAltitudeT * 0.001;
 
                     WriteTextFusionFile(); // only log with this packet
 
@@ -3373,15 +3397,34 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                SaveTextFusionFileStream = new System.IO.FileStream(FileName + "_Fusion.csv", System.IO.FileMode.Create);
                SaveTextFusionFileStreamWriter = new System.IO.StreamWriter(SaveTextFusionFileStream, System.Text.Encoding.ASCII);
 
-               SaveTextFusionFileStreamWriter.Write("Time (uS)," +   
-                  "RawRelAlt," +
-                   "RelAlt," +
-                  "ROC," +
+               SaveTextFusionFileStreamWriter.Write("Time (mS)," +   
+                 
+                    "AccZ," +
+                    "AccZBias," +
 
-                  "AccZ," +
-                  "AccZBias," +
-                  "BaroV," +
-                  "AccZVarianceT");
+                    "AccZVarianceT," +
+                    "BaroV," +
+
+                    "GPSAlt," +
+                    "RawRelAlt," +
+                    "RelAlt," +
+                    "AltDesired," +
+                 
+                    "AltE," +
+                    "AltP," +
+                    "AltI," +
+
+                    "GPSROC," +
+                    "ROC," +
+                    "ROCDesired," +
+ 
+                    "ROCE," +
+                    "ROCP," +
+                    "ROCD," +
+
+                    "AltComp," +
+                    "Cruise"
+                  );
 
                SaveTextFusionFileStreamWriter.WriteLine();
                SaveTextFusionFileStreamWriter.Flush();
@@ -3389,16 +3432,34 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                FusionFileHeaderWritten = true;
             }
 
-            SaveTextFusionFileStreamWriter.Write(FusionuSecT  + "," +
-            RawRelAltitudeT * 0.001 + "," +
-            FAltitudeT * 0.001 + "," +
-            FROCT * 0.001 + "," +  
+            SaveTextFusionFileStreamWriter.Write(FusionmSecT  + "," +
+
             AccZT * 0.001 + "," +
             HRAccZBiasT * 0.001 + "," +
-            BaroVarianceT * 0.001 + "," +
-            AccZVarianceT * 0.001 
-             );
 
+            AccZVarianceT * 0.001 + "," +
+            BaroVarianceT * 0.001 + "," +
+
+            FGPSAltitudeT * 0.001 + "," +
+            RawRelAltitudeT * 0.001 + "," +
+            FAltitudeT * 0.001 + "," +
+            AltPosDesiredT  * 0.01 + "," +
+  
+            AltPosErrorT * 0.001 + "," +
+            AltPosPTermT * 0.001 + "," +
+            AltPosITermT * 0.001 + "," +
+
+            FGPSROCT * 0.001 + "," +
+            FROCT * 0.001 + "," +
+            AltRateDesiredT * 0.01 + "," +
+            AltRateErrorT * 0.001 + "," +
+            AltRatePTermT * 0.001 + "," +
+            AltRateDTermT * 0.001 + "," +
+
+            
+            FAltCompT * 0.001 + "," +
+            
+            FCruiseThrottleT * 0.001);
 
          SaveTextFusionFileStreamWriter.WriteLine();
             SaveTextFusionFileStreamWriter.Flush();

@@ -387,6 +387,8 @@ namespace UAVXGUI
             if (parameterForm.FWPitchThrottleFFNumericUpDown.Focused)
                 helpstring = help.GetString("FWPitchThrottleFF");
 
+            if (parameterForm.FWRollPitchLimitNumericUpDown.Focused)
+                helpstring = help.GetString("RollPitchLimit");
 
             if (parameterForm.MaxRollAngleNumericUpDown.Focused)
                 helpstring = help.GetString("MaxAttitudeAngle");
@@ -475,8 +477,11 @@ namespace UAVXGUI
             if (parameterForm.IMUOptionComboBox.Focused)
                 helpstring = help.GetString("InertialScheme");
 
-            if (parameterForm.YawGyroLPFNumericUpDown.Focused)
-                helpstring = help.GetString("DerivativeFilter");
+            if (parameterForm.IMUOptionComboBox.Focused)
+                helpstring = help.GetString("InertialScheme");
+
+            if (parameterForm.AHThrottleTimeNumericUpDown.Focused)
+                helpstring = help.GetString("AHThrottleTime");
 
             if (parameterForm.ParamTemplateNumericUpDown.Focused)
                 helpstring = help.GetString("ParamTemplate");
@@ -995,7 +1000,7 @@ namespace UAVXGUI
                    if ((p == 64) || (p == 83) || (p == 84) || (p == 89) )
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 0.1);
                 else
-                       if ((p == 54) || (p == 18) || (p == 32) || (p == 34) || (p == 39) || (p == 46) || (p == 53) || (p == 70) || (p == 104) || (p == 110))
+                       if ((p == 54) || (p == 18) || (p == 32) || (p == 34) || (p == 39) || (p == 46) || (p == 53) || (p == 70) || (p == 104) || (p == 110) || (p == 115))
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 10.0);
                 else           
                     P[CurrPS, p - 1].Value = Convert.ToByte(Field.Value);
@@ -1562,7 +1567,7 @@ namespace UAVXGUI
                         ParamUpdate(AccLPFComboBox);
                         break;
                     case 91:
-                        YawRateDiffNumericUpDown.Value = UAVXP[p - 1].Value;
+                       YawRateDiffNumericUpDown.Value = UAVXP[p - 1].Value;
                        ParamUpdate(YawRateDiffNumericUpDown);
                         break;
                     case 92:
@@ -1654,6 +1659,14 @@ namespace UAVXGUI
                     case 113:
                         FWStickScaleNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(FWStickScaleNumericUpDown);
+                        break;
+                    case 114:
+                        FWRollPitchLimitNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(FWRollPitchLimitNumericUpDown);
+                        break;
+                    case 115:
+                        AHThrottleTimeNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
+                        ParamUpdate(AHThrottleTimeNumericUpDown);
                         break;
 
                     default: break; // up to case 64 available

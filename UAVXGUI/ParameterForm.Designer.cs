@@ -51,12 +51,6 @@
             this.FWRollPitchFFNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.GyroComboBox = new System.Windows.Forms.ComboBox();
             this.labelGyros1 = new System.Windows.Forms.Label();
-            this.CameraGroupBox = new System.Windows.Forms.GroupBox();
-            this.CameraRollTrimNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.CameraRollTrimLabel = new System.Windows.Forms.Label();
-            this.CameraPitchNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.CameraRollNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.CameraPropLabel = new System.Windows.Forms.Label();
             this.bit62CheckBox = new System.Windows.Forms.CheckBox();
             this.BatteryBox = new System.Windows.Forms.GroupBox();
             this.VoltageFSLabel = new System.Windows.Forms.Label();
@@ -139,6 +133,8 @@
             this.bit41CheckBox = new System.Windows.Forms.CheckBox();
             this.ComboPort1Label = new System.Windows.Forms.Label();
             this.NavGroupBox = new System.Windows.Forms.GroupBox();
+            this.AHThrottleTimeLabel = new System.Windows.Forms.Label();
+            this.AHThrottleTimeNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.NavGPSTimeoutLabel = new System.Windows.Forms.Label();
             this.NavGPSTimeoutNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.bit51CheckBox = new System.Windows.Forms.CheckBox();
@@ -261,7 +257,9 @@
             this.YawGyroLPFNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.AccLabel = new System.Windows.Forms.Label();
             this.FWGroupBox = new System.Windows.Forms.GroupBox();
+            this.FWRollPitchLimitLabel = new System.Windows.Forms.Label();
             this.FWStickScaleLabel = new System.Windows.Forms.Label();
+            this.FWRollPitchLimitNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.FWClimbThrNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.FWStickScaleNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.ClimbThrLabel = new System.Windows.Forms.Label();
@@ -302,6 +300,12 @@
             this.AltVelKdLabel = new System.Windows.Forms.Label();
             this.ParamTemplateNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.DefaultTemplateLabel = new System.Windows.Forms.Label();
+            this.CameraGroupBox = new System.Windows.Forms.GroupBox();
+            this.CameraRollTrimNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CameraRollTrimLabel = new System.Windows.Forms.Label();
+            this.CameraPitchNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CameraRollNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CameraPropLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DescDelayNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavRTHAltNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AttThrFFNumericUpDown)).BeginInit();
@@ -312,10 +316,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.BalanceNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HorizonNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWRollPitchFFNumericUpDown)).BeginInit();
-            this.CameraGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CameraRollTrimNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CameraPitchNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CameraRollNumericUpDown)).BeginInit();
             this.BatteryBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CurrentFSNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VoltageFSNumericUpDown)).BeginInit();
@@ -341,6 +341,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Ch4NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch1NumericUpDown)).BeginInit();
             this.NavGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AHThrottleTimeNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavGPSTimeoutNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProximityAltNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProximityRadiusNumericUpDown)).BeginInit();
@@ -387,6 +388,7 @@
             this.EstimatorGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.YawGyroLPFNumericUpDown)).BeginInit();
             this.FWGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FWRollPitchLimitNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWClimbThrNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWStickScaleNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWAileronRudderFFNumericUpDown)).BeginInit();
@@ -403,6 +405,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.AltVelIntLimitNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltHoldBandNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ParamTemplateNumericUpDown)).BeginInit();
+            this.CameraGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CameraRollTrimNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CameraPitchNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CameraRollNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // DescDelayNumericUpDown
@@ -670,84 +676,6 @@
             resources.ApplyResources(this.labelGyros1, "labelGyros1");
             this.labelGyros1.ForeColor = System.Drawing.Color.Black;
             this.labelGyros1.Name = "labelGyros1";
-            // 
-            // CameraGroupBox
-            // 
-            this.CameraGroupBox.Controls.Add(this.CameraRollTrimNumericUpDown);
-            this.CameraGroupBox.Controls.Add(this.CameraRollTrimLabel);
-            this.CameraGroupBox.Controls.Add(this.CameraPitchNumericUpDown);
-            this.CameraGroupBox.Controls.Add(this.CameraRollNumericUpDown);
-            this.CameraGroupBox.Controls.Add(this.CameraPropLabel);
-            resources.ApplyResources(this.CameraGroupBox, "CameraGroupBox");
-            this.CameraGroupBox.Name = "CameraGroupBox";
-            this.CameraGroupBox.TabStop = false;
-            // 
-            // CameraRollTrimNumericUpDown
-            // 
-            resources.ApplyResources(this.CameraRollTrimNumericUpDown, "CameraRollTrimNumericUpDown");
-            this.CameraRollTrimNumericUpDown.Maximum = new decimal(new int[] {
-            99,
-            0,
-            0,
-            0});
-            this.CameraRollTrimNumericUpDown.Minimum = new decimal(new int[] {
-            99,
-            0,
-            0,
-            -2147483648});
-            this.CameraRollTrimNumericUpDown.Name = "CameraRollTrimNumericUpDown";
-            this.CameraRollTrimNumericUpDown.Tag = "40";
-            this.CameraRollTrimNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.CameraRollTrimNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
-            this.CameraRollTrimNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
-            // 
-            // CameraRollTrimLabel
-            // 
-            resources.ApplyResources(this.CameraRollTrimLabel, "CameraRollTrimLabel");
-            this.CameraRollTrimLabel.Name = "CameraRollTrimLabel";
-            // 
-            // CameraPitchNumericUpDown
-            // 
-            resources.ApplyResources(this.CameraPitchNumericUpDown, "CameraPitchNumericUpDown");
-            this.CameraPitchNumericUpDown.Maximum = new decimal(new int[] {
-            99,
-            0,
-            0,
-            0});
-            this.CameraPitchNumericUpDown.Minimum = new decimal(new int[] {
-            99,
-            0,
-            0,
-            -2147483648});
-            this.CameraPitchNumericUpDown.Name = "CameraPitchNumericUpDown";
-            this.CameraPitchNumericUpDown.Tag = "26";
-            this.CameraPitchNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.CameraPitchNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
-            this.CameraPitchNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
-            // 
-            // CameraRollNumericUpDown
-            // 
-            resources.ApplyResources(this.CameraRollNumericUpDown, "CameraRollNumericUpDown");
-            this.CameraRollNumericUpDown.Maximum = new decimal(new int[] {
-            99,
-            0,
-            0,
-            0});
-            this.CameraRollNumericUpDown.Minimum = new decimal(new int[] {
-            99,
-            0,
-            0,
-            -2147483648});
-            this.CameraRollNumericUpDown.Name = "CameraRollNumericUpDown";
-            this.CameraRollNumericUpDown.Tag = "19";
-            this.CameraRollNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.CameraRollNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
-            this.CameraRollNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
-            // 
-            // CameraPropLabel
-            // 
-            resources.ApplyResources(this.CameraPropLabel, "CameraPropLabel");
-            this.CameraPropLabel.Name = "CameraPropLabel";
             // 
             // bit62CheckBox
             // 
@@ -1769,6 +1697,8 @@
             // 
             // NavGroupBox
             // 
+            this.NavGroupBox.Controls.Add(this.AHThrottleTimeLabel);
+            this.NavGroupBox.Controls.Add(this.AHThrottleTimeNumericUpDown);
             this.NavGroupBox.Controls.Add(this.NavGPSTimeoutLabel);
             this.NavGroupBox.Controls.Add(this.bit62CheckBox);
             this.NavGroupBox.Controls.Add(this.NavGPSTimeoutNumericUpDown);
@@ -1817,6 +1747,36 @@
             resources.ApplyResources(this.NavGroupBox, "NavGroupBox");
             this.NavGroupBox.Name = "NavGroupBox";
             this.NavGroupBox.TabStop = false;
+            // 
+            // AHThrottleTimeLabel
+            // 
+            resources.ApplyResources(this.AHThrottleTimeLabel, "AHThrottleTimeLabel");
+            this.AHThrottleTimeLabel.Name = "AHThrottleTimeLabel";
+            // 
+            // AHThrottleTimeNumericUpDown
+            // 
+            this.AHThrottleTimeNumericUpDown.DecimalPlaces = 1;
+            resources.ApplyResources(this.AHThrottleTimeNumericUpDown, "AHThrottleTimeNumericUpDown");
+            this.AHThrottleTimeNumericUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.AHThrottleTimeNumericUpDown.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            65536});
+            this.AHThrottleTimeNumericUpDown.Name = "AHThrottleTimeNumericUpDown";
+            this.AHThrottleTimeNumericUpDown.Tag = "115";
+            this.AHThrottleTimeNumericUpDown.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            65536});
+            this.AHThrottleTimeNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.AHThrottleTimeNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.AHThrottleTimeNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
             // NavGPSTimeoutLabel
             // 
@@ -3146,7 +3106,9 @@
             // FWGroupBox
             // 
             resources.ApplyResources(this.FWGroupBox, "FWGroupBox");
+            this.FWGroupBox.Controls.Add(this.FWRollPitchLimitLabel);
             this.FWGroupBox.Controls.Add(this.FWStickScaleLabel);
+            this.FWGroupBox.Controls.Add(this.FWRollPitchLimitNumericUpDown);
             this.FWGroupBox.Controls.Add(this.FWClimbThrNumericUpDown);
             this.FWGroupBox.Controls.Add(this.FWStickScaleNumericUpDown);
             this.FWGroupBox.Controls.Add(this.ClimbThrLabel);
@@ -3175,11 +3137,32 @@
             this.FWGroupBox.Name = "FWGroupBox";
             this.FWGroupBox.TabStop = false;
             // 
+            // FWRollPitchLimitLabel
+            // 
+            resources.ApplyResources(this.FWRollPitchLimitLabel, "FWRollPitchLimitLabel");
+            this.FWRollPitchLimitLabel.Name = "FWRollPitchLimitLabel";
+            this.FWRollPitchLimitLabel.Tag = "";
+            // 
             // FWStickScaleLabel
             // 
             resources.ApplyResources(this.FWStickScaleLabel, "FWStickScaleLabel");
             this.FWStickScaleLabel.Name = "FWStickScaleLabel";
             this.FWStickScaleLabel.Tag = "";
+            // 
+            // FWRollPitchLimitNumericUpDown
+            // 
+            this.FWRollPitchLimitNumericUpDown.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.FWRollPitchLimitNumericUpDown, "FWRollPitchLimitNumericUpDown");
+            this.FWRollPitchLimitNumericUpDown.Name = "FWRollPitchLimitNumericUpDown";
+            this.FWRollPitchLimitNumericUpDown.Tag = "114";
+            this.FWRollPitchLimitNumericUpDown.Value = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.FWRollPitchLimitNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.FWRollPitchLimitNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.FWRollPitchLimitNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
             // FWClimbThrNumericUpDown
             // 
@@ -3636,10 +3619,80 @@
             this.DefaultTemplateLabel.Name = "DefaultTemplateLabel";
             this.DefaultTemplateLabel.Tag = "";
             // 
+            // CameraGroupBox
+            // 
+            this.CameraGroupBox.Controls.Add(this.CameraRollTrimNumericUpDown);
+            this.CameraGroupBox.Controls.Add(this.CameraRollTrimLabel);
+            this.CameraGroupBox.Controls.Add(this.CameraPitchNumericUpDown);
+            this.CameraGroupBox.Controls.Add(this.CameraRollNumericUpDown);
+            this.CameraGroupBox.Controls.Add(this.CameraPropLabel);
+            resources.ApplyResources(this.CameraGroupBox, "CameraGroupBox");
+            this.CameraGroupBox.Name = "CameraGroupBox";
+            this.CameraGroupBox.TabStop = false;
+            // 
+            // CameraRollTrimNumericUpDown
+            // 
+            resources.ApplyResources(this.CameraRollTrimNumericUpDown, "CameraRollTrimNumericUpDown");
+            this.CameraRollTrimNumericUpDown.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.CameraRollTrimNumericUpDown.Minimum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            -2147483648});
+            this.CameraRollTrimNumericUpDown.Name = "CameraRollTrimNumericUpDown";
+            this.CameraRollTrimNumericUpDown.Tag = "40";
+            // 
+            // CameraRollTrimLabel
+            // 
+            resources.ApplyResources(this.CameraRollTrimLabel, "CameraRollTrimLabel");
+            this.CameraRollTrimLabel.Name = "CameraRollTrimLabel";
+            // 
+            // CameraPitchNumericUpDown
+            // 
+            resources.ApplyResources(this.CameraPitchNumericUpDown, "CameraPitchNumericUpDown");
+            this.CameraPitchNumericUpDown.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.CameraPitchNumericUpDown.Minimum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            -2147483648});
+            this.CameraPitchNumericUpDown.Name = "CameraPitchNumericUpDown";
+            this.CameraPitchNumericUpDown.Tag = "26";
+            // 
+            // CameraRollNumericUpDown
+            // 
+            resources.ApplyResources(this.CameraRollNumericUpDown, "CameraRollNumericUpDown");
+            this.CameraRollNumericUpDown.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.CameraRollNumericUpDown.Minimum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            -2147483648});
+            this.CameraRollNumericUpDown.Name = "CameraRollNumericUpDown";
+            this.CameraRollNumericUpDown.Tag = "19";
+            // 
+            // CameraPropLabel
+            // 
+            resources.ApplyResources(this.CameraPropLabel, "CameraPropLabel");
+            this.CameraPropLabel.Name = "CameraPropLabel";
+            // 
             // ParameterForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.CameraGroupBox);
             this.Controls.Add(this.DefaultTemplateLabel);
             this.Controls.Add(this.ParamTemplateNumericUpDown);
             this.Controls.Add(this.AltitudeGroupBox);
@@ -3655,7 +3708,6 @@
             this.Controls.Add(this.infoTextBox);
             this.Controls.Add(this.PIDGroupBox);
             this.Controls.Add(this.ModifiersGroupBox1);
-            this.Controls.Add(this.CameraGroupBox);
             this.Controls.Add(this.BatteryBox);
             this.Controls.Add(this.GeneralGroupBox);
             this.Controls.Add(this.NavGroupBox);
@@ -3671,11 +3723,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.BalanceNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HorizonNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWRollPitchFFNumericUpDown)).EndInit();
-            this.CameraGroupBox.ResumeLayout(false);
-            this.CameraGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CameraRollTrimNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CameraPitchNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CameraRollNumericUpDown)).EndInit();
             this.BatteryBox.ResumeLayout(false);
             this.BatteryBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CurrentFSNumericUpDown)).EndInit();
@@ -3704,6 +3751,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Ch1NumericUpDown)).EndInit();
             this.NavGroupBox.ResumeLayout(false);
             this.NavGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AHThrottleTimeNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavGPSTimeoutNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProximityAltNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProximityRadiusNumericUpDown)).EndInit();
@@ -3754,6 +3802,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.YawGyroLPFNumericUpDown)).EndInit();
             this.FWGroupBox.ResumeLayout(false);
             this.FWGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FWRollPitchLimitNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWClimbThrNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWStickScaleNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWAileronRudderFFNumericUpDown)).EndInit();
@@ -3772,6 +3821,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.AltVelIntLimitNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltHoldBandNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ParamTemplateNumericUpDown)).EndInit();
+            this.CameraGroupBox.ResumeLayout(false);
+            this.CameraGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CameraRollTrimNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CameraPitchNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CameraRollNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3857,12 +3911,6 @@
         public System.Windows.Forms.NumericUpDown FWRollPitchFFNumericUpDown;
         public System.Windows.Forms.ComboBox GyroComboBox;
         private System.Windows.Forms.Label labelGyros1;
-        private System.Windows.Forms.GroupBox CameraGroupBox;
-        public System.Windows.Forms.NumericUpDown CameraRollTrimNumericUpDown;
-        private System.Windows.Forms.Label CameraRollTrimLabel;
-        public System.Windows.Forms.NumericUpDown CameraPitchNumericUpDown;
-        public System.Windows.Forms.NumericUpDown CameraRollNumericUpDown;
-        private System.Windows.Forms.Label CameraPropLabel;
         private System.Windows.Forms.GroupBox BatteryBox;
         public System.Windows.Forms.NumericUpDown BatteryCapacityNumericUpDown;
         private System.Windows.Forms.Label LowBatteryLabel;
@@ -4049,6 +4097,16 @@
         private System.Windows.Forms.TextBox TrackAccZVarianceTextBox;
         private System.Windows.Forms.Label FWStickScaleLabel;
         public System.Windows.Forms.NumericUpDown FWStickScaleNumericUpDown;
+        private System.Windows.Forms.Label FWRollPitchLimitLabel;
+        public System.Windows.Forms.NumericUpDown FWRollPitchLimitNumericUpDown;
+        private System.Windows.Forms.GroupBox CameraGroupBox;
+        public System.Windows.Forms.NumericUpDown CameraRollTrimNumericUpDown;
+        private System.Windows.Forms.Label CameraRollTrimLabel;
+        public System.Windows.Forms.NumericUpDown CameraPitchNumericUpDown;
+        public System.Windows.Forms.NumericUpDown CameraRollNumericUpDown;
+        private System.Windows.Forms.Label CameraPropLabel;
+        private System.Windows.Forms.Label AHThrottleTimeLabel;
+        public System.Windows.Forms.NumericUpDown AHThrottleTimeNumericUpDown;
 
 
     }
