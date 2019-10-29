@@ -281,8 +281,8 @@ Mode 2: Rudder/Throttle left hand Ailerons/Elevator right hand. Rudder available
      <data name="Turnout" xml:space="preserve">
     <value>The heading error in degrees below which the aircraft reduces its turn rate/angle from the maximum set. Try 60.</value>
   </data>  
-  <data name="GPSToArm" xml:space="preserve">
-    <value>ENABLES requirement for good GPS signal to throttle up and takeoff when you have a GPS installed - DISABLE AT YOUR RISK.</value>
+  <data name="AHAlarm" xml:space="preserve">
+    <value>Beeper alarm if ROC is still increasing when AH throttle compensation is full down.</value>
   </data>
   <data name="NavPosition" xml:space="preserve">
     <value>Determines the desired velocity for a given Nav position error.</value>
@@ -406,8 +406,14 @@ Note how motors start and the stick responsiveness and flight performance.  Usua
   <data name="MaxAttitudeAngle" xml:space="preserve">
     <value>Roll/Pitch stick sensitivity. Determines maximum commanded attitude angle at full stick deflection.</value>
   </data>
+  <data name="RollPitchLimit" xml:space="preserve">
+    <value>No correction of roll angle if pitch angle is greater than this as roll angle is meaningless in a dive or vertical climb!</value>
+  </data>
   <data name="ParamTemplate" xml:space="preserve">
     <value>UAVX has a number of default templates which you may choose from initially. WARNING - these will require tuning.</value>
+  </data>
+  <data name="AHThrottleRate" xml:space="preserve">
+    <value>Altitude hold is aborted if the throttle moves outside this from its setting at hover.</value>
   </data>
     <data name="InertialScheme" xml:space="preserve">
     <value>Selects the attitude estimation technique to be used. Madgwick IMU is probably the simplest and most reliable Madgwick AHRS attempts to fuse the magnetomter readings to estimate yaw but can be noisy.</value>

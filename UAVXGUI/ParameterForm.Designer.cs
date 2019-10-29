@@ -130,11 +130,10 @@
             this.Sense11Button = new System.Windows.Forms.Button();
             this.Sense01Button = new System.Windows.Forms.Button();
             this.bit11CheckBox = new System.Windows.Forms.CheckBox();
-            this.bit41CheckBox = new System.Windows.Forms.CheckBox();
             this.ComboPort1Label = new System.Windows.Forms.Label();
             this.NavGroupBox = new System.Windows.Forms.GroupBox();
-            this.AHThrottleTimeLabel = new System.Windows.Forms.Label();
-            this.AHThrottleTimeNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.AHThrottleWindowLabel = new System.Windows.Forms.Label();
+            this.AHThrottleWindowNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.NavGPSTimeoutLabel = new System.Windows.Forms.Label();
             this.NavGPSTimeoutNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.bit51CheckBox = new System.Windows.Forms.CheckBox();
@@ -306,6 +305,7 @@
             this.CameraPitchNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CameraRollNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CameraPropLabel = new System.Windows.Forms.Label();
+            this.bit41CheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.DescDelayNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavRTHAltNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AttThrFFNumericUpDown)).BeginInit();
@@ -341,7 +341,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Ch4NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch1NumericUpDown)).BeginInit();
             this.NavGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AHThrottleTimeNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AHThrottleWindowNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavGPSTimeoutNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProximityAltNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProximityRadiusNumericUpDown)).BeginInit();
@@ -1679,16 +1679,6 @@
             this.bit11CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
             this.bit11CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
-            // bit41CheckBox
-            // 
-            resources.ApplyResources(this.bit41CheckBox, "bit41CheckBox");
-            this.bit41CheckBox.Name = "bit41CheckBox";
-            this.bit41CheckBox.Tag = "16_4";
-            this.bit41CheckBox.UseVisualStyleBackColor = true;
-            this.bit41CheckBox.CheckedChanged += new System.EventHandler(this.bitCheckBox_CheckedChanged);
-            this.bit41CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.bit41CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
-            // 
             // ComboPort1Label
             // 
             resources.ApplyResources(this.ComboPort1Label, "ComboPort1Label");
@@ -1697,8 +1687,9 @@
             // 
             // NavGroupBox
             // 
-            this.NavGroupBox.Controls.Add(this.AHThrottleTimeLabel);
-            this.NavGroupBox.Controls.Add(this.AHThrottleTimeNumericUpDown);
+            this.NavGroupBox.Controls.Add(this.bit41CheckBox);
+            this.NavGroupBox.Controls.Add(this.AHThrottleWindowLabel);
+            this.NavGroupBox.Controls.Add(this.AHThrottleWindowNumericUpDown);
             this.NavGroupBox.Controls.Add(this.NavGPSTimeoutLabel);
             this.NavGroupBox.Controls.Add(this.bit62CheckBox);
             this.NavGroupBox.Controls.Add(this.NavGPSTimeoutNumericUpDown);
@@ -1716,7 +1707,6 @@
             this.NavGroupBox.Controls.Add(this.VRSLabel);
             this.NavGroupBox.Controls.Add(this.bit11CheckBox);
             this.NavGroupBox.Controls.Add(this.label1);
-            this.NavGroupBox.Controls.Add(this.bit41CheckBox);
             this.NavGroupBox.Controls.Add(this.bit21CheckBox);
             this.NavGroupBox.Controls.Add(this.TurnoutLabel);
             this.NavGroupBox.Controls.Add(this.NavMaxAngleNumericUpDown);
@@ -1748,35 +1738,30 @@
             this.NavGroupBox.Name = "NavGroupBox";
             this.NavGroupBox.TabStop = false;
             // 
-            // AHThrottleTimeLabel
+            // AHThrottleWindowLabel
             // 
-            resources.ApplyResources(this.AHThrottleTimeLabel, "AHThrottleTimeLabel");
-            this.AHThrottleTimeLabel.Name = "AHThrottleTimeLabel";
+            resources.ApplyResources(this.AHThrottleWindowLabel, "AHThrottleWindowLabel");
+            this.AHThrottleWindowLabel.Name = "AHThrottleWindowLabel";
             // 
-            // AHThrottleTimeNumericUpDown
+            // AHThrottleWindowNumericUpDown
             // 
-            this.AHThrottleTimeNumericUpDown.DecimalPlaces = 1;
-            resources.ApplyResources(this.AHThrottleTimeNumericUpDown, "AHThrottleTimeNumericUpDown");
-            this.AHThrottleTimeNumericUpDown.Increment = new decimal(new int[] {
+            this.AHThrottleWindowNumericUpDown.DecimalPlaces = 1;
+            resources.ApplyResources(this.AHThrottleWindowNumericUpDown, "AHThrottleWindowNumericUpDown");
+            this.AHThrottleWindowNumericUpDown.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.AHThrottleTimeNumericUpDown.Maximum = new decimal(new int[] {
+            this.AHThrottleWindowNumericUpDown.Name = "AHThrottleWindowNumericUpDown";
+            this.AHThrottleWindowNumericUpDown.Tag = "115";
+            this.AHThrottleWindowNumericUpDown.Value = new decimal(new int[] {
             50,
             0,
             0,
             65536});
-            this.AHThrottleTimeNumericUpDown.Name = "AHThrottleTimeNumericUpDown";
-            this.AHThrottleTimeNumericUpDown.Tag = "115";
-            this.AHThrottleTimeNumericUpDown.Value = new decimal(new int[] {
-            30,
-            0,
-            0,
-            65536});
-            this.AHThrottleTimeNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.AHThrottleTimeNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
-            this.AHThrottleTimeNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            this.AHThrottleWindowNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.AHThrottleWindowNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.AHThrottleWindowNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
             // NavGPSTimeoutLabel
             // 
@@ -3688,6 +3673,16 @@
             resources.ApplyResources(this.CameraPropLabel, "CameraPropLabel");
             this.CameraPropLabel.Name = "CameraPropLabel";
             // 
+            // bit41CheckBox
+            // 
+            resources.ApplyResources(this.bit41CheckBox, "bit41CheckBox");
+            this.bit41CheckBox.Name = "bit41CheckBox";
+            this.bit41CheckBox.Tag = "16_4";
+            this.bit41CheckBox.UseVisualStyleBackColor = true;
+            this.bit41CheckBox.CheckedChanged += new System.EventHandler(this.bitCheckBox_CheckedChanged);
+            this.bit41CheckBox.Click += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.bit41CheckBox.Enter += new System.EventHandler(this.infoGetFocus);
+            // 
             // ParameterForm
             // 
             resources.ApplyResources(this, "$this");
@@ -3751,7 +3746,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Ch1NumericUpDown)).EndInit();
             this.NavGroupBox.ResumeLayout(false);
             this.NavGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AHThrottleTimeNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AHThrottleWindowNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavGPSTimeoutNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProximityAltNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProximityRadiusNumericUpDown)).EndInit();
@@ -3901,7 +3896,6 @@
         public System.Windows.Forms.ComboBox ESCComboBox;
         public System.Windows.Forms.NumericUpDown LowMotorRunNumericUpDown;
         private System.Windows.Forms.Label LowMotorRunLabel;
-        public System.Windows.Forms.CheckBox bit41CheckBox;
         private System.Windows.Forms.Label ComboPort1Label;
         public System.Windows.Forms.CheckBox bit01CheckBox;
         private System.Windows.Forms.GroupBox ModifiersGroupBox1;
@@ -4105,8 +4099,9 @@
         public System.Windows.Forms.NumericUpDown CameraPitchNumericUpDown;
         public System.Windows.Forms.NumericUpDown CameraRollNumericUpDown;
         private System.Windows.Forms.Label CameraPropLabel;
-        private System.Windows.Forms.Label AHThrottleTimeLabel;
-        public System.Windows.Forms.NumericUpDown AHThrottleTimeNumericUpDown;
+        private System.Windows.Forms.Label AHThrottleWindowLabel;
+        public System.Windows.Forms.NumericUpDown AHThrottleWindowNumericUpDown;
+        public System.Windows.Forms.CheckBox bit41CheckBox;
 
 
     }

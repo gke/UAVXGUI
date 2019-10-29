@@ -763,7 +763,7 @@
     <value>NoControl</value>
   </data>
   <data name="bit62CheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>266, 57</value>
+    <value>266, 121</value>
   </data>
   <data name="bit62CheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>95, 17</value>
@@ -784,7 +784,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;bit62CheckBox.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="VoltageFSLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1294,7 +1294,7 @@
     <value>UAVXMin</value>
   </data>
   <data name="TelemetryComboBox.Items3" xml:space="preserve">
-    <value>UAVXTrack</value>
+    <value>Unused</value>
   </data>
   <data name="TelemetryComboBox.Items4" xml:space="preserve">
     <value>FrSky V1</value>
@@ -2476,7 +2476,7 @@
     <value>NoControl</value>
   </data>
   <data name="bit61CheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>266, 91</value>
+    <value>266, 53</value>
   </data>
   <data name="bit61CheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 17</value>
@@ -2497,7 +2497,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;bit61CheckBox.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="bit21CheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2509,7 +2509,7 @@
     <value>NoControl</value>
   </data>
   <data name="bit21CheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>266, 108</value>
+    <value>266, 36</value>
   </data>
   <data name="bit21CheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 17</value>
@@ -3262,7 +3262,7 @@
     <value>NoControl</value>
   </data>
   <data name="bit11CheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>266, 74</value>
+    <value>266, 19</value>
   </data>
   <data name="bit11CheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 17</value>
@@ -3283,40 +3283,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;bit11CheckBox.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="bit41CheckBox.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="bit41CheckBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
-  </data>
-  <data name="bit41CheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bit41CheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>266, 23</value>
-  </data>
-  <data name="bit41CheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 17</value>
-  </data>
-  <data name="bit41CheckBox.TabIndex" type="System.Int32, mscorlib">
-    <value>28</value>
-  </data>
-  <data name="bit41CheckBox.Text" xml:space="preserve">
-    <value>GPS Required</value>
-  </data>
-  <data name="&gt;&gt;bit41CheckBox.Name" xml:space="preserve">
-    <value>bit41CheckBox</value>
-  </data>
-  <data name="&gt;&gt;bit41CheckBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bit41CheckBox.Parent" xml:space="preserve">
-    <value>NavGroupBox</value>
-  </data>
-  <data name="&gt;&gt;bit41CheckBox.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>18</value>
   </data>
   <data name="ComboPort1Label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3348,62 +3315,95 @@
   <data name="&gt;&gt;ComboPort1Label.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
-  <data name="AHThrottleTimeLabel.AutoSize" type="System.Boolean, mscorlib">
+  <data name="bit41CheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="AHThrottleTimeLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="AHThrottleTimeLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 181</value>
-  </data>
-  <data name="AHThrottleTimeLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 13</value>
-  </data>
-  <data name="AHThrottleTimeLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>260</value>
-  </data>
-  <data name="AHThrottleTimeLabel.Text" xml:space="preserve">
-    <value>AH Lock(S)</value>
-  </data>
-  <data name="&gt;&gt;AHThrottleTimeLabel.Name" xml:space="preserve">
-    <value>AHThrottleTimeLabel</value>
-  </data>
-  <data name="&gt;&gt;AHThrottleTimeLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AHThrottleTimeLabel.Parent" xml:space="preserve">
-    <value>NavGroupBox</value>
-  </data>
-  <data name="&gt;&gt;AHThrottleTimeLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="AHThrottleTimeNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="bit41CheckBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
-  <data name="AHThrottleTimeNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>201, 177</value>
+  <data name="bit41CheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="AHThrottleTimeNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 20</value>
+  <data name="bit41CheckBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>266, 70</value>
   </data>
-  <data name="AHThrottleTimeNumericUpDown.TabIndex" type="System.Int32, mscorlib">
-    <value>261</value>
+  <data name="bit41CheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 17</value>
   </data>
-  <data name="AHThrottleTimeNumericUpDown.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
+  <data name="bit41CheckBox.TabIndex" type="System.Int32, mscorlib">
+    <value>262</value>
   </data>
-  <data name="&gt;&gt;AHThrottleTimeNumericUpDown.Name" xml:space="preserve">
-    <value>AHThrottleTimeNumericUpDown</value>
+  <data name="bit41CheckBox.Text" xml:space="preserve">
+    <value>AH Alarm</value>
   </data>
-  <data name="&gt;&gt;AHThrottleTimeNumericUpDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;bit41CheckBox.Name" xml:space="preserve">
+    <value>bit41CheckBox</value>
   </data>
-  <data name="&gt;&gt;AHThrottleTimeNumericUpDown.Parent" xml:space="preserve">
+  <data name="&gt;&gt;bit41CheckBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bit41CheckBox.Parent" xml:space="preserve">
     <value>NavGroupBox</value>
   </data>
-  <data name="&gt;&gt;AHThrottleTimeNumericUpDown.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;bit41CheckBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="AHThrottleWindowLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="AHThrottleWindowLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="AHThrottleWindowLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 183</value>
+  </data>
+  <data name="AHThrottleWindowLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 13</value>
+  </data>
+  <data name="AHThrottleWindowLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>260</value>
+  </data>
+  <data name="AHThrottleWindowLabel.Text" xml:space="preserve">
+    <value>AH Thr (%)</value>
+  </data>
+  <data name="&gt;&gt;AHThrottleWindowLabel.Name" xml:space="preserve">
+    <value>AHThrottleWindowLabel</value>
+  </data>
+  <data name="&gt;&gt;AHThrottleWindowLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AHThrottleWindowLabel.Parent" xml:space="preserve">
+    <value>NavGroupBox</value>
+  </data>
+  <data name="&gt;&gt;AHThrottleWindowLabel.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="AHThrottleWindowNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="AHThrottleWindowNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>201, 179</value>
+  </data>
+  <data name="AHThrottleWindowNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 20</value>
+  </data>
+  <data name="AHThrottleWindowNumericUpDown.TabIndex" type="System.Int32, mscorlib">
+    <value>261</value>
+  </data>
+  <data name="AHThrottleWindowNumericUpDown.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;AHThrottleWindowNumericUpDown.Name" xml:space="preserve">
+    <value>AHThrottleWindowNumericUpDown</value>
+  </data>
+  <data name="&gt;&gt;AHThrottleWindowNumericUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AHThrottleWindowNumericUpDown.Parent" xml:space="preserve">
+    <value>NavGroupBox</value>
+  </data>
+  <data name="&gt;&gt;AHThrottleWindowNumericUpDown.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="NavGPSTimeoutLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3433,7 +3433,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;NavGPSTimeoutLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="NavGPSTimeoutNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -3460,7 +3460,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;NavGPSTimeoutNumericUpDown.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="bit51CheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3493,7 +3493,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;bit51CheckBox.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="ProximityAltNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -3520,7 +3520,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;ProximityAltNumericUpDown.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="ProximityRadiusLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3550,7 +3550,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;ProximityRadiusLabel.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="ProximityAltLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3580,7 +3580,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;ProximityAltLabel.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="ProximityRadiusNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -3607,7 +3607,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;ProximityRadiusNumericUpDown.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="bit52CheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3619,7 +3619,7 @@
     <value>NoControl</value>
   </data>
   <data name="bit52CheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>266, 40</value>
+    <value>266, 104</value>
   </data>
   <data name="bit52CheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 17</value>
@@ -3640,7 +3640,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;bit52CheckBox.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="MotorStopLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3670,7 +3670,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;MotorStopLabel.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="bit32CheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3682,16 +3682,16 @@
     <value>NoControl</value>
   </data>
   <data name="bit32CheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>266, 125</value>
+    <value>266, 87</value>
   </data>
   <data name="bit32CheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 17</value>
+    <value>120, 17</value>
   </data>
   <data name="bit32CheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>232</value>
   </data>
   <data name="bit32CheckBox.Text" xml:space="preserve">
-    <value>Use Glider Strategies</value>
+    <value>Glider Strategies</value>
   </data>
   <data name="&gt;&gt;bit32CheckBox.Name" xml:space="preserve">
     <value>bit32CheckBox</value>
@@ -3703,7 +3703,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;bit32CheckBox.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="MotorStopComboBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -3748,7 +3748,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;MotorStopComboBox.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="VRSDescentRateNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -3775,7 +3775,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;VRSDescentRateNumericUpDown.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="VRSLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3805,7 +3805,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;VRSLabel.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3835,7 +3835,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="TurnoutLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>

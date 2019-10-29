@@ -443,7 +443,7 @@ namespace UAVXGUI
             if (parameterForm.bit31CheckBox.Focused)
                 helpstring = help.GetString("Emulation");
             if (parameterForm.bit41CheckBox.Focused)
-                helpstring = help.GetString("GPSToArm");
+                helpstring = help.GetString("AH Alarm");
             if (parameterForm.bit51CheckBox.Focused)
                 helpstring = help.GetString("GPSAltitude");
             if (parameterForm.bit11CheckBox.Focused)
@@ -480,8 +480,8 @@ namespace UAVXGUI
             if (parameterForm.IMUOptionComboBox.Focused)
                 helpstring = help.GetString("InertialScheme");
 
-            if (parameterForm.AHThrottleTimeNumericUpDown.Focused)
-                helpstring = help.GetString("AHThrottleTime");
+            if (parameterForm.AHThrottleWindowNumericUpDown.Focused)
+                helpstring = help.GetString("AHThrottleWindow");
 
             if (parameterForm.ParamTemplateNumericUpDown.Focused)
                 helpstring = help.GetString("ParamTemplate");
@@ -1345,8 +1345,8 @@ namespace UAVXGUI
                         break;
                     case 48:
                         GyroLPFComboBox.SelectedIndex = UAVXP[p - 1].Value;
-                        //GyroLPFNumericUpDown.BackColor =  (GyroLPFNumericUpDown.Value < 50) ?
-                        //    Color.Orange : Color.White;
+                       // GyroLPFNumericUpDown.BackColor =  (GyroLPFNumericUpDown.Value < 50) ?
+                       //     Color.Orange : Color.White;
                         ParamUpdate(GyroLPFComboBox);
                         break;
                     case 49:
@@ -1665,8 +1665,8 @@ namespace UAVXGUI
                         ParamUpdate(FWRollPitchLimitNumericUpDown);
                         break;
                     case 115:
-                        AHThrottleTimeNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
-                        ParamUpdate(AHThrottleTimeNumericUpDown);
+                        AHThrottleWindowNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
+                        ParamUpdate(AHThrottleWindowNumericUpDown);
                         break;
 
                     default: break; // up to case 64 available
@@ -1681,6 +1681,7 @@ namespace UAVXGUI
             // turn off parameter button colour
         }
 
+     
      
 
  

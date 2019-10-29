@@ -231,7 +231,6 @@ namespace UAVXGUI
 
      public const byte UAVXAFNamePacketTag = 63;
      public const byte UAVXWindPacketTag = 64;
-     public const byte UAVXTrackPacketTag = 65;
 
         public const byte FrSkyPacketTag = 99;
 
@@ -2594,17 +2593,6 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
 
 
                         break;
-                    case UAVXTrackPacketTag:
-                        RCNavFramesT = ExtractShort(ref UAVXPacket, 2);
-                        RC1CaptureFramesT = ExtractShort(ref UAVXPacket, 4);
-                        GPSLatitudeT = ExtractInt(ref UAVXPacket, 6);
-                        GPSLongitudeT = ExtractInt(ref UAVXPacket, 10);
-                        GPSAltitudeT = ExtractInt24(ref UAVXPacket, 14);
-                        GPSNoOfSatsT = ExtractByte(ref UAVXPacket, 17);
-                        CurrAlt = (double)GPSAltitudeT * 0.01;
-                        WriteKMLFile();
-                        break;
-
                     case UAVXOriginPacketTag:
 	                    Mission.NoOfWayPoints = UAVXPacket[2];
 
