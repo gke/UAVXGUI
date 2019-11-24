@@ -69,13 +69,13 @@ namespace UAVXGUI
         byte[] def = {
 
         	20,			// RollKpRate, 			01 UAVP 21
-			0,	 		// AltPosKi,			02 UAVP 10
+			10,	 		// AltPosKi,			02 UAVP 10
 			25,			// RollKpAngle,			03 // 25
 			2,	        // ArmingMode,				04
 			40,	 		// RollIntLimit,		05 UAVP 80
 
 			20,	 		// PitchKpRate,			06 UAVP 21
-			20,	 		// AltPosKp,			07 UAVP 10
+			28,	 		// AltPosKp,			07 UAVP 10
 			25,	 		// PitchKpAngle			08 // 25
 			0, 	        // RFUsed,				09 UAVP 1
 			40,	 		// PitchIntLimit,		10 UAVP 80
@@ -102,7 +102,7 @@ namespace UAVXGUI
 			8, 			// YawKpAngle(Compass),	27
 			45,			// PitchKdRate,			28 UAVP 10
 			20, 		// NavVelKp,			29
-			20, 		// AltVelKp,			30
+			32, 		// AltVelKp,			30
 
 			30, 			// Horizon,	    	31
 			50,			// MadgwickKpMag,	    32
@@ -110,7 +110,7 @@ namespace UAVXGUI
 			0,			// NavMagVar,			34c
 			4,  	    // SensorHint,     		35c
 
-			7, 		    // ESCType,				36c
+			4, 		    // ESCType,				36c
 			7, 			// UnusedRxChannels,			37c
 			2,			// RxRollCh,			38
 			20,			// MadgwickKpAcc,		39c
@@ -186,10 +186,10 @@ namespace UAVXGUI
             0, // YawAngleKp 97
             5,  // YawAngleKi 98
             10, // YawAngleIntLimit 99
-            15, // AltPosIntLimit 100
+            10, // AltPosIntLimit 100
             
             0, // MotorStopSel 101
-            8, // AltVelKi 102
+            10, // AltVelKi 102
             10, // AltHoldBand 103
             30, // VRSDescentRate 104
             1, // Unused 105
@@ -206,7 +206,7 @@ namespace UAVXGUI
             0,
             0,
             
-            0,
+            10,
             0,
             0,
             0,
@@ -994,7 +994,7 @@ namespace UAVXGUI
                 NumericUpDown Field = (NumericUpDown)Object;
 
                 int p = Convert.ToInt16(Field.Tag);
-                if ((p == 105))
+                if ((p == 105) || (p == 116))
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 100.0);
                 else 
                    if ((p == 64) || (p == 83) || (p == 84) || (p == 89) )
@@ -1602,7 +1602,7 @@ namespace UAVXGUI
                         YawAngleIntLimitNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(YawAngleIntLimitNumericUpDown);
                         break;
-                    case 100: 
+                    case 100:
                         AltPosIntLimitNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(AltPosIntLimitNumericUpDown);
                         break;
@@ -1667,6 +1667,10 @@ namespace UAVXGUI
                     case 115:
                         AHThrottleWindowNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
                         ParamUpdate(AHThrottleWindowNumericUpDown);
+                        break;
+                    case 116:
+                        CruiseTrackRateNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.01);
+                        ParamUpdate(CruiseTrackRateNumericUpDown);
                         break;
 
                     default: break; // up to case 64 available

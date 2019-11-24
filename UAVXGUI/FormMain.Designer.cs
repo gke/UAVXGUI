@@ -131,7 +131,7 @@ namespace UAVXGUI
             this.MagFailBox = new System.Windows.Forms.TextBox();
             this.BypassBox = new System.Windows.Forms.TextBox();
             this.FlagsGroupBox = new System.Windows.Forms.GroupBox();
-            this.GPSStatBox = new System.Windows.Forms.GroupBox();
+            this.GPSStatusBox = new System.Windows.Forms.GroupBox();
             this.GPScAcc = new System.Windows.Forms.TextBox();
             this.GPScAccLabel = new System.Windows.Forms.Label();
             this.GPSvAcc = new System.Windows.Forms.TextBox();
@@ -346,7 +346,7 @@ namespace UAVXGUI
             this.BatteryGroupBox.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.FlagsGroupBox.SuspendLayout();
-            this.GPSStatBox.SuspendLayout();
+            this.GPSStatusBox.SuspendLayout();
             this.AltitudeGroupBox.SuspendLayout();
             this.NavGroupBox.SuspendLayout();
             this.LocationBox.SuspendLayout();
@@ -1383,26 +1383,26 @@ namespace UAVXGUI
             this.FlagsGroupBox.TabStop = false;
             this.FlagsGroupBox.Text = "Flags";
             // 
-            // GPSStatBox
+            // GPSStatusBox
             // 
-            this.GPSStatBox.Controls.Add(this.GPScAcc);
-            this.GPSStatBox.Controls.Add(this.GPScAccLabel);
-            this.GPSStatBox.Controls.Add(this.GPSvAcc);
-            this.GPSStatBox.Controls.Add(this.GPSvAccLabel);
-            this.GPSStatBox.Controls.Add(this.GPSNoOfSats);
-            this.GPSStatBox.Controls.Add(this.GPSFixLabel);
-            this.GPSStatBox.Controls.Add(this.GPSNoOfSatsLabel);
-            this.GPSStatBox.Controls.Add(this.GPSFix);
-            this.GPSStatBox.Controls.Add(this.GPSsAccLabel);
-            this.GPSStatBox.Controls.Add(this.GPSsAcc);
-            this.GPSStatBox.Controls.Add(this.GPShAcc);
-            this.GPSStatBox.Controls.Add(this.hAccLabel);
-            this.GPSStatBox.Location = new System.Drawing.Point(105, 444);
-            this.GPSStatBox.Name = "GPSStatBox";
-            this.GPSStatBox.Size = new System.Drawing.Size(125, 98);
-            this.GPSStatBox.TabIndex = 101;
-            this.GPSStatBox.TabStop = false;
-            this.GPSStatBox.Text = "GPS Status";
+            this.GPSStatusBox.Controls.Add(this.GPScAcc);
+            this.GPSStatusBox.Controls.Add(this.GPScAccLabel);
+            this.GPSStatusBox.Controls.Add(this.GPSvAcc);
+            this.GPSStatusBox.Controls.Add(this.GPSvAccLabel);
+            this.GPSStatusBox.Controls.Add(this.GPSNoOfSats);
+            this.GPSStatusBox.Controls.Add(this.GPSFixLabel);
+            this.GPSStatusBox.Controls.Add(this.GPSNoOfSatsLabel);
+            this.GPSStatusBox.Controls.Add(this.GPSFix);
+            this.GPSStatusBox.Controls.Add(this.GPSsAccLabel);
+            this.GPSStatusBox.Controls.Add(this.GPSsAcc);
+            this.GPSStatusBox.Controls.Add(this.GPShAcc);
+            this.GPSStatusBox.Controls.Add(this.hAccLabel);
+            this.GPSStatusBox.Location = new System.Drawing.Point(105, 444);
+            this.GPSStatusBox.Name = "GPSStatusBox";
+            this.GPSStatusBox.Size = new System.Drawing.Size(125, 98);
+            this.GPSStatusBox.TabIndex = 101;
+            this.GPSStatusBox.TabStop = false;
+            this.GPSStatusBox.Text = "GPS Status";
             // 
             // GPScAcc
             // 
@@ -3486,7 +3486,7 @@ namespace UAVXGUI
             this.Controls.Add(this.AltitudeSource);
             this.Controls.Add(this.MainLabel);
             this.Controls.Add(this.CurrentAltitude);
-            this.Controls.Add(this.GPSStatBox);
+            this.Controls.Add(this.GPSStatusBox);
             this.Controls.Add(this.FlagsGroupBox);
             this.Controls.Add(this.AlarmState);
             this.Controls.Add(this.BatteryGroupBox);
@@ -3523,8 +3523,8 @@ namespace UAVXGUI
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.FlagsGroupBox.ResumeLayout(false);
-            this.GPSStatBox.ResumeLayout(false);
-            this.GPSStatBox.PerformLayout();
+            this.GPSStatusBox.ResumeLayout(false);
+            this.GPSStatusBox.PerformLayout();
             this.AltitudeGroupBox.ResumeLayout(false);
             this.AltitudeGroupBox.PerformLayout();
             this.NavGroupBox.ResumeLayout(false);
@@ -3644,7 +3644,7 @@ namespace UAVXGUI
         private System.Windows.Forms.TextBox RangefinderAltValidBox;
         private System.Windows.Forms.TextBox UsingRangefinderBox;
         private System.Windows.Forms.GroupBox FlagsGroupBox;
-        private System.Windows.Forms.GroupBox GPSStatBox;
+        private System.Windows.Forms.GroupBox GPSStatusBox;
         private System.Windows.Forms.GroupBox AltitudeGroupBox;
         private System.Windows.Forms.Label WayHeadingLabel;
         private System.Windows.Forms.Label GPSLongitudeLabel;

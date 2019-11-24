@@ -486,7 +486,10 @@ namespace UAVXGUI
         int BaroTemperatureT;
         int BaroPressureT;
 
-        int FGPSROCT, FGPSAltitudeT, BaroVT, TrackAccZVT, AltPosDesiredT, AltPosErrorT, AltPosPTermT, AltPosITermT, AltRateDesiredT, AltRateErrorT, AltRatePTermT, AltRateDTermT, FAltCompT, FCruiseThrottleT;
+        int FGPSROCT, FGPSAltitudeT, BaroVT, TrackAccZVT, AltPosDesiredT, 
+            AltPosErrorT, AltPosPTermT, AltPosITermT, AltRateDesiredT, AltRateErrorT,
+            AltRatePTermT, AltRateITermT, FAltCompT, FCruiseThrottleT, FDesiredThrottleT;
+        short AHFlags;
 
         short BaroVarianceT;
         short AccZVarianceT;
@@ -1856,6 +1859,10 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                 LowBatteryBox.BackColor = FlagsGroupBox.BackColor;
                 BatteryVolts.BackColor = BatteryGroupBox.BackColor;
             }
+
+            GPSStatusBox.BackColor = F[(byte)FlagValues.GPSValid] ?
+                FlagsGroupBox.BackColor : System.Drawing.Color.Orange;
+
             GPSValidBox.BackColor = F[(byte)FlagValues.GPSValid] ?
                 System.Drawing.Color.Green : System.Drawing.Color.Red;
 
@@ -2307,39 +2314,39 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
 
                     GPSNoOfSats.Text = string.Format("{0:n0}", GPSNoOfSatsT);
                     GPSNoOfSats.BackColor = GPSNoOfSatsT < 6 ?
-                        System.Drawing.Color.Orange : GPSStatBox.BackColor;
+                        System.Drawing.Color.Orange : GPSStatusBox.BackColor;
 
                     GPSFix.Text = string.Format("{0:n0}", GPSFixT);
                     GPSFix.BackColor = GPSFixT < 2 ?
-                        System.Drawing.Color.Orange : GPSStatBox.BackColor;
+                        System.Drawing.Color.Orange : GPSStatusBox.BackColor;
 
                     GPShAcc.Text = string.Format("{0:n2}", (float)GPShAccT * 0.01);
-                    if (GPShAccT > 600)
+                    if (GPShAccT > 500)
                         GPShAcc.BackColor = System.Drawing.Color.Red;
                     else
-                        GPShAcc.BackColor = GPShAccT > 300 ?
-                            System.Drawing.Color.Orange : GPSStatBox.BackColor;
+                        GPShAcc.BackColor = GPShAccT > 250 ?
+                            System.Drawing.Color.Orange : GPSStatusBox.BackColor;
 
                     GPSvAcc.Text = string.Format("{0:n2}", (float)GPSvAccT * 0.01);
-                    if (GPSvAccT > 600)
+                    if (GPSvAccT > 500)
                         GPSvAcc.BackColor = System.Drawing.Color.Red;
                     else
-                        GPSvAcc.BackColor = GPSvAccT > 300 ?
-                            System.Drawing.Color.Orange : GPSStatBox.BackColor;
+                        GPSvAcc.BackColor = GPSvAccT > 250 ?
+                            System.Drawing.Color.Orange : GPSStatusBox.BackColor;
 
                     GPSsAcc.Text = string.Format("{0:n2}", (float)GPSsAccT * 0.01);
                     if (GPSsAccT > 100)
                         GPSsAcc.BackColor = System.Drawing.Color.Red;
                     else
                         GPSsAcc.BackColor = GPSsAccT > 50 ?
-                            System.Drawing.Color.Orange : GPSStatBox.BackColor;           
+                            System.Drawing.Color.Orange : GPSStatusBox.BackColor;           
 
                     GPScAcc.Text = string.Format("{0:n2}", (float)GPScAccT * 0.01);
                     if (GPScAccT > 100)
                         GPScAcc.BackColor = System.Drawing.Color.Red;
                     else
                         GPScAcc.BackColor = GPScAccT > 50 ?
-                            System.Drawing.Color.Orange : GPSStatBox.BackColor;
+                            System.Drawing.Color.Orange : GPSStatusBox.BackColor;
 
                     CurrWP.Text = string.Format("{0:n0}", CurrWPT);
 
@@ -3135,16 +3142,17 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
 	                AltRateDesiredT = ExtractShort(ref UAVXPacket, 31);
                     AltRateErrorT = ExtractShort(ref UAVXPacket, 33);
 	                AltRatePTermT = ExtractShort(ref UAVXPacket, 35);
-	                AltRateDTermT = ExtractShort(ref UAVXPacket, 37);
+	                AltRateITermT = ExtractShort(ref UAVXPacket, 37);
 
 	                FCruiseThrottleT = ExtractShort(ref UAVXPacket, 39);
-	                FAltCompT = ExtractShort(ref UAVXPacket, 41);
+                    FDesiredThrottleT = ExtractShort(ref UAVXPacket, 41);
+	                FAltCompT = ExtractShort(ref UAVXPacket, 43);
 
-                    FGPSAltitudeT = ExtractInt24(ref UAVXPacket, 43);
-                    FGPSROCT = ExtractShort(ref UAVXPacket, 46);
 
-                  //  ROC.Text = string.Format("{0:n1}", (float)FROCT * 0.001);
-                  //  CurrAlt = FAltitudeT * 0.001;
+                    FGPSAltitudeT = ExtractInt24(ref UAVXPacket, 45);
+                    FGPSROCT = ExtractShort(ref UAVXPacket, 48);
+
+                    AHFlags = ExtractByte(ref UAVXPacket, 50);
 
                     WriteTextFusionFile(); // only log with this packet
 
@@ -3408,10 +3416,12 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
  
                     "ROCE," +
                     "ROCP," +
-                    "ROCD," +
-
+                    "ROCI," +
+                    "Nav, VRS, TM, Alm," +
+                    "Cruise," +
+                    "Desired," +
                     "AltComp," +
-                    "Cruise"
+                    "Throttle"      
                   );
 
                SaveTextFusionFileStreamWriter.WriteLine();
@@ -3420,7 +3430,7 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                FusionFileHeaderWritten = true;
             }
 
-            SaveTextFusionFileStreamWriter.Write(FusionmSecT  + "," +
+            SaveTextFusionFileStreamWriter.Write(FusionmSecT + "," +
 
             AccZT * 0.001 + "," +
             HRAccZBiasT * 0.001 + "," +
@@ -3431,8 +3441,8 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
             FGPSAltitudeT * 0.001 + "," +
             RawRelAltitudeT * 0.001 + "," +
             FAltitudeT * 0.001 + "," +
-            AltPosDesiredT  * 0.01 + "," +
-  
+            AltPosDesiredT * 0.01 + "," +
+
             AltPosErrorT * 0.001 + "," +
             AltPosPTermT * 0.001 + "," +
             AltPosITermT * 0.001 + "," +
@@ -3442,13 +3452,19 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
             AltRateDesiredT * 0.01 + "," +
             AltRateErrorT * 0.001 + "," +
             AltRatePTermT * 0.001 + "," +
-            AltRateDTermT * 0.001 + "," +
+            AltRateITermT * 0.001 + "," +
 
-            
-            FAltCompT * 0.001 + "," +
-            
-            FCruiseThrottleT * 0.001);
+          ((AHFlags >> 3) & 1) + "," +  // Nav
+          ((AHFlags >> 2) & 1) + "," + // VRS
+          ((AHFlags >> 1) & 1) + "," + // TM
+          (AHFlags & 1) + "," + //  Alm
 
+            FCruiseThrottleT * 0.001 + "," +   
+            FDesiredThrottleT * 0.001 + "," +
+                 FAltCompT * 0.001 + "," +
+
+            (FDesiredThrottleT + FAltCompT) * 0.001);
+            
          SaveTextFusionFileStreamWriter.WriteLine();
             SaveTextFusionFileStreamWriter.Flush();
 
