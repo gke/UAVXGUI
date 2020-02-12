@@ -192,7 +192,7 @@ namespace UAVXGUI
             10, // AltVelKi 102
             10, // AltHoldBand 103
             30, // VRSDescentRate 104
-            1, // Unused 105
+            20, // AccVariance 105
             
             2, // NavGPSTimeout 106
             3, // ProxAltM 107
@@ -410,8 +410,8 @@ namespace UAVXGUI
                 helpstring = help.GetString("ClimbAngle");
             if (parameterForm.FWTrimAngleNumericUpDown.Focused)
                 helpstring = help.GetString("TrimAngle");
-            if (parameterForm.MaxROCTextBox.Focused)
-                helpstring = help.GetString("BestROC");
+            if (parameterForm.ROCGainNumericUpDown.Focused)
+                helpstring = help.GetString("ROCGain");
             if (parameterForm.FWAileronDifferentialNumericUpDown.Focused)
                 helpstring = help.GetString("FWDifferential");
             if (parameterForm.AirspeedComboBox.Focused)
@@ -424,11 +424,9 @@ namespace UAVXGUI
                 helpstring = help.GetString("FWFlapDecayTime");
 
 
-            if (parameterForm.AccVarianceNumericUpDown.Focused)
+            if (parameterForm.AccZVarianceNumericUpDown.Focused)
                 helpstring = help.GetString("AccZVariance");
-            if (parameterForm.TrackAccZVarianceTextBox.Focused)
-                helpstring = help.GetString("TrackAccZVariance");
-            if (parameterForm.BaroVarianceTextBox.Focused)
+            if (parameterForm.BaroVarianceNumericUpDown.Focused)
                 helpstring = help.GetString("BaroVariance");
 
             if (parameterForm.TurnoutNumericUpDown.Focused)
@@ -994,15 +992,17 @@ namespace UAVXGUI
                 NumericUpDown Field = (NumericUpDown)Object;
 
                 int p = Convert.ToInt16(Field.Tag);
-                if ((p == 105) || (p == 116))
+                if ( (p == 116) ||  (p == 111) )
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 100.0);
-                else 
+                else
+                    if ((p == 54) || (p == 18) || (p == 32) || (p == 34) || (p == 39) || (p == 46) || (p == 53) ||
+                     (p == 70) || (p == 104) || (p == 105) || (p == 110) || (p == 112) | (p == 115))
+                        P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 10.0);
+                else  
                    if ((p == 64) || (p == 83) || (p == 84) || (p == 89) )
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 0.1);
                 else
-                       if ((p == 54) || (p == 18) || (p == 32) || (p == 34) || (p == 39) || (p == 46) || (p == 53) || (p == 70) || (p == 104) || (p == 110) || (p == 115))
-                    P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 10.0);
-                else           
+                          
                     P[CurrPS, p - 1].Value = Convert.ToByte(Field.Value);
        
 
@@ -1473,8 +1473,8 @@ namespace UAVXGUI
                         ParamUpdate(AirspeedComboBox);
                         break;
                     case 73:
-                        MaxROCTextBox.Text = string.Format("{0:n1}", Convert.ToDecimal(UAVXP[p - 1].Value * 0.1));
-                        MaxROCTextBox.BackColor = (Convert.ToDecimal(UAVXP[p - 1].Value * 0.1) > VRSDescentRateNumericUpDown.Value) ? Color.Orange : Color.White;
+                        ROCGainNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(ROCGainNumericUpDown);
                         break;
 
 // etc to param 96
@@ -1623,8 +1623,8 @@ namespace UAVXGUI
                         ParamUpdate(VRSDescentRateNumericUpDown);
                         break;
                     case 105:
-                        AccVarianceNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.01);
-                        ParamUpdate(AccVarianceNumericUpDown);
+                   //   AccVarianceNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
+                   //    ParamUpdate(AccVarianceNumericUpDown);
                         break;
                     case 106:
                         NavGPSTimeoutNumericUpDown.Value = UAVXP[p - 1].Value;
@@ -1649,12 +1649,12 @@ namespace UAVXGUI
                         ParamUpdate(VoltageFSNumericUpDown);
                         break;
                     case 111:
-                        BaroVarianceTextBox.Text = string.Format("{0:n2}", Convert.ToDecimal(UAVXP[p - 1].Value * 0.01));
-                        P[CurrPS, p - 1].Value = UAVXP[p - 1].Value;
+                        BaroVarianceNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.01);
+                        ParamUpdate(BaroVarianceNumericUpDown);
                         break;
                     case 112:
-                        TrackAccZVarianceTextBox.Text = string.Format("{0:n2}", Convert.ToDecimal(UAVXP[p - 1].Value * 0.01));
-                        P[CurrPS, p - 1].Value = UAVXP[p - 1].Value;
+                       AccZVarianceNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
+                       ParamUpdate(AccZVarianceNumericUpDown);
                         break;                    
                     case 113:
                         FWStickScaleNumericUpDown.Value = UAVXP[p - 1].Value;

@@ -471,7 +471,6 @@ namespace UAVXGUI
         short ROCT, FROCT;                     // 43
         short AccZT;
         int RawRelAltitudeT, FAltitudeT, AltitudeT;          // 45 24bits
-        short BaroLSBOddFracT;
         short CruiseThrottleT;          // 48
         short RangefinderAltitudeT;     // 50
         public static int DesiredAltitudeT;
@@ -486,7 +485,7 @@ namespace UAVXGUI
         int BaroTemperatureT;
         int BaroPressureT;
 
-        int FGPSROCT, FGPSAltitudeT, BaroVT, TrackAccZVT, AltPosDesiredT, 
+        int FGPSROCT, FGPSAltitudeT, TrackBaroVT, TrackAccZVT, AltPosDesiredT, 
             AltPosErrorT, AltPosPTermT, AltPosITermT, AltRateDesiredT, AltRateErrorT,
             AltRatePTermT, AltRateITermT, FAltCompT, FCruiseThrottleT, FDesiredThrottleT;
         short AHFlags;
@@ -494,7 +493,7 @@ namespace UAVXGUI
         short BaroVarianceT;
         short AccZVarianceT;
  
-        int BaroAltitudeT, AltitudeErrorT;
+        int BaroAltitudeT;
 
         short  HRAccZBiasT, FWGlideOffsetAngleT, FWRateEnergyT;
 
@@ -1249,7 +1248,7 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
             "ROC," +
             "AltComp," +
 
-            "BaroV," +
+            "TrackBaroV," +
             "TrackAccZV," +
             
             "TiltFFComp," +
@@ -3131,7 +3130,7 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                     AccZT = ExtractShort(ref UAVXPacket, 14);
                     HRAccZBiasT = ExtractShort(ref UAVXPacket, 16);
 
-                    BaroVT = ExtractShort(ref UAVXPacket, 18);
+                    TrackBaroVT = ExtractShort(ref UAVXPacket, 18);
                     TrackAccZVT = ExtractShort(ref UAVXPacket, 20);
 
                     AltPosDesiredT = ExtractInt24(ref UAVXPacket, 22);
@@ -3398,8 +3397,8 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                     "AccZ," +
                     "AccZBias," +
 
-                    "AccZVarianceT," +
-                    "BaroV," +
+                    "AccZVar," +               
+                    "BaroVar," +
 
                     "GPSAlt," +
                     "RawRelAlt," +
@@ -3435,8 +3434,8 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
             AccZT * 0.001 + "," +
             HRAccZBiasT * 0.001 + "," +
 
-            AccZVarianceT * 0.001 + "," +
-            BaroVarianceT * 0.001 + "," +
+            TrackAccZVT * 0.001 + "," +
+            TrackBaroVT * 0.001 + "," +
 
             FGPSAltitudeT * 0.001 + "," +
             RawRelAltitudeT * 0.001 + "," +

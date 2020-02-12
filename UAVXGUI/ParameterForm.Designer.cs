@@ -166,7 +166,7 @@
             this.NavMagVarNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.NavPosKiNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.NavPosKiLabel = new System.Windows.Forms.Label();
-            this.BestROCLabel = new System.Windows.Forms.Label();
+            this.ROCGainLabel = new System.Windows.Forms.Label();
             this.AltPosIntNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.BaroLPFHzLabel = new System.Windows.Forms.Label();
             this.AltPosKpNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -216,6 +216,7 @@
             this.RCGroupBox = new System.Windows.Forms.GroupBox();
             this.ThrottleIdleLabel = new System.Windows.Forms.Label();
             this.RC11TextBox = new System.Windows.Forms.TextBox();
+            this.AccVarianceNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.RC10TextBox = new System.Windows.Forms.TextBox();
             this.RC9TextBox = new System.Windows.Forms.TextBox();
             this.RC9ProgressBar = new System.Windows.Forms.ProgressBar();
@@ -281,17 +282,16 @@
             this.PitchThrottleFFxLabel = new System.Windows.Forms.Label();
             this.FWPitchThrottleFFNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.TrackAccZVarianceTextBox = new System.Windows.Forms.TextBox();
-            this.BaroVarianceTextBox = new System.Windows.Forms.TextBox();
+            this.AccZVarianceNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.BaroVarianceNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.BaroVarianceLabel = new System.Windows.Forms.Label();
-            this.AccVarianceNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.AccVarianceLabel = new System.Windows.Forms.Label();
             this.AccLPFComboBox = new System.Windows.Forms.ComboBox();
             this.GyroLPFComboBox = new System.Windows.Forms.ComboBox();
             this.ServoLPFHzLabel = new System.Windows.Forms.Label();
             this.ServoLPFHzNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.AltitudeGroupBox = new System.Windows.Forms.GroupBox();
-            this.MaxROCTextBox = new System.Windows.Forms.TextBox();
+            this.ROCGainNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.AltHoldBandLabel = new System.Windows.Forms.Label();
             this.AltVelIntLimitNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.AltHoldBandNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -382,6 +382,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.RollRatePropNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltPosIntLimitNumericUpDown)).BeginInit();
             this.RCGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AccVarianceNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch10NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch11NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch12NumericUpDown)).BeginInit();
@@ -402,9 +403,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.FWSpoilerDecayTimeNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FWPitchThrottleFFNumericUpDown)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AccVarianceNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccZVarianceNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BaroVarianceNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ServoLPFHzNumericUpDown)).BeginInit();
             this.AltitudeGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ROCGainNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltVelIntLimitNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltHoldBandNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ParamTemplateNumericUpDown)).BeginInit();
@@ -996,7 +999,11 @@
             resources.GetString("ESCComboBox.Items1"),
             resources.GetString("ESCComboBox.Items2"),
             resources.GetString("ESCComboBox.Items3"),
-            resources.GetString("ESCComboBox.Items4")});
+            resources.GetString("ESCComboBox.Items4"),
+            resources.GetString("ESCComboBox.Items5"),
+            resources.GetString("ESCComboBox.Items6"),
+            resources.GetString("ESCComboBox.Items7"),
+            resources.GetString("ESCComboBox.Items8")});
             this.ESCComboBox.Name = "ESCComboBox";
             this.ESCComboBox.Tag = "36";
             this.ESCComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
@@ -1127,7 +1134,10 @@
             this.GPSTypeComboBox.Items.AddRange(new object[] {
             resources.GetString("GPSTypeComboBox.Items"),
             resources.GetString("GPSTypeComboBox.Items1"),
-            resources.GetString("GPSTypeComboBox.Items2")});
+            resources.GetString("GPSTypeComboBox.Items2"),
+            resources.GetString("GPSTypeComboBox.Items3"),
+            resources.GetString("GPSTypeComboBox.Items4"),
+            resources.GetString("GPSTypeComboBox.Items5")});
             this.GPSTypeComboBox.Name = "GPSTypeComboBox";
             this.GPSTypeComboBox.Tag = "62";
             this.GPSTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
@@ -2148,10 +2158,10 @@
             resources.ApplyResources(this.NavPosKiLabel, "NavPosKiLabel");
             this.NavPosKiLabel.Name = "NavPosKiLabel";
             // 
-            // BestROCLabel
+            // ROCGainLabel
             // 
-            resources.ApplyResources(this.BestROCLabel, "BestROCLabel");
-            this.BestROCLabel.Name = "BestROCLabel";
+            resources.ApplyResources(this.ROCGainLabel, "ROCGainLabel");
+            this.ROCGainLabel.Name = "ROCGainLabel";
             // 
             // AltPosIntNumericUpDown
             // 
@@ -2684,6 +2694,7 @@
             this.RCGroupBox.Controls.Add(this.ThrottleIdleLabel);
             this.RCGroupBox.Controls.Add(this.ComboPort2Label);
             this.RCGroupBox.Controls.Add(this.RC11TextBox);
+            this.RCGroupBox.Controls.Add(this.AccVarianceNumericUpDown);
             this.RCGroupBox.Controls.Add(this.RC10TextBox);
             this.RCGroupBox.Controls.Add(this.RC9TextBox);
             this.RCGroupBox.Controls.Add(this.HysteresisLabel);
@@ -2760,6 +2771,32 @@
             resources.ApplyResources(this.RC11TextBox, "RC11TextBox");
             this.RC11TextBox.Name = "RC11TextBox";
             this.RC11TextBox.ReadOnly = true;
+            // 
+            // AccVarianceNumericUpDown
+            // 
+            this.AccVarianceNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
+            this.AccVarianceNumericUpDown.DecimalPlaces = 1;
+            resources.ApplyResources(this.AccVarianceNumericUpDown, "AccVarianceNumericUpDown");
+            this.AccVarianceNumericUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.AccVarianceNumericUpDown.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.AccVarianceNumericUpDown.Name = "AccVarianceNumericUpDown";
+            this.AccVarianceNumericUpDown.Tag = "105";
+            this.AccVarianceNumericUpDown.Value = new decimal(new int[] {
+            8,
+            0,
+            0,
+            131072});
+            this.AccVarianceNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.AccVarianceNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.AccVarianceNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
             // RC10TextBox
             // 
@@ -3409,10 +3446,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.TrackAccZVarianceTextBox);
-            this.groupBox1.Controls.Add(this.BaroVarianceTextBox);
+            this.groupBox1.Controls.Add(this.AccZVarianceNumericUpDown);
+            this.groupBox1.Controls.Add(this.BaroVarianceNumericUpDown);
             this.groupBox1.Controls.Add(this.BaroVarianceLabel);
-            this.groupBox1.Controls.Add(this.AccVarianceNumericUpDown);
             this.groupBox1.Controls.Add(this.AccVarianceLabel);
             this.groupBox1.Controls.Add(this.AccLPFComboBox);
             this.groupBox1.Controls.Add(this.GyroLPFComboBox);
@@ -3431,50 +3467,60 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
-            // TrackAccZVarianceTextBox
+            // AccZVarianceNumericUpDown
             // 
-            resources.ApplyResources(this.TrackAccZVarianceTextBox, "TrackAccZVarianceTextBox");
-            this.TrackAccZVarianceTextBox.Name = "TrackAccZVarianceTextBox";
-            this.TrackAccZVarianceTextBox.ReadOnly = true;
-            this.TrackAccZVarianceTextBox.Tag = "111";
+            this.AccZVarianceNumericUpDown.DecimalPlaces = 1;
+            resources.ApplyResources(this.AccZVarianceNumericUpDown, "AccZVarianceNumericUpDown");
+            this.AccZVarianceNumericUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.AccZVarianceNumericUpDown.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.AccZVarianceNumericUpDown.Name = "AccZVarianceNumericUpDown";
+            this.AccZVarianceNumericUpDown.Tag = "112";
+            this.AccZVarianceNumericUpDown.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.AccZVarianceNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.AccZVarianceNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.AccZVarianceNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
-            // BaroVarianceTextBox
+            // BaroVarianceNumericUpDown
             // 
-            resources.ApplyResources(this.BaroVarianceTextBox, "BaroVarianceTextBox");
-            this.BaroVarianceTextBox.Name = "BaroVarianceTextBox";
-            this.BaroVarianceTextBox.ReadOnly = true;
-            this.BaroVarianceTextBox.Tag = "111";
+            this.BaroVarianceNumericUpDown.DecimalPlaces = 2;
+            resources.ApplyResources(this.BaroVarianceNumericUpDown, "BaroVarianceNumericUpDown");
+            this.BaroVarianceNumericUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.BaroVarianceNumericUpDown.Maximum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.BaroVarianceNumericUpDown.Name = "BaroVarianceNumericUpDown";
+            this.BaroVarianceNumericUpDown.Tag = "111";
+            this.BaroVarianceNumericUpDown.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.BaroVarianceNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.BaroVarianceNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.BaroVarianceNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
             // BaroVarianceLabel
             // 
             resources.ApplyResources(this.BaroVarianceLabel, "BaroVarianceLabel");
             this.BaroVarianceLabel.Name = "BaroVarianceLabel";
-            // 
-            // AccVarianceNumericUpDown
-            // 
-            this.AccVarianceNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
-            this.AccVarianceNumericUpDown.DecimalPlaces = 2;
-            resources.ApplyResources(this.AccVarianceNumericUpDown, "AccVarianceNumericUpDown");
-            this.AccVarianceNumericUpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.AccVarianceNumericUpDown.Maximum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.AccVarianceNumericUpDown.Name = "AccVarianceNumericUpDown";
-            this.AccVarianceNumericUpDown.Tag = "105";
-            this.AccVarianceNumericUpDown.Value = new decimal(new int[] {
-            8,
-            0,
-            0,
-            131072});
-            this.AccVarianceNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.AccVarianceNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
-            this.AccVarianceNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
             // AccVarianceLabel
             // 
@@ -3539,7 +3585,7 @@
             // 
             // AltitudeGroupBox
             // 
-            this.AltitudeGroupBox.Controls.Add(this.MaxROCTextBox);
+            this.AltitudeGroupBox.Controls.Add(this.ROCGainNumericUpDown);
             this.AltitudeGroupBox.Controls.Add(this.AltHoldBandLabel);
             this.AltitudeGroupBox.Controls.Add(this.AltVelIntNumericUpDown);
             this.AltitudeGroupBox.Controls.Add(this.AltVelIntLimitNumericUpDown);
@@ -3554,17 +3600,29 @@
             this.AltitudeGroupBox.Controls.Add(this.AltPosKpNumericUpDown);
             this.AltitudeGroupBox.Controls.Add(this.AltVelKpNumericUpDown);
             this.AltitudeGroupBox.Controls.Add(this.AltPosIntNumericUpDown);
-            this.AltitudeGroupBox.Controls.Add(this.BestROCLabel);
+            this.AltitudeGroupBox.Controls.Add(this.ROCGainLabel);
             resources.ApplyResources(this.AltitudeGroupBox, "AltitudeGroupBox");
             this.AltitudeGroupBox.Name = "AltitudeGroupBox";
             this.AltitudeGroupBox.TabStop = false;
             // 
-            // MaxROCTextBox
+            // ROCGainNumericUpDown
             // 
-            resources.ApplyResources(this.MaxROCTextBox, "MaxROCTextBox");
-            this.MaxROCTextBox.Name = "MaxROCTextBox";
-            this.MaxROCTextBox.ReadOnly = true;
-            this.MaxROCTextBox.Tag = "73";
+            resources.ApplyResources(this.ROCGainNumericUpDown, "ROCGainNumericUpDown");
+            this.ROCGainNumericUpDown.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.ROCGainNumericUpDown.Name = "ROCGainNumericUpDown";
+            this.ROCGainNumericUpDown.Tag = "73";
+            this.ROCGainNumericUpDown.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.ROCGainNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.ROCGainNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.ROCGainNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
             // AltHoldBandLabel
             // 
@@ -3602,7 +3660,7 @@
             this.AltHoldBandNumericUpDown.Name = "AltHoldBandNumericUpDown";
             this.AltHoldBandNumericUpDown.Tag = "103";
             this.AltHoldBandNumericUpDown.Value = new decimal(new int[] {
-            10,
+            5,
             0,
             0,
             0});
@@ -3827,6 +3885,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.AltPosIntLimitNumericUpDown)).EndInit();
             this.RCGroupBox.ResumeLayout(false);
             this.RCGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AccVarianceNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch10NumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch11NumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch12NumericUpDown)).EndInit();
@@ -3850,10 +3909,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.FWPitchThrottleFFNumericUpDown)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AccVarianceNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccZVarianceNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BaroVarianceNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ServoLPFHzNumericUpDown)).EndInit();
             this.AltitudeGroupBox.ResumeLayout(false);
             this.AltitudeGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ROCGainNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltVelIntLimitNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltHoldBandNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ParamTemplateNumericUpDown)).EndInit();
@@ -4028,7 +4089,7 @@
         public System.Windows.Forms.NumericUpDown FWAileronDifferentialNumericUpDown;
         private System.Windows.Forms.Label AirspeedLabel;
         public System.Windows.Forms.ComboBox AirspeedComboBox;
-        private System.Windows.Forms.Label BestROCLabel;
+        private System.Windows.Forms.Label ROCGainLabel;
         public System.Windows.Forms.CheckBox bit02CheckBox;
         public System.Windows.Forms.CheckBox bit62CheckBox;
         public System.Windows.Forms.CheckBox bit52CheckBox;
@@ -4108,7 +4169,6 @@
         private System.Windows.Forms.Label AltPosKpLabel;
         private System.Windows.Forms.Label AltVelKpLabel;
         private System.Windows.Forms.Label AltVelKdLabel;
-        private System.Windows.Forms.TextBox MaxROCTextBox;
         public System.Windows.Forms.NumericUpDown VRSDescentRateNumericUpDown;
         private System.Windows.Forms.Label VRSLabel;
         private System.Windows.Forms.Label MotorStopLabel;
@@ -4128,8 +4188,6 @@
         public System.Windows.Forms.NumericUpDown AccVarianceNumericUpDown;
         private System.Windows.Forms.Label AccVarianceLabel;
         private System.Windows.Forms.Label BaroVarianceLabel;
-        private System.Windows.Forms.TextBox BaroVarianceTextBox;
-        private System.Windows.Forms.TextBox TrackAccZVarianceTextBox;
         private System.Windows.Forms.Label FWStickScaleLabel;
         public System.Windows.Forms.NumericUpDown FWStickScaleNumericUpDown;
         private System.Windows.Forms.Label FWRollPitchLimitLabel;
@@ -4145,6 +4203,9 @@
         public System.Windows.Forms.CheckBox bit41CheckBox;
         private System.Windows.Forms.Label CruiseTrackingRateLabel;
         public System.Windows.Forms.NumericUpDown CruiseTrackRateNumericUpDown;
+        public System.Windows.Forms.NumericUpDown AccZVarianceNumericUpDown;
+        public System.Windows.Forms.NumericUpDown BaroVarianceNumericUpDown;
+        public System.Windows.Forms.NumericUpDown ROCGainNumericUpDown;
 
 
     }
