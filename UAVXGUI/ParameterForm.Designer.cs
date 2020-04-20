@@ -308,6 +308,8 @@
             this.CameraPitchNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CameraRollNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CameraPropLabel = new System.Windows.Forms.Label();
+            this.ResetCause = new System.Windows.Forms.Label();
+            this.ResetCauseButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DescDelayNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavRTHAltNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AttThrFFNumericUpDown)).BeginInit();
@@ -1146,6 +1148,8 @@
             // bit02CheckBox
             // 
             resources.ApplyResources(this.bit02CheckBox, "bit02CheckBox");
+            this.bit02CheckBox.Checked = true;
+            this.bit02CheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.bit02CheckBox.Name = "bit02CheckBox";
             this.bit02CheckBox.Tag = "74_1";
             this.bit02CheckBox.UseVisualStyleBackColor = true;
@@ -2699,6 +2703,8 @@
             this.RCGroupBox.Controls.Add(this.RC9TextBox);
             this.RCGroupBox.Controls.Add(this.HysteresisLabel);
             this.RCGroupBox.Controls.Add(this.LowMotorRunNumericUpDown);
+            this.RCGroupBox.Controls.Add(this.GyroSlewRateNumericUpDown);
+            this.RCGroupBox.Controls.Add(this.GyroSlewLimitLabel);
             this.RCGroupBox.Controls.Add(this.HysteresisNumericUpDown);
             this.RCGroupBox.Controls.Add(this.RC9ProgressBar);
             this.RCGroupBox.Controls.Add(this.AltVelKdLabel);
@@ -3454,9 +3460,7 @@
             this.groupBox1.Controls.Add(this.GyroLPFComboBox);
             this.groupBox1.Controls.Add(this.ServoLPFHzLabel);
             this.groupBox1.Controls.Add(this.ServoLPFHzNumericUpDown);
-            this.groupBox1.Controls.Add(this.GyroSlewRateNumericUpDown);
             this.groupBox1.Controls.Add(this.AccLabel);
-            this.groupBox1.Controls.Add(this.GyroSlewLimitLabel);
             this.groupBox1.Controls.Add(this.AltLPFNumericUpDown);
             this.groupBox1.Controls.Add(this.BaroLPFHzLabel);
             this.groupBox1.Controls.Add(this.GyroLabel);
@@ -3781,10 +3785,25 @@
             resources.ApplyResources(this.CameraPropLabel, "CameraPropLabel");
             this.CameraPropLabel.Name = "CameraPropLabel";
             // 
+            // ResetCause
+            // 
+            resources.ApplyResources(this.ResetCause, "ResetCause");
+            this.ResetCause.Name = "ResetCause";
+            this.ResetCause.Tag = "";
+            // 
+            // ResetCauseButton
+            // 
+            resources.ApplyResources(this.ResetCauseButton, "ResetCauseButton");
+            this.ResetCauseButton.Name = "ResetCauseButton";
+            this.ResetCauseButton.UseVisualStyleBackColor = true;
+            this.ResetCauseButton.Click += new System.EventHandler(this.ResetCauseButton_Click);
+            // 
             // ParameterForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ResetCauseButton);
+            this.Controls.Add(this.ResetCause);
             this.Controls.Add(this.CameraGroupBox);
             this.Controls.Add(this.DefaultTemplateLabel);
             this.Controls.Add(this.ParamTemplateNumericUpDown);
@@ -4206,6 +4225,8 @@
         public System.Windows.Forms.NumericUpDown AccZVarianceNumericUpDown;
         public System.Windows.Forms.NumericUpDown BaroVarianceNumericUpDown;
         public System.Windows.Forms.NumericUpDown ROCGainNumericUpDown;
+        private System.Windows.Forms.Label ResetCause;
+        public System.Windows.Forms.Button ResetCauseButton;
 
 
     }

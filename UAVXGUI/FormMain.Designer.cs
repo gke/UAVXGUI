@@ -327,7 +327,7 @@ namespace UAVXGUI
             this.RollCalLabel = new System.Windows.Forms.Label();
             this.RollGyroMLabel = new System.Windows.Forms.Label();
             this.PitchGyroMLabel = new System.Windows.Forms.Label();
-            this.CalibrateAcc6PointButton = new System.Windows.Forms.Button();
+            this.CalibrateAccZeroButton = new System.Windows.Forms.Button();
             this.PlotButton = new System.Windows.Forms.Button();
             this.FWGlideOffsetAngle = new System.Windows.Forms.TextBox();
             this.FWGlideAngleOffsetLabel = new System.Windows.Forms.Label();
@@ -1768,9 +1768,9 @@ namespace UAVXGUI
             this.MainLabel.AutoSize = true;
             this.MainLabel.Location = new System.Drawing.Point(352, 380);
             this.MainLabel.Name = "MainLabel";
-            this.MainLabel.Size = new System.Drawing.Size(200, 13);
+            this.MainLabel.Size = new System.Drawing.Size(205, 13);
             this.MainLabel.TabIndex = 104;
-            this.MainLabel.Text = "UAVX Groundstation (C) G.K. Egan 2010";
+            this.MainLabel.Text = "TO GET FW INFO READ PARAMETERS";
             // 
             // AltitudeSource
             // 
@@ -2499,9 +2499,9 @@ namespace UAVXGUI
             // 
             // CalibrateIMUButton
             // 
-            this.CalibrateIMUButton.Location = new System.Drawing.Point(873, 574);
+            this.CalibrateIMUButton.Location = new System.Drawing.Point(857, 574);
             this.CalibrateIMUButton.Name = "CalibrateIMUButton";
-            this.CalibrateIMUButton.Size = new System.Drawing.Size(50, 23);
+            this.CalibrateIMUButton.Size = new System.Drawing.Size(66, 23);
             this.CalibrateIMUButton.TabIndex = 199;
             this.CalibrateIMUButton.Text = "IMU";
             this.CalibrateIMUButton.UseVisualStyleBackColor = true;
@@ -2843,6 +2843,7 @@ namespace UAVXGUI
             this.SpectraGroupBox.TabIndex = 215;
             this.SpectraGroupBox.TabStop = false;
             this.SpectraGroupBox.Text = "Acc (0.5G FS)";
+            this.SpectraGroupBox.Visible = false;
             // 
             // NoiseBar1
             // 
@@ -3317,15 +3318,15 @@ namespace UAVXGUI
             this.PitchGyroMLabel.Text = "0";
             this.PitchGyroMLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // CalibrateAcc6PointButton
+            // CalibrateAccZeroButton
             // 
-            this.CalibrateAcc6PointButton.Location = new System.Drawing.Point(873, 603);
-            this.CalibrateAcc6PointButton.Name = "CalibrateAcc6PointButton";
-            this.CalibrateAcc6PointButton.Size = new System.Drawing.Size(50, 23);
-            this.CalibrateAcc6PointButton.TabIndex = 217;
-            this.CalibrateAcc6PointButton.Text = "Acc6Pt";
-            this.CalibrateAcc6PointButton.UseVisualStyleBackColor = true;
-            this.CalibrateAcc6PointButton.Click += new System.EventHandler(this.CalibrateAcc6PointButton_Click);
+            this.CalibrateAccZeroButton.Location = new System.Drawing.Point(857, 603);
+            this.CalibrateAccZeroButton.Name = "CalibrateAccZeroButton";
+            this.CalibrateAccZeroButton.Size = new System.Drawing.Size(66, 23);
+            this.CalibrateAccZeroButton.TabIndex = 217;
+            this.CalibrateAccZeroButton.Text = "AccZero";
+            this.CalibrateAccZeroButton.UseVisualStyleBackColor = true;
+            this.CalibrateAccZeroButton.Click += new System.EventHandler(this.CalibrateAccZeroButton_Click);
             // 
             // PlotButton
             // 
@@ -3452,7 +3453,7 @@ namespace UAVXGUI
             this.Controls.Add(this.WPActionTextBox);
             this.Controls.Add(this.BootLoadButton);
             this.Controls.Add(this.TuningGroupBox);
-            this.Controls.Add(this.CalibrateAcc6PointButton);
+            this.Controls.Add(this.CalibrateAccZeroButton);
             this.Controls.Add(this.PlotButton);
             this.Controls.Add(this.CalibrationGroupBox);
             this.Controls.Add(this.UtilisationLabel);
@@ -3847,7 +3848,7 @@ namespace UAVXGUI
         private System.Windows.Forms.Label GPSvAccLabel;
         private System.Windows.Forms.TextBox CruiseThrottle;
         private System.Windows.Forms.Label CruiseThrottleLabel;
-        private System.Windows.Forms.Button CalibrateAcc6PointButton;
+        private System.Windows.Forms.Button CalibrateAccZeroButton;
         private System.Windows.Forms.Label NyquistMargin;
         private System.Windows.Forms.Label GyroLPF;
         private System.Windows.Forms.Label AccLPF;

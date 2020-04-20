@@ -379,6 +379,7 @@ namespace UAVXGUI
             ThrottleOpenCheck,
             ErectingGyros,
             MonitorInstruments,
+            InitialisingGPS,
             UnknownFlightState
         };
 
@@ -590,10 +591,10 @@ namespace UAVXGUI
         const byte MinhAccX = 13;
         const byte MaxhAccX = 14;
         const byte RCGlitchX = 15;
-        const byte SPIFailsX = 16;
+        const byte TxBufferBlockX = 16;
         const byte GyroFailsX = 17;
         const byte RCFailSafesX = 18;
-        const byte I2CFailsX = 19;
+        const byte SIOFailsX = 19;
 
         const byte UtilisationX = 20;
         const byte BadX = 21;
@@ -708,7 +709,7 @@ namespace UAVXGUI
         bool UAVXArm = true; // default
 
         bool CalibrateIMUEnabled = false;
-        bool CalibrateAcc6PointEnabled = false;
+        bool CalibrateAccZeroEnabled = false;
         bool CalibrateMagEnabled = false;
 
         bool LogFileHeaderWritten = false;
@@ -1285,7 +1286,7 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
             "MinhAccX," +
             "MaxhAccX," +
             "RCGlitchesX," +
-            "GPSBaroScaleX," +
+            "TxBlockX," +
             "GyroFailX," +
             "RCFailsafesX," +
             "SIOFailX," +
@@ -1353,13 +1354,13 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
             }
         }
 
-        private void CalibrateAcc6PointButton_Click(object sender, EventArgs e)
+        private void CalibrateAccZeroButton_Click(object sender, EventArgs e)
         {
-            if (((StateT == FlightStates.Preflight) || (StateT == FlightStates.Ready)) && !CalibrateAcc6PointEnabled)
+            if (((StateT == FlightStates.Preflight) || (StateT == FlightStates.Ready)) && !CalibrateAccZeroEnabled)
             {
                 SendRequestPacket(UAVXMiscPacketTag, (byte)MiscComms.miscCalAcc, 0);
-                CalibrateAcc6PointButton.BackColor = Color.Orange;
-                CalibrateAcc6PointEnabled = true;
+                CalibrateAccZeroButton.BackColor = Color.Orange;
+                CalibrateAccZeroEnabled = true;
             }
         }
 
@@ -1956,11 +1957,11 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
 
             if (F[(byte)FlagValues.AccCalibrated]) {
                 IMUFailBox.BackColor = System.Drawing.SystemColors.Control;
-                CalibrateAcc6PointButton.BackColor = System.Drawing.Color.Green;
-                CalibrateAcc6PointEnabled = false;
+                CalibrateAccZeroButton.BackColor = System.Drawing.Color.Green;
+                CalibrateAccZeroEnabled = false;
             }
             else {
-                CalibrateAcc6PointButton.BackColor = (CalibrateAcc6PointEnabled) ?
+                CalibrateAccZeroButton.BackColor = (CalibrateAccZeroEnabled) ?
                     Color.Orange : Color.Orange;
                 IMUFailBox.BackColor = System.Drawing.Color.Orange;
             }
@@ -2046,6 +2047,9 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                     break;
                 case FlightStates.MonitorInstruments: FlightState.Text = "Instrumentation";
                     FlightState.BackColor = System.Drawing.Color.Silver;
+                    break;
+                case FlightStates.InitialisingGPS: FlightState.Text = "Init GPS";
+                    FlightState.BackColor = System.Drawing.Color.LightSteelBlue;
                     break;
                 default: FlightState.Text = "Unknown"; break;
             } // switch
@@ -2863,7 +2867,9 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                     UAVXArm = (AirframeT & 0x80) != 0;
                     AirframeT &= 0x7f;
 
-                    I2CSIOFailS.Text = string.Format("{0:n0}", Stats[I2CFailsX] + Stats[SPIFailsX]);
+                    I2CSIOFailS.Text = string.Format("{0:n0}", Stats[SIOFailsX]);
+                    if (Stats[TxBufferBlockX] > 0)
+                        CommsGroupBox.BackColor = System.Drawing.Color.Red;
                     GPSFailS.Text = string.Format("{0:n0}", Stats[GPSInvalidX]);
                     AccFailS.Text = string.Format("{0:n0}", Stats[AccFailsX]);
                     GyroFailS.Text = string.Format("{0:n0}", Stats[GyroFailsX]);

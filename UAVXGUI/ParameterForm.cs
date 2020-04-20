@@ -66,6 +66,11 @@ namespace UAVXGUI
 
         public static string helpstring;
 
+        
+public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WINDOW_WATCHDOG",
+		"INDEPENDENT_WATCHDOG", "SOFTWARE", "POWER_ON_POWER_DOWN",
+		"EXTERNAL_RESET_PIN", "BROWNOUT" };
+
         byte[] def = {
 
         	20,			// RollKpRate, 			01 UAVP 21
@@ -302,6 +307,11 @@ namespace UAVXGUI
 
          }
 
+         private void ResetCauseButton_Click(object sender, EventArgs e)
+         {
+             ParamUpdate(sender);
+         }
+
         private void bitCheckBox_CheckedChanged(object sender, EventArgs e)
         {
            //bitTextChange(sender);
@@ -448,10 +458,7 @@ namespace UAVXGUI
                 helpstring = help.GetString("RTHDescend");
 
             if (parameterForm.bit02CheckBox.Focused)
-                helpstring = help.GetString("ManualAltHold");
-
-            if (parameterForm.bit02CheckBox.Focused)
-                helpstring = help.GetString("PavelFilter");
+                helpstring = help.GetString("UseMedianFilters");
             if (parameterForm.bit12CheckBox.Focused)
                 helpstring = help.GetString("FastStart");
             if (parameterForm.bit22CheckBox.Focused)
@@ -1055,6 +1062,11 @@ namespace UAVXGUI
                                 Field.BackColor = Color.White;
                             }
 
+                            break;
+                            case "ResetCauseButton":
+                           P[CurrPS, 127].Value = 0;
+                           Field.ForeColor = Color.Red;
+                           Field.BackColor = System.Drawing.SystemColors.Control;
                             break;
                     }
                 }
@@ -1671,6 +1683,12 @@ namespace UAVXGUI
                     case 116:
                         CruiseTrackRateNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.01);
                         ParamUpdate(CruiseTrackRateNumericUpDown);
+                        break;
+                    case 128:
+                        ResetCauseButton.Text = ResetCauseNames[UAVXP[p - 1].Value];
+                        ResetCauseButton.ForeColor = Color.Black;
+                        if (UAVXP[p - 1].Value > 0) ResetCauseButton.BackColor = System.Drawing.Color.Orange;
+
                         break;
 
                     default: break; // up to case 64 available
