@@ -355,7 +355,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
             if (parameterForm.PitchAngleIntNumericUpDown.Focused)
                 helpstring = help.GetString("ProportionalAngle");
             if (parameterForm.AltLPFNumericUpDown.Focused)
-                helpstring = help.GetString("DifferentialFC");
+                helpstring = help.GetString("AltLPF");
 
 
             if (parameterForm.BalanceNumericUpDown.Focused)
@@ -458,7 +458,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                 helpstring = help.GetString("RTHDescend");
 
             if (parameterForm.bit02CheckBox.Focused)
-                helpstring = help.GetString("UseMedianFilters");
+                helpstring = help.GetString("UseKalmanFilter");
             if (parameterForm.bit12CheckBox.Focused)
                 helpstring = help.GetString("FastStart");
             if (parameterForm.bit22CheckBox.Focused)

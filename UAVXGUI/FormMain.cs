@@ -231,6 +231,8 @@ namespace UAVXGUI
 
      public const byte UAVXAFNamePacketTag = 63;
      public const byte UAVXWindPacketTag = 64;
+     public const byte UAVXTrackPacketTag = 65;
+     public const byte UAVXSerialPortsPacketTag = 66;
 
         public const byte FrSkyPacketTag = 99;
 
@@ -492,7 +494,7 @@ namespace UAVXGUI
         short AHFlags;
 
         short BaroVarianceT;
-        short AccZVarianceT;
+        short AccUVarianceT;
  
         int BaroAltitudeT;
 
@@ -656,9 +658,6 @@ namespace UAVXGUI
 
         public static double[] Inertial = new double[32];
 
-        short[] Noise = new short[32];
-        float NoiseErrors = 0;
-        byte NoiseIsGyro = 0;
         float[] PID = new float[32];
         public static byte MaxPID;
         public Boolean AnglePIDHeader = false;
@@ -1264,8 +1263,6 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
             "DesHeading," +
 
             "SensorTemp,");
-
-            SaveTextLogFileStreamWriter.Write("Noise,N1,N2,N3,N4,N5,N6,N7,N8,");
 
             SaveTextLogFileStreamWriter.Write("Stats," +
 
@@ -1957,12 +1954,12 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
 
             if (F[(byte)FlagValues.AccCalibrated]) {
                 IMUFailBox.BackColor = System.Drawing.SystemColors.Control;
-                CalibrateAccZeroButton.BackColor = System.Drawing.Color.Green;
+               CalibrateAccZeroButton.BackColor = System.Drawing.Color.Green;
                 CalibrateAccZeroEnabled = false;
             }
             else {
-                CalibrateAccZeroButton.BackColor = (CalibrateAccZeroEnabled) ?
-                    Color.Orange : Color.Orange;
+               CalibrateAccZeroButton.BackColor = (CalibrateAccZeroEnabled) ?
+                  Color.Orange : Color.Orange;
                 IMUFailBox.BackColor = System.Drawing.Color.Orange;
             }
 
@@ -2532,7 +2529,9 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                 CurrentAltitude.BackColor = NavGroupBox.BackColor;
 
             AltError = CurrAlt - DesiredAltitudeT * 0.01;
-            AltitudeError.Text = string.Format("{0:n1}", (float)AltError);
+            DesiredAltitude.Text = string.Format("{0:n1}", (float)AltError);
+
+            DesiredAltitude.Text = string.Format("{0:n1}", DesiredAltitudeT * 0.01);
         }
 
 
@@ -2856,6 +2855,37 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
   
                     break;
 
+                    case UAVXSerialPortsPacketTag:
+                    int MaxBuffLength, NoOfPorts, TelF, GPSF;
+                    int TelemetryTxEntriesT, TelemetryRxEntriesT, GPSTxEntriesT, GPSRxEntriesT;
+
+                    NoOfPorts = ExtractByte(ref UAVXPacket, 2) - 1;
+                    MaxBuffLength = ExtractShort(ref UAVXPacket, 3);
+
+                    TelF = ExtractShort(ref UAVXPacket, 5);
+                    TelemetryTxEntriesT = ExtractShort(ref UAVXPacket, 6);
+                    TelemetryRxEntriesT = ExtractShort(ref UAVXPacket, 8);
+
+                    GPSF = ExtractShort(ref UAVXPacket, 10);
+                    GPSTxEntriesT = ExtractShort(ref UAVXPacket, 11);
+                    GPSRxEntriesT = ExtractShort(ref UAVXPacket, 13); 
+                    
+                    TelemetryTxEntries.BackColor = ((TelF>>1) > 0) ? System.Drawing.Color.Red : System.Drawing.Color.Green;
+                    TelemetryTxEntries.Text = string.Format("{0:n0}", TelemetryTxEntriesT);
+                    TelemetryTxProgressBar.Value = Limit(TelemetryTxEntriesT, 0, MaxBuffLength);
+                    TelemetryRxEntries.BackColor = ((TelF&1) > 0) ? System.Drawing.Color.Red : System.Drawing.Color.Green;
+                    TelemetryRxEntries.Text = string.Format("{0:n0}", TelemetryRxEntriesT);
+                    TelemetryRxProgressBar.Value = Limit(TelemetryRxEntriesT, 0, MaxBuffLength);
+
+                 
+                    GPSTxEntries.BackColor = ((GPSF>>1) > 0) ? System.Drawing.Color.Red : System.Drawing.Color.Green;
+                    GPSTxEntries.Text = string.Format("{0:n0}", GPSTxEntriesT);
+                    GPSTxProgressBar.Value = Limit(GPSTxEntriesT, 0, MaxBuffLength);
+                    GPSRxEntries.BackColor = ((GPSF&1) > 0) ? System.Drawing.Color.Red : System.Drawing.Color.Green;
+                    GPSRxEntries.Text = string.Format("{0:n0}", GPSRxEntriesT);
+                    GPSRxProgressBar.Value = Limit(GPSRxEntriesT, 0, MaxBuffLength);
+
+                    break;
                 case UAVXStatsPacketTag:
                     StatsPacketsReceived++;
 
@@ -2935,7 +2965,10 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
 
                         // missing AccROC
                     BaroVarianceT = ExtractShort(ref UAVXPacket, 80);
-                    AccZVarianceT = ExtractShort(ref UAVXPacket, 82);
+                    AccUVarianceT = ExtractShort(ref UAVXPacket, 82);
+
+            TrackAccUVariance.Text = string.Format("{0:n3}", AccUVarianceT * 0.001);
+                   TrackBaroVariance.Text = string.Format("{0:n3}", BaroVarianceT * 0.001);
                 
 
                     MagHeadingT = ExtractShort(ref UAVXPacket,84);
@@ -2948,7 +2981,7 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                         SensorTemp.BackColor = System.Drawing.Color.LightSteelBlue;
                     else
                         SensorTemp.BackColor = MPU6XXXTempT > 300.0 ?
-                            System.Drawing.Color.Orange : EnvGroupBox.BackColor;
+                            System.Drawing.Color.Orange : CalibrationGroupBox.BackColor;
 
                         
                     FWRateEnergyT = ExtractShort(ref UAVXPacket, 88);
@@ -2969,7 +3002,7 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                     UpdateNavState();
                     UpdateMotors();
 
-                    FWRateEnergy.Text = string.Format("{0:n0}", FWRateEnergyT);
+                    FWRateEnergy.Text = string.Format("{0:n2}", (float)FWRateEnergyT * 0.01);
                     FWGlideOffsetAngle.Text = string.Format("{0:n1}", (float)FWGlideOffsetAngleT * 0.1f);
 
                     Heading.Text = string.Format("{0:n0}", (float)HeadingT * MILLIRADDEG);
@@ -2982,7 +3015,7 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
 
                     RCGlitches.Text = string.Format("{0:n0}", RCGlitchesT);
                     RCGlitches.BackColor = RCGlitchesT > 20 ?
-                        System.Drawing.Color.Orange : EnvGroupBox.BackColor;
+                        System.Drawing.Color.Orange : ErrorStatsGroupBox.BackColor;
 
                     MissionTimeTextBox.Text = string.Format("{0:n0}", MissionTimeMilliSecT / 1000);
 
@@ -3028,32 +3061,6 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
 
                     break;
 
-                case UAVXNoisePacketTag:
-
-                    NoiseIsGyro = ExtractByte(ref UAVXPacket, (byte)(2));
-                    NoiseErrors = ExtractShort(ref UAVXPacket, (byte)(3));
-
-                    if (NoiseIsGyro == 3)
-                         SpectraGroupBox.Text =  "Gyro (Max % FS) " + string.Format("{0:n0}", NoiseErrors);
-                    else if (NoiseIsGyro == 4)
-                        SpectraGroupBox.Text =  "Acc (0.5G FS)";
-                    else
-                        SpectraGroupBox.Text = "IMU Freq " + string.Format("{0:n0}", NoiseErrors) + " Hz";
-      
-                    for (p = 0; p < 8; p++)
-                        Noise[p] = ExtractShort(ref UAVXPacket, (byte)(5 + p * 2));
-
-                       NoiseBar1.Value = Limit(Noise[0], 0, 100);
-                       NoiseBar2.Value = Limit(Noise[1], 0, 100);
-                       NoiseBar3.Value = Limit(Noise[2], 0, 100);
-                       NoiseBar4.Value = Limit(Noise[3], 0, 100);
-
-                       NoiseBar5.Value = Limit(Noise[4], 0, 100);
-                       NoiseBar6.Value = Limit(Noise[5], 0, 100);
-                       NoiseBar7.Value = Limit(Noise[6], 0, 100);
-                       NoiseBar8.Value = Limit(Noise[7], 0, 100);
-
-                    break;
                 case UAVXNavPacketTag:
                     NavPacketsReceived++;
                     NavStateT = (NavStates)ExtractByte(ref UAVXPacket, 2);
@@ -3178,7 +3185,7 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                 FlightPitchp = FlightPitch;
 
                 attitudeIndicatorInstrumentControl1.SetAttitudeIndicatorParameters(
-                        FlightPitch * MILLIRADDEG, -FlightRoll * MILLIRADDEG);
+                       FlightPitch * MILLIRADDEG, -FlightRoll * MILLIRADDEG);
 
             }
 
@@ -3345,7 +3352,6 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
 
            void WriteKMLFile()
         {
-            short i;
 
             if (!KMLFileHeaderWritten)
             {
@@ -3519,7 +3525,7 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                 RateT[i] * 0.001 + ",");
             }
 
-            SaveTextLogFileStreamWriter.Write(AccConfidenceT * 0.01 + ","  + FWRateEnergyT 
+            SaveTextLogFileStreamWriter.Write(AccConfidenceT * 0.01 + ","  + FWRateEnergyT  * 0.01 
                      + "," +  (float)FWGlideOffsetAngleT * 0.1f +  "," ); 
 
             for (i = 0; i < 10; i++)
@@ -3570,7 +3576,7 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
             AltCompT * 0.001 + "," +
 
             BaroVarianceT * 0.001 + "," +
-            AccZVarianceT * 0.001 + "," +
+            AccUVarianceT * 0.001 + "," +
           
             TiltFFCompT * 0.001 + "," +
             BattFFCompT * 0.001 + "," +
@@ -3586,14 +3592,6 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
             DesiredHeadingT * MILLIRADDEG + "," +
 
             MPU6XXXTempT * 0.1 + ",");
-
-            if (NoiseIsGyro != 0)
-                SaveTextLogFileStreamWriter.Write("GyroDelta,");
-            else
-                SaveTextLogFileStreamWriter.Write("AccDFT,");
- 
-            for (i = 0; i < 8; i++)
-                SaveTextLogFileStreamWriter.Write(Noise[i] + ",");
 
             SaveTextLogFileStreamWriter.Write("Stats,");
 
@@ -3799,6 +3797,7 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                 formNav.Show();
 
         }
+
 
   
      

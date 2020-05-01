@@ -219,6 +219,8 @@
             this.AccVarianceNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.RC10TextBox = new System.Windows.Forms.TextBox();
             this.RC9TextBox = new System.Windows.Forms.TextBox();
+            this.GyroSlewRateNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.GyroSlewLimitLabel = new System.Windows.Forms.Label();
             this.RC9ProgressBar = new System.Windows.Forms.ProgressBar();
             this.AltVelKdLabel = new System.Windows.Forms.Label();
             this.RC11ProgressBar = new System.Windows.Forms.ProgressBar();
@@ -254,8 +256,6 @@
             this.RC3ProgressBar = new System.Windows.Forms.ProgressBar();
             this.AltVelIntNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.AltVeleIntLabel = new System.Windows.Forms.Label();
-            this.GyroSlewRateNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.GyroSlewLimitLabel = new System.Windows.Forms.Label();
             this.EstimatorGroupBox = new System.Windows.Forms.GroupBox();
             this.YawLPFLabel = new System.Windows.Forms.Label();
             this.YawGyroLPFNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -385,12 +385,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.AltPosIntLimitNumericUpDown)).BeginInit();
             this.RCGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AccVarianceNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GyroSlewRateNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch10NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch11NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch12NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RxChannelsNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltVelIntNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GyroSlewRateNumericUpDown)).BeginInit();
             this.EstimatorGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.YawGyroLPFNumericUpDown)).BeginInit();
             this.FWGroupBox.SuspendLayout();
@@ -2429,6 +2429,7 @@
             // 
             // YawAnglePropTextBox
             // 
+            this.YawAnglePropTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.YawAnglePropTextBox, "YawAnglePropTextBox");
             this.YawAnglePropTextBox.Name = "YawAnglePropTextBox";
             this.YawAnglePropTextBox.ReadOnly = true;
@@ -2436,6 +2437,7 @@
             // 
             // MaxRollRateTextBox
             // 
+            this.MaxRollRateTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.MaxRollRateTextBox, "MaxRollRateTextBox");
             this.MaxRollRateTextBox.Name = "MaxRollRateTextBox";
             this.MaxRollRateTextBox.ReadOnly = true;
@@ -2472,6 +2474,7 @@
             // 
             // MaxPitchRateTextBox
             // 
+            this.MaxPitchRateTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.MaxPitchRateTextBox, "MaxPitchRateTextBox");
             this.MaxPitchRateTextBox.Name = "MaxPitchRateTextBox";
             this.MaxPitchRateTextBox.ReadOnly = true;
@@ -2818,6 +2821,31 @@
             this.RC9TextBox.Name = "RC9TextBox";
             this.RC9TextBox.ReadOnly = true;
             // 
+            // GyroSlewRateNumericUpDown
+            // 
+            this.GyroSlewRateNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.GyroSlewRateNumericUpDown, "GyroSlewRateNumericUpDown");
+            this.GyroSlewRateNumericUpDown.Maximum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.GyroSlewRateNumericUpDown.Name = "GyroSlewRateNumericUpDown";
+            this.GyroSlewRateNumericUpDown.Tag = "92";
+            this.GyroSlewRateNumericUpDown.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.GyroSlewRateNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.GyroSlewRateNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.GyroSlewRateNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
+            // 
+            // GyroSlewLimitLabel
+            // 
+            resources.ApplyResources(this.GyroSlewLimitLabel, "GyroSlewLimitLabel");
+            this.GyroSlewLimitLabel.Name = "GyroSlewLimitLabel";
+            // 
             // RC9ProgressBar
             // 
             resources.ApplyResources(this.RC9ProgressBar, "RC9ProgressBar");
@@ -3120,31 +3148,6 @@
             resources.ApplyResources(this.AltVeleIntLabel, "AltVeleIntLabel");
             this.AltVeleIntLabel.Name = "AltVeleIntLabel";
             this.AltVeleIntLabel.Tag = "";
-            // 
-            // GyroSlewRateNumericUpDown
-            // 
-            this.GyroSlewRateNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
-            resources.ApplyResources(this.GyroSlewRateNumericUpDown, "GyroSlewRateNumericUpDown");
-            this.GyroSlewRateNumericUpDown.Maximum = new decimal(new int[] {
-            180,
-            0,
-            0,
-            0});
-            this.GyroSlewRateNumericUpDown.Name = "GyroSlewRateNumericUpDown";
-            this.GyroSlewRateNumericUpDown.Tag = "92";
-            this.GyroSlewRateNumericUpDown.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.GyroSlewRateNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.GyroSlewRateNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
-            this.GyroSlewRateNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
-            // 
-            // GyroSlewLimitLabel
-            // 
-            resources.ApplyResources(this.GyroSlewLimitLabel, "GyroSlewLimitLabel");
-            this.GyroSlewLimitLabel.Name = "GyroSlewLimitLabel";
             // 
             // EstimatorGroupBox
             // 
@@ -3905,12 +3908,12 @@
             this.RCGroupBox.ResumeLayout(false);
             this.RCGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AccVarianceNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GyroSlewRateNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch10NumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch11NumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch12NumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RxChannelsNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltVelIntNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GyroSlewRateNumericUpDown)).EndInit();
             this.EstimatorGroupBox.ResumeLayout(false);
             this.EstimatorGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.YawGyroLPFNumericUpDown)).EndInit();
