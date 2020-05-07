@@ -1,0 +1,1 @@
+Use for UAVX r1439 or earlier - supports parallel rx
