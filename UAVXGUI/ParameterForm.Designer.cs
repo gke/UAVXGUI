@@ -1138,8 +1138,7 @@
             resources.GetString("GPSTypeComboBox.Items1"),
             resources.GetString("GPSTypeComboBox.Items2"),
             resources.GetString("GPSTypeComboBox.Items3"),
-            resources.GetString("GPSTypeComboBox.Items4"),
-            resources.GetString("GPSTypeComboBox.Items5")});
+            resources.GetString("GPSTypeComboBox.Items4")});
             this.GPSTypeComboBox.Name = "GPSTypeComboBox";
             this.GPSTypeComboBox.Tag = "62";
             this.GPSTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
@@ -1403,9 +1402,7 @@
             resources.GetString("ComboPort1ComboBox.Items2"),
             resources.GetString("ComboPort1ComboBox.Items3"),
             resources.GetString("ComboPort1ComboBox.Items4"),
-            resources.GetString("ComboPort1ComboBox.Items5"),
-            resources.GetString("ComboPort1ComboBox.Items6"),
-            resources.GetString("ComboPort1ComboBox.Items7")});
+            resources.GetString("ComboPort1ComboBox.Items5")});
             this.ComboPort1ComboBox.Name = "ComboPort1ComboBox";
             this.ComboPort1ComboBox.Tag = "15";
             this.ComboPort1ComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);

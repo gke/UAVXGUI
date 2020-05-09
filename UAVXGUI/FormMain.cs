@@ -617,14 +617,10 @@ namespace UAVXGUI
         const byte AirframeX = 32;
         const byte OrientX = 34;
 
-        const byte MaxStats = 32;
-
         public static short AirframeT;
 
         short VersionLenT;
         string VersionNameT;
-
-        short[] Stats = new short[MaxStats];
 
         public struct WPStructNV
         {
@@ -731,7 +727,6 @@ namespace UAVXGUI
 
         int NavPacketsReceived = 0;
         int FlightPacketsReceived = 0;
-        int StatsPacketsReceived = 0;
         int CalibrationPacketsReceived = 0;
         int ControlPacketsReceived = 0;
         short MotorsAndServos;
@@ -1034,7 +1029,6 @@ namespace UAVXGUI
 
             NavPacketsReceived = 0;
             FlightPacketsReceived = 0;
-            StatsPacketsReceived = 0;
             CalibrationPacketsReceived = 0;
 
         }
@@ -1261,48 +1255,8 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
             "MagHeading," +
             "Heading," +
             "DesHeading," +
-
-            "SensorTemp,");
-
-            SaveTextLogFileStreamWriter.Write("Stats," +
-
-            "GPSAltX," +
-            "BaroRelAltX," +
-            "ClipX," +
-            "GPSMinSatsX," +
-            "MinROCX," +
-            "MaxROCX," +
-            "GPSVelX," +
-            "AccFailsX," +
-            "CompassFailsX," +
-            "BaroFailsX," +
-
-            "GPSInvalidX," +
-            "GPSMaxSatsX," +
-            "NavValidX," +
-            "MinhAccX," +
-            "MaxhAccX," +
-            "RCGlitchesX," +
-            "TxBlockX," +
-            "GyroFailX," +
-            "RCFailsafesX," +
-            "SIOFailX," +
-
-            "UtilisationX," +
-            "BadReferGKEX," +
-            "BadNumX," + // 23
-            "MinsAcc," +
-            "MaxsAcc," +
-            "," +
-            "," +
-            "," +
-            "," +
-            "," +
-            ", " +
-
-            ", " +
-
-        "AFType");
+            "SensorTemp," +
+             "AFType");
 
         SaveTextLogFileStreamWriter.WriteLine();
         }
@@ -1992,17 +1946,6 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
             
         }
 
-        void DoOrientation()
-        {
-         //  do it all of the time in case some one changes orientation but does not shutdown GS if (!DoneOrientation)
-            {
-              //  FlightHeadingOffset = F[(byte)FlagValues.Emulation] ?
-              //      0.0 : (OrientT * Math.PI) / 24.0;
-
-             //   OSO = Math.Sin(FlightHeadingOffset);
-              //  OCO = Math.Cos(FlightHeadingOffset);
-            }
-        }
 
         void UpdateFlightState()
         {
@@ -2678,8 +2621,6 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                     UpdateAltitude();
                     UpdateAttitude();
 
-                    DoOrientation();
-
                     Heading.Text = string.Format("{0:n0}", (float)HeadingT * MILLIRADDEG);
 
                     GPSLongitude.Text = string.Format("{0:n6}", (double)GPSLongitudeT * 1e-7); // 6000000
@@ -2887,44 +2828,11 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
 
                     break;
                 case UAVXStatsPacketTag:
-                    StatsPacketsReceived++;
 
-                    for (b = 0; b < MaxStats; b++)
-                        Stats[b] = ExtractShort(ref UAVXPacket, (byte)(b * 2 + 2));
-                   
-                    AirframeT = ExtractByte(ref UAVXPacket, 2 + MaxStats * 2 );
-                    
-                    UAVXArm = (AirframeT & 0x80) != 0;
-                    AirframeT &= 0x7f;
-
-                    I2CSIOFailS.Text = string.Format("{0:n0}", Stats[SIOFailsX]);
-                    if (Stats[TxBufferBlockX] > 0)
-                        CommsGroupBox.BackColor = System.Drawing.Color.Red;
-                    GPSFailS.Text = string.Format("{0:n0}", Stats[GPSInvalidX]);
-                    AccFailS.Text = string.Format("{0:n0}", Stats[AccFailsX]);
-                    GyroFailS.Text = string.Format("{0:n0}", Stats[GyroFailsX]);
-                    CompassFailS.Text = string.Format("{0:n0}", Stats[CompassFailsX]);
-                    BaroFailS.Text = string.Format("{0:n0}", Stats[BaroFailsX]);
-                    SaturationS.Text = string.Format("{0:n0}", Stats[SaturationX]);
-                    RCFailSafeS.Text = string.Format("{0:n0}", Stats[RCFailSafesX]);
-
-
-                    BadS.Text = string.Format("{0:n0}", Stats[BadX]);
-                    ErrNoS.Text = string.Format("{0:n0}", Stats[BadNumX]);
-                    UtilisationLabel.Text = Stats[UtilisationX] + "%";
-                    if (Stats[UtilisationX] > 70)  
-                        UtilisationLabel.BackColor = System.Drawing.Color.Red;
-                    else 
-                        if (Stats[UtilisationX] > 40) 
-                            UtilisationLabel.BackColor = System.Drawing.Color.Orange;
-                         else         
-                            UtilisationLabel.BackColor = menuStrip1.BackColor;
-                   
-                    Airframe.Text = AFNames[AirframeT];
-
-                    DoOrientation();
+                    // redundant
 
                     break;
+
                 case UAVXFlightPacketTag:
                     FlightPacketsReceived++;
 
@@ -2967,8 +2875,8 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                     BaroVarianceT = ExtractShort(ref UAVXPacket, 80);
                     AccUVarianceT = ExtractShort(ref UAVXPacket, 82);
 
-            TrackAccUVariance.Text = string.Format("{0:n3}", AccUVarianceT * 0.001);
-                   TrackBaroVariance.Text = string.Format("{0:n3}", BaroVarianceT * 0.001);
+                    TrackAccUVariance.Text = string.Format("{0:n3}", AccUVarianceT * 0.001);
+                    TrackBaroVariance.Text = string.Format("{0:n3}", BaroVarianceT * 0.001);
                 
 
                     MagHeadingT = ExtractShort(ref UAVXPacket,84);
@@ -3008,14 +2916,13 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                     Heading.Text = string.Format("{0:n0}", (float)HeadingT * MILLIRADDEG);
 
 
-                    BaroTemperature.Text = string.Format("{0:n2}", BaroTemperatureT * 0.01);
-                    BaroPressure.Text = string.Format("{0:n2}", BaroPressureT * 0.001);
+                    BaroTemperature.Text = string.Format("{0:n1}", BaroTemperatureT * 0.01);
+                    BaroPressure.Text = string.Format("{0:n1}", BaroPressureT * 0.001);
                     BaroPressure.BackColor = (BaroPressureT < 800000) || (BaroPressureT > 1100000) ?
                     System.Drawing.Color.Orange : AltitudeGroupBox.BackColor;
 
                     RCGlitches.Text = string.Format("{0:n0}", RCGlitchesT);
-                    RCGlitches.BackColor = RCGlitchesT > 20 ?
-                        System.Drawing.Color.Orange : ErrorStatsGroupBox.BackColor;
+                    RCGlitches.BackColor = RCGlitchesT > 20 ? System.Drawing.Color.Orange : CommsGroupBox.BackColor;
 
                     MissionTimeTextBox.Text = string.Format("{0:n0}", MissionTimeMilliSecT / 1000);
 
@@ -3592,14 +3499,6 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
             DesiredHeadingT * MILLIRADDEG + "," +
 
             MPU6XXXTempT * 0.1 + ",");
-
-            SaveTextLogFileStreamWriter.Write("Stats,");
-
-            for (i = 0; i < MaxStats; i++)
-                if (Stats[i] == 0)
-                    SaveTextLogFileStreamWriter.Write(",");
-                else
-                    SaveTextLogFileStreamWriter.Write( Stats[i] + ",");
 
             SaveTextLogFileStreamWriter.Write( AirframeT + "," );
 

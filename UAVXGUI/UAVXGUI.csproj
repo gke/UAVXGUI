@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>UAVXGUI</RootNamespace>
-    <AssemblyName>UAVXGUI 3.0</AssemblyName>
+    <AssemblyName>UAVXGUI 4.0</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -27,7 +27,7 @@
     <SignAssembly>false</SignAssembly>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
     <TargetFrameworkProfile />
-    <PublishUrl>C:\Program Files\UAVXGUI V3 Publish\</PublishUrl>
+    <PublishUrl>C:\Program Files\UAVXGUI V4 Publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -38,12 +38,12 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>false</MapFileExtensions>
     <TargetCulture>en-AU</TargetCulture>
-    <ProductName>UAVXGUI 3.0</ProductName>
+    <ProductName>UAVXGUI 4.0</ProductName>
     <PublisherName>UAVX</PublisherName>
     <SuiteName>UAVX</SuiteName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>368</ApplicationRevision>
-    <ApplicationVersion>3.0.0.%2a</ApplicationVersion>
+    <ApplicationRevision>377</ApplicationRevision>
+    <ApplicationVersion>4.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
