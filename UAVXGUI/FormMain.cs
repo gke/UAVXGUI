@@ -40,6 +40,8 @@ using System.Net;
 using System.Net.Sockets;
 
 using System.Resources;
+using System.Windows.Forms.DataVisualization.Charting;
+using System.Linq;
 
 using System.Speech;
 using System.Speech.Synthesis;
@@ -184,7 +186,7 @@ namespace UAVXGUI
         const byte NAK = 21;
         const byte ESC = 27;
 
-        static SpeechSynthesizer speech;
+        static SpeechSynthesizer speech = new SpeechSynthesizer();
 
         const int Pitch = 0;
         const int Roll = 1;
@@ -233,6 +235,7 @@ namespace UAVXGUI
      public const byte UAVXWindPacketTag = 64;
      public const byte UAVXTrackPacketTag = 65;
      public const byte UAVXSerialPortsPacketTag = 66;
+     public const byte UAVXExecutionTimePacketTag = 67;
 
         public const byte FrSkyPacketTag = 99;
 
@@ -333,7 +336,11 @@ namespace UAVXGUI
             "UAVXCalibrationPacketTag",
          
              "UAVXAFNamePacketTag",
-	 "UAVXWindPacketTag",
+	         "UAVXWindPacketTag",
+
+             "UAVXTrackPacketTag",
+             "UAVXSerialPortsPacketTag",
+             "UAVXExecutionTimePacketTag",
             // needs padding strings zzz
 
                             
@@ -622,6 +629,7 @@ namespace UAVXGUI
         short VersionLenT;
         string VersionNameT;
 
+
         public struct WPStructNV
         {
             public int LatitudeRaw;            // 0
@@ -746,8 +754,11 @@ namespace UAVXGUI
         bool CheckSumError;
         short RxLengthErrors = 0, RxCheckSumErrors = 0, RxIllegalErrors = 0;
 
-        public static short MaxDefaultAFNames = -1;
-        public static string[] DefaultAFNames = { 
+       short execPercentT;
+	   short execPeakPercentT;
+
+       public static short MaxDefaultAFNames = -1;
+       public static string[] DefaultAFNames = { 
             "Unknown0",
             "Unknown1",
             "Unknown2",
@@ -822,8 +833,9 @@ namespace UAVXGUI
           serialPort1 = new System.IO.Ports.SerialPort(this.components);
           serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(serialPort_DataReceived);
 
-          speech = new SpeechSynthesizer();
+  
           speech.Rate = -2;
+          speech.SetOutputToDefaultAudioDevice(); 
 
           SpeakVarioCheckBox.Checked = Properties.Settings.Default.SpeakVario;
           SpeakVoltsCheckBox.Checked = Properties.Settings.Default.SpeakVolts;
@@ -1449,7 +1461,7 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                 }
                
 
-                AlarmsButton.BackColor = System.Drawing.SystemColors.Control;
+               AlarmsButton.BackColor = System.Drawing.SystemColors.Control;
 
             }
             else
@@ -2475,6 +2487,8 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
             DesiredAltitude.Text = string.Format("{0:n1}", (float)AltError);
 
             DesiredAltitude.Text = string.Format("{0:n1}", DesiredAltitudeT * 0.01);
+
+            //PlotForm.FillChart();
         }
 
 
@@ -2795,36 +2809,46 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                      YawPitchRollGyroLabel.Text = string.Format("{0:n0}", Cal[21]);
   
                     break;
+                    case UAVXExecutionTimePacketTag:
+
+                    execPercentT = ExtractShort(ref UAVXPacket, 2);
+                    execPeakPercentT = ExtractShort(ref UAVXPacket, 4);
+                    
+
+                    execPeakPercentLabel.Text = "(" + string.Format("{0:n0}", execPeakPercentT) + "%)";
+                    execPercentLabel.Text = string.Format("{0:n0}",execPercentT) + "%";
+
+                    break;
 
                     case UAVXSerialPortsPacketTag:
-                    int MaxBuffLength, NoOfPorts, TelF, GPSF;
-                    int TelemetryTxEntriesT, TelemetryRxEntriesT, GPSTxEntriesT, GPSRxEntriesT;
+                    int MaxBuffLength, NoOfPorts, SerialAF, SerialBF;
+                    int SerialATxEntriesT, SerialARxEntriesT, SerialBTxEntriesT, SerialBRxEntriesT;
 
                     NoOfPorts = ExtractByte(ref UAVXPacket, 2) - 1;
                     MaxBuffLength = ExtractShort(ref UAVXPacket, 3);
 
-                    TelF = ExtractShort(ref UAVXPacket, 5);
-                    TelemetryTxEntriesT = ExtractShort(ref UAVXPacket, 6);
-                    TelemetryRxEntriesT = ExtractShort(ref UAVXPacket, 8);
+                    SerialAF = ExtractShort(ref UAVXPacket, 5);
+                    SerialATxEntriesT = ExtractShort(ref UAVXPacket, 6);
+                    SerialARxEntriesT = ExtractShort(ref UAVXPacket, 8);
 
-                    GPSF = ExtractShort(ref UAVXPacket, 10);
-                    GPSTxEntriesT = ExtractShort(ref UAVXPacket, 11);
-                    GPSRxEntriesT = ExtractShort(ref UAVXPacket, 13); 
+                    SerialBF = ExtractShort(ref UAVXPacket, 10);
+                    SerialBTxEntriesT = ExtractShort(ref UAVXPacket, 11);
+                    SerialBRxEntriesT = ExtractShort(ref UAVXPacket, 13); 
                     
-                    TelemetryTxEntries.BackColor = ((TelF>>1) > 0) ? System.Drawing.Color.Red : System.Drawing.Color.Green;
-                    TelemetryTxEntries.Text = string.Format("{0:n0}", TelemetryTxEntriesT);
-                    TelemetryTxProgressBar.Value = Limit(TelemetryTxEntriesT, 0, MaxBuffLength);
-                    TelemetryRxEntries.BackColor = ((TelF&1) > 0) ? System.Drawing.Color.Red : System.Drawing.Color.Green;
-                    TelemetryRxEntries.Text = string.Format("{0:n0}", TelemetryRxEntriesT);
-                    TelemetryRxProgressBar.Value = Limit(TelemetryRxEntriesT, 0, MaxBuffLength);
+                    SerialATxEntries.BackColor = ((SerialAF>>1) > 0) ? System.Drawing.Color.Red : System.Drawing.Color.Green;
+                    SerialATxEntries.Text = string.Format("{0:n0}", SerialATxEntriesT);
+                    SerialATxProgressBar.Value = Limit(SerialATxEntriesT, 0, MaxBuffLength);
+                    SerialARxEntries.BackColor = ((SerialAF&1) > 0) ? System.Drawing.Color.Red : System.Drawing.Color.Green;
+                    SerialARxEntries.Text = string.Format("{0:n0}", SerialARxEntriesT);
+                    SerialARxProgressBar.Value = Limit(SerialARxEntriesT, 0, MaxBuffLength);
 
                  
-                    GPSTxEntries.BackColor = ((GPSF>>1) > 0) ? System.Drawing.Color.Red : System.Drawing.Color.Green;
-                    GPSTxEntries.Text = string.Format("{0:n0}", GPSTxEntriesT);
-                    GPSTxProgressBar.Value = Limit(GPSTxEntriesT, 0, MaxBuffLength);
-                    GPSRxEntries.BackColor = ((GPSF&1) > 0) ? System.Drawing.Color.Red : System.Drawing.Color.Green;
-                    GPSRxEntries.Text = string.Format("{0:n0}", GPSRxEntriesT);
-                    GPSRxProgressBar.Value = Limit(GPSRxEntriesT, 0, MaxBuffLength);
+                    SerialBTxEntries.BackColor = ((SerialBF>>1) > 0) ? System.Drawing.Color.Red : System.Drawing.Color.Green;
+                    SerialBTxEntries.Text = string.Format("{0:n0}", SerialBTxEntriesT);
+                    SerialBTxProgressBar.Value = Limit(SerialBTxEntriesT, 0, MaxBuffLength);
+                    SerailBRxEntries.BackColor = ((SerialBF&1) > 0) ? System.Drawing.Color.Red : System.Drawing.Color.Green;
+                    SerailBRxEntries.Text = string.Format("{0:n0}", SerialBRxEntriesT);
+                    SerialBRxProgressBar.Value = Limit(SerialBRxEntriesT, 0, MaxBuffLength);
 
                     break;
                 case UAVXStatsPacketTag:
@@ -3674,16 +3698,6 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                 formParameters.Show(); // was ShowDialog
         }
 
-        private void PlotButton_Click(object sender, EventArgs e)
-        {
-
-            UAVXOpenTelemetry();
-
-            PlotButton.BackColor = System.Drawing.Color.Green;
-            PlotForm formParameters = new PlotForm();
-            // if (formParameters.errorFlag == false)
-            formParameters.Show(); // was ShowDialog
-        }
 
         private void StartNavigationButton_Click(object sender, EventArgs e)
         {

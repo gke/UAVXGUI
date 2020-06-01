@@ -1101,7 +1101,6 @@ namespace UAVXGUI
         private DataGridViewImageColumn Down;
         private DataGridViewImageColumn DEL;
 
-
         //private GMap.NET.WindowsForms.GMapControl MainMap;
     }
 }

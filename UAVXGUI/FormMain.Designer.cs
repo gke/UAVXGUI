@@ -95,16 +95,16 @@ namespace UAVXGUI
             this.RollLabel = new System.Windows.Forms.Label();
             this.AccelerationsGroupBox = new System.Windows.Forms.GroupBox();
             this.CommsGroupBox = new System.Windows.Forms.GroupBox();
-            this.GPSRxProgressBar = new System.Windows.Forms.ProgressBar();
-            this.TelemetryRxProgressBar = new System.Windows.Forms.ProgressBar();
-            this.GPSTxProgressBar = new System.Windows.Forms.ProgressBar();
-            this.TelemetryTxProgressBar = new System.Windows.Forms.ProgressBar();
-            this.GPSRxEntries = new System.Windows.Forms.TextBox();
-            this.GPSTxEntries = new System.Windows.Forms.TextBox();
-            this.GPSSerialLabel = new System.Windows.Forms.Label();
-            this.TelemetryRxEntries = new System.Windows.Forms.TextBox();
-            this.TelemetryTxEntries = new System.Windows.Forms.TextBox();
-            this.TelemetrySerialLabel = new System.Windows.Forms.Label();
+            this.SerialBRxProgressBar = new System.Windows.Forms.ProgressBar();
+            this.SerialARxProgressBar = new System.Windows.Forms.ProgressBar();
+            this.SerialBTxProgressBar = new System.Windows.Forms.ProgressBar();
+            this.SerialATxProgressBar = new System.Windows.Forms.ProgressBar();
+            this.SerailBRxEntries = new System.Windows.Forms.TextBox();
+            this.SerialBTxEntries = new System.Windows.Forms.TextBox();
+            this.SerialBLabel = new System.Windows.Forms.Label();
+            this.SerialARxEntries = new System.Windows.Forms.TextBox();
+            this.SerialATxEntries = new System.Windows.Forms.TextBox();
+            this.SerialAlLabel = new System.Windows.Forms.Label();
             this.SensorTemp = new System.Windows.Forms.TextBox();
             this.BatteryGroupBox = new System.Windows.Forms.GroupBox();
             this.BatteryCharge = new System.Windows.Forms.TextBox();
@@ -264,7 +264,7 @@ namespace UAVXGUI
             this.GPSPassThruButton = new System.Windows.Forms.Button();
             this.DumpBBButton = new System.Windows.Forms.Button();
             this.AlarmsButton = new System.Windows.Forms.Button();
-            this.UtilisationLabel = new System.Windows.Forms.Label();
+            this.execPeakPercentLabel = new System.Windows.Forms.Label();
             this.CalibrationGroupBox = new System.Windows.Forms.GroupBox();
             this.TrackBaroVariance = new System.Windows.Forms.TextBox();
             this.BaroVarianceLabel = new System.Windows.Forms.Label();
@@ -309,13 +309,13 @@ namespace UAVXGUI
             this.RollCalLabel = new System.Windows.Forms.Label();
             this.RollGyroMLabel = new System.Windows.Forms.Label();
             this.PitchGyroMLabel = new System.Windows.Forms.Label();
-            this.PlotButton = new System.Windows.Forms.Button();
             this.BootLoadButton = new System.Windows.Forms.Button();
             this.WPActionTextBox = new System.Windows.Forms.TextBox();
             this.KMLComboBox = new System.Windows.Forms.ComboBox();
             this.CalibrateAccZeroButton = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label18 = new System.Windows.Forms.Label();
+            this.execPercentLabel = new System.Windows.Forms.Label();
             this.attitudeIndicatorInstrumentControl1 = new Instruments.AttitudeIndicatorInstrumentControl();
             this.headingIndicatorInstrumentControl1 = new Instruments.HeadingIndicatorInstrumentControl();
             this.GyroGroupBox.SuspendLayout();
@@ -381,7 +381,7 @@ namespace UAVXGUI
             this.BatteryVolts.Location = new System.Drawing.Point(15, 18);
             this.BatteryVolts.Name = "BatteryVolts";
             this.BatteryVolts.ReadOnly = true;
-            this.BatteryVolts.Size = new System.Drawing.Size(32, 15);
+            this.BatteryVolts.Size = new System.Drawing.Size(44, 15);
             this.BatteryVolts.TabIndex = 8;
             this.BatteryVolts.Text = "10";
             this.BatteryVolts.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -535,7 +535,7 @@ namespace UAVXGUI
             // 
             this.VoltsLabel.AutoSize = true;
             this.VoltsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VoltsLabel.Location = new System.Drawing.Point(53, 18);
+            this.VoltsLabel.Location = new System.Drawing.Point(59, 18);
             this.VoltsLabel.Name = "VoltsLabel";
             this.VoltsLabel.Size = new System.Drawing.Size(18, 16);
             this.VoltsLabel.TabIndex = 22;
@@ -607,7 +607,7 @@ namespace UAVXGUI
             // RCGlitchesLabel
             // 
             this.RCGlitchesLabel.AutoSize = true;
-            this.RCGlitchesLabel.Location = new System.Drawing.Point(8, 109);
+            this.RCGlitchesLabel.Location = new System.Drawing.Point(7, 111);
             this.RCGlitchesLabel.Name = "RCGlitchesLabel";
             this.RCGlitchesLabel.Size = new System.Drawing.Size(63, 13);
             this.RCGlitchesLabel.TabIndex = 30;
@@ -983,18 +983,18 @@ namespace UAVXGUI
             // 
             // CommsGroupBox
             // 
-            this.CommsGroupBox.Controls.Add(this.GPSRxProgressBar);
-            this.CommsGroupBox.Controls.Add(this.TelemetryRxProgressBar);
-            this.CommsGroupBox.Controls.Add(this.GPSTxProgressBar);
+            this.CommsGroupBox.Controls.Add(this.SerialBRxProgressBar);
+            this.CommsGroupBox.Controls.Add(this.SerialARxProgressBar);
+            this.CommsGroupBox.Controls.Add(this.SerialBTxProgressBar);
             this.CommsGroupBox.Controls.Add(this.RCGlitches);
-            this.CommsGroupBox.Controls.Add(this.TelemetryTxProgressBar);
-            this.CommsGroupBox.Controls.Add(this.GPSRxEntries);
+            this.CommsGroupBox.Controls.Add(this.SerialATxProgressBar);
+            this.CommsGroupBox.Controls.Add(this.SerailBRxEntries);
             this.CommsGroupBox.Controls.Add(this.RCGlitchesLabel);
-            this.CommsGroupBox.Controls.Add(this.GPSTxEntries);
-            this.CommsGroupBox.Controls.Add(this.GPSSerialLabel);
-            this.CommsGroupBox.Controls.Add(this.TelemetryRxEntries);
-            this.CommsGroupBox.Controls.Add(this.TelemetryTxEntries);
-            this.CommsGroupBox.Controls.Add(this.TelemetrySerialLabel);
+            this.CommsGroupBox.Controls.Add(this.SerialBTxEntries);
+            this.CommsGroupBox.Controls.Add(this.SerialBLabel);
+            this.CommsGroupBox.Controls.Add(this.SerialARxEntries);
+            this.CommsGroupBox.Controls.Add(this.SerialATxEntries);
+            this.CommsGroupBox.Controls.Add(this.SerialAlLabel);
             this.CommsGroupBox.Controls.Add(this.RxTypeErr);
             this.CommsGroupBox.Controls.Add(this.RxCSumErr);
             this.CommsGroupBox.Controls.Add(this.RxLenErr);
@@ -1008,103 +1008,103 @@ namespace UAVXGUI
             this.CommsGroupBox.TabStop = false;
             this.CommsGroupBox.Text = "RC & Telemetry";
             // 
-            // GPSRxProgressBar
+            // SerialBRxProgressBar
             // 
-            this.GPSRxProgressBar.Location = new System.Drawing.Point(207, 82);
-            this.GPSRxProgressBar.Maximum = 1000;
-            this.GPSRxProgressBar.Name = "GPSRxProgressBar";
-            this.GPSRxProgressBar.Size = new System.Drawing.Size(80, 10);
-            this.GPSRxProgressBar.Step = 1;
-            this.GPSRxProgressBar.TabIndex = 195;
+            this.SerialBRxProgressBar.Location = new System.Drawing.Point(207, 82);
+            this.SerialBRxProgressBar.Maximum = 1000;
+            this.SerialBRxProgressBar.Name = "SerialBRxProgressBar";
+            this.SerialBRxProgressBar.Size = new System.Drawing.Size(80, 10);
+            this.SerialBRxProgressBar.Step = 1;
+            this.SerialBRxProgressBar.TabIndex = 195;
             // 
-            // TelemetryRxProgressBar
+            // SerialARxProgressBar
             // 
-            this.TelemetryRxProgressBar.Location = new System.Drawing.Point(207, 61);
-            this.TelemetryRxProgressBar.Maximum = 1000;
-            this.TelemetryRxProgressBar.Name = "TelemetryRxProgressBar";
-            this.TelemetryRxProgressBar.Size = new System.Drawing.Size(80, 10);
-            this.TelemetryRxProgressBar.Step = 1;
-            this.TelemetryRxProgressBar.TabIndex = 194;
+            this.SerialARxProgressBar.Location = new System.Drawing.Point(207, 61);
+            this.SerialARxProgressBar.Maximum = 1000;
+            this.SerialARxProgressBar.Name = "SerialARxProgressBar";
+            this.SerialARxProgressBar.Size = new System.Drawing.Size(80, 10);
+            this.SerialARxProgressBar.Step = 1;
+            this.SerialARxProgressBar.TabIndex = 194;
             // 
-            // GPSTxProgressBar
+            // SerialBTxProgressBar
             // 
-            this.GPSTxProgressBar.Location = new System.Drawing.Point(80, 80);
-            this.GPSTxProgressBar.Maximum = 1000;
-            this.GPSTxProgressBar.Name = "GPSTxProgressBar";
-            this.GPSTxProgressBar.Size = new System.Drawing.Size(80, 10);
-            this.GPSTxProgressBar.Step = 1;
-            this.GPSTxProgressBar.TabIndex = 193;
+            this.SerialBTxProgressBar.Location = new System.Drawing.Point(80, 80);
+            this.SerialBTxProgressBar.Maximum = 1000;
+            this.SerialBTxProgressBar.Name = "SerialBTxProgressBar";
+            this.SerialBTxProgressBar.Size = new System.Drawing.Size(80, 10);
+            this.SerialBTxProgressBar.Step = 1;
+            this.SerialBTxProgressBar.TabIndex = 193;
             // 
-            // TelemetryTxProgressBar
+            // SerialATxProgressBar
             // 
-            this.TelemetryTxProgressBar.Location = new System.Drawing.Point(80, 60);
-            this.TelemetryTxProgressBar.Maximum = 1000;
-            this.TelemetryTxProgressBar.Name = "TelemetryTxProgressBar";
-            this.TelemetryTxProgressBar.Size = new System.Drawing.Size(80, 10);
-            this.TelemetryTxProgressBar.Step = 1;
-            this.TelemetryTxProgressBar.TabIndex = 192;
+            this.SerialATxProgressBar.Location = new System.Drawing.Point(80, 60);
+            this.SerialATxProgressBar.Maximum = 1000;
+            this.SerialATxProgressBar.Name = "SerialATxProgressBar";
+            this.SerialATxProgressBar.Size = new System.Drawing.Size(80, 10);
+            this.SerialATxProgressBar.Step = 1;
+            this.SerialATxProgressBar.TabIndex = 192;
             // 
-            // GPSRxEntries
+            // SerailBRxEntries
             // 
-            this.GPSRxEntries.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.GPSRxEntries.Location = new System.Drawing.Point(174, 79);
-            this.GPSRxEntries.Name = "GPSRxEntries";
-            this.GPSRxEntries.ReadOnly = true;
-            this.GPSRxEntries.Size = new System.Drawing.Size(25, 13);
-            this.GPSRxEntries.TabIndex = 94;
-            this.GPSRxEntries.Text = "-";
-            this.GPSRxEntries.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.SerailBRxEntries.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SerailBRxEntries.Location = new System.Drawing.Point(174, 79);
+            this.SerailBRxEntries.Name = "SerailBRxEntries";
+            this.SerailBRxEntries.ReadOnly = true;
+            this.SerailBRxEntries.Size = new System.Drawing.Size(25, 13);
+            this.SerailBRxEntries.TabIndex = 94;
+            this.SerailBRxEntries.Text = "-";
+            this.SerailBRxEntries.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // GPSTxEntries
+            // SerialBTxEntries
             // 
-            this.GPSTxEntries.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.GPSTxEntries.Location = new System.Drawing.Point(49, 79);
-            this.GPSTxEntries.Name = "GPSTxEntries";
-            this.GPSTxEntries.ReadOnly = true;
-            this.GPSTxEntries.Size = new System.Drawing.Size(25, 13);
-            this.GPSTxEntries.TabIndex = 92;
-            this.GPSTxEntries.Text = "-";
-            this.GPSTxEntries.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.SerialBTxEntries.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SerialBTxEntries.Location = new System.Drawing.Point(49, 79);
+            this.SerialBTxEntries.Name = "SerialBTxEntries";
+            this.SerialBTxEntries.ReadOnly = true;
+            this.SerialBTxEntries.Size = new System.Drawing.Size(25, 13);
+            this.SerialBTxEntries.TabIndex = 92;
+            this.SerialBTxEntries.Text = "-";
+            this.SerialBTxEntries.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // GPSSerialLabel
+            // SerialBLabel
             // 
-            this.GPSSerialLabel.AutoSize = true;
-            this.GPSSerialLabel.Location = new System.Drawing.Point(7, 79);
-            this.GPSSerialLabel.Name = "GPSSerialLabel";
-            this.GPSSerialLabel.Size = new System.Drawing.Size(29, 13);
-            this.GPSSerialLabel.TabIndex = 93;
-            this.GPSSerialLabel.Text = "GPS";
+            this.SerialBLabel.AutoSize = true;
+            this.SerialBLabel.Location = new System.Drawing.Point(7, 81);
+            this.SerialBLabel.Name = "SerialBLabel";
+            this.SerialBLabel.Size = new System.Drawing.Size(40, 13);
+            this.SerialBLabel.TabIndex = 93;
+            this.SerialBLabel.Text = "SerialB";
             // 
-            // TelemetryRxEntries
+            // SerialARxEntries
             // 
-            this.TelemetryRxEntries.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TelemetryRxEntries.Location = new System.Drawing.Point(175, 58);
-            this.TelemetryRxEntries.Name = "TelemetryRxEntries";
-            this.TelemetryRxEntries.ReadOnly = true;
-            this.TelemetryRxEntries.Size = new System.Drawing.Size(25, 13);
-            this.TelemetryRxEntries.TabIndex = 90;
-            this.TelemetryRxEntries.Text = "-";
-            this.TelemetryRxEntries.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.SerialARxEntries.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SerialARxEntries.Location = new System.Drawing.Point(175, 58);
+            this.SerialARxEntries.Name = "SerialARxEntries";
+            this.SerialARxEntries.ReadOnly = true;
+            this.SerialARxEntries.Size = new System.Drawing.Size(25, 13);
+            this.SerialARxEntries.TabIndex = 90;
+            this.SerialARxEntries.Text = "-";
+            this.SerialARxEntries.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // TelemetryTxEntries
+            // SerialATxEntries
             // 
-            this.TelemetryTxEntries.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TelemetryTxEntries.Location = new System.Drawing.Point(49, 58);
-            this.TelemetryTxEntries.Name = "TelemetryTxEntries";
-            this.TelemetryTxEntries.ReadOnly = true;
-            this.TelemetryTxEntries.Size = new System.Drawing.Size(25, 13);
-            this.TelemetryTxEntries.TabIndex = 88;
-            this.TelemetryTxEntries.Text = "-";
-            this.TelemetryTxEntries.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.SerialATxEntries.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SerialATxEntries.Location = new System.Drawing.Point(49, 58);
+            this.SerialATxEntries.Name = "SerialATxEntries";
+            this.SerialATxEntries.ReadOnly = true;
+            this.SerialATxEntries.Size = new System.Drawing.Size(25, 13);
+            this.SerialATxEntries.TabIndex = 88;
+            this.SerialATxEntries.Text = "-";
+            this.SerialATxEntries.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // TelemetrySerialLabel
+            // SerialAlLabel
             // 
-            this.TelemetrySerialLabel.AutoSize = true;
-            this.TelemetrySerialLabel.Location = new System.Drawing.Point(7, 58);
-            this.TelemetrySerialLabel.Name = "TelemetrySerialLabel";
-            this.TelemetrySerialLabel.Size = new System.Drawing.Size(25, 13);
-            this.TelemetrySerialLabel.TabIndex = 89;
-            this.TelemetrySerialLabel.Text = "Tel.";
+            this.SerialAlLabel.AutoSize = true;
+            this.SerialAlLabel.Location = new System.Drawing.Point(7, 60);
+            this.SerialAlLabel.Name = "SerialAlLabel";
+            this.SerialAlLabel.Size = new System.Drawing.Size(40, 13);
+            this.SerialAlLabel.TabIndex = 89;
+            this.SerialAlLabel.Text = "SerialA";
             // 
             // SensorTemp
             // 
@@ -1804,7 +1804,7 @@ namespace UAVXGUI
             // GPSVel
             // 
             this.GPSVel.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.GPSVel.Location = new System.Drawing.Point(98, 211);
+            this.GPSVel.Location = new System.Drawing.Point(96, 211);
             this.GPSVel.Name = "GPSVel";
             this.GPSVel.ReadOnly = true;
             this.GPSVel.Size = new System.Drawing.Size(37, 13);
@@ -1944,7 +1944,7 @@ namespace UAVXGUI
             // GPSHeading
             // 
             this.GPSHeading.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.GPSHeading.Location = new System.Drawing.Point(98, 192);
+            this.GPSHeading.Location = new System.Drawing.Point(96, 192);
             this.GPSHeading.Name = "GPSHeading";
             this.GPSHeading.ReadOnly = true;
             this.GPSHeading.Size = new System.Drawing.Size(37, 13);
@@ -2794,16 +2794,15 @@ namespace UAVXGUI
             this.AlarmsButton.UseVisualStyleBackColor = true;
             this.AlarmsButton.Click += new System.EventHandler(this.AlarmsButton_Click);
             // 
-            // UtilisationLabel
+            // execPeakPercentLabel
             // 
-            this.UtilisationLabel.AutoSize = true;
-            this.UtilisationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UtilisationLabel.Location = new System.Drawing.Point(438, 2);
-            this.UtilisationLabel.Name = "UtilisationLabel";
-            this.UtilisationLabel.Size = new System.Drawing.Size(37, 24);
-            this.UtilisationLabel.TabIndex = 218;
-            this.UtilisationLabel.Text = "0%";
-            this.UtilisationLabel.Visible = false;
+            this.execPeakPercentLabel.AutoSize = true;
+            this.execPeakPercentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.execPeakPercentLabel.Location = new System.Drawing.Point(455, 1);
+            this.execPeakPercentLabel.Name = "execPeakPercentLabel";
+            this.execPeakPercentLabel.Size = new System.Drawing.Size(17, 24);
+            this.execPeakPercentLabel.TabIndex = 218;
+            this.execPeakPercentLabel.Text = "-";
             // 
             // CalibrationGroupBox
             // 
@@ -3250,17 +3249,6 @@ namespace UAVXGUI
             this.PitchGyroMLabel.Text = "0";
             this.PitchGyroMLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // PlotButton
-            // 
-            this.PlotButton.BackColor = System.Drawing.Color.Green;
-            this.PlotButton.Location = new System.Drawing.Point(851, 105);
-            this.PlotButton.Name = "PlotButton";
-            this.PlotButton.Size = new System.Drawing.Size(67, 23);
-            this.PlotButton.TabIndex = 221;
-            this.PlotButton.Text = "Plot";
-            this.PlotButton.UseVisualStyleBackColor = false;
-            this.PlotButton.Click += new System.EventHandler(this.PlotButton_Click);
-            // 
             // BootLoadButton
             // 
             this.BootLoadButton.BackColor = System.Drawing.Color.Green;
@@ -3348,6 +3336,16 @@ namespace UAVXGUI
             this.label18.Size = new System.Drawing.Size(0, 13);
             this.label18.TabIndex = 62;
             // 
+            // execPercentLabel
+            // 
+            this.execPercentLabel.AutoSize = true;
+            this.execPercentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.execPercentLabel.Location = new System.Drawing.Point(409, 2);
+            this.execPercentLabel.Name = "execPercentLabel";
+            this.execPercentLabel.Size = new System.Drawing.Size(17, 24);
+            this.execPercentLabel.TabIndex = 265;
+            this.execPercentLabel.Text = "-";
+            // 
             // attitudeIndicatorInstrumentControl1
             // 
             this.attitudeIndicatorInstrumentControl1.Location = new System.Drawing.Point(323, 118);
@@ -3371,14 +3369,14 @@ namespace UAVXGUI
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1013, 643);
+            this.Controls.Add(this.execPercentLabel);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.CalibrateAccZeroButton);
             this.Controls.Add(this.KMLComboBox);
             this.Controls.Add(this.WPActionTextBox);
             this.Controls.Add(this.BootLoadButton);
-            this.Controls.Add(this.PlotButton);
             this.Controls.Add(this.CalibrationGroupBox);
-            this.Controls.Add(this.UtilisationLabel);
+            this.Controls.Add(this.execPeakPercentLabel);
             this.Controls.Add(this.AlarmsButton);
             this.Controls.Add(this.DumpBBButton);
             this.Controls.Add(this.GPSPassThruButton);
@@ -3668,7 +3666,7 @@ namespace UAVXGUI
         private System.Windows.Forms.CheckBox SpeakVarioCheckBox;
         private System.Windows.Forms.Button DumpBBButton;
         private System.Windows.Forms.Button AlarmsButton;
-        private System.Windows.Forms.Label UtilisationLabel;
+        private System.Windows.Forms.Label execPeakPercentLabel;
         private System.Windows.Forms.TextBox BaroPressure;
         private System.Windows.Forms.TextBox BaroTemperature;
         private System.Windows.Forms.Label label11;
@@ -3706,7 +3704,6 @@ namespace UAVXGUI
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox OffsetOriginValidBox;
-        private System.Windows.Forms.Button PlotButton;
         private System.Windows.Forms.TextBox FWGlideOffsetAngle;
         private System.Windows.Forms.Label FWGlideAngleOffsetLabel;
         private System.Windows.Forms.TextBox GPSsAcc;
@@ -3741,18 +3738,19 @@ namespace UAVXGUI
         private System.Windows.Forms.TextBox TrackAccUVariance;
         private System.Windows.Forms.Label AccVarianceLabel;
         private System.Windows.Forms.Label IMUTempLabel;
-        private System.Windows.Forms.TextBox GPSRxEntries;
-        private System.Windows.Forms.TextBox GPSTxEntries;
-        private System.Windows.Forms.Label GPSSerialLabel;
-        private System.Windows.Forms.TextBox TelemetryRxEntries;
-        private System.Windows.Forms.TextBox TelemetryTxEntries;
-        private System.Windows.Forms.Label TelemetrySerialLabel;
+        private System.Windows.Forms.TextBox SerailBRxEntries;
+        private System.Windows.Forms.TextBox SerialBTxEntries;
+        private System.Windows.Forms.Label SerialBLabel;
+        private System.Windows.Forms.TextBox SerialARxEntries;
+        private System.Windows.Forms.TextBox SerialATxEntries;
+        private System.Windows.Forms.Label SerialAlLabel;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.ProgressBar GPSRxProgressBar;
-        private System.Windows.Forms.ProgressBar TelemetryRxProgressBar;
-        private System.Windows.Forms.ProgressBar GPSTxProgressBar;
-        private System.Windows.Forms.ProgressBar TelemetryTxProgressBar;
+        private System.Windows.Forms.ProgressBar SerialBRxProgressBar;
+        private System.Windows.Forms.ProgressBar SerialARxProgressBar;
+        private System.Windows.Forms.ProgressBar SerialBTxProgressBar;
+        private System.Windows.Forms.ProgressBar SerialATxProgressBar;
+        private System.Windows.Forms.Label execPercentLabel;
     }
 }
 

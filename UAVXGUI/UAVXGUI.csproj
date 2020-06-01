@@ -42,7 +42,7 @@
     <PublisherName>UAVX</PublisherName>
     <SuiteName>UAVX</SuiteName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>377</ApplicationRevision>
+    <ApplicationRevision>382</ApplicationRevision>
     <ApplicationVersion>4.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -108,12 +108,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Class1.cs" />
-    <Compile Include="Plot.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Plot.Designer.cs">
-      <DependentUpon>Plot.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,9 +138,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AvionicsInstrumentsControls\AvionicsInstrumentsControlsResources.resx">
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Plot.resx">
-      <DependentUpon>Plot.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <SubType>Designer</SubType>
