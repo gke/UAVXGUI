@@ -295,7 +295,7 @@ namespace UAVXGUI
         const double YawGyroRate = 400.0;
         const double RollPitchRateRate = 400.0;
 
-        string[] TagNames = { 
+        static string[] TagNames = { 
         	"UnknownPacket",
 	        "LevPacket",
 	        "NavPacket",
@@ -457,7 +457,6 @@ namespace UAVXGUI
         };
 
         public static bool UsingFixedWing = false;
-        public static bool NoUplink = false;
 
         // struct not used - just to document packet format
         // byte UAVXFlightPacketTag;   
@@ -696,7 +695,6 @@ namespace UAVXGUI
         static bool VRSHazardDetected = false;
 
         static bool AutoLandEnabled = false;
-        // bool InFlight = false;
 
         short NavYCorrT = 0;
 
@@ -724,14 +722,15 @@ namespace UAVXGUI
         byte[] UAVXPacket = new byte[256]; // big enough to cope with stats etc at start of dump file
         byte[] FrSkyPacket = new byte[256];
 
-        const short RxQueueLength = 16384;
-        const short RxQueueMask = RxQueueLength - 1;
+        const int RxQueueLength = 32768;
+        const int RxQueueMask = RxQueueLength - 1;
         byte[] RxQueue = new byte[RxQueueLength];
-        short RxTail = 0;
-        short RxHead = 0;
+        int RxTail = 0;
+        int RxHead = 0;
 
         bool TelemetryActive = false;
         bool TelemetryLostMessageUsed = false;
+        volatile bool TelemetryConnected = false;
 
         int NavPacketsReceived = 0;
         int FlightPacketsReceived = 0;
@@ -786,8 +785,6 @@ namespace UAVXGUI
 
         byte RxCheckSum;
 
-        bool InFlight = false;
-
         public static bool[] F = new bool[72];
 
         string FileName;
@@ -811,8 +808,7 @@ namespace UAVXGUI
         System.IO.FileStream OpenLogFileStream;
         System.IO.BinaryReader OpenLogFileBinaryReader;
  
-        bool DoingLogfileReplay = false;
-        bool ReadingTelemetry = false;
+        public static bool DoingLogfileReplay = false;
 
         NavForm formNav = new NavForm();
         UAVPForm formUAVP = new UAVPForm();
@@ -891,23 +887,24 @@ namespace UAVXGUI
             }
         }
 
+
+
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-
-            if (serialPort1.IsOpen)
-            {           
-                e.Cancel = true; //cancel the fom closing
-                Thread CloseDown = new Thread(new ThreadStart(CloseSerialOnExit)); //close port in new thread to avoid hang
-                CloseDown.Start(); //close port in new thread to avoid hang
-            }
-   
+            
+           if (serialPort1.IsOpen) {
+             e.Cancel = true; //cancel the form closing
+             UAVXCloseTelemetry();
+             Thread CloseDown = new Thread(new ThreadStart(CloseSerialOnExit)); //close port in new thread to avoid hang
+             CloseDown.Start(); //close port in new thread to avoid hang
+          }
         }
 
         private void CloseSerialOnExit()
         {
             try
             {
-                serialPort1.Close(); //close the serial port
+                serialPort1.Close();  
             }
             catch (Exception ex)
             {
@@ -983,6 +980,9 @@ namespace UAVXGUI
                 CloseReplayLogFile();
              else
             {
+
+                UAVXCloseTelemetry();
+
                 OpenLogFileDialog.Filter = "UAVX Log File (*.log)|*.log";
                 OpenLogFileDialog.InitialDirectory = UAVXGUI.Properties.Settings.Default.LogDirectory;
 
@@ -1001,13 +1001,14 @@ namespace UAVXGUI
                     SaveTextLogFileStream = new System.IO.FileStream(FileName + ".csv", System.IO.FileMode.Create);
                     SaveTextLogFileStreamWriter = new System.IO.StreamWriter(SaveTextLogFileStream, System.Text.Encoding.ASCII);
                     LogFileHeaderWritten = false;
- 
-                    DoingLogfileReplay = true;
 
+                    ReplayButton.BackColor = System.Drawing.Color.Orange;
                     ReplayProgressBar.Value = 0;
                     ReplayProgress = 0;
-                    Thread Replay = new Thread(new ThreadStart(ReadReplayLogFile)); 
+                    DoingLogfileReplay = true;
+                    Thread Replay = new Thread(new ThreadStart(ReadReplayLogFile));
                     Replay.Start();
+     
                 }
             }
 
@@ -1018,8 +1019,8 @@ namespace UAVXGUI
             OpenLogFileStream.Close();
 
             SaveTextLogFileStreamWriter.Flush();
-           // SaveTextLogFileStreamWriter.Close();
-           // SaveTextLogFileStream.Close();
+           SaveTextLogFileStreamWriter.Close();
+            SaveTextLogFileStream.Close();
         }
 
         private void CreateSaveLogFile()
@@ -1062,49 +1063,44 @@ namespace UAVXGUI
 
         private void WriteKMLFileHeader()
         {
-
             SaveTrackLogFileStreamWriter.WriteLine("Lon, Lat, Alt, NavFrames, CaptureFrames, GPSSats");
-
-        SaveKMLLogFileStreamWriter.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-SaveKMLLogFileStreamWriter.WriteLine("<kml xmlns=\"http://www.opengis.net/kml/2.2\">");
-  SaveKMLLogFileStreamWriter.WriteLine("<Document>");
-    SaveKMLLogFileStreamWriter.WriteLine("<name>Paths</name>");
-    SaveKMLLogFileStreamWriter.WriteLine("<description>Examples of paths. Note that the tessellate tag is by default");
-      SaveKMLLogFileStreamWriter.WriteLine("set to 0. If you want to create tessellated lines, they must be authored");
-      SaveKMLLogFileStreamWriter.WriteLine("(or edited) directly in KML.</description>");
-    SaveKMLLogFileStreamWriter.WriteLine("<Style id=\"yellowLineGreenPoly\">");
-     SaveKMLLogFileStreamWriter.WriteLine(" <LineStyle>");
-        SaveKMLLogFileStreamWriter.WriteLine("<color>7f00ffff</color>");
-       SaveKMLLogFileStreamWriter.WriteLine("<width>4</width>");
-      SaveKMLLogFileStreamWriter.WriteLine("</LineStyle>");
-      SaveKMLLogFileStreamWriter.WriteLine("<PolyStyle>");
-        SaveKMLLogFileStreamWriter.WriteLine("<color>7f00ff00</color>");
-      SaveKMLLogFileStreamWriter.WriteLine("</PolyStyle>");
-    SaveKMLLogFileStreamWriter.WriteLine("</Style>");
-   SaveKMLLogFileStreamWriter.WriteLine(" <Placemark>");
-      SaveKMLLogFileStreamWriter.WriteLine("<name>Absolute Extruded</name>");
-     SaveKMLLogFileStreamWriter.WriteLine("<description>Transparent green wall with yellow outlines</description>");
-     SaveKMLLogFileStreamWriter.WriteLine("<styleUrl>#yellowLineGreenPoly</styleUrl>");
-     SaveKMLLogFileStreamWriter.WriteLine(" <LineString>");
-       SaveKMLLogFileStreamWriter.WriteLine(" <extrude>1</extrude>");
-       SaveKMLLogFileStreamWriter.WriteLine("<tessellate>1</tessellate>");
-        SaveKMLLogFileStreamWriter.WriteLine("<altitudeMode>relativeToGround</altitudeMode>");
-        SaveKMLLogFileStreamWriter.WriteLine("<coordinates>");
-            
+            SaveKMLLogFileStreamWriter.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+            SaveKMLLogFileStreamWriter.WriteLine("<kml xmlns=\"http://www.opengis.net/kml/2.2\">");
+            SaveKMLLogFileStreamWriter.WriteLine("<Document>");
+            SaveKMLLogFileStreamWriter.WriteLine("<name>Paths</name>");
+            SaveKMLLogFileStreamWriter.WriteLine("<description>Examples of paths. Note that the tessellate tag is by default");
+            SaveKMLLogFileStreamWriter.WriteLine("set to 0. If you want to create tessellated lines, they must be authored");
+            SaveKMLLogFileStreamWriter.WriteLine("(or edited) directly in KML.</description>");
+            SaveKMLLogFileStreamWriter.WriteLine("<Style id=\"yellowLineGreenPoly\">");
+            SaveKMLLogFileStreamWriter.WriteLine(" <LineStyle>");
+            SaveKMLLogFileStreamWriter.WriteLine("<color>7f00ffff</color>");
+            SaveKMLLogFileStreamWriter.WriteLine("<width>4</width>");
+            SaveKMLLogFileStreamWriter.WriteLine("</LineStyle>");
+            SaveKMLLogFileStreamWriter.WriteLine("<PolyStyle>");
+            SaveKMLLogFileStreamWriter.WriteLine("<color>7f00ff00</color>");
+            SaveKMLLogFileStreamWriter.WriteLine("</PolyStyle>");
+            SaveKMLLogFileStreamWriter.WriteLine("</Style>");
+            SaveKMLLogFileStreamWriter.WriteLine(" <Placemark>");
+            SaveKMLLogFileStreamWriter.WriteLine("<name>Absolute Extruded</name>");
+            SaveKMLLogFileStreamWriter.WriteLine("<description>Transparent green wall with yellow outlines</description>");
+            SaveKMLLogFileStreamWriter.WriteLine("<styleUrl>#yellowLineGreenPoly</styleUrl>");
+            SaveKMLLogFileStreamWriter.WriteLine(" <LineString>");
+            SaveKMLLogFileStreamWriter.WriteLine(" <extrude>1</extrude>");
+            SaveKMLLogFileStreamWriter.WriteLine("<tessellate>1</tessellate>");
+            SaveKMLLogFileStreamWriter.WriteLine("<altitudeMode>relativeToGround</altitudeMode>");
+            SaveKMLLogFileStreamWriter.WriteLine("<coordinates>");        
         }
         
  
         
         private void WriteKMLLogFileTrailer()
         {
-
-        SaveKMLLogFileStreamWriter.WriteLine("</coordinates>");
-      SaveKMLLogFileStreamWriter.WriteLine("</LineString>");
-   SaveKMLLogFileStreamWriter.WriteLine(" </Placemark>");
-  SaveKMLLogFileStreamWriter.WriteLine("</Document>");
-SaveKMLLogFileStreamWriter.WriteLine("</kml>");
-
-}
+            SaveKMLLogFileStreamWriter.WriteLine("</coordinates>");
+            SaveKMLLogFileStreamWriter.WriteLine("</LineString>");
+            SaveKMLLogFileStreamWriter.WriteLine(" </Placemark>");
+            SaveKMLLogFileStreamWriter.WriteLine("</Document>");
+            SaveKMLLogFileStreamWriter.WriteLine("</kml>");
+        }
   
         private void WriteTextLogFileHeader()
         {
@@ -1274,31 +1270,15 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
         }
    
 
-        void Connect() {
-
-            if (InFlight)
-            {
-                InFlight = false;
-                UAVXCloseTelemetry();
-                ConnectButton.Text = "Disconnected";
-                ConnectButton.BackColor = System.Drawing.Color.Red;
-                BootLoadButton.BackColor = System.Drawing.Color.Green;
-            }
-            else
-            {
-                UAVXOpenTelemetry();
-                //if (InFlight) { 
-                //    ConnectButton.Text = "Connected";
-                //    ConnectButton.BackColor = System.Drawing.Color.Green;
-                // }
-       
-            }
-        }
+ 
 
         private void ConnectButton_Click(object sender, EventArgs e)
         {
 
-            Connect();
+            if (TelemetryConnected)
+                UAVXCloseTelemetry();
+            else
+                UAVXOpenTelemetry();
 
         }
 
@@ -1357,18 +1337,15 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
             {
                 SendRequestPacket(UAVXMiscPacketTag, (byte)MiscComms.miscBootLoad, 0);
                 BootLoadButton.BackColor = Color.Red;
-                InFlight = false;
                 UAVXCloseTelemetry();
-                ConnectButton.Text = "Disconnected";
-                ConnectButton.BackColor = System.Drawing.Color.Red;
             }
         }
+
+
         private void DumpBBButton_Click(object sender, EventArgs e)
         {
             if (((StateT == FlightStates.Preflight) || (StateT == FlightStates.Ready)) && !F[(byte)FlagValues.DumpingBB])
-            {
                 SendRequestPacket(UAVXMiscPacketTag, (byte)MiscComms.miscBBDump, 0);
-            }
         }
 
 
@@ -1435,8 +1412,6 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
         private void SpeakAlarms()
         {
 
-            if (InFlight)
-            {
                 AlarmsButton.BackColor = Color.Orange;
 
                 if (!F[(byte)FlagValues.ParametersValid]) speech.SpeakAsync("In valid Parameters.");
@@ -1462,13 +1437,6 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                
 
                AlarmsButton.BackColor = System.Drawing.SystemColors.Control;
-
-            }
-            else
-            {
-                speech.SpeakAsync("Not Connected.");
-                AlarmsButton.BackColor = Color.Yellow;
-            }
 
         }
 
@@ -1589,60 +1557,55 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
         private void UAVXOpenTelemetry()
         {
 
-            string sError = "Could not open telemetry link?";
+            if (!DoingLogfileReplay) { 
+                string sError = "Could not open telemetry link?";
 
-            UAVXCloseTelemetry();
+                UAVXCloseTelemetry();
 
-            SetSerialPort(UAVXGUI.Properties.Settings.Default.COMPort, UAVXGUI.Properties.Settings.Default.COMBaudRate, ref sError);
+                SetSerialPort(UAVXGUI.Properties.Settings.Default.COMPort, UAVXGUI.Properties.Settings.Default.COMBaudRate, ref sError);
         
-            try
-                {
-                    serialPort1.Open();
-                    ConnectButton.Text = "Connected";
-                    ConnectButton.BackColor = System.Drawing.Color.Green;
-                    BootLoadButton.BackColor = System.Drawing.Color.Green;
-                    CreateSaveLogFile();
-                    RxHead = RxTail = 0;
-                    InitPollPacket();
-                    InFlight = true;
-                }
-            catch (Exception ex)
-                {
-                    ConnectButton.Text = "No COM Port";
-                    ConnectButton.BackColor = System.Drawing.Color.Orange;
-                    InFlight = false;
-                }
+                try
+                    {
+                        serialPort1.Open();
+                        TelemetryConnected = true;
+                        ConnectButton.Text = "Connected";
+                        ConnectButton.BackColor = System.Drawing.Color.Green;
+                        CreateSaveLogFile();
+                        RxHead = RxTail = 0;
+                        InitPollPacket();
+                    }
+                catch (Exception ex)
+                    {
+                        ConnectButton.Text = "No COM Port";
+                        ConnectButton.BackColor = System.Drawing.Color.Orange;
+                    }
+            }
  
         }
-
-        int zzz = 0;
 
         private void ReadReplayLogFile()
         {
             byte b;
-           
 
             while ( OpenLogFileStream.Position < OpenLogFileStream.Length )
             {
-                RxTail++;
-                RxTail &= RxQueueMask;
-                b = OpenLogFileBinaryReader.ReadByte();
-                RxQueue[RxTail] = b;
+  
+               RxTail++;
+               RxTail &= RxQueueMask;
+               b = OpenLogFileBinaryReader.ReadByte();
+               RxQueue[RxTail] = b;
 
-                ReadingTelemetry = true;
-                this.Invoke(new EventHandler(UAVXReadTelemetry));
-                while (ReadingTelemetry) { };
+               this.BeginInvoke(new EventHandler(UAVXReadTelemetry)); 
+  
+               ReplayProgress = (long)(100 * OpenLogFileStream.Position) / OpenLogFileStream.Length;
+               ReplayDelay = 20 - Convert.ToInt16(ReplayNumericUpDown.Text);
+               Thread.Sleep(ReplayDelay);
 
-                ReplayProgress = (long) (100 * OpenLogFileStream.Position) / OpenLogFileStream.Length;
-                if (++zzz > 10)
-                {
-                    Thread.Sleep(ReplayDelay);
-                    zzz = 0;
-                }
             }
 
             if (OpenLogFileStream.Position == OpenLogFileStream.Length)
             {
+                ReplayButton.BackColor = System.Drawing.SystemColors.Control;
                 DoingLogfileReplay = false;
                 CloseReplayLogFile();
             }
@@ -1657,30 +1620,29 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
         private void serialPort_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
             byte b;
-            short NewRxTail;
+            int NewRxTail;
 
-            if (serialPort1.IsOpen) // flakey serial drivers hence heroics
-            {
-                while ( serialPort1.IsOpen && (serialPort1.BytesToRead != 0))
-                {
-                        NewRxTail = RxTail;
-                        NewRxTail++;
-                        NewRxTail &= RxQueueMask;
-                        if (NewRxTail != RxHead)
-                        {
-                            RxTail = NewRxTail;
-                            b = (byte)serialPort1.ReadByte();
-                            RxQueue[RxTail] = b;
-                            SaveLogFileBinaryWriter.Write(b);
-                        }
-                        else
-                        {
-                            b = (byte)serialPort1.ReadByte(); // processing overflow - discard
-                        }
+            if (TelemetryConnected)
+                if (serialPort1.IsOpen) {
+                    while (serialPort1.BytesToRead != 0)
+                        if (DoingLogfileReplay)
+                            b = (byte)serialPort1.ReadByte(); // discard - processing replay file  
+                        else {
+                            NewRxTail = RxTail;
+                            NewRxTail++;
+                            NewRxTail &= RxQueueMask;
+                            if (NewRxTail != RxHead)  {
+                                RxTail = NewRxTail;
+                                b = (byte)serialPort1.ReadByte();
+                                RxQueue[RxTail] = b;
+                                SaveLogFileBinaryWriter.Write(b);
+                                this.BeginInvoke(new EventHandler(UAVXReadTelemetry));
+                            } else
+                               b = (byte)serialPort1.ReadByte(); // processing overflow - discard
+                    }
+               
                 }
-               if (serialPort1.IsOpen) 
-                    this.Invoke(new EventHandler(UAVXReadTelemetry));
-            }
+  
         }
 
         void InitPollPacket()
@@ -1792,8 +1754,6 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
             ExtractFlags();
 
             UsingFixedWing = F[(byte)FlagValues.IsFixedWing];
-
-            NoUplink = !F[(byte)FlagValues.UsingUplink];
 
             AltHoldBox.BackColor = F[(byte)FlagValues.AltControlEnabled] ?
                 System.Drawing.Color.Green : System.Drawing.Color.Red;
@@ -2504,6 +2464,7 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
             if (DoingLogfileReplay)
                 ReplayProgressBar.Value = (int)ReplayProgress;
 
+
                 switch (RxPacketTag)
                 {
                     case UAVXAckPacketTag:
@@ -2530,8 +2491,6 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                         for (b = 0; b < VersionLenT; b++ )
                             VersionNameT += (char)(ExtractByte(ref UAVXPacket, (byte)(MAX_PARAMS + 4 + b)));
                         MainLabel.Text = VersionNameT;
-
-                        //zzz speech.SpeakAsync("Received " + ParameterForm.CurrPS);
 
                         ParameterForm.UpdateParamForm = true;
 
@@ -3139,17 +3098,15 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                 RxHead++;
                 RxHead &= RxQueueMask;
 
-                    ParsePacket(b);
-                    if (PacketReceived)
-                        ProcessPacket();
+                ParsePacket(b);
+                if (PacketReceived)
+                    ProcessPacket();
  
                 RxTypeErr.Text = string.Format("{0:n0}", RxIllegalErrors);
                 RxCSumErr.Text = string.Format("{0:n0}", RxCheckSumErrors);
                 RxLenErr.Text = string.Format("{0:n0}", RxLengthErrors);
  
             }
-    
-            ReadingTelemetry = false;
         }
 
 
@@ -3173,13 +3130,6 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
         {
 	        int p;
 
-            if (NoUplink)
-            {
-                speech.SpeakAsync("No connection to flight controller, possible use of telemetry Rx by GPS on parallel Rx Version 3 board when armed.");
-            }
-            else
-            {
-
                 SendPacketHeader();
 
                 TxESCu8(UAVXParamPacketTag);
@@ -3192,20 +3142,12 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                 SendPacketTrailer();
                 //speech.SpeakAsync("Uploaded set " + ParameterForm.CurrPS);
                 speech.SpeakAsync("Updating parameters");
-            }
+  
 
         } // SendParamsPacket
 
         public static void SendRequestPacket(byte Tag, byte a1, byte a2)
         {
-           // TxLabel.Text = "Request " + TagNames[Tag];
-
-            if (NoUplink)
-            {
-                speech.SpeakAsync("No connection to flight controller, possible use of telemetry Rx by GPS on parallel Rx Version 3 board when armed.");
-            }
-            else
-            {
                 SendPacketHeader();
                 TxESCu8(UAVXRequestPacketTag);
                 TxESCu8(3);
@@ -3222,7 +3164,7 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
                     else
                         speech.SpeakAsync("Reading parameters");
                 }
-            }
+
         } // SendRequestPacket
 
 
@@ -3569,8 +3511,11 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
         {
             if (serialPort1.IsOpen)
             {
+                TelemetryConnected = false;
                 serialPort1.Close();
-                CloseFiles();
+                CloseFiles();    
+                ConnectButton.Text = "Disconnected";
+                ConnectButton.BackColor = System.Drawing.Color.Red;
             }
         }
 
@@ -3689,9 +3634,7 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
 
         private void StartParametersButton_Click(object sender, EventArgs e)
         {
-
             UAVXOpenTelemetry();
-
             StartParametersButton.BackColor = System.Drawing.Color.Green;
             ParameterForm formParameters = new ParameterForm();
            // if (formParameters.errorFlag == false)
@@ -3703,7 +3646,6 @@ SaveKMLLogFileStreamWriter.WriteLine("</kml>");
         {
 
             UAVXOpenTelemetry();
-
             StartNavigationButton.BackColor = System.Drawing.Color.Green;
            // NavForm formNav = new NavForm();
            // if (formNav.errorFlag == false)
