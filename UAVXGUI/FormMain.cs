@@ -1910,8 +1910,8 @@ namespace UAVXGUI
             DumpBBButton.BackColor = F[(byte)FlagValues.DumpingBB] ?
                  Color.Orange : System.Drawing.SystemColors.Control;
 
-           UsingUplinkFlagBox.BackColor = F[(byte)FlagValues.UsingUplink] ?
-               System.Drawing.Color.Green : System.Drawing.Color.Orange;
+            RapidDescentHazardFlagBox.BackColor = F[(byte)FlagValues.RapidDescentHazard] ?
+                System.Drawing.Color.Orange : System.Drawing.SystemColors.Control;
 
             DrivesGroupBox.BackColor = F[(byte)FlagValues.Saturation] ?
                System.Drawing.Color.Orange : System.Drawing.SystemColors.Control;
