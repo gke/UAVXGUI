@@ -60,6 +60,8 @@ enum {
 
   ID_COMPASS = 0x2d, // deg
 
+  ID_BEEPER = 0x2E,
+
   ID_VERT_SPEED = 0x30,
 
   ID_MAH = 0x36, // mAH battery consumption
@@ -68,9 +70,7 @@ enum {
   ID_VOLTS_BP = 0x3A,
   ID_VOLTS_AP = 0x3B,
 
-  ID_BEEPER = 0x3C,
-
-  ID_FRSKY_LAST = 0x3D
+  ID_FRSKY_LAST = 0x3C
                   //opentx vario
 };
 
@@ -80,7 +80,6 @@ bool BeeperOn = false;
 uint8_t rssi;
 uint8_t a1;
 uint8_t a2;
-int16_t timeout;
 
 bool GPSValid, OriginValid, Armed;
 
@@ -107,7 +106,7 @@ void handlechByte(uint16_t ch) {
         FrSkyPacketRxState = 1; // expect telemetry hub chID next
       break;
     case WaitRxID: // expecting telemetry hub chID
-      if (ch < 0x3C) { // store chID (address)
+      if (ch < ID_FRSKY_LAST) { // store chID (address)
         FrSkyUserchStuffing = false;
         FrSkyPacketID = ch;
         FrSkyPacketRxState = WaitRxBody; // expect two bytes of ch next
@@ -161,11 +160,11 @@ void handlechByte(uint16_t ch) {
 
 
           case ID_BEEPER:
-            // BeeperOn = (((uint16_t)ch << 8 | FrSkyUserchLow) & 1 != 0) ;
-            // if (BeeperOn)
-            //    oled.displayChar6x8(1, 14, '*');
-            //   else
-            //    oled.displayChar6x8(1, 14, ' ');
+            BeeperOn = (((uint16_t)ch << 8 | FrSkyUserchLow) & 1 != 0) ;
+            if (BeeperOn)
+              oled.displayChar6x8(1, 14, '*');
+            else
+              oled.displayChar6x8(1, 14, ' ');
             break;
           case ID_TEMP1: // flight mode
             oled.displayString6x8(1, 15, "    ", false);
@@ -319,14 +318,12 @@ void handlePacket(uint16_t *packet) {
         for (int i = 0; i < packet[1]; i++)
           handlechByte(packet[3 + i]);
 
-      cli(); timeout = 1000; sei();
       break;
     case 0xFE:
       a1 = packet[1]; // A1:
       a2 = packet[2]; // A2:
       rssi = packet[3]; // main (Rx) link quality 100+ is full signal  40 is no signal
       // packet[4] secondary (Tx) link quality.
-      cli(); timeout = 1000; sei();
 
       oled.displayString6x8(0, 14, "rssi    ", false);
       oled.displayInt32(0, 19, rssi);
@@ -366,114 +363,36 @@ void handleRxChar(uint16_t b) { // decode FrSky basic telemetry ch
   }
 }
 
-#if defined(NO_INVERTER)
-
-// this interrupt handler decodes incoming FrSky serial telemetry ch on digital 11
-// FrSky module gives out RS232 levels (like +/- 6V) so use 100K inline resistor and rely on ATMega input diode clamps to convert to TTL
-// See Atmel application note AVR182 explaining how this is an approved way to do it (they even run mains voltage into a pin via a 1M resistor!)
-// Signal is also inverted but this code flips the bits back the right way
-// only works at 9600N81 with TCNT0 incrementing every 4 uS (e.g. ATmega328 @ 16 MHz)
-// works without delay for character values < 128 so fine for normal ASCII
-// when receiving character values > 127, the character isn't processed till the start bit of the following character is received
-// so if frame ends with such a character, the frame won't be processed till the beginning of the next frame
-
-ISR(PCINT0_vect) { // Port B pinchange interrupt
-  static uint8_t prev = 0;
-  static uint8_t currChar = 0;
-  static uint8_t currBits = 0;
-  uint8_t now = TCNT0;
-  sei(); // allow other interrupts once time has been captured
-  uint8_t bits = (((uint8_t)(now - prev)) + 13) / 26; // at 9600 baud with 4 uS TCNT, one bit is 1E6 / (4 * 9600) = 26.04 counts, so half a bit is ~13 counts
-  if (!bits || bits > 9) { // detect 0 bits when gap between characters and TCNT0 wrapped exactly, also limit bits to 9 to prevent overflow of (currBits + bits)
-    bits = 9;
-  }
-  prev = now;
-  if (!(PINB & 0x08)) { // -ve edge, but inverted RS232 so preceding ch bits were low
-    if (!currBits) { // start of char so bits includes the start bit (start bit is low)
-      currBits = 1; // currBits count does includes the start bit
-      bits--; // but don't include start bit in character decode
-    }
-    currChar >>= bits; // received low bits represent '0' in character.  LSB arrives first, MSB last
-    currBits += bits;
-  }
-  else if (currBits) { // preceding ch bits were high
-    if (currBits + bits > 9)  // trim stop bit if receiving character values >= 128 (MSB will be high and stop bit is also high)
-      bits = 9 - currBits;
-
-    currChar = (0xFF00 | currChar) >> bits; // received high bits represent '1' in character.  LSB arrives first, MSB last
-    currBits += bits;
-  }
-  if (currBits > 8) { // start bit plus character received
-    uint8_t rxChar = currChar; // don't know if interrupt is re-entrant - if not then this won't help but if it is then allows next bit(s) to be received while handling char
-    currChar = currBits = 0;
-    handleRxChar(rxChar);
-  }
-}
-
-#endif
-
-
 void initDisplay(void) {
   uint8_t c;
 
+  delay(500);
   oled.start();
   delay(300);
   oled.fillDisplay(' ');
   delay(2000);
 
-  //oled.displayString6x8(0, 0, F("FRSKY TELEMETRY"), 0);
+  oled.displayString6x8(0, 0, F("FRSKY DJT TELEMETRY"), 0);
 
   delay(2000); // start up message
 
+  oled.displayString6x8(0, 0, F("                   "), 0);
+
 }
 
-uint32_t oldMillis;
-int16_t millisTillNextPrint = 500; // send ch to serial port twice per second
-
 void setup(void) {
-
-#if defined(NO_INVERTER)
-  pinMode(11, INPUT); // serial input (Digital 11 is Port B, bit 3)
-  PCMSK0 = 0x08; // set mask to allow (only) digital pin 9 pinchange interrupts on Port B
-  PCICR |= 0x01; // allow pinchange interrupts for Port B
-#endif
-
-  delay(500);
 
   initDisplay();
 
   rssi = a1 = a2 = 0;
-  timeout = 1000; // ms
+
   Serial.begin(9600);
-  oldMillis = millis();
+
 }
 
 void loop(void) {
 
-  uint32_t now = millis();
-  int32_t ms = now - oldMillis; // milliseconds elapsed since last loop
-  oldMillis = now;
-
-  if (timeout <= (int16_t)ms)
-    timeout = a1 = a2 = rssi = 0;
-  else
-    timeout -= ms;
-
-#if defined(NO_INVERTER)
-  // interrupt routine calls handleRxChar
-#else
   if (Serial.available())
     handleRxChar(Serial.read());
-#endif
-
-  if (ms >= millisTillNextPrint) { // time to print
-    if (!rssi) {
-      // Beeper alarm
-    } else {
-
-    }
-    millisTillNextPrint += 500 - ms;
-  } else
-    millisTillNextPrint -= ms;
 
 }
