@@ -43,8 +43,7 @@ using System.Resources;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Linq;
 
-using System.Speech;
-using System.Speech.Synthesis;
+using System.Speech.Synthesis;  
 
 using System.Reflection;
 using System.Drawing.Drawing2D;
@@ -250,22 +249,30 @@ namespace UAVXGUI
 
         public enum NavStates
         {
-            HoldingStation, ReturningHome, AtHome, Descending, Touchdown,
-            Transiting, Loitering, Orbiting, Perching, Takeoff, PIC, AcquiringAltitude, UsingThermal,
+            HoldingStation,
+            ReturningHome,
+            AtHome,
+            Descending,
+            Touchdown,
+            Transiting,
+            Loitering,
+            OrbitingPOI,
+            Perching,
+            Takeoff,
+            PIC,
+            AcquiringAltitude,
+            UsingThermal,
             UsingRidge,
             UsingWave,
             BoostClimb,
             AltitudeLimiting,
             JustGliding,
-            RateControl,
-            PassThruControl,
-            HorizonControl,
             WPAltFail,
             WPProximityFail,
-            NavStateUndefined
+            UnknownNavState
         };
 
-        static NavStates PrevNavState = NavStates.NavStateUndefined;
+        static NavStates PrevNavState = NavStates.UnknownNavState;
 
         public enum NavComs { navVia, navOrbit, navPerch, navPOI, navPulse, navGlide, navLand};
 
@@ -347,6 +354,7 @@ namespace UAVXGUI
 
 	        "FrSkyPacketTag"};
 
+
       static public  string[] AFNames = { 
             "Tricopter",
             "CoaxTri Y6",
@@ -371,8 +379,9 @@ namespace UAVXGUI
             "VTOL2",
             "Gimbal",
             "Instrumentation",
-            "IREmulator",
             "Unknown Aircraft" };
+
+        short CurrAF = 4;
 
         public enum FlightStates
         {
@@ -448,7 +457,7 @@ namespace UAVXGUI
 				IsFixedWing,
 				ThrottleOpen,
 				MagCalibrated,
-				UsingUplink,
+				RCMapFail,
 				NewAltitudeValue,
 				IMUCalibrated,
 				CrossTrackActive,
@@ -457,6 +466,8 @@ namespace UAVXGUI
         };
 
         public static bool UsingFixedWing = false;
+
+        public static bool RCMapFailed = false;
 
         // struct not used - just to document packet format
         // byte UAVXFlightPacketTag;   
@@ -623,7 +634,7 @@ namespace UAVXGUI
         const byte AirframeX = 32;
         const byte OrientX = 34;
 
-        public static short AirframeT;
+        public static short AirframeT = 23;
 
         short VersionLenT;
         string VersionNameT;
@@ -826,12 +837,15 @@ namespace UAVXGUI
           for (i = 0; i < 72; i++)
               F[i] = false;
 
+
+          UpdateAFLabels(AirframeT);
+
           serialPort1 = new System.IO.Ports.SerialPort(this.components);
           serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(serialPort_DataReceived);
 
-  
-          speech.Rate = -2;
-          speech.SetOutputToDefaultAudioDevice(); 
+         speech.Rate = -2;
+         speech.SetOutputToDefaultAudioDevice();
+         speech.Volume = 60;
 
           SpeakVarioCheckBox.Checked = Properties.Settings.Default.SpeakVario;
           SpeakVoltsCheckBox.Checked = Properties.Settings.Default.SpeakVolts;
@@ -1157,7 +1171,7 @@ namespace UAVXGUI
                 "FixedWing," +
                 "WindValid," +
                 "MagCal," +
-                "Uplink," +
+                "RCMapFail," +
                 "NewAltVal," +
                 "IMUCal," +
                 "CTrackActive," +
@@ -1380,16 +1394,15 @@ namespace UAVXGUI
                 
                         timer_announce.Interval = SpeakInterval;
 
-                        if (SpeakWhereCheckBox.Checked && (WhereDistance.Text != "?") && !FirstGPSCoordinates)
-                               if (Convert.ToInt32(WhereDistance.Text) > 30)
-                                   speech.SpeakAsync("Distance " + WhereDistance.Text + " Meters at " + WhereBearing.Text + " True.");
-  
+                        if (SpeakWhereCheckBox.Checked && (Convert.ToInt32(WhereDistance.Text) > 50))
+                            speech.SpeakAsync("Distance " + Convert.ToInt32(WhereDistance.Text) + " Meters.");
+                                   
                         if (SpeakAltitudeCheckBox.Checked && (StateT == FlightStates.Flying))
                             speech.SpeakAsync("Altitude " + Convert.ToInt16(CurrAlt) + " Meters.");
 
                         if ((SpeakVoltsCheckBox.Checked) && (StateT == FlightStates.Flying))
                             SpeakBattery();
-            }
+                    }
                 }
             }
             else
@@ -1414,23 +1427,27 @@ namespace UAVXGUI
 
                 AlarmsButton.BackColor = Color.Orange;
 
-                if (!F[(byte)FlagValues.ParametersValid]) speech.SpeakAsync("In valid Parameters.");
-    
+                if (!F[(byte)FlagValues.ParametersValid]) 
+                    speech.SpeakAsync("In valid Parameters.");
+                else  
+                    if (F[(byte)FlagValues.RCMapFail]) speech.SpeakAsync("R C Channel used more than once.");
+                else  
+                    if (!F[(byte)FlagValues.IMUCalibrated]) speech.SpeakAsync("IMU uncalibrated.");
                 else
+                   if (F[(byte)FlagValues.MagnetometerActive] && !F[(byte)FlagValues.MagCalibrated]) speech.SpeakAsync("Magnetometer uncalibrated."); 
+                else                 
                 {
                     if (F[(byte)FlagValues.IsArmed]) speech.SpeakAsync("Motors armed.");
                     if (F[(byte)FlagValues.ThrottleOpen]) speech.SpeakAsync("Throttle not closed.");
                     if (!F[(byte)FlagValues.Signal]) speech.SpeakAsync("No signal.");
 
                     if (!F[(byte)FlagValues.OriginValid]) speech.SpeakAsync("Launch Location Not Acquired.");
-                    if (RCChannel[4] >= 1200) speech.SpeakAsync("Navigate or return home selected.");
+                    if (F[(byte)FlagValues.Navigate] || F[(byte)FlagValues.ReturnHome]) speech.SpeakAsync("Navigate or return home selected.");
 
                     if (!F[(byte)FlagValues.IMUActive]) speech.SpeakAsync("IMU inactive.");
                     if (!F[(byte)FlagValues.MagnetometerActive]) speech.SpeakAsync("Magnetometer inactive or not installed.");
                     if (!F[(byte)FlagValues.BaroActive]) speech.SpeakAsync("Barometer inactive or not installed.");
-                    if (!F[(byte)FlagValues.IMUCalibrated]) speech.SpeakAsync("IMU uncalibrated.");
-                    if (F[(byte)FlagValues.MagnetometerActive] && !F[(byte)FlagValues.MagCalibrated])
-                        speech.SpeakAsync("Magnetometer uncalibrated.");
+   
                     if (F[(byte)FlagValues.LowBatt]) SpeakBattery();
                     if (((F[(byte)FlagValues.ReturnHome] || F[(byte)FlagValues.Navigate]) && !F[(byte)FlagValues.Bypass])) speech.SpeakAsync("Navigation enabled.");
                 }
@@ -1510,7 +1527,7 @@ namespace UAVXGUI
                             break;
                         case NavStates.Loitering: speech.SpeakAsync("Holding at waypoint" + CurrWPT + ".");
                             break;
-                        case NavStates.Orbiting: speech.SpeakAsync("Orbiting waypoint" + CurrWPT + ".");
+                        case NavStates.OrbitingPOI: speech.SpeakAsync("Orbiting waypoint" + CurrWPT + ".");
                             break;
                         case NavStates.Perching: speech.SpeakAsync("Perching.");
                             break;
@@ -1530,11 +1547,9 @@ namespace UAVXGUI
                             break;
                         case NavStates.PIC: speech.SpeakAsync("Pilot in command.");
                             break;
-                        case NavStates.RateControl: speech.SpeakAsync("Rate Mode");
-                            break;
-                        case NavStates.HorizonControl: speech.SpeakAsync("Horizon Mode");
-                            break;
-                        case NavStates.PassThruControl: speech.SpeakAsync("Pass Thru");
+                        case NavStates.WPAltFail: speech.SpeakAsync("Cannot reach waypoint altitude."); break;
+                        case NavStates.WPProximityFail: speech.SpeakAsync("Cannot reach waypoint.");
+
                             break;
                      //   case NavStates.AcquiringAltitude: speech.SpeakAsync("Acquiring altitude.");
                      //       SpeakClimbDescend();
@@ -1753,6 +1768,8 @@ namespace UAVXGUI
 
             ExtractFlags();
 
+            RCMapFailed = F[(byte)FlagValues.RCMapFail];
+
             UsingFixedWing = F[(byte)FlagValues.IsFixedWing];
 
             AltHoldBox.BackColor = F[(byte)FlagValues.AltControlEnabled] ?
@@ -1915,7 +1932,9 @@ namespace UAVXGUI
 
             DrivesGroupBox.BackColor = F[(byte)FlagValues.Saturation] ?
                System.Drawing.Color.Orange : System.Drawing.SystemColors.Control;
-            
+
+          
+   
         }
 
 
@@ -1992,7 +2011,7 @@ namespace UAVXGUI
                 case NavStates.Loitering: NavState.Text = "Loitering";
                     NavState.BackColor = System.Drawing.Color.Gold;
                     break;
-                case NavStates.Orbiting: NavState.Text = "Orbiting";
+                case NavStates.OrbitingPOI: NavState.Text = "Orbiting";
                     NavState.BackColor = System.Drawing.Color.Gold;
                     break;
                 case NavStates.Perching: NavState.Text = "Perching";
@@ -2025,18 +2044,6 @@ namespace UAVXGUI
                 case NavStates.JustGliding: NavState.Text = "Gliding";
                     NavState.BackColor = System.Drawing.Color.Gold;
                     break;
-                case NavStates.RateControl:
-                    NavState.Text = "RATE";
-                    NavState.BackColor = System.Drawing.Color.Orange;
-                    break;
-                case NavStates.PassThruControl:
-                    NavState.Text = "PASSTHRU";
-                    NavState.BackColor = System.Drawing.Color.Red;
-                    break;
-                case NavStates.HorizonControl:
-                    NavState.Text = "HORIZON";
-                    NavState.BackColor = System.Drawing.Color.Yellow;
-                    break;
                 case NavStates.WPAltFail:
                     NavState.Text = "ALTFAIL";
                     NavState.BackColor = System.Drawing.Color.Red;
@@ -2053,7 +2060,7 @@ namespace UAVXGUI
             WPActionTextBox.Text = NavComNames[WP[CurrWPT].Action];
         }
 
-    
+
 
         void UpdateAlarmState()
         {    
@@ -2323,6 +2330,35 @@ namespace UAVXGUI
             return (PWDiag > 3  ? Color.Orange : PWDiag > 5  ? Color.Red : Color.White);
         }
 
+       public void UpdateAFLabels(short AF) {
+  
+           if (AF != CurrAF) {
+             CurrAF = AF;
+
+           Airframe.Text = AFNames[AF];
+                if (AF >= 10)
+                {
+                    PWM0Label.Text = "R Throttle";
+                    PWM1Label.Text = "L Throttle";
+                    PWM2Label.Text = "R Aileron";
+                    PWM3Label.Text = "L Aileron";
+                    PWM4Label.Text = "Elevator";
+                    PWM5Label.Text = "Rudder";
+                    PWM6Label.Text = "Spoiler";
+                }
+                else
+                {
+                    PWM0Label.Text = "L Front";
+                    PWM1Label.Text = "L Back";
+                    PWM2Label.Text = "R Front";
+                    PWM3Label.Text = "R Back";
+                    PWM4Label.Text = " ";
+                    PWM5Label.Text = " ";
+                    PWM6Label.Text = " ";
+                }
+          }
+ }
+
         void UpdateMotors()
         {
 
@@ -2444,7 +2480,7 @@ namespace UAVXGUI
                 CurrentAltitude.BackColor = NavGroupBox.BackColor;
 
             AltError = CurrAlt - DesiredAltitudeT * 0.01;
-            DesiredAltitude.Text = string.Format("{0:n1}", (float)AltError);
+            AltitudeError.Text = string.Format("{0:n1}", (float)AltError);
 
             DesiredAltitude.Text = string.Format("{0:n1}", DesiredAltitudeT * 0.01);
 
@@ -2464,6 +2500,8 @@ namespace UAVXGUI
             if (DoingLogfileReplay)
                 ReplayProgressBar.Value = (int)ReplayProgress;
 
+
+            UpdateAFLabels(AirframeT);
 
                 switch (RxPacketTag)
                 {
@@ -2486,6 +2524,7 @@ namespace UAVXGUI
                             ParameterForm.UAVXP[p].Changed = true;
                         }
 
+                       
                         VersionLenT = ExtractByte(ref UAVXPacket, (byte)(MAX_PARAMS + 3));
                         VersionNameT = "UAVXArm32F4.";
                         for (b = 0; b < VersionLenT; b++ )
@@ -2573,14 +2612,11 @@ namespace UAVXGUI
                     GPSLatitudeT = ExtractInt(ref UAVXPacket, 28);
                     GPSLongitudeT = ExtractInt(ref UAVXPacket, 32);
 
-                    AirframeT = ExtractByte(ref UAVXPacket, 36);
+                    //AirframeT = ExtractByte(ref UAVXPacket, 36);
                     MissionTimeMilliSecT = ExtractInt24(ref UAVXPacket, 37);
 
                     DesiredAltitudeT = 0;
                     RangefinderAltitudeT = 0;
-
-                    UAVXArm = (AirframeT & 0x80) != 0;
-                    AirframeT &= 0x7f;
 
                     UpdateFlightState();
                     UpdateNavState();
@@ -2589,8 +2625,7 @@ namespace UAVXGUI
                    // UpdateWhere();
                     UpdateFlags();
 
-                    Airframe.Text = AFNames[AirframeT];
-
+           
                     UpdateAltitude();
                     UpdateAttitude();
 
@@ -2662,7 +2697,7 @@ namespace UAVXGUI
 
                     byte MinimOSDArmedT = ExtractByte(ref UAVXPacket, 47);
                     NavStateT = (NavStates)ExtractByte(ref UAVXPacket, 48);
-                    AirframeT = ExtractByte(ref UAVXPacket, 49);                
+                    //AirframeT = ExtractByte(ref UAVXPacket, 49);                
 
                     WarningPictureBox.Visible = MinimOSDArmedT != 0;
 
@@ -2677,10 +2712,6 @@ namespace UAVXGUI
                     UpdateAltitude();
                     UpdateAttitude();
                     UpdateNavState();
-
-                    UAVXArm = (AirframeT & 0x80) != 0;
-                    AirframeT &= 0x7f;
-                    Airframe.Text = AFNames[AirframeT];
 
                     Heading.Text = string.Format("{0:n0}", (float)HeadingT * MILLIRADDEG);                
                     
@@ -2787,27 +2818,27 @@ namespace UAVXGUI
                     MaxBuffLength = ExtractShort(ref UAVXPacket, 3);
 
                     SerialAF = ExtractShort(ref UAVXPacket, 5);
-                    SerialATxEntriesT = ExtractShort(ref UAVXPacket, 6);
-                    SerialARxEntriesT = ExtractShort(ref UAVXPacket, 8);
+                    SerialATxEntriesT = Limit(ExtractShort(ref UAVXPacket, 6),0, MaxBuffLength-1);
+                    SerialARxEntriesT = Limit(ExtractShort(ref UAVXPacket, 8),0, MaxBuffLength-1);
 
                     SerialBF = ExtractShort(ref UAVXPacket, 10);
-                    SerialBTxEntriesT = ExtractShort(ref UAVXPacket, 11);
-                    SerialBRxEntriesT = ExtractShort(ref UAVXPacket, 13); 
+                    SerialBTxEntriesT = Limit(ExtractShort(ref UAVXPacket, 11),0, MaxBuffLength-1);
+                    SerialBRxEntriesT = Limit(ExtractShort(ref UAVXPacket, 13), 0, MaxBuffLength - 1); 
                     
                     SerialATxEntries.BackColor = ((SerialAF>>1) > 0) ? System.Drawing.Color.Red : System.Drawing.Color.Green;
                     SerialATxEntries.Text = string.Format("{0:n0}", SerialATxEntriesT);
-                    SerialATxProgressBar.Value = Limit(SerialATxEntriesT, 0, MaxBuffLength);
+                    SerialATxProgressBar.Value = SerialATxEntriesT;
                     SerialARxEntries.BackColor = ((SerialAF&1) > 0) ? System.Drawing.Color.Red : System.Drawing.Color.Green;
                     SerialARxEntries.Text = string.Format("{0:n0}", SerialARxEntriesT);
-                    SerialARxProgressBar.Value = Limit(SerialARxEntriesT, 0, MaxBuffLength);
+                    SerialARxProgressBar.Value = SerialARxEntriesT;
 
                  
                     SerialBTxEntries.BackColor = ((SerialBF>>1) > 0) ? System.Drawing.Color.Red : System.Drawing.Color.Green;
                     SerialBTxEntries.Text = string.Format("{0:n0}", SerialBTxEntriesT);
-                    SerialBTxProgressBar.Value = Limit(SerialBTxEntriesT, 0, MaxBuffLength);
+                    SerialBTxProgressBar.Value = SerialBTxEntriesT;
                     SerailBRxEntries.BackColor = ((SerialBF&1) > 0) ? System.Drawing.Color.Red : System.Drawing.Color.Green;
                     SerailBRxEntries.Text = string.Format("{0:n0}", SerialBRxEntriesT);
-                    SerialBRxProgressBar.Value = Limit(SerialBRxEntriesT, 0, MaxBuffLength);
+                    SerialBRxProgressBar.Value = SerialBRxEntriesT;
 
                     break;
                 case UAVXStatsPacketTag:
@@ -2930,10 +2961,7 @@ namespace UAVXGUI
 
                    GetAttitude(2);
 
-                    AirframeT = ExtractByte(ref UAVXPacket, 34);
-
-                    UAVXArm = (AirframeT & 0x80) != 0;
-                    AirframeT &= 0x7f;
+                    //AirframeT = ExtractByte(ref UAVXPacket, 34);
 
                     DoMotorsAndTime(35); 
 
@@ -2942,8 +2970,6 @@ namespace UAVXGUI
                     UpdateAccelerations();
                     UpdateCompensation();
                     UpdateMotors();
-
-
 
                     Heading.Text = string.Format("{0:n0}", (float)HeadingT * MILLIRADDEG);
 
@@ -3653,7 +3679,7 @@ namespace UAVXGUI
 
         }
 
-
+       
   
      
     }

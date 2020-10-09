@@ -119,11 +119,11 @@ namespace UAVXGUI
             this.ThrottleMovingBox = new System.Windows.Forms.TextBox();
             this.AltHoldBox = new System.Windows.Forms.TextBox();
             this.HoldingAltBox = new System.Windows.Forms.TextBox();
+            this.RapidDescentHazardFlagBox = new System.Windows.Forms.TextBox();
             this.BaroAltValidBox = new System.Windows.Forms.TextBox();
             this.GPSAltitudeBox = new System.Windows.Forms.TextBox();
             this.RangefinderAltValidBox = new System.Windows.Forms.TextBox();
             this.UsingRangefinderBox = new System.Windows.Forms.TextBox();
-            this.RapidDescentHazardFlagBox = new System.Windows.Forms.TextBox();
             this.NearLevelBox = new System.Windows.Forms.TextBox();
             this.AttitudeHoldBox = new System.Windows.Forms.TextBox();
             this.NavigateBox = new System.Windows.Forms.TextBox();
@@ -227,28 +227,38 @@ namespace UAVXGUI
             this.CalibrateIMUButton = new System.Windows.Forms.Button();
             this.CalibrateMagButton = new System.Windows.Forms.Button();
             this.DrivesGroupBox = new System.Windows.Forms.GroupBox();
+            this.PWM1Label = new System.Windows.Forms.Label();
+            this.PWM2Label = new System.Windows.Forms.Label();
+            this.PWM3Label = new System.Windows.Forms.Label();
+            this.PWM4Label = new System.Windows.Forms.Label();
+            this.PWM5Label = new System.Windows.Forms.Label();
+            this.PWM6Label = new System.Windows.Forms.Label();
+            this.PWM7Label = new System.Windows.Forms.Label();
+            this.PWM0Label = new System.Windows.Forms.Label();
+            this.PWM8Label = new System.Windows.Forms.Label();
             this.ImbalanceLabel = new System.Windows.Forms.Label();
             this.DiagnosticCheckBox = new System.Windows.Forms.CheckBox();
-            this.PWMT9 = new System.Windows.Forms.TextBox();
+            this.PWM9Label = new System.Windows.Forms.Label();
             this.PWMT7 = new System.Windows.Forms.TextBox();
             this.PWMT6 = new System.Windows.Forms.TextBox();
-            this.PWMT8 = new System.Windows.Forms.TextBox();
             this.PWMT5 = new System.Windows.Forms.TextBox();
             this.PWMT4 = new System.Windows.Forms.TextBox();
+            this.PWMT9 = new System.Windows.Forms.TextBox();
             this.PWMT3 = new System.Windows.Forms.TextBox();
             this.PWMT2 = new System.Windows.Forms.TextBox();
             this.PWMT1 = new System.Windows.Forms.TextBox();
             this.PWMT0 = new System.Windows.Forms.TextBox();
+            this.PWMT8 = new System.Windows.Forms.TextBox();
             this.PWMT0ProgressBar = new System.Windows.Forms.ProgressBar();
             this.PWMT6ProgressBar = new System.Windows.Forms.ProgressBar();
             this.PWMT1ProgressBar = new System.Windows.Forms.ProgressBar();
             this.PWMT5ProgressBar = new System.Windows.Forms.ProgressBar();
             this.PWMT2ProgressBar = new System.Windows.Forms.ProgressBar();
             this.PWMT7ProgressBar = new System.Windows.Forms.ProgressBar();
-            this.PWMT9ProgressBar = new System.Windows.Forms.ProgressBar();
             this.PWMT4ProgressBar = new System.Windows.Forms.ProgressBar();
             this.PWMT3ProgressBar = new System.Windows.Forms.ProgressBar();
             this.PWMT8ProgressBar = new System.Windows.Forms.ProgressBar();
+            this.PWMT9ProgressBar = new System.Windows.Forms.ProgressBar();
             this.FWRateEnergy = new System.Windows.Forms.TextBox();
             this.RateEnergyLabel = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -1011,7 +1021,7 @@ namespace UAVXGUI
             // SerialBRxProgressBar
             // 
             this.SerialBRxProgressBar.Location = new System.Drawing.Point(207, 82);
-            this.SerialBRxProgressBar.Maximum = 1000;
+            this.SerialBRxProgressBar.Maximum = 1024;
             this.SerialBRxProgressBar.Name = "SerialBRxProgressBar";
             this.SerialBRxProgressBar.Size = new System.Drawing.Size(80, 10);
             this.SerialBRxProgressBar.Step = 1;
@@ -1020,7 +1030,7 @@ namespace UAVXGUI
             // SerialARxProgressBar
             // 
             this.SerialARxProgressBar.Location = new System.Drawing.Point(207, 61);
-            this.SerialARxProgressBar.Maximum = 1000;
+            this.SerialARxProgressBar.Maximum = 1024;
             this.SerialARxProgressBar.Name = "SerialARxProgressBar";
             this.SerialARxProgressBar.Size = new System.Drawing.Size(80, 10);
             this.SerialARxProgressBar.Step = 1;
@@ -1029,7 +1039,7 @@ namespace UAVXGUI
             // SerialBTxProgressBar
             // 
             this.SerialBTxProgressBar.Location = new System.Drawing.Point(80, 80);
-            this.SerialBTxProgressBar.Maximum = 1000;
+            this.SerialBTxProgressBar.Maximum = 1024;
             this.SerialBTxProgressBar.Name = "SerialBTxProgressBar";
             this.SerialBTxProgressBar.Size = new System.Drawing.Size(80, 10);
             this.SerialBTxProgressBar.Step = 1;
@@ -1038,7 +1048,7 @@ namespace UAVXGUI
             // SerialATxProgressBar
             // 
             this.SerialATxProgressBar.Location = new System.Drawing.Point(80, 60);
-            this.SerialATxProgressBar.Maximum = 1000;
+            this.SerialATxProgressBar.Maximum = 1024;
             this.SerialATxProgressBar.Name = "SerialATxProgressBar";
             this.SerialATxProgressBar.Size = new System.Drawing.Size(80, 10);
             this.SerialATxProgressBar.Step = 1;
@@ -1290,6 +1300,17 @@ namespace UAVXGUI
             this.HoldingAltBox.Text = "Holding Altitude";
             this.HoldingAltBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // RapidDescentHazardFlagBox
+            // 
+            this.RapidDescentHazardFlagBox.BackColor = System.Drawing.SystemColors.Window;
+            this.RapidDescentHazardFlagBox.Location = new System.Drawing.Point(118, 107);
+            this.RapidDescentHazardFlagBox.Name = "RapidDescentHazardFlagBox";
+            this.RapidDescentHazardFlagBox.ReadOnly = true;
+            this.RapidDescentHazardFlagBox.Size = new System.Drawing.Size(109, 20);
+            this.RapidDescentHazardFlagBox.TabIndex = 102;
+            this.RapidDescentHazardFlagBox.Text = "VRS Hazard";
+            this.RapidDescentHazardFlagBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // BaroAltValidBox
             // 
             this.BaroAltValidBox.BackColor = System.Drawing.SystemColors.Window;
@@ -1334,17 +1355,6 @@ namespace UAVXGUI
             this.UsingRangefinderBox.TabIndex = 123;
             this.UsingRangefinderBox.Text = "Using Rangefinder";
             this.UsingRangefinderBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // RapidDescentHazardFlagBox
-            // 
-            this.RapidDescentHazardFlagBox.BackColor = System.Drawing.SystemColors.Window;
-            this.RapidDescentHazardFlagBox.Location = new System.Drawing.Point(118, 107);
-            this.RapidDescentHazardFlagBox.Name = "RapidDescentHazardFlagBox";
-            this.RapidDescentHazardFlagBox.ReadOnly = true;
-            this.RapidDescentHazardFlagBox.Size = new System.Drawing.Size(109, 20);
-            this.RapidDescentHazardFlagBox.TabIndex = 102;
-            this.RapidDescentHazardFlagBox.Text = "VRS Hazard";
-            this.RapidDescentHazardFlagBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // NearLevelBox
             // 
@@ -1977,7 +1987,7 @@ namespace UAVXGUI
             this.CurrentAltitude.BackColor = System.Drawing.SystemColors.Control;
             this.CurrentAltitude.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.CurrentAltitude.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CurrentAltitude.Location = new System.Drawing.Point(378, 57);
+            this.CurrentAltitude.Location = new System.Drawing.Point(382, 57);
             this.CurrentAltitude.Name = "CurrentAltitude";
             this.CurrentAltitude.Size = new System.Drawing.Size(141, 46);
             this.CurrentAltitude.TabIndex = 103;
@@ -1986,18 +1996,18 @@ namespace UAVXGUI
             // 
             // MainLabel
             // 
-            this.MainLabel.AutoSize = true;
-            this.MainLabel.Location = new System.Drawing.Point(352, 380);
+            this.MainLabel.Location = new System.Drawing.Point(336, 378);
             this.MainLabel.Name = "MainLabel";
-            this.MainLabel.Size = new System.Drawing.Size(200, 13);
+            this.MainLabel.Size = new System.Drawing.Size(233, 21);
             this.MainLabel.TabIndex = 104;
-            this.MainLabel.Text = "UAVX Groundstation (C) G.K. Egan 2010";
+            this.MainLabel.Text = "UAVX Firmware Revision Unknown";
+            this.MainLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // AltitudeSource
             // 
             this.AltitudeSource.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.AltitudeSource.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AltitudeSource.Location = new System.Drawing.Point(389, 47);
+            this.AltitudeSource.Location = new System.Drawing.Point(392, 47);
             this.AltitudeSource.Name = "AltitudeSource";
             this.AltitudeSource.ReadOnly = true;
             this.AltitudeSource.Size = new System.Drawing.Size(121, 13);
@@ -2267,11 +2277,12 @@ namespace UAVXGUI
             this.Airframe.BackColor = System.Drawing.SystemColors.Control;
             this.Airframe.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Airframe.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Airframe.Location = new System.Drawing.Point(403, 99);
+            this.Airframe.Location = new System.Drawing.Point(382, 99);
             this.Airframe.Name = "Airframe";
-            this.Airframe.Size = new System.Drawing.Size(116, 13);
+            this.Airframe.Size = new System.Drawing.Size(141, 13);
             this.Airframe.TabIndex = 166;
-            this.Airframe.Text = "Quadrocopter";
+            this.Airframe.Text = "UNKNOWN";
+            this.Airframe.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ReplayNumericUpDown
             // 
@@ -2466,34 +2477,122 @@ namespace UAVXGUI
             // DrivesGroupBox
             // 
             this.DrivesGroupBox.BackColor = System.Drawing.SystemColors.Control;
+            this.DrivesGroupBox.Controls.Add(this.PWM1Label);
+            this.DrivesGroupBox.Controls.Add(this.PWM2Label);
+            this.DrivesGroupBox.Controls.Add(this.PWM3Label);
+            this.DrivesGroupBox.Controls.Add(this.PWM4Label);
+            this.DrivesGroupBox.Controls.Add(this.PWM5Label);
+            this.DrivesGroupBox.Controls.Add(this.PWM6Label);
+            this.DrivesGroupBox.Controls.Add(this.PWM7Label);
+            this.DrivesGroupBox.Controls.Add(this.PWM0Label);
+            this.DrivesGroupBox.Controls.Add(this.PWM8Label);
             this.DrivesGroupBox.Controls.Add(this.ImbalanceLabel);
             this.DrivesGroupBox.Controls.Add(this.DiagnosticCheckBox);
-            this.DrivesGroupBox.Controls.Add(this.PWMT9);
+            this.DrivesGroupBox.Controls.Add(this.PWM9Label);
             this.DrivesGroupBox.Controls.Add(this.PWMT7);
             this.DrivesGroupBox.Controls.Add(this.PWMT6);
-            this.DrivesGroupBox.Controls.Add(this.PWMT8);
             this.DrivesGroupBox.Controls.Add(this.PWMT5);
             this.DrivesGroupBox.Controls.Add(this.PWMT4);
+            this.DrivesGroupBox.Controls.Add(this.PWMT9);
             this.DrivesGroupBox.Controls.Add(this.PWMT3);
             this.DrivesGroupBox.Controls.Add(this.PWMT2);
             this.DrivesGroupBox.Controls.Add(this.PWMT1);
             this.DrivesGroupBox.Controls.Add(this.PWMT0);
+            this.DrivesGroupBox.Controls.Add(this.PWMT8);
             this.DrivesGroupBox.Controls.Add(this.PWMT0ProgressBar);
             this.DrivesGroupBox.Controls.Add(this.PWMT6ProgressBar);
             this.DrivesGroupBox.Controls.Add(this.PWMT1ProgressBar);
             this.DrivesGroupBox.Controls.Add(this.PWMT5ProgressBar);
             this.DrivesGroupBox.Controls.Add(this.PWMT2ProgressBar);
             this.DrivesGroupBox.Controls.Add(this.PWMT7ProgressBar);
-            this.DrivesGroupBox.Controls.Add(this.PWMT9ProgressBar);
             this.DrivesGroupBox.Controls.Add(this.PWMT4ProgressBar);
             this.DrivesGroupBox.Controls.Add(this.PWMT3ProgressBar);
             this.DrivesGroupBox.Controls.Add(this.PWMT8ProgressBar);
+            this.DrivesGroupBox.Controls.Add(this.PWMT9ProgressBar);
             this.DrivesGroupBox.Location = new System.Drawing.Point(842, 214);
             this.DrivesGroupBox.Name = "DrivesGroupBox";
             this.DrivesGroupBox.Size = new System.Drawing.Size(162, 193);
             this.DrivesGroupBox.TabIndex = 210;
             this.DrivesGroupBox.TabStop = false;
             this.DrivesGroupBox.Text = "Motors/Servos (%)";
+            // 
+            // PWM1Label
+            // 
+            this.PWM1Label.AutoSize = true;
+            this.PWM1Label.Location = new System.Drawing.Point(6, 52);
+            this.PWM1Label.Name = "PWM1Label";
+            this.PWM1Label.Size = new System.Drawing.Size(41, 13);
+            this.PWM1Label.TabIndex = 242;
+            this.PWM1Label.Text = "L Back";
+            // 
+            // PWM2Label
+            // 
+            this.PWM2Label.AutoSize = true;
+            this.PWM2Label.Location = new System.Drawing.Point(6, 67);
+            this.PWM2Label.Name = "PWM2Label";
+            this.PWM2Label.Size = new System.Drawing.Size(42, 13);
+            this.PWM2Label.TabIndex = 241;
+            this.PWM2Label.Text = "R Front";
+            // 
+            // PWM3Label
+            // 
+            this.PWM3Label.AutoSize = true;
+            this.PWM3Label.Location = new System.Drawing.Point(6, 82);
+            this.PWM3Label.Name = "PWM3Label";
+            this.PWM3Label.Size = new System.Drawing.Size(43, 13);
+            this.PWM3Label.TabIndex = 240;
+            this.PWM3Label.Text = "R Back";
+            // 
+            // PWM4Label
+            // 
+            this.PWM4Label.AutoSize = true;
+            this.PWM4Label.Location = new System.Drawing.Point(6, 127);
+            this.PWM4Label.Name = "PWM4Label";
+            this.PWM4Label.Size = new System.Drawing.Size(0, 13);
+            this.PWM4Label.TabIndex = 239;
+            // 
+            // PWM5Label
+            // 
+            this.PWM5Label.AutoSize = true;
+            this.PWM5Label.Location = new System.Drawing.Point(6, 144);
+            this.PWM5Label.Name = "PWM5Label";
+            this.PWM5Label.Size = new System.Drawing.Size(0, 13);
+            this.PWM5Label.TabIndex = 238;
+            // 
+            // PWM6Label
+            // 
+            this.PWM6Label.AutoSize = true;
+            this.PWM6Label.Location = new System.Drawing.Point(6, 157);
+            this.PWM6Label.Name = "PWM6Label";
+            this.PWM6Label.Size = new System.Drawing.Size(0, 13);
+            this.PWM6Label.TabIndex = 237;
+            // 
+            // PWM7Label
+            // 
+            this.PWM7Label.AutoSize = true;
+            this.PWM7Label.Location = new System.Drawing.Point(6, 172);
+            this.PWM7Label.Name = "PWM7Label";
+            this.PWM7Label.Size = new System.Drawing.Size(31, 13);
+            this.PWM7Label.TabIndex = 236;
+            this.PWM7Label.Text = "Aux2";
+            // 
+            // PWM0Label
+            // 
+            this.PWM0Label.AutoSize = true;
+            this.PWM0Label.Location = new System.Drawing.Point(6, 37);
+            this.PWM0Label.Name = "PWM0Label";
+            this.PWM0Label.Size = new System.Drawing.Size(40, 13);
+            this.PWM0Label.TabIndex = 235;
+            this.PWM0Label.Text = "L Front";
+            // 
+            // PWM8Label
+            // 
+            this.PWM8Label.AutoSize = true;
+            this.PWM8Label.Location = new System.Drawing.Point(6, 98);
+            this.PWM8Label.Name = "PWM8Label";
+            this.PWM8Label.Size = new System.Drawing.Size(49, 13);
+            this.PWM8Label.TabIndex = 234;
+            this.PWM8Label.Text = "Cam Roll";
             // 
             // ImbalanceLabel
             // 
@@ -2514,23 +2613,20 @@ namespace UAVXGUI
             this.DiagnosticCheckBox.TabIndex = 226;
             this.DiagnosticCheckBox.UseVisualStyleBackColor = true;
             // 
-            // PWMT9
+            // PWM9Label
             // 
-            this.PWMT9.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PWMT9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PWMT9.Location = new System.Drawing.Point(13, 172);
-            this.PWMT9.Name = "PWMT9";
-            this.PWMT9.ReadOnly = true;
-            this.PWMT9.Size = new System.Drawing.Size(25, 13);
-            this.PWMT9.TabIndex = 207;
-            this.PWMT9.Text = "0";
-            this.PWMT9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.PWM9Label.AutoSize = true;
+            this.PWM9Label.Location = new System.Drawing.Point(6, 113);
+            this.PWM9Label.Name = "PWM9Label";
+            this.PWM9Label.Size = new System.Drawing.Size(55, 13);
+            this.PWM9Label.TabIndex = 233;
+            this.PWM9Label.Text = "Cam Pitch";
             // 
             // PWMT7
             // 
             this.PWMT7.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PWMT7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PWMT7.Location = new System.Drawing.Point(13, 142);
+            this.PWMT7.Location = new System.Drawing.Point(62, 171);
             this.PWMT7.Name = "PWMT7";
             this.PWMT7.ReadOnly = true;
             this.PWMT7.Size = new System.Drawing.Size(25, 13);
@@ -2542,7 +2638,7 @@ namespace UAVXGUI
             // 
             this.PWMT6.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PWMT6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PWMT6.Location = new System.Drawing.Point(13, 127);
+            this.PWMT6.Location = new System.Drawing.Point(62, 157);
             this.PWMT6.Name = "PWMT6";
             this.PWMT6.ReadOnly = true;
             this.PWMT6.Size = new System.Drawing.Size(25, 13);
@@ -2550,23 +2646,11 @@ namespace UAVXGUI
             this.PWMT6.Text = "0";
             this.PWMT6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // PWMT8
-            // 
-            this.PWMT8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PWMT8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PWMT8.Location = new System.Drawing.Point(13, 157);
-            this.PWMT8.Name = "PWMT8";
-            this.PWMT8.ReadOnly = true;
-            this.PWMT8.Size = new System.Drawing.Size(25, 13);
-            this.PWMT8.TabIndex = 206;
-            this.PWMT8.Text = "0";
-            this.PWMT8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // PWMT5
             // 
             this.PWMT5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PWMT5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PWMT5.Location = new System.Drawing.Point(13, 112);
+            this.PWMT5.Location = new System.Drawing.Point(62, 142);
             this.PWMT5.Name = "PWMT5";
             this.PWMT5.ReadOnly = true;
             this.PWMT5.Size = new System.Drawing.Size(25, 13);
@@ -2578,7 +2662,7 @@ namespace UAVXGUI
             // 
             this.PWMT4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PWMT4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PWMT4.Location = new System.Drawing.Point(13, 97);
+            this.PWMT4.Location = new System.Drawing.Point(62, 127);
             this.PWMT4.Name = "PWMT4";
             this.PWMT4.ReadOnly = true;
             this.PWMT4.Size = new System.Drawing.Size(25, 13);
@@ -2586,11 +2670,23 @@ namespace UAVXGUI
             this.PWMT4.Text = "0";
             this.PWMT4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // PWMT9
+            // 
+            this.PWMT9.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PWMT9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PWMT9.Location = new System.Drawing.Point(62, 113);
+            this.PWMT9.Name = "PWMT9";
+            this.PWMT9.ReadOnly = true;
+            this.PWMT9.Size = new System.Drawing.Size(25, 13);
+            this.PWMT9.TabIndex = 207;
+            this.PWMT9.Text = "0";
+            this.PWMT9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // PWMT3
             // 
             this.PWMT3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PWMT3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PWMT3.Location = new System.Drawing.Point(13, 82);
+            this.PWMT3.Location = new System.Drawing.Point(61, 82);
             this.PWMT3.Name = "PWMT3";
             this.PWMT3.ReadOnly = true;
             this.PWMT3.Size = new System.Drawing.Size(25, 13);
@@ -2602,7 +2698,7 @@ namespace UAVXGUI
             // 
             this.PWMT2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PWMT2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PWMT2.Location = new System.Drawing.Point(13, 67);
+            this.PWMT2.Location = new System.Drawing.Point(61, 67);
             this.PWMT2.Name = "PWMT2";
             this.PWMT2.ReadOnly = true;
             this.PWMT2.Size = new System.Drawing.Size(25, 13);
@@ -2614,7 +2710,7 @@ namespace UAVXGUI
             // 
             this.PWMT1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PWMT1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PWMT1.Location = new System.Drawing.Point(13, 52);
+            this.PWMT1.Location = new System.Drawing.Point(61, 52);
             this.PWMT1.Name = "PWMT1";
             this.PWMT1.ReadOnly = true;
             this.PWMT1.Size = new System.Drawing.Size(25, 13);
@@ -2626,7 +2722,7 @@ namespace UAVXGUI
             // 
             this.PWMT0.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PWMT0.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PWMT0.Location = new System.Drawing.Point(13, 37);
+            this.PWMT0.Location = new System.Drawing.Point(61, 37);
             this.PWMT0.Name = "PWMT0";
             this.PWMT0.ReadOnly = true;
             this.PWMT0.Size = new System.Drawing.Size(25, 13);
@@ -2634,95 +2730,107 @@ namespace UAVXGUI
             this.PWMT0.Text = "0";
             this.PWMT0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // PWMT8
+            // 
+            this.PWMT8.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PWMT8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PWMT8.Location = new System.Drawing.Point(62, 98);
+            this.PWMT8.Name = "PWMT8";
+            this.PWMT8.ReadOnly = true;
+            this.PWMT8.Size = new System.Drawing.Size(25, 13);
+            this.PWMT8.TabIndex = 206;
+            this.PWMT8.Text = "0";
+            this.PWMT8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // PWMT0ProgressBar
             // 
-            this.PWMT0ProgressBar.Location = new System.Drawing.Point(48, 37);
+            this.PWMT0ProgressBar.Location = new System.Drawing.Point(91, 37);
             this.PWMT0ProgressBar.Maximum = 1000;
             this.PWMT0ProgressBar.Name = "PWMT0ProgressBar";
-            this.PWMT0ProgressBar.Size = new System.Drawing.Size(108, 10);
+            this.PWMT0ProgressBar.Size = new System.Drawing.Size(65, 13);
             this.PWMT0ProgressBar.Step = 1;
             this.PWMT0ProgressBar.TabIndex = 191;
             // 
             // PWMT6ProgressBar
             // 
-            this.PWMT6ProgressBar.Location = new System.Drawing.Point(48, 127);
+            this.PWMT6ProgressBar.Location = new System.Drawing.Point(91, 157);
             this.PWMT6ProgressBar.Maximum = 1000;
             this.PWMT6ProgressBar.Name = "PWMT6ProgressBar";
-            this.PWMT6ProgressBar.Size = new System.Drawing.Size(108, 10);
+            this.PWMT6ProgressBar.Size = new System.Drawing.Size(65, 13);
             this.PWMT6ProgressBar.Step = 1;
             this.PWMT6ProgressBar.TabIndex = 197;
             // 
             // PWMT1ProgressBar
             // 
-            this.PWMT1ProgressBar.Location = new System.Drawing.Point(48, 52);
+            this.PWMT1ProgressBar.Location = new System.Drawing.Point(91, 52);
             this.PWMT1ProgressBar.Maximum = 1000;
             this.PWMT1ProgressBar.Name = "PWMT1ProgressBar";
-            this.PWMT1ProgressBar.Size = new System.Drawing.Size(108, 10);
+            this.PWMT1ProgressBar.Size = new System.Drawing.Size(65, 13);
             this.PWMT1ProgressBar.Step = 1;
             this.PWMT1ProgressBar.TabIndex = 192;
             // 
             // PWMT5ProgressBar
             // 
-            this.PWMT5ProgressBar.Location = new System.Drawing.Point(48, 112);
+            this.PWMT5ProgressBar.Location = new System.Drawing.Point(91, 142);
             this.PWMT5ProgressBar.Maximum = 1000;
             this.PWMT5ProgressBar.Name = "PWMT5ProgressBar";
-            this.PWMT5ProgressBar.Size = new System.Drawing.Size(108, 10);
+            this.PWMT5ProgressBar.Size = new System.Drawing.Size(65, 13);
             this.PWMT5ProgressBar.Step = 1;
             this.PWMT5ProgressBar.TabIndex = 196;
             // 
             // PWMT2ProgressBar
             // 
-            this.PWMT2ProgressBar.Location = new System.Drawing.Point(48, 67);
+            this.PWMT2ProgressBar.Location = new System.Drawing.Point(91, 67);
             this.PWMT2ProgressBar.Maximum = 1000;
             this.PWMT2ProgressBar.Name = "PWMT2ProgressBar";
-            this.PWMT2ProgressBar.Size = new System.Drawing.Size(108, 10);
+            this.PWMT2ProgressBar.Size = new System.Drawing.Size(65, 13);
             this.PWMT2ProgressBar.Step = 1;
             this.PWMT2ProgressBar.TabIndex = 193;
             // 
             // PWMT7ProgressBar
             // 
-            this.PWMT7ProgressBar.Location = new System.Drawing.Point(48, 142);
+            this.PWMT7ProgressBar.Location = new System.Drawing.Point(91, 172);
             this.PWMT7ProgressBar.Maximum = 1000;
             this.PWMT7ProgressBar.Name = "PWMT7ProgressBar";
-            this.PWMT7ProgressBar.Size = new System.Drawing.Size(108, 10);
+            this.PWMT7ProgressBar.Size = new System.Drawing.Size(65, 13);
             this.PWMT7ProgressBar.Step = 1;
             this.PWMT7ProgressBar.TabIndex = 186;
             // 
-            // PWMT9ProgressBar
-            // 
-            this.PWMT9ProgressBar.Location = new System.Drawing.Point(48, 173);
-            this.PWMT9ProgressBar.Maximum = 1000;
-            this.PWMT9ProgressBar.Name = "PWMT9ProgressBar";
-            this.PWMT9ProgressBar.Size = new System.Drawing.Size(108, 10);
-            this.PWMT9ProgressBar.Step = 1;
-            this.PWMT9ProgressBar.TabIndex = 188;
-            // 
             // PWMT4ProgressBar
             // 
-            this.PWMT4ProgressBar.Location = new System.Drawing.Point(48, 97);
+            this.PWMT4ProgressBar.Location = new System.Drawing.Point(91, 127);
             this.PWMT4ProgressBar.Maximum = 1000;
             this.PWMT4ProgressBar.Name = "PWMT4ProgressBar";
-            this.PWMT4ProgressBar.Size = new System.Drawing.Size(108, 10);
+            this.PWMT4ProgressBar.Size = new System.Drawing.Size(65, 13);
             this.PWMT4ProgressBar.Step = 1;
             this.PWMT4ProgressBar.TabIndex = 195;
             // 
             // PWMT3ProgressBar
             // 
-            this.PWMT3ProgressBar.Location = new System.Drawing.Point(48, 82);
+            this.PWMT3ProgressBar.Location = new System.Drawing.Point(91, 82);
             this.PWMT3ProgressBar.Maximum = 1000;
             this.PWMT3ProgressBar.Name = "PWMT3ProgressBar";
-            this.PWMT3ProgressBar.Size = new System.Drawing.Size(108, 10);
+            this.PWMT3ProgressBar.Size = new System.Drawing.Size(65, 13);
             this.PWMT3ProgressBar.Step = 1;
             this.PWMT3ProgressBar.TabIndex = 194;
             // 
             // PWMT8ProgressBar
             // 
-            this.PWMT8ProgressBar.Location = new System.Drawing.Point(48, 157);
+            this.PWMT8ProgressBar.Location = new System.Drawing.Point(91, 98);
             this.PWMT8ProgressBar.Maximum = 1000;
             this.PWMT8ProgressBar.Name = "PWMT8ProgressBar";
-            this.PWMT8ProgressBar.Size = new System.Drawing.Size(108, 10);
+            this.PWMT8ProgressBar.Size = new System.Drawing.Size(65, 13);
             this.PWMT8ProgressBar.Step = 1;
             this.PWMT8ProgressBar.TabIndex = 187;
+            // 
+            // PWMT9ProgressBar
+            // 
+            this.PWMT9ProgressBar.Location = new System.Drawing.Point(91, 114);
+            this.PWMT9ProgressBar.Maximum = 1000;
+            this.PWMT9ProgressBar.Name = "PWMT9ProgressBar";
+            this.PWMT9ProgressBar.Size = new System.Drawing.Size(65, 13);
+            this.PWMT9ProgressBar.Step = 1;
+            this.PWMT9ProgressBar.TabIndex = 188;
             // 
             // FWRateEnergy
             // 
@@ -3751,6 +3859,16 @@ namespace UAVXGUI
         private System.Windows.Forms.ProgressBar SerialBTxProgressBar;
         private System.Windows.Forms.ProgressBar SerialATxProgressBar;
         private System.Windows.Forms.Label execPercentLabel;
+        private System.Windows.Forms.Label PWM1Label;
+        private System.Windows.Forms.Label PWM2Label;
+        private System.Windows.Forms.Label PWM3Label;
+        private System.Windows.Forms.Label PWM4Label;
+        private System.Windows.Forms.Label PWM5Label;
+        private System.Windows.Forms.Label PWM6Label;
+        private System.Windows.Forms.Label PWM7Label;
+        private System.Windows.Forms.Label PWM0Label;
+        private System.Windows.Forms.Label PWM8Label;
+        private System.Windows.Forms.Label PWM9Label;
     }
 }
 

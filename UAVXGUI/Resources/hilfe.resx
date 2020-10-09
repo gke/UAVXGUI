@@ -135,8 +135,8 @@
       <data name="FastStart" xml:space="preserve">
     <value>ENABLES fast starts by using the gyro bias from IMU calibration and in theory allows takeoffs without needing to be still immediately after arming.</value>
   </data>
-        <data name="PavelFilter" xml:space="preserve">
-    <value>ENABLES Pavel noise robust derivative filter.</value>
+        <data name="UseKalmanFilter" xml:space="preserve">
+    <value>ENABLES Kalman Filter using acc and baro for altitude hold.</value>
   </data>
       <data name="BLHeli" xml:space="preserve">
     <value>ENABLES ESC programming using BLHeliSuite.</value>
@@ -168,9 +168,7 @@
     Spektrum and SBUS use serial data based transmission. </value>
   </data>
   <data name="ArmingMode" xml:space="preserve">
-    <value>The stick format of your Tx:
-Mode 1: Rudder/Elevator left hand Throttle/Ailerons right hand. Roll available for arming.
-Mode 2: Rudder/Throttle left hand Ailerons/Elevator right hand. Rudder available for arming.
+    <value>Arming using the Tx or a physical switch on the aircraft.
 </value>
   </data>
   <data name="BaroDif" xml:space="preserve">
@@ -193,8 +191,8 @@ Mode 2: Rudder/Throttle left hand Ailerons/Elevator right hand. Rudder available
     <value>This counters disturbances to roll or pitch caused by influences such as air turbulence. For FW aircraft this should be zero or close to zero to avoid servo jitter.</value>
     <comment>Direkt aus der Anleitung entnommen (Test)</comment>
   </data>
-    <data name="DifferentialFC" xml:space="preserve">
-    <value>Reduces noise or jitters in inertial position estimates including altitude hold.</value>
+    <data name="AltLPF" xml:space="preserve">
+    <value>Reduces noise or jitters in altitude hold.</value>
     <comment>Direkt aus der Anleitung entnommen (Test)</comment>
   </data>
   <data name="AttThrFF" xml:space="preserve">
@@ -246,8 +244,8 @@ Mode 2: Rudder/Throttle left hand Ailerons/Elevator right hand. Rudder available
   <data name="AirspeedSensor" xml:space="preserve">
     <value>The type of airspeed sensor if any. Ideally one is required for a FW aircraft as GPS groundspeed is not airspeed if there is any wind.</value>
  </data>
-    <data name="BestROC" xml:space="preserve">
-    <value>The best rate of climb (ROC) for all aircraft types. Also acts as the upper limit in autonomous flight and for altitude hold corrections.</value>
+    <data name="ROCGain" xml:space="preserve">
+    <value>The amount by which the altitude hold compensation is reduced when close to hover as defined by the Alt Band parameter.</value>
  </data>
     <data name="FWGlideAngleOffset" xml:space="preserve">
     <value>FW glide pitch angle offset. You will almost certainly have to trim the aircraft using your Tx to establish 
@@ -258,10 +256,7 @@ Mode 2: Rudder/Throttle left hand Ailerons/Elevator right hand. Rudder available
     <value>FW the time it takes for flaps/spoilers/airbrakes to close.</value>
   </data>
   <data name="AccZVariance" xml:space="preserve">
-    <value>Default accelerometer variance for altitude filtering.</value>
-  </data>
-  <data name="TrackAccZVariance" xml:space="preserve">
-    <value>Estimated accelerometer variance for altitude filtering.</value>
+    <value>Z Accelerometer variance for altitude filtering.</value>
   </data>
   <data name="BaroVariance" xml:space="preserve">
     <value>Barometer variance captured in flight.</value>
@@ -522,9 +517,10 @@ Does not work for UAVP PIC VERSION - uses specific hex file for the required air
   <data name="TelemetryType" xml:space="preserve">
     <value>Controls the format of telemetry information:
  * None
- * UAVX - full flight control, nav and stats packets 
+ * UAVX - full flight control and nav packets 
  * UAVXMin - minimum attitude, location and battery information (Uses FrSky text transmission to UAVXGS)
- * FrSky - for Taranis and other FrSky telemetry compatible transmitters.
+ * FrSky - for Taranis and other FrSky telemetry compatible transmitters
+ * Fusion - Altitude Hold variables
 </value>
   </data>
   <data name="RxChannels" xml:space="preserve">

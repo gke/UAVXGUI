@@ -121,7 +121,6 @@ namespace UAVXGUI
         bool GoToEnabled;
 
      //   static byte PrevWPT = 255;
-     //   static short AirframeT = 4;
 
         short FenceRadius;
         double LongitudeCorrectionT = 1.0f;

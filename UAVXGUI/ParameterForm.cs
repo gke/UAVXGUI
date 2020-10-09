@@ -76,13 +76,13 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
         	20,			// RollKpRate, 			01 UAVP 21
 			10,	 		// AltPosKi,			02 UAVP 10
 			25,			// RollKpAngle,			03 // 25
-			2,	        // ArmingMode,				04
+			1,	        // ArmingMode,			04
 			40,	 		// RollIntLimit,		05 UAVP 80
 
 			20,	 		// PitchKpRate,			06 UAVP 21
 			28,	 		// AltPosKp,			07 UAVP 10
 			25,	 		// PitchKpAngle			08 // 25
-			0, 	        // RFUsed,				09 UAVP 1
+			5, 	        // RFUsed,				09 UAVP 1
 			40,	 		// PitchIntLimit,		10 UAVP 80
 
 			20,	 		// YawKpRate, 			11 // 40
@@ -92,12 +92,12 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
 			0, 	        // RCType,				15 was CompoundPPM
 
 			0,          // ConfigBits,			16c
-			1,			// RxThrottleCh,		17
+			0,			// RxThrottleCh,		17
 			16, 		// LowVoltThres,		18c
 			10, 		// CamRollKp,			19c
 			27, 		// PercentCruiseThr,	20c
 
-			2, 		// StickHysteresis,			21c
+			2, 		    // StickHysteresis,		21c
 			0, 			// RollPitchMix,		22c
 			10, 		// PercentIdleThr,		23c
 			3, 			// RollKiAngle,			24
@@ -117,13 +117,13 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
 
 			4, 		    // ESCType,				36c
 			7, 			// UnusedRxChannels,			37c
-			2,			// RxRollCh,			38
+			1,			// RxRollCh,			38
 			20,			// MadgwickKpAcc,		39c
 			1,			// CamRollTrim,			40c
 
 			3,			// NavMaxVelMPS,		41
-			3,			// RxPitchCh,			42
-			4,			// RxYawCh,				43
+			2,			// RxPitchCh,			42
+			3,			// RxYawCh,				43
 			4,	        // AFType,				44c
 			1,          // TelemetryType,	45c
 
@@ -131,81 +131,81 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
 			15,			// DescentDelayS,		47
 			2, 	        // GyroLPF,		        48 UAVP MPU_RA_DLPF_BW_98
 			4,			// NavCrossTrackKp,		49
-			5,			// RxGearCh,			50c
+			4,			// RxGearCh,			50c
 
-			6,			// RxAux1Ch,			51
+			5,			// RxAux1Ch,			51
 			0,			// ServoSense			52c
 			4,			// AccConfSD,			53c
 			3,			// BatteryCapacity,		54c
-			7,			// RxAux2Ch,			55c
+			6,			// RxAux2Ch,			55c
 
-			8,			// RxAux3Ch,			56
+			7,			// RxAux3Ch,			56
 			20, 	    // NavPosKp,			57
 			20,			// AltLPF,				58
 			50,			// Balance,				59
-			9,			// RxAux4Ch,			60
+			8,			// RxAux4Ch,			60
 
 			5,			// NavVelIntLimit,		61
-			1,	        // GPSProtocol,			62
+			4,	        // GPSProtocol,			62
 			25,			// AltThrottleFF,	    63
 			10,			// StickScaleYaw,		64
-            0, // FWRollPitchFF 65
+            0,          // FWRollPitchFF 65
 
-            0, // FWPitchThrottleFF 66 
-            30, // AltVelIntLimit
-            60, // FWMaxClimbAngle 68
-            15, // NavMaxAngle 69
-            0, // FWSpoilerDecayTime 70
+            0,          // FWPitchThrottleFF 66 
+            30,         // AltVelIntLimit
+            60,         // FWMaxClimbAngle 68
+            15,         // NavMaxAngle 69
+            0,          // FWSpoilerDecayTime 70
             
-            0, // FWAileronDifferential 71
-            0, // ASSensorType 72
-            2, // MaxROC 73
-            0, // Config2Bits
-            60, // MaxPitchAngle 75
+            0,          // FWAileronDifferential 71
+            4,          // ASSensorType 72
+            2,          // MaxROC 73
+            0,          // Config2Bits
+            60,         // MaxPitchAngle 75
 
-            0, // 76
-            60, // MaxRollAngle 77
-            50, // YawLPFHz 78
-            20, // NavHeadingTurnout 79
-            0, // WS2812Leds 80
+            0,          // 76
+            60,         // MaxRollAngle 77
+            50,         // YawLPFHz 78
+            20,         // NavHeadingTurnout 79
+            0,          // Unused 80
 
-            50, // MinhAcc 81
+            50,         // MinhAcc 81
             0,
-            60, // MaxRollRate 83
-            60, // MaxPitchRate 84
-            100, // CurrentScale 85
+            60,         // MaxRollRate 83
+            60,         // MaxPitchRate 84
+            100,        // CurrentScale 85
             
-            100, // VoltScale 86
-            0, // FWAileronRudderMix 87
-            0, // FWAltSpoilerFF 88
-            6, // MaxCompassYawRate 89
-            0, // AccLPFSel 90
+            100,        // VoltScale 86
+            0,          // FWAileronRudderMix 87
+            0,          // FWAltSpoilerFF 88
+            6,          // MaxCompassYawRate 89
+            0,          // AccLPFSel 90
             
-            45, // YawRateKd 91
-            5, // GyroSlewRate 92
-            0, // ThrottleGainRate 93
-            10, // RxAux5Ch 94
-            11, // RxAux6Ch 95
+            45,         // YawRateKd 91
+            5,          // GyroSlewRate 92
+            0,          // ThrottleGainRate 93
+            9,         // RxAux5Ch 94
+            10,         // RxAux6Ch 95
             
-            12, // RxAux7Ch 96
-            0, // YawAngleKp 97
-            5,  // YawAngleKi 98
-            10, // YawAngleIntLimit 99
-            10, // AltPosIntLimit 100
+           11,         // RxAux7Ch 96
+            0,          // YawAngleKp 97
+            5,          // YawAngleKi 98
+            10,         // YawAngleIntLimit 99
+            10,         // AltPosIntLimit 100
             
-            0, // MotorStopSel 101
-            10, // AltVelKi 102
-            10, // AltHoldBand 103
-            30, // VRSDescentRate 104
-            20, // AccVariance 105
+            0,          // MotorStopSel 101
+            10,         // AltVelKi 102
+            10,         // AltHoldBand 103
+            30,         // VRSDescentRate 104
+            20,         // AccVariance 105
             
-            2, // NavGPSTimeout 106
-            3, // ProxAltM 107
-            50, // ProxRadiusM 108
+            2,          // NavGPSTimeout 106
+            3,          // ProxAltM 107
+            50,         // ProxRadiusM 108
             0,
             0,
             
-            0, // 111
+            0,          // 111
             0,
             0,
             0,
@@ -217,7 +217,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
             0,
             0,
             
-            0, // 121
+            0,          // 121
             0,
             0,
             0,
@@ -225,7 +225,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
             
             0,
             0,
-            0 // 128
+            0           // 128
         };
 
         public ParameterForm()
@@ -281,6 +281,10 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                 updateForm();
             }
 
+            RCGroupBox.BackColor = (FormMain.RCMapFailed) ? System.Drawing.Color.Orange : System.Drawing.SystemColors.Control;
+
+
+          FormMain.AirframeT = (short)P[0,43].Value;
 
           RxChannelsNumericUpDown.Visible = ComboPort1ComboBox.SelectedIndex == 2;
             RefreshRxChannels();
@@ -427,7 +431,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
             if (parameterForm.AirspeedComboBox.Focused)
                 helpstring = help.GetString("AirspeedSensor");
 
-            if (parameterForm.wsLEDsNumericUpDown.Focused)
+            if (parameterForm.Unused80NumericUpDown.Focused)
                 helpstring = help.GetString("wsLEDs");
 
             if (parameterForm.FWSpoilerDecayTimeNumericUpDown.Focused)
@@ -743,35 +747,35 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
         private void SenseButton0_Click(object sender, EventArgs e)
         {
             SenseButton[0] = !SenseButton[0];
-            infoTextBox.Text = "Right Aileron/Elevon servo sense - not for multicopter use - grey is reversed.";
+            infoTextBox.Text = "Right Aileron/Elevon servo sense - grey is reversed.";
             ParamUpdate(sender);
         }
 
         private void SenseButton1_Click(object sender, EventArgs e)
         {
             SenseButton[1] = !SenseButton[1];
-            infoTextBox.Text = "Left Aileron/Elevon servo sense - not for multicopter use - grey is reversed.";
+            infoTextBox.Text = "Left Aileron/Elevon servo sense - grey is reversed.";
             ParamUpdate(sender);
         }
 
         private void SenseButton2_Click(object sender, EventArgs e)
         {
             SenseButton[2] = !SenseButton[2];
-            infoTextBox.Text = "Elevator servo sense - not for multicopter use - grey is reversed.";
+            infoTextBox.Text = "Elevator servo - grey is reversed.";
             ParamUpdate(sender);
         }
 
         private void SenseButton3_Click(object sender, EventArgs e)
         {
             SenseButton[3] = !SenseButton[3];
-            infoTextBox.Text = "Rudder or Camera roll servo sense - grey is reversed.";
+            infoTextBox.Text = "Rudder servo - grey is reversed.";
             ParamUpdate(sender);
         }
 
         private void SenseButton4_Click(object sender, EventArgs e)
         {
             SenseButton[4] = !SenseButton[4];
-            infoTextBox.Text = "Right Flap/Spoiler or Camera pitch servo sense - grey is reversed.";
+            infoTextBox.Text = "Flap/Spoiler - grey is reversed.";
             ParamUpdate(sender);
         }
 
@@ -779,16 +783,17 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
         private void SenseButton5_Click(object sender, EventArgs e)
         {
             SenseButton[5] = !SenseButton[5];
-            infoTextBox.Text = "Left Flap/Spoiler servo sense -  grey is reversed.";
+            infoTextBox.Text = "Camera Roll servo sense -  grey is reversed.";
             ParamUpdate(sender);
         }
 
-        private void PropSense1Button_Click(object sender, EventArgs e)
+        private void SenseButton6_Click(object sender, EventArgs e)
         {
             SenseButton[6] = !SenseButton[6];
-            infoTextBox.Text = "Blue for conventional prop orientation - i.e M1 clockwise";
+            infoTextBox.Text = "Camera Pitch servo sense -  grey is reversed.";
             ParamUpdate(sender);
         }
+
 
         private Color ChannelColour(bool s)
         {
@@ -1047,27 +1052,9 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         case "Sense51Button":
                         SenseButtonColours(Object, 5);
                             break;
-                        case "PropSense1Button":
-                            //SenseButtonColours(Object, 6);
-                            int m = 1 << 6;
-
-                            if (ParameterForm.SenseButton[6])
-                            {
-                                P[CurrPS, 51].Value = (P[CurrPS, 51].Value) | m;
-                                Field.BackColor = Color.Blue;
-                            }
-                            else
-                            {
-                                P[CurrPS, 51].Value = (P[CurrPS, 51].Value) & (255 - m);
-                                Field.BackColor = Color.White;
-                            }
-
-                            break;
-                            case "ResetCauseButton":
-                           P[CurrPS, 127].Value = 0;
-                           Field.ForeColor = Color.Red;
-                           Field.BackColor = System.Drawing.SystemColors.Control;
-                            break;
+                        case "Sense61Button":
+                            SenseButtonColours(Object, 6);
+                            break; 
                     }
                 }
               else
@@ -1151,6 +1138,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         break;
                     case 4:
                         ArmingModeComboBox.SelectedIndex = UAVXP[p-1].Value;
+                        Ch7Label.Text = (ArmingModeComboBox.SelectedIndex == 0) ? "Arm/AH/Nav" : "AH/Sens.";
                          ParamUpdate(ArmingModeComboBox);
                         break;
                     case 5:
@@ -1163,7 +1151,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         break;
                     case 7:
                         AltPosKpNumericUpDown.Value = UAVXP[p - 1].Value;
-                        AltPosKpNumericUpDown.BackColor = UAVXP[p - 1].Value <= 10 ? System.Drawing.Color.White : System.Drawing.Color.Orange;
+                        AltPosKpNumericUpDown.BackColor = UAVXP[p - 1].Value >= 10 ? System.Drawing.Color.White : System.Drawing.Color.Orange;
                         ParamUpdate(AltPosKpNumericUpDown);
                         break;
                     case 8:
@@ -1357,8 +1345,6 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         break;
                     case 48:
                         GyroLPFComboBox.SelectedIndex = UAVXP[p - 1].Value;
-                       // GyroLPFNumericUpDown.BackColor =  (GyroLPFNumericUpDown.Value < 50) ?
-                       //     Color.Orange : Color.White;
                         ParamUpdate(GyroLPFComboBox);
                         break;
                     case 49:
@@ -1389,7 +1375,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         ParameterForm.SenseButton[5] = (sense & 32) != 0;
                         ParamUpdate(Sense51Button);
                         ParameterForm.SenseButton[6] = (sense & 64) != 0;
-                        ParamUpdate(PropSense1Button);
+                        ParamUpdate(Sense61Button);
            
                         break;
                     case 53:
@@ -1526,8 +1512,6 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         break;
                     case 78:
                         YawGyroLPFNumericUpDown.Value = UAVXP[p - 1].Value;
-                       // YawGyroLPFNumericUpDown.BackColor = (YawGyroLPFNumericUpDown.Value >= GyroLPFNumericUpDown.Value) ?
-                       //     Color.Red : Color.White;
                         ParamUpdate(YawGyroLPFNumericUpDown);
                         break;
                     case 79:
@@ -1535,8 +1519,8 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         ParamUpdate(TurnoutNumericUpDown);
                         break;
                     case 80:
-                        wsLEDsNumericUpDown.Value = UAVXP[p - 1].Value;
-                        ParamUpdate(wsLEDsNumericUpDown);
+                        Unused80NumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(Unused80NumericUpDown);
                         break;
                     case 81:
                         // hAcc
