@@ -355,6 +355,38 @@ namespace UAVXGUI
 	        "FrSkyPacketTag"};
 
 
+        public enum Airframes
+        {
+            TriAF,
+            TriCoaxAF, // aka Y6
+            VTailAF,
+            QuadAF,
+            QuadXAF,
+            QuadCoaxAF, // aka OctCoax
+            QuadCoaxXAF,
+            HexAF,
+            HexXAF,
+            OctAF,
+            OctXAF,
+            Heli90AF,
+            Heli120AF,
+            ElevonAF,
+            DeltaAF,
+            AileronAF,
+            AileronSpoilerFlapsAF,
+            AileronVTailAF,
+            RudderElevatorAF,
+            DifferentialTwinAF,
+            VTOLAF,
+            VTOL2AF,
+            TrackedAF,
+            FourWheelAF,
+            TwoWheelAF,
+            GimbalAF,
+            Instrumentation,
+            AFUnknown
+        };
+
       static public  string[] AFNames = { 
             "Tricopter",
             "CoaxTri Y6",
@@ -366,6 +398,7 @@ namespace UAVXGUI
             "Hexacopter",
             "X Hexacopter",
             "Octocopter",
+
             "X Octocopter",
             "Heli90",
             "Heli120",
@@ -375,8 +408,13 @@ namespace UAVXGUI
             "Spoilerons",
             "VTail",
             "Rudder Elevator",
+            "Differential Twin",
+
             "VTOL",
             "VTOL2",
+            "Tracked",
+            "Four Wheel",
+            "Two Wheel",
             "Gimbal",
             "Instrumentation",
             "Unknown Aircraft" };
@@ -489,7 +527,8 @@ namespace UAVXGUI
         short[] RateT = new short[3];
 
         short ROCT, FROCT;                     // 43
-        short AccZT;
+        short RawAccZT;
+        int PrevRelAltitude = 0;
         int RawRelAltitudeT, FAltitudeT, AltitudeT;          // 45 24bits
         short CruiseThrottleT;          // 48
         short RangefinderAltitudeT;     // 50
@@ -505,7 +544,7 @@ namespace UAVXGUI
         int BaroTemperatureT;
         int BaroPressureT;
 
-        int FGPSROCT, FGPSAltitudeT, TrackBaroVT, TrackAccZVT, AltPosDesiredT, 
+        int BaroROCT, FGPSROCT, FGPSAltitudeT, TrackBaroVT, TrackAccZVT, AltPosDesiredT, 
             AltPosErrorT, AltPosPTermT, AltPosITermT, AltRateDesiredT, AltRateErrorT,
             AltRatePTermT, AltRateITermT, FAltCompT, FCruiseThrottleT, FDesiredThrottleT;
         short AHFlags;
@@ -710,15 +749,12 @@ namespace UAVXGUI
         short NavYCorrT = 0;
 
         double LongitudeCorrection; 
-        bool FirstGPSCoordinates = true;
         int FlightHeading;
         double FlightRoll, FlightPitch;
         double FlightRollp = 0.0;
         double FlightPitchp = 0.0;
         double OSO = 0.0;
         double OCO = 1.0;
-
-        bool UAVXArm = true; // default
 
         bool CalibrateIMUEnabled = false;
         bool CalibrateAccZeroEnabled = false;
@@ -1211,7 +1247,7 @@ namespace UAVXGUI
             "PTrim," +
  
             "SEnergy,");
-
+            /*
             if (Airframe.Text == "Flying_Wing")
                 SaveTextLogFileStreamWriter.Write("Thr,R-Elev,L-Elev,-,L-Flap,-,-,-,-,R-Flap,");
             else
@@ -1226,6 +1262,7 @@ namespace UAVXGUI
                         if (Airframe.Text == "Rudder_Elevator")
                             SaveTextLogFileStreamWriter.Write("Thr,-,-,Elev,LFlap, -, -, -,Rud,RFlap,");
                         else
+                            */
                 SaveTextLogFileStreamWriter.Write("K1,K2,K3,K4, K7,K8,K9,K10, K5/CamP,K6/CamR,");
 
             SaveTextLogFileStreamWriter.Write("Nav," +
@@ -2330,24 +2367,13 @@ namespace UAVXGUI
             return (PWDiag > 3  ? Color.Orange : PWDiag > 5  ? Color.Red : Color.White);
         }
 
-       public void UpdateAFLabels(short AF) {
-  
+       void UpdateAFLabels(short AF) {
+           
            if (AF != CurrAF) {
              CurrAF = AF;
 
-           Airframe.Text = AFNames[AF];
-                if (AF >= 10)
-                {
-                    PWM0Label.Text = "R Throttle";
-                    PWM1Label.Text = "L Throttle";
-                    PWM2Label.Text = "R Aileron";
-                    PWM3Label.Text = "L Aileron";
-                    PWM4Label.Text = "Elevator";
-                    PWM5Label.Text = "Rudder";
-                    PWM6Label.Text = "Spoiler";
-                }
-                else
-                {
+             Airframe.Text = AFNames[AF];
+                 if (AFNames[AF] == "X Quadcopter"){
                     PWM0Label.Text = "L Front";
                     PWM1Label.Text = "L Back";
                     PWM2Label.Text = "R Front";
@@ -2355,9 +2381,54 @@ namespace UAVXGUI
                     PWM4Label.Text = " ";
                     PWM5Label.Text = " ";
                     PWM6Label.Text = " ";
+                  } else  if (AFNames[AF] == "Flying Wing"){
+                    PWM0Label.Text = "R Motor";
+                    PWM1Label.Text = "L Motor?";
+                    PWM2Label.Text = "R Elevon";
+                    PWM3Label.Text = "L Elevon";
+                    PWM4Label.Text = " ";
+                    PWM5Label.Text = " ";
+                    PWM6Label.Text = " ";
+                } else  if (AFNames[AF] == "Spoilerons"){
+                    PWM0Label.Text = "R Motor";
+                    PWM1Label.Text = "L Motor?";
+                    PWM2Label.Text = "R Aileron";
+                    PWM3Label.Text = "L Aileron";
+                    PWM4Label.Text = "Elevator";
+                    PWM5Label.Text = "Rudder";
+                    PWM6Label.Text = " ";
                 }
+                 else if (AFNames[AF] == "Aileron")
+                 {
+                     PWM0Label.Text = "R Motor";
+                     PWM1Label.Text = "L Motor?";
+                     PWM2Label.Text = "R Aileron";
+                     PWM3Label.Text = "L Aileron";
+                     PWM4Label.Text = "Elevator";
+                     PWM5Label.Text = "Rudder";
+                     PWM6Label.Text = "Flaps";
+                } else  if (AFNames[AF] == "Rudder Elevator"){
+                             PWM0Label.Text = "Motor";
+                    PWM1Label.Text = " ";
+                    PWM2Label.Text = " ";
+                    PWM3Label.Text = " ";
+                    PWM4Label.Text = "Elevator";
+                    PWM5Label.Text = "Rudder";
+                    PWM6Label.Text = "Spoiler";
+                      } else 
+                {
+                    PWM0Label.Text = "K1";
+                    PWM1Label.Text = "K2";
+                    PWM2Label.Text = "K3";
+                    PWM3Label.Text = "K4";
+                    PWM4Label.Text = "K5";
+                    PWM5Label.Text = "K6";
+                    PWM6Label.Text = "K7";
+                }
+                   
           }
  }
+
 
         void UpdateMotors()
         {
@@ -3055,9 +3126,14 @@ namespace UAVXGUI
                     FusionmSecT = ExtractInt(ref UAVXPacket, 2);
                     RawRelAltitudeT = ExtractInt24(ref UAVXPacket, 6);
                     FAltitudeT = ExtractInt24(ref UAVXPacket, 9);
+
+
                     FROCT = ExtractShort(ref UAVXPacket, 12);
-                    AccZT = ExtractShort(ref UAVXPacket, 14);
+
+
+                    RawAccZT = ExtractShort(ref UAVXPacket, 14);
                     HRAccZBiasT = ExtractShort(ref UAVXPacket, 16);
+    
 
                     TrackBaroVT = ExtractShort(ref UAVXPacket, 18);
                     TrackAccZVT = ExtractShort(ref UAVXPacket, 20);
@@ -3080,9 +3156,13 @@ namespace UAVXGUI
                     FGPSAltitudeT = ExtractInt24(ref UAVXPacket, 45);
                     FGPSROCT = ExtractShort(ref UAVXPacket, 48);
 
-                    AHFlags = ExtractByte(ref UAVXPacket, 50);
+                    BaroROCT = ExtractShort(ref UAVXPacket, 50);
+
+                    AHFlags = ExtractByte(ref UAVXPacket, 52);
 
                     WriteTextFusionFile(); // only log with this packet
+
+                    PrevRelAltitude = FAltitudeT;
 
                     break;
                 default: break;
@@ -3305,15 +3385,16 @@ namespace UAVXGUI
 
                SaveTextFusionFileStreamWriter.Write("Time (mS)," +   
                  
-                    "AccZ," +
+                    "RawAccZ," +
                     "AccZBias," +
+                    "AccZ," +
 
                     "AccZVar," +               
                     "BaroVar," +
 
                     "GPSAlt," +
-                    "RawRelAlt," +
-                    "RelAlt," +
+                    "BaroAlt," +
+                    "KFAlt," +
                     "AltDesired," +
                  
                     "AltE," +
@@ -3321,7 +3402,8 @@ namespace UAVXGUI
                     "AltI," +
 
                     "GPSROC," +
-                    "ROC," +
+                    "BaroROC," +
+                    "KFROC," +
                     "ROCDesired," +
  
                     "ROCE," +
@@ -3342,8 +3424,9 @@ namespace UAVXGUI
 
             SaveTextFusionFileStreamWriter.Write(FusionmSecT + "," +
 
-            AccZT * 0.001 + "," +
+            RawAccZT * 0.001 + "," +
             HRAccZBiasT * 0.001 + "," +
+            (RawAccZT - HRAccZBiasT)  * 0.001 + "," +
 
             TrackAccZVT * 0.001 + "," +
             TrackBaroVT * 0.001 + "," +
@@ -3358,6 +3441,9 @@ namespace UAVXGUI
             AltPosITermT * 0.001 + "," +
 
             FGPSROCT * 0.001 + "," +
+            
+            BaroROCT * 0.001 + "," +
+
             FROCT * 0.001 + "," +
             AltRateDesiredT * 0.01 + "," +
             AltRateErrorT * 0.001 + "," +

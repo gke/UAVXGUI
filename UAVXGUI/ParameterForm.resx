@@ -145,7 +145,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;DescDelayNumericUpDown.ZOrder" xml:space="preserve">
-    <value>32</value>
+    <value>30</value>
   </data>
   <data name="AttThrFFLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -202,7 +202,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;NavRTHAltNumericUpDown.ZOrder" xml:space="preserve">
-    <value>34</value>
+    <value>32</value>
   </data>
   <data name="AttThrFFNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -259,7 +259,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;labelNavRTHAlt1.ZOrder" xml:space="preserve">
-    <value>35</value>
+    <value>33</value>
   </data>
   <data name="DescDelayLabel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -289,13 +289,13 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;DescDelayLabel1.ZOrder" xml:space="preserve">
-    <value>39</value>
+    <value>37</value>
   </data>
   <data name="AltVelKpNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="AltVelKpNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 89</value>
+    <value>51, 140</value>
   </data>
   <data name="AltVelKpNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 20</value>
@@ -316,7 +316,7 @@
     <value>AltitudeGroupBox</value>
   </data>
   <data name="&gt;&gt;AltVelKpNumericUpDown.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>10</value>
   </data>
   <data name="DescentRateNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -343,7 +343,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;DescentRateNumericUpDown.ZOrder" xml:space="preserve">
-    <value>38</value>
+    <value>36</value>
   </data>
   <data name="DescentRateLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -373,7 +373,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;DescentRateLabel.ZOrder" xml:space="preserve">
-    <value>40</value>
+    <value>38</value>
   </data>
   <data name="HysteresisNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -400,7 +400,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;HysteresisNumericUpDown.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
   <data name="ModifiersGroupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -492,6 +492,39 @@
   <data name="&gt;&gt;BalanceNumericUpDown.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="bit42CheckBox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="bit42CheckBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="bit42CheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="bit42CheckBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 94</value>
+  </data>
+  <data name="bit42CheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 17</value>
+  </data>
+  <data name="bit42CheckBox.TabIndex" type="System.Int32, mscorlib">
+    <value>233</value>
+  </data>
+  <data name="bit42CheckBox.Text" xml:space="preserve">
+    <value>Rev. Props</value>
+  </data>
+  <data name="&gt;&gt;bit42CheckBox.Name" xml:space="preserve">
+    <value>bit42CheckBox</value>
+  </data>
+  <data name="&gt;&gt;bit42CheckBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bit42CheckBox.Parent" xml:space="preserve">
+    <value>ModifiersGroupBox1</value>
+  </data>
+  <data name="&gt;&gt;bit42CheckBox.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <data name="HorizonNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
@@ -517,10 +550,10 @@
     <value>ModifiersGroupBox1</value>
   </data>
   <data name="&gt;&gt;HorizonNumericUpDown.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="ModifiersGroupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 272</value>
+    <value>170, 272</value>
   </data>
   <data name="ModifiersGroupBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>147, 126</value>
@@ -727,7 +760,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;bit62CheckBox.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>4</value>
   </data>
   <data name="VoltageFSLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1075,7 +1108,7 @@
     <value>NoControl</value>
   </data>
   <data name="bit01CheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 205</value>
+    <value>5, 188</value>
   </data>
   <data name="bit01CheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 17</value>
@@ -1164,67 +1197,31 @@
   <data name="&gt;&gt;bit12CheckBox.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="bit42CheckBox.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="bit42CheckBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
-  </data>
-  <data name="bit42CheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bit42CheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 188</value>
-  </data>
-  <data name="bit42CheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 17</value>
-  </data>
-  <data name="bit42CheckBox.TabIndex" type="System.Int32, mscorlib">
-    <value>233</value>
-  </data>
-  <data name="bit42CheckBox.Text" xml:space="preserve">
-    <value>Aux2Beeper</value>
-  </data>
-  <data name="&gt;&gt;bit42CheckBox.Name" xml:space="preserve">
-    <value>bit42CheckBox</value>
-  </data>
-  <data name="&gt;&gt;bit42CheckBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bit42CheckBox.Parent" xml:space="preserve">
-    <value>GeneralGroupBox</value>
-  </data>
-  <data name="&gt;&gt;bit42CheckBox.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="TelemetryComboBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="TelemetryComboBox.Items" xml:space="preserve">
-    <value>UAVX</value>
+    <value>DJT Decoder</value>
   </data>
   <data name="TelemetryComboBox.Items1" xml:space="preserve">
-    <value>UAVXMin</value>
+    <value>LUA Script</value>
   </data>
   <data name="TelemetryComboBox.Items2" xml:space="preserve">
-    <value>Fusion</value>
+    <value>No Telemetry</value>
   </data>
   <data name="TelemetryComboBox.Items3" xml:space="preserve">
-    <value>NoTelemetry</value>
-  </data>
-  <data name="TelemetryComboBox.Items4" xml:space="preserve">
     <value>u4</value>
   </data>
-  <data name="TelemetryComboBox.Items5" xml:space="preserve">
+  <data name="TelemetryComboBox.Items4" xml:space="preserve">
     <value>u5</value>
   </data>
-  <data name="TelemetryComboBox.Items6" xml:space="preserve">
+  <data name="TelemetryComboBox.Items5" xml:space="preserve">
     <value>u6</value>
   </data>
-  <data name="TelemetryComboBox.Items7" xml:space="preserve">
+  <data name="TelemetryComboBox.Items6" xml:space="preserve">
     <value>u7</value>
   </data>
-  <data name="TelemetryComboBox.Items8" xml:space="preserve">
+  <data name="TelemetryComboBox.Items7" xml:space="preserve">
     <value>u8</value>
   </data>
   <data name="TelemetryComboBox.Location" type="System.Drawing.Point, System.Drawing">
@@ -1246,7 +1243,7 @@
     <value>GeneralGroupBox</value>
   </data>
   <data name="&gt;&gt;TelemetryComboBox.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="labelESC1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1276,7 +1273,7 @@
     <value>GeneralGroupBox</value>
   </data>
   <data name="&gt;&gt;labelESC1.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="ESCComboBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -1315,7 +1312,7 @@
     <value>GeneralGroupBox</value>
   </data>
   <data name="&gt;&gt;ESCComboBox.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="BaroScaleLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1345,7 +1342,7 @@
     <value>GeneralGroupBox</value>
   </data>
   <data name="&gt;&gt;BaroScaleLabel.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="AFTypeComboBox.AutoCompleteCustomSource" xml:space="preserve">
     <value>TriAF</value>
@@ -1498,27 +1495,21 @@
     <value>VTOL2</value>
   </data>
   <data name="AFTypeComboBox.Items22" xml:space="preserve">
-    <value>Delta</value>
-  </data>
-  <data name="AFTypeComboBox.Items23" xml:space="preserve">
     <value>Tracked</value>
   </data>
-  <data name="AFTypeComboBox.Items24" xml:space="preserve">
+  <data name="AFTypeComboBox.Items23" xml:space="preserve">
     <value>Four Wheel</value>
   </data>
-  <data name="AFTypeComboBox.Items25" xml:space="preserve">
+  <data name="AFTypeComboBox.Items24" xml:space="preserve">
     <value>Two Wheel</value>
   </data>
-  <data name="AFTypeComboBox.Items26" xml:space="preserve">
+  <data name="AFTypeComboBox.Items25" xml:space="preserve">
     <value>Gimbal</value>
   </data>
-  <data name="AFTypeComboBox.Items27" xml:space="preserve">
+  <data name="AFTypeComboBox.Items26" xml:space="preserve">
     <value>Instrumentation</value>
   </data>
-  <data name="AFTypeComboBox.Items28" xml:space="preserve">
-    <value>IREmulator</value>
-  </data>
-  <data name="AFTypeComboBox.Items29" xml:space="preserve">
+  <data name="AFTypeComboBox.Items27" xml:space="preserve">
     <value>Unknown Airframe</value>
   </data>
   <data name="AFTypeComboBox.Location" type="System.Drawing.Point, System.Drawing">
@@ -1540,7 +1531,7 @@
     <value>GeneralGroupBox</value>
   </data>
   <data name="&gt;&gt;AFTypeComboBox.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="AirspeedLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1570,7 +1561,7 @@
     <value>GeneralGroupBox</value>
   </data>
   <data name="&gt;&gt;AirspeedLabel.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>9</value>
   </data>
   <data name="AirspeedComboBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -1609,7 +1600,7 @@
     <value>GeneralGroupBox</value>
   </data>
   <data name="&gt;&gt;AirspeedComboBox.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>10</value>
   </data>
   <data name="bit31CheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1642,6 +1633,39 @@
     <value>GeneralGroupBox</value>
   </data>
   <data name="&gt;&gt;bit31CheckBox.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="bit02CheckBox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="bit02CheckBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="bit02CheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="bit02CheckBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>105, 170</value>
+  </data>
+  <data name="bit02CheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 17</value>
+  </data>
+  <data name="bit02CheckBox.TabIndex" type="System.Int32, mscorlib">
+    <value>229</value>
+  </data>
+  <data name="bit02CheckBox.Text" xml:space="preserve">
+    <value>Fusion Log</value>
+  </data>
+  <data name="&gt;&gt;bit02CheckBox.Name" xml:space="preserve">
+    <value>bit02CheckBox</value>
+  </data>
+  <data name="&gt;&gt;bit02CheckBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bit02CheckBox.Parent" xml:space="preserve">
+    <value>GeneralGroupBox</value>
+  </data>
+  <data name="&gt;&gt;bit02CheckBox.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
   <data name="GPSTypeLabel.AutoSize" type="System.Boolean, mscorlib">
@@ -1812,104 +1836,35 @@
   <data name="&gt;&gt;GeneralGroupBox.ZOrder" xml:space="preserve">
     <value>19</value>
   </data>
-  <data name="Unused80NumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
-  </data>
-  <data name="Unused80NumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>194, 366</value>
-  </data>
-  <data name="Unused80NumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 20</value>
-  </data>
-  <data name="Unused80NumericUpDown.TabIndex" type="System.Int32, mscorlib">
-    <value>238</value>
-  </data>
-  <data name="Unused80NumericUpDown.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="Unused80NumericUpDown.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;Unused80NumericUpDown.Name" xml:space="preserve">
-    <value>Unused80NumericUpDown</value>
-  </data>
-  <data name="&gt;&gt;Unused80NumericUpDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Unused80NumericUpDown.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;Unused80NumericUpDown.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="Unused80Label.AutoSize" type="System.Boolean, mscorlib">
+  <data name="ROCSourceLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="Unused80Label.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="ROCSourceLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="Unused80Label.Location" type="System.Drawing.Point, System.Drawing">
-    <value>132, 370</value>
+  <data name="ROCSourceLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 98</value>
   </data>
-  <data name="Unused80Label.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 13</value>
+  <data name="ROCSourceLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 13</value>
   </data>
-  <data name="Unused80Label.TabIndex" type="System.Int32, mscorlib">
+  <data name="ROCSourceLabel.TabIndex" type="System.Int32, mscorlib">
     <value>237</value>
   </data>
-  <data name="Unused80Label.Text" xml:space="preserve">
-    <value>Unused80</value>
+  <data name="ROCSourceLabel.Text" xml:space="preserve">
+    <value>ROC</value>
   </data>
-  <data name="Unused80Label.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="&gt;&gt;ROCSourceLabel.Name" xml:space="preserve">
+    <value>ROCSourceLabel</value>
   </data>
-  <data name="&gt;&gt;Unused80Label.Name" xml:space="preserve">
-    <value>Unused80Label</value>
-  </data>
-  <data name="&gt;&gt;Unused80Label.Type" xml:space="preserve">
+  <data name="&gt;&gt;ROCSourceLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;Unused80Label.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
+  <data name="&gt;&gt;ROCSourceLabel.Parent" xml:space="preserve">
+    <value>groupBox1</value>
   </data>
-  <data name="&gt;&gt;Unused80Label.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="bit02CheckBox.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="bit02CheckBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
-  </data>
-  <data name="bit02CheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bit02CheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 333</value>
-  </data>
-  <data name="bit02CheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 17</value>
-  </data>
-  <data name="bit02CheckBox.TabIndex" type="System.Int32, mscorlib">
-    <value>229</value>
-  </data>
-  <data name="bit02CheckBox.Text" xml:space="preserve">
-    <value>74_1</value>
-  </data>
-  <data name="bit02CheckBox.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;bit02CheckBox.Name" xml:space="preserve">
-    <value>bit02CheckBox</value>
-  </data>
-  <data name="&gt;&gt;bit02CheckBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bit02CheckBox.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
-  </data>
-  <data name="&gt;&gt;bit02CheckBox.ZOrder" xml:space="preserve">
-    <value>13</value>
+  <data name="&gt;&gt;ROCSourceLabel.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="ComboPort2Label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1918,7 +1873,7 @@
     <value>NoControl</value>
   </data>
   <data name="ComboPort2Label.Location" type="System.Drawing.Point, System.Drawing">
-    <value>38, 360</value>
+    <value>17, 373</value>
   </data>
   <data name="ComboPort2Label.Size" type="System.Drawing.Size, System.Drawing">
     <value>20, 13</value>
@@ -1942,7 +1897,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;ComboPort2Label.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>7</value>
   </data>
   <data name="LowMotorRunLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1972,7 +1927,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;LowMotorRunLabel.ZOrder" xml:space="preserve">
-    <value>33</value>
+    <value>31</value>
   </data>
   <data name="LowMotorRunNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -1999,7 +1954,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;LowMotorRunNumericUpDown.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>13</value>
   </data>
   <data name="EstCruiseLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2029,7 +1984,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;EstCruiseLabel.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>23</value>
   </data>
   <data name="EstCruiseNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -2056,7 +2011,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;EstCruiseNumericUpDown.ZOrder" xml:space="preserve">
-    <value>27</value>
+    <value>25</value>
   </data>
   <data name="MadgwickKpMagLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2116,7 +2071,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;GyroLabel.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="MadgwickKpMagNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -2350,7 +2305,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;NavVelKpNumericUpDown.ZOrder" xml:space="preserve">
-    <value>37</value>
+    <value>35</value>
   </data>
   <data name="NavVelKpLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2380,7 +2335,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;NavVelKpLabel.ZOrder" xml:space="preserve">
-    <value>42</value>
+    <value>40</value>
   </data>
   <data name="ArmingModeComboBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -2390,6 +2345,12 @@
   </data>
   <data name="ArmingModeComboBox.Items1" xml:space="preserve">
     <value>Sw Arming</value>
+  </data>
+  <data name="ArmingModeComboBox.Items2" xml:space="preserve">
+    <value>u2</value>
+  </data>
+  <data name="ArmingModeComboBox.Items3" xml:space="preserve">
+    <value>u3</value>
   </data>
   <data name="ArmingModeComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>40, 41</value>
@@ -2410,7 +2371,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;ArmingModeComboBox.ZOrder" xml:space="preserve">
-    <value>51</value>
+    <value>54</value>
   </data>
   <data name="ArmingModeLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2440,7 +2401,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;ArmingModeLabel.ZOrder" xml:space="preserve">
-    <value>52</value>
+    <value>55</value>
   </data>
   <data name="bit61CheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2473,7 +2434,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;bit61CheckBox.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>15</value>
   </data>
   <data name="bit21CheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2506,7 +2467,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;bit21CheckBox.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>20</value>
   </data>
   <data name="ComboPort1ComboBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -2548,7 +2509,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;ComboPort1ComboBox.ZOrder" xml:space="preserve">
-    <value>27</value>
+    <value>30</value>
   </data>
   <data name="Ch9NumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -2575,7 +2536,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch9NumericUpDown.ZOrder" xml:space="preserve">
-    <value>70</value>
+    <value>73</value>
   </data>
   <data name="Ch9Label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2602,7 +2563,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch9Label.ZOrder" xml:space="preserve">
-    <value>69</value>
+    <value>72</value>
   </data>
   <data name="Ch8NumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -2629,7 +2590,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch8NumericUpDown.ZOrder" xml:space="preserve">
-    <value>68</value>
+    <value>71</value>
   </data>
   <data name="Ch8Label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2659,7 +2620,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch8Label.ZOrder" xml:space="preserve">
-    <value>67</value>
+    <value>70</value>
   </data>
   <data name="Ch6NumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -2686,7 +2647,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch6NumericUpDown.ZOrder" xml:space="preserve">
-    <value>66</value>
+    <value>69</value>
   </data>
   <data name="Ch3NumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -2713,7 +2674,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch3NumericUpDown.ZOrder" xml:space="preserve">
-    <value>65</value>
+    <value>68</value>
   </data>
   <data name="Ch6Label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2743,7 +2704,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch6Label.ZOrder" xml:space="preserve">
-    <value>64</value>
+    <value>67</value>
   </data>
   <data name="Ch3Label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2773,7 +2734,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch3Label.ZOrder" xml:space="preserve">
-    <value>63</value>
+    <value>66</value>
   </data>
   <data name="Ch5NumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -2800,7 +2761,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch5NumericUpDown.ZOrder" xml:space="preserve">
-    <value>62</value>
+    <value>65</value>
   </data>
   <data name="Ch2NumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -2827,7 +2788,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch2NumericUpDown.ZOrder" xml:space="preserve">
-    <value>61</value>
+    <value>64</value>
   </data>
   <data name="Ch5Label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2857,7 +2818,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch5Label.ZOrder" xml:space="preserve">
-    <value>60</value>
+    <value>63</value>
   </data>
   <data name="RollChLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2887,7 +2848,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RollChLabel.ZOrder" xml:space="preserve">
-    <value>59</value>
+    <value>62</value>
   </data>
   <data name="Ch7NumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -2914,7 +2875,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch7NumericUpDown.ZOrder" xml:space="preserve">
-    <value>58</value>
+    <value>61</value>
   </data>
   <data name="Ch4NumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -2941,7 +2902,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch4NumericUpDown.ZOrder" xml:space="preserve">
-    <value>57</value>
+    <value>60</value>
   </data>
   <data name="Ch1NumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -2968,7 +2929,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch1NumericUpDown.ZOrder" xml:space="preserve">
-    <value>56</value>
+    <value>59</value>
   </data>
   <data name="Ch4Label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2998,7 +2959,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch4Label.ZOrder" xml:space="preserve">
-    <value>55</value>
+    <value>58</value>
   </data>
   <data name="ThrottleChLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3028,7 +2989,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;ThrottleChLabel.ZOrder" xml:space="preserve">
-    <value>54</value>
+    <value>57</value>
   </data>
   <data name="Ch7Label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3058,7 +3019,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch7Label.ZOrder" xml:space="preserve">
-    <value>53</value>
+    <value>56</value>
   </data>
   <data name="Sense51Button.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -3250,7 +3211,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;bit11CheckBox.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>18</value>
   </data>
   <data name="ComboPort1Label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3280,64 +3241,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;ComboPort1Label.ZOrder" xml:space="preserve">
-    <value>21</value>
-  </data>
-  <data name="CruiseTrackingRateLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="CruiseTrackingRateLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="CruiseTrackingRateLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>318, 159</value>
-  </data>
-  <data name="CruiseTrackingRateLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 13</value>
-  </data>
-  <data name="CruiseTrackingRateLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>266</value>
-  </data>
-  <data name="CruiseTrackingRateLabel.Text" xml:space="preserve">
-    <value>Tracking (%/S)</value>
-  </data>
-  <data name="&gt;&gt;CruiseTrackingRateLabel.Name" xml:space="preserve">
-    <value>CruiseTrackingRateLabel</value>
-  </data>
-  <data name="&gt;&gt;CruiseTrackingRateLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CruiseTrackingRateLabel.Parent" xml:space="preserve">
-    <value>NavGroupBox</value>
-  </data>
-  <data name="&gt;&gt;CruiseTrackingRateLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="CruiseTrackRateNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
-  </data>
-  <data name="CruiseTrackRateNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>258, 155</value>
-  </data>
-  <data name="CruiseTrackRateNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 20</value>
-  </data>
-  <data name="CruiseTrackRateNumericUpDown.TabIndex" type="System.Int32, mscorlib">
-    <value>263</value>
-  </data>
-  <data name="CruiseTrackRateNumericUpDown.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;CruiseTrackRateNumericUpDown.Name" xml:space="preserve">
-    <value>CruiseTrackRateNumericUpDown</value>
-  </data>
-  <data name="&gt;&gt;CruiseTrackRateNumericUpDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CruiseTrackRateNumericUpDown.Parent" xml:space="preserve">
-    <value>NavGroupBox</value>
-  </data>
-  <data name="&gt;&gt;CruiseTrackRateNumericUpDown.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>24</value>
   </data>
   <data name="bit41CheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3370,7 +3274,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;bit41CheckBox.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>0</value>
   </data>
   <data name="AHThrottleWindowLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3400,7 +3304,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;AHThrottleWindowLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="AHThrottleWindowNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -3427,7 +3331,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;AHThrottleWindowNumericUpDown.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>2</value>
   </data>
   <data name="NavGPSTimeoutLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3457,7 +3361,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;NavGPSTimeoutLabel.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>3</value>
   </data>
   <data name="NavGPSTimeoutNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -3484,7 +3388,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;NavGPSTimeoutNumericUpDown.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>5</value>
   </data>
   <data name="bit51CheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3517,7 +3421,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;bit51CheckBox.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>6</value>
   </data>
   <data name="ProximityAltNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -3544,7 +3448,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;ProximityAltNumericUpDown.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>7</value>
   </data>
   <data name="ProximityRadiusLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3574,7 +3478,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;ProximityRadiusLabel.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>8</value>
   </data>
   <data name="ProximityAltLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3604,7 +3508,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;ProximityAltLabel.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>9</value>
   </data>
   <data name="ProximityRadiusNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -3631,7 +3535,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;ProximityRadiusNumericUpDown.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>10</value>
   </data>
   <data name="bit52CheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3664,7 +3568,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;bit52CheckBox.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>11</value>
   </data>
   <data name="MotorStopLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3694,7 +3598,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;MotorStopLabel.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>12</value>
   </data>
   <data name="bit32CheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3727,7 +3631,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;bit32CheckBox.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>13</value>
   </data>
   <data name="MotorStopComboBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -3772,7 +3676,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;MotorStopComboBox.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>14</value>
   </data>
   <data name="VRSDescentRateNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -3799,7 +3703,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;VRSDescentRateNumericUpDown.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>16</value>
   </data>
   <data name="VRSLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3829,7 +3733,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;VRSLabel.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>17</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3859,7 +3763,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>19</value>
   </data>
   <data name="TurnoutLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3889,7 +3793,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;TurnoutLabel.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>21</value>
   </data>
   <data name="NavMaxAngleNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -3916,7 +3820,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;NavMaxAngleNumericUpDown.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>22</value>
   </data>
   <data name="NavMaxAngleLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3946,7 +3850,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;NavMaxAngleLabel.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>24</value>
   </data>
   <data name="MaxCompassYawRateNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -3973,7 +3877,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;MaxCompassYawRateNumericUpDown.ZOrder" xml:space="preserve">
-    <value>28</value>
+    <value>26</value>
   </data>
   <data name="NavMaxVelLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4003,7 +3907,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;NavMaxVelLabel.ZOrder" xml:space="preserve">
-    <value>29</value>
+    <value>27</value>
   </data>
   <data name="TurnoutNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -4030,7 +3934,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;TurnoutNumericUpDown.ZOrder" xml:space="preserve">
-    <value>30</value>
+    <value>28</value>
   </data>
   <data name="NavMaxVelNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -4057,7 +3961,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;NavMaxVelNumericUpDown.ZOrder" xml:space="preserve">
-    <value>31</value>
+    <value>29</value>
   </data>
   <data name="NavPosKpLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4087,7 +3991,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;NavPosKpLabel.ZOrder" xml:space="preserve">
-    <value>36</value>
+    <value>34</value>
   </data>
   <data name="NavPosKpNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -4114,7 +4018,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;NavPosKpNumericUpDown.ZOrder" xml:space="preserve">
-    <value>41</value>
+    <value>39</value>
   </data>
   <data name="CrossTrackNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -4141,7 +4045,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;CrossTrackNumericUpDown.ZOrder" xml:space="preserve">
-    <value>43</value>
+    <value>41</value>
   </data>
   <data name="CrossTrackLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4171,7 +4075,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;CrossTrackLabel.ZOrder" xml:space="preserve">
-    <value>44</value>
+    <value>42</value>
   </data>
   <data name="labelNavMagVar1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4201,7 +4105,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;labelNavMagVar1.ZOrder" xml:space="preserve">
-    <value>45</value>
+    <value>43</value>
   </data>
   <data name="NavMagVarNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -4228,7 +4132,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;NavMagVarNumericUpDown.ZOrder" xml:space="preserve">
-    <value>46</value>
+    <value>44</value>
   </data>
   <data name="NavPosKiNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -4255,7 +4159,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;NavPosKiNumericUpDown.ZOrder" xml:space="preserve">
-    <value>47</value>
+    <value>45</value>
   </data>
   <data name="NavPosKiLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4285,7 +4189,7 @@
     <value>NavGroupBox</value>
   </data>
   <data name="&gt;&gt;NavPosKiLabel.ZOrder" xml:space="preserve">
-    <value>48</value>
+    <value>46</value>
   </data>
   <data name="NavGroupBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>378, 31</value>
@@ -4311,6 +4215,69 @@
   <data name="&gt;&gt;NavGroupBox.ZOrder" xml:space="preserve">
     <value>20</value>
   </data>
+  <data name="CruiseTrackingRateLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CruiseTrackingRateLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="CruiseTrackingRateLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 354</value>
+  </data>
+  <data name="CruiseTrackingRateLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 13</value>
+  </data>
+  <data name="CruiseTrackingRateLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>266</value>
+  </data>
+  <data name="CruiseTrackingRateLabel.Text" xml:space="preserve">
+    <value>Tracking (%/S)</value>
+  </data>
+  <data name="CruiseTrackingRateLabel.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;CruiseTrackingRateLabel.Name" xml:space="preserve">
+    <value>CruiseTrackingRateLabel</value>
+  </data>
+  <data name="&gt;&gt;CruiseTrackingRateLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CruiseTrackingRateLabel.Parent" xml:space="preserve">
+    <value>RCGroupBox</value>
+  </data>
+  <data name="&gt;&gt;CruiseTrackingRateLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="CruiseTrackRateNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="CruiseTrackRateNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 350</value>
+  </data>
+  <data name="CruiseTrackRateNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 20</value>
+  </data>
+  <data name="CruiseTrackRateNumericUpDown.TabIndex" type="System.Int32, mscorlib">
+    <value>263</value>
+  </data>
+  <data name="CruiseTrackRateNumericUpDown.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="CruiseTrackRateNumericUpDown.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;CruiseTrackRateNumericUpDown.Name" xml:space="preserve">
+    <value>CruiseTrackRateNumericUpDown</value>
+  </data>
+  <data name="&gt;&gt;CruiseTrackRateNumericUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CruiseTrackRateNumericUpDown.Parent" xml:space="preserve">
+    <value>RCGroupBox</value>
+  </data>
+  <data name="&gt;&gt;CruiseTrackRateNumericUpDown.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="ROCGainLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4318,7 +4285,7 @@
     <value>NoControl</value>
   </data>
   <data name="ROCGainLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 214</value>
+    <value>141, 370</value>
   </data>
   <data name="ROCGainLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 13</value>
@@ -4329,6 +4296,9 @@
   <data name="ROCGainLabel.Text" xml:space="preserve">
     <value>ROC(%)</value>
   </data>
+  <data name="ROCGainLabel.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;ROCGainLabel.Name" xml:space="preserve">
     <value>ROCGainLabel</value>
   </data>
@@ -4336,16 +4306,16 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ROCGainLabel.Parent" xml:space="preserve">
-    <value>AltitudeGroupBox</value>
+    <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;ROCGainLabel.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>18</value>
   </data>
   <data name="AltPosIntNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="AltPosIntNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 39</value>
+    <value>51, 61</value>
   </data>
   <data name="AltPosIntNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 20</value>
@@ -4366,7 +4336,7 @@
     <value>AltitudeGroupBox</value>
   </data>
   <data name="&gt;&gt;AltPosIntNumericUpDown.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>11</value>
   </data>
   <data name="BaroLPFHzLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4375,7 +4345,7 @@
     <value>NoControl</value>
   </data>
   <data name="BaroLPFHzLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 96</value>
+    <value>8, 98</value>
   </data>
   <data name="BaroLPFHzLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>19, 13</value>
@@ -4396,13 +4366,13 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;BaroLPFHzLabel.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="AltPosKpNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="AltPosKpNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 15</value>
+    <value>51, 37</value>
   </data>
   <data name="AltPosKpNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 20</value>
@@ -4423,13 +4393,13 @@
     <value>AltitudeGroupBox</value>
   </data>
   <data name="&gt;&gt;AltPosKpNumericUpDown.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>9</value>
   </data>
   <data name="AltLPFNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="AltLPFNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>56, 93</value>
+    <value>56, 94</value>
   </data>
   <data name="AltLPFNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 20</value>
@@ -4450,7 +4420,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;AltLPFNumericUpDown.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="AltVelKdNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -4480,7 +4450,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;AltVelKdNumericUpDown.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>25</value>
   </data>
   <data name="RateScaleLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4993,13 +4963,13 @@
     <value>8, 67</value>
   </data>
   <data name="RollAngleIntLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 13</value>
+    <value>36, 13</value>
   </data>
   <data name="RollAngleIntLabel.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
   </data>
   <data name="RollAngleIntLabel.Text" xml:space="preserve">
-    <value>Io</value>
+    <value>Iangle</value>
   </data>
   <data name="&gt;&gt;RollAngleIntLabel.Name" xml:space="preserve">
     <value>RollAngleIntLabel</value>
@@ -5107,13 +5077,13 @@
     <value>7, 170</value>
   </data>
   <data name="RollRateDiffLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 13</value>
+    <value>33, 13</value>
   </data>
   <data name="RollRateDiffLabel.TabIndex" type="System.Int32, mscorlib">
     <value>35</value>
   </data>
   <data name="RollRateDiffLabel.Text" xml:space="preserve">
-    <value>Di</value>
+    <value>Drate</value>
   </data>
   <data name="&gt;&gt;RollRateDiffLabel.Name" xml:space="preserve">
     <value>RollRateDiffLabel</value>
@@ -5164,13 +5134,13 @@
     <value>8, 94</value>
   </data>
   <data name="RollIntLimitLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 13</value>
+    <value>34, 13</value>
   </data>
   <data name="RollIntLimitLabel.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
   <data name="RollIntLimitLabel.Text" xml:space="preserve">
-    <value>Io-Limit</value>
+    <value>I-Limit</value>
   </data>
   <data name="&gt;&gt;RollIntLimitLabel.Name" xml:space="preserve">
     <value>RollIntLimitLabel</value>
@@ -5221,13 +5191,13 @@
     <value>8, 44</value>
   </data>
   <data name="RollAnglePropLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 13</value>
+    <value>40, 13</value>
   </data>
   <data name="RollAnglePropLabel.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <data name="RollAnglePropLabel.Text" xml:space="preserve">
-    <value>Po</value>
+    <value>Pangle</value>
   </data>
   <data name="&gt;&gt;RollAnglePropLabel.Name" xml:space="preserve">
     <value>RollAnglePropLabel</value>
@@ -5278,13 +5248,13 @@
     <value>8, 144</value>
   </data>
   <data name="RollRatePropLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 13</value>
+    <value>32, 13</value>
   </data>
   <data name="RollRatePropLabel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="RollRatePropLabel.Text" xml:space="preserve">
-    <value>Pi</value>
+    <value>Prate</value>
   </data>
   <data name="&gt;&gt;RollRatePropLabel.Name" xml:space="preserve">
     <value>RollRatePropLabel</value>
@@ -5326,7 +5296,7 @@
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="AltPosIntLimitNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 63</value>
+    <value>51, 90</value>
   </data>
   <data name="AltPosIntLimitNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 20</value>
@@ -5347,7 +5317,7 @@
     <value>AltitudeGroupBox</value>
   </data>
   <data name="&gt;&gt;AltPosIntLimitNumericUpDown.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>8</value>
   </data>
   <data name="HysteresisLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5377,7 +5347,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;HysteresisLabel.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>12</value>
   </data>
   <metadata name="parameterOpenFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>407, 0</value>
@@ -5392,7 +5362,7 @@
     <value>True</value>
   </data>
   <data name="infoTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>815, 35</value>
+    <value>793, 62</value>
   </data>
   <data name="infoTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>102</value>
@@ -5538,6 +5508,69 @@
   <metadata name="CheckDownLinkTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>760, 0</value>
   </metadata>
+  <data name="AltHoldBandLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="AltHoldBandLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="AltHoldBandLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 339</value>
+  </data>
+  <data name="AltHoldBandLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 13</value>
+  </data>
+  <data name="AltHoldBandLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>275</value>
+  </data>
+  <data name="AltHoldBandLabel.Text" xml:space="preserve">
+    <value>Band(M)</value>
+  </data>
+  <data name="AltHoldBandLabel.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;AltHoldBandLabel.Name" xml:space="preserve">
+    <value>AltHoldBandLabel</value>
+  </data>
+  <data name="&gt;&gt;AltHoldBandLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AltHoldBandLabel.Parent" xml:space="preserve">
+    <value>RCGroupBox</value>
+  </data>
+  <data name="&gt;&gt;AltHoldBandLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ROCGainNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="ROCGainNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>189, 363</value>
+  </data>
+  <data name="ROCGainNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="ROCGainNumericUpDown.TabIndex" type="System.Int32, mscorlib">
+    <value>276</value>
+  </data>
+  <data name="ROCGainNumericUpDown.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="ROCGainNumericUpDown.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;ROCGainNumericUpDown.Name" xml:space="preserve">
+    <value>ROCGainNumericUpDown</value>
+  </data>
+  <data name="&gt;&gt;ROCGainNumericUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ROCGainNumericUpDown.Parent" xml:space="preserve">
+    <value>RCGroupBox</value>
+  </data>
+  <data name="&gt;&gt;ROCGainNumericUpDown.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -5566,7 +5599,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>4</value>
   </data>
   <data name="ThrottleIdleLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5596,7 +5629,37 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;ThrottleIdleLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>5</value>
+  </data>
+  <data name="AltHoldBandNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="AltHoldBandNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>71, 333</value>
+  </data>
+  <data name="AltHoldBandNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="AltHoldBandNumericUpDown.TabIndex" type="System.Int32, mscorlib">
+    <value>271</value>
+  </data>
+  <data name="AltHoldBandNumericUpDown.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="AltHoldBandNumericUpDown.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;AltHoldBandNumericUpDown.Name" xml:space="preserve">
+    <value>AltHoldBandNumericUpDown</value>
+  </data>
+  <data name="&gt;&gt;AltHoldBandNumericUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AltHoldBandNumericUpDown.Parent" xml:space="preserve">
+    <value>RCGroupBox</value>
+  </data>
+  <data name="&gt;&gt;AltHoldBandNumericUpDown.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="RC11TextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -5626,13 +5689,13 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC11TextBox.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="AccVarianceNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="AccVarianceNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>71, 356</value>
+    <value>88, 366</value>
   </data>
   <data name="AccVarianceNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 20</value>
@@ -5656,7 +5719,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;AccVarianceNumericUpDown.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="RC10TextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -5686,7 +5749,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC10TextBox.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>10</value>
   </data>
   <data name="RC9TextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -5716,7 +5779,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC9TextBox.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>11</value>
   </data>
   <data name="GyroSlewRateNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -5746,7 +5809,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;GyroSlewRateNumericUpDown.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>14</value>
   </data>
   <data name="GyroSlewLimitLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5779,7 +5842,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;GyroSlewLimitLabel.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>15</value>
   </data>
   <data name="RC9ProgressBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -5803,7 +5866,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC9ProgressBar.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>17</value>
   </data>
   <data name="AltVelKdLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5836,7 +5899,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;AltVelKdLabel.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>19</value>
   </data>
   <data name="RC11ProgressBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -5860,7 +5923,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC11ProgressBar.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>20</value>
   </data>
   <data name="RC10ProgressBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -5884,7 +5947,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC10ProgressBar.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>21</value>
   </data>
   <data name="Ch10Label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5914,7 +5977,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch10Label.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>22</value>
   </data>
   <data name="Ch10NumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -5941,7 +6004,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch10NumericUpDown.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>23</value>
   </data>
   <data name="Ch11Label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5971,7 +6034,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch11Label.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>26</value>
   </data>
   <data name="Ch11NumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -5998,7 +6061,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch11NumericUpDown.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>27</value>
   </data>
   <data name="Ch12Label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6028,7 +6091,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch12Label.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>28</value>
   </data>
   <data name="Ch12NumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -6055,7 +6118,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch12NumericUpDown.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>29</value>
   </data>
   <data name="RxLoopbackButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>228, 13</value>
@@ -6079,7 +6142,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RxLoopbackButton.ZOrder" xml:space="preserve">
-    <value>28</value>
+    <value>31</value>
   </data>
   <data name="RCPacketIntervalLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6109,7 +6172,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RCPacketIntervalLabel.ZOrder" xml:space="preserve">
-    <value>29</value>
+    <value>32</value>
   </data>
   <data name="RxChannelsNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -6136,7 +6199,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RxChannelsNumericUpDown.ZOrder" xml:space="preserve">
-    <value>30</value>
+    <value>33</value>
   </data>
   <data name="DiscoveredRCChannelsLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6166,7 +6229,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;DiscoveredRCChannelsLabel.ZOrder" xml:space="preserve">
-    <value>31</value>
+    <value>34</value>
   </data>
   <data name="RCuSCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6190,7 +6253,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RCuSCheckBox.ZOrder" xml:space="preserve">
-    <value>32</value>
+    <value>35</value>
   </data>
   <data name="RC8TextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -6220,7 +6283,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC8TextBox.ZOrder" xml:space="preserve">
-    <value>33</value>
+    <value>36</value>
   </data>
   <data name="RC7TextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -6250,7 +6313,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC7TextBox.ZOrder" xml:space="preserve">
-    <value>34</value>
+    <value>37</value>
   </data>
   <data name="RC6TextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -6280,7 +6343,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC6TextBox.ZOrder" xml:space="preserve">
-    <value>35</value>
+    <value>38</value>
   </data>
   <data name="RC5TextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -6310,7 +6373,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC5TextBox.ZOrder" xml:space="preserve">
-    <value>36</value>
+    <value>39</value>
   </data>
   <data name="RC4TextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -6340,7 +6403,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC4TextBox.ZOrder" xml:space="preserve">
-    <value>37</value>
+    <value>40</value>
   </data>
   <data name="RC3TextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -6370,7 +6433,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC3TextBox.ZOrder" xml:space="preserve">
-    <value>38</value>
+    <value>41</value>
   </data>
   <data name="RC2TextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -6400,7 +6463,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC2TextBox.ZOrder" xml:space="preserve">
-    <value>39</value>
+    <value>42</value>
   </data>
   <data name="RC1TextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -6430,7 +6493,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC1TextBox.ZOrder" xml:space="preserve">
-    <value>40</value>
+    <value>43</value>
   </data>
   <data name="RC0TextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -6460,7 +6523,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC0TextBox.ZOrder" xml:space="preserve">
-    <value>41</value>
+    <value>44</value>
   </data>
   <data name="RC0ProgressBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -6484,7 +6547,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC0ProgressBar.ZOrder" xml:space="preserve">
-    <value>42</value>
+    <value>45</value>
   </data>
   <data name="RC6ProgressBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -6508,7 +6571,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC6ProgressBar.ZOrder" xml:space="preserve">
-    <value>43</value>
+    <value>46</value>
   </data>
   <data name="RC1ProgressBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -6532,7 +6595,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC1ProgressBar.ZOrder" xml:space="preserve">
-    <value>44</value>
+    <value>47</value>
   </data>
   <data name="RC5ProgressBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -6556,7 +6619,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC5ProgressBar.ZOrder" xml:space="preserve">
-    <value>45</value>
+    <value>48</value>
   </data>
   <data name="RC8ProgressBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -6580,7 +6643,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC8ProgressBar.ZOrder" xml:space="preserve">
-    <value>46</value>
+    <value>49</value>
   </data>
   <data name="RC2ProgressBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -6604,7 +6667,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC2ProgressBar.ZOrder" xml:space="preserve">
-    <value>47</value>
+    <value>50</value>
   </data>
   <data name="RC7ProgressBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -6628,7 +6691,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC7ProgressBar.ZOrder" xml:space="preserve">
-    <value>48</value>
+    <value>51</value>
   </data>
   <data name="RC4ProgressBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -6652,7 +6715,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC4ProgressBar.ZOrder" xml:space="preserve">
-    <value>49</value>
+    <value>52</value>
   </data>
   <data name="RC3ProgressBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -6676,7 +6739,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC3ProgressBar.ZOrder" xml:space="preserve">
-    <value>50</value>
+    <value>53</value>
   </data>
   <data name="RCGroupBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>539, 272</value>
@@ -6706,7 +6769,7 @@
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="AltVelIntNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 113</value>
+    <value>51, 164</value>
   </data>
   <data name="AltVelIntNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 20</value>
@@ -6727,7 +6790,7 @@
     <value>AltitudeGroupBox</value>
   </data>
   <data name="&gt;&gt;AltVelIntNumericUpDown.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>0</value>
   </data>
   <data name="AltVeleIntLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6736,16 +6799,16 @@
     <value>NoControl</value>
   </data>
   <data name="AltVeleIntLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 115</value>
+    <value>6, 168</value>
   </data>
   <data name="AltVeleIntLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>12, 13</value>
+    <value>25, 13</value>
   </data>
   <data name="AltVeleIntLabel.TabIndex" type="System.Int32, mscorlib">
     <value>268</value>
   </data>
   <data name="AltVeleIntLabel.Text" xml:space="preserve">
-    <value>Ii</value>
+    <value>Iroc</value>
   </data>
   <data name="&gt;&gt;AltVeleIntLabel.Name" xml:space="preserve">
     <value>AltVeleIntLabel</value>
@@ -6757,7 +6820,7 @@
     <value>AltitudeGroupBox</value>
   </data>
   <data name="&gt;&gt;AltVeleIntLabel.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>3</value>
   </data>
   <data name="EstimatorGroupBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -6814,13 +6877,13 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;YawLPFLabel.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="YawGyroLPFNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="YawGyroLPFNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>160, 43</value>
+    <value>165, 44</value>
   </data>
   <data name="YawGyroLPFNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 20</value>
@@ -6841,7 +6904,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;YawGyroLPFNumericUpDown.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <data name="AccLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6871,7 +6934,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;AccLabel.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="FWGroupBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -7474,7 +7537,7 @@
     <value>20</value>
   </data>
   <data name="FWGroupBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 272</value>
+    <value>12, 272</value>
   </data>
   <data name="FWGroupBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 307</value>
@@ -7497,11 +7560,62 @@
   <data name="&gt;&gt;FWGroupBox.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="ROCSourceComboBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="ROCSourceComboBox.Items" xml:space="preserve">
+    <value>BaroROC</value>
+  </data>
+  <data name="ROCSourceComboBox.Items1" xml:space="preserve">
+    <value>KFROC</value>
+  </data>
+  <data name="ROCSourceComboBox.Items2" xml:space="preserve">
+    <value>GPSROC</value>
+  </data>
+  <data name="ROCSourceComboBox.Items3" xml:space="preserve">
+    <value>u3</value>
+  </data>
+  <data name="ROCSourceComboBox.Items4" xml:space="preserve">
+    <value>u4</value>
+  </data>
+  <data name="ROCSourceComboBox.Items5" xml:space="preserve">
+    <value>u5</value>
+  </data>
+  <data name="ROCSourceComboBox.Items6" xml:space="preserve">
+    <value>u6</value>
+  </data>
+  <data name="ROCSourceComboBox.Items7" xml:space="preserve">
+    <value>u7</value>
+  </data>
+  <data name="ROCSourceComboBox.Items8" xml:space="preserve">
+    <value>u8</value>
+  </data>
+  <data name="ROCSourceComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>152, 95</value>
+  </data>
+  <data name="ROCSourceComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 21</value>
+  </data>
+  <data name="ROCSourceComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>250</value>
+  </data>
+  <data name="&gt;&gt;ROCSourceComboBox.Name" xml:space="preserve">
+    <value>ROCSourceComboBox</value>
+  </data>
+  <data name="&gt;&gt;ROCSourceComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ROCSourceComboBox.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;ROCSourceComboBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="AccZVarianceNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="AccZVarianceNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>147, 120</value>
+    <value>152, 121</value>
   </data>
   <data name="AccZVarianceNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 20</value>
@@ -7522,7 +7636,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;AccZVarianceNumericUpDown.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="BaroVarianceNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -7549,7 +7663,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;BaroVarianceNumericUpDown.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="BaroVarianceLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7579,7 +7693,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;BaroVarianceLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="AccVarianceLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7609,7 +7723,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;AccVarianceLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="AccLPFComboBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -7660,7 +7774,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;AccLPFComboBox.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="GyroLPFComboBox.AutoCompleteCustomSource" xml:space="preserve">
     <value>250, 184, 98, 41, 20, 10, 5, 3600</value>
@@ -7711,7 +7825,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;GyroLPFComboBox.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="ServoLPFHzLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7720,7 +7834,7 @@
     <value>NoControl</value>
   </data>
   <data name="ServoLPFHzLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 71</value>
+    <value>6, 73</value>
   </data>
   <data name="ServoLPFHzLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 13</value>
@@ -7741,7 +7855,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;ServoLPFHzLabel.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="ServoLPFHzNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -7768,7 +7882,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;ServoLPFHzNumericUpDown.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -7797,68 +7911,11 @@
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="ROCGainNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
-  </data>
-  <data name="ROCGainNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 209</value>
-  </data>
-  <data name="ROCGainNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
-  </data>
-  <data name="ROCGainNumericUpDown.TabIndex" type="System.Int32, mscorlib">
-    <value>276</value>
-  </data>
-  <data name="ROCGainNumericUpDown.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;ROCGainNumericUpDown.Name" xml:space="preserve">
-    <value>ROCGainNumericUpDown</value>
-  </data>
-  <data name="&gt;&gt;ROCGainNumericUpDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ROCGainNumericUpDown.Parent" xml:space="preserve">
-    <value>AltitudeGroupBox</value>
-  </data>
-  <data name="&gt;&gt;ROCGainNumericUpDown.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="AltHoldBandLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="AltHoldBandLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="AltHoldBandLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 190</value>
-  </data>
-  <data name="AltHoldBandLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 13</value>
-  </data>
-  <data name="AltHoldBandLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>275</value>
-  </data>
-  <data name="AltHoldBandLabel.Text" xml:space="preserve">
-    <value>Band(M)</value>
-  </data>
-  <data name="&gt;&gt;AltHoldBandLabel.Name" xml:space="preserve">
-    <value>AltHoldBandLabel</value>
-  </data>
-  <data name="&gt;&gt;AltHoldBandLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AltHoldBandLabel.Parent" xml:space="preserve">
-    <value>AltitudeGroupBox</value>
-  </data>
-  <data name="&gt;&gt;AltHoldBandLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="AltVelIntLimitNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="AltVelIntLimitNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 163</value>
+    <value>51, 190</value>
   </data>
   <data name="AltVelIntLimitNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 20</value>
@@ -7879,34 +7936,7 @@
     <value>AltitudeGroupBox</value>
   </data>
   <data name="&gt;&gt;AltVelIntLimitNumericUpDown.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="AltHoldBandNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
-  </data>
-  <data name="AltHoldBandNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 187</value>
-  </data>
-  <data name="AltHoldBandNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
-  </data>
-  <data name="AltHoldBandNumericUpDown.TabIndex" type="System.Int32, mscorlib">
-    <value>271</value>
-  </data>
-  <data name="AltHoldBandNumericUpDown.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;AltHoldBandNumericUpDown.Name" xml:space="preserve">
-    <value>AltHoldBandNumericUpDown</value>
-  </data>
-  <data name="&gt;&gt;AltHoldBandNumericUpDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AltHoldBandNumericUpDown.Parent" xml:space="preserve">
-    <value>AltitudeGroupBox</value>
-  </data>
-  <data name="&gt;&gt;AltHoldBandNumericUpDown.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>1</value>
   </data>
   <data name="AltVelIntLimitLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7915,16 +7945,16 @@
     <value>NoControl</value>
   </data>
   <data name="AltVelIntLimitLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 167</value>
+    <value>6, 194</value>
   </data>
   <data name="AltVelIntLimitLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 13</value>
+    <value>48, 13</value>
   </data>
   <data name="AltVelIntLimitLabel.TabIndex" type="System.Int32, mscorlib">
     <value>274</value>
   </data>
   <data name="AltVelIntLimitLabel.Text" xml:space="preserve">
-    <value>Thr(%)</value>
+    <value>I-Limit(%)</value>
   </data>
   <data name="&gt;&gt;AltVelIntLimitLabel.Name" xml:space="preserve">
     <value>AltVelIntLimitLabel</value>
@@ -7936,7 +7966,7 @@
     <value>AltitudeGroupBox</value>
   </data>
   <data name="&gt;&gt;AltVelIntLimitLabel.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>2</value>
   </data>
   <data name="AltPosIntLimitLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7945,16 +7975,16 @@
     <value>NoControl</value>
   </data>
   <data name="AltPosIntLimitLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 68</value>
+    <value>6, 94</value>
   </data>
   <data name="AltPosIntLimitLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 13</value>
+    <value>34, 13</value>
   </data>
   <data name="AltPosIntLimitLabel.TabIndex" type="System.Int32, mscorlib">
     <value>270</value>
   </data>
   <data name="AltPosIntLimitLabel.Text" xml:space="preserve">
-    <value>Io-Limit</value>
+    <value>I-Limit</value>
   </data>
   <data name="&gt;&gt;AltPosIntLimitLabel.Name" xml:space="preserve">
     <value>AltPosIntLimitLabel</value>
@@ -7966,7 +7996,7 @@
     <value>AltitudeGroupBox</value>
   </data>
   <data name="&gt;&gt;AltPosIntLimitLabel.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>4</value>
   </data>
   <data name="AltPosIntLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7975,16 +8005,16 @@
     <value>NoControl</value>
   </data>
   <data name="AltPosIntLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 44</value>
+    <value>6, 68</value>
   </data>
   <data name="AltPosIntLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 13</value>
+    <value>21, 13</value>
   </data>
   <data name="AltPosIntLabel.TabIndex" type="System.Int32, mscorlib">
     <value>269</value>
   </data>
   <data name="AltPosIntLabel.Text" xml:space="preserve">
-    <value>Io</value>
+    <value>Ialt</value>
   </data>
   <data name="&gt;&gt;AltPosIntLabel.Name" xml:space="preserve">
     <value>AltPosIntLabel</value>
@@ -7996,7 +8026,7 @@
     <value>AltitudeGroupBox</value>
   </data>
   <data name="&gt;&gt;AltPosIntLabel.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>5</value>
   </data>
   <data name="AltPosKpLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -8005,16 +8035,16 @@
     <value>NoControl</value>
   </data>
   <data name="AltPosKpLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 20</value>
+    <value>6, 44</value>
   </data>
   <data name="AltPosKpLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 13</value>
+    <value>25, 13</value>
   </data>
   <data name="AltPosKpLabel.TabIndex" type="System.Int32, mscorlib">
     <value>267</value>
   </data>
   <data name="AltPosKpLabel.Text" xml:space="preserve">
-    <value>Po</value>
+    <value>Palt</value>
   </data>
   <data name="&gt;&gt;AltPosKpLabel.Name" xml:space="preserve">
     <value>AltPosKpLabel</value>
@@ -8026,7 +8056,7 @@
     <value>AltitudeGroupBox</value>
   </data>
   <data name="&gt;&gt;AltPosKpLabel.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>6</value>
   </data>
   <data name="AltVelKpLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -8035,16 +8065,16 @@
     <value>NoControl</value>
   </data>
   <data name="AltVelKpLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 93</value>
+    <value>6, 144</value>
   </data>
   <data name="AltVelKpLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 13</value>
+    <value>29, 13</value>
   </data>
   <data name="AltVelKpLabel.TabIndex" type="System.Int32, mscorlib">
     <value>266</value>
   </data>
   <data name="AltVelKpLabel.Text" xml:space="preserve">
-    <value>Pi</value>
+    <value>Proc</value>
   </data>
   <data name="&gt;&gt;AltVelKpLabel.Name" xml:space="preserve">
     <value>AltVelKpLabel</value>
@@ -8056,7 +8086,7 @@
     <value>AltitudeGroupBox</value>
   </data>
   <data name="&gt;&gt;AltVelKpLabel.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>7</value>
   </data>
   <data name="AltitudeGroupBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -8377,13 +8407,13 @@
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>60</value>
+    <value>25</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>811, 701</value>
+    <value>814, 738</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

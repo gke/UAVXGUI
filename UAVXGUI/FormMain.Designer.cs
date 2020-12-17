@@ -3424,6 +3424,7 @@ namespace UAVXGUI
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
             this.groupBox2.Controls.Add(this.WhereDistance);
             this.groupBox2.Controls.Add(this.label18);
             this.groupBox2.Controls.Add(this.WhereBearingLabel);

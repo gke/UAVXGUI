@@ -431,7 +431,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
             if (parameterForm.AirspeedComboBox.Focused)
                 helpstring = help.GetString("AirspeedSensor");
 
-            if (parameterForm.Unused80NumericUpDown.Focused)
+            if (parameterForm.ROCSourceComboBox.Focused)
                 helpstring = help.GetString("wsLEDs");
 
             if (parameterForm.FWSpoilerDecayTimeNumericUpDown.Focused)
@@ -1519,8 +1519,9 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         ParamUpdate(TurnoutNumericUpDown);
                         break;
                     case 80:
-                        Unused80NumericUpDown.Value = UAVXP[p - 1].Value;
-                        ParamUpdate(Unused80NumericUpDown);
+                        ROCSourceComboBox.SelectedIndex = (UAVXP[p - 1].Value > 2) ?
+                            0: UAVXP[p - 1].Value;
+                        ParamUpdate(ROCSourceComboBox);
                         break;
                     case 81:
                         // hAcc
