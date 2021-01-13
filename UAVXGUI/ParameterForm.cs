@@ -290,9 +290,6 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
             RefreshRxChannels();
             UpdateRCChannels();
 
-            RxLoopbackButton.BackColor = FormMain.RxLoopbackEnabled ?
-            Color.Orange : RCGroupBox.BackColor;
-
             if (FormMain.MaxDefaultAFNames > -1)
             {
                 short DefaultPS = Convert.ToInt16(ParamTemplateNumericUpDown.Text);
@@ -431,12 +428,8 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
             if (parameterForm.AirspeedComboBox.Focused)
                 helpstring = help.GetString("AirspeedSensor");
 
-            if (parameterForm.ROCSourceComboBox.Focused)
-                helpstring = help.GetString("wsLEDs");
-
             if (parameterForm.FWSpoilerDecayTimeNumericUpDown.Focused)
                 helpstring = help.GetString("FWFlapDecayTime");
-
 
             if (parameterForm.AccZVarianceNumericUpDown.Focused)
                 helpstring = help.GetString("AccZVariance");
@@ -451,7 +444,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
             if (parameterForm.bit61CheckBox.Focused)
                 helpstring = help.GetString("FastDescent");
             if (parameterForm.bit21CheckBox.Focused)
-                helpstring = help.GetString("ManualAH");
+                helpstring = help.GetString("Fence");
             if (parameterForm.bit31CheckBox.Focused)
                 helpstring = help.GetString("Emulation");
             if (parameterForm.bit41CheckBox.Focused)
@@ -475,9 +468,6 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                 helpstring = help.GetString("TurnToWP");
             if (parameterForm.bit62CheckBox.Focused)
                 helpstring = help.GetString("CameraPulseAtWP");
-
-            if (parameterForm.RxLoopbackButton.Focused)
-                helpstring = help.GetString("RxLoopBack");
 
             if (parameterForm.NavPosKpNumericUpDown.Focused)
                 helpstring = help.GetString("NavPosition");
@@ -1008,10 +998,10 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 100.0);
                 else
                     if ((p == 54) || (p == 18) || (p == 32) || (p == 34) || (p == 39) || (p == 46) || (p == 53) ||
-                     (p == 70) || (p == 104) || (p == 105) || (p == 110) || (p == 112) | (p == 115))
+                     (p == 70) || (p == 104) || (p == 105) || (p == 110) || (p == 112) || (p == 115 ))
                         P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 10.0);
-                else  
-                   if ((p == 64) || (p == 83) || (p == 84) || (p == 89) )
+                else
+                        if ((p == 64) || (p == 83) || (p == 84) || (p == 89) || (p == 117))
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 0.1);
                 else
                           
@@ -1116,9 +1106,6 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
         public void updateForm()
         {
             int p;
-
-            RxLoopbackButton.BackColor = FormMain.RxLoopbackEnabled ?
-                Color.Orange : RCGroupBox.BackColor;
 
             for (p = 1; p <= FormMain.MAX_PARAMS; p++ )
             {
@@ -1519,9 +1506,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         ParamUpdate(TurnoutNumericUpDown);
                         break;
                     case 80:
-                        ROCSourceComboBox.SelectedIndex = (UAVXP[p - 1].Value > 2) ?
-                            0: UAVXP[p - 1].Value;
-                        ParamUpdate(ROCSourceComboBox);
+                       // unused
                         break;
                     case 81:
                         // hAcc
@@ -1668,6 +1653,11 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                     case 116:
                         CruiseTrackRateNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.01);
                         ParamUpdate(CruiseTrackRateNumericUpDown);
+                        break;
+                    case 117:
+                        FenceRadiusNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 10.0);
+                        FenceRadiusNumericUpDown.BackColor = (Convert.ToDecimal(UAVXP[p - 1].Value * 10.0) > 150) ? Color.Orange : Color.White;
+                        ParamUpdate(FenceRadiusNumericUpDown);
                         break;
                     case 128:
                         ResetCauseButton.Text = ResetCauseNames[UAVXP[p - 1].Value];

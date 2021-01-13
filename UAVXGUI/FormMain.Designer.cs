@@ -323,7 +323,7 @@ namespace UAVXGUI
             this.WPActionTextBox = new System.Windows.Forms.TextBox();
             this.KMLComboBox = new System.Windows.Forms.ComboBox();
             this.CalibrateAccZeroButton = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.WhereGroupBox = new System.Windows.Forms.GroupBox();
             this.label18 = new System.Windows.Forms.Label();
             this.execPercentLabel = new System.Windows.Forms.Label();
             this.attitudeIndicatorInstrumentControl1 = new Instruments.AttitudeIndicatorInstrumentControl();
@@ -347,7 +347,7 @@ namespace UAVXGUI
             this.DrivesGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WarningPictureBox)).BeginInit();
             this.CalibrationGroupBox.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.WhereGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // ConnectButton
@@ -2466,9 +2466,9 @@ namespace UAVXGUI
             // 
             // CalibrateMagButton
             // 
-            this.CalibrateMagButton.Location = new System.Drawing.Point(943, 413);
+            this.CalibrateMagButton.Location = new System.Drawing.Point(851, 442);
             this.CalibrateMagButton.Name = "CalibrateMagButton";
-            this.CalibrateMagButton.Size = new System.Drawing.Size(50, 23);
+            this.CalibrateMagButton.Size = new System.Drawing.Size(69, 23);
             this.CalibrateMagButton.TabIndex = 201;
             this.CalibrateMagButton.Text = "Mag";
             this.CalibrateMagButton.UseVisualStyleBackColor = true;
@@ -2874,11 +2874,11 @@ namespace UAVXGUI
             // 
             // GPSPassThruButton
             // 
-            this.GPSPassThruButton.Location = new System.Drawing.Point(942, 442);
+            this.GPSPassThruButton.Location = new System.Drawing.Point(932, 441);
             this.GPSPassThruButton.Name = "GPSPassThruButton";
-            this.GPSPassThruButton.Size = new System.Drawing.Size(50, 23);
+            this.GPSPassThruButton.Size = new System.Drawing.Size(71, 23);
             this.GPSPassThruButton.TabIndex = 213;
-            this.GPSPassThruButton.Text = "GPS";
+            this.GPSPassThruButton.Text = "GPS ";
             this.GPSPassThruButton.UseVisualStyleBackColor = true;
             this.GPSPassThruButton.Click += new System.EventHandler(this.GPSPassThruButton_Click);
             // 
@@ -3414,28 +3414,28 @@ namespace UAVXGUI
             // 
             // CalibrateAccZeroButton
             // 
-            this.CalibrateAccZeroButton.Location = new System.Drawing.Point(851, 442);
+            this.CalibrateAccZeroButton.Location = new System.Drawing.Point(932, 412);
             this.CalibrateAccZeroButton.Name = "CalibrateAccZeroButton";
             this.CalibrateAccZeroButton.Size = new System.Drawing.Size(69, 23);
             this.CalibrateAccZeroButton.TabIndex = 263;
-            this.CalibrateAccZeroButton.Text = "Zero Acc";
+            this.CalibrateAccZeroButton.Text = "Simple IMU";
             this.CalibrateAccZeroButton.UseVisualStyleBackColor = true;
             this.CalibrateAccZeroButton.Click += new System.EventHandler(this.CalibrateAccZeroButton_Click);
             // 
-            // groupBox2
+            // WhereGroupBox
             // 
-            this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox2.Controls.Add(this.WhereDistance);
-            this.groupBox2.Controls.Add(this.label18);
-            this.groupBox2.Controls.Add(this.WhereBearingLabel);
-            this.groupBox2.Controls.Add(this.WhereDistanceLabel);
-            this.groupBox2.Controls.Add(this.WhereBearing);
-            this.groupBox2.Location = new System.Drawing.Point(11, 453);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(305, 40);
-            this.groupBox2.TabIndex = 264;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Aircraft Direction and Distance";
+            this.WhereGroupBox.BackColor = System.Drawing.SystemColors.Control;
+            this.WhereGroupBox.Controls.Add(this.WhereDistance);
+            this.WhereGroupBox.Controls.Add(this.label18);
+            this.WhereGroupBox.Controls.Add(this.WhereBearingLabel);
+            this.WhereGroupBox.Controls.Add(this.WhereDistanceLabel);
+            this.WhereGroupBox.Controls.Add(this.WhereBearing);
+            this.WhereGroupBox.Location = new System.Drawing.Point(11, 453);
+            this.WhereGroupBox.Name = "WhereGroupBox";
+            this.WhereGroupBox.Size = new System.Drawing.Size(305, 40);
+            this.WhereGroupBox.TabIndex = 264;
+            this.WhereGroupBox.TabStop = false;
+            this.WhereGroupBox.Text = "Aircraft Direction and Distance";
             // 
             // label18
             // 
@@ -3479,7 +3479,7 @@ namespace UAVXGUI
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1013, 643);
             this.Controls.Add(this.execPercentLabel);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.WhereGroupBox);
             this.Controls.Add(this.CalibrateAccZeroButton);
             this.Controls.Add(this.KMLComboBox);
             this.Controls.Add(this.WPActionTextBox);
@@ -3565,8 +3565,8 @@ namespace UAVXGUI
             ((System.ComponentModel.ISupportInitialize)(this.WarningPictureBox)).EndInit();
             this.CalibrationGroupBox.ResumeLayout(false);
             this.CalibrationGroupBox.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.WhereGroupBox.ResumeLayout(false);
+            this.WhereGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3853,7 +3853,7 @@ namespace UAVXGUI
         private System.Windows.Forms.TextBox SerialARxEntries;
         private System.Windows.Forms.TextBox SerialATxEntries;
         private System.Windows.Forms.Label SerialAlLabel;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox WhereGroupBox;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ProgressBar SerialBRxProgressBar;
         private System.Windows.Forms.ProgressBar SerialARxProgressBar;

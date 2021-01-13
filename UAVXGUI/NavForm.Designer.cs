@@ -71,6 +71,7 @@ namespace UAVXGUI
             this.MainMap = new GMap.NET.WindowsForms.GMapControl();
             this.DistanceLabel = new System.Windows.Forms.Label();
             this.OriginGroupBox = new System.Windows.Forms.GroupBox();
+            this.ShowFenceCheckBox = new System.Windows.Forms.CheckBox();
             this.ShowMissionCheckBox = new System.Windows.Forms.CheckBox();
             this.ShowFlightPathCheckBox = new System.Windows.Forms.CheckBox();
             this.MapCentreButton = new System.Windows.Forms.Button();
@@ -113,14 +114,13 @@ namespace UAVXGUI
             this.UAVXReadButton = new System.Windows.Forms.Button();
             this.ProximityAltTextBox = new System.Windows.Forms.TextBox();
             this.ClickMapLabel = new System.Windows.Forms.Label();
-            this.FenceRadiusLabel = new System.Windows.Forms.Label();
-            this.FenceRadiusTextBox = new System.Windows.Forms.TextBox();
             this.ProximityAltLabel = new System.Windows.Forms.Label();
             this.PerchContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ViaContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OrbitContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.POIContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TMRContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.FenceContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ContextMenuSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.WPDeleteContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ClearMissionContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -195,6 +195,7 @@ namespace UAVXGUI
             // 
             // OriginGroupBox
             // 
+            this.OriginGroupBox.Controls.Add(this.ShowFenceCheckBox);
             this.OriginGroupBox.Controls.Add(this.ShowMissionCheckBox);
             this.OriginGroupBox.Controls.Add(this.ShowFlightPathCheckBox);
             this.OriginGroupBox.Controls.Add(this.MapCentreButton);
@@ -213,6 +214,18 @@ namespace UAVXGUI
             this.OriginGroupBox.TabIndex = 24;
             this.OriginGroupBox.TabStop = false;
             this.OriginGroupBox.Text = "Locate";
+            // 
+            // ShowFenceCheckBox
+            // 
+            this.ShowFenceCheckBox.AutoSize = true;
+            this.ShowFenceCheckBox.Checked = true;
+            this.ShowFenceCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ShowFenceCheckBox.Location = new System.Drawing.Point(152, 96);
+            this.ShowFenceCheckBox.Name = "ShowFenceCheckBox";
+            this.ShowFenceCheckBox.Size = new System.Drawing.Size(56, 17);
+            this.ShowFenceCheckBox.TabIndex = 184;
+            this.ShowFenceCheckBox.Text = "Fence";
+            this.ShowFenceCheckBox.UseVisualStyleBackColor = true;
             // 
             // ShowMissionCheckBox
             // 
@@ -529,6 +542,7 @@ namespace UAVXGUI
             "Orbit",
             "Perch",
             "POI",
+            "Fence",
             "Survey"});
             this.Action.Name = "Action";
             this.Action.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -688,25 +702,6 @@ namespace UAVXGUI
             this.ClickMapLabel.Text = "Click Map to Add WP";
             this.ClickMapLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // FenceRadiusLabel
-            // 
-            this.FenceRadiusLabel.AutoSize = true;
-            this.FenceRadiusLabel.Location = new System.Drawing.Point(6, 18);
-            this.FenceRadiusLabel.Name = "FenceRadiusLabel";
-            this.FenceRadiusLabel.Size = new System.Drawing.Size(73, 13);
-            this.FenceRadiusLabel.TabIndex = 59;
-            this.FenceRadiusLabel.Text = "Range Check";
-            // 
-            // FenceRadiusTextBox
-            // 
-            this.FenceRadiusTextBox.Location = new System.Drawing.Point(82, 15);
-            this.FenceRadiusTextBox.Name = "FenceRadiusTextBox";
-            this.FenceRadiusTextBox.Size = new System.Drawing.Size(33, 20);
-            this.FenceRadiusTextBox.TabIndex = 58;
-            this.FenceRadiusTextBox.Text = "200";
-            this.FenceRadiusTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.FenceRadiusTextBox.TextChanged += new System.EventHandler(this.FenceRadius_TextChanged);
-            // 
             // ProximityAltLabel
             // 
             this.ProximityAltLabel.AutoSize = true;
@@ -754,6 +749,13 @@ namespace UAVXGUI
             this.TMRContextMenuItem.Size = new System.Drawing.Size(146, 22);
             this.TMRContextMenuItem.Text = "Set Survey";
             this.TMRContextMenuItem.Click += new System.EventHandler(this.TMRContextMenuItem_Click);
+            // 
+            // FenceContextMenuItem
+            // 
+            this.FenceContextMenuItem.Name = "FenceContextMenuItem";
+            this.FenceContextMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.FenceContextMenuItem.Text = "Set Fence";
+            this.FenceContextMenuItem.Click += new System.EventHandler(this.FenceContextMenuItem_Click);
             // 
             // ContextMenuSeparator1
             // 
@@ -807,6 +809,7 @@ namespace UAVXGUI
             this.OrbitContextMenuItem,
             this.PerchContextMenuItem,
             this.POIContextMenuItem,
+            this.FenceContextMenuItem,
             this.TMRContextMenuItem,
             this.ContextMenuSeparator1,
             this.WPDeleteContextMenuItem,
@@ -814,7 +817,7 @@ namespace UAVXGUI
             this.ContextMenuSeparator2,
             this.FetchMapTilesContextMenuItem});
             this.contextMenuStripMap.Name = "contextMenuStripMap";
-            this.contextMenuStripMap.Size = new System.Drawing.Size(147, 192);
+            this.contextMenuStripMap.Size = new System.Drawing.Size(147, 214);
             this.contextMenuStripMap.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStripMap_Opening);
             // 
             // ContextMenuSeparator3
@@ -840,8 +843,6 @@ namespace UAVXGUI
             // 
             this.WPDefaultsGroupBox.Controls.Add(this.DefaultLoiterTextBox);
             this.WPDefaultsGroupBox.Controls.Add(this.DefaultAltTextBox);
-            this.WPDefaultsGroupBox.Controls.Add(this.FenceRadiusLabel);
-            this.WPDefaultsGroupBox.Controls.Add(this.FenceRadiusTextBox);
             this.WPDefaultsGroupBox.Controls.Add(this.DefAltitudeLabel);
             this.WPDefaultsGroupBox.Controls.Add(this.LoiterTimeLabel);
             this.WPDefaultsGroupBox.Location = new System.Drawing.Point(235, 513);
@@ -1038,8 +1039,6 @@ namespace UAVXGUI
         private Button UAVXWriteButton;
         private Button UAVXReadButton;
         private Label ClickMapLabel;
-        private Label FenceRadiusLabel;
-        private TextBox FenceRadiusTextBox;
         private Label ProximityAltLabel;
         private TextBox ProximityAltTextBox;
         private Label ProxRadiusLabel;
@@ -1056,6 +1055,7 @@ namespace UAVXGUI
         private ContextMenuStrip contextMenuStripMap;
         private System.Windows.Forms.ToolStripMenuItem POIContextMenuItem;
         private System.Windows.Forms.ToolStripMenuItem TMRContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem FenceContextMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ViaContextMenuItem;
         private System.Windows.Forms.ToolStripMenuItem OrbitContextMenuItem;
         private System.Windows.Forms.ToolStripMenuItem PerchContextMenuItem;
@@ -1100,6 +1100,8 @@ namespace UAVXGUI
         private DataGridViewImageColumn Up;
         private DataGridViewImageColumn Down;
         private DataGridViewImageColumn DEL;
+        private CheckBox ShowFenceCheckBox;
+
 
         //private GMap.NET.WindowsForms.GMapControl MainMap;
     }

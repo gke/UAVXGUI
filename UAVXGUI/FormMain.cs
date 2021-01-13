@@ -274,7 +274,7 @@ namespace UAVXGUI
 
         static NavStates PrevNavState = NavStates.UnknownNavState;
 
-        public enum NavComs { navVia, navOrbit, navPerch, navPOI, navPulse, navGlide, navLand};
+        public enum NavComs { navVia, navOrbit, navPerch, navPOI, navPulse, navGlide, navLand, navGeoVertex, navUnknown};
 
         public static string[] NavComNames = {
             "Via",
@@ -283,7 +283,9 @@ namespace UAVXGUI
             "POI",
             "Survey",
             "Glide",
-            "Land"
+            "Land",
+            "Fence",
+            "Unknown"
             };
 
    //     NavComs NavCom;
@@ -479,7 +481,7 @@ namespace UAVXGUI
 				OffsetOriginValid,
 				DrivesArmed,
 				AccZBump,
-				UseManualAltHold,
+				Unused3_7,
 
 				// 4
 				Saturation,
@@ -498,7 +500,7 @@ namespace UAVXGUI
 				RCMapFail,
 				NewAltitudeValue,
 				IMUCalibrated,
-				CrossTrackActive,
+				FenceAlarm,
 				AccCalibrated
 
         };
@@ -1075,7 +1077,7 @@ namespace UAVXGUI
 
         private void CreateSaveLogFile()
         {
-            FileName = UAVXGUI.Properties.Settings.Default.LogDirectory + "\\UAVX_" + 
+            FileName = UAVXGUI.Properties.Settings.Default.LogDirectory + "\\UAVX_" + VersionNameT +
                 DateTime.Now.Year + "_" +
                 DateTime.Now.Month + "_" +
                 DateTime.Now.Day + "_" +
@@ -1193,7 +1195,7 @@ namespace UAVXGUI
                 "OffsetOriginValid," +
                 "DrivesArmed," +
                 "AccZBump," +
-                "ManualAH," +
+                "Fence," +
 
                 "Signal," +
                 "DumpBB," +
@@ -1210,7 +1212,7 @@ namespace UAVXGUI
                 "RCMapFail," +
                 "NewAltVal," +
                 "IMUCal," +
-                "CTrackActive," +
+                "FenceAlarm," +
                 "AccCal,");
 
             SaveTextLogFileStreamWriter.Write("StateT," +
@@ -1970,7 +1972,8 @@ namespace UAVXGUI
             DrivesGroupBox.BackColor = F[(byte)FlagValues.Saturation] ?
                System.Drawing.Color.Orange : System.Drawing.SystemColors.Control;
 
-          
+            WhereGroupBox.BackColor = F[(byte)FlagValues.FenceAlarm] ?
+                         Color.Orange : System.Drawing.SystemColors.Control;  
    
         }
 

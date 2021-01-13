@@ -77,6 +77,7 @@ namespace UAVXGUI
         //Routes on Map
         static GMapRoute GMRouteFlightPath;
         static GMapRoute GMRouteMission;
+        static GMapRoute GMRouteFence;
 
         //Map Overlays
         static GMapOverlay GMOverlayFlightPath;// static so can update from gcs
@@ -84,6 +85,7 @@ namespace UAVXGUI
         static GMapOverlay GMOverlayMission;
         static GMapOverlay GMOverlayLiveData;
         static GMapOverlay GMOverlayPOI;
+        static GMapOverlay GMOverlayFence;
 
         static GMapProvider[] mapProviders;
         static PointLatLng copterPos;
@@ -122,7 +124,6 @@ namespace UAVXGUI
 
      //   static byte PrevWPT = 255;
 
-        short FenceRadius;
         double LongitudeCorrectionT = 1.0f;
         //bool WPInvalid = false;
 
@@ -168,8 +169,8 @@ namespace UAVXGUI
             FormMain.Mission.ProximityAltitude = Properties.Settings.Default.ProximityAltitude;
             ProximityAltTextBox.Text = string.Format("{0:n0}", FormMain.Mission.ProximityAltitude);
 
-            FormMain.Mission.FenceRadius = Properties.Settings.Default.FenceRadius;
-            FenceRadiusTextBox.Text = string.Format("{0:n0}", FormMain.Mission.FenceRadius);
+           // FormMain.Mission.FenceRadius = Properties.Settings.Default.FenceRadius;
+           // FenceRadiusTextBox.Text = string.Format("{0:n0}", FormMain.Mission.FenceRadius);
 
             DefaultLoiterTextBox.Text = string.Format("{0:n0}", Properties.Settings.Default.LoiterTime);
 
@@ -233,6 +234,9 @@ namespace UAVXGUI
             GMOverlayPOI = new GMapOverlay("poi");
             MainMap.Overlays.Add(GMOverlayPOI);
 
+            GMOverlayFence = new GMapOverlay("fence");
+            MainMap.Overlays.Add(GMOverlayFence);
+ 
             GMOverlayLiveData.Markers.Clear();
             GMOverlayLiveData.Markers.Add(new GMapMarkerCopter(copterPos, 0, 0, 0, 3));
 
@@ -329,8 +333,9 @@ namespace UAVXGUI
             }
 
             //Hack to force map update
-            GMOverlayFlightPath.IsVisibile = false;
+            //GMOverlayFlightPath.IsVisibile = false;
             GMOverlayFlightPath.IsVisibile = ShowFlightPathCheckBox.Checked;
+            GMOverlayFence.IsVisibile = ShowFenceCheckBox.Checked;
 
             //Update markers
             if (FormMain.GPSLatitudeT != 0)
@@ -436,6 +441,9 @@ namespace UAVXGUI
             if (GMOverlayPOI != null)
                 GMOverlayPOI.Markers.Clear();
 
+            if (GMOverlayFence != null)
+                GMOverlayFence.Markers.Clear();
+
             for (int a = 0; a < M.Rows.Count - 0; a++)
             {
                 string sLat = M.Rows[a].Cells[mLat].Value.ToString(); // lat
@@ -448,6 +456,10 @@ namespace UAVXGUI
                     if (sAction == "POI") 
                         AddPOIMarker((a + 1).ToString(), double.Parse(sLon), double.Parse(sLat));
                     else
+                        if (sAction == "Fence")
+                            AddFenceMarker((a + 1).ToString(), double.Parse(sLon), double.Parse(sLat),
+                         (int)double.Parse(sAlt), null, Convert.ToByte(Array.IndexOf(FormMain.NavComNames, sAction)));
+                        else
                         if (sAction == "Survey")
                         {
                             // no Marker
@@ -460,6 +472,7 @@ namespace UAVXGUI
 
             RegenerateMissionRoute();
             DistanceLabel.Text = String.Format("Mission total dist.:{0:n1}m", GMRouteMission.Distance * 1000);
+            RegenerateFence();
         }
 
         //_______________________________________________________________________________________
@@ -549,6 +562,12 @@ namespace UAVXGUI
             GMOverlayFlightPath.IsVisibile = ShowFlightPathCheckBox.Checked;
         }
 
+        private void ShowFenceCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            GMOverlayFence.IsVisibile = ShowFenceCheckBox.Checked;
+            MainMap.Invalidate(false);
+        }
+
         private void GoToCheckBox_CheckChanged(object sender, EventArgs e)
         {
             M.Rows.Clear();
@@ -620,36 +639,6 @@ namespace UAVXGUI
         } // SearchAddressTextBox_Enter
 
 
-
-        private void FenceRadius_TextChanged(object sender, EventArgs e)
-        {
-
-            if (FenceRadiusTextBox.Text == "")
-            {
-                FenceRadius = -1;
-                FenceRadiusTextBox.BackColor = System.Drawing.Color.Red;
-            }
-            else
-            {
-                short outValue;
-                short.TryParse(StartLat.Text, out outValue);
-                FenceRadius = outValue;
-                if (FenceRadius <= 50)
-                    FenceRadiusTextBox.BackColor = System.Drawing.Color.White;
-                else
-                    if (FenceRadius <= 100)
-                        FenceRadiusTextBox.BackColor = System.Drawing.Color.Lime;
-                    else
-                        if (FenceRadius <= 150)
-                            FenceRadiusTextBox.BackColor = System.Drawing.Color.Orange;
-                        else
-                            FenceRadiusTextBox.BackColor = System.Drawing.Color.Red;
-            }
-            Properties.Settings.Default.FenceRadius = FormMain.Mission.FenceRadius = FenceRadius;
-            UAVXWriteButton.BackColor = System.Drawing.Color.Orange;
- 
-        } // FenceRadius_TextChanged
-  
 
         private void StartLat_Leave(object sender, EventArgs e)
         {
@@ -875,6 +864,28 @@ namespace UAVXGUI
             GMOverlayPOI.Markers.Add(mBorders);
         }
 
+        private void AddFenceMarker(string tag, double lng, double lat, int alt, Color? color, byte markertype)
+        {
+  
+            PointLatLng point = new PointLatLng(lat, lng);
+
+            GMapMarker m = new GMapMarkerMissionStep(point, Convert.ToByte(tag), (byte)markertype);
+            m.Tag = tag;
+
+            GMapMarkerRect mBorders = new GMapMarkerRect(point);
+            {
+                mBorders.InnerMarker = m;
+                mBorders.wprad = (int)FormMain.Mission.ProximityRadius / 100;
+                mBorders.MainMap = MainMap;
+                if (color.HasValue)
+                    mBorders.Color = color.Value;
+            }
+
+            GMOverlayFence.Markers.Add(m);
+            GMOverlayFence.Markers.Add(mBorders);
+
+        }
+
         private void ViaContextMenuItem_Click(object sender, EventArgs e)
         {
             if (!GoToEnabled)
@@ -923,6 +934,14 @@ namespace UAVXGUI
         } // TMRContextMenuItem_Click
 
 
+        private void FenceContextMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!GoToEnabled)
+                addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navGeoVertex], start.Lat, start.Lng,
+                    120, 0, 0, 0, 0, 0, 0);
+        } // FenceContextMenuItem_Click
+
+
         private void ClearMissionContextMenuItem_Click(object sender, EventArgs e)
         {
             M.Rows.Clear();
@@ -958,32 +977,12 @@ namespace UAVXGUI
         } // WPDeleteContextMenuItem_Click
 
 
-        public bool BeyondFenceRadius(double Lat, double Lon)
-        {
-            double Distance;
-
-            if (FenceRadius > 0) {
-                Distance = MainMap.MapProvider.Projection.GetDistance(
-                new PointLatLng(FormMain.Mission.OriginLatitude * 1e-7, FormMain.Mission.OriginLongitude * 1e-7), 
-                new PointLatLng(Lat, Lon)
-                ) * 1000.0;
-            return(Distance > (double)FenceRadius);
-        } else
-        return(false);
-    
-        } // BeyondFenceRadius
-
 
         private void addWP(string action, double Lat, double Lon, int Alt, double Vel, int Loiter, double OrbitRadius, double OrbitVel, double TMRWidth, double TMRPeriod)
         {
             if (M.Rows.Count >= FormMain.MaxWayPoints)
                 MessageBox.Show("Too many waypoints. Limit " + Convert.ToString(FormMain.MaxWayPoints), "Max waypoints reached", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
-               
-            {
-                 if (BeyondFenceRadius(Lat, Lon) || (FormMain.CurrAlt > FormMain.MaximumAltitudeLimit))
-                     MessageBox.Show("Waypoint is beyond your range limit setting of " + Convert.ToString(FenceRadius)
-                         + "m away or above " + FormMain.MaximumAltitudeLimit + "m  (FAA/CASA/etc).", " ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else  {
 
                 int selectedrow = M.Rows.Add();
                 M.Rows[selectedrow].Cells[mWP].Value = selectedrow + 1;
@@ -1027,7 +1026,7 @@ namespace UAVXGUI
             if (GMRouteMission == null)
             {
                 GMRouteMission = new GMapRoute(polygonPoints, "wp route");
-                GMRouteMission.Stroke = new Pen(Color.Aquamarine, 3);
+                GMRouteMission.Stroke = new Pen(Color.Aquamarine, 2);
 
                 GMOverlayMission.Routes.Add(GMRouteMission);
             }
@@ -1044,9 +1043,52 @@ namespace UAVXGUI
             GMOverlayMission.IsVisibile = false;
             MainMap.Invalidate(false);
             GMOverlayMission.IsVisibile = ShowMissionCheckBox.Checked;
+
             MainMap.Invalidate(false);
 
         } // RegenerateMissionRoute
+
+
+        void RegenerateFence()
+        {
+            List<PointLatLng> polygonPoints = new List<PointLatLng>();
+
+            if (GMOverlayFence == null)
+                return;
+
+            foreach (GMapMarker m in GMOverlayFence.Markers)
+            {
+                if (m is GMapMarkerRect)
+                {
+                    m.Tag = polygonPoints.Count;
+                    polygonPoints.Add(m.Position);
+                }
+            }
+            if (GMRouteFence == null)
+            {
+                GMRouteFence = new GMapRoute(polygonPoints, "fence");
+                GMRouteFence.Stroke = new Pen(Color.Red, 1);
+
+                GMOverlayFence.Routes.Add(GMRouteFence);
+            }
+            else
+            {
+                GMRouteFence.Points.Clear();
+                GMRouteFence.Points.AddRange(polygonPoints);
+
+                if (GMOverlayFence.Routes.Count == 0)
+                    GMOverlayFence.Routes.Add(GMRouteFence);
+                else
+                    MainMap.UpdateRouteLocalPosition(GMRouteFence);
+            }
+
+            GMOverlayFence.IsVisibile = false;
+            MainMap.Invalidate(false);
+            GMOverlayFence.IsVisibile = ShowFenceCheckBox.Checked;
+
+            MainMap.Invalidate(false);
+
+        } // RegenerateFence
 
 
         void MainMap_OnCurrentPositionChanged(PointLatLng point)
@@ -1593,12 +1635,21 @@ namespace UAVXGUI
                         g.DrawString("PCH", drawFont, drawBrush, -12, -51);
                         drawBrush.Color = Color.White;
                         break;
+                    case FormMain.NavComs.navGeoVertex:
+                        pic = Properties.Resources.del_btn;
+                        //drawBrush.Color = Color.Yellow;
+                        //g.DrawString("GEO", drawFont, drawBrush, -12, -51);
+                        //drawBrush.Color = Color.White;
+                        break;
                     default:
                         pic = Properties.Resources.timed_marker;
                         break;
                 }
 
-                g.DrawImageUnscaled(pic, pic.Width / -2 - 4, -pic.Height - 14);
+                if ((FormMain.NavComs)markertype == FormMain.NavComs.navGeoVertex)
+                    g.DrawImageUnscaled(pic, pic.Width / -2, -pic.Height/2);
+                else // oddball offset to bottom of icon
+                    g.DrawImageUnscaled(pic, pic.Width / -2 - 4, -pic.Height - 14);
 
                 if (number < 10) g.DrawString(String.Format("{0:0}", number), drawFont, drawBrush, -5, -40);
                 if (number < 100 && number > 9) g.DrawString(String.Format("{0:0}", number), drawFont, drawBrush, -8, -40);
@@ -1680,7 +1731,7 @@ namespace UAVXGUI
                 System.IO.StreamWriter MissionFileStreamWriter = new System.IO.StreamWriter(MissionFileStream, System.Text.Encoding.ASCII);
 
                 MissionFileStreamWriter.WriteLine("OPTIONS:" 
-                    + FenceRadiusTextBox.Text
+                    + 0 //FenceRadiusTextBox.Text
                     + "," + AltitudeOverTerrainCheckBox.Checked
                     + "," + MapZoomNumericUpDown.Value.ToString());
 
@@ -1793,7 +1844,7 @@ namespace UAVXGUI
                         switch (sObjType)
                         {
                             case "OPTIONS":
-                                FenceRadiusTextBox.Text = string.Format("{0:n0}", Convert.ToInt16(sParam[0]));
+                             //  FenceRadiusTextBox.Text  = string.Format("{0:n0}", Convert.ToInt16(sParam[0]));
                                 AltitudeOverTerrainCheckBox.Checked = Convert.ToBoolean(sParam[1]);
                  
                                 if (sParam.GetUpperBound(0) >= 4)
@@ -1895,7 +1946,7 @@ namespace UAVXGUI
 
             ProximityRadiusTextBox.Text = string.Format("{0:n0}", FormMain.Mission.ProximityRadius);
             ProximityAltTextBox.Text = string.Format("{0:n0}", FormMain.Mission.ProximityAltitude);
-            FenceRadiusTextBox.Text = string.Format("{0:n0}", FormMain.Mission.FenceRadius);
+            //FenceRadiusTextBox.Text = string.Format("{0:n0}", FormMain.Mission.FenceRadius);
 
             double nLat, nLon;
 
@@ -1961,7 +2012,7 @@ namespace UAVXGUI
                 //COnverting general variables
                 FormMain.Mission.ProximityRadius = Convert.ToByte(Convert.ToDouble(ProximityRadiusTextBox.Text));
                 FormMain.Mission.ProximityAltitude = Convert.ToByte(Convert.ToDouble(ProximityAltTextBox.Text));
-                FormMain.Mission.FenceRadius = Convert.ToInt16(Convert.ToDouble(FenceRadiusTextBox.Text));
+                FormMain.Mission.FenceRadius = 0; // Convert.ToInt16(Convert.ToDouble(FenceRadiusTextBox.Text));
 
                 UAVXOptions &= 0;
 
@@ -2037,6 +2088,7 @@ namespace UAVXGUI
            // this.Close(); //now close the form
         }
 
+      
 
     }
 
