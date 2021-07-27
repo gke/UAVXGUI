@@ -146,7 +146,7 @@
     <value>ENABLES  aircraft to expore autonomous thermal hunting. WP Missions are not allowed.</value>
   </data>
         <data name="GyroOS" xml:space="preserve">
-    <value>Enables gyro oversampling at 8KHz for SPI bus connected IMU (UAVXV4 boards).</value>
+    <value>The UAVX assumption for yaw control is for motor K1 to rotate ACW. This changes the assumption to be CW used by frames built for MultiWii and descendants. Useful in avoiding the need to swap brushed motors around.</value>
   </data>
   
       <data name="CameraPulseAtWP" xml:space="preserve">
@@ -164,8 +164,7 @@
   </data>
   <data name="RxType" xml:space="preserve">
     <value>There are a wide range of options available for connecting receivers to UAVX. CompoundPPM, or CPPM is when a
-    single channel on the Rx provides all channels as a packet, ParallelPPM is when you connect all channels to UAVX.
-    Spektrum and SBUS use serial data based transmission. </value>
+    single channel on the Rx provides all channels as a packet. Spektrum and SBUS use serial data based transmission. </value>
   </data>
   <data name="ArmingMode" xml:space="preserve">
     <value>Arming using the Tx or a physical switch on the aircraft.
@@ -220,16 +219,16 @@
     <value>Nominal FW best climb angle.</value>
  </data>
   <data name="AltBand" xml:space="preserve">
-    <value>This is the altitude error which gives the maximum rate of climb or descent for altitude hold.</value>
+    <value>This is the maximum/minimum percentage change in throttle for altitude hold compensation.</value>
  </data>
   <data name="AltVelInt" xml:space="preserve">
-    <value>Attempts to reduce the final ROC error. Important for continuing to reduce the throttle after landing. Effectively it is seconds until minimum throttle is reached.</value>
+    <value>Attempts to reduce the final ROC error. Important for continuing to reduce the throttle after landing.</value>
  </data>
-  <data name="AltCF" xml:space="preserve">
-    <value>Percentage of accelerometer estimated vertical velocity to use with barometer rate of climb estimate.</value>
+  <data name="AccUBiasVariance" xml:space="preserve">
+    <value>The variance of the vertical acceleration used by the KF in computing the altitude and rate of climb - smaller value slower tracking.</value>
  </data>
   <data name="AltVelIntLimit" xml:space="preserve">
-    <value>The maximum overall % altitude hold correction added to the throttle setting. </value>
+    <value>The maximum integrated ROC correction.</value>
  </data>
     <data name="TrimAngle" xml:space="preserve">
     <value>Nominal FW desired pitch trim angle. DO NOT trim aircraft using accelerometer trims.</value>
@@ -282,8 +281,8 @@
   <data name="NavPosition" xml:space="preserve">
     <value>Determines the desired velocity for a given Nav position error.</value>
   </data>
-  <data name="NavGPSTimeout" xml:space="preserve">
-    <value>The maximimum time for loss of GPS signal before failsafe forced landing is triggered.</value>
+  <data name="AHROCWindow" xml:space="preserve">
+    <value>The aircraft must be climbing or descending slower than this for it to be detected as hovering.</value>
   </data>
     <data name="NavMaxVel" xml:space="preserve">
     <value>The maximimum ground speed but limited by maximum Nav Angle.</value>
@@ -316,11 +315,9 @@
   <data name="VRSDescentRate" xml:space="preserve">
     <value>If your descent rate exceeds this for multicopters during navigation then it will attempt to orbit in forward flight to avoid dropping into its own prop wash.</value>
   </data>
-  <data name="ManualAH" xml:space="preserve">
-    <value>ENABLES Manual Altitude Hold. CAUTION there will be no altitutude hold on RTH, Position hold or navigation if checked.</value>
+  <data name="Fence" xml:space="preserve">
+    <value>ENABLES enforcement of geo fencing failsafes.</value>
   </data>
-
- 
   <data name="AccLPF" xml:space="preserve">
     <value>The frequency above which accelerometer signals are filtered out.</value>
   </data>
@@ -516,11 +513,8 @@ Does not work for UAVP PIC VERSION - uses specific hex file for the required air
   </data>
   <data name="TelemetryType" xml:space="preserve">
     <value>Controls the format of telemetry information:
- * None
- * UAVX - full flight control and nav packets 
- * UAVXMin - minimum attitude, location and battery information (Uses FrSky text transmission to UAVXGS)
- * FrSky - for Taranis and other FrSky telemetry compatible transmitters
- * Fusion - Altitude Hold variables
+ * DJT Decoder - FrSky D Telemetry for XJT Tx Module
+ * LUA Script - OpenTx LUA Script
 </value>
   </data>
   <data name="RxChannels" xml:space="preserve">

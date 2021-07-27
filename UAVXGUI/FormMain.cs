@@ -38,6 +38,7 @@ using System.Text.RegularExpressions;
 using System.Xml;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime;
 
 using System.Resources;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -225,7 +226,7 @@ namespace UAVXGUI
 
 	 public const byte UAVXUKFPacketTag = 58;
 	 public const byte UAVXGuidancePacketTag = 59;
-	 public const byte UAVXFusionPacketTag = 60;
+	 public const byte UAVXAltitudeControlPacketTag = 60;
 	 public const byte UAVXSoaringPacketTag = 61;
 	 public const byte UAVXCalibrationPacketTag = 62;
 	
@@ -235,6 +236,7 @@ namespace UAVXGUI
      public const byte UAVXTrackPacketTag = 65;
      public const byte UAVXSerialPortsPacketTag = 66;
      public const byte UAVXExecutionTimePacketTag = 67;
+     public const byte UAVXAttitudeControlPacketTag = 68;
 
         public const byte FrSkyPacketTag = 99;
 
@@ -340,7 +342,7 @@ namespace UAVXGUI
 	        "UAVXTuningPacketTag",
 	        "UAVXUKFPacketTag",
 	        "UAVXGuidancePacketTag",
-            "UAVXFusionPacketTag",
+            "UAVXAltitudeControlPacketTag",
             "UAVXSoaringPacketTag",
             "UAVXCalibrationPacketTag",
          
@@ -527,10 +529,10 @@ namespace UAVXGUI
         short[] AccT = new short[3];
         short[] DesiredRateT = new short[3]; 
         short[] RateT = new short[3];
+        short[] OutT = new short[3];
 
         short ROCT, FROCT;                     // 43
         short RawAccZT;
-        int PrevRelAltitude = 0;
         int RawRelAltitudeT, FAltitudeT, AltitudeT;          // 45 24bits
         short CruiseThrottleT;          // 48
         short RangefinderAltitudeT;     // 50
@@ -542,14 +544,11 @@ namespace UAVXGUI
         short AltCompT;                 // 60
         short AccConfidenceT;           // 62
 
-        int FusionmSecT;
         int BaroTemperatureT;
         int BaroPressureT;
 
-        int BaroROCT, FGPSROCT, FGPSAltitudeT, TrackBaroVT, TrackAccZVT, AltPosDesiredT, 
-            AltPosErrorT, AltPosPTermT, AltPosITermT, AltRateDesiredT, AltRateErrorT,
-            AltRatePTermT, AltRateITermT, FAltCompT, FCruiseThrottleT, FDesiredThrottleT;
-        short AHFlags;
+        int BaroROCT, AltPosDesiredT, BBCorrectionT, BBCruiseThrottleT, BBDesiredThrottleT, BBAltCompT, BBVoltsT;
+        short BBRateT;
 
         short BaroVarianceT;
         short AccUVarianceT;
@@ -763,7 +762,8 @@ namespace UAVXGUI
         bool CalibrateMagEnabled = false;
 
         bool LogFileHeaderWritten = false;
-        bool FusionFileHeaderWritten = false;
+        bool AltitudeControlFileHeaderWritten = false;
+        bool AttitudeControlFileHeaderWritten = false;
         bool KMLFileHeaderWritten = false;
         public static bool RxLoopbackEnabled = false;
 
@@ -851,8 +851,10 @@ namespace UAVXGUI
         System.IO.FileStream SaveTrackLogFileStream;
         System.IO.StreamWriter SaveTrackLogFileStreamWriter;
 
-        System.IO.FileStream SaveTextFusionFileStream;
-        System.IO.StreamWriter SaveTextFusionFileStreamWriter;
+        System.IO.FileStream SaveTextAltitudeControlFileStream;
+        System.IO.StreamWriter SaveTextAltitudeControlFileStreamWriter;
+        System.IO.FileStream SaveTextAttitudeControlFileStream;
+        System.IO.StreamWriter SaveTextAttitudeControlFileStreamWriter;
 
         System.IO.FileStream OpenLogFileStream;
         System.IO.BinaryReader OpenLogFileBinaryReader;
@@ -906,19 +908,20 @@ namespace UAVXGUI
           Version vrs = new Version(Application.ProductVersion);
           //this.Text = this.Text + " v" + vrs.Major + "." + vrs.Minor + "." + vrs.Build;// vrs.MajorRevision + 
 
-          FusionFileHeaderWritten = false;
+          AltitudeControlFileHeaderWritten = false;
+          AttitudeControlFileHeaderWritten = false;
 
           ReplayDelay = 20 - Convert.ToInt16(ReplayNumericUpDown.Text);
 
          // FrSkycheckBox1.Checked = UAVXGUI.Properties.Settings.Default.IsFrSky;
        
-          string AppLogDir = UAVXGUI.Properties.Settings.Default.LogDirectory;
-          if (!(Directory.Exists(AppLogDir))) {
-            string sProgFilesLogDir = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
-            sProgFilesLogDir += "\\" + "UAVXLogs"; // " + vrs.Major + "." + vrs.Minor;
+         string AppLogDir = UAVXGUI.Properties.Settings.Default.LogDirectory;
+         if (!(Directory.Exists(AppLogDir))) {
+            string sProgFilesLogDir = "C:\\ProgramData";  
+            sProgFilesLogDir += "\\" + "UAVXGUI"; 
             if (!(Directory.Exists(sProgFilesLogDir))) {
               Directory.CreateDirectory(sProgFilesLogDir);
-            }
+           }
             UAVXGUI.Properties.Settings.Default.LogDirectory = sProgFilesLogDir;
           }
 
@@ -1694,9 +1697,7 @@ namespace UAVXGUI
                             } else
                                b = (byte)serialPort1.ReadByte(); // processing overflow - discard
                     }
-               
                 }
-  
         }
 
         void InitPollPacket()
@@ -1839,11 +1840,13 @@ namespace UAVXGUI
                 BatteryVolts.BackColor = BatteryGroupBox.BackColor;
             }
 
-            GPSStatusBox.BackColor = F[(byte)FlagValues.GPSValid] ?
-                FlagsGroupBox.BackColor : System.Drawing.Color.Orange;
-
-            GPSValidBox.BackColor = F[(byte)FlagValues.GPSValid] ?
-                System.Drawing.Color.Green : System.Drawing.Color.Red;
+            if (F[(byte)FlagValues.GPSValid])
+                 if ((GPShAccT > 500) || (GPSvAccT > 500) || (GPSsAccT > 100))
+                       GPSValidBox.BackColor = System.Drawing.Color.Orange;
+                 else
+                      GPSValidBox.BackColor = System.Drawing.Color.Green;
+            else
+                 GPSValidBox.BackColor = System.Drawing.Color.Red;
 
             NavValidBox.BackColor = F[(byte)FlagValues.OriginValid] ?
                 System.Drawing.Color.Green : System.Drawing.Color.Red;
@@ -1941,7 +1944,7 @@ namespace UAVXGUI
             }
             else {
                CalibrateAccZeroButton.BackColor = (CalibrateAccZeroEnabled) ?
-                  Color.Orange : Color.Orange;
+                  Color.Orange : Color.Red;
                 IMUFailBox.BackColor = System.Drawing.Color.Orange;
             }
 
@@ -2562,7 +2565,6 @@ namespace UAVXGUI
         }
 
 
-
         void ProcessPacket()
         {
             byte b, c;
@@ -2828,13 +2830,15 @@ namespace UAVXGUI
 
                     break;
                     case UAVXCalibrationPacketTag:
-
                     CalibrationPacketsReceived++;
 
-                    short CalTRefT = ExtractShort(ref UAVXPacket, (byte)(2));
+                    for (i = 2; i < (NoOfFlagBytes + 2); i++)
+                        Flags[i - 2] = ExtractByte(ref UAVXPacket, i);
+
+                    short CalTRefT = ExtractShort(ref UAVXPacket, (byte)(8));
 
                     for (b = 0; b < 32; b++)
-                        Cal[b] = ExtractShort(ref UAVXPacket, (byte)(b * 2 + 4));
+                        Cal[b] = ExtractShort(ref UAVXPacket, (byte)(10 + b * 2));
 
                     CalTRefLabel.Text = string.Format("{0:n1}", CalTRefT * 0.1);
                        
@@ -2871,6 +2875,8 @@ namespace UAVXGUI
                      AccLPFLabel.Text = string.Format("{0:n0}", Cal[19]);
                      PitchRollGyroLabel.Text = string.Format("{0:n0}", Cal[20]);
                      YawPitchRollGyroLabel.Text = string.Format("{0:n0}", Cal[21]);
+
+                     UpdateFlags();
   
                     break;
                     case UAVXExecutionTimePacketTag:
@@ -2963,7 +2969,7 @@ namespace UAVXGUI
                     BaroVarianceT = ExtractShort(ref UAVXPacket, 80);
                     AccUVarianceT = ExtractShort(ref UAVXPacket, 82);
 
-                    TrackAccUVariance.Text = string.Format("{0:n3}", AccUVarianceT * 0.001);
+                    TrackAccUVariance.Text = string.Format("{0:n2}", AccUVarianceT * 0.001);
                     TrackBaroVariance.Text = string.Format("{0:n3}", BaroVarianceT * 0.001);
                 
 
@@ -3124,50 +3130,38 @@ namespace UAVXGUI
          
 
                     break;
-                case UAVXFusionPacketTag:
 
-                    FusionmSecT = ExtractInt(ref UAVXPacket, 2);
-                    RawRelAltitudeT = ExtractInt24(ref UAVXPacket, 6);
-                    FAltitudeT = ExtractInt24(ref UAVXPacket, 9);
+                case UAVXAltitudeControlPacketTag:
 
+                    RawAccZT = ExtractShort(ref UAVXPacket, 2);
+                    HRAccZBiasT = ExtractShort(ref UAVXPacket, 4);
 
-                    FROCT = ExtractShort(ref UAVXPacket, 12);
+                    RawRelAltitudeT = ExtractShort(ref UAVXPacket, 6);
+                    FAltitudeT = ExtractShort(ref UAVXPacket, 8);
 
+                    AltPosDesiredT = ExtractShort(ref UAVXPacket, 10);
+ 
+                    BaroROCT = ExtractShort(ref UAVXPacket, 12);    
+                    FROCT = ExtractShort(ref UAVXPacket, 14);
 
-                    RawAccZT = ExtractShort(ref UAVXPacket, 14);
-                    HRAccZBiasT = ExtractShort(ref UAVXPacket, 16);
-    
+	                BBVoltsT = ExtractByte(ref UAVXPacket, 16);
+                    BBCruiseThrottleT = ExtractByte(ref UAVXPacket, 17);
+                    BBDesiredThrottleT = ExtractByte(ref UAVXPacket, 18);
+                    BBAltCompT = ExtractByte(ref UAVXPacket, 19);
 
-                    TrackBaroVT = ExtractShort(ref UAVXPacket, 18);
-                    TrackAccZVT = ExtractShort(ref UAVXPacket, 20);
-
-                    AltPosDesiredT = ExtractInt24(ref UAVXPacket, 22);
-                    AltPosErrorT = ExtractShort(ref UAVXPacket, 25);
-	                AltPosPTermT = ExtractShort(ref UAVXPacket, 27);
-	                AltPosITermT = ExtractShort(ref UAVXPacket, 29);
-
-	                AltRateDesiredT = ExtractShort(ref UAVXPacket, 31);
-                    AltRateErrorT = ExtractShort(ref UAVXPacket, 33);
-	                AltRatePTermT = ExtractShort(ref UAVXPacket, 35);
-	                AltRateITermT = ExtractShort(ref UAVXPacket, 37);
-
-	                FCruiseThrottleT = ExtractShort(ref UAVXPacket, 39);
-                    FDesiredThrottleT = ExtractShort(ref UAVXPacket, 41);
-	                FAltCompT = ExtractShort(ref UAVXPacket, 43);
-
-
-                    FGPSAltitudeT = ExtractInt24(ref UAVXPacket, 45);
-                    FGPSROCT = ExtractShort(ref UAVXPacket, 48);
-
-                    BaroROCT = ExtractShort(ref UAVXPacket, 50);
-
-                    AHFlags = ExtractByte(ref UAVXPacket, 52);
-
-                    WriteTextFusionFile(); // only log with this packet
-
-                    PrevRelAltitude = FAltitudeT;
+                    WriteTextAltitudeControlFile(); // only log with this packet
 
                     break;
+
+                case UAVXAttitudeControlPacketTag:
+
+                     BBRateT = ExtractShort(ref UAVXPacket, 2);
+                     BBCorrectionT = ExtractSignedByte(ref UAVXPacket, 4);
+
+                    WriteTextAttitudeControlFile(); // only log with this packet
+
+                    break;
+
                 default: break;
             } // switch
 
@@ -3371,103 +3365,92 @@ namespace UAVXGUI
             }
         }
 
-         void WriteTextFusionFile()
-        {
 
-            if (!FusionFileHeaderWritten)
-            {
-                 FileName = UAVXGUI.Properties.Settings.Default.LogDirectory + "\\UAVX_" + 
+         void WriteTextAltitudeControlFile()
+         {
+
+             if (!AltitudeControlFileHeaderWritten)
+             {
+                 FileName = UAVXGUI.Properties.Settings.Default.LogDirectory + "\\UAVX_" +
                 DateTime.Now.Year + "_" +
                 DateTime.Now.Month + "_" +
                 DateTime.Now.Day + "_" +
                 DateTime.Now.Hour + "_" +
                 DateTime.Now.Minute;
 
-               SaveTextFusionFileStream = new System.IO.FileStream(FileName + "_Fusion.csv", System.IO.FileMode.Create);
-               SaveTextFusionFileStreamWriter = new System.IO.StreamWriter(SaveTextFusionFileStream, System.Text.Encoding.ASCII);
+                 SaveTextAltitudeControlFileStream = new System.IO.FileStream(FileName + "_ALTITUDE.csv", System.IO.FileMode.Create);
+                 SaveTextAltitudeControlFileStreamWriter = new System.IO.StreamWriter(SaveTextAltitudeControlFileStream, System.Text.Encoding.ASCII);
 
-               SaveTextFusionFileStreamWriter.Write("Time (mS)," +   
-                 
-                    "RawAccZ," +
-                    "AccZBias," +
-                    "AccZ," +
+                 SaveTextAltitudeControlFileStreamWriter.Write(
 
-                    "AccZVar," +               
-                    "BaroVar," +
+                      "RawAccU," +
+                      "AccUBias," +
+                      "BaroAlt," +
+                      "KFAlt," +
+                      "Desired," +
+                        "BaroROC," +
+                        "KFROC," +
+                         "Volts," +
+                          "Cruise," +
+                           "Desired," +
+                          "AltComp, " +
+                          "Throttle"
+                    );
 
-                    "GPSAlt," +
-                    "BaroAlt," +
-                    "KFAlt," +
-                    "AltDesired," +
-                 
-                    "AltE," +
-                    "AltP," +
-                    "AltI," +
+                 SaveTextAltitudeControlFileStreamWriter.WriteLine();
+                 SaveTextAltitudeControlFileStreamWriter.Flush();
 
-                    "GPSROC," +
-                    "BaroROC," +
-                    "KFROC," +
-                    "ROCDesired," +
- 
-                    "ROCE," +
-                    "ROCP," +
-                    "ROCI," +
-                    "Nav, VRS, TM, Alm," +
-                    "Cruise," +
-                    "Desired," +
-                    "AltComp," +
-                    "Throttle"      
-                  );
+                 AltitudeControlFileHeaderWritten = true;
+             }
 
-               SaveTextFusionFileStreamWriter.WriteLine();
-               SaveTextFusionFileStreamWriter.Flush();
-
-               FusionFileHeaderWritten = true;
-            }
-
-            SaveTextFusionFileStreamWriter.Write(FusionmSecT + "," +
-
-            RawAccZT * 0.001 + "," +
-            HRAccZBiasT * 0.001 + "," +
-            (RawAccZT - HRAccZBiasT)  * 0.001 + "," +
-
-            TrackAccZVT * 0.001 + "," +
-            TrackBaroVT * 0.001 + "," +
-
-            FGPSAltitudeT * 0.001 + "," +
-            RawRelAltitudeT * 0.001 + "," +
-            FAltitudeT * 0.001 + "," +
-            AltPosDesiredT * 0.01 + "," +
-
-            AltPosErrorT * 0.001 + "," +
-            AltPosPTermT * 0.001 + "," +
-            AltPosITermT * 0.001 + "," +
-
-            FGPSROCT * 0.001 + "," +
-            
+             SaveTextAltitudeControlFileStreamWriter.Write( 
+             RawAccZT * 0.001 + "," +
+             HRAccZBiasT * 0.001 + "," +
+             RawRelAltitudeT * 0.01 + "," +
+             FAltitudeT * 0.01 + "," +
+              AltPosDesiredT * 0.01 + "," +
             BaroROCT * 0.001 + "," +
-
             FROCT * 0.001 + "," +
-            AltRateDesiredT * 0.01 + "," +
-            AltRateErrorT * 0.001 + "," +
-            AltRatePTermT * 0.001 + "," +
-            AltRateITermT * 0.001 + "," +
 
-          ((AHFlags >> 3) & 1) + "," +  // Nav
-          ((AHFlags >> 2) & 1) + "," + // VRS
-          ((AHFlags >> 1) & 1) + "," + // TM
-          (AHFlags & 1) + "," + //  Alm
+              BBVoltsT * 0.1 + "," +
+               BBCruiseThrottleT * 0.005 + "," +
+               BBDesiredThrottleT * 0.005 + "," +
+               BBAltCompT * 0.005 + "," +
+            (BBDesiredThrottleT + BBAltCompT) * 0.005);
 
-            FCruiseThrottleT * 0.001 + "," +   
-            FDesiredThrottleT * 0.001 + "," +
-                 FAltCompT * 0.001 + "," +
+            SaveTextAltitudeControlFileStreamWriter.WriteLine();
+            SaveTextAltitudeControlFileStreamWriter.Flush();
 
-            (FDesiredThrottleT + FAltCompT) * 0.001);
-            
-         SaveTextFusionFileStreamWriter.WriteLine();
-            SaveTextFusionFileStreamWriter.Flush();
+         }
 
-   }
+         void WriteTextAttitudeControlFile()
+         {
+             if (!AttitudeControlFileHeaderWritten)
+             {
+                 FileName = UAVXGUI.Properties.Settings.Default.LogDirectory + "\\UAVX_" +
+                DateTime.Now.Year + "_" +
+                DateTime.Now.Month + "_" +
+                DateTime.Now.Day + "_" +
+                DateTime.Now.Hour + "_" +
+                DateTime.Now.Minute;
+
+                 SaveTextAttitudeControlFileStream = new System.IO.FileStream(FileName + "_ATTITUDE.csv", System.IO.FileMode.Create);
+                 SaveTextAttitudeControlFileStreamWriter = new System.IO.StreamWriter(SaveTextAttitudeControlFileStream, System.Text.Encoding.ASCII);
+
+                 SaveTextAttitudeControlFileStreamWriter.Write( "Rate," + "Correction");
+
+                 SaveTextAttitudeControlFileStreamWriter.WriteLine();
+                 SaveTextAttitudeControlFileStreamWriter.Flush();
+
+                 AttitudeControlFileHeaderWritten = true;
+             }
+
+             SaveTextAttitudeControlFileStreamWriter.Write(BBRateT * 0.001 + "," + BBCorrectionT * 0.01);
+
+             SaveTextAttitudeControlFileStreamWriter.WriteLine();
+             SaveTextAttitudeControlFileStreamWriter.Flush();
+
+         }
 
         void WriteTextLogFile()
         {
@@ -3597,13 +3580,20 @@ namespace UAVXGUI
             SaveTextLogFileStreamWriter.Close();
             SaveTextLogFileStream.Close();
 
-            if (FusionFileHeaderWritten)
+            if (AltitudeControlFileHeaderWritten)
+            { 
+                SaveTextAltitudeControlFileStreamWriter.Flush();
+                SaveTextAltitudeControlFileStreamWriter.Close();
+                SaveTextAltitudeControlFileStream.Close();
+                AltitudeControlFileHeaderWritten = false;
+            }
+
+            if (AttitudeControlFileHeaderWritten)
             {
-  
-                SaveTextFusionFileStreamWriter.Flush();
-                SaveTextFusionFileStreamWriter.Close();
-                SaveTextFusionFileStream.Close();
-                FusionFileHeaderWritten = false;
+                SaveTextAttitudeControlFileStreamWriter.Flush();
+                SaveTextAttitudeControlFileStreamWriter.Close();
+                SaveTextAttitudeControlFileStream.Close();
+                AttitudeControlFileHeaderWritten = false;
             }
 
             if (KMLFileHeaderWritten)

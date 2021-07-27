@@ -1195,7 +1195,7 @@ namespace UAVXGUI
             this.flowLayoutPanel1.Controls.Add(this.BaroFailBox);
             this.flowLayoutPanel1.Controls.Add(this.MagFailBox);
             this.flowLayoutPanel1.Controls.Add(this.BypassBox);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 19);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 16);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(237, 366);
             this.flowLayoutPanel1.TabIndex = 99;
@@ -1648,10 +1648,11 @@ namespace UAVXGUI
             // WhereDistance
             // 
             this.WhereDistance.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.WhereDistance.Location = new System.Drawing.Point(183, 21);
+            this.WhereDistance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WhereDistance.Location = new System.Drawing.Point(234, 19);
             this.WhereDistance.Name = "WhereDistance";
             this.WhereDistance.ReadOnly = true;
-            this.WhereDistance.Size = new System.Drawing.Size(39, 13);
+            this.WhereDistance.Size = new System.Drawing.Size(50, 15);
             this.WhereDistance.TabIndex = 165;
             this.WhereDistance.Text = "-";
             this.WhereDistance.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1659,19 +1660,21 @@ namespace UAVXGUI
             // WhereBearingLabel
             // 
             this.WhereBearingLabel.AutoSize = true;
-            this.WhereBearingLabel.Location = new System.Drawing.Point(9, 21);
+            this.WhereBearingLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WhereBearingLabel.Location = new System.Drawing.Point(8, 18);
             this.WhereBearingLabel.Name = "WhereBearingLabel";
-            this.WhereBearingLabel.Size = new System.Drawing.Size(44, 13);
+            this.WhereBearingLabel.Size = new System.Drawing.Size(61, 16);
             this.WhereBearingLabel.TabIndex = 54;
             this.WhereBearingLabel.Text = "Azimuth";
             // 
             // WhereBearing
             // 
             this.WhereBearing.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.WhereBearing.Location = new System.Drawing.Point(63, 21);
+            this.WhereBearing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WhereBearing.Location = new System.Drawing.Point(76, 18);
             this.WhereBearing.Name = "WhereBearing";
             this.WhereBearing.ReadOnly = true;
-            this.WhereBearing.Size = new System.Drawing.Size(35, 13);
+            this.WhereBearing.Size = new System.Drawing.Size(35, 15);
             this.WhereBearing.TabIndex = 164;
             this.WhereBearing.Text = "-";
             this.WhereBearing.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1679,9 +1682,10 @@ namespace UAVXGUI
             // WhereDistanceLabel
             // 
             this.WhereDistanceLabel.AutoSize = true;
-            this.WhereDistanceLabel.Location = new System.Drawing.Point(118, 21);
+            this.WhereDistanceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WhereDistanceLabel.Location = new System.Drawing.Point(150, 18);
             this.WhereDistanceLabel.Name = "WhereDistanceLabel";
-            this.WhereDistanceLabel.Size = new System.Drawing.Size(49, 13);
+            this.WhereDistanceLabel.Size = new System.Drawing.Size(69, 16);
             this.WhereDistanceLabel.TabIndex = 53;
             this.WhereDistanceLabel.Text = "Distance";
             // 
@@ -2456,7 +2460,7 @@ namespace UAVXGUI
             // 
             // CalibrateIMUButton
             // 
-            this.CalibrateIMUButton.Location = new System.Drawing.Point(851, 413);
+            this.CalibrateIMUButton.Location = new System.Drawing.Point(848, 412);
             this.CalibrateIMUButton.Name = "CalibrateIMUButton";
             this.CalibrateIMUButton.Size = new System.Drawing.Size(69, 23);
             this.CalibrateIMUButton.TabIndex = 199;
@@ -2466,7 +2470,7 @@ namespace UAVXGUI
             // 
             // CalibrateMagButton
             // 
-            this.CalibrateMagButton.Location = new System.Drawing.Point(851, 442);
+            this.CalibrateMagButton.Location = new System.Drawing.Point(848, 441);
             this.CalibrateMagButton.Name = "CalibrateMagButton";
             this.CalibrateMagButton.Size = new System.Drawing.Size(69, 23);
             this.CalibrateMagButton.TabIndex = 201;
@@ -2874,9 +2878,9 @@ namespace UAVXGUI
             // 
             // GPSPassThruButton
             // 
-            this.GPSPassThruButton.Location = new System.Drawing.Point(932, 441);
+            this.GPSPassThruButton.Location = new System.Drawing.Point(929, 440);
             this.GPSPassThruButton.Name = "GPSPassThruButton";
-            this.GPSPassThruButton.Size = new System.Drawing.Size(71, 23);
+            this.GPSPassThruButton.Size = new System.Drawing.Size(69, 23);
             this.GPSPassThruButton.TabIndex = 213;
             this.GPSPassThruButton.Text = "GPS ";
             this.GPSPassThruButton.UseVisualStyleBackColor = true;
@@ -3414,7 +3418,7 @@ namespace UAVXGUI
             // 
             // CalibrateAccZeroButton
             // 
-            this.CalibrateAccZeroButton.Location = new System.Drawing.Point(932, 412);
+            this.CalibrateAccZeroButton.Location = new System.Drawing.Point(929, 411);
             this.CalibrateAccZeroButton.Name = "CalibrateAccZeroButton";
             this.CalibrateAccZeroButton.Size = new System.Drawing.Size(69, 23);
             this.CalibrateAccZeroButton.TabIndex = 263;

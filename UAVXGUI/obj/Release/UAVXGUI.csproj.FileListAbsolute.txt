@@ -40,3 +40,4 @@ C:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI 4.0.exe.manifest
 C:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI 4.0.application
 C:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI 4.0.exe
 C:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI 4.0.pdb
+C:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI.csprojResolveAssemblyReference.cache

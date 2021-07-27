@@ -88,7 +88,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
 			20,	 		// YawKpRate, 			11 // 40
 			45,	 		// RollKdRate,			12
 			0,          // IMU,					13
-			5,	 		// AltVelKd,		    14 // 12
+			0,	 		// BBLog,		    14 // 12
 			0, 	        // RCType,				15 was CompoundPPM
 
 			0,          // ConfigBits,			16c
@@ -197,7 +197,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
             10,         // AltVelKi 102
             10,         // AltHoldBand 103
             30,         // VRSDescentRate 104
-            20,         // AccVariance 105
+            0,         // 105
             
             2,          // NavGPSTimeout 106
             3,          // ProxAltM 107
@@ -205,8 +205,8 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
             0,
             0,
             
-            0,          // 111
-            0,
+            20,          // BaroVariance 111
+            20,         // AccZVariance 112
             0,
             0,
             0,
@@ -343,8 +343,6 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                 helpstring = help.GetString("ProportionalAngle");
             if (parameterForm.RollAngleIntNumericUpDown.Focused)
                 helpstring = help.GetString("ProportionalAngle");
-            if (parameterForm.AltVelKdNumericUpDown.Focused)
-                helpstring = help.GetString("AltDifferential");
 
             // Pitch
             if (parameterForm.PitchRatePropNumericUpDown.Focused)
@@ -414,15 +412,14 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
             if (parameterForm.AltVelIntLimitNumericUpDown.Focused)
                 helpstring = help.GetString("AltVelIntLimit");
 
-            if (parameterForm.AccVarianceNumericUpDown.Focused)
-                helpstring = help.GetString("AltCF");
+            if (parameterForm.AccBiasVarNumericUpDown.Focused)
+                helpstring = help.GetString("AccUBiasVariance");
 
             if (parameterForm.FWClimbAngleNumericUpDown.Focused)
                 helpstring = help.GetString("ClimbAngle");
             if (parameterForm.FWTrimAngleNumericUpDown.Focused)
                 helpstring = help.GetString("TrimAngle");
-            if (parameterForm.ROCGainNumericUpDown.Focused)
-                helpstring = help.GetString("ROCGain");
+  
             if (parameterForm.FWAileronDifferentialNumericUpDown.Focused)
                 helpstring = help.GetString("FWDifferential");
             if (parameterForm.AirspeedComboBox.Focused)
@@ -473,10 +470,10 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                 helpstring = help.GetString("NavPosition");
             if (parameterForm.NavVelKpNumericUpDown.Focused)
                 helpstring = help.GetString("NavVelocity");
-            if (parameterForm.IMUOptionComboBox.Focused)
+            if (parameterForm.IMUFilterComboBox.Focused)
                 helpstring = help.GetString("InertialScheme");
 
-            if (parameterForm.IMUOptionComboBox.Focused)
+            if (parameterForm.IMUFilterComboBox.Focused)
                 helpstring = help.GetString("InertialScheme");
 
             if (parameterForm.AHThrottleWindowNumericUpDown.Focused)
@@ -562,8 +559,8 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
 
             //GPS
 
-            if (parameterForm.NavGPSTimeoutNumericUpDown.Focused)
-                helpstring = help.GetString("NavGPSTimeout");
+            if (parameterForm.AHROCWindowNumericUpDown.Focused)
+                helpstring = help.GetString("AHROCWindow");
 
             if (parameterForm.NavMaxVelNumericUpDown.Focused)
                 helpstring = help.GetString("NavMaxVel");
@@ -994,17 +991,23 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                 NumericUpDown Field = (NumericUpDown)Object;
 
                 int p = Convert.ToInt16(Field.Tag);
-                if ( (p == 116) ||  (p == 111) )
+                if ((p == 116) || (p == 32) || (p == 111) || (p == 106))
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 100.0);
                 else
-                    if ((p == 54) || (p == 18) || (p == 32) || (p == 34) || (p == 39) || (p == 46) || (p == 53) ||
+                    if ((p == 110))
+                        P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 5.0);
+
+                else
+                    if ((p == 54) || (p == 18) ||  (p == 34) || (p == 39) || (p == 46) || (p == 53) ||
                      (p == 70) || (p == 104) || (p == 105) || (p == 110) || (p == 112) || (p == 115 ))
                         P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 10.0);
                 else
-                        if ((p == 64) || (p == 83) || (p == 84) || (p == 89) || (p == 117))
-                    P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 0.1);
+                    if ((p == 64) || (p == 83) || (p == 84) || (p == 89) || (p == 117))
+                        P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 0.1);
                 else
-                          
+                   if ((p == 73))
+                    P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 1000000.0); 
+                else
                     P[CurrPS, p - 1].Value = Convert.ToByte(Field.Value);
        
 
@@ -1162,12 +1165,12 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         ParamUpdate(RollRateDiffNumericUpDown);
                         break;
                     case 13:
-                        IMUOptionComboBox.SelectedIndex = UAVXP[p-1].Value;
-                        ParamUpdate(IMUOptionComboBox);
+                        IMUFilterComboBox.SelectedIndex = UAVXP[p-1].Value;
+                        ParamUpdate(IMUFilterComboBox);
                         break;
                     case 14:
-                        AltVelKdNumericUpDown.Value =  UAVXP[p-1].Value;
-                        ParamUpdate(AltVelKdNumericUpDown);
+                        BBLogComboBox.SelectedIndex = UAVXP[p-1].Value;
+                        ParamUpdate(BBLogComboBox);
                         break;
                     case 15:
                         ComboPort1ComboBox.SelectedIndex = UAVXP[p-1].Value;
@@ -1258,7 +1261,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         ParamUpdate(HorizonNumericUpDown);
                         break;
                     case 32:
-                        MadgwickKpMagNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
+                        MadgwickKpMagNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.01);
                         ParamUpdate(MadgwickKpMagNumericUpDown);
                         break;
                     case 33:
@@ -1458,8 +1461,8 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         ParamUpdate(AirspeedComboBox);
                         break;
                     case 73:
-                        ROCGainNumericUpDown.Value = UAVXP[p - 1].Value;
-                        ParamUpdate(ROCGainNumericUpDown);
+                        AccBiasVarNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.000001);
+                        ParamUpdate(AccBiasVarNumericUpDown);
                         break;
 
 // etc to param 96
@@ -1609,8 +1612,8 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                    //    ParamUpdate(AccVarianceNumericUpDown);
                         break;
                     case 106:
-                        NavGPSTimeoutNumericUpDown.Value = UAVXP[p - 1].Value;
-                        ParamUpdate(NavGPSTimeoutNumericUpDown);
+                        AHROCWindowNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.01);
+                        ParamUpdate(AHROCWindowNumericUpDown);
                         break;
                     case 107:
                         ProximityAltNumericUpDown.Value = UAVXP[p - 1].Value;
@@ -1627,7 +1630,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         ParamUpdate(CurrentFSNumericUpDown);
                         break;
                     case 110:
-                        VoltageFSNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
+                        VoltageFSNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.2);
                         ParamUpdate(VoltageFSNumericUpDown);
                         break;
                     case 111:
