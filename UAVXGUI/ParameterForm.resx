@@ -400,7 +400,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;HysteresisNumericUpDown.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>12</value>
   </data>
   <data name="ModifiersGroupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -1888,19 +1888,16 @@
     <value>NoControl</value>
   </data>
   <data name="bit02CheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>69, 369</value>
+    <value>74, 212</value>
   </data>
   <data name="bit02CheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 17</value>
+    <value>131, 17</value>
   </data>
   <data name="bit02CheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>229</value>
   </data>
   <data name="bit02CheckBox.Text" xml:space="preserve">
-    <value>Centre Cruise</value>
-  </data>
-  <data name="bit02CheckBox.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+    <value>Use Battery Comp.</value>
   </data>
   <data name="&gt;&gt;bit02CheckBox.Name" xml:space="preserve">
     <value>bit02CheckBox</value>
@@ -1909,7 +1906,7 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bit02CheckBox.Parent" xml:space="preserve">
-    <value>RCGroupBox</value>
+    <value>PIDGroupBox</value>
   </data>
   <data name="&gt;&gt;bit02CheckBox.ZOrder" xml:space="preserve">
     <value>12</value>
@@ -2455,7 +2452,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;ArmingModeComboBox.ZOrder" xml:space="preserve">
-    <value>49</value>
+    <value>48</value>
   </data>
   <data name="ArmingModeLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2485,7 +2482,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;ArmingModeLabel.ZOrder" xml:space="preserve">
-    <value>50</value>
+    <value>49</value>
   </data>
   <data name="bit61CheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2560,7 +2557,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;ComboPort1ComboBox.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>25</value>
   </data>
   <data name="Ch9NumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -2587,7 +2584,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch9NumericUpDown.ZOrder" xml:space="preserve">
-    <value>68</value>
+    <value>67</value>
   </data>
   <data name="Ch9Label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2614,7 +2611,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch9Label.ZOrder" xml:space="preserve">
-    <value>67</value>
+    <value>66</value>
   </data>
   <data name="Ch8NumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -2641,7 +2638,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch8NumericUpDown.ZOrder" xml:space="preserve">
-    <value>66</value>
+    <value>65</value>
   </data>
   <data name="Ch8Label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2671,7 +2668,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch8Label.ZOrder" xml:space="preserve">
-    <value>65</value>
+    <value>64</value>
   </data>
   <data name="Ch6NumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -2698,7 +2695,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch6NumericUpDown.ZOrder" xml:space="preserve">
-    <value>64</value>
+    <value>63</value>
   </data>
   <data name="Ch3NumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -2725,7 +2722,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch3NumericUpDown.ZOrder" xml:space="preserve">
-    <value>63</value>
+    <value>62</value>
   </data>
   <data name="Ch6Label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2755,7 +2752,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch6Label.ZOrder" xml:space="preserve">
-    <value>62</value>
+    <value>61</value>
   </data>
   <data name="Ch3Label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2785,7 +2782,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch3Label.ZOrder" xml:space="preserve">
-    <value>61</value>
+    <value>60</value>
   </data>
   <data name="Ch5NumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -2812,7 +2809,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch5NumericUpDown.ZOrder" xml:space="preserve">
-    <value>60</value>
+    <value>59</value>
   </data>
   <data name="Ch2NumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -2839,7 +2836,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch2NumericUpDown.ZOrder" xml:space="preserve">
-    <value>59</value>
+    <value>58</value>
   </data>
   <data name="Ch5Label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2869,7 +2866,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch5Label.ZOrder" xml:space="preserve">
-    <value>58</value>
+    <value>57</value>
   </data>
   <data name="RollChLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2899,7 +2896,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RollChLabel.ZOrder" xml:space="preserve">
-    <value>57</value>
+    <value>56</value>
   </data>
   <data name="Ch7NumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -2926,7 +2923,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch7NumericUpDown.ZOrder" xml:space="preserve">
-    <value>56</value>
+    <value>55</value>
   </data>
   <data name="Ch4NumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -2953,7 +2950,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch4NumericUpDown.ZOrder" xml:space="preserve">
-    <value>55</value>
+    <value>54</value>
   </data>
   <data name="Ch1NumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -2980,7 +2977,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch1NumericUpDown.ZOrder" xml:space="preserve">
-    <value>54</value>
+    <value>53</value>
   </data>
   <data name="Ch4Label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3010,7 +3007,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch4Label.ZOrder" xml:space="preserve">
-    <value>53</value>
+    <value>52</value>
   </data>
   <data name="ThrottleChLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3040,7 +3037,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;ThrottleChLabel.ZOrder" xml:space="preserve">
-    <value>52</value>
+    <value>51</value>
   </data>
   <data name="Ch7Label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3070,7 +3067,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch7Label.ZOrder" xml:space="preserve">
-    <value>51</value>
+    <value>50</value>
   </data>
   <data name="Sense51Button.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -3292,7 +3289,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;ComboPort1Label.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>20</value>
   </data>
   <data name="FenceRadiusLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4417,7 +4414,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;ROCGainLabel.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>14</value>
   </data>
   <data name="AltPosIntNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -4612,7 +4609,7 @@
     <value>PIDGroupBox</value>
   </data>
   <data name="&gt;&gt;YawRatePropNumericUpDown.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="PitchAngleIntNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -4639,7 +4636,7 @@
     <value>PIDGroupBox</value>
   </data>
   <data name="&gt;&gt;PitchAngleIntNumericUpDown.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="PitchRateDiffNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -4666,7 +4663,7 @@
     <value>PIDGroupBox</value>
   </data>
   <data name="&gt;&gt;PitchRateDiffNumericUpDown.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>20</value>
   </data>
   <data name="PitchAngleIntLimitNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -4693,7 +4690,7 @@
     <value>PIDGroupBox</value>
   </data>
   <data name="&gt;&gt;PitchAngleIntLimitNumericUpDown.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>23</value>
   </data>
   <data name="PitchAnglePropNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -4720,7 +4717,7 @@
     <value>PIDGroupBox</value>
   </data>
   <data name="&gt;&gt;PitchAnglePropNumericUpDown.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>26</value>
   </data>
   <data name="PitchRatePropNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -4747,7 +4744,7 @@
     <value>PIDGroupBox</value>
   </data>
   <data name="&gt;&gt;PitchRatePropNumericUpDown.ZOrder" xml:space="preserve">
-    <value>28</value>
+    <value>29</value>
   </data>
   <data name="YawAngleIntNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -5059,7 +5056,7 @@
     <value>PIDGroupBox</value>
   </data>
   <data name="&gt;&gt;RollAngleIntLabel.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="AngleScaleAngleLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5089,7 +5086,7 @@
     <value>PIDGroupBox</value>
   </data>
   <data name="&gt;&gt;AngleScaleAngleLabel.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="RollRateDiffNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -5116,7 +5113,7 @@
     <value>PIDGroupBox</value>
   </data>
   <data name="&gt;&gt;RollRateDiffNumericUpDown.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="MaxRollAngleNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -5143,7 +5140,7 @@
     <value>PIDGroupBox</value>
   </data>
   <data name="&gt;&gt;MaxRollAngleNumericUpDown.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="RollRateDiffLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5173,7 +5170,7 @@
     <value>PIDGroupBox</value>
   </data>
   <data name="&gt;&gt;RollRateDiffLabel.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="RollAngleIntLimitNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -5200,7 +5197,7 @@
     <value>PIDGroupBox</value>
   </data>
   <data name="&gt;&gt;RollAngleIntLimitNumericUpDown.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>21</value>
   </data>
   <data name="RollIntLimitLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5230,7 +5227,7 @@
     <value>PIDGroupBox</value>
   </data>
   <data name="&gt;&gt;RollIntLimitLabel.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>22</value>
   </data>
   <data name="RollAnglePropNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -5257,7 +5254,7 @@
     <value>PIDGroupBox</value>
   </data>
   <data name="&gt;&gt;RollAnglePropNumericUpDown.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>24</value>
   </data>
   <data name="RollAnglePropLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5287,7 +5284,7 @@
     <value>PIDGroupBox</value>
   </data>
   <data name="&gt;&gt;RollAnglePropLabel.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>25</value>
   </data>
   <data name="RollRatePropNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -5314,7 +5311,7 @@
     <value>PIDGroupBox</value>
   </data>
   <data name="&gt;&gt;RollRatePropNumericUpDown.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>27</value>
   </data>
   <data name="RollRatePropLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5344,7 +5341,7 @@
     <value>PIDGroupBox</value>
   </data>
   <data name="&gt;&gt;RollRatePropLabel.ZOrder" xml:space="preserve">
-    <value>27</value>
+    <value>28</value>
   </data>
   <data name="PIDGroupBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 31</value>
@@ -5821,7 +5818,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC9ProgressBar.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>13</value>
   </data>
   <data name="AltVelKdLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5854,7 +5851,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;AltVelKdLabel.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>15</value>
   </data>
   <data name="RC11ProgressBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -5878,7 +5875,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC11ProgressBar.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>16</value>
   </data>
   <data name="RC10ProgressBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -5902,7 +5899,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC10ProgressBar.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>17</value>
   </data>
   <data name="Ch10Label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5932,7 +5929,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch10Label.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>18</value>
   </data>
   <data name="Ch10NumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -5959,7 +5956,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch10NumericUpDown.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>19</value>
   </data>
   <data name="Ch11Label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5989,7 +5986,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch11Label.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>21</value>
   </data>
   <data name="Ch11NumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -6016,7 +6013,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch11NumericUpDown.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>22</value>
   </data>
   <data name="Ch12Label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6046,7 +6043,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch12Label.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>23</value>
   </data>
   <data name="Ch12NumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -6073,7 +6070,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;Ch12NumericUpDown.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>24</value>
   </data>
   <data name="RCPacketIntervalLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6103,7 +6100,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RCPacketIntervalLabel.ZOrder" xml:space="preserve">
-    <value>27</value>
+    <value>26</value>
   </data>
   <data name="RxChannelsNumericUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -6130,7 +6127,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RxChannelsNumericUpDown.ZOrder" xml:space="preserve">
-    <value>28</value>
+    <value>27</value>
   </data>
   <data name="DiscoveredRCChannelsLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6160,7 +6157,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;DiscoveredRCChannelsLabel.ZOrder" xml:space="preserve">
-    <value>29</value>
+    <value>28</value>
   </data>
   <data name="RCuSCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6184,7 +6181,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RCuSCheckBox.ZOrder" xml:space="preserve">
-    <value>30</value>
+    <value>29</value>
   </data>
   <data name="RC8TextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -6214,7 +6211,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC8TextBox.ZOrder" xml:space="preserve">
-    <value>31</value>
+    <value>30</value>
   </data>
   <data name="RC7TextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -6244,7 +6241,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC7TextBox.ZOrder" xml:space="preserve">
-    <value>32</value>
+    <value>31</value>
   </data>
   <data name="RC6TextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -6274,7 +6271,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC6TextBox.ZOrder" xml:space="preserve">
-    <value>33</value>
+    <value>32</value>
   </data>
   <data name="RC5TextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -6304,7 +6301,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC5TextBox.ZOrder" xml:space="preserve">
-    <value>34</value>
+    <value>33</value>
   </data>
   <data name="RC4TextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -6334,7 +6331,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC4TextBox.ZOrder" xml:space="preserve">
-    <value>35</value>
+    <value>34</value>
   </data>
   <data name="RC3TextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -6364,7 +6361,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC3TextBox.ZOrder" xml:space="preserve">
-    <value>36</value>
+    <value>35</value>
   </data>
   <data name="RC2TextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -6394,7 +6391,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC2TextBox.ZOrder" xml:space="preserve">
-    <value>37</value>
+    <value>36</value>
   </data>
   <data name="RC1TextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -6424,7 +6421,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC1TextBox.ZOrder" xml:space="preserve">
-    <value>38</value>
+    <value>37</value>
   </data>
   <data name="RC0TextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -6454,7 +6451,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC0TextBox.ZOrder" xml:space="preserve">
-    <value>39</value>
+    <value>38</value>
   </data>
   <data name="RC0ProgressBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -6478,7 +6475,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC0ProgressBar.ZOrder" xml:space="preserve">
-    <value>40</value>
+    <value>39</value>
   </data>
   <data name="RC6ProgressBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -6502,7 +6499,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC6ProgressBar.ZOrder" xml:space="preserve">
-    <value>41</value>
+    <value>40</value>
   </data>
   <data name="RC1ProgressBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -6526,7 +6523,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC1ProgressBar.ZOrder" xml:space="preserve">
-    <value>42</value>
+    <value>41</value>
   </data>
   <data name="RC5ProgressBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -6550,7 +6547,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC5ProgressBar.ZOrder" xml:space="preserve">
-    <value>43</value>
+    <value>42</value>
   </data>
   <data name="RC8ProgressBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -6574,7 +6571,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC8ProgressBar.ZOrder" xml:space="preserve">
-    <value>44</value>
+    <value>43</value>
   </data>
   <data name="RC2ProgressBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -6598,7 +6595,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC2ProgressBar.ZOrder" xml:space="preserve">
-    <value>45</value>
+    <value>44</value>
   </data>
   <data name="RC7ProgressBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -6622,7 +6619,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC7ProgressBar.ZOrder" xml:space="preserve">
-    <value>46</value>
+    <value>45</value>
   </data>
   <data name="RC4ProgressBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -6646,7 +6643,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC4ProgressBar.ZOrder" xml:space="preserve">
-    <value>47</value>
+    <value>46</value>
   </data>
   <data name="RC3ProgressBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -6670,7 +6667,7 @@
     <value>RCGroupBox</value>
   </data>
   <data name="&gt;&gt;RC3ProgressBar.ZOrder" xml:space="preserve">
-    <value>48</value>
+    <value>47</value>
   </data>
   <data name="RCGroupBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>539, 272</value>

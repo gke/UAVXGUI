@@ -2374,6 +2374,7 @@
             this.PIDGroupBox.Controls.Add(this.RateScaleLabel);
             this.PIDGroupBox.Controls.Add(this.MaxYawRateNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.RollAngleIntNumericUpDown);
+            this.PIDGroupBox.Controls.Add(this.bit02CheckBox);
             this.PIDGroupBox.Controls.Add(this.RollAngleIntLabel);
             this.PIDGroupBox.Controls.Add(this.PitchAngleIntNumericUpDown);
             this.PIDGroupBox.Controls.Add(this.AngleScaleAngleLabel);
@@ -2712,7 +2713,6 @@
             this.RCGroupBox.Controls.Add(this.LowMotorRunNumericUpDown);
             this.RCGroupBox.Controls.Add(this.GyroSlewRateNumericUpDown);
             this.RCGroupBox.Controls.Add(this.GyroSlewLimitLabel);
-            this.RCGroupBox.Controls.Add(this.bit02CheckBox);
             this.RCGroupBox.Controls.Add(this.HysteresisNumericUpDown);
             this.RCGroupBox.Controls.Add(this.RC9ProgressBar);
             this.RCGroupBox.Controls.Add(this.ROCGainLabel);

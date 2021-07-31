@@ -2169,8 +2169,8 @@ namespace UAVXGUI
         void UpdateCompensation()
         {
             AccConfidence.Text = string.Format("{0:n0}", AccConfidenceT);
-            TiltFFComp.Text = string.Format("{0:n2}", TiltFFCompT * 0.001);
-            BattFFComp.Text = string.Format("{0:n2}", BattFFCompT * 0.001);
+            TiltFFComp.Text = string.Format("{0:n3}", TiltFFCompT * 0.001);
+            BattFFComp.Text = string.Format("{0:n3}", BattFFCompT * 0.001);
             AltComp.Text = string.Format("{0:n1}", AltCompT * 0.1);
             CruiseThrottle.Text = string.Format("{0:n1}", CruiseThrottleT * 0.1);
 
