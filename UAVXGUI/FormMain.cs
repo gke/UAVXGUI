@@ -547,7 +547,7 @@ namespace UAVXGUI
         int BaroTemperatureT;
         int BaroPressureT;
 
-        int BaroROCT, AltPosDesiredT, BBCorrectionT, BBCruiseThrottleT, BBDesiredThrottleT, BBAltCompT, BBVoltsT;
+        int BaroROCT, AltPosDesiredT, BBCorrectionT, BBCruiseThrottleT, BBDesiredThrottleT, BBAltCompT, BBVoltsT, BBTiltFFCompT, BBBattFFCompT;
         short BBRateT;
 
         short BaroVarianceT;
@@ -3147,7 +3147,9 @@ namespace UAVXGUI
 	                BBVoltsT = ExtractByte(ref UAVXPacket, 16);
                     BBCruiseThrottleT = ExtractByte(ref UAVXPacket, 17);
                     BBDesiredThrottleT = ExtractByte(ref UAVXPacket, 18);
-                    BBAltCompT = ExtractByte(ref UAVXPacket, 19);
+                    BBTiltFFCompT = ExtractByte(ref UAVXPacket, 19);
+                         BBBattFFCompT = ExtractByte(ref UAVXPacket, 20);
+                         BBAltCompT = ExtractByte(ref UAVXPacket, 21);
 
                     WriteTextAltitudeControlFile(); // only log with this packet
 
@@ -3393,6 +3395,8 @@ namespace UAVXGUI
                          "Volts," +
                           "Cruise," +
                            "Desired," +
+                           "TiltComp," +
+                           "BattComp," +
                           "AltComp, " +
                           "Throttle"
                     );
@@ -3415,8 +3419,10 @@ namespace UAVXGUI
               BBVoltsT * 0.1 + "," +
                BBCruiseThrottleT * 0.005 + "," +
                BBDesiredThrottleT * 0.005 + "," +
+               BBTiltFFCompT * 0.005 + "," +
+               BBBattFFCompT * 0.005 + "," +
                BBAltCompT * 0.005 + "," +
-            (BBDesiredThrottleT + BBAltCompT) * 0.005);
+            (BBDesiredThrottleT + BBAltCompT) * 0.005 * (BBTiltFFCompT * 0.005  * BBBattFFCompT * 0.005));
 
             SaveTextAltitudeControlFileStreamWriter.WriteLine();
             SaveTextAltitudeControlFileStreamWriter.Flush();
