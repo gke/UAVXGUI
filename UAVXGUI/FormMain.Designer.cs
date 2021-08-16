@@ -271,7 +271,7 @@ namespace UAVXGUI
             this.backgroundWorker8 = new System.ComponentModel.BackgroundWorker();
             this.MissionTimeTextBox = new System.Windows.Forms.TextBox();
             this.WarningPictureBox = new System.Windows.Forms.PictureBox();
-            this.GPSPassThruButton = new System.Windows.Forms.Button();
+            this.SimpleCalibrateMagButton = new System.Windows.Forms.Button();
             this.DumpBBButton = new System.Windows.Forms.Button();
             this.AlarmsButton = new System.Windows.Forms.Button();
             this.execPeakPercentLabel = new System.Windows.Forms.Label();
@@ -2462,7 +2462,7 @@ namespace UAVXGUI
             // 
             this.CalibrateIMUButton.Location = new System.Drawing.Point(848, 412);
             this.CalibrateIMUButton.Name = "CalibrateIMUButton";
-            this.CalibrateIMUButton.Size = new System.Drawing.Size(69, 23);
+            this.CalibrateIMUButton.Size = new System.Drawing.Size(55, 23);
             this.CalibrateIMUButton.TabIndex = 199;
             this.CalibrateIMUButton.Text = "IMU";
             this.CalibrateIMUButton.UseVisualStyleBackColor = true;
@@ -2470,9 +2470,9 @@ namespace UAVXGUI
             // 
             // CalibrateMagButton
             // 
-            this.CalibrateMagButton.Location = new System.Drawing.Point(848, 441);
+            this.CalibrateMagButton.Location = new System.Drawing.Point(848, 440);
             this.CalibrateMagButton.Name = "CalibrateMagButton";
-            this.CalibrateMagButton.Size = new System.Drawing.Size(69, 23);
+            this.CalibrateMagButton.Size = new System.Drawing.Size(55, 23);
             this.CalibrateMagButton.TabIndex = 201;
             this.CalibrateMagButton.Text = "Mag";
             this.CalibrateMagButton.UseVisualStyleBackColor = true;
@@ -2876,15 +2876,15 @@ namespace UAVXGUI
             this.WarningPictureBox.TabIndex = 212;
             this.WarningPictureBox.TabStop = false;
             // 
-            // GPSPassThruButton
+            // SimpleCalibrateMagButton
             // 
-            this.GPSPassThruButton.Location = new System.Drawing.Point(929, 440);
-            this.GPSPassThruButton.Name = "GPSPassThruButton";
-            this.GPSPassThruButton.Size = new System.Drawing.Size(69, 23);
-            this.GPSPassThruButton.TabIndex = 213;
-            this.GPSPassThruButton.Text = "GPS ";
-            this.GPSPassThruButton.UseVisualStyleBackColor = true;
-            this.GPSPassThruButton.Click += new System.EventHandler(this.GPSPassThruButton_Click);
+            this.SimpleCalibrateMagButton.Location = new System.Drawing.Point(909, 440);
+            this.SimpleCalibrateMagButton.Name = "SimpleCalibrateMagButton";
+            this.SimpleCalibrateMagButton.Size = new System.Drawing.Size(89, 23);
+            this.SimpleCalibrateMagButton.TabIndex = 213;
+            this.SimpleCalibrateMagButton.Text = "Simple Mag";
+            this.SimpleCalibrateMagButton.UseVisualStyleBackColor = true;
+            this.SimpleCalibrateMagButton.Click += new System.EventHandler(this.SimpleCalibrateMagButton_Click);
             // 
             // DumpBBButton
             // 
@@ -3418,9 +3418,9 @@ namespace UAVXGUI
             // 
             // CalibrateAccZeroButton
             // 
-            this.CalibrateAccZeroButton.Location = new System.Drawing.Point(929, 411);
+            this.CalibrateAccZeroButton.Location = new System.Drawing.Point(909, 411);
             this.CalibrateAccZeroButton.Name = "CalibrateAccZeroButton";
-            this.CalibrateAccZeroButton.Size = new System.Drawing.Size(69, 23);
+            this.CalibrateAccZeroButton.Size = new System.Drawing.Size(89, 23);
             this.CalibrateAccZeroButton.TabIndex = 263;
             this.CalibrateAccZeroButton.Text = "Simple IMU";
             this.CalibrateAccZeroButton.UseVisualStyleBackColor = true;
@@ -3492,7 +3492,7 @@ namespace UAVXGUI
             this.Controls.Add(this.execPeakPercentLabel);
             this.Controls.Add(this.AlarmsButton);
             this.Controls.Add(this.DumpBBButton);
-            this.Controls.Add(this.GPSPassThruButton);
+            this.Controls.Add(this.SimpleCalibrateMagButton);
             this.Controls.Add(this.attitudeIndicatorInstrumentControl1);
             this.Controls.Add(this.WarningPictureBox);
             this.Controls.Add(this.MissionTimeTextBox);
@@ -3775,7 +3775,7 @@ namespace UAVXGUI
         public System.Windows.Forms.Button StartNavigationButton;
         private System.Windows.Forms.PictureBox WarningPictureBox;
         public static System.IO.Ports.SerialPort serialPort1;
-        private System.Windows.Forms.Button GPSPassThruButton;
+        private System.Windows.Forms.Button SimpleCalibrateMagButton;
         private System.Windows.Forms.CheckBox SpeakVarioCheckBox;
         private System.Windows.Forms.Button DumpBBButton;
         private System.Windows.Forms.Button AlarmsButton;

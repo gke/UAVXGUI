@@ -247,7 +247,7 @@ namespace UAVXGUI
         };
 
         public enum MiscComms 
-        { miscCalIMU, miscCalMag, miscLB, miscUnused, miscBBDump, miscGPSPassThru, miscCalAcc, miscCalGyro, miscBootLoad}
+        { miscCalIMU, miscCalMag, miscLB, miscUnused, miscBBDump, miscSimpleCalMag, miscCalAcc, miscCalGyro, miscBootLoad}
 
         public enum NavStates
         {
@@ -760,6 +760,7 @@ namespace UAVXGUI
         bool CalibrateIMUEnabled = false;
         bool CalibrateAccZeroEnabled = false;
         bool CalibrateMagEnabled = false;
+        bool SimpleCalibrateMagEnabled = false;
 
         bool LogFileHeaderWritten = false;
         bool AltitudeControlFileHeaderWritten = false;
@@ -1373,12 +1374,13 @@ namespace UAVXGUI
             }
         }
 
-        private void GPSPassThruButton_Click(object sender, EventArgs e)
+        private void SimpleCalibrateMagButton_Click(object sender, EventArgs e)
         {
-            if ((StateT == FlightStates.Preflight) || (StateT == FlightStates.Ready)) 
+            if (((StateT == FlightStates.Preflight) || (StateT == FlightStates.Ready)) && !SimpleCalibrateMagEnabled)
             {
-                SendRequestPacket(UAVXMiscPacketTag, (byte)MiscComms.miscGPSPassThru, 0);
-                GPSPassThruButton.BackColor = Color.Red;
+                SendRequestPacket(UAVXMiscPacketTag, (byte)MiscComms.miscSimpleCalMag, 0);
+                SimpleCalibrateMagButton.BackColor = Color.Orange;
+                SimpleCalibrateMagEnabled = true;
             }
         }
 
@@ -1952,12 +1954,12 @@ namespace UAVXGUI
             if (F[(byte)FlagValues.MagCalibrated])
             {
                 MagFailBox.BackColor = System.Drawing.SystemColors.Control;
-                CalibrateMagButton.BackColor = System.Drawing.Color.Green;
-                CalibrateMagEnabled = false;
+                CalibrateMagButton.BackColor = SimpleCalibrateMagButton.BackColor = System.Drawing.Color.Green;
+                CalibrateMagEnabled = SimpleCalibrateMagEnabled = false;
             }
             else
             {
-                CalibrateMagButton.BackColor = (CalibrateMagEnabled) ?
+                CalibrateMagButton.BackColor = SimpleCalibrateMagButton.BackColor = (CalibrateMagEnabled || SimpleCalibrateMagEnabled) ?
                     Color.Orange : Color.Red;
                 MagFailBox.BackColor = System.Drawing.Color.Orange;
             }
