@@ -271,7 +271,7 @@ namespace UAVXGUI
             this.backgroundWorker8 = new System.ComponentModel.BackgroundWorker();
             this.MissionTimeTextBox = new System.Windows.Forms.TextBox();
             this.WarningPictureBox = new System.Windows.Forms.PictureBox();
-            this.SimpleCalibrateMagButton = new System.Windows.Forms.Button();
+            this.GPSPassThruButton = new System.Windows.Forms.Button();
             this.DumpBBButton = new System.Windows.Forms.Button();
             this.AlarmsButton = new System.Windows.Forms.Button();
             this.execPeakPercentLabel = new System.Windows.Forms.Label();
@@ -326,6 +326,14 @@ namespace UAVXGUI
             this.WhereGroupBox = new System.Windows.Forms.GroupBox();
             this.label18 = new System.Windows.Forms.Label();
             this.execPercentLabel = new System.Windows.Forms.Label();
+            this.progressBarQ1 = new System.Windows.Forms.ProgressBar();
+            this.progressBarQ3 = new System.Windows.Forms.ProgressBar();
+            this.progressBarQ5 = new System.Windows.Forms.ProgressBar();
+            this.progressBarQ7 = new System.Windows.Forms.ProgressBar();
+            this.progressBarQ8 = new System.Windows.Forms.ProgressBar();
+            this.progressBarQ6 = new System.Windows.Forms.ProgressBar();
+            this.progressBarQ4 = new System.Windows.Forms.ProgressBar();
+            this.progressBarQ2 = new System.Windows.Forms.ProgressBar();
             this.attitudeIndicatorInstrumentControl1 = new Instruments.AttitudeIndicatorInstrumentControl();
             this.headingIndicatorInstrumentControl1 = new Instruments.HeadingIndicatorInstrumentControl();
             this.GyroGroupBox.SuspendLayout();
@@ -2462,7 +2470,7 @@ namespace UAVXGUI
             // 
             this.CalibrateIMUButton.Location = new System.Drawing.Point(848, 412);
             this.CalibrateIMUButton.Name = "CalibrateIMUButton";
-            this.CalibrateIMUButton.Size = new System.Drawing.Size(55, 23);
+            this.CalibrateIMUButton.Size = new System.Drawing.Size(69, 23);
             this.CalibrateIMUButton.TabIndex = 199;
             this.CalibrateIMUButton.Text = "IMU";
             this.CalibrateIMUButton.UseVisualStyleBackColor = true;
@@ -2472,7 +2480,7 @@ namespace UAVXGUI
             // 
             this.CalibrateMagButton.Location = new System.Drawing.Point(848, 440);
             this.CalibrateMagButton.Name = "CalibrateMagButton";
-            this.CalibrateMagButton.Size = new System.Drawing.Size(55, 23);
+            this.CalibrateMagButton.Size = new System.Drawing.Size(69, 23);
             this.CalibrateMagButton.TabIndex = 201;
             this.CalibrateMagButton.Text = "Mag";
             this.CalibrateMagButton.UseVisualStyleBackColor = true;
@@ -2849,7 +2857,7 @@ namespace UAVXGUI
             // RateEnergyLabel
             // 
             this.RateEnergyLabel.AutoSize = true;
-            this.RateEnergyLabel.Location = new System.Drawing.Point(265, 138);
+            this.RateEnergyLabel.Location = new System.Drawing.Point(264, 138);
             this.RateEnergyLabel.Name = "RateEnergyLabel";
             this.RateEnergyLabel.Size = new System.Drawing.Size(87, 13);
             this.RateEnergyLabel.TabIndex = 227;
@@ -2876,15 +2884,15 @@ namespace UAVXGUI
             this.WarningPictureBox.TabIndex = 212;
             this.WarningPictureBox.TabStop = false;
             // 
-            // SimpleCalibrateMagButton
+            // GPSPassThruButton
             // 
-            this.SimpleCalibrateMagButton.Location = new System.Drawing.Point(909, 440);
-            this.SimpleCalibrateMagButton.Name = "SimpleCalibrateMagButton";
-            this.SimpleCalibrateMagButton.Size = new System.Drawing.Size(89, 23);
-            this.SimpleCalibrateMagButton.TabIndex = 213;
-            this.SimpleCalibrateMagButton.Text = "Simple Mag";
-            this.SimpleCalibrateMagButton.UseVisualStyleBackColor = true;
-            this.SimpleCalibrateMagButton.Click += new System.EventHandler(this.SimpleCalibrateMagButton_Click);
+            this.GPSPassThruButton.Location = new System.Drawing.Point(929, 440);
+            this.GPSPassThruButton.Name = "GPSPassThruButton";
+            this.GPSPassThruButton.Size = new System.Drawing.Size(69, 23);
+            this.GPSPassThruButton.TabIndex = 213;
+            this.GPSPassThruButton.Text = "GPS ";
+            this.GPSPassThruButton.UseVisualStyleBackColor = true;
+            this.GPSPassThruButton.Click += new System.EventHandler(this.GPSPassThruButton_Click);
             // 
             // DumpBBButton
             // 
@@ -2918,6 +2926,14 @@ namespace UAVXGUI
             // 
             // CalibrationGroupBox
             // 
+            this.CalibrationGroupBox.Controls.Add(this.progressBarQ8);
+            this.CalibrationGroupBox.Controls.Add(this.progressBarQ6);
+            this.CalibrationGroupBox.Controls.Add(this.progressBarQ4);
+            this.CalibrationGroupBox.Controls.Add(this.progressBarQ2);
+            this.CalibrationGroupBox.Controls.Add(this.progressBarQ7);
+            this.CalibrationGroupBox.Controls.Add(this.progressBarQ5);
+            this.CalibrationGroupBox.Controls.Add(this.progressBarQ3);
+            this.CalibrationGroupBox.Controls.Add(this.progressBarQ1);
             this.CalibrationGroupBox.Controls.Add(this.TrackBaroVariance);
             this.CalibrationGroupBox.Controls.Add(this.BaroVarianceLabel);
             this.CalibrationGroupBox.Controls.Add(this.TrackAccUVariance);
@@ -2974,7 +2990,7 @@ namespace UAVXGUI
             // TrackBaroVariance
             // 
             this.TrackBaroVariance.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TrackBaroVariance.Location = new System.Drawing.Point(362, 61);
+            this.TrackBaroVariance.Location = new System.Drawing.Point(366, 95);
             this.TrackBaroVariance.Name = "TrackBaroVariance";
             this.TrackBaroVariance.ReadOnly = true;
             this.TrackBaroVariance.Size = new System.Drawing.Size(45, 13);
@@ -2984,7 +3000,7 @@ namespace UAVXGUI
             // BaroVarianceLabel
             // 
             this.BaroVarianceLabel.AutoSize = true;
-            this.BaroVarianceLabel.Location = new System.Drawing.Point(266, 60);
+            this.BaroVarianceLabel.Location = new System.Drawing.Point(264, 95);
             this.BaroVarianceLabel.Name = "BaroVarianceLabel";
             this.BaroVarianceLabel.Size = new System.Drawing.Size(71, 13);
             this.BaroVarianceLabel.TabIndex = 232;
@@ -2993,7 +3009,7 @@ namespace UAVXGUI
             // TrackAccUVariance
             // 
             this.TrackAccUVariance.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TrackAccUVariance.Location = new System.Drawing.Point(361, 43);
+            this.TrackAccUVariance.Location = new System.Drawing.Point(366, 78);
             this.TrackAccUVariance.Name = "TrackAccUVariance";
             this.TrackAccUVariance.ReadOnly = true;
             this.TrackAccUVariance.Size = new System.Drawing.Size(45, 13);
@@ -3003,7 +3019,7 @@ namespace UAVXGUI
             // AccVarianceLabel
             // 
             this.AccVarianceLabel.AutoSize = true;
-            this.AccVarianceLabel.Location = new System.Drawing.Point(265, 43);
+            this.AccVarianceLabel.Location = new System.Drawing.Point(264, 78);
             this.AccVarianceLabel.Name = "AccVarianceLabel";
             this.AccVarianceLabel.Size = new System.Drawing.Size(76, 13);
             this.AccVarianceLabel.TabIndex = 230;
@@ -3040,7 +3056,7 @@ namespace UAVXGUI
             // FWGlideAngleOffsetLabel
             // 
             this.FWGlideAngleOffsetLabel.AutoSize = true;
-            this.FWGlideAngleOffsetLabel.Location = new System.Drawing.Point(265, 119);
+            this.FWGlideAngleOffsetLabel.Location = new System.Drawing.Point(264, 119);
             this.FWGlideAngleOffsetLabel.Name = "FWGlideAngleOffsetLabel";
             this.FWGlideAngleOffsetLabel.Size = new System.Drawing.Size(103, 13);
             this.FWGlideAngleOffsetLabel.TabIndex = 225;
@@ -3418,9 +3434,9 @@ namespace UAVXGUI
             // 
             // CalibrateAccZeroButton
             // 
-            this.CalibrateAccZeroButton.Location = new System.Drawing.Point(909, 411);
+            this.CalibrateAccZeroButton.Location = new System.Drawing.Point(929, 411);
             this.CalibrateAccZeroButton.Name = "CalibrateAccZeroButton";
-            this.CalibrateAccZeroButton.Size = new System.Drawing.Size(89, 23);
+            this.CalibrateAccZeroButton.Size = new System.Drawing.Size(69, 23);
             this.CalibrateAccZeroButton.TabIndex = 263;
             this.CalibrateAccZeroButton.Text = "Simple IMU";
             this.CalibrateAccZeroButton.UseVisualStyleBackColor = true;
@@ -3459,6 +3475,78 @@ namespace UAVXGUI
             this.execPercentLabel.TabIndex = 265;
             this.execPercentLabel.Text = "-";
             // 
+            // progressBarQ1
+            // 
+            this.progressBarQ1.Location = new System.Drawing.Point(267, 14);
+            this.progressBarQ1.Maximum = 55;
+            this.progressBarQ1.Name = "progressBarQ1";
+            this.progressBarQ1.Size = new System.Drawing.Size(66, 10);
+            this.progressBarQ1.Step = 1;
+            this.progressBarQ1.TabIndex = 233;
+            // 
+            // progressBarQ3
+            // 
+            this.progressBarQ3.Location = new System.Drawing.Point(267, 30);
+            this.progressBarQ3.Maximum = 55;
+            this.progressBarQ3.Name = "progressBarQ3";
+            this.progressBarQ3.Size = new System.Drawing.Size(66, 10);
+            this.progressBarQ3.Step = 1;
+            this.progressBarQ3.TabIndex = 234;
+            // 
+            // progressBarQ5
+            // 
+            this.progressBarQ5.Location = new System.Drawing.Point(267, 46);
+            this.progressBarQ5.Maximum = 55;
+            this.progressBarQ5.Name = "progressBarQ5";
+            this.progressBarQ5.Size = new System.Drawing.Size(66, 10);
+            this.progressBarQ5.Step = 1;
+            this.progressBarQ5.TabIndex = 235;
+            // 
+            // progressBarQ7
+            // 
+            this.progressBarQ7.Location = new System.Drawing.Point(267, 62);
+            this.progressBarQ7.Maximum = 55;
+            this.progressBarQ7.Name = "progressBarQ7";
+            this.progressBarQ7.Size = new System.Drawing.Size(66, 10);
+            this.progressBarQ7.Step = 1;
+            this.progressBarQ7.TabIndex = 236;
+            // 
+            // progressBarQ8
+            // 
+            this.progressBarQ8.Location = new System.Drawing.Point(339, 62);
+            this.progressBarQ8.Maximum = 55;
+            this.progressBarQ8.Name = "progressBarQ8";
+            this.progressBarQ8.Size = new System.Drawing.Size(66, 10);
+            this.progressBarQ8.Step = 1;
+            this.progressBarQ8.TabIndex = 240;
+            // 
+            // progressBarQ6
+            // 
+            this.progressBarQ6.Location = new System.Drawing.Point(339, 46);
+            this.progressBarQ6.Maximum = 55;
+            this.progressBarQ6.Name = "progressBarQ6";
+            this.progressBarQ6.Size = new System.Drawing.Size(66, 10);
+            this.progressBarQ6.Step = 1;
+            this.progressBarQ6.TabIndex = 239;
+            // 
+            // progressBarQ4
+            // 
+            this.progressBarQ4.Location = new System.Drawing.Point(339, 30);
+            this.progressBarQ4.Maximum = 55;
+            this.progressBarQ4.Name = "progressBarQ4";
+            this.progressBarQ4.Size = new System.Drawing.Size(66, 10);
+            this.progressBarQ4.Step = 1;
+            this.progressBarQ4.TabIndex = 238;
+            // 
+            // progressBarQ2
+            // 
+            this.progressBarQ2.Location = new System.Drawing.Point(339, 14);
+            this.progressBarQ2.Maximum = 55;
+            this.progressBarQ2.Name = "progressBarQ2";
+            this.progressBarQ2.Size = new System.Drawing.Size(66, 10);
+            this.progressBarQ2.Step = 1;
+            this.progressBarQ2.TabIndex = 237;
+            // 
             // attitudeIndicatorInstrumentControl1
             // 
             this.attitudeIndicatorInstrumentControl1.Location = new System.Drawing.Point(323, 118);
@@ -3492,7 +3580,7 @@ namespace UAVXGUI
             this.Controls.Add(this.execPeakPercentLabel);
             this.Controls.Add(this.AlarmsButton);
             this.Controls.Add(this.DumpBBButton);
-            this.Controls.Add(this.SimpleCalibrateMagButton);
+            this.Controls.Add(this.GPSPassThruButton);
             this.Controls.Add(this.attitudeIndicatorInstrumentControl1);
             this.Controls.Add(this.WarningPictureBox);
             this.Controls.Add(this.MissionTimeTextBox);
@@ -3775,7 +3863,7 @@ namespace UAVXGUI
         public System.Windows.Forms.Button StartNavigationButton;
         private System.Windows.Forms.PictureBox WarningPictureBox;
         public static System.IO.Ports.SerialPort serialPort1;
-        private System.Windows.Forms.Button SimpleCalibrateMagButton;
+        private System.Windows.Forms.Button GPSPassThruButton;
         private System.Windows.Forms.CheckBox SpeakVarioCheckBox;
         private System.Windows.Forms.Button DumpBBButton;
         private System.Windows.Forms.Button AlarmsButton;
@@ -3874,6 +3962,14 @@ namespace UAVXGUI
         private System.Windows.Forms.Label PWM0Label;
         private System.Windows.Forms.Label PWM8Label;
         private System.Windows.Forms.Label PWM9Label;
+        private System.Windows.Forms.ProgressBar progressBarQ8;
+        private System.Windows.Forms.ProgressBar progressBarQ6;
+        private System.Windows.Forms.ProgressBar progressBarQ4;
+        private System.Windows.Forms.ProgressBar progressBarQ2;
+        private System.Windows.Forms.ProgressBar progressBarQ7;
+        private System.Windows.Forms.ProgressBar progressBarQ5;
+        private System.Windows.Forms.ProgressBar progressBarQ3;
+        private System.Windows.Forms.ProgressBar progressBarQ1;
     }
 }
 

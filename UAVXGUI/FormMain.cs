@@ -247,7 +247,7 @@ namespace UAVXGUI
         };
 
         public enum MiscComms 
-        { miscCalIMU, miscCalMag, miscLB, miscUnused, miscBBDump, miscSimpleCalMag, miscCalAcc, miscCalGyro, miscBootLoad}
+        { miscCalIMU, miscCalMag, miscLB, miscUnused, miscBBDump, miscGPSPassThru, miscCalAcc, miscCalGyro, miscBootLoad}
 
         public enum NavStates
         {
@@ -547,7 +547,7 @@ namespace UAVXGUI
         int BaroTemperatureT;
         int BaroPressureT;
 
-        int BaroROCT, AltPosDesiredT, BBThrottleT, BBCorrectionT, BBCruiseThrottleT, BBDesiredThrottleT, BBAltCompT, BBVoltsT, BBTiltFFCompT, BBBattFFCompT;
+        int BaroROCT, AltPosDesiredT, BBCorrectionT, BBCruiseThrottleT, BBDesiredThrottleT, BBAltCompT, BBVoltsT;
         short BBRateT;
 
         short BaroVarianceT;
@@ -760,7 +760,6 @@ namespace UAVXGUI
         bool CalibrateIMUEnabled = false;
         bool CalibrateAccZeroEnabled = false;
         bool CalibrateMagEnabled = false;
-        bool SimpleCalibrateMagEnabled = false;
 
         bool LogFileHeaderWritten = false;
         bool AltitudeControlFileHeaderWritten = false;
@@ -1374,13 +1373,12 @@ namespace UAVXGUI
             }
         }
 
-        private void SimpleCalibrateMagButton_Click(object sender, EventArgs e)
+        private void GPSPassThruButton_Click(object sender, EventArgs e)
         {
-            if (((StateT == FlightStates.Preflight) || (StateT == FlightStates.Ready)) && !SimpleCalibrateMagEnabled)
+            if ((StateT == FlightStates.Preflight) || (StateT == FlightStates.Ready)) 
             {
-                SendRequestPacket(UAVXMiscPacketTag, (byte)MiscComms.miscSimpleCalMag, 0);
-                SimpleCalibrateMagButton.BackColor = Color.Orange;
-                SimpleCalibrateMagEnabled = true;
+                SendRequestPacket(UAVXMiscPacketTag, (byte)MiscComms.miscGPSPassThru, 0);
+                GPSPassThruButton.BackColor = Color.Red;
             }
         }
 
@@ -1954,12 +1952,12 @@ namespace UAVXGUI
             if (F[(byte)FlagValues.MagCalibrated])
             {
                 MagFailBox.BackColor = System.Drawing.SystemColors.Control;
-                CalibrateMagButton.BackColor = SimpleCalibrateMagButton.BackColor = System.Drawing.Color.Green;
-                CalibrateMagEnabled = SimpleCalibrateMagEnabled = false;
+                CalibrateMagButton.BackColor = System.Drawing.Color.Green;
+                CalibrateMagEnabled = false;
             }
             else
             {
-                CalibrateMagButton.BackColor = SimpleCalibrateMagButton.BackColor = (CalibrateMagEnabled || SimpleCalibrateMagEnabled) ?
+                CalibrateMagButton.BackColor = (CalibrateMagEnabled) ?
                     Color.Orange : Color.Red;
                 MagFailBox.BackColor = System.Drawing.Color.Orange;
             }
@@ -2171,8 +2169,8 @@ namespace UAVXGUI
         void UpdateCompensation()
         {
             AccConfidence.Text = string.Format("{0:n0}", AccConfidenceT);
-            TiltFFComp.Text = string.Format("{0:n3}", TiltFFCompT * 0.001);
-            BattFFComp.Text = string.Format("{0:n3}", BattFFCompT * 0.001);
+            TiltFFComp.Text = string.Format("{0:n2}", TiltFFCompT * 0.001);
+            BattFFComp.Text = string.Format("{0:n2}", BattFFCompT * 0.001);
             AltComp.Text = string.Format("{0:n1}", AltCompT * 0.1);
             CruiseThrottle.Text = string.Format("{0:n1}", CruiseThrottleT * 0.1);
 
@@ -2877,6 +2875,18 @@ namespace UAVXGUI
                      AccLPFLabel.Text = string.Format("{0:n0}", Cal[19]);
                      PitchRollGyroLabel.Text = string.Format("{0:n0}", Cal[20]);
                      YawPitchRollGyroLabel.Text = string.Format("{0:n0}", Cal[21]);
+                        // call 22 servo hz
+
+                   progressBarQ1.Value =  Cal[23];
+                   progressBarQ2.Value = Cal[24];
+                   progressBarQ3.Value = Cal[25];
+                   progressBarQ4.Value = Cal[26];
+                   progressBarQ5.Value = Cal[27];
+                   progressBarQ6.Value = Cal[28];
+                   progressBarQ7.Value = Cal[29];
+                   progressBarQ8.Value = Cal[30];
+
+                        // cal31 samples
 
                      UpdateFlags();
   
@@ -2892,7 +2902,7 @@ namespace UAVXGUI
 
                     break;
 
-                    case UAVXSerialPortsPacketTag:
+                 case UAVXSerialPortsPacketTag:
                     int MaxBuffLength, NoOfPorts, SerialAF, SerialBF;
                     int SerialATxEntriesT, SerialARxEntriesT, SerialBTxEntriesT, SerialBRxEntriesT;
 
@@ -3149,10 +3159,7 @@ namespace UAVXGUI
 	                BBVoltsT = ExtractByte(ref UAVXPacket, 16);
                     BBCruiseThrottleT = ExtractByte(ref UAVXPacket, 17);
                     BBDesiredThrottleT = ExtractByte(ref UAVXPacket, 18);
-                    BBTiltFFCompT = ExtractShort(ref UAVXPacket, 19);
-                    BBBattFFCompT = ExtractShort(ref UAVXPacket, 21);
-                    BBAltCompT = ExtractShort(ref UAVXPacket, 23);
-                    BBThrottleT = ExtractShort(ref UAVXPacket, 25);
+                    BBAltCompT = ExtractByte(ref UAVXPacket, 19);
 
                     WriteTextAltitudeControlFile(); // only log with this packet
 
@@ -3398,8 +3405,6 @@ namespace UAVXGUI
                          "Volts," +
                           "Cruise," +
                            "Desired," +
-                           "TiltComp," +
-                           "BattComp," +
                           "AltComp, " +
                           "Throttle"
                     );
@@ -3422,11 +3427,8 @@ namespace UAVXGUI
               BBVoltsT * 0.1 + "," +
                BBCruiseThrottleT * 0.005 + "," +
                BBDesiredThrottleT * 0.005 + "," +
-               BBTiltFFCompT * 0.0001 + "," +
-               BBBattFFCompT * 0.0001 + "," +
-               BBAltCompT * 0.0001 + "," +
-                BBThrottleT * 0.0001
-            );
+               BBAltCompT * 0.005 + "," +
+            (BBDesiredThrottleT + BBAltCompT) * 0.005);
 
             SaveTextAltitudeControlFileStreamWriter.WriteLine();
             SaveTextAltitudeControlFileStreamWriter.Flush();
