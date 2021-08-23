@@ -1379,6 +1379,7 @@ namespace UAVXGUI
             {
                 SendRequestPacket(UAVXMiscPacketTag, (byte)MiscComms.miscGPSPassThru, 0);
                 GPSPassThruButton.BackColor = Color.Red;
+                UAVXCloseTelemetry();
             }
         }
 
@@ -2584,11 +2585,12 @@ namespace UAVXGUI
                     case UAVXAckPacketTag:
                         if (UAVXPacket[2] == (byte)MiscComms.miscLB)
                            RxLoopbackEnabled = UAVXPacket[3] != 0;
-                     //   else
-                          if (UAVXPacket[3] == 0)
+
+                        if (UAVXPacket[3] == 0)
                              speech.SpeakAsync("Failed ");
-                       //   else
-                       //       speech.SpeakAsync("OK ");
+                        else
+                             speech.SpeakAsync("OK ");
+    
                         break;
 
                     case UAVXParamPacketTag:
@@ -2875,18 +2877,6 @@ namespace UAVXGUI
                      AccLPFLabel.Text = string.Format("{0:n0}", Cal[19]);
                      PitchRollGyroLabel.Text = string.Format("{0:n0}", Cal[20]);
                      YawPitchRollGyroLabel.Text = string.Format("{0:n0}", Cal[21]);
-                        // call 22 servo hz
-
-                   progressBarQ1.Value =  Cal[23];
-                   progressBarQ2.Value = Cal[24];
-                   progressBarQ3.Value = Cal[25];
-                   progressBarQ4.Value = Cal[26];
-                   progressBarQ5.Value = Cal[27];
-                   progressBarQ6.Value = Cal[28];
-                   progressBarQ7.Value = Cal[29];
-                   progressBarQ8.Value = Cal[30];
-
-                        // cal31 samples
 
                      UpdateFlags();
   
@@ -2902,7 +2892,7 @@ namespace UAVXGUI
 
                     break;
 
-                 case UAVXSerialPortsPacketTag:
+                    case UAVXSerialPortsPacketTag:
                     int MaxBuffLength, NoOfPorts, SerialAF, SerialBF;
                     int SerialATxEntriesT, SerialARxEntriesT, SerialBTxEntriesT, SerialBRxEntriesT;
 
