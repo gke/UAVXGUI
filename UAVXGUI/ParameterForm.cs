@@ -377,8 +377,8 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
             //   if (parameterForm.RxTypeComboBox.Focused || YawIntLimit2NumericUpDown.Focused)
             //       helpstring = help.GetString("IntegralLimiter");
 
-            if (parameterForm.GyroSlewRateNumericUpDown.Focused)
-                helpstring = help.GetString("GyroSlewRate");
+            //if (parameterForm.GyroSlewRateNumericUpDown.Focused)
+            //    helpstring = help.GetString("GyroSlewRate");
 
 
             // General
@@ -539,8 +539,8 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
             if (parameterForm.ThrottleGainNumericUpDown.Focused)
                 helpstring = help.GetString("ThrottleGain");
 
-            if (parameterForm.GyroComboBox.Focused)
-                helpstring = help.GetString("GyroType");
+           // if (parameterForm.GyroComboBox.Focused)
+           //     helpstring = help.GetString("GyroType");
 
             if (parameterForm.ESCComboBox.Focused)
                 helpstring = help.GetString("ESCType");
@@ -826,7 +826,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
         {
 
             DiscoveredRCChannelsLabel.Text = "#Ch " + string.Format("{0:n0}",  FormMain.DiscoveredRCChannelsT);
-            RCPacketIntervalLabel.Text = string.Format("{0:n1}", FormMain.RCPacketIntervalT/1000.0f) +"mS";
+            RCPacketIntervalLabel.Text = string.Format("{0:n2}", FormMain.RCPacketIntervalT/1000.0f) +"mS";
 
             if (!RCuSCheckBox.Checked)
             {
@@ -991,14 +991,14 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                 NumericUpDown Field = (NumericUpDown)Object;
 
                 int p = Convert.ToInt16(Field.Tag);
-                if ((p == 116) || (p == 32) || (p == 111) || (p == 106))
+                if ((p == 116) || (p == 32) || (p == 39) || (p == 53) || (p == 111) || (p == 106))
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 100.0);
                 else
                     if ((p == 110))
                         P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 5.0);
 
                 else
-                    if ((p == 54) || (p == 18) ||  (p == 34) || (p == 39) || (p == 46) || (p == 53) ||
+                    if ((p == 54) || (p == 18) ||  (p == 34) || (p == 46)  ||
                      (p == 70) || (p == 104) || (p == 105) || (p == 110) || (p == 112) || (p == 115 ))
                         P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 10.0);
                 else
@@ -1274,10 +1274,10 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         ParamUpdate(NavMagVarNumericUpDown);
                         break;
                     case 35:
-                        GyroComboBox.SelectedIndex = UAVXP[p - 1].Value;
-                        GyroComboBox.BackColor = GyroComboBox.SelectedIndex >= 6 ?
-                            Color.Red : Color.White;
-                        ParamUpdate(GyroComboBox);
+                      //  GyroComboBox.SelectedIndex = UAVXP[p - 1].Value;
+                      //  GyroComboBox.BackColor = GyroComboBox.SelectedIndex >= 6 ?
+                      //      Color.Red : Color.White;
+                      //  ParamUpdate(GyroComboBox);
                         break;
                     case 36:
                         ESCComboBox.SelectedIndex = UAVXP[p-1].Value;
@@ -1292,7 +1292,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         ParamUpdate(Ch2NumericUpDown);
                         break;
                     case 39:
-                        MadgwickKpAccNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
+                        MadgwickKpAccNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.01);
                         ParamUpdate(MadgwickKpAccNumericUpDown);
                         break;
                     case 40:
@@ -1369,7 +1369,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
            
                         break;
                     case 53:
-                        AccConfNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
+                        AccConfNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.01);
                         ParamUpdate(AccConfNumericUpDown);
                         break;
                     case 54:
@@ -1556,8 +1556,8 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                        ParamUpdate(YawRateDiffNumericUpDown);
                         break;
                     case 92:
-                        GyroSlewRateNumericUpDown.Value = UAVXP[p - 1].Value;
-                        ParamUpdate(GyroSlewRateNumericUpDown);
+                        //GyroSlewRateNumericUpDown.Value = UAVXP[p - 1].Value;
+                        //ParamUpdate(GyroSlewRateNumericUpDown);
                         break;
                     case 93:
                         ThrottleGainNumericUpDown.Value = UAVXP[p - 1].Value;
@@ -1654,8 +1654,8 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         ParamUpdate(AHThrottleWindowNumericUpDown);
                         break;
                     case 116:
-                        CruiseTrackRateNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.01);
-                        ParamUpdate(CruiseTrackRateNumericUpDown);
+                       // CruiseTrackRateNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.01);
+                       // ParamUpdate(CruiseTrackRateNumericUpDown);
                         break;
                     case 117:
                         FenceRadiusNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 10.0);
@@ -1680,6 +1680,8 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
         {
             // turn off parameter button colour
         }
+
+  
 
      
      

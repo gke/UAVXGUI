@@ -303,7 +303,7 @@
     <value>Determines what percentage of stick movement is needed for full acro/gyro mode.</value>
   </data>
   <data name="Acro" xml:space="preserve">
-    <value>Controls how much correction to gyro drift is applied by the magnetometer for the Madgwick attitude estimators.</value>
+    <value>Controls how much correction to gyro drift is applied by the magnetometer for the Madgwick attitude estimators. Original default was 1.0</value>
   </data>
   <data name="AltKd" xml:space="preserve">
     <value>Reduces rate of climb or descent when changing between different altitudes helping to prevent overshoots in altitude.</value>
@@ -408,7 +408,7 @@ Note how motors start and the stick responsiveness and flight performance.  Usua
     <value>Altitude hold is aborted if the throttle moves outside this from its setting at hover.</value>
   </data>
     <data name="InertialScheme" xml:space="preserve">
-    <value>Selects the attitude estimation technique to be used. Madgwick IMU is probably the simplest and most reliable Madgwick AHRS attempts to fuse the magnetomter readings to estimate yaw but can be noisy.</value>
+    <value>Selects the attitude estimation technique to be used. Madgwick IMU is probably the simplest and most reliable Madgwick AHRS attempts to fuse the magnetomter readings to estimate yaw but can be noisy. Original default was 0.5.</value>
   </data>
       <data name="DerivativeFilter" xml:space="preserve">
     <value>Selects the type of filter to be used for reducing derivative noise. The derivative term in the PID controller is intended to reject/compensate for sudden external disturbances to the aircraft's attitude however other self induced disturbances caused by prop wash etc can be magnified if not effectively filtered. THe MAFilt is known to work reasonable well.</value>

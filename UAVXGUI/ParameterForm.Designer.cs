@@ -48,7 +48,6 @@
             this.HorizonNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.RollPitchFFLabel = new System.Windows.Forms.Label();
             this.FWRollPitchFFNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.GyroComboBox = new System.Windows.Forms.ComboBox();
             this.labelGyros1 = new System.Windows.Forms.Label();
             this.bit62CheckBox = new System.Windows.Forms.CheckBox();
             this.BatteryBox = new System.Windows.Forms.GroupBox();
@@ -164,9 +163,6 @@
             this.NavMagVarNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.NavPosKiNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.NavPosKiLabel = new System.Windows.Forms.Label();
-            this.CruiseTrackingRateLabel = new System.Windows.Forms.Label();
-            this.CruiseTrackRateNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.ROCGainLabel = new System.Windows.Forms.Label();
             this.AltPosIntNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.BaroLPFHzLabel = new System.Windows.Forms.Label();
             this.AltPosKpNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -218,10 +214,7 @@
             this.RC11TextBox = new System.Windows.Forms.TextBox();
             this.RC10TextBox = new System.Windows.Forms.TextBox();
             this.RC9TextBox = new System.Windows.Forms.TextBox();
-            this.GyroSlewRateNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.GyroSlewLimitLabel = new System.Windows.Forms.Label();
             this.RC9ProgressBar = new System.Windows.Forms.ProgressBar();
-            this.AltVelKdLabel = new System.Windows.Forms.Label();
             this.RC11ProgressBar = new System.Windows.Forms.ProgressBar();
             this.RC10ProgressBar = new System.Windows.Forms.ProgressBar();
             this.Ch10Label = new System.Windows.Forms.Label();
@@ -357,7 +350,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.CrossTrackNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavMagVarNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavPosKiNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CruiseTrackRateNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltPosIntNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltPosKpNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltLPFNumericUpDown)).BeginInit();
@@ -382,7 +374,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.RollRatePropNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltPosIntLimitNumericUpDown)).BeginInit();
             this.RCGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GyroSlewRateNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch10NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch11NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch12NumericUpDown)).BeginInit();
@@ -646,31 +637,6 @@
             this.FWRollPitchFFNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
             this.FWRollPitchFFNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
             this.FWRollPitchFFNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
-            // 
-            // GyroComboBox
-            // 
-            this.GyroComboBox.AutoCompleteCustomSource.AddRange(new string[] {
-            resources.GetString("GyroComboBox.AutoCompleteCustomSource"),
-            resources.GetString("GyroComboBox.AutoCompleteCustomSource1"),
-            resources.GetString("GyroComboBox.AutoCompleteCustomSource2"),
-            resources.GetString("GyroComboBox.AutoCompleteCustomSource3"),
-            resources.GetString("GyroComboBox.AutoCompleteCustomSource4"),
-            resources.GetString("GyroComboBox.AutoCompleteCustomSource5")});
-            resources.ApplyResources(this.GyroComboBox, "GyroComboBox");
-            this.GyroComboBox.FormattingEnabled = true;
-            this.GyroComboBox.Items.AddRange(new object[] {
-            resources.GetString("GyroComboBox.Items"),
-            resources.GetString("GyroComboBox.Items1"),
-            resources.GetString("GyroComboBox.Items2"),
-            resources.GetString("GyroComboBox.Items3"),
-            resources.GetString("GyroComboBox.Items4"),
-            resources.GetString("GyroComboBox.Items5"),
-            resources.GetString("GyroComboBox.Items6"),
-            resources.GetString("GyroComboBox.Items7")});
-            this.GyroComboBox.Name = "GyroComboBox";
-            this.GyroComboBox.Tag = "35";
-            this.GyroComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
-            this.GyroComboBox.Enter += new System.EventHandler(this.infoGetFocus);
             // 
             // labelGyros1
             // 
@@ -1254,25 +1220,25 @@
             // MadgwickKpAccNumericUpDown
             // 
             this.MadgwickKpAccNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
-            this.MadgwickKpAccNumericUpDown.DecimalPlaces = 1;
+            this.MadgwickKpAccNumericUpDown.DecimalPlaces = 2;
             resources.ApplyResources(this.MadgwickKpAccNumericUpDown, "MadgwickKpAccNumericUpDown");
             this.MadgwickKpAccNumericUpDown.Increment = new decimal(new int[] {
             1,
             0,
             0,
-            65536});
+            131072});
             this.MadgwickKpAccNumericUpDown.Maximum = new decimal(new int[] {
             12,
             0,
             0,
-            0});
+            65536});
             this.MadgwickKpAccNumericUpDown.Name = "MadgwickKpAccNumericUpDown";
             this.MadgwickKpAccNumericUpDown.Tag = "39";
             this.MadgwickKpAccNumericUpDown.Value = new decimal(new int[] {
-            2,
+            5,
             0,
             0,
-            0});
+            65536});
             this.MadgwickKpAccNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
             this.MadgwickKpAccNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
             this.MadgwickKpAccNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
@@ -1300,10 +1266,10 @@
             this.AccConfNumericUpDown.Name = "AccConfNumericUpDown";
             this.AccConfNumericUpDown.Tag = "53";
             this.AccConfNumericUpDown.Value = new decimal(new int[] {
-            4,
+            25,
             0,
             0,
-            65536});
+            131072});
             this.AccConfNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
             this.AccConfNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
             this.AccConfNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
@@ -2147,42 +2113,6 @@
             resources.ApplyResources(this.NavPosKiLabel, "NavPosKiLabel");
             this.NavPosKiLabel.Name = "NavPosKiLabel";
             // 
-            // CruiseTrackingRateLabel
-            // 
-            resources.ApplyResources(this.CruiseTrackingRateLabel, "CruiseTrackingRateLabel");
-            this.CruiseTrackingRateLabel.Name = "CruiseTrackingRateLabel";
-            this.CruiseTrackingRateLabel.Tag = "";
-            // 
-            // CruiseTrackRateNumericUpDown
-            // 
-            this.CruiseTrackRateNumericUpDown.DecimalPlaces = 2;
-            resources.ApplyResources(this.CruiseTrackRateNumericUpDown, "CruiseTrackRateNumericUpDown");
-            this.CruiseTrackRateNumericUpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.CruiseTrackRateNumericUpDown.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.CruiseTrackRateNumericUpDown.Name = "CruiseTrackRateNumericUpDown";
-            this.CruiseTrackRateNumericUpDown.Tag = "116";
-            this.CruiseTrackRateNumericUpDown.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.CruiseTrackRateNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.CruiseTrackRateNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
-            this.CruiseTrackRateNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
-            // 
-            // ROCGainLabel
-            // 
-            resources.ApplyResources(this.ROCGainLabel, "ROCGainLabel");
-            this.ROCGainLabel.Name = "ROCGainLabel";
-            // 
             // AltPosIntNumericUpDown
             // 
             resources.ApplyResources(this.AltPosIntNumericUpDown, "AltPosIntNumericUpDown");
@@ -2701,22 +2631,15 @@
             // 
             // RCGroupBox
             // 
-            this.RCGroupBox.Controls.Add(this.CruiseTrackingRateLabel);
-            this.RCGroupBox.Controls.Add(this.CruiseTrackRateNumericUpDown);
             this.RCGroupBox.Controls.Add(this.label2);
             this.RCGroupBox.Controls.Add(this.ThrottleIdleLabel);
             this.RCGroupBox.Controls.Add(this.RC11TextBox);
             this.RCGroupBox.Controls.Add(this.RC10TextBox);
             this.RCGroupBox.Controls.Add(this.RC9TextBox);
-            this.RCGroupBox.Controls.Add(this.GyroComboBox);
             this.RCGroupBox.Controls.Add(this.HysteresisLabel);
             this.RCGroupBox.Controls.Add(this.LowMotorRunNumericUpDown);
-            this.RCGroupBox.Controls.Add(this.GyroSlewRateNumericUpDown);
-            this.RCGroupBox.Controls.Add(this.GyroSlewLimitLabel);
             this.RCGroupBox.Controls.Add(this.HysteresisNumericUpDown);
             this.RCGroupBox.Controls.Add(this.RC9ProgressBar);
-            this.RCGroupBox.Controls.Add(this.ROCGainLabel);
-            this.RCGroupBox.Controls.Add(this.AltVelKdLabel);
             this.RCGroupBox.Controls.Add(this.RC11ProgressBar);
             this.RCGroupBox.Controls.Add(this.RC10ProgressBar);
             this.RCGroupBox.Controls.Add(this.Ch10Label);
@@ -2805,43 +2728,12 @@
             this.RC9TextBox.Name = "RC9TextBox";
             this.RC9TextBox.ReadOnly = true;
             // 
-            // GyroSlewRateNumericUpDown
-            // 
-            this.GyroSlewRateNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
-            resources.ApplyResources(this.GyroSlewRateNumericUpDown, "GyroSlewRateNumericUpDown");
-            this.GyroSlewRateNumericUpDown.Maximum = new decimal(new int[] {
-            180,
-            0,
-            0,
-            0});
-            this.GyroSlewRateNumericUpDown.Name = "GyroSlewRateNumericUpDown";
-            this.GyroSlewRateNumericUpDown.Tag = "92";
-            this.GyroSlewRateNumericUpDown.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.GyroSlewRateNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
-            this.GyroSlewRateNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
-            this.GyroSlewRateNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
-            // 
-            // GyroSlewLimitLabel
-            // 
-            resources.ApplyResources(this.GyroSlewLimitLabel, "GyroSlewLimitLabel");
-            this.GyroSlewLimitLabel.Name = "GyroSlewLimitLabel";
-            // 
             // RC9ProgressBar
             // 
             resources.ApplyResources(this.RC9ProgressBar, "RC9ProgressBar");
             this.RC9ProgressBar.Maximum = 2200;
             this.RC9ProgressBar.Name = "RC9ProgressBar";
             this.RC9ProgressBar.Step = 1;
-            // 
-            // AltVelKdLabel
-            // 
-            resources.ApplyResources(this.AltVelKdLabel, "AltVelKdLabel");
-            this.AltVelKdLabel.Name = "AltVelKdLabel";
-            this.AltVelKdLabel.Tag = "";
             // 
             // RC11ProgressBar
             // 
@@ -3874,7 +3766,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.CrossTrackNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavMagVarNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavPosKiNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CruiseTrackRateNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltPosIntNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltPosKpNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltLPFNumericUpDown)).EndInit();
@@ -3901,7 +3792,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.AltPosIntLimitNumericUpDown)).EndInit();
             this.RCGroupBox.ResumeLayout(false);
             this.RCGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GyroSlewRateNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch10NumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch11NumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch12NumericUpDown)).EndInit();
@@ -4018,7 +3908,6 @@
         public System.Windows.Forms.NumericUpDown BalanceNumericUpDown;
         private System.Windows.Forms.Label RollPitchFFLabel;
         public System.Windows.Forms.NumericUpDown FWRollPitchFFNumericUpDown;
-        public System.Windows.Forms.ComboBox GyroComboBox;
         private System.Windows.Forms.Label labelGyros1;
         private System.Windows.Forms.GroupBox BatteryBox;
         public System.Windows.Forms.NumericUpDown BatteryCapacityNumericUpDown;
@@ -4101,7 +3990,6 @@
         public System.Windows.Forms.NumericUpDown FWAileronDifferentialNumericUpDown;
         private System.Windows.Forms.Label AirspeedLabel;
         public System.Windows.Forms.ComboBox AirspeedComboBox;
-        private System.Windows.Forms.Label ROCGainLabel;
         public System.Windows.Forms.CheckBox bit02CheckBox;
         public System.Windows.Forms.CheckBox bit62CheckBox;
         public System.Windows.Forms.CheckBox bit52CheckBox;
@@ -4143,13 +4031,11 @@
         public System.Windows.Forms.NumericUpDown FWAltSpoilerFFNumericUpDown;
         public System.Windows.Forms.NumericUpDown MaxCompassYawRateNumericUpDown;
         private System.Windows.Forms.Label AccLabel;
-        private System.Windows.Forms.Label GyroSlewLimitLabel;
         public System.Windows.Forms.NumericUpDown YawRateDiffNumericUpDown;
         private System.Windows.Forms.Label ThrottleGainLabel;
         public System.Windows.Forms.NumericUpDown ThrottleGainNumericUpDown;
         private System.Windows.Forms.Label YawLPFLabel;
         public System.Windows.Forms.NumericUpDown YawGyroLPFNumericUpDown;
-        public System.Windows.Forms.NumericUpDown GyroSlewRateNumericUpDown;
         private System.Windows.Forms.Label ThrottleIdleLabel;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox MaxRollRateTextBox;
@@ -4177,7 +4063,6 @@
         private System.Windows.Forms.Label AltVeleIntLabel;
         private System.Windows.Forms.Label AltPosKpLabel;
         private System.Windows.Forms.Label AltVelKpLabel;
-        private System.Windows.Forms.Label AltVelKdLabel;
         public System.Windows.Forms.NumericUpDown VRSDescentRateNumericUpDown;
         private System.Windows.Forms.Label VRSLabel;
         private System.Windows.Forms.Label MotorStopLabel;
@@ -4209,8 +4094,6 @@
         private System.Windows.Forms.Label AHThrottleWindowLabel;
         public System.Windows.Forms.NumericUpDown AHThrottleWindowNumericUpDown;
         public System.Windows.Forms.CheckBox bit41CheckBox;
-        private System.Windows.Forms.Label CruiseTrackingRateLabel;
-        public System.Windows.Forms.NumericUpDown CruiseTrackRateNumericUpDown;
         public System.Windows.Forms.NumericUpDown AccZVarianceNumericUpDown;
         public System.Windows.Forms.NumericUpDown BaroVarianceNumericUpDown;
         private System.Windows.Forms.Label ResetCause;
