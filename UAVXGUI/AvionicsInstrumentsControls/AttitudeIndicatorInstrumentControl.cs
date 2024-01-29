@@ -10,12 +10,8 @@
 /*****************************************************************************/
 
 using System;
-using System.ComponentModel;
-using System.Windows.Forms;
-using System.Collections;
 using System.Drawing;
-using System.Text;
-using System.Data;
+using System.Windows.Forms;
 
 namespace Instruments
 {
@@ -25,7 +21,7 @@ namespace Instruments
 
         // Parameters
         double PitchAngle = 0; // Phi
-		double RollAngle = 0; // Theta
+        double RollAngle = 0; // Theta
 
         // Images
         Bitmap bmpCadran = new Bitmap(Instruments.AvionicsInstrumentsControls.AvionicsInstrumentsControlsResources.Horizon_Background);
@@ -42,10 +38,10 @@ namespace Instruments
 		private System.ComponentModel.Container components = null;
 
         public AttitudeIndicatorInstrumentControl()
-		{
-			// Double bufferisation
-			SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint |
-				ControlStyles.AllPaintingInWmPaint, true);
+        {
+            // Double bufferisation
+            SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint |
+                ControlStyles.AllPaintingInWmPaint, true);
         }
 
         #endregion
@@ -70,7 +66,7 @@ namespace Instruments
 
             // Pre Display computings
 
-            Point ptBoule = new Point(25, - 210);
+            Point ptBoule = new Point(25, -210);
             Point ptRotation = new Point(150, 150);
 
             float scale = (float)this.Width / bmpCadran.Width;
@@ -81,10 +77,10 @@ namespace Instruments
             bmpAvion.MakeTransparent(Color.Yellow);
 
             // display Horizon
-            RotateAndTranslate(pe, bmpBoule, RollAngle, 0, ptBoule, (int)(4*PitchAngle), ptRotation, scale);
+            RotateAndTranslate(pe, bmpBoule, RollAngle, 0, ptBoule, (int)(4 * PitchAngle), ptRotation, scale);
 
             // diplay mask
-            Pen maskPen = new Pen(this.BackColor,30*scale);
+            Pen maskPen = new Pen(this.BackColor, 30 * scale);
             pe.Graphics.DrawRectangle(maskPen, 0, 0, bmpCadran.Width * scale, bmpCadran.Height * scale);
 
             // display cadran

@@ -9,13 +9,8 @@
 /* History  :                                                                */
 /*****************************************************************************/
 
-using System;
-using System.ComponentModel;
-using System.Windows.Forms;
-using System.Collections;
 using System.Drawing;
-using System.Text;
-using System.Data;
+using System.Windows.Forms;
 
 namespace Instruments
 {
@@ -24,7 +19,7 @@ namespace Instruments
         #region Fields
 
         // Parameters
-        int verticalSpeed; 
+        int verticalSpeed;
 
         // Images
         Bitmap bmpCadran = new Bitmap(Instruments.AvionicsInstrumentsControls.AvionicsInstrumentsControlsResources.VerticalSpeedIndicator_Background);
@@ -40,10 +35,10 @@ namespace Instruments
 		private System.ComponentModel.Container components = null;
 
         public VerticalSpeedIndicatorInstrumentControl()
-		{
-			// Double bufferisation
-			SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint |
-				ControlStyles.AllPaintingInWmPaint, true);
+        {
+            // Double bufferisation
+            SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint |
+                ControlStyles.AllPaintingInWmPaint, true);
         }
 
         #endregion
@@ -68,12 +63,12 @@ namespace Instruments
 
             // Pre Display computings
             Point ptRotation = new Point(150, 150);
-            Point ptimgNeedle = new Point(136,39);
+            Point ptimgNeedle = new Point(136, 39);
 
             bmpCadran.MakeTransparent(Color.Yellow);
             bmpNeedle.MakeTransparent(Color.Yellow);
 
-            double alphaNeedle = InterpolPhyToAngle(verticalSpeed,-6000,6000,120,420);
+            double alphaNeedle = InterpolPhyToAngle(verticalSpeed, -6000, 6000, 120, 420);
 
             float scale = (float)this.Width / bmpCadran.Width;
 

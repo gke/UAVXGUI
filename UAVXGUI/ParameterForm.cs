@@ -17,18 +17,11 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.IO;
+using System.Resources;
 using System.Text;
 using System.Windows.Forms;
-using System.Resources;
-using System.Configuration;
-using System.Reflection;
-using System.Globalization;
-using System.Threading;
-using System.IO;
 
 namespace UAVXGUI
 {
@@ -51,7 +44,7 @@ namespace UAVXGUI
         public static ParameterSetsStruc[] UAVXP = new ParameterSetsStruc[FormMain.MAX_PARAMS];
 
         public Cursor cursor = Cursor.Current;
- 
+
         public volatile static bool UpdateParamForm = false;
         public static bool ParamsStale = true;
         public bool writeUpdate = false;
@@ -66,14 +59,14 @@ namespace UAVXGUI
 
         public static string helpstring;
 
-        
-public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WINDOW_WATCHDOG",
-		"INDEPENDENT_WATCHDOG", "SOFTWARE", "POWER_ON_POWER_DOWN",
-		"EXTERNAL_RESET_PIN", "BROWNOUT" };
+
+        public static string[] ResetCauseNames = new string[8]  { "", "LOW_POWER", "WINDOW_WATCHDOG",
+        "INDEPENDENT_WATCHDOG", "SOFTWARE", "POWER_ON_POWER_DOWN",
+        "EXTERNAL_RESET_PIN", "BROWNOUT" };
 
         byte[] def = {
 
-        	20,			// RollKpRate, 			01 UAVP 21
+            20,			// RollKpRate, 			01 UAVP 21
 			10,	 		// AltPosKi,			02 UAVP 10
 			25,			// RollKpAngle,			03 // 25
 			1,	        // ArmingMode,			04
@@ -115,7 +108,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
 			0,			// NavMagVar,			34c
 			4,  	    // SensorHint,     		35c
 
-			4, 		    // ESCType,				36c
+			2, 		    // ESCType,				36c
 			7, 			// UnusedRxChannels,			37c
 			1,			// RxRollCh,			38
 			20,			// MadgwickKpAcc,		39c
@@ -204,25 +197,25 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
             50,         // ProxRadiusM 108
             0,
             0,
-            
+
             20,          // BaroVariance 111
             20,         // AccZVariance 112
             0,
             0,
             0,
-            
+
             10,
             0,
             0,
             0,
             0,
-            
+
             0,          // 121
             0,
             0,
             0,
             0,
-            
+
             0,
             0,
             0           // 128
@@ -265,17 +258,17 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
             if (v < Min) return (Min); else if (v > Max) return Max; else return v;
         } // Limit
 
-         private void CheckDownLinkTimer_Tick(object sender, EventArgs e)
+        private void CheckDownLinkTimer_Tick(object sender, EventArgs e)
         {
 
             if (UpdateParamForm)
             {
                 UpdateParamForm = false;
-               // ParamTemplateNumericUpDown.Value = CurrPS;
+                // ParamTemplateNumericUpDown.Value = CurrPS;
 
                 ReadParamsButton.BackColor = System.Drawing.Color.Green;
                 WriteParamsButton.Visible = true;
-                ParamsStale= false;
+                ParamsStale = false;
                 FWGroupBox.Visible = FormMain.UsingFixedWing;
 
                 updateForm();
@@ -284,9 +277,9 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
             RCGroupBox.BackColor = (FormMain.RCMapFailed) ? System.Drawing.Color.Orange : System.Drawing.SystemColors.Control;
 
 
-          FormMain.AirframeT = (short)P[0,43].Value;
+            FormMain.AirframeT = (short)P[0, 43].Value;
 
-          RxChannelsNumericUpDown.Visible = ComboPort1ComboBox.SelectedIndex == 2;
+            RxChannelsNumericUpDown.Visible = ComboPort1ComboBox.SelectedIndex == 2;
             RefreshRxChannels();
             UpdateRCChannels();
 
@@ -297,34 +290,34 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                 ParamTemplateNumericUpDown.Maximum = FormMain.MaxDefaultAFNames;
                 SetDefaultParamButton.Visible = ParamTemplateNumericUpDown.Visible = DefaultTemplateLabel.Visible = true;
             }
-  
+
         }
 
-         private void RxLoopbackButton_Click(object sender, EventArgs e)
-         {
-             if (((FormMain.StateT == FormMain.FlightStates.Preflight) || (FormMain.StateT == FormMain.FlightStates.Ready)))
+        private void RxLoopbackButton_Click(object sender, EventArgs e)
+        {
+            if (((FormMain.StateT == FormMain.FlightStates.Preflight) || (FormMain.StateT == FormMain.FlightStates.Ready)))
 
-                 FormMain.SendRequestPacket(FormMain.UAVXMiscPacketTag, (byte)FormMain.MiscComms.miscLB, 0);
+                FormMain.SendRequestPacket(FormMain.UAVXMiscPacketTag, (byte)FormMain.MiscComms.miscLB, 0);
 
-         }
+        }
 
-         private void ResetCauseButton_Click(object sender, EventArgs e)
-         {
-             ParamUpdate(sender);
-         }
+        private void ResetCauseButton_Click(object sender, EventArgs e)
+        {
+            ParamUpdate(sender);
+        }
 
         private void bitCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-           //bitTextChange(sender);
+            //bitTextChange(sender);
         }
 
         private void bitTextChange(Object changeBoxObject)
         {
             CheckBox changeBox = (CheckBox)changeBoxObject;
             if (changeBox.Checked)
-                changeBox.Text = labels.GetString(changeBox.Name.Substring(0, 4) + "1"); 
+                changeBox.Text = labels.GetString(changeBox.Name.Substring(0, 4) + "1");
             else
-                changeBox.Text = labels.GetString(changeBox.Name.Substring(0, 4)); 
+                changeBox.Text = labels.GetString(changeBox.Name.Substring(0, 4));
         }
 
 
@@ -333,7 +326,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
 
             if (parameterForm.FWStickScaleNumericUpDown.Focused)
                 helpstring = help.GetString("FWStickScale");
-            
+
             // Roll     
             if (parameterForm.RollRatePropNumericUpDown.Focused)
                 helpstring = help.GetString("Proportional");
@@ -419,7 +412,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                 helpstring = help.GetString("ClimbAngle");
             if (parameterForm.FWTrimAngleNumericUpDown.Focused)
                 helpstring = help.GetString("TrimAngle");
-  
+
             if (parameterForm.FWAileronDifferentialNumericUpDown.Focused)
                 helpstring = help.GetString("FWDifferential");
             if (parameterForm.AirspeedComboBox.Focused)
@@ -439,7 +432,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
             if (parameterForm.bit01CheckBox.Focused)
                 helpstring = help.GetString("AuxMode");
             if (parameterForm.bit61CheckBox.Focused)
-                helpstring = help.GetString("FastDescent");
+                helpstring = help.GetString("DisableFastDescent");
             if (parameterForm.bit21CheckBox.Focused)
                 helpstring = help.GetString("Fence");
             if (parameterForm.bit31CheckBox.Focused)
@@ -539,8 +532,8 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
             if (parameterForm.ThrottleGainNumericUpDown.Focused)
                 helpstring = help.GetString("ThrottleGain");
 
-           // if (parameterForm.GyroComboBox.Focused)
-           //     helpstring = help.GetString("GyroType");
+            // if (parameterForm.GyroComboBox.Focused)
+            //     helpstring = help.GetString("GyroType");
 
             if (parameterForm.ESCComboBox.Focused)
                 helpstring = help.GetString("ESCType");
@@ -606,7 +599,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                 Properties.Settings.Default.ParamDirectory = parameterOpenFileDialog.InitialDirectory;
                 StreamReader sw = new StreamReader(parameterOpenFileDialog.FileName);//, false, Encoding.GetEncoding("windows-1252"));
 
-              //  nps = Convert.ToInt32(sw.ReadLine());
+                //  nps = Convert.ToInt32(sw.ReadLine());
                 nps = 1;
                 for (s = 0; s < nps; s++)
                     for (p = 0; p < FormMain.MAX_PARAMS; p++)
@@ -657,35 +650,35 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
         {
             int p, s;
 
-             parameterSaveFileDialog.Filter = "Parameters (*.txt)|*.txt";
-             parameterSaveFileDialog.InitialDirectory = Properties.Settings.Default.ParamDirectory;
+            parameterSaveFileDialog.Filter = "Parameters (*.txt)|*.txt";
+            parameterSaveFileDialog.InitialDirectory = Properties.Settings.Default.ParamDirectory;
 
-             parameterSaveFileDialog.FileName = FormMain.AFNames[AFTypeComboBox.SelectedIndex] + "_" +
-               DateTime.Now.Year + "_" +
-               DateTime.Now.Month + "_" +
-               DateTime.Now.Day + "_" +
-               DateTime.Now.Hour + "_" +
-               DateTime.Now.Minute +
-               ".txt";
+            parameterSaveFileDialog.FileName = FormMain.AFNames[AFTypeComboBox.SelectedIndex] + "_" +
+              DateTime.Now.Year + "_" +
+              DateTime.Now.Month + "_" +
+              DateTime.Now.Day + "_" +
+              DateTime.Now.Hour + "_" +
+              DateTime.Now.Minute +
+              ".txt";
 
-               if (parameterSaveFileDialog.ShowDialog() == DialogResult.OK)
-               {
-                   Properties.Settings.Default.ParamDirectory = parameterSaveFileDialog.InitialDirectory;
-                    StreamWriter sw = new StreamWriter(parameterSaveFileDialog.FileName, false, Encoding.GetEncoding("windows-1252"));
+            if (parameterSaveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                Properties.Settings.Default.ParamDirectory = parameterSaveFileDialog.InitialDirectory;
+                StreamWriter sw = new StreamWriter(parameterSaveFileDialog.FileName, false, Encoding.GetEncoding("windows-1252"));
 
                 //    sw.WriteLine(FormMain.MAX_PARAM_SETS + ",");
                 //    sw.WriteLine(ParamTemplateComboBox.Items[1] + ",");
 
-                   for (s = 0; s < FormMain.MAX_PARAM_SETS; s++)
-                       for (p = 0; p < FormMain.MAX_PARAMS; p++)
-                           sw.WriteLine(P[s, p].Value + ",");
+                for (s = 0; s < FormMain.MAX_PARAM_SETS; s++)
+                    for (p = 0; p < FormMain.MAX_PARAMS; p++)
+                        sw.WriteLine(P[s, p].Value + ",");
 
-                   sw.Flush();
-                   sw.Close();
+                sw.Flush();
+                sw.Close();
 
-                   // zzz updateForm();
-               }
-          
+                // zzz updateForm();
+            }
+
         }
 
         public void ReadParamsButton_Click(object sender, EventArgs e)
@@ -695,7 +688,8 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
 
         public void WriteParamsButton_Click(object sender, EventArgs e)
         {
-            if (!ParamsStale) {
+            if (!ParamsStale)
+            {
                 CurrPS = 0; // Convert.ToByte(ParamTemplateNumericUpDown.Text);
                 FormMain.SendParamsPacket();
             }
@@ -784,7 +778,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
 
         private Color ChannelColour(bool s)
         {
-            return( s ? System.Drawing.Color.White: System.Drawing.Color.Orange);
+            return (s ? System.Drawing.Color.White : System.Drawing.Color.Orange);
         }
 
         private void RefreshRxChannels()
@@ -825,8 +819,8 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
         void UpdateRCChannels()
         {
 
-            DiscoveredRCChannelsLabel.Text = "#Ch " + string.Format("{0:n0}",  FormMain.DiscoveredRCChannelsT);
-            RCPacketIntervalLabel.Text = string.Format("{0:n2}", FormMain.RCPacketIntervalT/1000.0f) +"mS";
+            DiscoveredRCChannelsLabel.Text = "#Ch " + string.Format("{0:n0}", FormMain.DiscoveredRCChannelsT);
+            RCPacketIntervalLabel.Text = string.Format("{0:n2}", FormMain.RCPacketIntervalT / 1000.0f) + "mS";
 
             if (!RCuSCheckBox.Checked)
             {
@@ -887,7 +881,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                 RC9ProgressBar.Value = Limit(FormMain.RCChannel[9], 0, 2200);
                 RC10ProgressBar.Value = Limit(FormMain.RCChannel[10], 0, 2200);
                 RC11ProgressBar.Value = Limit(FormMain.RCChannel[11], 0, 2200);
- 
+
                 RC0ProgressBar.BackColor = RCRange(950, 2050, 0);
                 if (FormMain.RCChannel[0] > 1000) RC0ProgressBar.BackColor = Color.Red;
                 RC1ProgressBar.BackColor = RCRange(950, 2050, 1);
@@ -920,16 +914,16 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
 
         }
 
-        private void CheckBoxColours(Object Object, int c, int p) 
+        private void CheckBoxColours(Object Object, int c, int p)
         {
             CheckBox Field = (CheckBox)Object;
 
             int cbm = 1 << c;
 
-            P[CurrPS, p-1].Value = Field.Checked ? P[CurrPS, p-1].Value | cbm : P[CurrPS, p-1].Value & (255-cbm);
+            P[CurrPS, p - 1].Value = Field.Checked ? P[CurrPS, p - 1].Value | cbm : P[CurrPS, p - 1].Value & (255 - cbm);
 
-            if (UAVXP[p-1].Changed)
-                if ((P[CurrPS, p-1].Value & cbm) == (UAVXP[p-1].Value & cbm))
+            if (UAVXP[p - 1].Changed)
+                if ((P[CurrPS, p - 1].Value & cbm) == (UAVXP[p - 1].Value & cbm))
                     Field.ForeColor = Color.Black;
                 else
                     Field.ForeColor = writeUpdate ? Color.Red : Color.Orange;
@@ -956,7 +950,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
             }
 
             if (UAVXP[51].Changed)
-                if  ((P[CurrPS, 51].Value & m) == (UAVXP[51].Value & m))
+                if ((P[CurrPS, 51].Value & m) == (UAVXP[51].Value & m))
                     Field.ForeColor = Color.Green;
                 else
                     Field.ForeColor = writeUpdate ? Color.Red : Color.Orange;
@@ -978,9 +972,9 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         Field.ForeColor = Color.Green;
                     else
                         if (writeUpdate == true)
-                            Field.ForeColor = Color.Red;
-                        else
-                            Field.ForeColor = Color.Orange;
+                        Field.ForeColor = Color.Red;
+                    else
+                        Field.ForeColor = Color.Orange;
                 else
                     Field.ForeColor = Color.Black;
             }
@@ -995,114 +989,116 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                     P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 100.0);
                 else
                     if ((p == 110))
-                        P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 5.0);
+                    P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 5.0);
 
                 else
-                    if ((p == 54) || (p == 18) ||  (p == 34) || (p == 46)  ||
-                     (p == 70) || (p == 104) || (p == 105) || (p == 110) || (p == 112) || (p == 115 ))
-                        P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 10.0);
+                    if ((p == 54) || (p == 18) || (p == 34) || (p == 46) ||
+                     (p == 70) || (p == 80) || (p == 104) || (p == 105) || (p == 110) || (p == 112) || (p == 115))
+                    P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 10.0);
                 else
                     if ((p == 64) || (p == 83) || (p == 84) || (p == 89) || (p == 117))
-                        P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 0.1);
+                    P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 0.1);
                 else
                    if ((p == 73))
-                    P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 1000000.0); 
+                    P[CurrPS, p - 1].Value = Convert.ToByte(Convert.ToDouble(Field.Value) * 1000000.0);
                 else
                     P[CurrPS, p - 1].Value = Convert.ToByte(Field.Value);
-       
 
-                if (UAVXP[p - 1].Changed == true) {
+
+                if (UAVXP[p - 1].Changed == true)
+                {
                     if (P[CurrPS, p - 1].Value == UAVXP[p - 1].Value)
                         Field.ForeColor = Color.Green;
                     else
                         Field.ForeColor = writeUpdate ? Color.Red : Color.Orange;
-               } else
-                   Field.ForeColor = Color.Black;
+                }
+                else
+                    Field.ForeColor = Color.Black;
             }
             else
                 if (Object.GetType().Name == "Button")
+            {
+                Button Field = (Button)Object;
+
+
+                switch (Field.Name)
                 {
-                    Button Field = (Button)Object;
-
-
-                    switch (Field.Name)
-                    {
-                        case "Sense01Button": // Right Aileron
-                            SenseButtonColours(Object, 0);
-                            break;
-                        case "Sense11Button":
-                            SenseButtonColours(Object, 1);
-                            break;
-                        case "Sense21Button":
-                            SenseButtonColours(Object, 2);
-                            break;
-                        case "Sense31Button":
-                            SenseButtonColours(Object, 3);
-                            break;
-                        case "Sense41Button":
-                            SenseButtonColours(Object, 4);
-                            break;
-                        case "Sense51Button":
+                    case "Sense01Button": // Right Aileron
+                        SenseButtonColours(Object, 0);
+                        break;
+                    case "Sense11Button":
+                        SenseButtonColours(Object, 1);
+                        break;
+                    case "Sense21Button":
+                        SenseButtonColours(Object, 2);
+                        break;
+                    case "Sense31Button":
+                        SenseButtonColours(Object, 3);
+                        break;
+                    case "Sense41Button":
+                        SenseButtonColours(Object, 4);
+                        break;
+                    case "Sense51Button":
                         SenseButtonColours(Object, 5);
-                            break;
-                        case "Sense61Button":
-                            SenseButtonColours(Object, 6);
-                            break; 
-                    }
+                        break;
+                    case "Sense61Button":
+                        SenseButtonColours(Object, 6);
+                        break;
                 }
-              else
+            }
+            else
                 if (Object.GetType().Name == "CheckBox")
-                {
-                    CheckBox Field = (CheckBox)Object;
+            {
+                CheckBox Field = (CheckBox)Object;
 
-                    switch (Field.Name)
-                    {
-                            // Config 1
-                        case "bit01CheckBox":
-                            CheckBoxColours(Object, 0, 16);
-                            break;
-                        case "bit11CheckBox":
-                            CheckBoxColours(Object, 1, 16);
-                            break;
-                        case "bit21CheckBox":
-                            CheckBoxColours(Object, 2, 16);
-                            break;
-                        case "bit31CheckBox":
-                            CheckBoxColours(Object, 3, 16);
-                            break;
-                        case "bit41CheckBox":
-                            CheckBoxColours(Object, 4, 16);
-                            break;
-                        case "bit51CheckBox":
-                            CheckBoxColours(Object, 5, 16);
-                            break;
-                        case "bit61CheckBox":
-                            CheckBoxColours(Object, 6, 16);
-                            break;
-                        // Config 2
-                        case "bit02CheckBox":
-                            CheckBoxColours(Object, 0, 74);
-                            break;
-                        case "bit12CheckBox":
-                            CheckBoxColours(Object, 1, 74);
-                            break;
-                        case "bit22CheckBox":
-                            CheckBoxColours(Object, 2, 74);
-                            break;
-                        case "bit32CheckBox":
-                            CheckBoxColours(Object, 3, 74);
-                            break;
-                        case "bit42CheckBox":
-                            CheckBoxColours(Object, 4, 74);
-                            break;
-                        case "bit52CheckBox":
-                            CheckBoxColours(Object, 5, 74);
-                            break;
-                        case "bit62CheckBox":
-                            CheckBoxColours(Object, 6, 74);
-                            break;
-                    }
-               }
+                switch (Field.Name)
+                {
+                    // Config 1
+                    case "bit01CheckBox":
+                        CheckBoxColours(Object, 0, 16);
+                        break;
+                    case "bit11CheckBox":
+                        CheckBoxColours(Object, 1, 16);
+                        break;
+                    case "bit21CheckBox":
+                        CheckBoxColours(Object, 2, 16);
+                        break;
+                    case "bit31CheckBox":
+                        CheckBoxColours(Object, 3, 16);
+                        break;
+                    case "bit41CheckBox":
+                        CheckBoxColours(Object, 4, 16);
+                        break;
+                    case "bit51CheckBox":
+                        CheckBoxColours(Object, 5, 16);
+                        break;
+                    case "bit61CheckBox":
+                        CheckBoxColours(Object, 6, 16);
+                        break;
+                    // Config 2
+                    case "bit02CheckBox":
+                        CheckBoxColours(Object, 0, 74);
+                        break;
+                    case "bit12CheckBox":
+                        CheckBoxColours(Object, 1, 74);
+                        break;
+                    case "bit22CheckBox":
+                        CheckBoxColours(Object, 2, 74);
+                        break;
+                    case "bit32CheckBox":
+                        CheckBoxColours(Object, 3, 74);
+                        break;
+                    case "bit42CheckBox":
+                        CheckBoxColours(Object, 4, 74);
+                        break;
+                    case "bit52CheckBox":
+                        CheckBoxColours(Object, 5, 74);
+                        break;
+                    case "bit62CheckBox":
+                        CheckBoxColours(Object, 6, 74);
+                        break;
+                }
+            }
         }
 
 
@@ -1110,33 +1106,33 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
         {
             int p;
 
-            for (p = 1; p <= FormMain.MAX_PARAMS; p++ )
+            for (p = 1; p <= FormMain.MAX_PARAMS; p++)
             {
                 switch (p)
                 {
                     case 1:
-                        RollRatePropNumericUpDown.Value = UAVXP[p-1].Value;
+                        RollRatePropNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(RollRatePropNumericUpDown);
                         break;
                     case 2:
-                        AltPosIntNumericUpDown.Value = UAVXP[p-1].Value;
+                        AltPosIntNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(AltPosIntNumericUpDown);
                         break;
                     case 3:
-                        RollAnglePropNumericUpDown.Value = UAVXP[p-1].Value;
+                        RollAnglePropNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(RollAnglePropNumericUpDown);
                         break;
                     case 4:
-                        ArmingModeComboBox.SelectedIndex = UAVXP[p-1].Value;
+                        ArmingModeComboBox.SelectedIndex = UAVXP[p - 1].Value;
                         Ch7Label.Text = (ArmingModeComboBox.SelectedIndex == 0) ? "Arm/AH/Nav" : "AH/Sens.";
-                         ParamUpdate(ArmingModeComboBox);
+                        ParamUpdate(ArmingModeComboBox);
                         break;
                     case 5:
-                        RollAngleIntLimitNumericUpDown.Value = UAVXP[p-1].Value;
+                        RollAngleIntLimitNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(RollAngleIntLimitNumericUpDown);
                         break;
                     case 6:
-                        PitchRatePropNumericUpDown.Value = UAVXP[p-1].Value;
+                        PitchRatePropNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(PitchRatePropNumericUpDown);
                         break;
                     case 7:
@@ -1145,39 +1141,39 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         ParamUpdate(AltPosKpNumericUpDown);
                         break;
                     case 8:
-                        PitchAnglePropNumericUpDown.Value = UAVXP[p-1].Value;
+                        PitchAnglePropNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(PitchAnglePropNumericUpDown);
                         break;
                     case 9:
-                        RangefinderComboBox.SelectedIndex = UAVXP[p-1].Value;
+                        RangefinderComboBox.SelectedIndex = UAVXP[p - 1].Value;
                         ParamUpdate(RangefinderComboBox);
                         break;
                     case 10:
-                        PitchAngleIntLimitNumericUpDown.Value = UAVXP[p-1].Value;
-                         ParamUpdate(PitchAngleIntLimitNumericUpDown);
+                        PitchAngleIntLimitNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(PitchAngleIntLimitNumericUpDown);
                         break;
                     case 11:
                         YawRatePropNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(YawRatePropNumericUpDown);
                         break;
                     case 12:
-                        RollRateDiffNumericUpDown.Value = UAVXP[p-1].Value;
+                        RollRateDiffNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(RollRateDiffNumericUpDown);
                         break;
                     case 13:
-                        IMUFilterComboBox.SelectedIndex = UAVXP[p-1].Value;
+                        IMUFilterComboBox.SelectedIndex = UAVXP[p - 1].Value;
                         ParamUpdate(IMUFilterComboBox);
                         break;
                     case 14:
-                        BBLogComboBox.SelectedIndex = UAVXP[p-1].Value;
+                        BBLogComboBox.SelectedIndex = UAVXP[p - 1].Value;
                         ParamUpdate(BBLogComboBox);
                         break;
                     case 15:
-                        ComboPort1ComboBox.SelectedIndex = UAVXP[p-1].Value;
+                        ComboPort1ComboBox.SelectedIndex = UAVXP[p - 1].Value;
                         ParamUpdate(ComboPort1ComboBox);
                         break;
                     case 16:
-                        int config = UAVXP[p-1].Value;
+                        int config = UAVXP[p - 1].Value;
 
                         if (config == -1)
                             config = 0;
@@ -1197,10 +1193,13 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         bit61CheckBox.Checked = (config & 64) != 0;
                         ParamUpdate(bit61CheckBox);
 
-                        P[CurrPS, p-1].Value = config;
+                        bit61CheckBox.BackColor = bit61CheckBox.Checked ? Color.Red : System.Drawing.SystemColors.Control;
+                       
+
+                        P[CurrPS, p - 1].Value = config;
                         break;
                     case 17:
-                        Ch1NumericUpDown.Value = UAVXP[p-1].Value;
+                        Ch1NumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(Ch1NumericUpDown);
                         break;
                     case 18:
@@ -1208,15 +1207,15 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         ParamUpdate(BatteryNumericUpDown);
                         break;
                     case 19:
-                        CameraRollNumericUpDown.Value = UAVXP[p-1].Value;
+                        CameraRollNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(CameraRollNumericUpDown);
                         break;
                     case 20:
-                        EstCruiseNumericUpDown.Value = UAVXP[p-1].Value;
+                        EstCruiseNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(EstCruiseNumericUpDown);
                         break;
                     case 21:
-                        HysteresisNumericUpDown.Value = UAVXP[p-1].Value;
+                        HysteresisNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(HysteresisNumericUpDown);
                         break;
                     case 22:
@@ -1224,19 +1223,19 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         ParamUpdate(FWClimbThrNumericUpDown);
                         break;
                     case 23:
-                        LowMotorRunNumericUpDown.Value = UAVXP[p-1].Value;
+                        LowMotorRunNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(LowMotorRunNumericUpDown);
                         break;
                     case 24:
-                        RollAngleIntNumericUpDown.Value = UAVXP[p-1].Value;
+                        RollAngleIntNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(RollAngleIntNumericUpDown);
                         break;
                     case 25:
-                        PitchAngleIntNumericUpDown.Value = UAVXP[p-1].Value;
+                        PitchAngleIntNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(PitchAngleIntNumericUpDown);
                         break;
                     case 26:
-                        CameraPitchNumericUpDown.Value = UAVXP[p-1].Value;
+                        CameraPitchNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(CameraPitchNumericUpDown);
                         break;
                     case 27:
@@ -1244,20 +1243,20 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         ParamUpdate(ServoLPFHzNumericUpDown);
                         break;
                     case 28:
-                        PitchRateDiffNumericUpDown.Value = UAVXP[p-1].Value;
+                        PitchRateDiffNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(PitchRateDiffNumericUpDown);
                         break;
                     case 29:
-                        NavVelKpNumericUpDown.Value = UAVXP[p-1].Value;
+                        NavVelKpNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(NavVelKpNumericUpDown);
                         break;
                     case 30:
-                        AltVelKpNumericUpDown.Value = UAVXP[p-1].Value;
+                        AltVelKpNumericUpDown.Value = UAVXP[p - 1].Value;
                         AltVelKpNumericUpDown.BackColor = UAVXP[p - 1].Value >= 10 ? System.Drawing.Color.White : System.Drawing.Color.Orange;
                         ParamUpdate(AltVelKpNumericUpDown);
                         break;
                     case 31:
-                        HorizonNumericUpDown.Value = UAVXP[p-1].Value;
+                        HorizonNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(HorizonNumericUpDown);
                         break;
                     case 32:
@@ -1265,7 +1264,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         ParamUpdate(MadgwickKpMagNumericUpDown);
                         break;
                     case 33:
-                        NavRTHAltNumericUpDown.Value = UAVXP[p-1].Value;
+                        NavRTHAltNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(NavRTHAltNumericUpDown);
                         break;
                     case 34:
@@ -1274,21 +1273,21 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         ParamUpdate(NavMagVarNumericUpDown);
                         break;
                     case 35:
-                      //  GyroComboBox.SelectedIndex = UAVXP[p - 1].Value;
-                      //  GyroComboBox.BackColor = GyroComboBox.SelectedIndex >= 6 ?
-                      //      Color.Red : Color.White;
-                      //  ParamUpdate(GyroComboBox);
+                        //  GyroComboBox.SelectedIndex = UAVXP[p - 1].Value;
+                        //  GyroComboBox.BackColor = GyroComboBox.SelectedIndex >= 6 ?
+                        //      Color.Red : Color.White;
+                        //  ParamUpdate(GyroComboBox);
                         break;
                     case 36:
-                        ESCComboBox.SelectedIndex = UAVXP[p-1].Value;
+                        ESCComboBox.SelectedIndex = UAVXP[p - 1].Value;
                         ParamUpdate(ESCComboBox);
                         break;
                     case 37:
-                        RxChannelsNumericUpDown.Value = UAVXP[p-1].Value;
+                        RxChannelsNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(RxChannelsNumericUpDown);
                         break;
                     case 38:
-                        Ch2NumericUpDown.Value = UAVXP[p-1].Value;
+                        Ch2NumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(Ch2NumericUpDown);
                         break;
                     case 39:
@@ -1296,33 +1295,33 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         ParamUpdate(MadgwickKpAccNumericUpDown);
                         break;
                     case 40:
-                        CameraRollTrimNumericUpDown.Value = UAVXP[p-1].Value;
+                        CameraRollTrimNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(CameraRollTrimNumericUpDown);
                         break;
                     case 41:
-                       NavMaxVelNumericUpDown.Value = UAVXP[p-1].Value;
-                       ParamUpdate(NavMaxVelNumericUpDown);
+                        NavMaxVelNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(NavMaxVelNumericUpDown);
                         break;
                     case 42:
-                        Ch3NumericUpDown.Value = UAVXP[p-1].Value;
+                        Ch3NumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(Ch3NumericUpDown);
                         break;
                     case 43:
-                        Ch4NumericUpDown.Value = UAVXP[p-1].Value;
+                        Ch4NumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(Ch4NumericUpDown);
                         break;
                     case 44:
-                        AFTypeComboBox.SelectedIndex = UAVXP[p-1].Value;
+                        AFTypeComboBox.SelectedIndex = UAVXP[p - 1].Value;
                         if (AFTypeComboBox.SelectedIndex >= 10)
                             AFTypeComboBox.BackColor = Color.Orange;
                         else
-                            AFTypeComboBox.BackColor =(AFTypeComboBox.SelectedIndex == 0) ||
+                            AFTypeComboBox.BackColor = (AFTypeComboBox.SelectedIndex == 0) ||
                                 (AFTypeComboBox.SelectedIndex >= 11) ?
                                 Color.Orange : Color.White;
                         ParamUpdate(AFTypeComboBox);
                         break;
                     case 45:
-                        TelemetryComboBox.SelectedIndex = UAVXP[p-1].Value;
+                        TelemetryComboBox.SelectedIndex = UAVXP[p - 1].Value;
                         ParamUpdate(TelemetryComboBox);
                         break;
                     case 46:
@@ -1338,21 +1337,21 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         ParamUpdate(GyroLPFComboBox);
                         break;
                     case 49:
-                        CrossTrackNumericUpDown.Value = UAVXP[p-1].Value;
+                        CrossTrackNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(CrossTrackNumericUpDown);
                         break;
                     case 50:
-                        Ch5NumericUpDown.Value = UAVXP[p-1].Value;
+                        Ch5NumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(Ch5NumericUpDown);
                         break;
                     case 51:
-                        Ch6NumericUpDown.Value = UAVXP[p-1].Value;
+                        Ch6NumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(Ch6NumericUpDown);
                         break;
                     case 52:
-                        int sense = UAVXP[p-1].Value;
+                        int sense = UAVXP[p - 1].Value;
 
-                        ParameterForm.SenseButton[0] = (sense & 1) !=0 ;
+                        ParameterForm.SenseButton[0] = (sense & 1) != 0;
                         ParamUpdate(Sense01Button);
                         ParameterForm.SenseButton[1] = (sense & 2) != 0;
                         ParamUpdate(Sense11Button);
@@ -1366,7 +1365,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         ParamUpdate(Sense51Button);
                         ParameterForm.SenseButton[6] = (sense & 64) != 0;
                         ParamUpdate(Sense61Button);
-           
+
                         break;
                     case 53:
                         AccConfNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.01);
@@ -1377,40 +1376,40 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         ParamUpdate(BatteryCapacityNumericUpDown);
                         break;
                     case 55:
-                        Ch7NumericUpDown.Value = UAVXP[p-1].Value;
+                        Ch7NumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(Ch7NumericUpDown);
                         break;
                     case 56:
-                        Ch8NumericUpDown.Value = UAVXP[p-1].Value;
+                        Ch8NumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(Ch8NumericUpDown);
                         break;
                     case 57:
-                        NavPosKpNumericUpDown.Value = UAVXP[p-1].Value;
+                        NavPosKpNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(NavPosKpNumericUpDown);
                         break;
                     case 58:
                         AltLPFNumericUpDown.Value = UAVXP[p - 1].Value;
-                       ParamUpdate(AltLPFNumericUpDown);
+                        ParamUpdate(AltLPFNumericUpDown);
                         break;
                     case 59:
-                        BalanceNumericUpDown.Value = UAVXP[p-1].Value;
+                        BalanceNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(BalanceNumericUpDown);
                         break;
                     case 60:
-                        Ch9NumericUpDown.Value = UAVXP[p-1].Value;
+                        Ch9NumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(Ch9NumericUpDown);
                         break;
                     case 61:
-                        NavPosKiNumericUpDown.Value = UAVXP[p-1].Value;
+                        NavPosKiNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(NavPosKiNumericUpDown);
                         break;
                     case 62:
-                        GPSTypeComboBox.SelectedIndex = UAVXP[p-1].Value;
+                        GPSTypeComboBox.SelectedIndex = UAVXP[p - 1].Value;
                         ParamUpdate(GPSTypeComboBox);
                         NavGroupBox.Visible = GPSTypeComboBox.SelectedIndex < 5;
                         break;
                     case 63:
-                        AttThrFFNumericUpDown.Value = UAVXP[p-1].Value;
+                        AttThrFFNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(AttThrFFNumericUpDown);
                         break;
                     case 64:
@@ -1435,9 +1434,9 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                             AltVelIntLimitNumericUpDown.BackColor = Color.Red;
                         else
                             if (AltVelIntLimitNumericUpDown.Value < 10)
-                                AltVelIntLimitNumericUpDown.BackColor = Color.Orange;
-                            else
-                                AltVelIntLimitNumericUpDown.BackColor = Color.White;
+                            AltVelIntLimitNumericUpDown.BackColor = Color.Orange;
+                        else
+                            AltVelIntLimitNumericUpDown.BackColor = Color.White;
                         ParamUpdate(AltVelIntLimitNumericUpDown);
                         break;
                     case 68:
@@ -1465,7 +1464,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         ParamUpdate(AccBiasVarNumericUpDown);
                         break;
 
-// etc to param 96
+                    // etc to param 96
                     case 74:
                         int config2 = UAVXP[p - 1].Value;
 
@@ -1473,7 +1472,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                             config2 = 0;
 
                         bit02CheckBox.Checked = (config2 & 1) != 0;
-                        ParamUpdate(bit02CheckBox);             
+                        ParamUpdate(bit02CheckBox);
                         bit12CheckBox.Checked = (config2 & 2) != 0;
                         ParamUpdate(bit12CheckBox);
                         bit22CheckBox.Checked = (config2 & 4) != 0;
@@ -1486,15 +1485,15 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         ParamUpdate(bit52CheckBox);
                         bit62CheckBox.Checked = (config2 & 64) != 0;
                         ParamUpdate(bit62CheckBox);
-                    
-                        P[CurrPS, p-1].Value = config2;
+
+                        P[CurrPS, p - 1].Value = config2;
                         break;
 
                     case 75:
                         MaxPitchAngleNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(MaxPitchAngleNumericUpDown);
                         break;
-                    case 76: 
+                    case 76:
                         break;
                     case 77:
                         MaxRollAngleNumericUpDown.Value = UAVXP[p - 1].Value;
@@ -1509,14 +1508,15 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         ParamUpdate(TurnoutNumericUpDown);
                         break;
                     case 80:
-                       // unused
+                        AltHoldThrCompDecayTimeNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
+                        ParamUpdate(AltHoldThrCompDecayTimeNumericUpDown);
                         break;
                     case 81:
                         // hAcc
                         break;
                     case 82:
-                       FWTrimAngleNumericUpDown.Value = UAVXP[p - 1].Value;
-                       ParamUpdate(FWTrimAngleNumericUpDown);
+                        FWTrimAngleNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(FWTrimAngleNumericUpDown);
                         break;
                     case 83:
                         MaxRollRateTextBox.Text = string.Format("{0:n0}", Convert.ToDecimal(UAVXP[p - 1].Value * 10.0));
@@ -1531,10 +1531,10 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         ParamUpdate(CurrentTrimNumericUpDown);
                         break;
                     case 86:
-                        VoltageTrimNumericUpDown.Value =UAVXP[p - 1].Value;
+                        VoltageTrimNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(VoltageTrimNumericUpDown);
                         break;
-                     case 87:
+                    case 87:
                         FWAileronRudderFFNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(FWAileronRudderFFNumericUpDown);
                         break;
@@ -1552,8 +1552,8 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         ParamUpdate(AccLPFComboBox);
                         break;
                     case 91:
-                       YawRateDiffNumericUpDown.Value = UAVXP[p - 1].Value;
-                       ParamUpdate(YawRateDiffNumericUpDown);
+                        YawRateDiffNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(YawRateDiffNumericUpDown);
                         break;
                     case 92:
                         //GyroSlewRateNumericUpDown.Value = UAVXP[p - 1].Value;
@@ -1580,10 +1580,10 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         P[CurrPS, p - 1].Value = UAVXP[p - 1].Value;
                         break;
                     case 98:
-                       YawAngleIntNumericUpDown.Value = UAVXP[p - 1].Value;
-                       ParamUpdate(YawAngleIntNumericUpDown);
+                        YawAngleIntNumericUpDown.Value = UAVXP[p - 1].Value;
+                        ParamUpdate(YawAngleIntNumericUpDown);
                         break;
-                    case 99: 
+                    case 99:
                         YawAngleIntLimitNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(YawAngleIntLimitNumericUpDown);
                         break;
@@ -1591,7 +1591,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         AltPosIntLimitNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(AltPosIntLimitNumericUpDown);
                         break;
-                    case 101: 
+                    case 101:
                         MotorStopComboBox.SelectedIndex = UAVXP[p - 1].Value;
                         ParamUpdate(MotorStopComboBox);
                         break;
@@ -1604,12 +1604,12 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         ParamUpdate(AltHoldBandNumericUpDown);
                         break;
                     case 104:
-                      VRSDescentRateNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
+                        VRSDescentRateNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
                         ParamUpdate(VRSDescentRateNumericUpDown);
                         break;
                     case 105:
-                   //   AccVarianceNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
-                   //    ParamUpdate(AccVarianceNumericUpDown);
+                        //   AccVarianceNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
+                        //    ParamUpdate(AccVarianceNumericUpDown);
                         break;
                     case 106:
                         AHROCWindowNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.01);
@@ -1617,7 +1617,7 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         break;
                     case 107:
                         ProximityAltNumericUpDown.Value = UAVXP[p - 1].Value;
-                        FormMain.NavProximityAlt = (short) ProximityAltNumericUpDown.Value;
+                        FormMain.NavProximityAlt = (short)ProximityAltNumericUpDown.Value;
                         ParamUpdate(ProximityAltNumericUpDown);
                         break;
                     case 108:
@@ -1638,9 +1638,9 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         ParamUpdate(BaroVarianceNumericUpDown);
                         break;
                     case 112:
-                       AccZVarianceNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
-                       ParamUpdate(AccZVarianceNumericUpDown);
-                        break;                    
+                        AccZVarianceNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.1);
+                        ParamUpdate(AccZVarianceNumericUpDown);
+                        break;
                     case 113:
                         FWStickScaleNumericUpDown.Value = UAVXP[p - 1].Value;
                         ParamUpdate(FWStickScaleNumericUpDown);
@@ -1654,8 +1654,8 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
                         ParamUpdate(AHThrottleWindowNumericUpDown);
                         break;
                     case 116:
-                       // CruiseTrackRateNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.01);
-                       // ParamUpdate(CruiseTrackRateNumericUpDown);
+                        // CruiseTrackRateNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 0.01);
+                        // ParamUpdate(CruiseTrackRateNumericUpDown);
                         break;
                     case 117:
                         FenceRadiusNumericUpDown.Value = Convert.ToDecimal(UAVXP[p - 1].Value * 10.0);
@@ -1674,20 +1674,20 @@ public static string [] ResetCauseNames = new string [8]  { "", "LOW_POWER", "WI
             }
         }
 
-      
+
 
         private void ParameterForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             // turn off parameter button colour
         }
 
-  
 
-     
-     
 
- 
-   
-   
+
+
+
+
+
+
     }
 }

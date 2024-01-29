@@ -9,12 +9,8 @@
 /* History  :                                                                */
 /*****************************************************************************/
 
-using System.ComponentModel;
-using System.Windows.Forms;
-using System.Collections;
 using System.Drawing;
-using System.Text;
-using System.Data;
+using System.Windows.Forms;
 
 namespace Instruments
 {
@@ -42,10 +38,10 @@ namespace Instruments
 		private System.ComponentModel.Container components = null;
 
         public TurnCoordinatorInstrumentControl()
-		{
-			// Double bufferisation
-			SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint |
-				ControlStyles.AllPaintingInWmPaint, true);
+        {
+            // Double bufferisation
+            SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint |
+                ControlStyles.AllPaintingInWmPaint, true);
         }
 
         #endregion
@@ -70,7 +66,7 @@ namespace Instruments
 
             // Pre Display computings
             Point ptRotationAircraft = new Point(150, 150);
-            Point ptImgAircraft = new Point(57,114);
+            Point ptImgAircraft = new Point(57, 114);
             Point ptRotationBall = new Point(150, -155);
             Point ptImgBall = new Point(136, 216);
             Point ptMarks = new Point(134, 216);
@@ -80,7 +76,7 @@ namespace Instruments
             bmpAircraft.MakeTransparent(Color.Yellow);
             bmpMarks.MakeTransparent(Color.Yellow);
 
-            double alphaAircraft = InterpolPhyToAngle(TurnRate,-6,6,-30,30);
+            double alphaAircraft = InterpolPhyToAngle(TurnRate, -6, 6, -30, 30);
             double alphaBall = InterpolPhyToAngle(TurnQuality, -10, 10, -11, 11);
 
             float scale = (float)this.Width / bmpCadran.Width;
@@ -93,7 +89,7 @@ namespace Instruments
             pe.Graphics.DrawImage(bmpCadran, 0, 0, (float)(bmpCadran.Width * scale), (float)(bmpCadran.Height * scale));
 
             // display Ball
-            RotateImage(pe,bmpBall, alphaBall, ptImgBall, ptRotationBall, scale);
+            RotateImage(pe, bmpBall, alphaBall, ptImgBall, ptRotationBall, scale);
 
             // display Aircraft
             RotateImage(pe, bmpAircraft, alphaAircraft, ptImgAircraft, ptRotationAircraft, scale);

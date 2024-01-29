@@ -138,6 +138,7 @@ namespace UAVXGUI
             this.BaroFailBox = new System.Windows.Forms.TextBox();
             this.MagFailBox = new System.Windows.Forms.TextBox();
             this.BypassBox = new System.Windows.Forms.TextBox();
+            this.DCMotorsBox = new System.Windows.Forms.TextBox();
             this.FlagsGroupBox = new System.Windows.Forms.GroupBox();
             this.GPSStatusBox = new System.Windows.Forms.GroupBox();
             this.GPSHWVersionTextBox = new System.Windows.Forms.TextBox();
@@ -350,7 +351,6 @@ namespace UAVXGUI
             this.upLQTextBox = new System.Windows.Forms.TextBox();
             this.upRSSILabel = new System.Windows.Forms.Label();
             this.upLQLabel = new System.Windows.Forms.Label();
-            this.DCMotorsBox = new System.Windows.Forms.TextBox();
             this.attitudeIndicatorInstrumentControl1 = new Instruments.AttitudeIndicatorInstrumentControl();
             this.headingIndicatorInstrumentControl1 = new Instruments.HeadingIndicatorInstrumentControl();
             this.GyroGroupBox.SuspendLayout();
@@ -1535,6 +1535,17 @@ namespace UAVXGUI
             this.BypassBox.Text = "PassThrough";
             this.BypassBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // DCMotorsBox
+            // 
+            this.DCMotorsBox.BackColor = System.Drawing.SystemColors.Window;
+            this.DCMotorsBox.Location = new System.Drawing.Point(3, 367);
+            this.DCMotorsBox.Name = "DCMotorsBox";
+            this.DCMotorsBox.ReadOnly = true;
+            this.DCMotorsBox.Size = new System.Drawing.Size(109, 20);
+            this.DCMotorsBox.TabIndex = 128;
+            this.DCMotorsBox.Text = "DC Motors";
+            this.DCMotorsBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // FlagsGroupBox
             // 
             this.FlagsGroupBox.Controls.Add(this.flowLayoutPanel1);
@@ -2363,7 +2374,7 @@ namespace UAVXGUI
             // 
             this.ReplayNumericUpDown.Location = new System.Drawing.Point(958, 2);
             this.ReplayNumericUpDown.Maximum = new decimal(new int[] {
-            20,
+            200,
             0,
             0,
             0});
@@ -2372,10 +2383,11 @@ namespace UAVXGUI
             this.ReplayNumericUpDown.TabIndex = 167;
             this.ReplayNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ReplayNumericUpDown.Value = new decimal(new int[] {
-            10,
+            50,
             0,
             0,
             0});
+            this.ReplayNumericUpDown.Visible = false;
             this.ReplayNumericUpDown.ValueChanged += new System.EventHandler(this.ReplayNumericUpDown_Changed);
             // 
             // SpeechGroupBox
@@ -3125,7 +3137,7 @@ namespace UAVXGUI
             // TrackBaroVariance
             // 
             this.TrackBaroVariance.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TrackBaroVariance.Location = new System.Drawing.Point(371, 90);
+            this.TrackBaroVariance.Location = new System.Drawing.Point(365, 90);
             this.TrackBaroVariance.Name = "TrackBaroVariance";
             this.TrackBaroVariance.ReadOnly = true;
             this.TrackBaroVariance.Size = new System.Drawing.Size(45, 13);
@@ -3144,7 +3156,7 @@ namespace UAVXGUI
             // TrackAccUVariance
             // 
             this.TrackAccUVariance.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TrackAccUVariance.Location = new System.Drawing.Point(371, 73);
+            this.TrackAccUVariance.Location = new System.Drawing.Point(365, 73);
             this.TrackAccUVariance.Name = "TrackAccUVariance";
             this.TrackAccUVariance.ReadOnly = true;
             this.TrackAccUVariance.Size = new System.Drawing.Size(45, 13);
@@ -3741,17 +3753,6 @@ namespace UAVXGUI
             this.upLQLabel.Size = new System.Drawing.Size(21, 13);
             this.upLQLabel.TabIndex = 75;
             this.upLQLabel.Text = "LQ";
-            // 
-            // DCMotorsBox
-            // 
-            this.DCMotorsBox.BackColor = System.Drawing.SystemColors.Window;
-            this.DCMotorsBox.Location = new System.Drawing.Point(3, 367);
-            this.DCMotorsBox.Name = "DCMotorsBox";
-            this.DCMotorsBox.ReadOnly = true;
-            this.DCMotorsBox.Size = new System.Drawing.Size(109, 20);
-            this.DCMotorsBox.TabIndex = 128;
-            this.DCMotorsBox.Text = "DC Motors";
-            this.DCMotorsBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // attitudeIndicatorInstrumentControl1
             // 

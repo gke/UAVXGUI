@@ -19,15 +19,15 @@ Y:\Autopilot\Code\UAVXGUI\obj\Release\UAVXGUI.csproj.GenerateResource.Cache
 Y:\Autopilot\Code\UAVXGUI\obj\Release\UAVXGUI 1.0.TrustInfo.xml
 Y:\Autopilot\Code\UAVXGUI\obj\Release\UAVXGUI 1.0.exe.manifest
 Y:\Autopilot\Code\UAVXGUI\obj\Release\UAVXGUI 1.0.application
-C:\Flight\Code\UAVXGUI\bin\Release\Properties\app.manifest
 C:\Flight\Code\UAVXGUI\bin\Release\UAVXGUI 4.0.exe.config
+C:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI.csproj.ResolveComReference.cache
+C:\Flight\Code\UAVXGUI\bin\Release\Properties\app.manifest
 C:\Flight\Code\UAVXGUI\bin\Release\UAVXGUI 4.0.exe.manifest
 C:\Flight\Code\UAVXGUI\bin\Release\UAVXGUI 4.0.application
 C:\Flight\Code\UAVXGUI\bin\Release\UAVXGUI 4.0.exe
 C:\Flight\Code\UAVXGUI\bin\Release\UAVXGUI 4.0.pdb
 C:\Flight\Code\UAVXGUI\bin\Release\GMap.NET.Core.dll
 C:\Flight\Code\UAVXGUI\bin\Release\GMap.NET.WindowsForms.dll
-C:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI.csproj.ResolveComReference.cache
 C:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI.AvionicsInstrumentsControls.AvionicsInstrumentsControlsResources.resources
 C:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI.FormMain.resources
 C:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI.NavForm.resources
@@ -40,4 +40,31 @@ C:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI 4.0.exe.manifest
 C:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI 4.0.application
 C:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI 4.0.exe
 C:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI 4.0.pdb
-C:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI.csprojResolveAssemblyReference.cache
+C:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI.csproj.AssemblyReference.cache
+C:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI.csproj.CoreCompileInputs.cache
+C:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI.csproj.CopyComplete
+D:\Flight\Code\UAVXGUI\bin\Release\Properties\app.manifest
+D:\Flight\Code\UAVXGUI\bin\Release\UAVXGUI 4.0.exe.config
+D:\Flight\Code\UAVXGUI\bin\Release\UAVXGUI 4.0.exe.manifest
+D:\Flight\Code\UAVXGUI\bin\Release\UAVXGUI 4.0.application
+D:\Flight\Code\UAVXGUI\bin\Release\UAVXGUI 4.0.exe
+D:\Flight\Code\UAVXGUI\bin\Release\UAVXGUI 4.0.pdb
+D:\Flight\Code\UAVXGUI\bin\Release\GMap.NET.Core.dll
+D:\Flight\Code\UAVXGUI\bin\Release\GMap.NET.WindowsForms.dll
+D:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI.csproj.AssemblyReference.cache
+D:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI.csproj.SuggestedBindingRedirects.cache
+D:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI.csproj.ResolveComReference.cache
+D:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI.AvionicsInstrumentsControls.AvionicsInstrumentsControlsResources.resources
+D:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI.FormMain.resources
+D:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI.NavForm.resources
+D:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI.ParameterForm.resources
+D:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI.Properties.Resources.resources
+D:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI.Resources.hilfe.resources
+D:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI.csproj.GenerateResource.cache
+D:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI.csproj.CoreCompileInputs.cache
+D:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI 4.0.TrustInfo.xml
+D:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI 4.0.exe.manifest
+D:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI 4.0.application
+D:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI.csproj.CopyComplete
+D:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI 4.0.exe
+D:\Flight\Code\UAVXGUI\obj\Release\UAVXGUI 4.0.pdb

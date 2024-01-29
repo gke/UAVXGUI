@@ -9,13 +9,8 @@
 /* History  :                                                                */
 /*****************************************************************************/
 
-using System;
-using System.ComponentModel;
-using System.Windows.Forms;
-using System.Collections;
 using System.Drawing;
-using System.Text;
-using System.Data;
+using System.Windows.Forms;
 
 namespace Instruments
 {
@@ -24,27 +19,27 @@ namespace Instruments
         #region Fields
 
         // Parameters
-        int Heading; 
+        int Heading;
 
         // Images
         Bitmap bmpCadran = new Bitmap(Instruments.AvionicsInstrumentsControls.AvionicsInstrumentsControlsResources.HeadingIndicator_Background);
         Bitmap bmpHedingWeel = new Bitmap(Instruments.AvionicsInstrumentsControls.AvionicsInstrumentsControlsResources.HeadingWeel);
-        Bitmap bmpAircaft = new Bitmap(Instruments.AvionicsInstrumentsControls.AvionicsInstrumentsControlsResources.HeadingIndicator_Aircraft);        
+        Bitmap bmpAircaft = new Bitmap(Instruments.AvionicsInstrumentsControls.AvionicsInstrumentsControlsResources.HeadingIndicator_Aircraft);
 
         #endregion
 
         #region Contructor
 
         /// <summary>
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.Container components = null;
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.Container components = null;
 
         public HeadingIndicatorInstrumentControl()
-		{
-			// Double bufferisation
-			SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint |
-				ControlStyles.AllPaintingInWmPaint, true);
+        {
+            // Double bufferisation
+            SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint |
+                ControlStyles.AllPaintingInWmPaint, true);
         }
 
         #endregion
@@ -69,14 +64,14 @@ namespace Instruments
 
             // Pre Display computings
             Point ptRotation = new Point(150, 150);
-            Point ptImgAircraft = new Point(73,41);
+            Point ptImgAircraft = new Point(73, 41);
             Point ptImgHeadingWeel = new Point(13, 13);
 
             bmpCadran.MakeTransparent(Color.Yellow);
             bmpHedingWeel.MakeTransparent(Color.Yellow);
             bmpAircaft.MakeTransparent(Color.Yellow);
 
-            double alphaHeadingWeel = InterpolPhyToAngle(Heading,0,360,360,0);
+            double alphaHeadingWeel = InterpolPhyToAngle(Heading, 0, 360, 360, 0);
 
             float scale = (float)this.Width / bmpCadran.Width;
 
@@ -88,10 +83,10 @@ namespace Instruments
             pe.Graphics.DrawImage(bmpCadran, 0, 0, (float)(bmpCadran.Width * scale), (float)(bmpCadran.Height * scale));
 
             // display HeadingWeel
-            RotateImage(pe,bmpHedingWeel, alphaHeadingWeel, ptImgHeadingWeel, ptRotation, scale);
+            RotateImage(pe, bmpHedingWeel, alphaHeadingWeel, ptImgHeadingWeel, ptRotation, scale);
 
             // display aircraft
-            pe.Graphics.DrawImage(bmpAircaft, (int)(ptImgAircraft.X*scale), (int)(ptImgAircraft.Y*scale), (float)(bmpAircaft.Width * scale), (float)(bmpAircaft.Height * scale));
+            pe.Graphics.DrawImage(bmpAircaft, (int)(ptImgAircraft.X * scale), (int)(ptImgAircraft.Y * scale), (float)(bmpAircaft.Width * scale), (float)(bmpAircaft.Height * scale));
 
         }
 

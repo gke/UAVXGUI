@@ -129,6 +129,8 @@
             this.bit11CheckBox = new System.Windows.Forms.CheckBox();
             this.ComboPort1Label = new System.Windows.Forms.Label();
             this.NavGroupBox = new System.Windows.Forms.GroupBox();
+            this.AltHoldThrCompDecayTimeLabel = new System.Windows.Forms.Label();
+            this.AltHoldThrCompDecayTimeNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.FenceRadiusLabel = new System.Windows.Forms.Label();
             this.FenceRadiusNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.bit41CheckBox = new System.Windows.Forms.CheckBox();
@@ -336,6 +338,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Ch4NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ch1NumericUpDown)).BeginInit();
             this.NavGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AltHoldThrCompDecayTimeNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FenceRadiusNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AHThrottleWindowNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AHROCWindowNumericUpDown)).BeginInit();
@@ -927,9 +930,7 @@
             this.ESCComboBox.Items.AddRange(new object[] {
             resources.GetString("ESCComboBox.Items"),
             resources.GetString("ESCComboBox.Items1"),
-            resources.GetString("ESCComboBox.Items2"),
-            resources.GetString("ESCComboBox.Items3"),
-            resources.GetString("ESCComboBox.Items4")});
+            resources.GetString("ESCComboBox.Items2")});
             this.ESCComboBox.Name = "ESCComboBox";
             this.ESCComboBox.Tag = "36";
             this.ESCComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
@@ -1641,6 +1642,8 @@
             // 
             // NavGroupBox
             // 
+            this.NavGroupBox.Controls.Add(this.AltHoldThrCompDecayTimeLabel);
+            this.NavGroupBox.Controls.Add(this.AltHoldThrCompDecayTimeNumericUpDown);
             this.NavGroupBox.Controls.Add(this.FenceRadiusLabel);
             this.NavGroupBox.Controls.Add(this.FenceRadiusNumericUpDown);
             this.NavGroupBox.Controls.Add(this.bit41CheckBox);
@@ -1692,6 +1695,38 @@
             resources.ApplyResources(this.NavGroupBox, "NavGroupBox");
             this.NavGroupBox.Name = "NavGroupBox";
             this.NavGroupBox.TabStop = false;
+            // 
+            // AltHoldThrCompDecayTimeLabel
+            // 
+            resources.ApplyResources(this.AltHoldThrCompDecayTimeLabel, "AltHoldThrCompDecayTimeLabel");
+            this.AltHoldThrCompDecayTimeLabel.Name = "AltHoldThrCompDecayTimeLabel";
+            this.AltHoldThrCompDecayTimeLabel.Tag = "";
+            // 
+            // AltHoldThrCompDecayTimeNumericUpDown
+            // 
+            this.AltHoldThrCompDecayTimeNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
+            this.AltHoldThrCompDecayTimeNumericUpDown.DecimalPlaces = 1;
+            resources.ApplyResources(this.AltHoldThrCompDecayTimeNumericUpDown, "AltHoldThrCompDecayTimeNumericUpDown");
+            this.AltHoldThrCompDecayTimeNumericUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.AltHoldThrCompDecayTimeNumericUpDown.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            65536});
+            this.AltHoldThrCompDecayTimeNumericUpDown.Name = "AltHoldThrCompDecayTimeNumericUpDown";
+            this.AltHoldThrCompDecayTimeNumericUpDown.Tag = "80";
+            this.AltHoldThrCompDecayTimeNumericUpDown.Value = new decimal(new int[] {
+            15,
+            0,
+            0,
+            65536});
+            this.AltHoldThrCompDecayTimeNumericUpDown.ValueChanged += new System.EventHandler(this.ParamUpdate_Click_KeyDown);
+            this.AltHoldThrCompDecayTimeNumericUpDown.Enter += new System.EventHandler(this.infoGetFocus);
+            this.AltHoldThrCompDecayTimeNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParamUpdate_KeyDown);
             // 
             // FenceRadiusLabel
             // 
@@ -3752,6 +3787,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Ch1NumericUpDown)).EndInit();
             this.NavGroupBox.ResumeLayout(false);
             this.NavGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AltHoldThrCompDecayTimeNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FenceRadiusNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AHThrottleWindowNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AHROCWindowNumericUpDown)).EndInit();
@@ -4105,6 +4141,8 @@
         public System.Windows.Forms.ComboBox BBLogComboBox;
         public System.Windows.Forms.NumericUpDown AccBiasVarNumericUpDown;
         private System.Windows.Forms.Label BBLogLabel;
+        private System.Windows.Forms.Label AltHoldThrCompDecayTimeLabel;
+        public System.Windows.Forms.NumericUpDown AltHoldThrCompDecayTimeNumericUpDown;
 
 
     }

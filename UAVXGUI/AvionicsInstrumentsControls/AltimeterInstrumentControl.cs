@@ -9,13 +9,8 @@
 /* History  :                                                                */
 /*****************************************************************************/
 
-using System;
-using System.ComponentModel;
-using System.Windows.Forms;
-using System.Collections;
 using System.Drawing;
-using System.Text;
-using System.Data;
+using System.Windows.Forms;
 
 namespace Instruments
 {
@@ -24,7 +19,7 @@ namespace Instruments
         #region Fields
 
         // Parameters
-        int altitude; 
+        int altitude;
 
         // Images
         Bitmap bmpCadran = new Bitmap(Instruments.AvionicsInstrumentsControls.AvionicsInstrumentsControlsResources.Altimeter_Background);
@@ -42,10 +37,10 @@ namespace Instruments
 		private System.ComponentModel.Container components = null;
 
         public AltimeterInstrumentControl()
-		{
-			// Double bufferisation
-			SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint |
-				ControlStyles.AllPaintingInWmPaint, true);
+        {
+            // Double bufferisation
+            SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint |
+                ControlStyles.AllPaintingInWmPaint, true);
         }
 
         #endregion
@@ -71,14 +66,14 @@ namespace Instruments
             // Pre Display computings
             Point ptCounter = new Point(35, 135);
             Point ptRotation = new Point(150, 150);
-            Point ptimgNeedle = new Point(136,39);
+            Point ptimgNeedle = new Point(136, 39);
 
             bmpCadran.MakeTransparent(Color.Yellow);
             bmpLongNeedle.MakeTransparent(Color.Yellow);
             bmpSmallNeedle.MakeTransparent(Color.Yellow);
 
-            double alphaSmallNeedle = InterpolPhyToAngle(altitude,0,10000,0,359);
-            double alphaLongNeedle = InterpolPhyToAngle(altitude%1000,0,1000,0,359);
+            double alphaSmallNeedle = InterpolPhyToAngle(altitude, 0, 10000, 0, 359);
+            double alphaLongNeedle = InterpolPhyToAngle(altitude % 1000, 0, 1000, 0, 359);
 
             float scale = (float)this.Width / bmpCadran.Width;
 

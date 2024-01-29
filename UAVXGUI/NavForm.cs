@@ -1,28 +1,18 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Windows.Forms;
-using System.IO.Ports;
-using System.Threading;
-using System.IO;
-using System.Text.RegularExpressions;
-using System.Xml; 
-using System.Net;
-using System.Net.Sockets;
-
-
-using System.Reflection;
 using System.Drawing.Drawing2D;
+using System.IO;
+using System.Net;
 using System.Net.NetworkInformation;
-
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 using GMap.NET;
+using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
-using GMap.NET.MapProviders;
 
 namespace UAVXGUI
 {   // UAVX by Prof. Greg Egan (C) 2010.
@@ -108,21 +98,21 @@ namespace UAVXGUI
         PointLatLng end;
         PointLatLng start;
 
-     //   const double DefaultVelocity = 3.0f;
-     //   const short DefaultLoiter = 10;
-     //   const double DefaultOrbitRadius = 10.0f;
-     //   const double DefaultOrbitGroundAltitude = 0.0f;
-     //   const double DefaultOrbitVelocity = 1.5f;
+        //   const double DefaultVelocity = 3.0f;
+        //   const short DefaultLoiter = 10;
+        //   const double DefaultOrbitRadius = 10.0f;
+        //   const double DefaultOrbitGroundAltitude = 0.0f;
+        //   const double DefaultOrbitVelocity = 1.5f;
 
         const short RCMaximum = 1000;
         const double OUTMaximumScale = 0.5; // 100/200 % for PWM at least
 
-  
+
         byte UAVXOptions;
 
         bool GoToEnabled;
 
-     //   static byte PrevWPT = 255;
+        //   static byte PrevWPT = 255;
 
         double LongitudeCorrectionT = 1.0f;
         //bool WPInvalid = false;
@@ -132,7 +122,7 @@ namespace UAVXGUI
         string sLastLoaded;
         bool InOnlineMode = true;
         bool UseOverTerrainMode = false;
-       // ModifyRegistry myRegistry = new ModifyRegistry();
+        // ModifyRegistry myRegistry = new ModifyRegistry();
         string separatorFormat = System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
 
         public double Limit1(double v, double l)
@@ -147,7 +137,7 @@ namespace UAVXGUI
             GoToCheckBox.Checked = false; //  Properties.Settings.Default.GoToEnable;
 
             AltitudeOverTerrainCheckBox.Checked = Properties.Settings.Default.AltitudeOverTerrain;
-        
+
             LocationAddress.Text = Properties.Settings.Default.SearchAddress;
 
             AltitudeOverTerrainCheckBox.Checked = Properties.Settings.Default.AltitudeOverTerrain;
@@ -159,7 +149,7 @@ namespace UAVXGUI
             StartLon.Text = Convert.ToString(Properties.Settings.Default.HomeLongitude);
 
             LongitudeCorrectionT = Math.Abs(Math.Cos(Math.PI / 180.0 * (double)Convert.ToInt32(Properties.Settings.Default.HomeLatitude * 1e7)));
-         //zzz   LongitudeCorrection.Text = string.Format("{0:n2}", LongitudeCorrectionT);
+            //zzz   LongitudeCorrection.Text = string.Format("{0:n2}", LongitudeCorrectionT);
 
             DefaultAltTextBox.Text = string.Format("{0:n0}", Properties.Settings.Default.Altitude);
 
@@ -169,8 +159,8 @@ namespace UAVXGUI
             FormMain.Mission.ProximityAltitude = Properties.Settings.Default.ProximityAltitude;
             ProximityAltTextBox.Text = string.Format("{0:n0}", FormMain.Mission.ProximityAltitude);
 
-           // FormMain.Mission.FenceRadius = Properties.Settings.Default.FenceRadius;
-           // FenceRadiusTextBox.Text = string.Format("{0:n0}", FormMain.Mission.FenceRadius);
+            // FormMain.Mission.FenceRadius = Properties.Settings.Default.FenceRadius;
+            // FenceRadiusTextBox.Text = string.Format("{0:n0}", FormMain.Mission.FenceRadius);
 
             DefaultLoiterTextBox.Text = string.Format("{0:n0}", Properties.Settings.Default.LoiterTime);
 
@@ -236,7 +226,7 @@ namespace UAVXGUI
 
             GMOverlayFence = new GMapOverlay("fence");
             MainMap.Overlays.Add(GMOverlayFence);
- 
+
             GMOverlayLiveData.Markers.Clear();
             GMOverlayLiveData.Markers.Add(new GMapMarkerCopter(copterPos, 0, 0, 0, 3));
 
@@ -249,7 +239,7 @@ namespace UAVXGUI
             MainMap.Invalidate(false);
             //MainMap.Refresh();
 
-            InOnlineMode = Stuff.PingNetwork("pingtest.com");
+            InOnlineMode = Stuff.PingNetwork("google.com");
             if (!InOnlineMode)
             {
                 MainMap.Manager.Mode = AccessMode.CacheOnly;
@@ -279,7 +269,7 @@ namespace UAVXGUI
 
             Application.DoEvents();
 
-           // need to make certain serial is open FormMain.SendRequestPacket(FormMain.UAVXMissionPacketTag, 0, 0);
+            // need to make certain serial is open FormMain.SendRequestPacket(FormMain.UAVXMissionPacketTag, 0, 0);
 
             timer_updatemap.Enabled = true;
         } // Form1
@@ -302,14 +292,14 @@ namespace UAVXGUI
 
             CurrentAltitude.Text = string.Format("{0:n1}", (float)FormMain.CurrAlt);
 
-            WindDirectionTextBox.Text = string.Format("{0:n0}",FormMain.WindDirectionT * FormMain.MILLIRADDEG);
-            WindSpeedTextBox.Text = string.Format("{0:n1}",FormMain.WindSpeedT * 0.01);
+            WindDirectionTextBox.Text = string.Format("{0:n0}", FormMain.WindDirectionT * FormMain.MILLIRADDEG);
+            WindSpeedTextBox.Text = string.Format("{0:n1}", FormMain.WindSpeedT * 0.01);
 
             ProximityAltTextBox.Text = string.Format("{0:n0}", FormMain.NavProximityAlt);
             ProximityRadiusTextBox.Text = string.Format("{0:n0}", FormMain.NavProximityRadius);
 
             Properties.Settings.Default.Save();
- 
+
         } // timer_updatemap_Tick
 
 
@@ -320,7 +310,7 @@ namespace UAVXGUI
         } // MenuMain_ItemClicked
 
 
-       
+
 
         private void UpdateLiveNav()
         {
@@ -360,13 +350,14 @@ namespace UAVXGUI
                 //Display copter marker
                 GMOverlayLiveData.Markers.Add(new GMapMarkerCopter(GPS_pos, (float)FormMain.HeadingT * 0.001f, (float)FormMain.GPSHeadingT * 0.001f, (float)FormMain.WPBearingT * 0.001f, Convert.ToByte(FormMain.AirframeT)));
 
-                if (CentreCurrPositionCheckBox.Checked) {
+                if (CentreCurrPositionCheckBox.Checked)
+                {
                     MainMap.Position = GPS_pos;
                     StartLat.Text = String.Format("{0:0.000000}", MainMap.Position.Lat);
                     StartLon.Text = String.Format("{0:0.000000}", MainMap.Position.Lng);
                 }
 
-               
+
 
                 MainMap.Invalidate(false);
 
@@ -385,9 +376,9 @@ namespace UAVXGUI
                 catch { }
             }
 
-          
+
         } // UpdateLiveNav
-        
+
 
         //_______________________________________________________________________________________
 
@@ -412,7 +403,7 @@ namespace UAVXGUI
             M.EndEdit();
 
             FormMain.Mission.NoOfWayPoints = Convert.ToByte(M.Rows.Count);
- 
+
         } // updateIndex
 
         /*
@@ -453,21 +444,22 @@ namespace UAVXGUI
                 string sAction = M.Rows[a].Cells[mAction].Value.ToString();
 
                 if (sLon != "0" && sLat != "0" && sLon != "?" && sLat != "?")
-                    if (sAction == "POI") 
+                    if (sAction == "POI")
                         AddPOIMarker((a + 1).ToString(), double.Parse(sLon), double.Parse(sLat));
                     else
                         if (sAction == "Fence")
-                            AddFenceMarker((a + 1).ToString(), double.Parse(sLon), double.Parse(sLat),
-                         (int)double.Parse(sAlt), null, Convert.ToByte(Array.IndexOf(FormMain.NavComNames, sAction)));
-                        else
+                        AddFenceMarker((a + 1).ToString(), double.Parse(sLon), double.Parse(sLat),
+                     (int)double.Parse(sAlt), null, Convert.ToByte(Array.IndexOf(FormMain.NavComNames, sAction)));
+                    else
                         if (sAction == "Survey")
-                        {
-                            // no Marker
-                        } else
+                    {
+                        // no Marker
+                    }
+                    else
                         AddMarker((a + 1).ToString(), double.Parse(sLon), double.Parse(sLat),
                          (int)double.Parse(sAlt), null, Convert.ToByte(Array.IndexOf(FormMain.NavComNames, sAction)));
-    //FindIndex(Convert.ToString(sAction)));
-    
+                //FindIndex(Convert.ToString(sAction)));
+
             }
 
             RegenerateMissionRoute();
@@ -591,16 +583,16 @@ namespace UAVXGUI
             }
 
             Properties.Settings.Default.GoToEnable = GoToCheckBox.Checked;
-   
+
         } // GoToCheckBox_CheckChanged
 
- 
+
         private void optLocation_CheckedChanged() //object sender, EventArgs e)
         {
             CentreCurrPositionCheckBox.Checked = false;
 
-           // StartLat.Text = String.Format("{0:0.000000}", MainMap.Position.Lat);
-           // StartLon.Text = String.Format("{0:0.000000}", MainMap.Position.Lng);
+            // StartLat.Text = String.Format("{0:0.000000}", MainMap.Position.Lat);
+            // StartLon.Text = String.Format("{0:0.000000}", MainMap.Position.Lng);
 
             Properties.Settings.Default.HomeLatitude = Convert.ToDouble(StartLat.Text);
             Properties.Settings.Default.HomeLongitude = Convert.ToDouble(StartLon.Text);
@@ -644,9 +636,10 @@ namespace UAVXGUI
         {
             double outValue;
             double.TryParse(StartLat.Text, out outValue);
-            if (outValue != 0) {
+            if (outValue != 0)
+            {
                 Properties.Settings.Default.HomeLatitude = Convert.ToDouble(StartLat.Text);
-               //zzz FormMain.Mission.OriginLatitude = Convert.ToInt32(Properties.Settings.Default.HomeLatitude * 1e7);
+                //zzz FormMain.Mission.OriginLatitude = Convert.ToInt32(Properties.Settings.Default.HomeLatitude * 1e7);
             }
 
         } // StartLat_Leave
@@ -656,7 +649,8 @@ namespace UAVXGUI
             double outValue;
 
             double.TryParse(StartLon.Text, out outValue);
-            if (outValue != 0) {
+            if (outValue != 0)
+            {
                 Properties.Settings.Default.HomeLongitude = Convert.ToDouble(StartLon.Text);
                 //zzzFormMain.Mission.OriginLongitude = Convert.ToInt32(Properties.Settings.Default.HomeLongitude * 1e7);//zzz
             }
@@ -717,7 +711,7 @@ namespace UAVXGUI
             Properties.Settings.Default.ProximityRadius = (byte.TryParse(ProximityRadiusTextBox.Text, out outValue)) ?
                 (byte)outValue : Properties.Settings.Default.ProximityRadius;
             UAVXWriteButton.BackColor = System.Drawing.Color.Orange;
-  
+
         } // ProximityRadius_TextChanged
 
         private void ProximityAlt_TextChanged(object sender, EventArgs e)
@@ -732,7 +726,7 @@ namespace UAVXGUI
         void MainMap_OnMapZoomChanged()
         {
             if (MainMap.Zoom > 0)
-               center.Position = MainMap.Position;
+                center.Position = MainMap.Position;
         } // MainMap_OnMapZoomChanged
 
         private void toolStripMenuItem14_Click(object sender, EventArgs e)
@@ -820,7 +814,7 @@ namespace UAVXGUI
                     M[mAlt, rowM].Value = string.Format("{0:n0}", (double)M[mAltOff, rowM].Value);
             }
         } // updateAltColumns
-   
+
 
 
         //_______________________________________________________________________________________
@@ -866,7 +860,7 @@ namespace UAVXGUI
 
         private void AddFenceMarker(string tag, double lng, double lat, int alt, Color? color, byte markertype)
         {
-  
+
             PointLatLng point = new PointLatLng(lat, lng);
 
             GMapMarker m = new GMapMarkerMissionStep(point, Convert.ToByte(tag), (byte)markertype);
@@ -889,8 +883,8 @@ namespace UAVXGUI
         private void ViaContextMenuItem_Click(object sender, EventArgs e)
         {
             if (!GoToEnabled)
-                addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navVia], start.Lat, start.Lng, 
-                    Properties.Settings.Default.Altitude, Properties.Settings.Default.Velocity, 
+                addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navVia], start.Lat, start.Lng,
+                    Properties.Settings.Default.Altitude, Properties.Settings.Default.Velocity,
                     Convert.ToInt32(DefaultLoiterTextBox.Text), 0,
                     0, Properties.Settings.Default.TMRWidth, Properties.Settings.Default.TMRPeriod);
         } // ViaContextMenuItem_Click
@@ -898,13 +892,13 @@ namespace UAVXGUI
         private void OrbitContextMenuItem_Click(object sender, EventArgs e)
         {
             if (!GoToEnabled) addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navOrbit], start.Lat, start.Lng,
-                Properties.Settings.Default.Altitude, Properties.Settings.Default.Velocity, 30, 
+                Properties.Settings.Default.Altitude, Properties.Settings.Default.Velocity, 30,
                 Properties.Settings.Default.OrbitRadius, Properties.Settings.Default.OrbitVelocity, 0, 0);
         } // OrbitContextMenuItem_Click
 
         private void PerchContextMenuItem_Click(object sender, EventArgs e)
         {
-            if (!GoToEnabled) addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navPerch], start.Lat, start.Lng, 
+            if (!GoToEnabled) addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navPerch], start.Lat, start.Lng,
                 Properties.Settings.Default.Altitude, Properties.Settings.Default.Velocity, Convert.ToInt32(DefaultLoiterTextBox.Text), 0, 0, 0, 0);
         } // PerchContextMenuItem_Click
 
@@ -920,8 +914,8 @@ namespace UAVXGUI
         private void POIContextMenuItem_Click(object sender, EventArgs e)
         {
             if (!GoToEnabled)
-            addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navPOI], start.Lat, start.Lng, 
-                Properties.Settings.Default.Altitude, 0, 0, 0, 0, 0, 0);
+                addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navPOI], start.Lat, start.Lng,
+                    Properties.Settings.Default.Altitude, 0, 0, 0, 0, 0, 0);
         } // POIContextMenuItem_Click
 
 
@@ -929,7 +923,7 @@ namespace UAVXGUI
         {
             if (!GoToEnabled)
                 addWP(FormMain.NavComNames[(byte)FormMain.NavComs.navPulse], 0, 0,
-                0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0,
                 Properties.Settings.Default.TMRWidth, Properties.Settings.Default.TMRPeriod);
         } // TMRContextMenuItem_Click
 
@@ -982,7 +976,8 @@ namespace UAVXGUI
         {
             if (M.Rows.Count >= FormMain.MaxWayPoints)
                 MessageBox.Show("Too many waypoints. Limit " + Convert.ToString(FormMain.MaxWayPoints), "Max waypoints reached", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else  {
+            else
+            {
 
                 int selectedrow = M.Rows.Add();
                 M.Rows[selectedrow].Cells[mWP].Value = selectedrow + 1;
@@ -1007,7 +1002,7 @@ namespace UAVXGUI
 
         } // addWP
 
-  
+
         void RegenerateMissionRoute()
         {
             List<PointLatLng> polygonPoints = new List<PointLatLng>();
@@ -1217,7 +1212,7 @@ namespace UAVXGUI
                     if (GMRouteMission.Points.Count >= 1)
                     {
                         double dist_from_last = MainMap.MapProvider.Projection.GetDistance(GMRouteMission.Points[GMRouteMission.Points.Count - 1], point);
-                       // lDistLastWP.Text = String.Format("Dist. from last WP:{0:n1}m", dist_from_last * 1000);
+                        // lDistLastWP.Text = String.Format("Dist. from last WP:{0:n1}m", dist_from_last * 1000);
                     }
                 }
             }
@@ -1257,13 +1252,13 @@ namespace UAVXGUI
                                 if (GMRouteMission.Points.Count > 1)  //We have more than 1 WP
                                 {
                                     double dist_from_last = MainMap.MapProvider.Projection.GetDistance(GMRouteMission.Points[1], point);
-                                //    lDistLastWP.Text = String.Format("Dist. from last WP:{0:n1}m", dist_from_last * 1000);
+                                    //    lDistLastWP.Text = String.Format("Dist. from last WP:{0:n1}m", dist_from_last * 1000);
                                 }
                             }
                             else //Drag some other marker
                             {
                                 double dist_from_last = MainMap.MapProvider.Projection.GetDistance(GMRouteMission.Points[Convert.ToInt32(pIndex - 1)], point);
-                              //  lDistLastWP.Text = String.Format("Dist. from prev. WP:{0:n1}m", dist_from_last * 1000);
+                                //  lDistLastWP.Text = String.Format("Dist. from prev. WP:{0:n1}m", dist_from_last * 1000);
                             }
                         }
                     }
@@ -1447,73 +1442,73 @@ namespace UAVXGUI
             "Gimbal",16
             "Unknown" };
                  * */
-/*
-                switch (FormMain.AirframeT)
-                {
-                 case 0:
-                        pic = Properties.Resources.marker_tri;
-                        break;
-                    case 1:
-                        pic = Properties.Resources.marker_tri;
-                        break;
+                /*
+                                switch (FormMain.AirframeT)
+                                {
+                                 case 0:
+                                        pic = Properties.Resources.marker_tri;
+                                        break;
+                                    case 1:
+                                        pic = Properties.Resources.marker_tri;
+                                        break;
 
-                   case 2:
-                        pic = Properties.Resources.marker_vtail4;
-                        break;
- 
-                    case 3:
-                        pic = Properties.Resources.marker_quadp;
-                        break;
-                    case 4:
-                        pic = Properties.Resources.marker_quadx;
-                        break;
+                                   case 2:
+                                        pic = Properties.Resources.marker_vtail4;
+                                        break;
 
-                    case 5:
-                        pic = Properties.Resources.marker_quadp;
-                        break;
-                    case 6:
-                        pic = Properties.Resources.marker_quadx;
-                        break;
+                                    case 3:
+                                        pic = Properties.Resources.marker_quadp;
+                                        break;
+                                    case 4:
+                                        pic = Properties.Resources.marker_quadx;
+                                        break;
 
-                    case 7:
-                        pic = Properties.Resources.marker_hex6p;
-                        break;
-                    case 8:
-                        pic = Properties.Resources.marker_hex6x;
-                        break;
+                                    case 5:
+                                        pic = Properties.Resources.marker_quadp;
+                                        break;
+                                    case 6:
+                                        pic = Properties.Resources.marker_quadx;
+                                        break;
 
-                    case 9:
-                        pic = Properties.Resources.marker_oktoflatp;
-                        break;
-              //      case 10:
-              //          pic = Properties.Resources.marker_oktoflatx;
-              //          break;
+                                    case 7:
+                                        pic = Properties.Resources.marker_hex6p;
+                                        break;
+                                    case 8:
+                                        pic = Properties.Resources.marker_hex6x;
+                                        break;
 
-                    case 11:
-                        pic = Properties.Resources.marker_heli;
-                        break;
-                    case 12:
-                        pic = Properties.Resources.marker_heli;
-                        break;
+                                    case 9:
+                                        pic = Properties.Resources.marker_oktoflatp;
+                                        break;
+                              //      case 10:
+                              //          pic = Properties.Resources.marker_oktoflatx;
+                              //          break;
 
-                    case 13:
-                        pic = Properties.Resources.marker_fwing;
-                        break;
-                    case 14:
-                        pic = Properties.Resources.marker_airplane;
-                        break;
+                                    case 11:
+                                        pic = Properties.Resources.marker_heli;
+                                        break;
+                                    case 12:
+                                        pic = Properties.Resources.marker_heli;
+                                        break;
 
-                    case 15:
-                        pic = Properties.Resources.marker_bi;
-                        break;
+                                    case 13:
+                                        pic = Properties.Resources.marker_fwing;
+                                        break;
+                                    case 14:
+                                        pic = Properties.Resources.marker_airplane;
+                                        break;
 
-                    default:
-                        pic = Properties.Resources.marker_quadx;
-                        break;
-                }
-            */  
-    
-                pic = (FormMain.UsingFixedWing) ? Properties.Resources.marker_airplane : Properties.Resources.marker_quadx ;
+                                    case 15:
+                                        pic = Properties.Resources.marker_bi;
+                                        break;
+
+                                    default:
+                                        pic = Properties.Resources.marker_quadx;
+                                        break;
+                                }
+                            */
+
+                pic = (FormMain.UsingFixedWing) ? Properties.Resources.marker_airplane : Properties.Resources.marker_quadx;
 
                 int length = 100;
                 // anti NaN
@@ -1601,7 +1596,7 @@ namespace UAVXGUI
 
                 System.Drawing.Font drawFont = new System.Drawing.Font(FontFamily.GenericMonospace, 9.0F, FontStyle.Bold);
                 System.Drawing.SolidBrush drawBrush = new System.Drawing.SolidBrush(System.Drawing.Color.White);
-             
+
                 // Set graphics
                 switch ((FormMain.NavComs)markertype)
                 {
@@ -1647,7 +1642,7 @@ namespace UAVXGUI
                 }
 
                 if ((FormMain.NavComs)markertype == FormMain.NavComs.navGeoVertex)
-                    g.DrawImageUnscaled(pic, pic.Width / -2, -pic.Height/2);
+                    g.DrawImageUnscaled(pic, pic.Width / -2, -pic.Height / 2);
                 else // oddball offset to bottom of icon
                     g.DrawImageUnscaled(pic, pic.Width / -2 - 4, -pic.Height - 14);
 
@@ -1709,18 +1704,18 @@ namespace UAVXGUI
               DateTime.Now.Minute;
 
 
-/*
-            string path = Path.GetTempPath() + Path.GetRandomFileName() + @".png";
-            _tmpImage = View.g.ToImage();
-            if (_tmpImage == null) return;
-            _tmpImage.Save(path);
+            /*
+                        string path = Path.GetTempPath() + Path.GetRandomFileName() + @".png";
+                        _tmpImage = View.g.ToImage();
+                        if (_tmpImage == null) return;
+                        _tmpImage.Save(path);
 
-            PrintDocument doc = new PrintDocument { DocumentName = "Map printing file" };
-            doc.PrintPage += DocOnPrintPage;
-            PrintDialog dialog = new PrintDialog { Document = doc };
-            DialogResult result = dialog.ShowDialog();
-            if (result == DialogResult.OK) doc.Print();
-*/
+                        PrintDocument doc = new PrintDocument { DocumentName = "Map printing file" };
+                        doc.PrintPage += DocOnPrintPage;
+                        PrintDialog dialog = new PrintDialog { Document = doc };
+                        DialogResult result = dialog.ShowDialog();
+                        if (result == DialogResult.OK) doc.Print();
+            */
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 Bitmap bmp = new Bitmap(MainMap.Width, MainMap.Height);
@@ -1730,7 +1725,7 @@ namespace UAVXGUI
                 System.IO.FileStream MissionFileStream = new System.IO.FileStream(dlg.FileName + ".txt", System.IO.FileMode.Create);
                 System.IO.StreamWriter MissionFileStreamWriter = new System.IO.StreamWriter(MissionFileStream, System.Text.Encoding.ASCII);
 
-                MissionFileStreamWriter.WriteLine("OPTIONS:" 
+                MissionFileStreamWriter.WriteLine("OPTIONS:"
                     + 0 //FenceRadiusTextBox.Text
                     + "," + AltitudeOverTerrainCheckBox.Checked
                     + "," + MapZoomNumericUpDown.Value.ToString());
@@ -1743,7 +1738,7 @@ namespace UAVXGUI
                 for (rowM = 0; rowM < M.Rows.Count; rowM++)
                     MissionFileStreamWriter.WriteLine(
                     rowM - 1
-                    +"," + M[mLat, rowM].Value
+                    + "," + M[mLat, rowM].Value
                     + "," + M[mLon, rowM].Value
                     + "," + M[mAlt, rowM].Value
                     + "," + M[mAltOff, rowM].Value
@@ -1759,7 +1754,7 @@ namespace UAVXGUI
 
                 MissionFileStreamWriter.Flush();
                 MissionFileStreamWriter.Close();
-              //zzz  MissionFileStream.Close();
+                //zzz  MissionFileStream.Close();
 
                 Application.DoEvents();
                 //      Bitmap b = new Bitmap(webBrowser1.ClientSize.Width, webBrowser1.ClientSize.Height);
@@ -1768,7 +1763,7 @@ namespace UAVXGUI
                 //           new Point(0, 0), webBrowser1.ClientSize);
                 //       b.Save(dlg.FileName.Substring(0, dlg.FileName.Length - 3) + "png");
 
-             Properties.Settings.Default.LastMissionLoaded = dlg.FileName;
+                Properties.Settings.Default.LastMissionLoaded = dlg.FileName;
             }
 
             timer_updatemap.Enabled = true;
@@ -1844,9 +1839,9 @@ namespace UAVXGUI
                         switch (sObjType)
                         {
                             case "OPTIONS":
-                             //  FenceRadiusTextBox.Text  = string.Format("{0:n0}", Convert.ToInt16(sParam[0]));
+                                //  FenceRadiusTextBox.Text  = string.Format("{0:n0}", Convert.ToInt16(sParam[0]));
                                 AltitudeOverTerrainCheckBox.Checked = Convert.ToBoolean(sParam[1]);
-                 
+
                                 if (sParam.GetUpperBound(0) >= 4)
                                     MapZoomNumericUpDown.Value = Convert.ToInt32(sParam[4]);
 
@@ -1934,8 +1929,8 @@ namespace UAVXGUI
 
         void UAVXDownloadMission()
         {
-           FormMain.SendRequestPacket(FormMain.UAVXMissionPacketTag, 0, 0);
-           UAVXReadButton.BackColor = System.Drawing.Color.Orange;
+            FormMain.SendRequestPacket(FormMain.UAVXMissionPacketTag, 0, 0);
+            UAVXReadButton.BackColor = System.Drawing.Color.Orange;
         } // UAVXDownloadMission
 
 
@@ -2060,14 +2055,14 @@ namespace UAVXGUI
 
         private void NavForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-           // if (false) //serialPort1.IsOpen)
-           // {
-              //  e.Cancel = true; //cancel the fom closing
-              //  Thread CloseDown = new Thread(new ThreadStart(CloseSerialOnExit)); //close port in new thread to avoid hang
-              //  CloseDown.Start(); //close port in new thread to avoid hang
-          //  }
-          //  else
-          //      this.Close();
+            // if (false) //serialPort1.IsOpen)
+            // {
+            //  e.Cancel = true; //cancel the fom closing
+            //  Thread CloseDown = new Thread(new ThreadStart(CloseSerialOnExit)); //close port in new thread to avoid hang
+            //  CloseDown.Start(); //close port in new thread to avoid hang
+            //  }
+            //  else
+            //      this.Close();
         }
 
         private void CloseSerialOnExit()
@@ -2085,10 +2080,10 @@ namespace UAVXGUI
 
         private void NowClose(object sender, EventArgs e)
         {
-           // this.Close(); //now close the form
+            // this.Close(); //now close the form
         }
 
-      
+
 
     }
 
