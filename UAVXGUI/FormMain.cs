@@ -2406,7 +2406,7 @@ namespace UAVXGUI
 
                 WayHeading.Text = string.Format("{0:n0}", (float)WPBearingT * MILLIRADDEG);
 
-                WayHeading.Text = string.Format("{0:n0}", (float)WPBearingT);
+               // WayHeading.Text = string.Format("{0:n0}", (float)WPBearingT);
 
                 CrossTrack = Math.Abs((float)CrossTrackET * 0.1f);
                 CrossTrackError.BackColor = CrossTrack > 20.0 ? System.Drawing.Color.Red :
@@ -3204,6 +3204,8 @@ namespace UAVXGUI
                     NavSensitivityT = ExtractShort(ref UAVXPacket, 51);
 
                     NavPCorrT = ExtractShort(ref UAVXPacket, 53);
+            
+
                     NavRCorrT = ExtractShort(ref UAVXPacket, 55);
 
                     NavYCorrT = ExtractShort(ref UAVXPacket, 57);
@@ -3228,8 +3230,10 @@ namespace UAVXGUI
                         string.Format("{0:n0}", (float)NavStateTimeoutT * 0.001) : " ";
 
                     NavSensitivity.Text = string.Format("{0:n0}", (NavSensitivityT) * 0.1);
-                    NavRCorr.Text = string.Format("{0:n0}", NavRCorrT * 0.1);
-                    NavPCorr.Text = string.Format("{0:n0}", NavPCorrT * 0.1);
+                    NavRCorr.Text = string.Format("{0:n0}", (float)NavRCorrT * MILLIRADDEG);
+                    NavPCorr.Text = string.Format("{0:n0}", (float)NavPCorrT * MILLIRADDEG);
+                  //  NavRCorr.Text = string.Format("{0:n0}", NavRCorrT * 0.1);
+                  // NavPCorr.Text = string.Format("{0:n0}", NavPCorrT * 0.1);
                     NavYCorr.Text = string.Format("{0:n0}", NavYCorrT);
 
                     GPSHWVersionTextBox.Text = string.Format("{0:n4}", GPSHWVersionT * 0.0001);

@@ -573,7 +573,7 @@ namespace UAVXGUI
             this.VoltsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VoltsLabel.Location = new System.Drawing.Point(61, 15);
             this.VoltsLabel.Name = "VoltsLabel";
-            this.VoltsLabel.Size = new System.Drawing.Size(18, 16);
+            this.VoltsLabel.Size = new System.Drawing.Size(17, 16);
             this.VoltsLabel.TabIndex = 22;
             this.VoltsLabel.Text = "V";
             // 
@@ -655,7 +655,7 @@ namespace UAVXGUI
             this.CurrentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CurrentLabel.Location = new System.Drawing.Point(114, 15);
             this.CurrentLabel.Name = "CurrentLabel";
-            this.CurrentLabel.Size = new System.Drawing.Size(18, 16);
+            this.CurrentLabel.Size = new System.Drawing.Size(17, 16);
             this.CurrentLabel.TabIndex = 29;
             this.CurrentLabel.Text = "A";
             // 
@@ -1185,7 +1185,7 @@ namespace UAVXGUI
             this.BatteryChargeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BatteryChargeLabel.Location = new System.Drawing.Point(182, 15);
             this.BatteryChargeLabel.Name = "BatteryChargeLabel";
-            this.BatteryChargeLabel.Size = new System.Drawing.Size(41, 16);
+            this.BatteryChargeLabel.Size = new System.Drawing.Size(40, 16);
             this.BatteryChargeLabel.TabIndex = 31;
             this.BatteryChargeLabel.Text = "mAH";
             // 
@@ -1787,7 +1787,7 @@ namespace UAVXGUI
             this.WhereBearingLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WhereBearingLabel.Location = new System.Drawing.Point(8, 18);
             this.WhereBearingLabel.Name = "WhereBearingLabel";
-            this.WhereBearingLabel.Size = new System.Drawing.Size(61, 16);
+            this.WhereBearingLabel.Size = new System.Drawing.Size(60, 16);
             this.WhereBearingLabel.TabIndex = 54;
             this.WhereBearingLabel.Text = "Azimuth";
             // 
@@ -1809,7 +1809,7 @@ namespace UAVXGUI
             this.WhereDistanceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WhereDistanceLabel.Location = new System.Drawing.Point(150, 18);
             this.WhereDistanceLabel.Name = "WhereDistanceLabel";
-            this.WhereDistanceLabel.Size = new System.Drawing.Size(69, 16);
+            this.WhereDistanceLabel.Size = new System.Drawing.Size(68, 16);
             this.WhereDistanceLabel.TabIndex = 53;
             this.WhereDistanceLabel.Text = "Distance";
             // 
